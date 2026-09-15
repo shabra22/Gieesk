@@ -1,0 +1,206 @@
+/* ═══════════════════════════════════════════
+   GIEESKRECIPES — Navigation
+═══════════════════════════════════════════ */
+.nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  height: var(--nav-h);
+  transition: background 0.3s, backdrop-filter 0.3s, border-color 0.3s;
+  border-bottom: 1px solid transparent;
+}
+
+.nav.scrolled {
+  background: rgba(10,10,9,0.88);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom-color: var(--border-dim);
+}
+
+.nav-inner {
+  max-width: var(--max-w);
+  margin: 0 auto;
+  padding: 0 var(--col-gap);
+  height: 100%;
+  display: flex;
+  align-items: center;
+  gap: var(--space-xl);
+}
+
+/* Logo */
+.nav-logo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+  flex-shrink: 0;
+}
+
+.nav-logo-text {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 900;
+  letter-spacing: -0.02em;
+  background: linear-gradient(135deg, #e0e0e0 0%, #f5f5f5 40%, #d4a017 75%, #f0c040 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Links */
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  flex: 1;
+}
+.nav-links a {
+  padding: 6px 12px;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text-secondary);
+  border-radius: var(--r-full);
+  transition: color 0.2s, background 0.2s;
+}
+.nav-links a:hover {
+  color: var(--text-primary);
+  background: var(--bg-elevated);
+}
+
+/* Actions */
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.btn-search-nav {
+  width: 36px; height: 36px;
+  display: flex; align-items: center; justify-content: center;
+  border-radius: var(--r-full);
+  color: var(--text-secondary);
+  border: 1px solid var(--border-dim);
+  transition: color 0.2s, border-color 0.2s;
+  font-size: 17px;
+}
+.btn-search-nav:hover {
+  color: var(--text-primary);
+  border-color: var(--border-subtle);
+}
+
+/* Mobile burger */
+.nav-burger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  padding: 8px;
+  margin-left: auto;
+}
+.nav-burger span {
+  display: block;
+  width: 22px;
+  height: 2px;
+  background: var(--text-secondary);
+  border-radius: 1px;
+  transition: transform 0.3s, opacity 0.3s;
+}
+.nav-burger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.nav-burger.open span:nth-child(2) { opacity: 0; }
+.nav-burger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+/* Mobile menu */
+.nav-mobile {
+  display: none;
+  flex-direction: column;
+  gap: 4px;
+  padding: 12px 24px 20px;
+  background: rgba(10,10,9,0.96);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--border-dim);
+}
+.nav-mobile a {
+  padding: 10px 12px;
+  font-size: 15px;
+  color: var(--text-secondary);
+  border-radius: var(--r-md);
+  transition: color 0.2s, background 0.2s;
+}
+.nav-mobile a:hover { color: var(--text-primary); background: var(--bg-elevated); }
+.nav-mobile.open { display: flex; }
+
+/* ═══════════════════════════════════════════════════════════
+   MOBILE NAV
+   Layout: wordmark hard left · flexible gap · right cluster of
+   [search] [CTA pill] [burger], evenly spaced.
+   ═══════════════════════════════════════════════════════════ */
+@media (max-width: 900px) {
+  .nav-inner {
+    gap: 0;                      /* the spacer does the work, not gap */
+    justify-content: flex-start;
+  }
+
+  .nav-links              { display: none; }
+  .nav-actions .btn-ghost { display: none; }
+
+  /* Wordmark scales down slightly on mobile */
+  .nav-logo-text { font-size: 1.35rem; }
+  .nav-logo      { margin-right: auto; }   /* pushes everything else right */
+
+  /* Right cluster */
+  .nav-actions {
+    gap: 18px;
+    margin-left: auto;
+    align-items: center;
+  }
+
+  /* Bare search icon — no ring, matching the reference */
+  .btn-search-nav {
+    width: auto; height: auto;
+    border: none;
+    background: none;
+    padding: 4px;
+    font-size: 22px;
+    color: var(--text-primary);
+  }
+  .btn-search-nav:hover { border: none; color: var(--gold); }
+
+  /* CTA pill */
+  .nav-actions .btn-gold {
+    padding: 9px 20px;
+    font-size: 13px;
+    border-radius: var(--r-full);
+    white-space: nowrap;
+  }
+
+  /* Burger sits last, no auto-margin (the logo already pushed us right) */
+  .nav-burger {
+    display: flex;
+    margin-left: 0;
+    padding: 8px 0 8px 4px;
+  }
+
+  /* Logged-in avatar takes the CTA's slot */
+  #userMenu { margin-left: 0; }
+  #userMenu .user-avatar-btn {
+    padding: 3px;
+    border: none;
+    background: none;
+  }
+  #userMenu #userMenuName,
+  #userMenu .ti-chevron-down { display: none; }   /* avatar alone — keeps it tight */
+}
+
+@media (max-width: 520px) {
+  .nav-inner     { padding: 0 1rem; }
+  .nav-logo-text { font-size: 1.25rem; }
+  .nav-actions   { gap: 14px; }
+  .btn-search-nav{ font-size: 21px; }
+  .nav-actions .btn-gold { padding: 8px 16px; font-size: 12px; }
+}
+
+@media (max-width: 380px) {
+  .nav-logo-text { font-size: 1.1rem; }
+  .nav-actions   { gap: 11px; }
+  .nav-actions .btn-gold { padding: 7px 13px; font-size: 11.5px; }
+  .btn-search-nav{ font-size: 20px; }
+}

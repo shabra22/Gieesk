@@ -1,0 +1,30 @@
+{
+  "appId": "com.gieesk.recipes",
+  "appName": "GieesK Recipes",
+  "webDir": "www",
+  "server": {
+    "androidScheme": "https"
+  },
+  "backgroundColor": "#0A0A09",
+  "android": {
+    "backgroundColor": "#0A0A09"
+  },
+  "plugins": {
+    "SplashScreen": {
+      "launchShowDuration": 900,
+      "backgroundColor": "#0A0A09",
+      "androidSplashResourceName": "splash",
+      "androidScaleType": "CENTER_INSIDE",
+      "showSpinner": false
+    },
+    "StatusBar": {
+      "style": "DARK",
+      "backgroundColor": "#0A0A09"
+    },
+    "GoogleAuth": {
+      "scopes": ["profile", "email"],
+      "androidClientId": "692564793366-29ecu7vufmgmsqest0vji70d42nu1lfl.apps.googleusercontent.com",
+      "forceCodeForRefreshToken": true
+    }
+  }
+}

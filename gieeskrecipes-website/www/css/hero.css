@@ -1,0 +1,333 @@
+/* ═══════════════════════════════════════════
+   GIEESKRECIPES — Hero Section
+═══════════════════════════════════════════ */
+.hero {
+  position: relative;
+  min-height: 100vh;
+  min-height: 100dvh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background: radial-gradient(ellipse 80% 60% at 50% 40%, #0D1A0F 0%, #0A0A09 100%);
+}
+
+/* Force all hero text visible */
+.hero-content * {
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+#heroCanvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+}
+
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  /* Layered scrim: keeps hero copy legible over the moving 3D scene
+     while letting the ingredient field breathe at the edges */
+  background:
+    radial-gradient(ellipse 62% 46% at 50% 52%,
+      rgba(10,10,9,0.80) 0%,
+      rgba(10,10,9,0.55) 45%,
+      transparent 78%),
+    radial-gradient(ellipse 85% 65% at 50% 60%,
+      transparent 0%, rgba(10,10,9,0.72) 100%);
+  z-index: 1;
+  pointer-events: none;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  max-width: 780px;
+  padding: 120px 2rem 5rem;
+  opacity: 1 !important;
+  visibility: visible !important;
+  color: #F0EEE8;
+}
+
+.hero-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 16px;
+  background: var(--gold-glow);
+  border: 1px solid var(--border-gold);
+  border-radius: var(--r-full);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--gold-light);
+  margin-bottom: var(--space-lg);
+}
+
+.hero-title {
+  font-family: var(--font-display);
+  font-size: clamp(2.8rem, 7vw, 5.5rem);
+  font-weight: 900;
+  line-height: 1.05;
+  color: var(--text-primary);
+  margin-bottom: var(--space-lg);
+  text-shadow: 0 2px 40px rgba(0,0,0,0.5);
+}
+
+.hero-title em {
+  font-style: italic;
+  color: var(--gold);
+  display: block;
+}
+
+.hero-sub {
+  font-size: clamp(1rem, 2vw, 1.15rem);
+  color: var(--text-secondary);
+  line-height: 1.7;
+  max-width: 560px;
+  margin: 0 auto var(--space-xl);
+}
+
+.hero-cta {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-md);
+  margin-bottom: var(--space-2xl);
+  flex-wrap: wrap;
+}
+
+/* Stats row */
+.hero-stats {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-xl);
+  padding: var(--space-lg) var(--space-xl);
+  background: rgba(255,255,255,0.04);
+  backdrop-filter: blur(12px);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--r-xl);
+  flex-wrap: wrap;
+  gap: var(--space-lg);
+}
+
+.stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+}
+
+.stat-num {
+  font-family: var(--font-display);
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--gold);
+  line-height: 1;
+}
+
+.stat-label {
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.stat-divider {
+  width: 1px;
+  height: 36px;
+  background: var(--border-subtle);
+}
+
+/* Scroll hint */
+.hero-scroll-hint {
+  position: absolute;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  color: var(--text-muted);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  opacity: 1;
+}
+
+.hero-scroll-hint i {
+  font-size: 18px;
+  animation: fadeUp 0.5s var(--ease-smooth) infinite alternate;
+}
+
+@media (max-width: 600px) {
+  .stat-divider { display: none; }
+  .hero-stats { gap: var(--space-lg); padding: var(--space-md); }
+}
+
+/* ── Force hero text visible on all browsers ── */
+.hero-title    { color: #F0EEE8 !important; }
+.hero-title em { color: #C9963A !important; }
+.hero-sub      { color: #B8B6AE !important; }
+.hero-eyebrow  { color: #E8B96A !important; background: rgba(201,150,58,0.15) !important; border-color: rgba(201,150,58,0.3) !important; }
+.stat-num      { color: #C9963A !important; }
+.stat-label    { color: #6B6A63 !important; }
+.hero-stats    { background: rgba(255,255,255,0.04) !important; border-color: rgba(255,255,255,0.10) !important; }
+.btn-gold      { background: #C9963A !important; color: #0A0A09 !important; }
+.btn-outline   { border-color: rgba(255,255,255,0.10) !important; color: #F0EEE8 !important; }
+
+
+/* ── Hero mobile fixes ──────────────────── */
+@media (max-width: 768px) {
+  .hero-content {
+    padding: 100px 1.5rem 3rem;
+    width: 100%;
+  }
+  .hero-title {
+    font-size: clamp(1.8rem, 8vw, 2.8rem);
+    word-break: break-word;
+  }
+  .hero-sub {
+    font-size: 0.95rem;
+    padding: 0;
+  }
+  .hero-cta {
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+  .hero-cta .btn-gold,
+  .hero-cta .btn-outline {
+    width: 100%;
+    max-width: 280px;
+    justify-content: center;
+  }
+  .hero-stats {
+    flex-wrap: wrap;
+    gap: 1rem;
+    padding: 1rem;
+  }
+}
+@media (max-width: 480px) {
+  .hero-content {
+    padding: 90px 1rem 2.5rem;
+  }
+  .hero-title {
+    font-size: clamp(1.6rem, 7vw, 2rem);
+  }
+  .hero-stats {
+    gap: 0.75rem;
+  }
+  .stat-num { font-size: 1.4rem; }
+}
+
+/* ── Ambient sound toggle ─────────────────────────────────────
+   Off by default. Sound is opt-in, never forced on a visitor. */
+.hero-sound-toggle {
+  position: absolute;
+  right: 2rem;
+  bottom: 2.4rem;
+  z-index: 3;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 0.9rem;
+  border-radius: 999px;
+  border: 1px solid rgba(255,255,255,0.14);
+  background: rgba(12,12,11,0.55);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  color: rgba(255,255,255,0.62);
+  font-size: 12px;
+  letter-spacing: 0.03em;
+  cursor: pointer;
+  transition: color .25s ease, border-color .25s ease,
+              background .25s ease, transform .25s ease;
+}
+.hero-sound-toggle:hover {
+  color: rgba(255,255,255,0.92);
+  border-color: rgba(201,150,58,0.5);
+  transform: translateY(-1px);
+}
+.hero-sound-toggle i { font-size: 15px; }
+.hero-sound-toggle[aria-pressed="true"] {
+  color: var(--gold, #C9963A);
+  border-color: rgba(201,150,58,0.65);
+  background: rgba(201,150,58,0.12);
+}
+.hero-sound-toggle span { opacity: .9; }
+
+@media (max-width: 640px) {
+  .hero-sound-toggle { right: 1rem; bottom: 1.2rem; padding: 0.45rem 0.7rem; }
+  .hero-sound-toggle span { display: none; }
+}
+
+/* ── Site-wide cinematic video backdrop ───────────────────────
+   Sits behind everything. Fixed so it spans the whole page, not
+   just the hero. The WebGL ingredient scene layers on top of it. */
+.hero-video-root {
+  position: fixed;
+  inset: 0;
+  z-index: -2;
+  overflow: hidden;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 1.8s ease;
+  /* filter (colour grade) is applied inline by hero-video.js */
+  will-change: opacity;
+}
+.hero-video-root.is-ready { opacity: 1; }
+
+.hero-video-layer {
+  position: absolute;
+  top: 50%; left: 50%;
+  min-width: 100%;
+  min-height: 100%;
+  width: auto; height: auto;
+  transform: translate(-50%, -50%) scale(1.06); /* hide filter blur edges */
+  object-fit: cover;
+}
+
+/* Tint + vignette locking the footage into the GieesK palette.
+   Sits ABOVE the video, BELOW the content. */
+.hero-video-root::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    /* warm gold light from upper left */
+    radial-gradient(ellipse 70% 55% at 22% 18%,
+      rgba(201,150,58,0.16) 0%, transparent 62%),
+    /* emerald counter-light lower right */
+    radial-gradient(ellipse 60% 50% at 82% 82%,
+      rgba(29,158,117,0.10) 0%, transparent 60%),
+    /* deep vignette so UI stays readable everywhere */
+    radial-gradient(ellipse 92% 82% at 50% 50%,
+      transparent 0%, rgba(8,8,7,0.55) 72%, rgba(8,8,7,0.88) 100%),
+    /* overall darkening floor */
+    linear-gradient(rgba(10,10,9,0.42), rgba(10,10,9,0.58));
+}
+
+/* Hero canvas must sit above the video */
+#heroCanvas { z-index: 0; }
+
+/* When video is live, let the page background show it through */
+body.has-video-bg .hero {
+  background: transparent !important;
+}
+
+@media (max-width: 767px) {
+  .hero-video-root { display: none; }   /* WebGL scene only on mobile */
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero-video-root { display: none; }
+}

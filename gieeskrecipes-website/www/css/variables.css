@@ -1,0 +1,83 @@
+/* ═══════════════════════════════════════════
+   GIEESKRECIPES — Design Tokens & Variables
+═══════════════════════════════════════════ */
+:root {
+  /* Brand Palette */
+  --gold:         #C9963A;
+  --gold-light:   #E8B96A;
+  --gold-dark:    #8A6120;
+  --gold-glow:    rgba(201,150,58,0.25);
+  --emerald:      #1D9E75;
+  --emerald-dark: #0F6E56;
+  --coral:        #D85A30;
+
+  /* Dark Theme */
+  --bg-void:      #0A0A09;
+  --bg-dark:      #111110;
+  --bg-panel:     #171715;
+  --bg-card:      #1C1C1A;
+  --bg-elevated:  #242422;
+  --bg-warm:      #1A160E;
+
+  /* Text */
+  --text-primary:   #F0EEE8;
+  --text-secondary: #B8B6AE;
+  --text-muted:     #6B6A63;
+  --text-hint:      #3D3C37;
+
+  /* Borders */
+  --border-dim:    rgba(255,255,255,0.06);
+  --border-subtle: rgba(255,255,255,0.10);
+  --border-gold:   rgba(201,150,58,0.30);
+
+  /* Typography */
+  --font-display: 'Playfair Display', Georgia, serif;
+  --font-body:    'Inter', system-ui, sans-serif;
+  --font-mono:    'JetBrains Mono', monospace;
+
+  /* Spacing */
+  --space-xs:  0.25rem;
+  --space-sm:  0.5rem;
+  --space-md:  1rem;
+  --space-lg:  1.5rem;
+  --space-xl:  2rem;
+  --space-2xl: 3rem;
+  --space-3xl: 5rem;
+
+  /* Radius */
+  --r-sm:   6px;
+  --r-md:   10px;
+  --r-lg:   16px;
+  --r-xl:   24px;
+  --r-full: 999px;
+
+  /* Shadows */
+  --shadow-card:  0 2px 20px rgba(0,0,0,0.4);
+  --shadow-gold:  0 0 40px rgba(201,150,58,0.15);
+  --shadow-lift:  0 8px 40px rgba(0,0,0,0.6);
+
+  /* Transitions */
+  --ease-smooth: cubic-bezier(0.22, 0.61, 0.36, 1);
+  --ease-bounce: cubic-bezier(0.34, 1.56, 0.64, 1);
+
+  /* Layout */
+  --nav-h:    72px;
+  --max-w:    1240px;
+  --col-gap:  24px;
+}
+
+
+/* ── Mobile variable overrides ─────────── */
+@media (max-width: 640px) {
+  :root {
+    --col-gap: 16px;
+    --space-xl: 1.5rem;
+    --space-2xl: 2rem;
+    --space-3xl: 3rem;
+  }
+}
+@media (max-width: 400px) {
+  :root {
+    --col-gap: 12px;
+  }
+}

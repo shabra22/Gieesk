@@ -1,0 +1,57 @@
+/* ═══════════════════════════════════════════
+   APP BOTTOM TAB BAR
+   Only visible when running inside the native
+   app (Capacitor) — toggled via app-shell.js
+   adding the "is-native-app" class to <body>.
+═══════════════════════════════════════════ */
+
+.app-tab-bar {
+  display: none; /* hidden on web by default */
+  position: fixed;
+  left: 0; right: 0; bottom: 0;
+  z-index: 500;
+  background: var(--bg-elevated, #16150F);
+  border-top: 1px solid rgba(255,255,255,0.08);
+  padding: 6px 4px calc(6px + env(safe-area-inset-bottom, 0px));
+  justify-content: space-around;
+  align-items: center;
+}
+
+body.is-native-app .app-tab-bar {
+  display: flex;
+}
+
+/* Push page content up so the tab bar never covers it */
+body.is-native-app {
+  padding-bottom: calc(58px + env(safe-area-inset-bottom, 0px));
+}
+
+/* The existing top nav's link list is redundant once the bottom
+   tab bar takes over primary navigation in the app — hide it there,
+   keep logo/search/account in the top bar. */
+body.is-native-app .nav-links {
+  display: none;
+}
+
+.app-tab {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  color: var(--text-muted, #8A8A82);
+  text-decoration: none;
+  font-size: 10px;
+  font-weight: 600;
+  padding: 4px 8px;
+  flex: 1;
+  transition: color 0.15s ease;
+}
+
+.app-tab i {
+  font-size: 22px;
+  line-height: 1;
+}
+
+.app-tab.active {
+  color: var(--gold, #D4A039);
+}

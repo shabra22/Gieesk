@@ -1,0 +1,261 @@
+/* ═══════════════════════════════════════════
+   GIEESKRECIPES — About Page
+═══════════════════════════════════════════ */
+
+#page-about {
+  display: none;
+  min-height: 100vh;
+  background: var(--bg-void);
+  padding-top: var(--nav-h);
+}
+
+/* ── Hero ────────────────────────────────── */
+.about-hero {
+  position: relative;
+  padding: 5rem 0 4rem;
+  text-align: center;
+  background: radial-gradient(ellipse 80% 60% at 50% 40%, #0D1A0F 0%, var(--bg-void) 100%);
+  border-bottom: 1px solid var(--border-dim);
+  overflow: hidden;
+}
+.about-hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse 50% 40% at 50% 50%, rgba(201,150,58,0.06) 0%, transparent 70%);
+}
+.about-hero .container { position: relative; }
+
+.about-logo {
+  width: 100%;
+  max-width: 260px;
+  height: auto;
+  aspect-ratio: 923 / 300;
+  object-fit: contain;
+  margin: 0 auto 1.5rem;
+  display: block;
+  filter:
+    drop-shadow(0 2px 8px rgba(0,0,0,0.5))
+    drop-shadow(0 0 22px rgba(201,150,58,0.28));
+}
+
+.about-hero-title {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 5vw, 3.2rem);
+  font-weight: 900;
+  color: var(--text-primary);
+  margin-bottom: 1rem;
+  line-height: 1.1;
+}
+.about-hero-title em { color: var(--gold); font-style: italic; }
+
+.about-hero-sub {
+  font-size: 1.05rem;
+  color: var(--text-secondary);
+  max-width: 680px;
+  margin: 0 auto 2rem;
+  line-height: 1.8;
+}
+
+.about-hero-tagline {
+  display: inline-block;
+  padding: 8px 24px;
+  background: var(--gold-glow);
+  border: 1px solid var(--border-gold);
+  border-radius: var(--r-full);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  color: var(--gold-light);
+  text-transform: uppercase;
+}
+
+/* ── Content sections ────────────────────── */
+.about-content { padding: 4rem 0 6rem; }
+
+.about-section {
+  margin-bottom: 4rem;
+}
+
+.about-section-label {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 10px;
+}
+
+.about-section-title {
+  font-family: var(--font-display);
+  font-size: clamp(1.6rem, 3vw, 2.2rem);
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 1.25rem;
+  line-height: 1.2;
+}
+.about-section-title em { color: var(--gold); font-style: italic; }
+
+.about-body {
+  font-size: 1rem;
+  color: var(--text-secondary);
+  line-height: 1.85;
+  max-width: 720px;
+}
+.about-body + .about-body { margin-top: 1rem; }
+
+/* ── Vision + Mission split ──────────────── */
+.vm-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  margin-bottom: 4rem;
+}
+
+.vm-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-dim);
+  border-radius: var(--r-xl);
+  padding: 2rem;
+  position: relative;
+  overflow: hidden;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+.vm-card:hover {
+  border-color: var(--border-gold);
+  box-shadow: var(--shadow-gold);
+}
+.vm-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--gold), var(--emerald));
+}
+
+.vm-icon {
+  font-size: 2.2rem;
+  margin-bottom: 1rem;
+  display: block;
+}
+.vm-label {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 8px;
+}
+.vm-title {
+  font-family: var(--font-display);
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 12px;
+}
+.vm-text {
+  font-size: 14px;
+  color: var(--text-secondary);
+  line-height: 1.75;
+}
+
+/* ── Values grid ─────────────────────────── */
+.values-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.25rem;
+  margin-top: 2rem;
+}
+
+.value-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-dim);
+  border-radius: var(--r-lg);
+  padding: 1.5rem;
+  transition: transform 0.25s var(--ease-smooth), border-color 0.25s, box-shadow 0.25s;
+}
+.value-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--border-gold);
+  box-shadow: 0 8px 32px rgba(201,150,58,0.1);
+}
+
+.value-icon {
+  font-size: 1.8rem;
+  margin-bottom: 12px;
+  display: block;
+}
+.value-name {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--gold);
+  margin-bottom: 6px;
+}
+.value-desc {
+  font-size: 13px;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+
+/* ── Closing statement ───────────────────── */
+.about-closing {
+  text-align: center;
+  padding: 3rem 2rem;
+  background: linear-gradient(135deg, rgba(201,150,58,0.06), rgba(29,158,117,0.04));
+  border: 1px solid var(--border-gold);
+  border-radius: var(--r-xl);
+  margin-top: 2rem;
+}
+.about-closing-text {
+  font-family: var(--font-display);
+  font-size: clamp(1.2rem, 2.5vw, 1.6rem);
+  font-weight: 700;
+  color: var(--text-primary);
+  line-height: 1.4;
+  max-width: 600px;
+  margin: 0 auto 1.5rem;
+}
+.about-closing-text em { color: var(--gold); }
+
+/* ── Products strip ──────────────────────── */
+.about-products {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 1.25rem;
+  margin-top: 2rem;
+}
+.product-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-dim);
+  border-radius: var(--r-lg);
+  padding: 1.5rem;
+  transition: border-color 0.2s, transform 0.2s;
+}
+.product-card:hover { border-color: var(--border-subtle); transform: translateY(-3px); }
+.product-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 3px 10px;
+  background: var(--gold-glow);
+  border: 1px solid var(--border-gold);
+  border-radius: var(--r-full);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  color: var(--gold-light);
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+.product-tag.live { background: rgba(29,158,117,0.12); border-color: rgba(29,158,117,0.3); color: #4ECDA4; }
+.product-tag.soon { background: rgba(127,119,221,0.12); border-color: rgba(127,119,221,0.3); color: #AFA9EC; }
+.product-name { font-size: 15px; font-weight: 700; color: var(--text-primary); margin-bottom: 6px; }
+.product-desc { font-size: 13px; color: var(--text-muted); line-height: 1.6; }
+
+@media (max-width: 768px) {
+  .vm-grid     { grid-template-columns: 1fr; }
+  .values-grid { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 480px) {
+  .values-grid { grid-template-columns: 1fr; }
+}

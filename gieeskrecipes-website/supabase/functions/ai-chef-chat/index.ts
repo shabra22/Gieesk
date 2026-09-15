@@ -14,7 +14,7 @@
 
 const ANTHROPIC_API_KEY = Deno.env.get('ANTHROPIC_API_KEY')!;
 const ANTHROPIC_API_URL = 'https://api.anthropic.com/v1/messages';
-const MODEL = 'claude-sonnet-4-6';
+const MODEL = 'claude-sonnet-5';
 
 const CHEF_SYSTEM_PROMPT = `You are the GieesK Recipes AI Chef — a warm, knowledgeable culinary guide
 specializing in global home cooking, with deep expertise in the cuisines

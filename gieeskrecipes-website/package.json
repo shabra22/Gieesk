@@ -3,10 +3,25 @@
   "version": "1.0.0",
   "description": "GieesK Recipes — AI-powered global recipe discovery platform",
   "scripts": {
-    "build": "node build-data.js"
+    "build": "node build-data.js",
+    "app:build": "node build-data.js && node sync-app.js && npx cap sync"
   },
   "engines": {
     "node": ">=16.0.0"
   },
-  "private": true
+  "private": true,
+  "dependencies": {
+    "@capacitor/android": "^8.5.1",
+    "@capacitor/app": "^8.1.1",
+    "@capacitor/browser": "^8.0.4",
+    "@capacitor/core": "^8.5.1",
+    "@capacitor/haptics": "^8.0.2",
+    "@capacitor/splash-screen": "^8.0.2",
+    "@capacitor/status-bar": "^8.0.3",
+    "@codetrix-studio/capacitor-google-auth": "^3.4.0-rc.4"
+  },
+  "devDependencies": {
+    "@capacitor/assets": "^3.0.5",
+    "supabase": "^2.117.0"
+  }
 }

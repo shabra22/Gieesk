@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gieesk Pro — Upgrade | GieesK Recipes</title>
+  <meta name="description" content="Upgrade to Gieesk Pro for unlimited AI Chef, personalized meal planning, and advanced dietary filters." />
+  <link rel="canonical" href="https://gieesk.com/upgrade.html" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css" />
+  <link rel="stylesheet" href="css/variables.css" />
+  <link rel="stylesheet" href="css/base.css" />
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <style>
+    body { background: var(--bg-void, #0A0A09); min-height: 100vh; }
+    .upgrade-wrap {
+      max-width: 480px; margin: 0 auto; padding: 60px 24px 40px;
+    }
+    .upgrade-back { color: var(--text-muted, #8A8A82); font-size: 14px; text-decoration: none; display: inline-flex; align-items: center; gap: 6px; margin-bottom: 32px; }
+    .upgrade-badge { display: inline-block; padding: 5px 14px; border-radius: 999px; background: rgba(212,160,57,0.12); color: var(--gold, #D4A039); font-size: 12.5px; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; margin-bottom: 16px; }
+    .upgrade-title { font-family: var(--font-display, serif); font-size: 34px; color: var(--text-primary, #F0EEE8); margin: 0 0 8px; }
+    .upgrade-price { font-size: 40px; font-weight: 800; color: var(--text-primary, #F0EEE8); margin: 24px 0 4px; }
+    .upgrade-price span { font-size: 16px; font-weight: 500; color: var(--text-muted, #8A8A82); }
+    .upgrade-features { list-style: none; padding: 0; margin: 28px 0; display: flex; flex-direction: column; gap: 14px; }
+    .upgrade-features li { display: flex; align-items: flex-start; gap: 12px; color: var(--text-secondary, #B8B6AE); font-size: 14.5px; }
+    .upgrade-features i { color: var(--gold, #D4A039); font-size: 18px; margin-top: 1px; flex-shrink: 0; }
+    .upgrade-btn { width: 100%; padding: 15px; border-radius: 999px; background: var(--gold, #D4A039); color: #0A0A09; border: none; font-weight: 700; font-size: 15px; cursor: pointer; font-family: inherit; }
+    .upgrade-btn:disabled { opacity: 0.6; cursor: default; }
+    .upgrade-msg { font-size: 13.5px; margin-top: 14px; text-align: center; display: none; }
+    .upgrade-note { font-size: 12.5px; color: var(--text-muted, #8A8A82); text-align: center; margin-top: 16px; }
+  </style>
+</head>
+<body>
+  <div class="upgrade-wrap">
+    <a href="/" class="upgrade-back"><i class="ti ti-arrow-left"></i> Back to GieesK Recipes</a>
+
+    <div id="upgradeContent">
+      <span class="upgrade-badge">Gieesk Pro</span>
+      <h1 class="upgrade-title">Cook smarter, not harder.</h1>
+      <p style="color:var(--text-muted, #8A8A82); font-size:14.5px">Unlimited AI-powered cooking help and personalized planning.</p>
+
+      <div class="upgrade-price">$4.99 <span>/ month</span></div>
+
+      <ul class="upgrade-features">
+        <li><i class="ti ti-chef-hat"></i> Unlimited AI Chef — personalized recipe ideas from whatever's in your kitchen</li>
+        <li><i class="ti ti-calendar-event"></i> Full meal planning — plan your whole week in minutes</li>
+        <li><i class="ti ti-adjustments"></i> Advanced dietary filters — find exactly what fits your goals</li>
+        <li><i class="ti ti-infinity"></i> Cancel anytime, no long-term commitment</li>
+      </ul>
+
+      <button class="upgrade-btn" id="upgradeBtn">Subscribe — $4.99/mo</button>
+      <div id="upgradeMsg" class="upgrade-msg"></div>
+      <p class="upgrade-note">You'll be asked to sign in first if you aren't already.</p>
+    </div>
+  </div>
+
+  <script src="js/supabase.js"></script>
+  <script>
+    (async function () {
+      const params = new URLSearchParams(window.location.search);
+      const content = document.getElementById('upgradeContent');
+      const msg = document.getElementById('upgradeMsg');
+
+      function showMsg(text, color) {
+        msg.textContent = text;
+        msg.style.color = color;
+        msg.style.display = '';
+      }
+
+      if (params.get('success') === 'true') {
+        content.innerHTML = '<span class="upgrade-badge">Gieesk Pro</span>' +
+          '<h1 class="upgrade-title">🎉 You\'re Pro now!</h1>' +
+          '<p style="color:var(--text-secondary, #B8B6AE); font-size:15px; line-height:1.6">Open the GieesK Recipes app and you\'ll have full access to AI Chef, Meal Planner, and advanced filters right away.</p>';
+        return;
+      }
+      if (params.get('cancelled') === 'true') {
+        showMsg('Checkout cancelled — no charge was made.', '#8A8A82');
+      }
+
+      const sb = getSupabase();
+      const btn = document.getElementById('upgradeBtn');
+
+      btn.addEventListener('click', async function () {
+        const { data: { session } } = await sb.auth.getSession();
+        if (!session) {
+          showMsg('Please sign in on GieesK Recipes first, then come back to this page.', '#F08060');
+          return;
+        }
+
+        btn.disabled = true;
+        btn.textContent = 'Redirecting to checkout…';
+
+        const { data, error } = await sb.functions.invoke('create-checkout-session', {
+          headers: { Authorization: `Bearer ${session.access_token}` },
+        });
+
+        if (error || !data?.url) {
+          btn.disabled = false;
+          btn.textContent = 'Subscribe — $4.99/mo';
+          showMsg("Couldn't start checkout — please try again.", '#F08060');
+          return;
+        }
+
+        window.location.href = data.url;
+      });
+    })();
+  </script>
+</body>
+</html>

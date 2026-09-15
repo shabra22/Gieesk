@@ -1,0 +1,307 @@
+/* ═══════════════════════════════════════════
+   GIEESKRECIPES — Recipe Cards & Grids
+═══════════════════════════════════════════ */
+
+/* ── Recipe Card ────────────────────────── */
+.recipe-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: var(--col-gap);
+}
+
+.recipe-card {
+  position: relative;
+  background: var(--bg-card);
+  border: 1px solid var(--border-dim);
+  border-radius: var(--r-lg);
+  overflow: hidden;
+  transition: transform 0.3s var(--ease-smooth), border-color 0.3s, box-shadow 0.3s;
+  cursor: pointer;
+  animation: fadeUp 0.5s var(--ease-smooth) both;
+}
+.recipe-card-link {
+  display: block;
+  color: inherit;
+  text-decoration: none;
+}
+.recipe-card:hover {
+  transform: translateY(-6px);
+  border-color: var(--border-gold);
+  box-shadow: var(--shadow-gold);
+}
+
+.recipe-card-img {
+  position: relative;
+  height: 200px;
+  overflow: hidden;
+  background: var(--bg-elevated);
+}
+.recipe-card-img img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s var(--ease-smooth);
+}
+.recipe-card:hover .recipe-card-img img {
+  transform: scale(1.05);
+}
+
+.recipe-card-badges {
+  position: absolute;
+  top: 12px; left: 12px;
+  display: flex; gap: 6px; flex-wrap: wrap;
+}
+
+.recipe-save-btn {
+  position: absolute;
+  top: 10px; right: 10px;
+  width: 34px; height: 34px;
+  display: flex; align-items: center; justify-content: center;
+  background: rgba(10,10,9,0.7);
+  backdrop-filter: blur(8px);
+  border-radius: var(--r-full);
+  color: var(--text-secondary);
+  font-size: 16px;
+  border: 1px solid var(--border-subtle);
+  transition: color 0.2s, background 0.2s;
+}
+.recipe-save-btn:hover, .recipe-save-btn.saved {
+  color: var(--gold);
+  background: rgba(201,150,58,0.15);
+}
+
+.recipe-card-body {
+  padding: 16px;
+}
+
+.recipe-card-meta {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 8px;
+}
+.recipe-meta-item {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 12px;
+  color: var(--text-muted);
+}
+.recipe-meta-item i { font-size: 14px; }
+
+.recipe-card-title {
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 6px;
+  line-height: 1.3;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.recipe-card-author {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 12px;
+  padding-top: 12px;
+  border-top: 1px solid var(--border-dim);
+}
+
+.author-avatar {
+  width: 28px; height: 28px;
+  border-radius: var(--r-full);
+  background: var(--bg-elevated);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--gold);
+  border: 1px solid var(--border-gold);
+  overflow: hidden;
+  flex-shrink: 0;
+}
+.author-avatar img { width: 100%; height: 100%; object-fit: cover; }
+
+.author-name {
+  font-size: 12px;
+  color: var(--text-secondary);
+  flex: 1;
+}
+
+.recipe-rating {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 12px;
+  color: var(--gold);
+  font-weight: 600;
+}
+
+/* ── Cuisine Cards ──────────────────────── */
+.cuisine-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: var(--col-gap);
+}
+
+.cuisine-card {
+  position: relative;
+  border-radius: var(--r-lg);
+  overflow: hidden;
+  aspect-ratio: 3/4;
+  cursor: pointer;
+  transition: transform 0.3s var(--ease-smooth), box-shadow 0.3s;
+  border: 1px solid var(--border-dim);
+  background: var(--bg-card);
+  min-height: 160px;
+}
+.cuisine-card:hover {
+  transform: translateY(-4px) scale(1.02);
+  border-color: var(--border-gold);
+  box-shadow: var(--shadow-gold);
+}
+
+.cuisine-card-bg {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s;
+}
+.cuisine-card:hover .cuisine-card-bg { transform: scale(1.08); }
+
+.cuisine-card-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(10,10,9,0.9) 0%, rgba(10,10,9,0.2) 60%, transparent 100%);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 16px;
+}
+
+.cuisine-flag {
+  font-size: 2.75rem;
+  line-height: 1;
+  margin-bottom: 8px;
+  filter: drop-shadow(0 2px 6px rgba(0,0,0,0.55));
+}
+
+.cuisine-name {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.cuisine-count {
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+/* ── Chef Cards ─────────────────────────── */
+.chefs-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: var(--col-gap);
+}
+
+.chef-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-dim);
+  border-radius: var(--r-lg);
+  padding: var(--space-xl);
+  text-align: center;
+  transition: transform 0.3s var(--ease-smooth), border-color 0.3s, box-shadow 0.3s;
+  cursor: pointer;
+  animation: fadeUp 0.5s var(--ease-smooth) both;
+}
+.chef-card:hover {
+  transform: translateY(-6px);
+  border-color: var(--border-gold);
+  box-shadow: var(--shadow-gold);
+}
+
+.chef-photo {
+  width: 80px; height: 80px;
+  border-radius: var(--r-full);
+  margin: 0 auto 14px;
+  border: 2px solid var(--border-gold);
+  overflow: hidden;
+  background: var(--bg-elevated);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.8rem;
+}
+.chef-photo img { width: 100%; height: 100%; object-fit: cover; }
+
+.chef-name {
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 4px;
+}
+.chef-origin {
+  font-size: 12px;
+  color: var(--text-muted);
+  margin-bottom: 12px;
+}
+.chef-stats {
+  display: flex;
+  justify-content: center;
+  gap: var(--space-lg);
+  margin-bottom: var(--space-md);
+}
+.chef-stat-num {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--gold);
+}
+.chef-stat-label {
+  font-size: 11px;
+  color: var(--text-muted);
+}
+
+/* ── Seasonal grid ──────────────────────── */
+.seasonal-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--col-gap);
+}
+.seasonal-grid .recipe-card:first-child {
+  grid-row: span 2;
+}
+.seasonal-grid .recipe-card:first-child .recipe-card-img {
+  height: 320px;
+}
+
+@media (max-width: 700px) {
+  .seasonal-grid {
+    grid-template-columns: 1fr;
+  }
+  .seasonal-grid .recipe-card:first-child { grid-row: span 1; }
+  .seasonal-grid .recipe-card:first-child .recipe-card-img { height: 200px; }
+}
+
+@media (max-width: 600px) {
+  .cuisine-grid { grid-template-columns: repeat(3, 1fr); }
+}
+
+/* ── Cards mobile fixes ─────────────────── */
+@media (max-width: 640px) {
+  .recipe-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
+  .recipe-card-title {
+    font-size: 13px;
+  }
+}
+@media (max-width: 400px) {
+  .recipe-grid {
+    grid-template-columns: 1fr;
+  }
+  .cuisine-card {
+    aspect-ratio: 4/3;
+  }
+}

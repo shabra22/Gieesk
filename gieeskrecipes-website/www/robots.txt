@@ -1,0 +1,10 @@
+# GieesK Recipes — robots.txt
+User-agent: *
+Allow: /
+
+# Block build/config artifacts
+Disallow: /js/data.js
+Disallow: /*.json$
+
+# Sitemap
+Sitemap: https://gieesk.com/sitemap.xml

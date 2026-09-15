@@ -1,0 +1,728 @@
+/* ═══════════════════════════════════════════
+   GIEESKRECIPES — Dashboard Pages
+═══════════════════════════════════════════ */
+
+/* ── Dashboard shell ────────────────────── */
+.dash-page {
+  display: none;
+  min-height: 100vh;
+  padding-top: var(--nav-h);
+  background: var(--bg-void);
+}
+.dash-page.active { display: block; }
+
+/* ── Dashboard hero bar ─────────────────── */
+.dash-hero {
+  background: var(--bg-dark);
+  border-bottom: 1px solid var(--border-dim);
+  padding: 2rem 0 0;
+}
+.dash-hero-inner {
+  display: flex;
+  align-items: flex-end;
+  gap: 1.5rem;
+  padding-bottom: 0;
+  flex-wrap: wrap;
+}
+.dash-hero-avatar {
+  width: 72px; height: 72px;
+  border-radius: var(--r-full);
+  border: 2px solid var(--border-gold);
+  background: var(--bg-elevated);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--gold);
+  overflow: hidden;
+  flex-shrink: 0;
+}
+.dash-hero-avatar img { width: 100%; height: 100%; object-fit: cover; }
+.dash-hero-info { flex: 1; padding-bottom: 1.25rem; min-width: 0; }
+.dash-hero-name {
+  font-family: var(--font-display);
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  line-height: 1.2;
+}
+.dash-hero-email { font-size: 13px; color: var(--text-muted); margin-top: 2px; }
+.dash-hero-meta  {
+  display: flex; gap: 1.5rem; flex-wrap: wrap;
+  padding-bottom: 1.25rem;
+}
+.dash-hero-stat { text-align: center; }
+.dash-hero-stat-num   { font-size: 1.1rem; font-weight: 700; color: var(--gold); }
+.dash-hero-stat-label { font-size: 11px; color: var(--text-muted); text-transform: uppercase; letter-spacing: .06em; }
+.dash-hero-back { flex-shrink: 0; }
+
+/* Below ~700px the implicit flex-wrap wasn't predictable — Back, the
+   avatar, and the stats could all land on whichever line had room,
+   producing a jumbled order. Force a deliberate stack instead:
+   Back on its own row at the top, avatar+name together, stats spread
+   full-width beneath, evenly spaced and never wrapping mid-row. */
+@media (max-width: 700px) {
+  .dash-hero-inner { flex-wrap: wrap; align-items: center; }
+  .dash-hero-back  { order: -2; flex-basis: 100%; margin-bottom: .75rem; }
+  .dash-hero-avatar{ order: -1; }
+  .dash-hero-info  { order: -1; padding-bottom: 0; }
+  .dash-hero-meta  {
+    order: 1;
+    flex-basis: 100%;
+    justify-content: space-between;
+    gap: .5rem;
+    margin-top: 1.25rem;
+    padding-bottom: 1.5rem;
+  }
+  .dash-hero-stat { flex: 1; }
+}
+
+/* Dashboard tabs */
+.dash-tabs {
+  display: flex;
+  gap: 0;
+  margin-top: 1.5rem;
+  border-bottom: none;
+}
+.dash-tab {
+  padding: 10px 20px;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text-muted);
+  border-bottom: 2px solid transparent;
+  cursor: pointer;
+  transition: color 0.2s, border-color 0.2s;
+  background: none;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  font-family: inherit;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-shrink: 0;
+}
+.dash-tab:hover   { color: var(--text-primary); }
+.dash-tab.active  { color: var(--gold); border-bottom-color: var(--gold); }
+.dash-tab i { font-size: 16px; }
+
+/* ── Dashboard content area ─────────────── */
+.dash-content { padding: 2rem 0 4rem; }
+
+/* ── Dashboard section card ─────────────── */
+.dash-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-dim);
+  border-radius: var(--r-lg);
+  overflow: hidden;
+  margin-bottom: 1.5rem;
+}
+.dash-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 20px;
+  border-bottom: 1px solid var(--border-dim);
+}
+.dash-card-title {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-primary);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.dash-card-title i { color: var(--gold); font-size: 17px; }
+.dash-card-body { padding: 20px; }
+
+/* ══════════════════════════════════════════
+   PROFILE PAGE
+══════════════════════════════════════════ */
+.profile-grid {
+  display: grid;
+  grid-template-columns: 300px 1fr;
+  gap: 1.5rem;
+  align-items: start;
+}
+
+.avatar-upload-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+.avatar-upload-preview {
+  width: 100px; height: 100px;
+  border-radius: var(--r-full);
+  border: 2px solid var(--border-gold);
+  background: var(--bg-elevated);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--gold);
+  overflow: hidden;
+  position: relative;
+  cursor: pointer;
+}
+.avatar-upload-preview img { width: 100%; height: 100%; object-fit: cover; }
+.avatar-upload-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.55);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.2s;
+  border-radius: var(--r-full);
+  font-size: 1.4rem;
+  color: #fff;
+}
+.avatar-upload-preview:hover .avatar-upload-overlay { opacity: 1; }
+
+.profile-form { display: flex; flex-direction: column; gap: 16px; }
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.form-field { display: flex; flex-direction: column; gap: 6px; }
+.form-label {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-secondary);
+  letter-spacing: 0.03em;
+}
+.form-input, .form-textarea, .form-select {
+  background: var(--bg-elevated);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--r-md);
+  padding: 10px 14px;
+  font-size: 14px;
+  color: var(--text-primary);
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  font-family: inherit;
+  width: 100%;
+}
+.form-input:focus, .form-textarea:focus, .form-select:focus {
+  border-color: var(--gold);
+  box-shadow: 0 0 0 3px var(--gold-glow);
+}
+.form-input::placeholder, .form-textarea::placeholder { color: var(--text-hint); }
+.form-textarea { resize: vertical; min-height: 90px; }
+.form-select { appearance: none; cursor: pointer; }
+
+.form-actions {
+  display: flex;
+  gap: 10px;
+  padding-top: 4px;
+}
+
+/* Profile diet tags */
+.diet-tags { display: flex; flex-wrap: wrap; gap: 8px; }
+.diet-tag {
+  padding: 5px 14px;
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--r-full);
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: all 0.2s;
+  background: var(--bg-elevated);
+}
+.diet-tag:hover  { border-color: var(--gold); color: var(--gold); }
+.diet-tag.active { background: var(--gold-glow); border-color: var(--gold); color: var(--gold-light); }
+
+/* ══════════════════════════════════════════
+   SAVED RECIPES PAGE
+══════════════════════════════════════════ */
+.saved-toolbar {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 1.5rem;
+  flex-wrap: wrap;
+}
+.saved-search {
+  flex: 1;
+  min-width: 200px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--r-full);
+  padding: 8px 16px;
+}
+.saved-search input {
+  flex: 1;
+  background: none;
+  border: none;
+  outline: none;
+  font-size: 14px;
+  color: var(--text-primary);
+  font-family: inherit;
+}
+.saved-search input::placeholder { color: var(--text-muted); }
+.saved-search i { color: var(--text-muted); }
+
+.collection-tabs {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-bottom: 1.5rem;
+}
+.collection-tab {
+  padding: 6px 16px;
+  border: 1px solid var(--border-dim);
+  border-radius: var(--r-full);
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--text-muted);
+  cursor: pointer;
+  background: var(--bg-card);
+  transition: all 0.2s;
+  font-family: inherit;
+}
+.collection-tab:hover  { border-color: var(--border-subtle); color: var(--text-primary); }
+.collection-tab.active { background: var(--gold-glow); border-color: var(--gold); color: var(--gold-light); }
+
+.saved-empty {
+  text-align: center;
+  padding: 4rem 2rem;
+  color: var(--text-muted);
+}
+.saved-empty i    { font-size: 3rem; display: block; margin-bottom: 1rem; color: var(--text-hint); }
+.saved-empty h3   { font-size: 1.1rem; color: var(--text-secondary); margin-bottom: 8px; }
+.saved-empty p    { font-size: 13px; line-height: 1.6; max-width: 300px; margin: 0 auto 1.5rem; }
+
+.dash-loading {
+  grid-column: 1/-1;
+  text-align: center;
+  padding: 3rem 1rem;
+  color: var(--text-muted);
+  font-size: 13px;
+}
+
+.saved-date-badge {
+  font-size: 11px;
+  color: var(--text-hint);
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  margin-top: 6px;
+}
+.saved-date-badge i { font-size: 12px; }
+
+.saved-collection-picker {
+  display: flex;
+  gap: 6px;
+  margin-top: 10px;
+}
+.saved-collection-btn {
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  border-radius: var(--r-full);
+  border: 1px solid var(--border-dim);
+  background: var(--bg-elevated);
+  opacity: 0.55;
+  cursor: pointer;
+  transition: opacity .2s, border-color .2s, transform .15s;
+}
+.saved-collection-btn:hover { opacity: 0.9; transform: translateY(-1px); }
+.saved-collection-btn.active {
+  opacity: 1;
+  border-color: var(--border-gold);
+  background: rgba(201,150,58,0.14);
+}
+
+/* ══════════════════════════════════════════
+   MEAL PLANNER PAGE
+══════════════════════════════════════════ */
+.planner-week-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.5rem;
+  gap: 1rem;
+}
+.planner-week-label {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+.planner-nav-btn {
+  width: 36px; height: 36px;
+  display: flex; align-items: center; justify-content: center;
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--r-full);
+  color: var(--text-secondary);
+  font-size: 18px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.planner-nav-btn:hover { border-color: var(--gold); color: var(--gold); }
+
+.planner-grid {
+  display: grid;
+  grid-template-columns: 80px repeat(7, 1fr);
+  gap: 1px;
+  background: var(--border-dim);
+  border: 1px solid var(--border-dim);
+  border-radius: var(--r-lg);
+  overflow: hidden;
+}
+.planner-cell {
+  background: var(--bg-card);
+  padding: 10px 8px;
+  min-height: 80px;
+}
+.planner-cell.header {
+  background: var(--bg-elevated);
+  min-height: auto;
+  padding: 10px 8px;
+  text-align: center;
+}
+.planner-day-name {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .06em;
+  color: var(--text-muted);
+}
+.planner-day-date {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-top: 2px;
+}
+.planner-day-date.today { color: var(--gold); }
+.planner-today-label {
+  font-size: 9px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .05em;
+  color: var(--gold);
+  background: rgba(201,150,58,0.15);
+  border-radius: var(--r-full);
+  padding: 1px 7px;
+  margin-top: 3px;
+  display: inline-block;
+}
+.planner-tomorrow-label {
+  color: var(--text-muted);
+  background: var(--bg-elevated);
+}
+.planner-slot.pending-target {
+  border-color: var(--border-gold);
+  background: rgba(201,150,58,0.10);
+  animation: pending-pulse 1.4s ease-in-out infinite;
+}
+@keyframes pending-pulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(201,150,58,0.25); }
+  50%      { box-shadow: 0 0 0 5px rgba(201,150,58,0); }
+}
+.planner-meal-label {
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .06em;
+  color: var(--text-hint);
+  writing-mode: vertical-lr;
+  transform: rotate(180deg);
+  padding: 8px 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+
+.planner-slot {
+  background: var(--bg-elevated);
+  border: 1px dashed var(--border-dim);
+  border-radius: var(--r-sm);
+  padding: 6px;
+  min-height: 64px;
+  cursor: pointer;
+  transition: border-color 0.2s, background 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+.planner-slot:hover {
+  border-color: var(--gold);
+  background: var(--gold-glow);
+}
+.planner-slot.filled {
+  border-style: solid;
+  border-color: var(--border-gold);
+  background: rgba(201,150,58,0.06);
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+.planner-slot-add {
+  font-size: 1.2rem;
+  color: var(--text-hint);
+}
+.planner-slot:hover .planner-slot-add { color: var(--gold); }
+.planner-slot-recipe {
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--text-secondary);
+  line-height: 1.3;
+  width: 100%;
+}
+.planner-slot-emoji { font-size: 1.2rem; display: block; margin-bottom: 3px; }
+.planner-slot-thumb {
+  width: 22px; height: 22px;
+  border-radius: 4px;
+  object-fit: cover;
+  display: block;
+  margin-bottom: 3px;
+}
+.planner-slot-remove {
+  position: absolute;
+  top: 3px; right: 3px;
+  width: 16px; height: 16px;
+  background: rgba(216,90,48,0.2);
+  border-radius: var(--r-full);
+  display: none;
+  align-items: center; justify-content: center;
+  font-size: 10px;
+  color: #F08060;
+  cursor: pointer;
+}
+.planner-slot.filled:hover .planner-slot-remove { display: flex; }
+
+/* Planner add recipe picker */
+.planner-picker {
+  position: fixed;
+  inset: 0;
+  z-index: 300;
+  background: rgba(0,0,0,0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s;
+}
+.planner-picker.open { opacity: 1; pointer-events: all; }
+.planner-picker-panel {
+  background: var(--bg-panel);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--r-xl);
+  width: 100%;
+  max-width: 500px;
+  max-height: 80vh;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+.planner-picker-header {
+  padding: 16px 20px;
+  border-bottom: 1px solid var(--border-dim);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.planner-picker-title {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+.planner-picker-search {
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--border-dim);
+}
+.planner-picker-search input {
+  width: 100%;
+  background: var(--bg-elevated);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--r-md);
+  padding: 9px 14px;
+  font-size: 14px;
+  color: var(--text-primary);
+  outline: none;
+  font-family: inherit;
+}
+.planner-picker-list {
+  flex: 1;
+  overflow-y: auto;
+  padding: 8px;
+}
+.planner-picker-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 12px;
+  border-radius: var(--r-md);
+  cursor: pointer;
+  transition: background 0.15s;
+}
+.planner-picker-item:hover { background: var(--bg-elevated); }
+.planner-picker-emoji { font-size: 1.5rem; flex-shrink: 0; }
+.planner-picker-thumb {
+  width: 36px; height: 36px;
+  border-radius: var(--r-sm);
+  object-fit: cover;
+  flex-shrink: 0;
+}
+.planner-picker-info-title { font-size: 13px; font-weight: 500; color: var(--text-primary); }
+.planner-picker-info-meta  { font-size: 11px; color: var(--text-muted); }
+
+/* ══════════════════════════════════════════
+   SHOPPING LIST PAGE
+══════════════════════════════════════════ */
+.shopping-toolbar {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 1.5rem;
+  flex-wrap: wrap;
+}
+.shopping-add-row {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 1.5rem;
+  flex-wrap: wrap;
+}
+.shopping-add-input {
+  flex: 1;
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--r-md);
+  padding: 10px 16px;
+  font-size: 14px;
+  color: var(--text-primary);
+  outline: none;
+  font-family: inherit;
+  transition: border-color 0.2s;
+}
+.shopping-add-input:focus { border-color: var(--gold); }
+.shopping-add-input::placeholder { color: var(--text-muted); }
+
+.shopping-category { margin-bottom: 1.5rem; }
+.shopping-category-title {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .08em;
+  color: var(--gold);
+  margin-bottom: 8px;
+  padding-bottom: 6px;
+  border-bottom: 1px solid var(--border-dim);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.shopping-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 12px;
+  background: var(--bg-card);
+  border: 1px solid var(--border-dim);
+  border-radius: var(--r-md);
+  margin-bottom: 6px;
+  transition: border-color 0.2s, opacity 0.2s;
+}
+.shopping-item.checked { opacity: 0.45; }
+.shopping-item.checked .shopping-item-name { text-decoration: line-through; }
+
+.shopping-checkbox {
+  width: 20px; height: 20px;
+  border-radius: 6px;
+  border: 2px solid var(--border-subtle);
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-size: 12px;
+  color: transparent;
+}
+.shopping-item.checked .shopping-checkbox {
+  background: var(--emerald);
+  border-color: var(--emerald);
+  color: #fff;
+}
+.shopping-item-name {
+  flex: 1;
+  font-size: 14px;
+  color: var(--text-primary);
+}
+.shopping-item-amount {
+  font-size: 12px;
+  color: var(--text-muted);
+  font-family: var(--font-mono);
+}
+.shopping-item-delete {
+  width: 28px; height: 28px;
+  display: flex; align-items: center; justify-content: center;
+  border-radius: var(--r-full);
+  color: var(--text-hint);
+  font-size: 15px;
+  cursor: pointer;
+  transition: color 0.2s, background 0.2s;
+  flex-shrink: 0;
+}
+.shopping-item-delete:hover { color: #F08060; background: rgba(216,90,48,0.1); }
+
+.shopping-progress {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 16px;
+  background: var(--bg-elevated);
+  border-radius: var(--r-md);
+  margin-bottom: 1.5rem;
+}
+.shopping-progress-bar {
+  flex: 1;
+  height: 6px;
+  background: var(--bg-card);
+  border-radius: 3px;
+  overflow: hidden;
+}
+.shopping-progress-fill {
+  height: 100%;
+  background: var(--emerald);
+  border-radius: 3px;
+  transition: width 0.4s ease;
+}
+.shopping-progress-label {
+  font-size: 12px;
+  color: var(--text-muted);
+  white-space: nowrap;
+}
+
+/* ── Responsive ─────────────────────────── */
+@media (max-width: 900px) {
+  .profile-grid { grid-template-columns: 1fr; }
+  .form-row     { grid-template-columns: 1fr; }
+}
+@media (max-width: 700px) {
+  .planner-grid { grid-template-columns: 60px repeat(7, minmax(84px, 1fr)); font-size: 11px; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  .planner-cell { padding: 6px 4px; min-height: 60px; }
+  .planner-slot { min-height: 50px; }
+  /* The label column (day names on the header row, meal names on each
+     row below) stays pinned while the 7 day columns scroll underneath
+     it — without this, scrolling to see Saturday loses all context for
+     which meal row you're even looking at. */
+  .planner-cell:first-child,
+  .planner-cell:nth-child(8n+1) {
+    position: sticky;
+    left: 0;
+    z-index: 2;
+    background: var(--bg-elevated);
+  }
+}
+@media (max-width: 520px) {
+  .dash-tabs { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  .dash-tab  { white-space: nowrap; padding: 10px 14px; }
+}

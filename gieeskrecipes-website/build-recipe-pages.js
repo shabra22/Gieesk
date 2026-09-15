@@ -27,7 +27,7 @@ const vm = require('vm');
 
 const SITE = 'https://gieesk.com';
 const OUT_DIR = path.join(__dirname, 'recipes');
-const OG_IMAGE = SITE + '/assets/video/hero-poster.jpg'; // shared — recipes have no individual photos yet
+const OG_IMAGE = SITE + '/assets/video/hero-poster.jpg'; // fallback only, when a recipe has no image of its own
 
 console.log('Reading js/data.js…');
 const src = fs.readFileSync(path.join(__dirname, 'js', 'data.js'), 'utf8');
@@ -37,6 +37,27 @@ vm.runInContext(src + '\n;__OUT__ = (typeof RECIPES!=="undefined")?RECIPES:null;
 const RECIPES = sandbox.__OUT__;
 if (!Array.isArray(RECIPES)) { console.error('❌ Could not read RECIPES from data.js'); process.exit(1); }
 console.log(`Loaded ${RECIPES.length} recipes.`);
+
+// Merge in each recipe's actual photo — same as build-data.js does, and for
+// the same reason: photos are fetched separately (Pexels API) and kept in
+// images-map.json so they survive every data.js rebuild, rather than being
+// hand-maintained in data.js itself.
+const IMAGES_MAP_PATH = path.join(__dirname, 'data', 'images-map.json');
+if (fs.existsSync(IMAGES_MAP_PATH)) {
+  const imagesMap = JSON.parse(fs.readFileSync(IMAGES_MAP_PATH, 'utf8'));
+  let matched = 0;
+  RECIPES.forEach(r => {
+    const photo = imagesMap[r.id];
+    if (photo) {
+      r.image = photo.image;
+      if (photo.imageCredit) r.imageCredit = photo.imageCredit;
+      matched++;
+    }
+  });
+  console.log(`Merged photos for ${matched}/${RECIPES.length} recipes from images-map.json.`);
+} else {
+  console.log('No images-map.json found — pages will use the fallback image.');
+}
 
 fs.mkdirSync(OUT_DIR, { recursive: true });
 // Clear stale pages from a previous build (recipe removed/renamed)
@@ -81,7 +102,14 @@ function truncate(s, n) {
 /* ── JSON-LD Recipe schema ───────────────────────────────────── */
 function buildSchema(r, url) {
   const ingredients = (r.ingredients || []).filter(i => !isHeader(i)).map(cleanRef);
-  const steps = (r.steps || []).map(s => ({ '@type': 'HowToStep', text: String(s) }));
+  const stepImage = r.image || OG_IMAGE;
+  const steps = (r.steps || []).map((s, idx) => ({
+    '@type': 'HowToStep',
+    position: idx + 1,
+    name: truncate(String(s), 60),
+    text: String(s),
+    url: url + '#step-' + (idx + 1)
+  }));
   const prepMins = (Number(r.prepTime) || 0) + (Number(r.marinateTime) || 0) + (Number(r.restTime) || 0);
 
   const schema = {
@@ -89,7 +117,7 @@ function buildSchema(r, url) {
     '@type': 'Recipe',
     name: r.title,
     description: r.desc || r.longDesc || '',
-    image: [OG_IMAGE],
+    image: [stepImage],
     author: { '@type': 'Organization', name: 'GieesK Recipes', url: SITE },
     datePublished: '2026-01-01',
     recipeCuisine: r.cuisine || r.country || undefined,
@@ -142,7 +170,7 @@ function ingredientListHtml(ingredients) {
 
 function stepsHtml(steps) {
   if (!steps || !steps.length) return '';
-  return '<ol class="rp-steps">' + steps.map(s => '<li>' + esc(s) + '</li>').join('') + '</ol>';
+  return '<ol class="rp-steps">' + steps.map((s, idx) => '<li id="step-' + (idx + 1) + '">' + esc(s) + '</li>').join('') + '</ol>';
 }
 
 function tagList(items) {
@@ -168,6 +196,7 @@ function renderPage(r) {
   const url = SITE + '/recipes/' + r.id + '.html';
   const title = r.title + (r.country ? ' — ' + r.country + ' Recipe' : ' Recipe') + ' | GieesK Recipes';
   const description = truncate(r.desc || r.longDesc || ('Authentic ' + r.title + ' recipe.'), 158);
+  const shareImage = r.image || OG_IMAGE;
   const schema = buildSchema(r, url);
 
   const related = (r.relatedRecipes || []).slice(0, 4)
@@ -187,13 +216,13 @@ function renderPage(r) {
 <meta property="og:title" content="${esc(r.title)}" />
 <meta property="og:description" content="${esc(description)}" />
 <meta property="og:url" content="${url}" />
-<meta property="og:image" content="${OG_IMAGE}" />
+<meta property="og:image" content="${esc(shareImage)}" />
 <meta property="og:site_name" content="GieesK Recipes" />
 
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:title" content="${esc(r.title)}" />
 <meta name="twitter:description" content="${esc(description)}" />
-<meta name="twitter:image" content="${OG_IMAGE}" />
+<meta name="twitter:image" content="${esc(shareImage)}" />
 
 <link rel="icon" type="image/png" href="/assets/gieeskrecipes-logo.svg" />
 <link rel="preconnect" href="https://fonts.googleapis.com">
