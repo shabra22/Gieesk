@@ -82,7 +82,7 @@
       btn.addEventListener('click', async function () {
         const { data: { session } } = await sb.auth.getSession();
         if (!session) {
-          showMsg('Please sign in on GieesK Recipes first, then come back to this page.', '#F08060');
+          window.location.href = '/?login=true&then=upgrade';
           return;
         }
 

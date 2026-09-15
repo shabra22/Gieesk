@@ -853,12 +853,12 @@ function hapticTap() {
   // Gate the AI Chef tab behind premium — free users see the paywall
   // instead of the chat itself. Checked fresh each tap rather than cached,
   // since a subscription can change (webhook) between visits.
-  async function guardAIChefTab() {
+  window.guardAIChefTab = async function () {
     if (typeof isPremiumUser !== 'function') return true;
     var premium = await isPremiumUser();
     if (!premium) openUpgradePrompt('AI Chef');
     return premium;
-  }
+  };
 
   // "AI Chef" was never actually its own page — tapping its tab just
   // scrolled to a section partway down Home, a single-page-website

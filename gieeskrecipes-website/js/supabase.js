@@ -138,6 +138,16 @@ async function initAuth() {
     // has no way to receive this recovery session at all (separate,
     // isolated storage). This has to be completed right here instead.
     showSetNewPasswordForm();
+  } else if (params.get('login') === 'true') {
+    // Arrived here via upgrade.html redirecting an unauthenticated visitor
+    // — that page never loaded the login modal's own code, so this is the
+    // one place that can actually show it.
+    if (typeof openAuthModal === 'function') openAuthModal('login');
+    if (params.get('then') === 'upgrade') {
+      window.addEventListener('gieesk:authSucceeded', function () {
+        window.location.href = '/upgrade.html';
+      });
+    }
   }
 
   // Listen FIRST before getSession so we catch the SIGNED_IN event from OAuth hash
