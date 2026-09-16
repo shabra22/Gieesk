@@ -714,38 +714,54 @@ function openVideoFullscreen(startIndex) {
     <button class="app-header-btn discover-close-btn" onclick="closeVideoFullscreen()"><i class="ti ti-x"></i></button>
     <div class="discover-scroller" id="discoverScroller"></div>`;
   const scroller = document.getElementById('discoverScroller');
+  const uniqueAuthors = new Set();
 
   discoverVideoCache.forEach((v, i) => {
     const avatarHTML = v.author_avatar
       ? `<img src="${v.author_avatar}" style="width:100%;height:100%;object-fit:cover;border-radius:50%">`
       : escapeHTML((v.author_name || '?').charAt(0).toUpperCase());
     const recipeHTML = v.recipe_title ? `
-      <div class="discover-recipe-chip" onclick="${v.recipe_id ? `openRecipeModalById('${v.recipe_id}')` : ''}">
+      <div class="discover-recipe-chip" onclick="event.stopPropagation();${v.recipe_id ? `openRecipeModalById('${v.recipe_id}')` : ''}">
         <i class="ti ti-tools-kitchen-2"></i> ${escapeHTML(v.recipe_title)} ${v.recipe_id ? '· View Recipe' : ''}
       </div>` : '';
+    const hashtagsHTML = (v.tags && v.tags.length) ? `
+      <div class="discover-hashtags">${v.tags.map((t) => `<span onclick="event.stopPropagation();filterFeedByTag('${t.replace(/'/g, "\\'")}');closeVideoFullscreen()">#${escapeHTML(t)}</span>`).join('')}</div>` : '';
     const isOwner = currentUser && v.user_id === currentUser.id;
-    const deleteBtnHTML = isOwner ? `
-      <button class="discover-action-btn" onclick="deleteOwnVideo('${v.id}')"><i class="ti ti-trash"></i></button>` : '';
+    const authorNameEscaped = escapeHTML(v.author_name || '').replace(/'/g, "\\'");
+    const followHTML = (!isOwner && v.author_name) ? `
+      <button class="discover-follow-btn" data-follow-btn="${escapeHTML(v.author_name)}" onclick="event.stopPropagation();followChef('${authorNameEscaped}', this)">Follow</button>` : '';
+    if (v.author_name) uniqueAuthors.add(v.author_name);
+    const ownerActionsHTML = isOwner
+      ? `<button class="discover-action-btn" onclick="deleteOwnVideo('${v.id}')"><i class="ti ti-trash"></i></button>`
+      : `<button class="discover-action-btn" onclick="reportVideo('${v.id}')"><i class="ti ti-flag"></i></button>`;
 
     const slide = document.createElement('div');
     slide.className = 'discover-slide';
     slide.dataset.index = i;
+    slide.dataset.postId = v.id;
     slide.innerHTML = `
-      <video class="discover-video" loop playsinline muted data-src="${v.video_url}" onclick="toggleDiscoverMute(this)"></video>
-      <button class="discover-mute-btn" onclick="toggleDiscoverMute(this.previousElementSibling)"><i class="ti ti-volume-3"></i></button>
+      <video class="discover-video" loop playsinline muted data-src="${v.video_url}"></video>
+      <div class="discover-progress"><div class="discover-progress-fill" id="progress-${v.id}"></div></div>
+      <div class="discover-spinner" id="spinner-${v.id}"><i class="ti ti-loader-2"></i></div>
+      <div class="discover-center-icon" id="center-icon-${v.id}"><i class="ti ti-player-play-filled"></i></div>
+      <div class="discover-heart-burst" id="heart-burst-${v.id}"><i class="ti ti-heart-filled"></i></div>
+      <div class="discover-tap-zone" onclick="handleVideoTap(this, '${v.id}')"></div>
+      <button class="discover-mute-btn" onclick="event.stopPropagation();toggleDiscoverMute(this.parentElement.querySelector('video'))"><i class="ti ti-volume-3"></i></button>
       <div class="discover-overlay">
         <div class="discover-author">
           <div class="post-avatar" style="width:36px;height:36px">${avatarHTML}</div>
           <span>${escapeHTML(v.author_name)}</span>
+          ${followHTML}
         </div>
         <p class="discover-caption">${escapeHTML(v.text || '')}</p>
+        ${hashtagsHTML}
         ${recipeHTML}
       </div>
       <div class="discover-actions">
-        <button class="discover-action-btn" id="like-${v.id}" onclick="toggleLike('${v.id}')"><i class="ti ti-heart"></i><span id="like-count-${v.id}">0</span></button>
+        <button class="discover-action-btn" id="like-${v.id}" onclick="doDiscoverLike('${v.id}')"><i class="ti ti-heart"></i><span id="like-count-${v.id}">0</span></button>
         <button class="discover-action-btn" onclick="openDiscoverComments('${v.id}')"><i class="ti ti-message-circle"></i><span id="comment-count-${v.id}">0</span></button>
         <button class="discover-action-btn" onclick="sharePost('${v.id}')"><i class="ti ti-share"></i></button>
-        ${deleteBtnHTML}
+        ${ownerActionsHTML}
       </div>`;
     scroller.appendChild(slide);
   });
@@ -764,17 +780,39 @@ function openVideoFullscreen(startIndex) {
       if (entry.isIntersecting) {
         if (!video.src) video.src = video.dataset.src;
         video.play().catch(() => {});
+        // Preload the next slide too so swiping forward doesn't stall on
+        // a fresh network request — matches how every major short-video
+        // app hides its buffering.
+        const nextSlide = entry.target.nextElementSibling;
+        const nextVideo = nextSlide?.querySelector('video');
+        if (nextVideo && !nextVideo.src) nextVideo.src = nextVideo.dataset.src;
       } else {
         video.pause();
       }
     });
   }, { threshold: 0.6 });
-  scroller.querySelectorAll('.discover-slide').forEach((s) => observer.observe(s));
+  scroller.querySelectorAll('.discover-slide').forEach((s) => {
+    observer.observe(s);
+    const video = s.querySelector('video');
+    const postId = s.dataset.postId;
+    if (!video || !postId) return;
+    video.addEventListener('waiting', () => { const sp = document.getElementById(`spinner-${postId}`); if (sp) sp.style.display = 'flex'; });
+    video.addEventListener('playing', () => { const sp = document.getElementById(`spinner-${postId}`); if (sp) sp.style.display = 'none'; });
+    video.addEventListener('timeupdate', () => {
+      const bar = document.getElementById(`progress-${postId}`);
+      if (bar && video.duration) bar.style.width = `${(video.currentTime / video.duration) * 100}%`;
+    });
+  });
   overlay.dataset.observerActive = 'true';
 
   overlay.classList.add('open');
   document.body.style.overflow = 'hidden';
   scroller.children[startIndex]?.scrollIntoView({ behavior: 'instant' });
+
+  // Set each visible creator's follow button to its real current state —
+  // otherwise a returning user would see "Follow" even on people they
+  // already follow.
+  uniqueAuthors.forEach((name) => { if (typeof setFollowButtonState === 'function') setFollowButtonState(name); });
 
   // Fetch real like/comment counts for just these videos, same batched
   // pattern buildFeed already uses — no need to duplicate that logic.
@@ -876,11 +914,81 @@ async function publishDraft(postId) {
   openMyDrafts();
 }
 
+// Standard single-vs-double-tap detection: a second tap within 300ms of
+// the first is treated as a double-tap (like); otherwise, once that
+// window passes with no second tap, it's treated as a single tap
+// (play/pause) — matching the exact gesture convention every major
+// short-video app already trained users to expect.
+const lastVideoTapTime = {};
+function handleVideoTap(zone, postId) {
+  const now = Date.now();
+  const last = lastVideoTapTime[postId] || 0;
+  const video = zone.parentElement.querySelector('video');
+  if (now - last < 300) {
+    lastVideoTapTime[postId] = 0; // consumed — a third rapid tap starts fresh
+    doDiscoverLike(postId, true);
+  } else {
+    lastVideoTapTime[postId] = now;
+    setTimeout(() => {
+      if (lastVideoTapTime[postId] === now && video) {
+        if (video.paused) { video.play().catch(() => {}); showCenterIcon(postId, 'ti-player-play-filled'); }
+        else { video.pause(); showCenterIcon(postId, 'ti-player-pause-filled'); }
+      }
+    }, 300);
+  }
+}
+
+function showCenterIcon(postId, iconClass) {
+  const el = document.getElementById(`center-icon-${postId}`);
+  if (!el) return;
+  el.querySelector('i').className = `ti ${iconClass}`;
+  el.classList.remove('flash');
+  void el.offsetWidth; // restart the CSS animation even if it just fired
+  el.classList.add('flash');
+}
+
+function doDiscoverLike(postId, fromDoubleTap) {
+  const likeBtn = document.getElementById(`like-${postId}`);
+  const alreadyLiked = likeBtn?.classList.contains('liked');
+  // Double-tap only ever likes — it never unlikes, matching the same
+  // convention everyone already knows from other apps.
+  if (fromDoubleTap) {
+    const heart = document.getElementById(`heart-burst-${postId}`);
+    if (heart) {
+      heart.classList.remove('burst');
+      void heart.offsetWidth;
+      heart.classList.add('burst');
+    }
+    if (alreadyLiked) return;
+  }
+  toggleLike(postId);
+}
+
+async function reportVideo(postId) {
+  if (!currentUser) { openAuthModal('login'); return; }
+  const reason = prompt('What\'s wrong with this video? (e.g. spam, inappropriate, copyright)');
+  if (!reason || !reason.trim()) return;
+
+  const sb = getSupabase();
+  if (!sb) return;
+  const { error } = await sb.from('content_reports').insert({
+    post_id: postId,
+    reporter_id: currentUser.id,
+    reason: reason.trim(),
+  });
+  if (error) {
+    console.error('[GieesK] Could not submit report:', error);
+    if (typeof showGenericToast === 'function') showGenericToast("Couldn't submit report — please try again.");
+    return;
+  }
+  if (typeof showGenericToast === 'function') showGenericToast('Thanks — our team will review this.');
+}
+
 function toggleDiscoverMute(video) {
   if (!video) return;
   video.muted = !video.muted;
-  const btn = video.nextElementSibling;
-  if (btn && btn.classList.contains('discover-mute-btn')) {
+  const btn = video.closest('.discover-slide')?.querySelector('.discover-mute-btn');
+  if (btn) {
     btn.querySelector('i').className = video.muted ? 'ti ti-volume-3' : 'ti ti-volume';
   }
 }

@@ -396,8 +396,11 @@ function buildPostHTML(post, idx, counts) {
       </div>
       <div class="post-comments" id="comments-${post.id}" style="display:none">
         <div class="post-comments-list" id="comments-list-${post.id}"></div>
-        <div class="post-comment-input-row">
+        <div class="post-reply-chip" id="reply-chip-${post.id}" style="display:none"></div>
+        <div class="post-comment-input-row" style="position:relative">
+          <div class="mention-dropdown" id="mention-dropdown-${post.id}" style="display:none"></div>
           <input class="shopping-add-input" id="comment-input-${post.id}" placeholder="Write a comment…"
+                 oninput="handleCommentInput(this,'${post.id}')"
                  onkeydown="if(event.key==='Enter') submitComment('${post.id}')" />
           <button class="btn-gold" style="padding:8px 16px" onclick="submitComment('${post.id}')">Post</button>
         </div>
@@ -477,12 +480,177 @@ async function loadComments(postId) {
   const list = document.getElementById(`comments-list-${postId}`);
   if (!sb || !list) return;
   const { data } = await sb.from('post_comments').select('*').eq('post_id', postId).order('created_at', { ascending: true });
-  list.innerHTML = (data || []).map(c => `
-    <div class="post-comment">
-      <strong>${escapeHTML(c.author_name)}</strong>
-      <span>${escapeHTML(c.text)}</span>
-      <span class="post-comment-time">${timeAgo(c.created_at)}</span>
-    </div>`).join('') || '<p style="font-size:12px;color:var(--text-muted)">No comments yet — be the first.</p>';
+  const comments = data || [];
+
+  if (!comments.length) {
+    list.innerHTML = '<p style="font-size:12px;color:var(--text-muted)">No comments yet — be the first.</p>';
+    return;
+  }
+
+  const topLevel = comments.filter((c) => !c.parent_comment_id);
+  const repliesByParent = {};
+  comments.filter((c) => c.parent_comment_id).forEach((c) => {
+    (repliesByParent[c.parent_comment_id] = repliesByParent[c.parent_comment_id] || []).push(c);
+  });
+
+  list.innerHTML = topLevel.map((c) => renderCommentHTML(c, postId, repliesByParent[c.id] || [])).join('');
+}
+
+// @mentions are rendered as styled text, not links — there's no general
+// "view any user's profile" page to send them to, only curated chef
+// profiles, so making them clickable would point somewhere misleading.
+function renderCommentText(text) {
+  return escapeHTML(text).replace(/@(\w+)/g, '<span class="comment-mention">@$1</span>');
+}
+
+function renderCommentHTML(c, postId, replies, topLevelId) {
+  const isOwner = currentUser && c.user_id === currentUser.id;
+  const editedTag = c.updated_at ? '<span class="post-comment-edited">(edited)</span>' : '';
+  const ownerActionsHTML = isOwner ? `
+    <button onclick="startEditComment('${c.id}','${postId}')">Edit</button>
+    <button onclick="deleteCommentAction('${c.id}','${postId}')">Delete</button>` : '';
+  // Replying to a reply targets the top-level comment, not the reply
+  // itself — rendering only supports one level of nesting (matching how
+  // most comment UIs actually behave), so this keeps the thread flat
+  // instead of creating a reply that would save but never display.
+  const replyTargetId = topLevelId || c.id;
+  const repliesHTML = replies.length ? `
+    <button class="post-comment-view-replies" onclick="toggleReplies('${c.id}')" id="toggle-replies-${c.id}">
+      <i class="ti ti-corner-down-right"></i> View ${replies.length} ${replies.length === 1 ? 'reply' : 'replies'}
+    </button>
+    <div class="post-comment-replies" id="replies-${c.id}" style="display:none">
+      ${replies.map((r) => renderCommentHTML(r, postId, [], c.id)).join('')}
+    </div>` : '';
+
+  return `
+    <div class="post-comment" id="comment-${c.id}">
+      <div class="post-comment-body">
+        <strong>${escapeHTML(c.author_name)}</strong>
+        <span id="comment-text-${c.id}">${renderCommentText(c.text)}</span> ${editedTag}
+        <span class="post-comment-time">${timeAgo(c.created_at)}</span>
+      </div>
+      <div class="post-comment-actions">
+        <button onclick="setReplyTarget('${postId}','${replyTargetId}','${escapeHTML(c.author_name).replace(/'/g, "\\'")}')">Reply</button>
+        ${ownerActionsHTML}
+      </div>
+      ${repliesHTML}
+    </div>`;
+}
+
+function toggleReplies(commentId) {
+  const box = document.getElementById(`replies-${commentId}`);
+  const btn = document.getElementById(`toggle-replies-${commentId}`);
+  if (!box || !btn) return;
+  const opening = box.style.display === 'none';
+  box.style.display = opening ? '' : 'none';
+}
+
+// Replying re-uses the single comment input rather than opening a new one
+// per comment — a small dismissible "Replying to X" chip tracks the
+// target, matching how most comment UIs actually work.
+const activeReplyTarget = {};
+function setReplyTarget(postId, parentCommentId, authorName) {
+  activeReplyTarget[postId] = { parentCommentId, authorName };
+  renderReplyChip(postId);
+  document.getElementById(`comment-input-${postId}`)?.focus();
+}
+function cancelReplyTarget(postId) {
+  delete activeReplyTarget[postId];
+  renderReplyChip(postId);
+}
+function renderReplyChip(postId) {
+  const chip = document.getElementById(`reply-chip-${postId}`);
+  if (!chip) return;
+  const target = activeReplyTarget[postId];
+  if (!target) { chip.style.display = 'none'; chip.innerHTML = ''; return; }
+  chip.style.display = '';
+  chip.innerHTML = `Replying to <strong>${escapeHTML(target.authorName)}</strong> <i class="ti ti-x" onclick="cancelReplyTarget('${postId}')"></i>`;
+}
+
+async function startEditComment(commentId, postId) {
+  const span = document.getElementById(`comment-text-${commentId}`);
+  if (!span) return;
+  const originalText = span.textContent;
+  const wrapper = document.createElement('div');
+  wrapper.id = `comment-text-${commentId}`;
+  wrapper.innerHTML = `
+    <input type="text" class="shopping-add-input" id="edit-input-${commentId}" value="${originalText.replace(/"/g, '&quot;')}" style="width:100%;margin:4px 0" />
+    <div style="display:flex;gap:8px;margin-top:4px">
+      <button class="btn-gold" style="padding:4px 12px;font-size:12px" onclick="saveEditComment('${commentId}','${postId}')">Save</button>
+      <button class="btn-ghost" style="padding:4px 12px;font-size:12px" onclick="loadComments('${postId}')">Cancel</button>
+    </div>`;
+  span.replaceWith(wrapper);
+  document.getElementById(`edit-input-${commentId}`)?.focus();
+}
+
+async function saveEditComment(commentId, postId) {
+  const input = document.getElementById(`edit-input-${commentId}`);
+  const newText = input?.value.trim();
+  if (!newText) return;
+  const sb = getSupabase();
+  if (!sb) return;
+  const { error } = await sb.from('post_comments').update({ text: newText, updated_at: new Date().toISOString() }).eq('id', commentId);
+  if (error) {
+    console.error('[GieesK] Could not edit comment:', error);
+    if (typeof showGenericToast === 'function') showGenericToast("Couldn't save your edit — please try again.");
+    return;
+  }
+  await loadComments(postId);
+}
+
+async function deleteCommentAction(commentId, postId) {
+  if (!confirm('Delete this comment?')) return;
+  const sb = getSupabase();
+  if (!sb || !currentUser) return;
+  const { error } = await sb.from('post_comments').delete().eq('id', commentId).eq('user_id', currentUser.id);
+  if (error) {
+    console.error('[GieesK] Could not delete comment:', error);
+    if (typeof showGenericToast === 'function') showGenericToast("Couldn't delete — please try again.");
+    return;
+  }
+  await loadComments(postId);
+  // Deleting a comment can also cascade-delete its replies, so the exact
+  // change in count isn't knowable client-side — re-count for real rather
+  // than guess.
+  const { count } = await sb.from('post_comments').select('id', { count: 'exact', head: true }).eq('post_id', postId);
+  const countEl = document.getElementById(`comment-count-${postId}`);
+  if (countEl && typeof count === 'number') countEl.textContent = count;
+}
+
+// Mention autocomplete — debounced lightly so fast typing doesn't fire a
+// query on every keystroke while someone's still mid-username.
+const mentionDebounce = {};
+function handleCommentInput(input, postId) {
+  clearTimeout(mentionDebounce[postId]);
+  mentionDebounce[postId] = setTimeout(() => runMentionSearch(input, postId), 200);
+}
+
+async function runMentionSearch(input, postId) {
+  const match = input.value.match(/@(\w*)$/); // active mention token at the cursor end
+  const dropdown = document.getElementById(`mention-dropdown-${postId}`);
+  if (!dropdown) return;
+  if (!match) { dropdown.style.display = 'none'; return; }
+
+  const prefix = match[1];
+  const sb = getSupabase();
+  if (!sb) return;
+  const { data } = await sb.from('profiles').select('username').ilike('username', `${prefix}%`).not('username', 'is', null).limit(5);
+
+  if (!data || !data.length) { dropdown.style.display = 'none'; return; }
+  dropdown.innerHTML = data.map((p) => {
+    const safeName = String(p.username).replace(/'/g, "\\'");
+    return `<div onclick="insertMention('${postId}','${safeName}')">@${escapeHTML(p.username)}</div>`;
+  }).join('');
+  dropdown.style.display = '';
+}
+
+function insertMention(postId, username) {
+  const input = document.getElementById(`comment-input-${postId}`);
+  if (!input) return;
+  input.value = input.value.replace(/@(\w*)$/, `@${username} `);
+  const dropdown = document.getElementById(`mention-dropdown-${postId}`);
+  if (dropdown) dropdown.style.display = 'none';
+  input.focus();
 }
 
 async function submitComment(postId) {
@@ -494,11 +662,19 @@ async function submitComment(postId) {
   if (!sb) return;
 
   const name = currentUser.user_metadata?.full_name || currentUser.email?.split('@')[0] || 'You';
-  const { error } = await sb.from('post_comments').insert({ post_id: postId, user_id: currentUser.id, author_name: name, text });
+  const replyTarget = activeReplyTarget[postId];
+  const { error } = await sb.from('post_comments').insert({
+    post_id: postId,
+    user_id: currentUser.id,
+    author_name: name,
+    text,
+    parent_comment_id: replyTarget?.parentCommentId || null,
+  });
   if (error) { console.error('[GieesK] comment failed:', error); return; }
   triggerEngagementNotification(sb, 'post_comments', { post_id: postId, user_id: currentUser.id, text });
 
   input.value = '';
+  cancelReplyTarget(postId);
   await loadComments(postId);
   const countEl = document.getElementById(`comment-count-${postId}`);
   if (countEl) countEl.textContent = parseInt(countEl.textContent, 10) + 1;
@@ -855,8 +1031,10 @@ function openDiscoverComments(postId) {
       <button class="app-header-btn" onclick="document.getElementById('discoverCommentSheet').remove()"><i class="ti ti-x"></i></button>
     </div>
     <div id="comments-list-${postId}" class="post-comments-list discover-comment-list"><div class="dash-loading">Loading…</div></div>
-    <div class="post-comment-input-row">
-      <input class="shopping-add-input" id="comment-input-${postId}" placeholder="Write a comment…" onkeydown="if(event.key==='Enter')submitComment('${postId}')" />
+    <div class="post-reply-chip" id="reply-chip-${postId}" style="display:none"></div>
+    <div class="post-comment-input-row" style="position:relative">
+      <div class="mention-dropdown" id="mention-dropdown-${postId}" style="display:none"></div>
+      <input class="shopping-add-input" id="comment-input-${postId}" placeholder="Write a comment…" oninput="handleCommentInput(this,'${postId}')" onkeydown="if(event.key==='Enter')submitComment('${postId}')" />
       <button class="btn-gold" style="padding:8px 16px" onclick="submitComment('${postId}')">Post</button>
     </div>`;
   overlay.appendChild(sheet);
