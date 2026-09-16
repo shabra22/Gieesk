@@ -542,6 +542,7 @@
 }
 .discover-action-btn span { font-size: 12px; font-weight: 600; }
 .discover-action-btn.liked { color: #F08060; }
+.discover-action-btn.saved { color: var(--gold, #D4A039); }
 
 .discover-comment-sheet {
   position: absolute;
@@ -816,3 +817,51 @@
   cursor: pointer;
 }
 .mention-dropdown div:hover { background: rgba(212,160,57,0.1); }
+
+/* ---- Discover: Latest/Trending toggle ---- */
+.discover-sort-toggle {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+.discover-sort-toggle button {
+  padding: 6px 16px;
+  border-radius: 999px;
+  border: 1px solid var(--border-subtle);
+  background: transparent;
+  color: var(--text-muted);
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+.discover-sort-toggle button.active {
+  background: var(--gold);
+  border-color: var(--gold);
+  color: #0A0A09;
+}
+
+/* ---- Structured report reasons ---- */
+.report-reason-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.report-reason-btn {
+  text-align: left;
+  padding: 12px 14px;
+  border-radius: var(--r-md);
+  border: 1px solid var(--border-subtle);
+  background: var(--bg-elevated);
+  color: var(--text-primary);
+  font-size: 14px;
+  cursor: pointer;
+}
+.report-reason-btn.active {
+  border-color: var(--gold);
+  background: rgba(212,160,57,0.1);
+  color: var(--gold);
+  font-weight: 600;
+}

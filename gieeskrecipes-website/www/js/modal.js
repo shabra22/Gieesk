@@ -425,6 +425,14 @@ function renderRecipeModal(recipe) {
 
   modal.classList.add('open');
   document.body.style.overflow = 'hidden';
+
+  // Completes the video<->recipe connection from the other direction —
+  // a video can already link to a recipe; this shows that link back on
+  // the recipe page too. Loaded separately and appended via the DOM
+  // rather than folded into the huge template string above, so a
+  // failure here can never break the rest of this already-large,
+  // heavily-used modal.
+  if (typeof loadLinkedVideosForRecipe === 'function') loadLinkedVideosForRecipe(recipe.id);
 }
 
 function closeRecipeModal() {

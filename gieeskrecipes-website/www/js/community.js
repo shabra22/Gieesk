@@ -228,7 +228,13 @@ function buildCommunityPage() {
             <div class="upload-step"><div class="upload-step-num">2</div> Details</div>
             <div style="display:flex;flex-direction:column;gap:12px">
               <textarea class="form-textarea" id="videoUploadCaption" placeholder="Write a caption…" rows="2" style="background:var(--bg-elevated);border:1px solid var(--border-subtle);border-radius:var(--r-md);padding:10px 14px;font-size:14px;color:var(--text-primary);outline:none;font-family:inherit;width:100%;resize:vertical"></textarea>
-              <input class="form-input" id="videoUploadRecipeTitle" placeholder="Recipe name (optional)" style="background:var(--bg-elevated);border:1px solid var(--border-subtle);border-radius:var(--r-md);padding:10px 14px;font-size:14px;color:var(--text-primary);outline:none;font-family:inherit;width:100%"/>
+              <div style="position:relative">
+                <input class="form-input" id="videoUploadRecipeTitle" placeholder="Search a recipe to link (optional)" autocomplete="off"
+                  oninput="handleRecipeLinkSearch(this)"
+                  style="background:var(--bg-elevated);border:1px solid var(--border-subtle);border-radius:var(--r-md);padding:10px 14px;font-size:14px;color:var(--text-primary);outline:none;font-family:inherit;width:100%"/>
+                <div id="videoRecipeLinkDropdown" class="mention-dropdown" style="display:none"></div>
+              </div>
+              <div id="videoRecipeLinkChip" style="display:none"></div>
               <input class="form-input" id="videoUploadTags" placeholder="Tags separated by commas (e.g. vegan, kenyan, quick)" style="background:var(--bg-elevated);border:1px solid var(--border-subtle);border-radius:var(--r-md);padding:10px 14px;font-size:14px;color:var(--text-primary);outline:none;font-family:inherit;width:100%"/>
             </div>
           </div>
@@ -242,6 +248,21 @@ function buildCommunityPage() {
             </button>
           </div>
           <button class="btn-ghost" style="width:100%;justify-content:center;margin-top:8px" onclick="closeVideoUploadModal()">Cancel</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Report Video Modal -->
+    <div class="upload-modal-overlay" id="reportVideoModalOverlay" onclick="if(event.target===this)closeReportVideoModal()">
+      <div class="upload-modal" style="max-width:380px">
+        <div class="upload-modal-header">
+          <span class="upload-modal-title">Report this video</span>
+          <button class="modal-close" style="position:static" onclick="closeReportVideoModal()"><i class="ti ti-x"></i></button>
+        </div>
+        <div class="upload-modal-body">
+          <div id="reportReasonList" class="report-reason-list"></div>
+          <textarea class="form-textarea" id="reportOtherDetails" placeholder="Tell us more…" rows="2" style="display:none;background:var(--bg-elevated);border:1px solid var(--border-subtle);border-radius:var(--r-md);padding:10px 14px;font-size:14px;color:var(--text-primary);outline:none;font-family:inherit;width:100%;resize:vertical;margin-top:10px"></textarea>
+          <button class="btn-gold" id="submitReportBtn" style="width:100%;margin-top:16px" onclick="submitVideoReport()" disabled>Submit Report</button>
         </div>
       </div>
     </div>
@@ -828,7 +849,78 @@ async function loadSidebarChallenges() {
 // text/photo posts, with zero duplicated infrastructure.
 let discoverVideoCache = [];
 
-async function buildDiscoverTab() {
+// Completes the video<->recipe connection from the recipe side — called
+// from modal.js after the recipe modal renders. Appends nothing at all
+// if no videos are linked, rather than cluttering the page with an
+// empty section.
+async function loadLinkedVideosForRecipe(recipeId) {
+  const sb = getSupabase();
+  const content = document.getElementById('modalContent');
+  if (!sb || !content) return;
+
+  const { data: videos } = await sb.from('community_posts')
+    .select('*')
+    .eq('recipe_id', String(recipeId))
+    .eq('status', 'published')
+    .not('video_url', 'is', null)
+    .order('created_at', { ascending: false })
+    .limit(12);
+  if (!videos || !videos.length) return;
+
+  // Stale-guard: if the modal was already closed/replaced by the time
+  // this async fetch resolves, don't append to whatever it now contains.
+  if (String(window._currentModalRecipe?.id) !== String(recipeId)) return;
+
+  const section = document.createElement('div');
+  section.style.cssText = 'padding:0 0 var(--space-lg)';
+  section.innerHTML = `
+    <div class="modal-section-title">Videos of this recipe</div>
+    <div class="discover-grid" style="grid-template-columns:repeat(4,1fr)">
+      ${videos.map((v, i) => `
+        <div class="discover-tile" onclick="openLinkedRecipeVideo(${i})">
+          <video src="${v.video_url}" muted preload="metadata"></video>
+          <div class="discover-tile-play"><i class="ti ti-player-play-filled"></i></div>
+        </div>`).join('')}
+    </div>`;
+  content.appendChild(section);
+  window._linkedRecipeVideos = videos;
+}
+
+function openLinkedRecipeVideo(index) {
+  discoverVideoCache = window._linkedRecipeVideos || [];
+  openVideoFullscreen(index);
+}
+
+// Basic engagement-based ranking — not machine learning, just a real
+// formula: likes + comments (weighted higher, since they take more
+// effort than a like) with a recency decay so fresh videos still get a
+// fair chance rather than being permanently buried under old ones with
+// a head start on engagement.
+async function applyTrendingSort() {
+  const sb = getSupabase();
+  if (!sb || !discoverVideoCache.length) return;
+  const postIds = discoverVideoCache.map((v) => v.id);
+
+  const [{ data: likes }, { data: comments }] = await Promise.all([
+    sb.from('post_likes').select('post_id').in('post_id', postIds),
+    sb.from('post_comments').select('post_id').in('post_id', postIds),
+  ]);
+
+  const likeCounts = {};
+  (likes || []).forEach((l) => { likeCounts[l.post_id] = (likeCounts[l.post_id] || 0) + 1; });
+  const commentCounts = {};
+  (comments || []).forEach((c) => { commentCounts[c.post_id] = (commentCounts[c.post_id] || 0) + 1; });
+
+  const now = Date.now();
+  discoverVideoCache.forEach((v) => {
+    const hoursOld = Math.max(0, (now - new Date(v.created_at).getTime()) / (1000 * 60 * 60));
+    v._trendingScore = (likeCounts[v.id] || 0) + (commentCounts[v.id] || 0) * 2 - hoursOld * 0.1;
+  });
+  discoverVideoCache.sort((a, b) => b._trendingScore - a._trendingScore);
+}
+
+async function buildDiscoverTab(sortMode) {
+  sortMode = sortMode || 'latest';
   const panel = document.getElementById('community-tab-discover');
   if (!panel) return;
   panel.innerHTML = `
@@ -836,9 +928,16 @@ async function buildDiscoverTab() {
       <button class="btn-gold" style="flex:1;justify-content:center" onclick="openVideoUploadModal()">
         <i class="ti ti-video-plus"></i> Upload a Cooking Video
       </button>
+      <button class="btn-outline" onclick="openSavedVideos()">
+        <i class="ti ti-bookmark"></i> Saved
+      </button>
       <button class="btn-outline" id="myDraftsBtn" style="display:none" onclick="openMyDrafts()">
         <i class="ti ti-file-text"></i> Drafts
       </button>
+    </div>
+    <div class="discover-sort-toggle">
+      <button class="${sortMode === 'latest' ? 'active' : ''}" onclick="buildDiscoverTab('latest')">Latest</button>
+      <button class="${sortMode === 'trending' ? 'active' : ''}" onclick="buildDiscoverTab('trending')"><i class="ti ti-flame"></i> Trending</button>
     </div>
     <div id="discoverGrid" class="discover-grid"><div class="dash-loading">Loading videos…</div></div>`;
 
@@ -872,6 +971,10 @@ async function buildDiscoverTab() {
   if (!discoverVideoCache.length) {
     grid.innerHTML = '<p style="text-align:center;color:var(--text-muted);padding:2rem 0">No videos yet — be the first to share one!</p>';
     return;
+  }
+
+  if (sortMode === 'trending') {
+    await applyTrendingSort();
   }
 
   grid.innerHTML = discoverVideoCache.map((v, i) => `
@@ -936,6 +1039,7 @@ function openVideoFullscreen(startIndex) {
       <div class="discover-actions">
         <button class="discover-action-btn" id="like-${v.id}" onclick="doDiscoverLike('${v.id}')"><i class="ti ti-heart"></i><span id="like-count-${v.id}">0</span></button>
         <button class="discover-action-btn" onclick="openDiscoverComments('${v.id}')"><i class="ti ti-message-circle"></i><span id="comment-count-${v.id}">0</span></button>
+        <button class="discover-action-btn" id="save-${v.id}" onclick="toggleSaveVideo('${v.id}', this)"><i class="ti ti-bookmark"></i></button>
         <button class="discover-action-btn" onclick="sharePost('${v.id}')"><i class="ti ti-share"></i></button>
         ${ownerActionsHTML}
       </div>`;
@@ -999,21 +1103,44 @@ async function hydrateDiscoverCounts(postIds) {
   if (!postIds.length) return;
   const sb = getSupabase();
   if (!sb) return;
-  const [{ data: likes }, { data: comments }] = await Promise.all([
+  const [{ data: likes }, { data: comments }, { data: saved }] = await Promise.all([
     sb.from('post_likes').select('post_id, user_id').in('post_id', postIds),
     sb.from('post_comments').select('post_id').in('post_id', postIds),
+    currentUser
+      ? sb.from('saved_videos').select('post_id').eq('user_id', currentUser.id).in('post_id', postIds)
+      : Promise.resolve({ data: [] }),
   ]);
   postIds.forEach((id) => {
     const likeCount = (likes || []).filter((l) => l.post_id === id).length;
     const liked = currentUser && (likes || []).some((l) => l.post_id === id && l.user_id === currentUser.id);
     const commentCount = (comments || []).filter((c) => c.post_id === id).length;
+    const isSaved = (saved || []).some((s) => s.post_id === id);
     const likeBtn = document.getElementById(`like-${id}`);
     const likeCountEl = document.getElementById(`like-count-${id}`);
     const commentCountEl = document.getElementById(`comment-count-${id}`);
+    const saveBtn = document.getElementById(`save-${id}`);
     if (likeCountEl) likeCountEl.textContent = likeCount;
     if (commentCountEl) commentCountEl.textContent = commentCount;
     if (likeBtn && liked) { likeBtn.classList.add('liked'); likeBtn.querySelector('i').className = 'ti ti-heart-filled'; }
+    if (saveBtn && isSaved) { saveBtn.classList.add('saved'); saveBtn.querySelector('i').className = 'ti ti-bookmark-filled'; }
   });
+}
+
+async function toggleSaveVideo(postId, btn) {
+  if (!currentUser) { openAuthModal('login'); return; }
+  const isSaved = btn.classList.contains('saved');
+  btn.disabled = true;
+
+  const succeeded = isSaved ? await unsaveVideo(postId) : await saveVideo(postId);
+
+  btn.disabled = false;
+  if (!succeeded) {
+    if (typeof showGenericToast === 'function') showGenericToast("Couldn't update — please try again.");
+    return;
+  }
+  btn.classList.toggle('saved', !isSaved);
+  btn.querySelector('i').className = `ti ti-bookmark${!isSaved ? '-filled' : ''}`;
+  if (typeof showGenericToast === 'function') showGenericToast(!isSaved ? 'Saved!' : 'Removed from saved.');
 }
 
 function openDiscoverComments(postId) {
@@ -1039,6 +1166,82 @@ function openDiscoverComments(postId) {
     </div>`;
   overlay.appendChild(sheet);
   loadComments(postId);
+}
+
+async function openSavedVideos() {
+  if (!currentUser) { openAuthModal('login'); return; }
+  const sb = getSupabase();
+  if (!sb) return;
+
+  const overlay = document.getElementById('discoverFullscreen');
+  if (!overlay) return;
+  overlay.innerHTML = `
+    <button class="app-header-btn discover-close-btn" onclick="closeVideoFullscreen()"><i class="ti ti-x"></i></button>
+    <div class="discover-drafts-panel">
+      <h2>Saved Videos</h2>
+      <div id="savedVideosList"><div class="dash-loading">Loading…</div></div>
+    </div>`;
+  overlay.classList.add('open');
+  document.body.style.overflow = 'hidden';
+
+  // The join below relies on the post_id -> community_posts(id) foreign
+  // key to pull each saved row's full video in one query rather than a
+  // separate round-trip per item.
+  const { data: saved, error } = await sb.from('saved_videos')
+    .select('id, collection, saved_at, community_posts(*)')
+    .eq('user_id', currentUser.id)
+    .order('saved_at', { ascending: false });
+  const list = document.getElementById('savedVideosList');
+  if (!list) return;
+
+  if (error || !saved?.length) {
+    list.innerHTML = '<p style="color:var(--text-muted);text-align:center;padding:2rem 0">No saved videos yet.</p>';
+    return;
+  }
+
+  const savedVideos = saved.filter((s) => s.community_posts).map((s) => s.community_posts);
+  const collectionOptions = [
+    { key: 'Favourites', icon: '⭐' },
+    { key: 'Want to Try', icon: '🔖' },
+    { key: 'Made It', icon: '✅' },
+  ];
+
+  list.innerHTML = saved.filter((s) => s.community_posts).map((s, i) => {
+    const v = s.community_posts;
+    const pickerHTML = collectionOptions.map((o) => `
+      <button class="saved-collection-btn ${s.collection === o.key ? 'active' : ''}" title="${o.key}" onclick="setSavedVideoCollection('${v.id}', '${o.key}', this)">${o.icon}</button>`).join('');
+    return `
+      <div class="discover-draft-item">
+        <video src="${v.video_url}" muted preload="metadata" onclick="openSavedVideoFullscreen(${i})"></video>
+        <div class="discover-draft-info">
+          <p>${escapeHTML(v.text || v.recipe_title || 'Untitled video')}</p>
+          <div class="discover-draft-actions">${pickerHTML}</div>
+        </div>
+      </div>`;
+  }).join('');
+
+  // Stashed so the click handler above can open the real fullscreen
+  // viewer against this exact list, rather than whatever videos happen
+  // to already be loaded in the public Discover grid's own cache.
+  window._savedVideosForViewer = savedVideos;
+}
+
+function openSavedVideoFullscreen(index) {
+  discoverVideoCache = window._savedVideosForViewer || [];
+  openVideoFullscreen(index);
+}
+
+async function setSavedVideoCollection(postId, collection, btn) {
+  const sb = getSupabase();
+  if (!sb || !currentUser) return;
+  const wasActive = btn.classList.contains('active');
+  const newCollection = wasActive ? 'Saved' : collection;
+
+  const { error } = await sb.from('saved_videos').update({ collection: newCollection }).eq('user_id', currentUser.id).eq('post_id', postId);
+  if (error) { console.error('[GieesK] Could not update video collection:', error); return; }
+
+  btn.closest('.discover-draft-actions')?.querySelectorAll('.saved-collection-btn').forEach((b) => b.classList.remove('active'));
+  if (!wasActive) btn.classList.add('active');
 }
 
 async function openMyDrafts() {
@@ -1142,23 +1345,60 @@ function doDiscoverLike(postId, fromDoubleTap) {
   toggleLike(postId);
 }
 
-async function reportVideo(postId) {
+const REPORT_REASONS = ['Spam', 'Harassment or bullying', 'Hate or abusive content', 'Sexual content', 'Dangerous content', 'Copyright issue', 'Scam or fraud', 'Impersonation', 'Misleading content', 'Other'];
+let pendingReportPostId = null;
+let selectedReportReason = null;
+
+function reportVideo(postId) {
   if (!currentUser) { openAuthModal('login'); return; }
-  const reason = prompt('What\'s wrong with this video? (e.g. spam, inappropriate, copyright)');
-  if (!reason || !reason.trim()) return;
+  pendingReportPostId = postId;
+  selectedReportReason = null;
+
+  const list = document.getElementById('reportReasonList');
+  if (list) {
+    list.innerHTML = REPORT_REASONS.map((r) => `<button class="report-reason-btn" onclick="selectReportReason('${r}', this)">${r}</button>`).join('');
+  }
+  const otherDetails = document.getElementById('reportOtherDetails');
+  if (otherDetails) { otherDetails.style.display = 'none'; otherDetails.value = ''; }
+  const submitBtn = document.getElementById('submitReportBtn');
+  if (submitBtn) submitBtn.disabled = true;
+
+  document.getElementById('reportVideoModalOverlay')?.classList.add('open');
+}
+
+function closeReportVideoModal() {
+  document.getElementById('reportVideoModalOverlay')?.classList.remove('open');
+  pendingReportPostId = null;
+}
+
+function selectReportReason(reason, btn) {
+  selectedReportReason = reason;
+  document.querySelectorAll('#reportReasonList .report-reason-btn').forEach((b) => b.classList.remove('active'));
+  btn.classList.add('active');
+  const otherDetails = document.getElementById('reportOtherDetails');
+  if (otherDetails) otherDetails.style.display = reason === 'Other' ? '' : 'none';
+  const submitBtn = document.getElementById('submitReportBtn');
+  if (submitBtn) submitBtn.disabled = false;
+}
+
+async function submitVideoReport() {
+  if (!currentUser || !pendingReportPostId || !selectedReportReason) return;
+  const details = document.getElementById('reportOtherDetails')?.value.trim();
+  const reason = details ? `${selectedReportReason}: ${details}` : selectedReportReason;
 
   const sb = getSupabase();
   if (!sb) return;
   const { error } = await sb.from('content_reports').insert({
-    post_id: postId,
+    post_id: pendingReportPostId,
     reporter_id: currentUser.id,
-    reason: reason.trim(),
+    reason,
   });
   if (error) {
     console.error('[GieesK] Could not submit report:', error);
     if (typeof showGenericToast === 'function') showGenericToast("Couldn't submit report — please try again.");
     return;
   }
+  closeReportVideoModal();
   if (typeof showGenericToast === 'function') showGenericToast('Thanks — our team will review this.');
 }
 
@@ -1626,6 +1866,51 @@ let pendingPostVideoUrl = null;
 let postVideoUploadInProgress = false;
 const MAX_VIDEO_SECONDS = 180; // 3 minutes
 
+// ── Recipe linking (video upload) ─────────
+let pendingLinkedRecipeId = null;
+const recipeLinkDebounce = { current: null };
+
+function handleRecipeLinkSearch(input) {
+  pendingLinkedRecipeId = null; // typing again invalidates any prior selection
+  clearTimeout(recipeLinkDebounce.current);
+  const query = input.value.trim().toLowerCase();
+  const dropdown = document.getElementById('videoRecipeLinkDropdown');
+  if (!dropdown) return;
+  if (query.length < 2) { dropdown.style.display = 'none'; return; }
+
+  recipeLinkDebounce.current = setTimeout(() => {
+    if (typeof RECIPES === 'undefined') return;
+    const matches = RECIPES.filter((r) => r.title.toLowerCase().includes(query)).slice(0, 6);
+    if (!matches.length) { dropdown.style.display = 'none'; return; }
+    dropdown.innerHTML = matches.map((r) => {
+      const safeTitle = r.title.replace(/'/g, "\\'").replace(/"/g, '&quot;');
+      return `<div onclick="selectRecipeLink(${r.id}, '${safeTitle}')">${r.emoji || '🍽'} ${escapeHTML(r.title)} <span style="color:var(--text-muted);font-size:11px">· ${escapeHTML(r.cuisine || '')}</span></div>`;
+    }).join('');
+    dropdown.style.display = '';
+  }, 200);
+}
+
+function selectRecipeLink(recipeId, title) {
+  pendingLinkedRecipeId = recipeId;
+  const input = document.getElementById('videoUploadRecipeTitle');
+  if (input) input.value = title;
+  const dropdown = document.getElementById('videoRecipeLinkDropdown');
+  if (dropdown) dropdown.style.display = 'none';
+  const chip = document.getElementById('videoRecipeLinkChip');
+  if (chip) {
+    chip.style.display = '';
+    chip.innerHTML = `<span class="post-reply-chip"><i class="ti ti-link"></i> Linked to a real recipe <i class="ti ti-x" onclick="clearRecipeLink()"></i></span>`;
+  }
+}
+
+function clearRecipeLink() {
+  pendingLinkedRecipeId = null;
+  const input = document.getElementById('videoUploadRecipeTitle');
+  if (input) input.value = '';
+  const chip = document.getElementById('videoRecipeLinkChip');
+  if (chip) { chip.style.display = 'none'; chip.innerHTML = ''; }
+}
+
 function openVideoUploadModal() {
   if (!currentUser) { openAuthModal('login'); return; }
   document.getElementById('videoUploadModalOverlay')?.classList.add('open');
@@ -1749,6 +2034,7 @@ async function submitVideoPost(status) {
     author_avatar: avatar,
     text: caption,
     recipe_title: recipeTitle,
+    recipe_id: pendingLinkedRecipeId ? String(pendingLinkedRecipeId) : null,
     tags,
     video_url: pendingPostVideoUrl,
     status,
@@ -1768,6 +2054,7 @@ async function submitVideoPost(status) {
     const el = document.getElementById(id);
     if (el) el.value = '';
   });
+  clearRecipeLink();
   pendingPostVideoUrl = null;
   const preview = document.getElementById('uploadVideoPreview');
   const placeholder = document.getElementById('uploadVideoPlaceholder');

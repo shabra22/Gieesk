@@ -450,21 +450,56 @@ function triggerEngagementNotification(sb, table, record) {
   }).catch(e => console.warn('[GieesK] engagement notification failed (non-critical):', e));
 }
 
+// One place that decides how the current user's name appears publicly.
+// Prefers their chosen username over a Google/Apple profile name —
+// someone who signed in with a social account may not want their real
+// name attached to everything they post. Cached because comments would
+// otherwise refetch this on every single submit.
+let cachedDisplayName = null;
+window.clearCachedDisplayName = function () { cachedDisplayName = null; };
+async function getPublicDisplayName() {
+  if (cachedDisplayName) return cachedDisplayName;
+  if (!currentUser) return 'You';
+  const sb = getSupabase();
+  let username = null;
+  if (sb) {
+    const { data } = await sb.from('profiles').select('username').eq('id', currentUser.id).single();
+    username = data?.username || null;
+  }
+  cachedDisplayName = username
+    || currentUser.user_metadata?.full_name
+    || currentUser.email?.split('@')[0]
+    || 'You';
+  return cachedDisplayName;
+}
+
 async function toggleLike(postId) {
   if (!currentUser) { openAuthModal('login'); return; }
   const sb = getSupabase();
   if (!sb) return;
 
-  const btn   = document.getElementById(`like-${postId}`);
-  const count = document.getElementById(`like-count-${postId}`);
-  const isLiked = btn?.classList.contains('liked');
+  // The same post can be on-screen twice (community feed card AND a
+  // Discover video slide), both using id="like-<postId>". getElementById
+  // returns only the first match, so updating just that one meant a like
+  // tapped on the video silently updated the feed's hidden button
+  // instead — the database write worked, but nothing visibly changed.
+  const btns = Array.from(document.querySelectorAll(`[id="like-${postId}"]`));
+  const counts = Array.from(document.querySelectorAll(`[id="like-count-${postId}"]`));
+  const isLiked = btns.some((b) => b.classList.contains('liked'));
 
-  // Optimistic UI update — feels instant, corrected below if the write fails
-  if (btn && count) {
-    btn.classList.toggle('liked', !isLiked);
-    btn.querySelector('i').className = `ti ti-heart${!isLiked ? '-filled' : ''}`;
-    count.textContent = Math.max(0, parseInt(count.textContent, 10) + (isLiked ? -1 : 1));
+  function paint(liked, delta) {
+    btns.forEach((b) => {
+      b.classList.toggle('liked', liked);
+      const icon = b.querySelector('i');
+      if (icon) icon.className = `ti ti-heart${liked ? '-filled' : ''}`;
+    });
+    counts.forEach((c) => {
+      c.textContent = Math.max(0, (parseInt(c.textContent, 10) || 0) + delta);
+    });
   }
+
+  // Optimistic UI update — feels instant, reverted below if the write fails
+  paint(!isLiked, isLiked ? -1 : 1);
 
   const result = isLiked
     ? await sb.from('post_likes').delete().eq('post_id', postId).eq('user_id', currentUser.id)
@@ -472,12 +507,7 @@ async function toggleLike(postId) {
 
   if (result.error) {
     console.error('[GieesK] like toggle failed:', result.error);
-    // Revert the optimistic update
-    if (btn && count) {
-      btn.classList.toggle('liked', isLiked);
-      btn.querySelector('i').className = `ti ti-heart${isLiked ? '-filled' : ''}`;
-      count.textContent = Math.max(0, parseInt(count.textContent, 10) + (isLiked ? 1 : -1));
-    }
+    paint(isLiked, isLiked ? 1 : -1);
   } else if (!isLiked) {
     // Only notify on a genuine new like, never on unlike
     triggerEngagementNotification(sb, 'post_likes', { post_id: postId, user_id: currentUser.id });
@@ -682,7 +712,7 @@ async function submitComment(postId) {
   const sb = getSupabase();
   if (!sb) return;
 
-  const name = currentUser.user_metadata?.full_name || currentUser.email?.split('@')[0] || 'You';
+  const name = await getPublicDisplayName();
   const replyTarget = activeReplyTarget[postId];
   const { error } = await sb.from('post_comments').insert({
     post_id: postId,
@@ -928,6 +958,9 @@ async function buildDiscoverTab(sortMode) {
       <button class="btn-gold" style="flex:1;justify-content:center" onclick="openVideoUploadModal()">
         <i class="ti ti-video-plus"></i> Upload a Cooking Video
       </button>
+      <button class="btn-outline" onclick="openMyVideos()">
+        <i class="ti ti-user-video"></i> Mine
+      </button>
       <button class="btn-outline" onclick="openSavedVideos()">
         <i class="ti ti-bookmark"></i> Saved
       </button>
@@ -1011,7 +1044,7 @@ function openVideoFullscreen(startIndex) {
       <button class="discover-follow-btn" data-follow-btn="${escapeHTML(v.author_name)}" onclick="event.stopPropagation();followChef('${authorNameEscaped}', this)">Follow</button>` : '';
     if (v.author_name) uniqueAuthors.add(v.author_name);
     const ownerActionsHTML = isOwner
-      ? `<button class="discover-action-btn" onclick="deleteOwnVideo('${v.id}')"><i class="ti ti-trash"></i></button>`
+      ? `<button class="discover-action-btn" onclick="openVideoManageSheet('${v.id}')"><i class="ti ti-dots"></i></button>`
       : `<button class="discover-action-btn" onclick="reportVideo('${v.id}')"><i class="ti ti-flag"></i></button>`;
 
     const slide = document.createElement('div');
@@ -1025,7 +1058,7 @@ function openVideoFullscreen(startIndex) {
       <div class="discover-center-icon" id="center-icon-${v.id}"><i class="ti ti-player-play-filled"></i></div>
       <div class="discover-heart-burst" id="heart-burst-${v.id}"><i class="ti ti-heart-filled"></i></div>
       <div class="discover-tap-zone" onclick="handleVideoTap(this, '${v.id}')"></div>
-      <button class="discover-mute-btn" onclick="event.stopPropagation();toggleDiscoverMute(this.parentElement.querySelector('video'))"><i class="ti ti-volume-3"></i></button>
+      <button class="discover-mute-btn" onclick="event.stopPropagation();toggleDiscoverMute(this.parentElement.querySelector('video'))"><i class="ti ${discoverSoundOn ? 'ti-volume' : 'ti-volume-3'}"></i></button>
       <div class="discover-overlay">
         <div class="discover-author">
           <div class="post-avatar" style="width:36px;height:36px">${avatarHTML}</div>
@@ -1037,8 +1070,10 @@ function openVideoFullscreen(startIndex) {
         ${recipeHTML}
       </div>
       <div class="discover-actions">
-        <button class="discover-action-btn" id="like-${v.id}" onclick="doDiscoverLike('${v.id}')"><i class="ti ti-heart"></i><span id="like-count-${v.id}">0</span></button>
-        <button class="discover-action-btn" onclick="openDiscoverComments('${v.id}')"><i class="ti ti-message-circle"></i><span id="comment-count-${v.id}">0</span></button>
+        <button class="discover-action-btn" id="like-${v.id}" onclick="doDiscoverLike('${v.id}')"><i class="ti ti-heart"></i><span id="like-count-${v.id}" ${v.likes_hidden ? 'style="display:none"' : ''}>0</span></button>
+        ${v.comments_disabled
+          ? '<button class="discover-action-btn" style="opacity:0.4" onclick="showGenericToast(\'Comments are turned off for this video.\')"><i class="ti ti-message-off"></i></button>'
+          : `<button class="discover-action-btn" onclick="openDiscoverComments('${v.id}')"><i class="ti ti-message-circle"></i><span id="comment-count-${v.id}">0</span></button>`}
         <button class="discover-action-btn" id="save-${v.id}" onclick="toggleSaveVideo('${v.id}', this)"><i class="ti ti-bookmark"></i></button>
         <button class="discover-action-btn" onclick="sharePost('${v.id}')"><i class="ti ti-share"></i></button>
         ${ownerActionsHTML}
@@ -1059,7 +1094,16 @@ function openVideoFullscreen(startIndex) {
       if (!video) return;
       if (entry.isIntersecting) {
         if (!video.src) video.src = video.dataset.src;
-        video.play().catch(() => {});
+        // Honour the session-wide sound choice — if the user already
+        // unmuted, don't silently drop back to muted on the next video.
+        video.muted = !discoverSoundOn;
+        video.play().catch(() => {
+          // Autoplay with sound can still be blocked on the very first
+          // play of a session; fall back to muted rather than not
+          // playing at all.
+          video.muted = true;
+          video.play().catch(() => {});
+        });
         // Preload the next slide too so swiping forward doesn't stall on
         // a fresh network request — matches how every major short-video
         // app hides its buffering.
@@ -1166,6 +1210,102 @@ function openDiscoverComments(postId) {
     </div>`;
   overlay.appendChild(sheet);
   loadComments(postId);
+}
+
+// Per-video creator controls. Delete lives in here rather than directly
+// on the video — it's destructive and permanent, so it shouldn't be one
+// stray tap away while scrolling a feed.
+async function openVideoManageSheet(postId) {
+  if (!currentUser) return;
+  const sb = getSupabase();
+  if (!sb) return;
+
+  const { data: post } = await sb.from('community_posts').select('comments_disabled, likes_hidden').eq('id', postId).single();
+  if (!post) return;
+
+  const overlay = document.getElementById('discoverFullscreen');
+  const host = overlay?.classList.contains('open') ? overlay : document.body;
+
+  let sheet = document.getElementById('videoManageSheet');
+  if (sheet) sheet.remove();
+  sheet = document.createElement('div');
+  sheet.id = 'videoManageSheet';
+  sheet.className = 'discover-comment-sheet open';
+  sheet.innerHTML = `
+    <div class="discover-comment-sheet-header">
+      <span>Manage video</span>
+      <button class="app-header-btn" onclick="document.getElementById('videoManageSheet').remove()"><i class="ti ti-x"></i></button>
+    </div>
+    <div style="padding:8px 16px 20px">
+      <label class="video-manage-row">
+        <span><i class="ti ti-message-off"></i> Turn off comments</span>
+        <input type="checkbox" ${post.comments_disabled ? 'checked' : ''} onchange="setVideoSetting('${postId}','comments_disabled',this.checked)" />
+      </label>
+      <label class="video-manage-row">
+        <span><i class="ti ti-eye-off"></i> Hide like count</span>
+        <input type="checkbox" ${post.likes_hidden ? 'checked' : ''} onchange="setVideoSetting('${postId}','likes_hidden',this.checked)" />
+      </label>
+      <button class="video-manage-row video-manage-danger" onclick="deleteOwnVideo('${postId}')">
+        <span><i class="ti ti-trash"></i> Delete this video</span>
+      </button>
+    </div>`;
+  host.appendChild(sheet);
+}
+
+async function setVideoSetting(postId, field, value) {
+  const sb = getSupabase();
+  if (!sb || !currentUser) return;
+  const { error } = await sb.from('community_posts').update({ [field]: value }).eq('id', postId).eq('user_id', currentUser.id);
+  if (error) {
+    console.error('[GieesK] Could not update video setting:', error);
+    if (typeof showGenericToast === 'function') showGenericToast("Couldn't save that setting — please try again.");
+    return;
+  }
+  if (typeof showGenericToast === 'function') showGenericToast('Saved.');
+}
+
+async function openMyVideos() {
+  if (!currentUser) { openAuthModal('login'); return; }
+  const sb = getSupabase();
+  if (!sb) return;
+
+  const overlay = document.getElementById('discoverFullscreen');
+  if (!overlay) return;
+  overlay.innerHTML = `
+    <button class="app-header-btn discover-close-btn" onclick="closeVideoFullscreen()"><i class="ti ti-x"></i></button>
+    <div class="discover-drafts-panel">
+      <h2>My Videos</h2>
+      <div id="myVideosList"><div class="dash-loading">Loading…</div></div>
+    </div>`;
+  overlay.classList.add('open');
+  document.body.style.overflow = 'hidden';
+
+  const { data: videos, error } = await sb.from('community_posts')
+    .select('*')
+    .eq('user_id', currentUser.id)
+    .not('video_url', 'is', null)
+    .eq('status', 'published')
+    .order('created_at', { ascending: false });
+  const list = document.getElementById('myVideosList');
+  if (!list) return;
+
+  if (error || !videos?.length) {
+    list.innerHTML = '<p style="color:var(--text-muted);text-align:center;padding:2rem 0">You haven\'t posted any videos yet.</p>';
+    return;
+  }
+
+  list.innerHTML = videos.map((v) => `
+    <div class="discover-draft-item">
+      <video src="${v.video_url}" muted preload="metadata"></video>
+      <div class="discover-draft-info">
+        <p>${escapeHTML(v.text || v.recipe_title || 'Untitled video')}</p>
+        <div class="discover-draft-actions">
+          <button class="btn-ghost" style="padding:6px 14px" onclick="openVideoManageSheet('${v.id}')">
+            <i class="ti ti-settings"></i> Manage
+          </button>
+        </div>
+      </div>
+    </div>`).join('');
 }
 
 async function openSavedVideos() {
@@ -1402,13 +1542,24 @@ async function submitVideoReport() {
   if (typeof showGenericToast === 'function') showGenericToast('Thanks — our team will review this.');
 }
 
+// Browsers cannot observe hardware volume buttons — that's an OS-level
+// event no web app can hook into. What we can do is make unmuting a
+// one-time action instead of per-video: once the user unmutes anything,
+// every subsequent video in the session plays with sound. Autoplay
+// policy only requires the FIRST play to be muted; after a real user
+// interaction the restriction lifts.
+let discoverSoundOn = false;
+
 function toggleDiscoverMute(video) {
   if (!video) return;
   video.muted = !video.muted;
-  const btn = video.closest('.discover-slide')?.querySelector('.discover-mute-btn');
-  if (btn) {
-    btn.querySelector('i').className = video.muted ? 'ti ti-volume-3' : 'ti ti-volume';
-  }
+  discoverSoundOn = !video.muted;
+  // Apply to every loaded video, not just this one, so scrolling on
+  // doesn't silently revert to muted.
+  document.querySelectorAll('.discover-video').forEach((v) => { v.muted = !discoverSoundOn; });
+  document.querySelectorAll('.discover-mute-btn i').forEach((i) => {
+    i.className = discoverSoundOn ? 'ti ti-volume' : 'ti ti-volume-3';
+  });
 }
 
 async function deleteOwnVideo(postId) {
@@ -2018,11 +2169,7 @@ async function submitVideoPost(status) {
   const sb = getSupabase();
   if (!sb) return;
 
-  // Prefer the user's own chosen username over their Google/Apple profile
-  // name — someone who signed in with a social account may not want their
-  // real name shown on posts by default.
-  const { data: profile } = await sb.from('profiles').select('username').eq('id', currentUser.id).single();
-  const name = profile?.username || currentUser.user_metadata?.full_name || currentUser.email?.split('@')[0] || 'You';
+  const name = await getPublicDisplayName();
   const avatar = currentUser.user_metadata?.avatar_url || currentUser.user_metadata?.picture || null;
 
   if (draftBtn) draftBtn.disabled = true;
@@ -2093,7 +2240,7 @@ async function submitCommunityPost() {
   const sb = getSupabase();
   if (!sb) return;
 
-  const name   = currentUser.user_metadata?.full_name || currentUser.email?.split('@')[0] || 'You';
+  const name   = await getPublicDisplayName();
   const avatar = currentUser.user_metadata?.avatar_url || currentUser.user_metadata?.picture || null;
   const tags   = (document.getElementById('uploadTags')?.value || '').split(',').map(t => t.trim()).filter(Boolean);
   // These two fields were being read by no one — filled in by the user,

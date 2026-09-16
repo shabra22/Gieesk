@@ -424,6 +424,26 @@ async function unsaveRecipe(recipeId) {
   return !error;
 }
 
+// ── Save a video ──────────────────────────
+async function saveVideo(postId) {
+  if (!currentUser) { openAuthModal('login'); return false; }
+  const sb = getSupabase();
+  const { error } = await sb.from('saved_videos').upsert({
+    user_id: currentUser.id,
+    post_id: postId,
+    saved_at: new Date().toISOString(),
+  });
+  return !error;
+}
+
+async function unsaveVideo(postId) {
+  if (!currentUser) { openAuthModal('login'); return false; }
+  const sb = getSupabase();
+  const { error } = await sb.from('saved_videos')
+    .delete().eq('user_id', currentUser.id).eq('post_id', postId);
+  return !error;
+}
+
 // ── Get saved recipes for current user ───
 async function getSavedRecipes() {
   if (!currentUser) return [];

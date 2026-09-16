@@ -492,6 +492,10 @@
   right: 84px;
   bottom: calc(24px + env(safe-area-inset-bottom, 0px));
   color: #fff;
+  /* Same layering issue as .discover-actions — the follow button,
+     hashtags and recipe chip in here were unclickable underneath the
+     full-slide tap zone. */
+  z-index: 10;
 }
 .discover-author {
   display: flex;
@@ -527,6 +531,10 @@
   flex-direction: column;
   align-items: center;
   gap: 20px;
+  /* Must sit above .discover-tap-zone (z-index 5), which covers the whole
+     slide — without this, every tap on these buttons was landing on the
+     tap zone instead and just pausing the video. */
+  z-index: 10;
 }
 .discover-action-btn {
   display: flex;
@@ -865,3 +873,28 @@
   color: var(--gold);
   font-weight: 600;
 }
+
+/* ---- Video manage sheet ---- */
+.video-manage-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 14px 4px;
+  border: none;
+  background: none;
+  border-bottom: 1px solid var(--border-subtle);
+  color: var(--text-primary);
+  font-size: 14.5px;
+  font-family: inherit;
+  cursor: pointer;
+  text-align: left;
+}
+.video-manage-row span {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.video-manage-row i { font-size: 18px; color: var(--text-muted); }
+.video-manage-danger { color: #F08060; }
+.video-manage-danger i { color: #F08060; }
