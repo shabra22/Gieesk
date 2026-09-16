@@ -178,23 +178,19 @@
       <span class="app-header-name">GieesK</span>
     </div>
     <div class="app-header-actions">
-      <button class="app-header-btn" id="appHeaderNotifications" aria-label="Notifications"><i class="ti ti-bell"></i></button>
+      <button class="app-header-btn" id="appHeaderNotifications" aria-label="Notifications" style="position:relative"><i class="ti ti-bell"></i><span class="app-notif-badge" id="appNotifBadge" style="display:none"></span></button>
       <button class="app-header-btn" id="appHeaderAccount" aria-label="Account"><i class="ti ti-user"></i></button>
     </div>
   </header>
 
-  <!-- Notifications panel — honest empty state, since there's no live
-       notification feed wired up yet; this is ready for one later -->
+  <!-- Notifications panel — populated from real engagement on the
+       signed-in user's own posts (see initNotifPanel in app-shell.js) -->
   <div class="app-notif-panel" id="appNotifPanel">
     <div class="app-notif-header">
       <span>Notifications</span>
       <button id="appNotifClose" aria-label="Close"><i class="ti ti-x"></i></button>
     </div>
-    <div class="app-notif-empty">
-      <i class="ti ti-bell-off"></i>
-      <p>No notifications yet</p>
-      <span>We'll let you know when there's something new.</span>
-    </div>
+    <div class="app-notif-list" id="appNotifList"></div>
   </div>
 
   <!-- App home dashboard — built to spec:
@@ -1123,6 +1119,7 @@
   <script src="js/modal.js?v=2" defer></script>
   <script src="js/nav.js" defer></script>
   <script src="js/community.js" defer></script>
+  <script src="js/discover.js" defer></script>
   <script src="js/dashboard.js?v=2" defer></script>
   <script src="js/app-visual-fx.js" defer></script>
   <script src="js/cookies.js" defer></script>
@@ -1268,9 +1265,9 @@
       <i class="ti ti-users"></i>
       <span>Community</span>
     </a>
-    <a href="#" class="app-tab" data-page="account" onclick="event.preventDefault();if(typeof currentUser!=='undefined'&&currentUser){setActiveAppTab(this);openDashboard('profile');}else{openAuthModal('login');}">
-      <i class="ti ti-user"></i>
-      <span>Account</span>
+    <a href="#" class="app-tab" data-page="discover" onclick="event.preventDefault();setActiveAppTab(this);showPage('discover')">
+      <i class="ti ti-player-play"></i>
+      <span>Discover</span>
     </a>
   </nav>
 

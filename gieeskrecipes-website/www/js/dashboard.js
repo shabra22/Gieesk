@@ -409,6 +409,11 @@ async function saveProfile() {
 
   await sb.auth.updateUser({ data: { full_name: name } });
 
+  // The public display name is cached (community.js) to avoid refetching
+  // it on every comment — clear it here so a username change takes effect
+  // immediately instead of next session.
+  if (typeof clearCachedDisplayName === 'function') clearCachedDisplayName();
+
   // Update nav avatar name
   const nameEl = document.getElementById('userMenuName');
   const dashName = document.getElementById('dashHeroName');

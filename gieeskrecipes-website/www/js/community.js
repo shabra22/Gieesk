@@ -8,7 +8,7 @@
 // hardcoded arrays. Everything below reads/writes those tables live.
 
 // ── Open community page ───────────────────
-function openCommunity() {
+function openCommunity(initialTab) {
   // Was its own separate, incomplete hide-list (missing page-about,
   // page-privacy, page-terms) that also never touched nav highlighting
   // at all — confirmed via video: clicking Community correctly showed
@@ -24,17 +24,30 @@ function openCommunity() {
     document.body.insertBefore(page, document.querySelector('footer'));
   }
   page.style.display = 'block';
+  ensureVideoModals();
 
   if (typeof setActiveNav === 'function') setActiveNav('community');
 
   // Fetch fresh feed every time the page opens — was gated to build once
   // per session, meaning new posts/likes from elsewhere never showed up.
-  setTimeout(() => { buildFeed(); loadSidebarChallenges(); loadCommunityMemberCount(); loadSidebarTopChefsFollowers(); }, 50);
+  setTimeout(() => {
+    loadSidebarChallenges(); loadCommunityMemberCount(); loadSidebarTopChefsFollowers();
+    // Landing directly on a non-default tab (e.g. the Discover tab from
+    // the bottom bar) skips building the feed — switchCommunityTab does
+    // its own fetch, so building it here too would be a wasted request
+    // for a panel that's hidden anyway.
+    if (initialTab && initialTab !== 'feed') switchCommunityTab(initialTab);
+    else buildFeed();
+  }, 50);
 
   window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
 function hideAllPages() {
+  // openCommunity()/openDashboard() route through here rather than
+  // showPage(), so immersive mode has to be released here too.
+  document.body.classList.remove('discover-immersive');
+
   // Was its own separate, incomplete list (missing page-about, page-privacy,
   // page-terms) — now uses the same authoritative PAGES list as showPage(),
   // so there's exactly one place that knows what "every page" means.
@@ -82,7 +95,6 @@ function buildCommunityPage() {
       <div class="container">
         <div class="community-tabs">
           <button class="community-tab active" data-tab="feed"       onclick="switchCommunityTab('feed')">      <i class="ti ti-home"></i>   Feed</button>
-          <button class="community-tab"        data-tab="discover"   onclick="switchCommunityTab('discover')">  <i class="ti ti-video"></i>  Discover</button>
           <button class="community-tab"        data-tab="challenges" onclick="switchCommunityTab('challenges')"><i class="ti ti-trophy"></i> Challenges</button>
           <button class="community-tab"        data-tab="chefs"      onclick="switchCommunityTab('chefs')">     <i class="ti ti-chef-hat"></i> Chefs</button>
           <button class="community-tab"        data-tab="leaderboard"onclick="switchCommunityTab('leaderboard')"><i class="ti ti-medal"></i> Leaderboard</button>
@@ -103,7 +115,6 @@ function buildCommunityPage() {
             </div>
             <div id="communityFeed"></div>
           </div>
-          <div id="community-tab-discover"   style="display:none;padding-top:1.5rem"></div>
           <div id="community-tab-challenges" style="display:none;padding-top:1.5rem"></div>
           <div id="community-tab-chefs"      style="display:none;padding-top:1.5rem"></div>
           <div id="community-tab-leaderboard"style="display:none;padding-top:1.5rem"></div>
@@ -206,7 +217,23 @@ function buildCommunityPage() {
         </div>
       </div>
     </div>
+`;
 
+  return el;
+}
+
+
+// These modals belong to the video experience, not to Community. They
+// used to live inside buildCommunityPage()'s markup, which meant opening
+// Discover directly — without ever visiting Community — left the upload
+// modal, report modal and the fullscreen player missing from the DOM
+// entirely, so those buttons silently did nothing. Both pages call this
+// instead, and it only ever inserts them once.
+function ensureVideoModals() {
+  if (document.getElementById('discoverFullscreen')) return;
+  const host = document.createElement('div');
+  host.id = 'gieeskVideoModals';
+  host.innerHTML = `
     <!-- Video Upload Modal -->
     <div class="upload-modal-overlay" id="videoUploadModalOverlay" onclick="if(event.target===this)closeVideoUploadModal()">
       <div class="upload-modal">
@@ -269,8 +296,7 @@ function buildCommunityPage() {
 
     <!-- Discover full-screen video viewer -->
     <div class="discover-fullscreen-overlay" id="discoverFullscreen"></div>`;
-
-  return el;
+  document.body.appendChild(host);
 }
 
 // ── Tab switching ─────────────────────────
@@ -278,7 +304,7 @@ function switchCommunityTab(tab, skipBuild) {
   document.querySelectorAll('.community-tab').forEach(t => {
     t.classList.toggle('active', t.dataset.tab === tab);
   });
-  ['feed','discover','challenges','chefs','leaderboard'].forEach(t => {
+  ['feed','challenges','chefs','leaderboard'].forEach(t => {
     const el = document.getElementById(`community-tab-${t}`);
     if (el) el.style.display = t === tab ? '' : 'none';
   });
@@ -288,7 +314,6 @@ function switchCommunityTab(tab, skipBuild) {
   // same session. Gating on "build once" meant the tab kept showing
   // whatever it looked like the first time it was opened.
   if (tab === 'feed')        buildFeed();
-  if (tab === 'discover')    buildDiscoverTab();
   if (tab === 'challenges')  buildChallengesTab();
   if (tab === 'chefs')       buildChefsTab();
   if (tab === 'leaderboard') buildLeaderboardTab();
@@ -450,21 +475,56 @@ function triggerEngagementNotification(sb, table, record) {
   }).catch(e => console.warn('[GieesK] engagement notification failed (non-critical):', e));
 }
 
+// One place that decides how the current user's name appears publicly.
+// Prefers their chosen username over a Google/Apple profile name —
+// someone who signed in with a social account may not want their real
+// name attached to everything they post. Cached because comments would
+// otherwise refetch this on every single submit.
+let cachedDisplayName = null;
+window.clearCachedDisplayName = function () { cachedDisplayName = null; };
+async function getPublicDisplayName() {
+  if (cachedDisplayName) return cachedDisplayName;
+  if (!currentUser) return 'You';
+  const sb = getSupabase();
+  let username = null;
+  if (sb) {
+    const { data } = await sb.from('profiles').select('username').eq('id', currentUser.id).single();
+    username = data?.username || null;
+  }
+  cachedDisplayName = username
+    || currentUser.user_metadata?.full_name
+    || currentUser.email?.split('@')[0]
+    || 'You';
+  return cachedDisplayName;
+}
+
 async function toggleLike(postId) {
   if (!currentUser) { openAuthModal('login'); return; }
   const sb = getSupabase();
   if (!sb) return;
 
-  const btn   = document.getElementById(`like-${postId}`);
-  const count = document.getElementById(`like-count-${postId}`);
-  const isLiked = btn?.classList.contains('liked');
+  // The same post can be on-screen twice (community feed card AND a
+  // Discover video slide), both using id="like-<postId>". getElementById
+  // returns only the first match, so updating just that one meant a like
+  // tapped on the video silently updated the feed's hidden button
+  // instead — the database write worked, but nothing visibly changed.
+  const btns = Array.from(document.querySelectorAll(`[id="like-${postId}"]`));
+  const counts = Array.from(document.querySelectorAll(`[id="like-count-${postId}"]`));
+  const isLiked = btns.some((b) => b.classList.contains('liked'));
 
-  // Optimistic UI update — feels instant, corrected below if the write fails
-  if (btn && count) {
-    btn.classList.toggle('liked', !isLiked);
-    btn.querySelector('i').className = `ti ti-heart${!isLiked ? '-filled' : ''}`;
-    count.textContent = Math.max(0, parseInt(count.textContent, 10) + (isLiked ? -1 : 1));
+  function paint(liked, delta) {
+    btns.forEach((b) => {
+      b.classList.toggle('liked', liked);
+      const icon = b.querySelector('i');
+      if (icon) icon.className = `ti ti-heart${liked ? '-filled' : ''}`;
+    });
+    counts.forEach((c) => {
+      c.textContent = Math.max(0, (parseInt(c.textContent, 10) || 0) + delta);
+    });
   }
+
+  // Optimistic UI update — feels instant, reverted below if the write fails
+  paint(!isLiked, isLiked ? -1 : 1);
 
   const result = isLiked
     ? await sb.from('post_likes').delete().eq('post_id', postId).eq('user_id', currentUser.id)
@@ -472,12 +532,7 @@ async function toggleLike(postId) {
 
   if (result.error) {
     console.error('[GieesK] like toggle failed:', result.error);
-    // Revert the optimistic update
-    if (btn && count) {
-      btn.classList.toggle('liked', isLiked);
-      btn.querySelector('i').className = `ti ti-heart${isLiked ? '-filled' : ''}`;
-      count.textContent = Math.max(0, parseInt(count.textContent, 10) + (isLiked ? 1 : -1));
-    }
+    paint(isLiked, isLiked ? 1 : -1);
   } else if (!isLiked) {
     // Only notify on a genuine new like, never on unlike
     triggerEngagementNotification(sb, 'post_likes', { post_id: postId, user_id: currentUser.id });
@@ -492,13 +547,29 @@ async function focusComment(postId) {
   box.style.display = opening ? '' : 'none';
   if (opening) {
     await loadComments(postId);
-    document.getElementById(`comment-input-${postId}`)?.focus();
+    commentEl(postId, `comment-input-${postId}`)?.focus();
   }
+}
+
+// A post can have comment UI on screen in two places at once — its feed
+// card and the Discover comment sheet — and both use identical element
+// ids. getElementById returns only the first match, so typing in the
+// Discover sheet and pressing Post was reading the feed card's empty
+// input and silently doing nothing. Every comment lookup goes through
+// here so it resolves against the copy the user is actually looking at.
+function commentRoot(postId) {
+  const sheet = document.getElementById('discoverCommentSheet');
+  if (sheet && String(sheet.dataset.postId) === String(postId)) return sheet;
+  return document.getElementById(`comments-${postId}`) || document;
+}
+
+function commentEl(postId, id) {
+  return commentRoot(postId).querySelector(`[id="${id}"]`);
 }
 
 async function loadComments(postId) {
   const sb = getSupabase();
-  const list = document.getElementById(`comments-list-${postId}`);
+  const list = commentEl(postId, `comments-list-${postId}`);
   if (!sb || !list) return;
   const { data } = await sb.from('post_comments').select('*').eq('post_id', postId).order('created_at', { ascending: true });
   const comments = data || [];
@@ -508,13 +579,20 @@ async function loadComments(postId) {
     return;
   }
 
+  // The post's own owner can moderate comments on it, not just their
+  // own comments — without this, a creator had no way to remove an
+  // abusive comment from their own video.
+  let postOwnerId = null;
+  const { data: postRow } = await sb.from('community_posts').select('user_id').eq('id', postId).single();
+  postOwnerId = postRow?.user_id || null;
+
   const topLevel = comments.filter((c) => !c.parent_comment_id);
   const repliesByParent = {};
   comments.filter((c) => c.parent_comment_id).forEach((c) => {
     (repliesByParent[c.parent_comment_id] = repliesByParent[c.parent_comment_id] || []).push(c);
   });
 
-  list.innerHTML = topLevel.map((c) => renderCommentHTML(c, postId, repliesByParent[c.id] || [])).join('');
+  list.innerHTML = topLevel.map((c) => renderCommentHTML(c, postId, repliesByParent[c.id] || [], null, postOwnerId)).join('');
 }
 
 // @mentions are rendered as styled text, not links — there's no general
@@ -524,12 +602,17 @@ function renderCommentText(text) {
   return escapeHTML(text).replace(/@(\w+)/g, '<span class="comment-mention">@$1</span>');
 }
 
-function renderCommentHTML(c, postId, replies, topLevelId) {
-  const isOwner = currentUser && c.user_id === currentUser.id;
+function renderCommentHTML(c, postId, replies, topLevelId, postOwnerId) {
+  const isAuthor = currentUser && c.user_id === currentUser.id;
+  const isPostOwner = currentUser && postOwnerId && postOwnerId === currentUser.id;
   const editedTag = c.updated_at ? '<span class="post-comment-edited">(edited)</span>' : '';
-  const ownerActionsHTML = isOwner ? `
-    <button onclick="startEditComment('${c.id}','${postId}')">Edit</button>
-    <button onclick="deleteCommentAction('${c.id}','${postId}')">Delete</button>` : '';
+  // Only the comment's author can edit its wording. Deleting is allowed
+  // for the author OR the post owner, so a creator can moderate their
+  // own post without being able to put words in someone else's mouth.
+  const ownerActionsHTML = (isAuthor ? `
+    <button onclick="startEditComment('${c.id}','${postId}')">Edit</button>` : '')
+    + ((isAuthor || isPostOwner) ? `
+    <button onclick="deleteCommentAction('${c.id}','${postId}')">Delete</button>` : '');
   // Replying to a reply targets the top-level comment, not the reply
   // itself — rendering only supports one level of nesting (matching how
   // most comment UIs actually behave), so this keeps the thread flat
@@ -540,7 +623,7 @@ function renderCommentHTML(c, postId, replies, topLevelId) {
       <i class="ti ti-corner-down-right"></i> View ${replies.length} ${replies.length === 1 ? 'reply' : 'replies'}
     </button>
     <div class="post-comment-replies" id="replies-${c.id}" style="display:none">
-      ${replies.map((r) => renderCommentHTML(r, postId, [], c.id)).join('')}
+      ${replies.map((r) => renderCommentHTML(r, postId, [], c.id, postOwnerId)).join('')}
     </div>` : '';
 
   return `
@@ -573,14 +656,14 @@ const activeReplyTarget = {};
 function setReplyTarget(postId, parentCommentId, authorName) {
   activeReplyTarget[postId] = { parentCommentId, authorName };
   renderReplyChip(postId);
-  document.getElementById(`comment-input-${postId}`)?.focus();
+  commentEl(postId, `comment-input-${postId}`)?.focus();
 }
 function cancelReplyTarget(postId) {
   delete activeReplyTarget[postId];
   renderReplyChip(postId);
 }
 function renderReplyChip(postId) {
-  const chip = document.getElementById(`reply-chip-${postId}`);
+  const chip = commentEl(postId, `reply-chip-${postId}`);
   if (!chip) return;
   const target = activeReplyTarget[postId];
   if (!target) { chip.style.display = 'none'; chip.innerHTML = ''; return; }
@@ -589,7 +672,7 @@ function renderReplyChip(postId) {
 }
 
 async function startEditComment(commentId, postId) {
-  const span = document.getElementById(`comment-text-${commentId}`);
+  const span = commentEl(postId, `comment-text-${commentId}`);
   if (!span) return;
   const originalText = span.textContent;
   const wrapper = document.createElement('div');
@@ -601,11 +684,11 @@ async function startEditComment(commentId, postId) {
       <button class="btn-ghost" style="padding:4px 12px;font-size:12px" onclick="loadComments('${postId}')">Cancel</button>
     </div>`;
   span.replaceWith(wrapper);
-  document.getElementById(`edit-input-${commentId}`)?.focus();
+  commentEl(postId, `edit-input-${commentId}`)?.focus();
 }
 
 async function saveEditComment(commentId, postId) {
-  const input = document.getElementById(`edit-input-${commentId}`);
+  const input = commentEl(postId, `edit-input-${commentId}`);
   const newText = input?.value.trim();
   if (!newText) return;
   const sb = getSupabase();
@@ -623,7 +706,11 @@ async function deleteCommentAction(commentId, postId) {
   if (!confirm('Delete this comment?')) return;
   const sb = getSupabase();
   if (!sb || !currentUser) return;
-  const { error } = await sb.from('post_comments').delete().eq('id', commentId).eq('user_id', currentUser.id);
+  // No user_id filter here on purpose — the database's row-level
+  // policies decide who may delete (the comment's author, or the owner
+  // of the post it's on). Filtering by user_id client-side would block
+  // a creator from moderating their own post.
+  const { error } = await sb.from('post_comments').delete().eq('id', commentId);
   if (error) {
     console.error('[GieesK] Could not delete comment:', error);
     if (typeof showGenericToast === 'function') showGenericToast("Couldn't delete — please try again.");
@@ -634,8 +721,9 @@ async function deleteCommentAction(commentId, postId) {
   // change in count isn't knowable client-side — re-count for real rather
   // than guess.
   const { count } = await sb.from('post_comments').select('id', { count: 'exact', head: true }).eq('post_id', postId);
-  const countEl = document.getElementById(`comment-count-${postId}`);
-  if (countEl && typeof count === 'number') countEl.textContent = count;
+  if (typeof count === 'number') {
+    document.querySelectorAll(`[id="comment-count-${postId}"]`).forEach((c) => { c.textContent = count; });
+  }
 }
 
 // Mention autocomplete — debounced lightly so fast typing doesn't fire a
@@ -648,7 +736,7 @@ function handleCommentInput(input, postId) {
 
 async function runMentionSearch(input, postId) {
   const match = input.value.match(/@(\w*)$/); // active mention token at the cursor end
-  const dropdown = document.getElementById(`mention-dropdown-${postId}`);
+  const dropdown = commentEl(postId, `mention-dropdown-${postId}`);
   if (!dropdown) return;
   if (!match) { dropdown.style.display = 'none'; return; }
 
@@ -666,23 +754,23 @@ async function runMentionSearch(input, postId) {
 }
 
 function insertMention(postId, username) {
-  const input = document.getElementById(`comment-input-${postId}`);
+  const input = commentEl(postId, `comment-input-${postId}`);
   if (!input) return;
   input.value = input.value.replace(/@(\w*)$/, `@${username} `);
-  const dropdown = document.getElementById(`mention-dropdown-${postId}`);
+  const dropdown = commentEl(postId, `mention-dropdown-${postId}`);
   if (dropdown) dropdown.style.display = 'none';
   input.focus();
 }
 
 async function submitComment(postId) {
   if (!currentUser) { openAuthModal('login'); return; }
-  const input = document.getElementById(`comment-input-${postId}`);
+  const input = commentEl(postId, `comment-input-${postId}`);
   const text = input?.value.trim();
   if (!text) return;
   const sb = getSupabase();
   if (!sb) return;
 
-  const name = currentUser.user_metadata?.full_name || currentUser.email?.split('@')[0] || 'You';
+  const name = await getPublicDisplayName();
   const replyTarget = activeReplyTarget[postId];
   const { error } = await sb.from('post_comments').insert({
     post_id: postId,
@@ -691,14 +779,23 @@ async function submitComment(postId) {
     text,
     parent_comment_id: replyTarget?.parentCommentId || null,
   });
-  if (error) { console.error('[GieesK] comment failed:', error); return; }
+  if (error) {
+    console.error('[GieesK] comment failed:', error);
+    // Previously this returned silently — a failed comment looked
+    // identical to nothing happening at all.
+    if (typeof showGenericToast === 'function') {
+      showGenericToast(`Couldn't post your comment: ${error.message || 'please try again.'}`);
+    }
+    return;
+  }
   triggerEngagementNotification(sb, 'post_comments', { post_id: postId, user_id: currentUser.id, text });
 
   input.value = '';
   cancelReplyTarget(postId);
   await loadComments(postId);
-  const countEl = document.getElementById(`comment-count-${postId}`);
-  if (countEl) countEl.textContent = parseInt(countEl.textContent, 10) + 1;
+  document.querySelectorAll(`[id="comment-count-${postId}"]`).forEach((c) => {
+    c.textContent = (parseInt(c.textContent, 10) || 0) + 1;
+  });
 }
 
 function sharePost(postId) {
@@ -919,70 +1016,110 @@ async function applyTrendingSort() {
   discoverVideoCache.sort((a, b) => b._trendingScore - a._trendingScore);
 }
 
-async function buildDiscoverTab(sortMode) {
-  sortMode = sortMode || 'latest';
-  const panel = document.getElementById('community-tab-discover');
-  if (!panel) return;
-  panel.innerHTML = `
-    <div style="display:flex;gap:8px;margin-bottom:1rem">
-      <button class="btn-gold" style="flex:1;justify-content:center" onclick="openVideoUploadModal()">
-        <i class="ti ti-video-plus"></i> Upload a Cooking Video
-      </button>
-      <button class="btn-outline" onclick="openSavedVideos()">
-        <i class="ti ti-bookmark"></i> Saved
-      </button>
-      <button class="btn-outline" id="myDraftsBtn" style="display:none" onclick="openMyDrafts()">
-        <i class="ti ti-file-text"></i> Drafts
-      </button>
-    </div>
-    <div class="discover-sort-toggle">
-      <button class="${sortMode === 'latest' ? 'active' : ''}" onclick="buildDiscoverTab('latest')">Latest</button>
-      <button class="${sortMode === 'trending' ? 'active' : ''}" onclick="buildDiscoverTab('trending')"><i class="ti ti-flame"></i> Trending</button>
-    </div>
-    <div id="discoverGrid" class="discover-grid"><div class="dash-loading">Loading videos…</div></div>`;
 
-  const sb = getSupabase();
-  if (!sb) return;
-
-  if (currentUser) {
-    const { data: drafts } = await sb.from('community_posts').select('id').eq('user_id', currentUser.id).eq('status', 'draft');
-    const draftsBtn = document.getElementById('myDraftsBtn');
-    if (draftsBtn && drafts?.length) {
-      draftsBtn.style.display = '';
-      draftsBtn.innerHTML = `<i class="ti ti-file-text"></i> Drafts (${drafts.length})`;
+function attachVideoFeedBehavior(scroller) {
+// Lazy-load + autoplay only the video currently in view — with videos
+// up to 3 minutes long, loading every single one upfront the moment
+// this opens would be a real, unnecessary amount of data. Videos start
+// muted deliberately: browsers block autoplay-with-sound outright, so
+// starting unmuted meant play() was very likely failing silently —
+// which looked like "the video isn't playing" and gave the impression
+// of a sound problem, when really no sound (or video) was playing at all.
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach((entry) => {
+    const video = entry.target.querySelector('video');
+    if (!video) return;
+    if (entry.isIntersecting) {
+      if (!video.src) video.src = video.dataset.src;
+      // Honour the session-wide sound choice — if the user already
+      // unmuted, don't silently drop back to muted on the next video.
+      video.muted = !discoverSoundOn;
+      video.play().catch(() => {
+        // Autoplay with sound can still be blocked on the very first
+        // play of a session; fall back to muted rather than not
+        // playing at all.
+        video.muted = true;
+        video.play().catch(() => {});
+      });
+      // Preload the next slide too so swiping forward doesn't stall on
+      // a fresh network request — matches how every major short-video
+      // app hides its buffering.
+      const nextSlide = entry.target.nextElementSibling;
+      const nextVideo = nextSlide?.querySelector('video');
+      if (nextVideo && !nextVideo.src) nextVideo.src = nextVideo.dataset.src;
+    } else {
+      video.pause();
     }
-  }
+  });
+}, { threshold: 0.6 });
+scroller.querySelectorAll('.discover-slide').forEach((s) => {
+  observer.observe(s);
+  const video = s.querySelector('video');
+  const postId = s.dataset.postId;
+  if (!video || !postId) return;
+  video.addEventListener('waiting', () => { const sp = document.getElementById(`spinner-${postId}`); if (sp) sp.style.display = 'flex'; });
+  video.addEventListener('playing', () => { const sp = document.getElementById(`spinner-${postId}`); if (sp) sp.style.display = 'none'; });
+  video.addEventListener('timeupdate', () => {
+    const bar = document.getElementById(`progress-${postId}`);
+    if (bar && video.duration) bar.style.width = `${(video.currentTime / video.duration) * 100}%`;
+  });
+});
 
-  const { data, error } = await sb.from('community_posts')
-    .select('*')
-    .not('video_url', 'is', null)
-    .eq('status', 'published')
-    .order('created_at', { ascending: false })
-    .limit(60);
+  return observer;
+}
 
-  const grid = document.getElementById('discoverGrid');
-  if (error) {
-    console.error('[GieesK] Could not load videos:', error);
-    grid.innerHTML = '<p style="text-align:center;color:var(--text-muted);padding:2rem 0">Could not load videos right now.</p>';
-    return;
-  }
+// Shared by the fullscreen viewer and the inline Discover feed.
+function buildVideoSlideHTML(v, i, uniqueAuthors) {
+  const avatarHTML = v.author_avatar
+    ? `<img src="${v.author_avatar}" style="width:100%;height:100%;object-fit:cover;border-radius:50%">`
+    : escapeHTML((v.author_name || '?').charAt(0).toUpperCase());
+  const recipeHTML = v.recipe_title ? `
+    <div class="discover-recipe-chip" onclick="event.stopPropagation();${v.recipe_id ? `openRecipeModalById('${v.recipe_id}')` : ''}">
+      <i class="ti ti-tools-kitchen-2"></i> ${escapeHTML(v.recipe_title)} ${v.recipe_id ? '· View Recipe' : ''}
+    </div>` : '';
+  const hashtagsHTML = (v.tags && v.tags.length) ? `
+    <div class="discover-hashtags">${v.tags.map((t) => `<span onclick="event.stopPropagation();filterFeedByTag('${t.replace(/'/g, "\\'")}');closeVideoFullscreen()">#${escapeHTML(t)}</span>`).join('')}</div>` : '';
+  const isOwner = currentUser && v.user_id === currentUser.id;
+  const authorNameEscaped = escapeHTML(v.author_name || '').replace(/'/g, "\\'");
+  const followHTML = (!isOwner && v.author_name) ? `
+    <button class="discover-follow-btn" data-follow-btn="${escapeHTML(v.author_name)}" onclick="event.stopPropagation();followChef('${authorNameEscaped}', this)">Follow</button>` : '';
+  if (uniqueAuthors && v.author_name) uniqueAuthors.add(v.author_name);
+  const ownerActionsHTML = isOwner
+    ? `<button class="discover-action-btn" onclick="openVideoManageSheet('${v.id}')"><i class="ti ti-dots"></i></button>`
+    : `<button class="discover-action-btn" onclick="reportVideo('${v.id}')"><i class="ti ti-flag"></i></button>`;
 
-  discoverVideoCache = data || [];
-  if (!discoverVideoCache.length) {
-    grid.innerHTML = '<p style="text-align:center;color:var(--text-muted);padding:2rem 0">No videos yet — be the first to share one!</p>';
-    return;
-  }
-
-  if (sortMode === 'trending') {
-    await applyTrendingSort();
-  }
-
-  grid.innerHTML = discoverVideoCache.map((v, i) => `
-    <div class="discover-tile" onclick="openVideoFullscreen(${i})">
-      <video src="${v.video_url}" muted preload="metadata"></video>
-      <div class="discover-tile-play"><i class="ti ti-player-play-filled"></i></div>
-      ${v.recipe_title ? `<div class="discover-tile-title">${escapeHTML(v.recipe_title)}</div>` : ''}
-    </div>`).join('');
+  const slide = document.createElement('div');
+  slide.className = 'discover-slide';
+  slide.dataset.index = i;
+  slide.dataset.postId = v.id;
+  slide.innerHTML = `
+    <video class="discover-video" loop playsinline muted data-src="${v.video_url}"></video>
+    <div class="discover-progress"><div class="discover-progress-fill" id="progress-${v.id}"></div></div>
+    <div class="discover-spinner" id="spinner-${v.id}"><i class="ti ti-loader-2"></i></div>
+    <div class="discover-center-icon" id="center-icon-${v.id}"><i class="ti ti-player-play-filled"></i></div>
+    <div class="discover-heart-burst" id="heart-burst-${v.id}"><i class="ti ti-heart-filled"></i></div>
+    <div class="discover-tap-zone" onclick="handleVideoTap(this, '${v.id}')"></div>
+    <button class="discover-mute-btn" onclick="event.stopPropagation();toggleDiscoverMute(this.parentElement.querySelector('video'))"><i class="ti ${discoverSoundOn ? 'ti-volume' : 'ti-volume-3'}"></i></button>
+    <div class="discover-overlay">
+      <div class="discover-author">
+        <div class="post-avatar" style="width:36px;height:36px">${avatarHTML}</div>
+        <span>${escapeHTML(v.author_name)}</span>
+        ${followHTML}
+      </div>
+      <p class="discover-caption" id="caption-${v.id}" onclick="event.stopPropagation();expandCaption('${v.id}')">${escapeHTML(v.text || '')}</p>
+      ${hashtagsHTML}
+      ${recipeHTML}
+    </div>
+    <div class="discover-actions">
+      <button class="discover-action-btn" id="like-${v.id}" onclick="doDiscoverLike('${v.id}')"><i class="ti ti-heart"></i><span id="like-count-${v.id}" ${v.likes_hidden ? 'style="display:none"' : ''}>0</span></button>
+      ${v.comments_disabled
+        ? '<button class="discover-action-btn" style="opacity:0.4" onclick="showGenericToast(\'Comments are turned off for this video.\')"><i class="ti ti-message-off"></i></button>'
+        : `<button class="discover-action-btn" onclick="openDiscoverComments('${v.id}')"><i class="ti ti-message-circle"></i><span id="comment-count-${v.id}">0</span></button>`}
+      <button class="discover-action-btn" id="save-${v.id}" onclick="toggleSaveVideo('${v.id}', this)"><i class="ti ti-bookmark"></i></button>
+      <button class="discover-action-btn" onclick="sharePost('${v.id}')"><i class="ti ti-share"></i></button>
+      ${ownerActionsHTML}
+    </div>`;
+  return slide;
 }
 
 function openVideoFullscreen(startIndex) {
@@ -996,94 +1133,10 @@ function openVideoFullscreen(startIndex) {
   const uniqueAuthors = new Set();
 
   discoverVideoCache.forEach((v, i) => {
-    const avatarHTML = v.author_avatar
-      ? `<img src="${v.author_avatar}" style="width:100%;height:100%;object-fit:cover;border-radius:50%">`
-      : escapeHTML((v.author_name || '?').charAt(0).toUpperCase());
-    const recipeHTML = v.recipe_title ? `
-      <div class="discover-recipe-chip" onclick="event.stopPropagation();${v.recipe_id ? `openRecipeModalById('${v.recipe_id}')` : ''}">
-        <i class="ti ti-tools-kitchen-2"></i> ${escapeHTML(v.recipe_title)} ${v.recipe_id ? '· View Recipe' : ''}
-      </div>` : '';
-    const hashtagsHTML = (v.tags && v.tags.length) ? `
-      <div class="discover-hashtags">${v.tags.map((t) => `<span onclick="event.stopPropagation();filterFeedByTag('${t.replace(/'/g, "\\'")}');closeVideoFullscreen()">#${escapeHTML(t)}</span>`).join('')}</div>` : '';
-    const isOwner = currentUser && v.user_id === currentUser.id;
-    const authorNameEscaped = escapeHTML(v.author_name || '').replace(/'/g, "\\'");
-    const followHTML = (!isOwner && v.author_name) ? `
-      <button class="discover-follow-btn" data-follow-btn="${escapeHTML(v.author_name)}" onclick="event.stopPropagation();followChef('${authorNameEscaped}', this)">Follow</button>` : '';
-    if (v.author_name) uniqueAuthors.add(v.author_name);
-    const ownerActionsHTML = isOwner
-      ? `<button class="discover-action-btn" onclick="deleteOwnVideo('${v.id}')"><i class="ti ti-trash"></i></button>`
-      : `<button class="discover-action-btn" onclick="reportVideo('${v.id}')"><i class="ti ti-flag"></i></button>`;
-
-    const slide = document.createElement('div');
-    slide.className = 'discover-slide';
-    slide.dataset.index = i;
-    slide.dataset.postId = v.id;
-    slide.innerHTML = `
-      <video class="discover-video" loop playsinline muted data-src="${v.video_url}"></video>
-      <div class="discover-progress"><div class="discover-progress-fill" id="progress-${v.id}"></div></div>
-      <div class="discover-spinner" id="spinner-${v.id}"><i class="ti ti-loader-2"></i></div>
-      <div class="discover-center-icon" id="center-icon-${v.id}"><i class="ti ti-player-play-filled"></i></div>
-      <div class="discover-heart-burst" id="heart-burst-${v.id}"><i class="ti ti-heart-filled"></i></div>
-      <div class="discover-tap-zone" onclick="handleVideoTap(this, '${v.id}')"></div>
-      <button class="discover-mute-btn" onclick="event.stopPropagation();toggleDiscoverMute(this.parentElement.querySelector('video'))"><i class="ti ti-volume-3"></i></button>
-      <div class="discover-overlay">
-        <div class="discover-author">
-          <div class="post-avatar" style="width:36px;height:36px">${avatarHTML}</div>
-          <span>${escapeHTML(v.author_name)}</span>
-          ${followHTML}
-        </div>
-        <p class="discover-caption">${escapeHTML(v.text || '')}</p>
-        ${hashtagsHTML}
-        ${recipeHTML}
-      </div>
-      <div class="discover-actions">
-        <button class="discover-action-btn" id="like-${v.id}" onclick="doDiscoverLike('${v.id}')"><i class="ti ti-heart"></i><span id="like-count-${v.id}">0</span></button>
-        <button class="discover-action-btn" onclick="openDiscoverComments('${v.id}')"><i class="ti ti-message-circle"></i><span id="comment-count-${v.id}">0</span></button>
-        <button class="discover-action-btn" id="save-${v.id}" onclick="toggleSaveVideo('${v.id}', this)"><i class="ti ti-bookmark"></i></button>
-        <button class="discover-action-btn" onclick="sharePost('${v.id}')"><i class="ti ti-share"></i></button>
-        ${ownerActionsHTML}
-      </div>`;
-    scroller.appendChild(slide);
+    scroller.appendChild(buildVideoSlideHTML(v, i, uniqueAuthors));
   });
 
-  // Lazy-load + autoplay only the video currently in view — with videos
-  // up to 3 minutes long, loading every single one upfront the moment
-  // this opens would be a real, unnecessary amount of data. Videos start
-  // muted deliberately: browsers block autoplay-with-sound outright, so
-  // starting unmuted meant play() was very likely failing silently —
-  // which looked like "the video isn't playing" and gave the impression
-  // of a sound problem, when really no sound (or video) was playing at all.
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach((entry) => {
-      const video = entry.target.querySelector('video');
-      if (!video) return;
-      if (entry.isIntersecting) {
-        if (!video.src) video.src = video.dataset.src;
-        video.play().catch(() => {});
-        // Preload the next slide too so swiping forward doesn't stall on
-        // a fresh network request — matches how every major short-video
-        // app hides its buffering.
-        const nextSlide = entry.target.nextElementSibling;
-        const nextVideo = nextSlide?.querySelector('video');
-        if (nextVideo && !nextVideo.src) nextVideo.src = nextVideo.dataset.src;
-      } else {
-        video.pause();
-      }
-    });
-  }, { threshold: 0.6 });
-  scroller.querySelectorAll('.discover-slide').forEach((s) => {
-    observer.observe(s);
-    const video = s.querySelector('video');
-    const postId = s.dataset.postId;
-    if (!video || !postId) return;
-    video.addEventListener('waiting', () => { const sp = document.getElementById(`spinner-${postId}`); if (sp) sp.style.display = 'flex'; });
-    video.addEventListener('playing', () => { const sp = document.getElementById(`spinner-${postId}`); if (sp) sp.style.display = 'none'; });
-    video.addEventListener('timeupdate', () => {
-      const bar = document.getElementById(`progress-${postId}`);
-      if (bar && video.duration) bar.style.width = `${(video.currentTime / video.duration) * 100}%`;
-    });
-  });
-  overlay.dataset.observerActive = 'true';
+  attachVideoFeedBehavior(scroller);
 
   overlay.classList.add('open');
   document.body.style.overflow = 'hidden';
@@ -1119,8 +1172,9 @@ async function hydrateDiscoverCounts(postIds) {
     const likeCountEl = document.getElementById(`like-count-${id}`);
     const commentCountEl = document.getElementById(`comment-count-${id}`);
     const saveBtn = document.getElementById(`save-${id}`);
-    if (likeCountEl) likeCountEl.textContent = likeCount;
-    if (commentCountEl) commentCountEl.textContent = commentCount;
+    const fmt = (n) => (typeof formatCount === 'function' ? formatCount(n) : String(n));
+    if (likeCountEl) likeCountEl.textContent = fmt(likeCount);
+    if (commentCountEl) commentCountEl.textContent = fmt(commentCount);
     if (likeBtn && liked) { likeBtn.classList.add('liked'); likeBtn.querySelector('i').className = 'ti ti-heart-filled'; }
     if (saveBtn && isSaved) { saveBtn.classList.add('saved'); saveBtn.querySelector('i').className = 'ti ti-bookmark-filled'; }
   });
@@ -1144,13 +1198,22 @@ async function toggleSaveVideo(postId, btn) {
 }
 
 function openDiscoverComments(postId) {
-  const overlay = document.getElementById('discoverFullscreen');
+  // Two different hosts now: the fullscreen overlay (when it's open) and
+  // the inline Discover stage. This used to always attach to the overlay,
+  // which is display:none in the inline feed — so tapping comments there
+  // appeared to do nothing at all.
+  const fullscreen = document.getElementById('discoverFullscreen');
+  const stage = document.querySelector('#page-discover .discover-stage');
+  const overlay = (fullscreen && fullscreen.classList.contains('open'))
+    ? fullscreen
+    : (stage || fullscreen);
   if (!overlay) return;
   let sheet = document.getElementById('discoverCommentSheet');
   if (sheet) sheet.remove();
 
   sheet = document.createElement('div');
   sheet.id = 'discoverCommentSheet';
+  sheet.dataset.postId = postId;   // commentRoot() uses this to resolve the right copy of the UI
   sheet.className = 'discover-comment-sheet open';
   sheet.innerHTML = `
     <div class="discover-comment-sheet-header">
@@ -1166,6 +1229,105 @@ function openDiscoverComments(postId) {
     </div>`;
   overlay.appendChild(sheet);
   loadComments(postId);
+}
+
+// Per-video creator controls. Delete lives in here rather than directly
+// on the video — it's destructive and permanent, so it shouldn't be one
+// stray tap away while scrolling a feed.
+async function openVideoManageSheet(postId) {
+  if (!currentUser) return;
+  const sb = getSupabase();
+  if (!sb) return;
+
+  const { data: post } = await sb.from('community_posts').select('comments_disabled, likes_hidden').eq('id', postId).single();
+  if (!post) return;
+
+  const fullscreen = document.getElementById('discoverFullscreen');
+  const stage = document.querySelector('#page-discover .discover-stage');
+  const host = fullscreen?.classList.contains('open')
+    ? fullscreen
+    : (stage || document.body);
+
+  let sheet = document.getElementById('videoManageSheet');
+  if (sheet) sheet.remove();
+  sheet = document.createElement('div');
+  sheet.id = 'videoManageSheet';
+  sheet.className = 'discover-comment-sheet open';
+  sheet.innerHTML = `
+    <div class="discover-comment-sheet-header">
+      <span>Manage video</span>
+      <button class="app-header-btn" onclick="document.getElementById('videoManageSheet').remove()"><i class="ti ti-x"></i></button>
+    </div>
+    <div style="padding:8px 16px 20px">
+      <label class="video-manage-row">
+        <span><i class="ti ti-message-off"></i> Turn off comments</span>
+        <input type="checkbox" ${post.comments_disabled ? 'checked' : ''} onchange="setVideoSetting('${postId}','comments_disabled',this.checked)" />
+      </label>
+      <label class="video-manage-row">
+        <span><i class="ti ti-eye-off"></i> Hide like count</span>
+        <input type="checkbox" ${post.likes_hidden ? 'checked' : ''} onchange="setVideoSetting('${postId}','likes_hidden',this.checked)" />
+      </label>
+      <button class="video-manage-row video-manage-danger" onclick="deleteOwnVideo('${postId}')">
+        <span><i class="ti ti-trash"></i> Delete this video</span>
+      </button>
+    </div>`;
+  host.appendChild(sheet);
+}
+
+async function setVideoSetting(postId, field, value) {
+  const sb = getSupabase();
+  if (!sb || !currentUser) return;
+  const { error } = await sb.from('community_posts').update({ [field]: value }).eq('id', postId).eq('user_id', currentUser.id);
+  if (error) {
+    console.error('[GieesK] Could not update video setting:', error);
+    if (typeof showGenericToast === 'function') showGenericToast("Couldn't save that setting — please try again.");
+    return;
+  }
+  if (typeof showGenericToast === 'function') showGenericToast('Saved.');
+}
+
+async function openMyVideos() {
+  if (!currentUser) { openAuthModal('login'); return; }
+  const sb = getSupabase();
+  if (!sb) return;
+
+  const overlay = document.getElementById('discoverFullscreen');
+  if (!overlay) return;
+  overlay.innerHTML = `
+    <button class="app-header-btn discover-close-btn" onclick="closeVideoFullscreen()"><i class="ti ti-x"></i></button>
+    <div class="discover-drafts-panel">
+      <h2>My Videos</h2>
+      <div id="myVideosList"><div class="dash-loading">Loading…</div></div>
+    </div>`;
+  overlay.classList.add('open');
+  document.body.style.overflow = 'hidden';
+
+  const { data: videos, error } = await sb.from('community_posts')
+    .select('*')
+    .eq('user_id', currentUser.id)
+    .not('video_url', 'is', null)
+    .eq('status', 'published')
+    .order('created_at', { ascending: false });
+  const list = document.getElementById('myVideosList');
+  if (!list) return;
+
+  if (error || !videos?.length) {
+    list.innerHTML = '<p style="color:var(--text-muted);text-align:center;padding:2rem 0">You haven\'t posted any videos yet.</p>';
+    return;
+  }
+
+  list.innerHTML = videos.map((v) => `
+    <div class="discover-draft-item">
+      <video src="${v.video_url}" muted preload="metadata"></video>
+      <div class="discover-draft-info">
+        <p>${escapeHTML(v.text || v.recipe_title || 'Untitled video')}</p>
+        <div class="discover-draft-actions">
+          <button class="btn-ghost" style="padding:6px 14px" onclick="openVideoManageSheet('${v.id}')">
+            <i class="ti ti-settings"></i> Manage
+          </button>
+        </div>
+      </div>
+    </div>`).join('');
 }
 
 async function openSavedVideos() {
@@ -1402,13 +1564,57 @@ async function submitVideoReport() {
   if (typeof showGenericToast === 'function') showGenericToast('Thanks — our team will review this.');
 }
 
+// Browsers cannot observe hardware volume buttons — that's an OS-level
+// event no web app can hook into. What we can do is make unmuting a
+// one-time action instead of per-video: once the user unmutes anything,
+// every subsequent video in the session plays with sound. Autoplay
+// policy only requires the FIRST play to be muted; after a real user
+// interaction the restriction lifts.
+let discoverSoundOn = false;
+
+// Paired with the onKeyDown override in MainActivity.java, which forwards
+// hardware volume presses down as this event. A WebView can't see those
+// keys by itself, so this only fires in the native app — in a browser the
+// tap-to-unmute button remains the way in.
+window.addEventListener('gieesk:volumeKey', function (e) {
+  // Two places play video now: the fullscreen overlay AND the inline
+  // Discover feed. This originally only checked the overlay, so once
+  // Discover became its own autoplaying page the volume key silently
+  // did nothing there.
+  const overlayOpen = document.getElementById('discoverFullscreen')?.classList.contains('open');
+  const discoverPage = document.getElementById('page-discover');
+  const feedVisible = discoverPage && discoverPage.style.display !== 'none'
+    && !document.getElementById('discoverSheet')?.classList.contains('open');
+  if ((!overlayOpen && !feedVisible) || discoverSoundOn) return;
+  // Only volume-up unmutes. Turning the volume *down* while muted clearly
+  // isn't a request for sound, so it's left alone.
+  if (e.detail?.direction !== 'up') return;
+  // The first loaded video in the DOM usually isn't the visible one —
+  // earlier slides stay loaded and the next one is preloaded — so pick
+  // the one that's actually playing.
+  const videos = Array.from(document.querySelectorAll('.discover-video'));
+  const currentVideo = videos.find((v) => v.src && !v.paused) || videos.find((v) => v.src);
+  if (currentVideo) toggleDiscoverMute(currentVideo);
+});
+
+// Captions clamp to two lines so they never wall off the video; tapping
+// expands in place rather than opening anything.
+function expandCaption(postId) {
+  document.querySelectorAll(`[id="caption-${postId}"]`).forEach((el) => {
+    el.classList.toggle('expanded');
+  });
+}
+
 function toggleDiscoverMute(video) {
   if (!video) return;
   video.muted = !video.muted;
-  const btn = video.closest('.discover-slide')?.querySelector('.discover-mute-btn');
-  if (btn) {
-    btn.querySelector('i').className = video.muted ? 'ti ti-volume-3' : 'ti ti-volume';
-  }
+  discoverSoundOn = !video.muted;
+  // Apply to every loaded video, not just this one, so scrolling on
+  // doesn't silently revert to muted.
+  document.querySelectorAll('.discover-video').forEach((v) => { v.muted = !discoverSoundOn; });
+  document.querySelectorAll('.discover-mute-btn i').forEach((i) => {
+    i.className = discoverSoundOn ? 'ti ti-volume' : 'ti ti-volume-3';
+  });
 }
 
 async function deleteOwnVideo(postId) {
@@ -1428,7 +1634,7 @@ async function deleteOwnVideo(postId) {
   }
 
   closeVideoFullscreen();
-  buildDiscoverTab();
+  if (typeof loadDiscoverFeed === 'function') loadDiscoverFeed();
   if (typeof showGenericToast === 'function') showGenericToast('Video deleted.');
 }
 
@@ -2018,11 +2224,7 @@ async function submitVideoPost(status) {
   const sb = getSupabase();
   if (!sb) return;
 
-  // Prefer the user's own chosen username over their Google/Apple profile
-  // name — someone who signed in with a social account may not want their
-  // real name shown on posts by default.
-  const { data: profile } = await sb.from('profiles').select('username').eq('id', currentUser.id).single();
-  const name = profile?.username || currentUser.user_metadata?.full_name || currentUser.email?.split('@')[0] || 'You';
+  const name = await getPublicDisplayName();
   const avatar = currentUser.user_metadata?.avatar_url || currentUser.user_metadata?.picture || null;
 
   if (draftBtn) draftBtn.disabled = true;
@@ -2063,7 +2265,7 @@ async function submitVideoPost(status) {
   if (placeholder) placeholder.style.display = '';
   if (statusEl) statusEl.textContent = '';
 
-  buildDiscoverTab();
+  if (typeof loadDiscoverFeed === 'function') loadDiscoverFeed();
   if (typeof showGenericToast === 'function') showGenericToast(status === 'draft' ? 'Saved to drafts' : 'Video posted!');
 }
 
@@ -2093,7 +2295,7 @@ async function submitCommunityPost() {
   const sb = getSupabase();
   if (!sb) return;
 
-  const name   = currentUser.user_metadata?.full_name || currentUser.email?.split('@')[0] || 'You';
+  const name   = await getPublicDisplayName();
   const avatar = currentUser.user_metadata?.avatar_url || currentUser.user_metadata?.picture || null;
   const tags   = (document.getElementById('uploadTags')?.value || '').split(',').map(t => t.trim()).filter(Boolean);
   // These two fields were being read by no one — filled in by the user,

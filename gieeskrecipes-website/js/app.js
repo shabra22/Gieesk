@@ -3,7 +3,7 @@
 ═══════════════════════════════════════════ */
 
 // ── Single source of truth for page routing ──
-const PAGES = ['page-home', 'page-recipes', 'page-dashboard', 'page-community', 'page-chef-profile', 'page-about', 'page-privacy', 'page-terms'];
+const PAGES = ['page-home', 'page-recipes', 'page-dashboard', 'page-community', 'page-discover', 'page-chef-profile', 'page-about', 'page-privacy', 'page-terms'];
 
 // Single source of truth for nav highlighting — every navigation path
 // (page switches, homepage-section clicks, scroll-spy) should go
@@ -42,6 +42,7 @@ function initNavScrollSpy() {
 }
 
 function showLegal(type) {
+  document.body.classList.remove('discover-immersive');
   PAGES.forEach(function(id) {
     var el = document.getElementById(id);
     if (el) el.style.display = 'none';
@@ -68,6 +69,7 @@ function closeLegalPage() {
 }
 
 function openAbout() {
+  document.body.classList.remove('discover-immersive');
   PAGES.forEach(function(id) {
     var el = document.getElementById(id);
     if (el) el.style.display = 'none';
@@ -79,6 +81,11 @@ function openAbout() {
 }
 
 function showPage(page) {
+  // Discover runs in immersive mode (no app header, no tab bar). Any
+  // navigation away from it has to restore that chrome, so this is
+  // cleared centrally rather than at each call site.
+  if (page !== 'discover') document.body.classList.remove('discover-immersive');
+
   // Hide every page
   PAGES.forEach(id => {
     const el = document.getElementById(id);
@@ -106,6 +113,10 @@ function showPage(page) {
   if (page === 'community') {
     if (typeof openCommunity === 'function') openCommunity();
     return; // openCommunity handles its own display
+  }
+  if (page === 'discover') {
+    // Built lazily on first visit, like recipes/community above.
+    if (typeof openDiscoverPage === 'function') openDiscoverPage();
   }
 }
 
@@ -292,6 +303,10 @@ document.addEventListener('DOMContentLoaded', () => {
   // and for sharing/bookmarking links to the legal pages).
   if (window.location.hash === '#privacy' || window.location.hash === '#terms') {
     showLegal(window.location.hash.slice(1));
+  } else if (window.location.hash === '#community' && typeof openCommunity === 'function') {
+    // Shared videos/posts link here (see sharePost). Without this the
+    // link just landed on the homepage.
+    openCommunity();
   }
 
   // Hero buttons

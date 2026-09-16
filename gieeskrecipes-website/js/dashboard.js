@@ -10,6 +10,10 @@ function openDashboard(tab) {
   // Hide every other page — was its own separate incomplete list
   // (missing page-about, page-privacy, page-terms), same bug pattern
   // found in openCommunity() and closeDashboard().
+  // Also has to release Discover's immersive mode: this path never went
+  // through showPage()/hideAllPages(), so going Discover -> Account (or
+  // back to Account from Discover) left the header and tab bar hidden.
+  document.body.classList.remove('discover-immersive');
   PAGES.forEach(function(id) {
     var el = document.getElementById(id);
     if (el) el.style.display = 'none';

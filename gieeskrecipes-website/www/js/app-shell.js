@@ -237,14 +237,125 @@ function hapticTap() {
     });
   }
 
-  // ---- Notifications panel (honest empty state — no fake data) ----
+  // ---- Notifications panel ----
+  // Derived from existing engagement data rather than a separate
+  // notifications table: a client-writable table would have to allow
+  // inserting rows addressed to OTHER users, which is exactly the hole
+  // someone would use to spam notifications. Reading likes/comments on
+  // your own posts needs no new permissions at all.
   function initNotifPanel() {
     var panel = document.getElementById('appNotifPanel');
     var openBtn = document.getElementById('appHeaderNotifications');
     var closeBtn = document.getElementById('appNotifClose');
     if (!panel || !openBtn) return;
-    openBtn.addEventListener('click', function () { panel.classList.add('open'); });
+    openBtn.addEventListener('click', function () {
+      panel.classList.add('open');
+      loadNotifications();
+      try { localStorage.setItem('gieesk:notifsSeenAt', new Date().toISOString()); } catch (e) {}
+      var badge = document.getElementById('appNotifBadge');
+      if (badge) badge.style.display = 'none';
+    });
     if (closeBtn) closeBtn.addEventListener('click', function () { panel.classList.remove('open'); });
+    refreshNotifBadge();
+  }
+
+  async function fetchNotifications() {
+    if (typeof getSupabase !== 'function' || typeof currentUser === 'undefined' || !currentUser) return [];
+    var sb = getSupabase();
+    if (!sb) return [];
+
+    var myPosts = await sb.from('community_posts')
+      .select('id, text, recipe_title, video_url')
+      .eq('user_id', currentUser.id);
+    var posts = myPosts.data || [];
+    if (!posts.length) return [];
+
+    var postIds = posts.map(function (p) { return p.id; });
+    var postById = {};
+    posts.forEach(function (p) { postById[p.id] = p; });
+
+    var results = await Promise.all([
+      sb.from('post_likes').select('post_id, user_id, created_at').in('post_id', postIds).limit(100),
+      sb.from('post_comments').select('post_id, user_id, author_name, text, created_at').in('post_id', postIds).limit(100),
+    ]);
+    var likes = (results[0].data || []).filter(function (l) { return l.user_id !== currentUser.id; });
+    var comments = (results[1].data || []).filter(function (c) { return c.user_id !== currentUser.id; });
+
+    // Likes only store a user id, so resolve those to real usernames in
+    // one batched lookup rather than showing "someone liked your post".
+    var likerIds = likes.map(function (l) { return l.user_id; });
+    var nameById = {};
+    if (likerIds.length) {
+      var profs = await sb.from('profiles').select('id, username, full_name').in('id', likerIds);
+      (profs.data || []).forEach(function (p) { nameById[p.id] = p.username || p.full_name || 'Someone'; });
+    }
+
+    function label(post) {
+      if (!post) return 'your post';
+      var t = post.recipe_title || post.text || (post.video_url ? 'your video' : 'your post');
+      return t.length > 40 ? t.slice(0, 40) + '…' : t;
+    }
+
+    var items = [];
+    likes.forEach(function (l) {
+      items.push({
+        icon: 'ti-heart-filled', color: '#F08060',
+        who: nameById[l.user_id] || 'Someone',
+        action: 'liked', detail: label(postById[l.post_id]),
+        at: l.created_at,
+      });
+    });
+    comments.forEach(function (c) {
+      items.push({
+        icon: 'ti-message-circle', color: 'var(--gold)',
+        who: c.author_name || 'Someone',
+        action: 'commented on', detail: label(postById[c.post_id]),
+        body: c.text, at: c.created_at,
+      });
+    });
+
+    items.sort(function (a, b) { return new Date(b.at) - new Date(a.at); });
+    return items.slice(0, 40);
+  }
+
+  async function loadNotifications() {
+    var list = document.getElementById('appNotifList');
+    if (!list) return;
+    list.innerHTML = '<div class="dash-loading">Loading…</div>';
+    var items = await fetchNotifications();
+    if (!items.length) {
+      list.innerHTML = '<div class="app-notif-empty"><i class="ti ti-bell"></i>'
+        + '<p>No notifications yet</p>'
+        + '<span>Likes and comments on your posts will show up here.</span></div>';
+      return;
+    }
+    var esc = (typeof escapeHTML === 'function') ? escapeHTML : function (s) { return s; };
+    list.innerHTML = items.map(function (n) {
+      return '<div class="app-notif-item">'
+        + '<i class="ti ' + n.icon + '" style="color:' + n.color + '"></i>'
+        + '<div class="app-notif-text">'
+        + '<p><strong>' + esc(n.who) + '</strong> ' + n.action + ' <em>' + esc(n.detail) + '</em></p>'
+        + (n.body ? '<span class="app-notif-body">"' + esc(n.body) + '"</span>' : '')
+        + '<span class="app-notif-time">' + (typeof timeAgo === 'function' ? timeAgo(n.at) : '') + '</span>'
+        + '</div></div>';
+    }).join('');
+  }
+
+  async function refreshNotifBadge() {
+    var badge = document.getElementById('appNotifBadge');
+    if (!badge) return;
+    var items = await fetchNotifications();
+    var seenAt = null;
+    try { seenAt = localStorage.getItem('gieesk:notifsSeenAt'); } catch (e) {}
+    var unread = seenAt
+      ? items.filter(function (n) { return new Date(n.at) > new Date(seenAt); }).length
+      : items.length;
+    if (unread > 0) {
+      badge.textContent = unread > 9 ? '9+' : String(unread);
+      badge.style.display = '';
+    } else {
+      badge.style.display = 'none';
+    }
   }
 
   // ---- Hero banner: use a real top-rated recipe photo, cycle through a few ----
@@ -348,7 +459,10 @@ function hapticTap() {
     if (accountBtn) {
       accountBtn.addEventListener('click', function () {
         if (isLoggedIn()) {
-          setActiveAppTab(document.querySelector('.app-tab[data-page="account"]'));
+          // Account lives only in the header now — the bottom bar slot it
+          // used to occupy is Discover. Clearing the highlight is correct
+          // here: no bottom tab corresponds to this page.
+          setActiveAppTab(null);
           openDashboard('profile');
         } else {
           openAuthModal('login');
@@ -431,7 +545,25 @@ function hapticTap() {
         return;
       }
 
-      var openModal = document.querySelector('#recipeModal.open, #cookiePrefsModal.open, #appSearchOverlay.open, #appNotifPanel.open');
+      // Search/library sheet sits over the feed — close that before
+      // leaving Discover entirely.
+      var discoverSheet = document.getElementById('discoverSheet');
+      if (discoverSheet && discoverSheet.classList.contains('open')) {
+        if (typeof closeDiscoverSheet === 'function') closeDiscoverSheet();
+        return;
+      }
+
+      // Immersive Discover hides the tab bar, so back is the only way
+      // out — it must restore the normal app chrome, not sit on a
+      // chrome-less screen.
+      if (document.body.classList.contains('discover-immersive')) {
+        if (typeof showPage === 'function') showPage('home');
+        var homeTab = document.querySelector('.app-tab[data-page="home"]');
+        if (homeTab) setActiveAppTab(homeTab);
+        return;
+      }
+
+      var openModal = document.querySelector('#recipeModal.open, #cookiePrefsModal.open, #appSearchOverlay.open, #appNotifPanel.open, #reportVideoModalOverlay.open, #videoUploadModalOverlay.open');
       // #authModal is excluded above when it's the mandatory login gate —
       // back button must not be able to dismiss required sign-in. Once
       // signed in, it's never open outside of an explicit user action
