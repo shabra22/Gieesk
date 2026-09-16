@@ -215,22 +215,33 @@ function buildCommunityPage() {
           <button class="modal-close" style="position:static" onclick="closeVideoUploadModal()"><i class="ti ti-x"></i></button>
         </div>
         <div class="upload-modal-body">
-          <div style="display:flex;flex-direction:column;gap:12px">
-            <div style="position:relative;border-radius:var(--r-md);overflow:hidden;background:var(--bg-elevated);min-height:120px;display:flex;align-items:center;justify-content:center" onclick="document.getElementById('uploadVideoInput').click()">
-              <span id="uploadVideoPlaceholder" style="display:flex;flex-direction:column;align-items:center;gap:6px;color:var(--text-muted);font-size:13px;padding:24px"><i class="ti ti-video-plus" style="font-size:28px"></i>Tap to choose a video (up to 3 minutes)</span>
-              <video id="uploadVideoPreview" style="display:none;width:100%;max-height:220px" controls></video>
+          <div>
+            <div class="upload-step"><div class="upload-step-num">1</div> Your Video</div>
+            <div class="video-upload-dropzone" id="uploadVideoDropzone" onclick="document.getElementById('uploadVideoInput').click()">
+              <span id="uploadVideoPlaceholder" class="video-upload-placeholder"><i class="ti ti-video-plus"></i>Tap to choose a video<br><small>Up to 3 minutes, 150MB</small></span>
+              <video id="uploadVideoPreview" class="video-upload-preview" style="display:none" controls playsinline></video>
             </div>
             <input type="file" id="uploadVideoInput" accept="video/*" style="display:none" onchange="previewPostVideo(this)">
-            <span id="uploadVideoStatus" style="font-size:12.5px;color:var(--gold)"></span>
-            <textarea class="form-textarea" id="videoUploadCaption" placeholder="Write a caption…" rows="2" style="background:var(--bg-elevated);border:1px solid var(--border-subtle);border-radius:var(--r-md);padding:10px 14px;font-size:14px;color:var(--text-primary);outline:none;font-family:inherit;width:100%;resize:vertical"></textarea>
-            <input class="form-input" id="videoUploadRecipeTitle" placeholder="Recipe name (optional)" style="background:var(--bg-elevated);border:1px solid var(--border-subtle);border-radius:var(--r-md);padding:10px 14px;font-size:14px;color:var(--text-primary);outline:none;font-family:inherit;width:100%"/>
+            <div id="uploadVideoStatus" class="video-upload-status"></div>
           </div>
+          <div>
+            <div class="upload-step"><div class="upload-step-num">2</div> Details</div>
+            <div style="display:flex;flex-direction:column;gap:12px">
+              <textarea class="form-textarea" id="videoUploadCaption" placeholder="Write a caption…" rows="2" style="background:var(--bg-elevated);border:1px solid var(--border-subtle);border-radius:var(--r-md);padding:10px 14px;font-size:14px;color:var(--text-primary);outline:none;font-family:inherit;width:100%;resize:vertical"></textarea>
+              <input class="form-input" id="videoUploadRecipeTitle" placeholder="Recipe name (optional)" style="background:var(--bg-elevated);border:1px solid var(--border-subtle);border-radius:var(--r-md);padding:10px 14px;font-size:14px;color:var(--text-primary);outline:none;font-family:inherit;width:100%"/>
+              <input class="form-input" id="videoUploadTags" placeholder="Tags separated by commas (e.g. vegan, kenyan, quick)" style="background:var(--bg-elevated);border:1px solid var(--border-subtle);border-radius:var(--r-md);padding:10px 14px;font-size:14px;color:var(--text-primary);outline:none;font-family:inherit;width:100%"/>
+            </div>
+          </div>
+          <div id="videoUploadError" style="font-size:13px;color:#F08060;display:none;margin-top:10px"></div>
           <div style="display:flex;gap:10px;margin-top:16px">
-            <button class="btn-gold" id="videoUploadSubmitBtn" style="flex:1;justify-content:center;padding:13px" onclick="submitVideoPost()">
+            <button class="btn-ghost" id="videoDraftBtn" style="flex:1;justify-content:center;padding:13px" onclick="submitVideoPost('draft')">
+              <i class="ti ti-file-text"></i> Save as Draft
+            </button>
+            <button class="btn-gold" id="videoUploadSubmitBtn" style="flex:1;justify-content:center;padding:13px" onclick="submitVideoPost('published')">
               <i class="ti ti-send"></i> Post Video
             </button>
-            <button class="btn-ghost" onclick="closeVideoUploadModal()">Cancel</button>
           </div>
+          <button class="btn-ghost" style="width:100%;justify-content:center;margin-top:8px" onclick="closeVideoUploadModal()">Cancel</button>
         </div>
       </div>
     </div>
@@ -282,6 +293,7 @@ async function buildFeed() {
   const { data: posts, error } = await sb
     .from('community_posts')
     .select('*')
+    .eq('status', 'published')
     .order('created_at', { ascending: false })
     .limit(50);
 
@@ -513,6 +525,7 @@ async function filterFeedByTag(tag) {
   const { data: posts, error } = await sb
     .from('community_posts')
     .select('*')
+    .eq('status', 'published')
     .contains('tags', [tag])
     .order('created_at', { ascending: false });
 
@@ -643,16 +656,32 @@ async function buildDiscoverTab() {
   const panel = document.getElementById('community-tab-discover');
   if (!panel) return;
   panel.innerHTML = `
-    <button class="btn-gold" style="width:100%;margin-bottom:1rem" onclick="openVideoUploadModal()">
-      <i class="ti ti-video-plus"></i> Upload a Cooking Video
-    </button>
+    <div style="display:flex;gap:8px;margin-bottom:1rem">
+      <button class="btn-gold" style="flex:1;justify-content:center" onclick="openVideoUploadModal()">
+        <i class="ti ti-video-plus"></i> Upload a Cooking Video
+      </button>
+      <button class="btn-outline" id="myDraftsBtn" style="display:none" onclick="openMyDrafts()">
+        <i class="ti ti-file-text"></i> Drafts
+      </button>
+    </div>
     <div id="discoverGrid" class="discover-grid"><div class="dash-loading">Loading videos…</div></div>`;
 
   const sb = getSupabase();
   if (!sb) return;
+
+  if (currentUser) {
+    const { data: drafts } = await sb.from('community_posts').select('id').eq('user_id', currentUser.id).eq('status', 'draft');
+    const draftsBtn = document.getElementById('myDraftsBtn');
+    if (draftsBtn && drafts?.length) {
+      draftsBtn.style.display = '';
+      draftsBtn.innerHTML = `<i class="ti ti-file-text"></i> Drafts (${drafts.length})`;
+    }
+  }
+
   const { data, error } = await sb.from('community_posts')
     .select('*')
     .not('video_url', 'is', null)
+    .eq('status', 'published')
     .order('created_at', { ascending: false })
     .limit(60);
 
@@ -685,41 +714,65 @@ function openVideoFullscreen(startIndex) {
     <button class="app-header-btn discover-close-btn" onclick="closeVideoFullscreen()"><i class="ti ti-x"></i></button>
     <div class="discover-scroller" id="discoverScroller"></div>`;
   const scroller = document.getElementById('discoverScroller');
+  const uniqueAuthors = new Set();
 
   discoverVideoCache.forEach((v, i) => {
-    const counts = { likes: 0, liked: false, comments: 0 }; // refined below once fetched
     const avatarHTML = v.author_avatar
       ? `<img src="${v.author_avatar}" style="width:100%;height:100%;object-fit:cover;border-radius:50%">`
       : escapeHTML((v.author_name || '?').charAt(0).toUpperCase());
     const recipeHTML = v.recipe_title ? `
-      <div class="discover-recipe-chip" onclick="${v.recipe_id ? `openRecipeModalById('${v.recipe_id}')` : ''}">
+      <div class="discover-recipe-chip" onclick="event.stopPropagation();${v.recipe_id ? `openRecipeModalById('${v.recipe_id}')` : ''}">
         <i class="ti ti-tools-kitchen-2"></i> ${escapeHTML(v.recipe_title)} ${v.recipe_id ? '· View Recipe' : ''}
       </div>` : '';
+    const hashtagsHTML = (v.tags && v.tags.length) ? `
+      <div class="discover-hashtags">${v.tags.map((t) => `<span onclick="event.stopPropagation();filterFeedByTag('${t.replace(/'/g, "\\'")}');closeVideoFullscreen()">#${escapeHTML(t)}</span>`).join('')}</div>` : '';
+    const isOwner = currentUser && v.user_id === currentUser.id;
+    const authorNameEscaped = escapeHTML(v.author_name || '').replace(/'/g, "\\'");
+    const followHTML = (!isOwner && v.author_name) ? `
+      <button class="discover-follow-btn" data-follow-btn="${escapeHTML(v.author_name)}" onclick="event.stopPropagation();followChef('${authorNameEscaped}', this)">Follow</button>` : '';
+    if (v.author_name) uniqueAuthors.add(v.author_name);
+    const ownerActionsHTML = isOwner
+      ? `<button class="discover-action-btn" onclick="deleteOwnVideo('${v.id}')"><i class="ti ti-trash"></i></button>`
+      : `<button class="discover-action-btn" onclick="reportVideo('${v.id}')"><i class="ti ti-flag"></i></button>`;
 
     const slide = document.createElement('div');
     slide.className = 'discover-slide';
     slide.dataset.index = i;
+    slide.dataset.postId = v.id;
     slide.innerHTML = `
-      <video class="discover-video" loop playsinline data-src="${v.video_url}"></video>
+      <video class="discover-video" loop playsinline muted data-src="${v.video_url}"></video>
+      <div class="discover-progress"><div class="discover-progress-fill" id="progress-${v.id}"></div></div>
+      <div class="discover-spinner" id="spinner-${v.id}"><i class="ti ti-loader-2"></i></div>
+      <div class="discover-center-icon" id="center-icon-${v.id}"><i class="ti ti-player-play-filled"></i></div>
+      <div class="discover-heart-burst" id="heart-burst-${v.id}"><i class="ti ti-heart-filled"></i></div>
+      <div class="discover-tap-zone" onclick="handleVideoTap(this, '${v.id}')"></div>
+      <button class="discover-mute-btn" onclick="event.stopPropagation();toggleDiscoverMute(this.parentElement.querySelector('video'))"><i class="ti ti-volume-3"></i></button>
       <div class="discover-overlay">
         <div class="discover-author">
           <div class="post-avatar" style="width:36px;height:36px">${avatarHTML}</div>
           <span>${escapeHTML(v.author_name)}</span>
+          ${followHTML}
         </div>
         <p class="discover-caption">${escapeHTML(v.text || '')}</p>
+        ${hashtagsHTML}
         ${recipeHTML}
       </div>
       <div class="discover-actions">
-        <button class="discover-action-btn" id="like-${v.id}" onclick="toggleLike('${v.id}')"><i class="ti ti-heart"></i><span id="like-count-${v.id}">0</span></button>
+        <button class="discover-action-btn" id="like-${v.id}" onclick="doDiscoverLike('${v.id}')"><i class="ti ti-heart"></i><span id="like-count-${v.id}">0</span></button>
         <button class="discover-action-btn" onclick="openDiscoverComments('${v.id}')"><i class="ti ti-message-circle"></i><span id="comment-count-${v.id}">0</span></button>
         <button class="discover-action-btn" onclick="sharePost('${v.id}')"><i class="ti ti-share"></i></button>
+        ${ownerActionsHTML}
       </div>`;
     scroller.appendChild(slide);
   });
 
   // Lazy-load + autoplay only the video currently in view — with videos
   // up to 3 minutes long, loading every single one upfront the moment
-  // this opens would be a real, unnecessary amount of data.
+  // this opens would be a real, unnecessary amount of data. Videos start
+  // muted deliberately: browsers block autoplay-with-sound outright, so
+  // starting unmuted meant play() was very likely failing silently —
+  // which looked like "the video isn't playing" and gave the impression
+  // of a sound problem, when really no sound (or video) was playing at all.
   const observer = new IntersectionObserver((entries) => {
     entries.forEach((entry) => {
       const video = entry.target.querySelector('video');
@@ -727,17 +780,39 @@ function openVideoFullscreen(startIndex) {
       if (entry.isIntersecting) {
         if (!video.src) video.src = video.dataset.src;
         video.play().catch(() => {});
+        // Preload the next slide too so swiping forward doesn't stall on
+        // a fresh network request — matches how every major short-video
+        // app hides its buffering.
+        const nextSlide = entry.target.nextElementSibling;
+        const nextVideo = nextSlide?.querySelector('video');
+        if (nextVideo && !nextVideo.src) nextVideo.src = nextVideo.dataset.src;
       } else {
         video.pause();
       }
     });
   }, { threshold: 0.6 });
-  scroller.querySelectorAll('.discover-slide').forEach((s) => observer.observe(s));
+  scroller.querySelectorAll('.discover-slide').forEach((s) => {
+    observer.observe(s);
+    const video = s.querySelector('video');
+    const postId = s.dataset.postId;
+    if (!video || !postId) return;
+    video.addEventListener('waiting', () => { const sp = document.getElementById(`spinner-${postId}`); if (sp) sp.style.display = 'flex'; });
+    video.addEventListener('playing', () => { const sp = document.getElementById(`spinner-${postId}`); if (sp) sp.style.display = 'none'; });
+    video.addEventListener('timeupdate', () => {
+      const bar = document.getElementById(`progress-${postId}`);
+      if (bar && video.duration) bar.style.width = `${(video.currentTime / video.duration) * 100}%`;
+    });
+  });
   overlay.dataset.observerActive = 'true';
 
   overlay.classList.add('open');
   document.body.style.overflow = 'hidden';
   scroller.children[startIndex]?.scrollIntoView({ behavior: 'instant' });
+
+  // Set each visible creator's follow button to its real current state —
+  // otherwise a returning user would see "Follow" even on people they
+  // already follow.
+  uniqueAuthors.forEach((name) => { if (typeof setFollowButtonState === 'function') setFollowButtonState(name); });
 
   // Fetch real like/comment counts for just these videos, same batched
   // pattern buildFeed already uses — no need to duplicate that logic.
@@ -786,6 +861,157 @@ function openDiscoverComments(postId) {
     </div>`;
   overlay.appendChild(sheet);
   loadComments(postId);
+}
+
+async function openMyDrafts() {
+  if (!currentUser) return;
+  const sb = getSupabase();
+  if (!sb) return;
+
+  const overlay = document.getElementById('discoverFullscreen');
+  if (!overlay) return;
+  overlay.innerHTML = `
+    <button class="app-header-btn discover-close-btn" onclick="closeVideoFullscreen()"><i class="ti ti-x"></i></button>
+    <div class="discover-drafts-panel">
+      <h2>My Drafts</h2>
+      <div id="myDraftsList"><div class="dash-loading">Loading…</div></div>
+    </div>`;
+  overlay.classList.add('open');
+  document.body.style.overflow = 'hidden';
+
+  const { data: drafts, error } = await sb.from('community_posts').select('*').eq('user_id', currentUser.id).eq('status', 'draft').order('created_at', { ascending: false });
+  const list = document.getElementById('myDraftsList');
+  if (!list) return;
+
+  if (error || !drafts?.length) {
+    list.innerHTML = '<p style="color:var(--text-muted);text-align:center;padding:2rem 0">No drafts saved.</p>';
+    return;
+  }
+
+  list.innerHTML = drafts.map((d) => `
+    <div class="discover-draft-item">
+      <video src="${d.video_url}" muted preload="metadata"></video>
+      <div class="discover-draft-info">
+        <p>${escapeHTML(d.text || d.recipe_title || 'Untitled video')}</p>
+        <div class="discover-draft-actions">
+          <button class="btn-gold" style="padding:6px 14px" onclick="publishDraft('${d.id}')">Publish</button>
+          <button class="btn-ghost" style="padding:6px 14px" onclick="deleteOwnVideo('${d.id}')">Delete</button>
+        </div>
+      </div>
+    </div>`).join('');
+}
+
+async function publishDraft(postId) {
+  const sb = getSupabase();
+  if (!sb || !currentUser) return;
+  const { error } = await sb.from('community_posts').update({ status: 'published' }).eq('id', postId).eq('user_id', currentUser.id);
+  if (error) {
+    console.error('[GieesK] Could not publish draft:', error);
+    if (typeof showGenericToast === 'function') showGenericToast("Couldn't publish — please try again.");
+    return;
+  }
+  if (typeof showGenericToast === 'function') showGenericToast('Video posted!');
+  openMyDrafts();
+}
+
+// Standard single-vs-double-tap detection: a second tap within 300ms of
+// the first is treated as a double-tap (like); otherwise, once that
+// window passes with no second tap, it's treated as a single tap
+// (play/pause) — matching the exact gesture convention every major
+// short-video app already trained users to expect.
+const lastVideoTapTime = {};
+function handleVideoTap(zone, postId) {
+  const now = Date.now();
+  const last = lastVideoTapTime[postId] || 0;
+  const video = zone.parentElement.querySelector('video');
+  if (now - last < 300) {
+    lastVideoTapTime[postId] = 0; // consumed — a third rapid tap starts fresh
+    doDiscoverLike(postId, true);
+  } else {
+    lastVideoTapTime[postId] = now;
+    setTimeout(() => {
+      if (lastVideoTapTime[postId] === now && video) {
+        if (video.paused) { video.play().catch(() => {}); showCenterIcon(postId, 'ti-player-play-filled'); }
+        else { video.pause(); showCenterIcon(postId, 'ti-player-pause-filled'); }
+      }
+    }, 300);
+  }
+}
+
+function showCenterIcon(postId, iconClass) {
+  const el = document.getElementById(`center-icon-${postId}`);
+  if (!el) return;
+  el.querySelector('i').className = `ti ${iconClass}`;
+  el.classList.remove('flash');
+  void el.offsetWidth; // restart the CSS animation even if it just fired
+  el.classList.add('flash');
+}
+
+function doDiscoverLike(postId, fromDoubleTap) {
+  const likeBtn = document.getElementById(`like-${postId}`);
+  const alreadyLiked = likeBtn?.classList.contains('liked');
+  // Double-tap only ever likes — it never unlikes, matching the same
+  // convention everyone already knows from other apps.
+  if (fromDoubleTap) {
+    const heart = document.getElementById(`heart-burst-${postId}`);
+    if (heart) {
+      heart.classList.remove('burst');
+      void heart.offsetWidth;
+      heart.classList.add('burst');
+    }
+    if (alreadyLiked) return;
+  }
+  toggleLike(postId);
+}
+
+async function reportVideo(postId) {
+  if (!currentUser) { openAuthModal('login'); return; }
+  const reason = prompt('What\'s wrong with this video? (e.g. spam, inappropriate, copyright)');
+  if (!reason || !reason.trim()) return;
+
+  const sb = getSupabase();
+  if (!sb) return;
+  const { error } = await sb.from('content_reports').insert({
+    post_id: postId,
+    reporter_id: currentUser.id,
+    reason: reason.trim(),
+  });
+  if (error) {
+    console.error('[GieesK] Could not submit report:', error);
+    if (typeof showGenericToast === 'function') showGenericToast("Couldn't submit report — please try again.");
+    return;
+  }
+  if (typeof showGenericToast === 'function') showGenericToast('Thanks — our team will review this.');
+}
+
+function toggleDiscoverMute(video) {
+  if (!video) return;
+  video.muted = !video.muted;
+  const btn = video.closest('.discover-slide')?.querySelector('.discover-mute-btn');
+  if (btn) {
+    btn.querySelector('i').className = video.muted ? 'ti ti-volume-3' : 'ti ti-volume';
+  }
+}
+
+async function deleteOwnVideo(postId) {
+  if (!currentUser) return;
+  if (!confirm('Delete this video? This cannot be undone.')) return;
+
+  const sb = getSupabase();
+  if (!sb) return;
+  // RLS on community_posts should already restrict deletes to the row's
+  // own user_id, but the explicit filter here keeps the intent clear and
+  // gives a correct result either way.
+  const { error } = await sb.from('community_posts').delete().eq('id', postId).eq('user_id', currentUser.id);
+  if (error) {
+    console.error('[GieesK] Could not delete video:', error);
+    if (typeof showGenericToast === 'function') showGenericToast("Couldn't delete this video — please try again.");
+    return;
+  }
+
+  closeVideoFullscreen();
+  buildDiscoverTab();
+  if (typeof showGenericToast === 'function') showGenericToast('Video deleted.');
 }
 
 function closeVideoFullscreen() {
@@ -1230,10 +1456,21 @@ function closeVideoUploadModal() {
   document.getElementById('videoUploadModalOverlay')?.classList.remove('open');
 }
 
+function showVideoUploadError(message) {
+  const err = document.getElementById('videoUploadError');
+  if (err) { err.textContent = message; err.style.display = ''; }
+  if (typeof showGenericToast === 'function') showGenericToast(message);
+}
+function clearVideoUploadError() {
+  const err = document.getElementById('videoUploadError');
+  if (err) { err.textContent = ''; err.style.display = 'none'; }
+}
+
 async function previewPostVideo(input) {
   const file = input.files?.[0];
   if (!file) return;
   if (postVideoUploadInProgress) { input.value = ''; return; }
+  clearVideoUploadError();
 
   const MAX_BYTES = 150 * 1024 * 1024; // 150MB — generous enough for a 3-minute clip at reasonable quality
   const preview = document.getElementById('uploadVideoPreview');
@@ -1241,30 +1478,37 @@ async function previewPostVideo(input) {
   const statusEl = document.getElementById('uploadVideoStatus');
 
   if (!file.type.startsWith('video/')) {
-    if (typeof showGenericToast === 'function') showGenericToast('Please choose a video file.');
+    showVideoUploadError('Please choose a video file (like .mp4 or .mov).');
     input.value = '';
     return;
   }
   if (file.size > MAX_BYTES) {
-    if (typeof showGenericToast === 'function') showGenericToast('That video is too large — please choose one under 150MB.');
+    showVideoUploadError(`That video is ${(file.size / 1024 / 1024).toFixed(0)}MB — please choose one under 150MB.`);
     input.value = '';
     return;
   }
 
   // Duration has to be checked by actually loading the file into a video
-  // element first — the file object alone doesn't carry this.
+  // element first — the file object alone doesn't carry this. A genuine
+  // load failure (unsupported codec, corrupt file) and "too long" are
+  // different problems, so they get different messages instead of both
+  // being reported as "too long".
   const tempUrl = URL.createObjectURL(file);
-  const durationOk = await new Promise((resolve) => {
+  const probeResult = await new Promise((resolve) => {
     const probe = document.createElement('video');
     probe.preload = 'metadata';
-    probe.onloadedmetadata = () => resolve(probe.duration <= MAX_VIDEO_SECONDS);
-    probe.onerror = () => resolve(false);
+    probe.onloadedmetadata = () => resolve({ ok: probe.duration <= MAX_VIDEO_SECONDS, duration: probe.duration });
+    probe.onerror = () => resolve({ ok: false, unreadable: true });
     probe.src = tempUrl;
   });
-  if (!durationOk) {
+  if (!probeResult.ok) {
     URL.revokeObjectURL(tempUrl);
-    if (typeof showGenericToast === 'function') showGenericToast(`Please keep videos under ${MAX_VIDEO_SECONDS / 60} minutes.`);
     input.value = '';
+    if (probeResult.unreadable) {
+      showVideoUploadError("Couldn't read that video file — please try a different one.");
+    } else {
+      showVideoUploadError(`That video is too long — please keep it under ${MAX_VIDEO_SECONDS / 60} minutes.`);
+    }
     return;
   }
 
@@ -1286,7 +1530,7 @@ async function previewPostVideo(input) {
   if (uploadError) {
     console.error('[GieesK] Video upload failed — has the cooking-videos storage bucket been created?', uploadError.message);
     if (statusEl) statusEl.textContent = '';
-    if (typeof showGenericToast === 'function') showGenericToast("Couldn't upload video — please try again.");
+    showVideoUploadError(`Upload failed: ${uploadError.message || 'please try again.'}`);
     return;
   }
 
@@ -1295,23 +1539,31 @@ async function previewPostVideo(input) {
   if (statusEl) statusEl.textContent = 'Video ready ✓';
 }
 
-async function submitVideoPost() {
+async function submitVideoPost(status) {
   if (!currentUser) { openAuthModal('login'); return; }
+  clearVideoUploadError();
   if (!pendingPostVideoUrl) {
-    if (typeof showGenericToast === 'function') showGenericToast('Please choose a video first.');
+    showVideoUploadError('Please choose a video first.');
     return;
   }
 
   const caption = document.getElementById('videoUploadCaption')?.value.trim() || '';
   const recipeTitle = document.getElementById('videoUploadRecipeTitle')?.value.trim() || null;
+  const tags = (document.getElementById('videoUploadTags')?.value || '').split(',').map((t) => t.trim()).filter(Boolean);
+  const draftBtn = document.getElementById('videoDraftBtn');
   const submitBtn = document.getElementById('videoUploadSubmitBtn');
   const sb = getSupabase();
   if (!sb) return;
 
-  const name = currentUser.user_metadata?.full_name || currentUser.email?.split('@')[0] || 'You';
+  // Prefer the user's own chosen username over their Google/Apple profile
+  // name — someone who signed in with a social account may not want their
+  // real name shown on posts by default.
+  const { data: profile } = await sb.from('profiles').select('username').eq('id', currentUser.id).single();
+  const name = profile?.username || currentUser.user_metadata?.full_name || currentUser.email?.split('@')[0] || 'You';
   const avatar = currentUser.user_metadata?.avatar_url || currentUser.user_metadata?.picture || null;
 
-  if (submitBtn) { submitBtn.disabled = true; submitBtn.textContent = 'Posting…'; }
+  if (draftBtn) draftBtn.disabled = true;
+  if (submitBtn) { submitBtn.disabled = true; submitBtn.textContent = status === 'draft' ? 'Saving…' : 'Posting…'; }
 
   const { error } = await sb.from('community_posts').insert({
     user_id: currentUser.id,
@@ -1319,19 +1571,22 @@ async function submitVideoPost() {
     author_avatar: avatar,
     text: caption,
     recipe_title: recipeTitle,
+    tags,
     video_url: pendingPostVideoUrl,
+    status,
   });
 
+  if (draftBtn) draftBtn.disabled = false;
   if (submitBtn) { submitBtn.disabled = false; submitBtn.textContent = 'Post Video'; }
 
   if (error) {
     console.error('[GieesK] Could not publish video post:', error);
-    if (typeof showGenericToast === 'function') showGenericToast("Couldn't publish your video. Please try again.");
+    showVideoUploadError(`Couldn't save your video: ${error.message || 'please try again.'}`);
     return;
   }
 
   closeVideoUploadModal();
-  ['videoUploadCaption', 'videoUploadRecipeTitle'].forEach((id) => {
+  ['videoUploadCaption', 'videoUploadRecipeTitle', 'videoUploadTags'].forEach((id) => {
     const el = document.getElementById(id);
     if (el) el.value = '';
   });
@@ -1344,7 +1599,7 @@ async function submitVideoPost() {
   if (statusEl) statusEl.textContent = '';
 
   buildDiscoverTab();
-  if (typeof showGenericToast === 'function') showGenericToast('Video posted!');
+  if (typeof showGenericToast === 'function') showGenericToast(status === 'draft' ? 'Saved to drafts' : 'Video posted!');
 }
 
 function openUploadModal() {

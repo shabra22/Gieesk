@@ -422,6 +422,15 @@ function hapticTap() {
     if (!window.Capacitor || !window.Capacitor.Plugins || !window.Capacitor.Plugins.App) return;
 
     window.Capacitor.Plugins.App.addListener('backButton', function () {
+      // Needs its own close path rather than the generic modal handling
+      // below — that just hides the element, which would leave the video
+      // still playing invisibly in the background.
+      var discoverOverlay = document.getElementById('discoverFullscreen');
+      if (discoverOverlay && discoverOverlay.classList.contains('open')) {
+        if (typeof closeVideoFullscreen === 'function') closeVideoFullscreen();
+        return;
+      }
+
       var openModal = document.querySelector('#recipeModal.open, #cookiePrefsModal.open, #appSearchOverlay.open, #appNotifPanel.open');
       // #authModal is excluded above when it's the mandatory login gate —
       // back button must not be able to dismiss required sign-in. Once

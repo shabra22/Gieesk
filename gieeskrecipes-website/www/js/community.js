@@ -82,6 +82,7 @@ function buildCommunityPage() {
       <div class="container">
         <div class="community-tabs">
           <button class="community-tab active" data-tab="feed"       onclick="switchCommunityTab('feed')">      <i class="ti ti-home"></i>   Feed</button>
+          <button class="community-tab"        data-tab="discover"   onclick="switchCommunityTab('discover')">  <i class="ti ti-video"></i>  Discover</button>
           <button class="community-tab"        data-tab="challenges" onclick="switchCommunityTab('challenges')"><i class="ti ti-trophy"></i> Challenges</button>
           <button class="community-tab"        data-tab="chefs"      onclick="switchCommunityTab('chefs')">     <i class="ti ti-chef-hat"></i> Chefs</button>
           <button class="community-tab"        data-tab="leaderboard"onclick="switchCommunityTab('leaderboard')"><i class="ti ti-medal"></i> Leaderboard</button>
@@ -102,6 +103,7 @@ function buildCommunityPage() {
             </div>
             <div id="communityFeed"></div>
           </div>
+          <div id="community-tab-discover"   style="display:none;padding-top:1.5rem"></div>
           <div id="community-tab-challenges" style="display:none;padding-top:1.5rem"></div>
           <div id="community-tab-chefs"      style="display:none;padding-top:1.5rem"></div>
           <div id="community-tab-leaderboard"style="display:none;padding-top:1.5rem"></div>
@@ -203,7 +205,49 @@ function buildCommunityPage() {
           </div>
         </div>
       </div>
-    </div>`;
+    </div>
+
+    <!-- Video Upload Modal -->
+    <div class="upload-modal-overlay" id="videoUploadModalOverlay" onclick="if(event.target===this)closeVideoUploadModal()">
+      <div class="upload-modal">
+        <div class="upload-modal-header">
+          <span class="upload-modal-title">Upload a Cooking Video</span>
+          <button class="modal-close" style="position:static" onclick="closeVideoUploadModal()"><i class="ti ti-x"></i></button>
+        </div>
+        <div class="upload-modal-body">
+          <div>
+            <div class="upload-step"><div class="upload-step-num">1</div> Your Video</div>
+            <div class="video-upload-dropzone" id="uploadVideoDropzone" onclick="document.getElementById('uploadVideoInput').click()">
+              <span id="uploadVideoPlaceholder" class="video-upload-placeholder"><i class="ti ti-video-plus"></i>Tap to choose a video<br><small>Up to 3 minutes, 150MB</small></span>
+              <video id="uploadVideoPreview" class="video-upload-preview" style="display:none" controls playsinline></video>
+            </div>
+            <input type="file" id="uploadVideoInput" accept="video/*" style="display:none" onchange="previewPostVideo(this)">
+            <div id="uploadVideoStatus" class="video-upload-status"></div>
+          </div>
+          <div>
+            <div class="upload-step"><div class="upload-step-num">2</div> Details</div>
+            <div style="display:flex;flex-direction:column;gap:12px">
+              <textarea class="form-textarea" id="videoUploadCaption" placeholder="Write a caption…" rows="2" style="background:var(--bg-elevated);border:1px solid var(--border-subtle);border-radius:var(--r-md);padding:10px 14px;font-size:14px;color:var(--text-primary);outline:none;font-family:inherit;width:100%;resize:vertical"></textarea>
+              <input class="form-input" id="videoUploadRecipeTitle" placeholder="Recipe name (optional)" style="background:var(--bg-elevated);border:1px solid var(--border-subtle);border-radius:var(--r-md);padding:10px 14px;font-size:14px;color:var(--text-primary);outline:none;font-family:inherit;width:100%"/>
+              <input class="form-input" id="videoUploadTags" placeholder="Tags separated by commas (e.g. vegan, kenyan, quick)" style="background:var(--bg-elevated);border:1px solid var(--border-subtle);border-radius:var(--r-md);padding:10px 14px;font-size:14px;color:var(--text-primary);outline:none;font-family:inherit;width:100%"/>
+            </div>
+          </div>
+          <div id="videoUploadError" style="font-size:13px;color:#F08060;display:none;margin-top:10px"></div>
+          <div style="display:flex;gap:10px;margin-top:16px">
+            <button class="btn-ghost" id="videoDraftBtn" style="flex:1;justify-content:center;padding:13px" onclick="submitVideoPost('draft')">
+              <i class="ti ti-file-text"></i> Save as Draft
+            </button>
+            <button class="btn-gold" id="videoUploadSubmitBtn" style="flex:1;justify-content:center;padding:13px" onclick="submitVideoPost('published')">
+              <i class="ti ti-send"></i> Post Video
+            </button>
+          </div>
+          <button class="btn-ghost" style="width:100%;justify-content:center;margin-top:8px" onclick="closeVideoUploadModal()">Cancel</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Discover full-screen video viewer -->
+    <div class="discover-fullscreen-overlay" id="discoverFullscreen"></div>`;
 
   return el;
 }
@@ -213,7 +257,7 @@ function switchCommunityTab(tab, skipBuild) {
   document.querySelectorAll('.community-tab').forEach(t => {
     t.classList.toggle('active', t.dataset.tab === tab);
   });
-  ['feed','challenges','chefs','leaderboard'].forEach(t => {
+  ['feed','discover','challenges','chefs','leaderboard'].forEach(t => {
     const el = document.getElementById(`community-tab-${t}`);
     if (el) el.style.display = t === tab ? '' : 'none';
   });
@@ -223,6 +267,7 @@ function switchCommunityTab(tab, skipBuild) {
   // same session. Gating on "build once" meant the tab kept showing
   // whatever it looked like the first time it was opened.
   if (tab === 'feed')        buildFeed();
+  if (tab === 'discover')    buildDiscoverTab();
   if (tab === 'challenges')  buildChallengesTab();
   if (tab === 'chefs')       buildChefsTab();
   if (tab === 'leaderboard') buildLeaderboardTab();
@@ -248,6 +293,7 @@ async function buildFeed() {
   const { data: posts, error } = await sb
     .from('community_posts')
     .select('*')
+    .eq('status', 'published')
     .order('created_at', { ascending: false })
     .limit(50);
 
@@ -479,6 +525,7 @@ async function filterFeedByTag(tag) {
   const { data: posts, error } = await sb
     .from('community_posts')
     .select('*')
+    .eq('status', 'published')
     .contains('tags', [tag])
     .order('created_at', { ascending: false });
 
@@ -597,6 +644,275 @@ async function loadSidebarChallenges() {
     `<button class="btn-ghost" style="width:100%;justify-content:center;margin-top:10px;font-size:13px" onclick="switchCommunityTab('challenges')">
       View all challenges <i class="ti ti-arrow-right"></i>
     </button>`;
+}
+
+// ── Discover — video feed (grid preview, tap to open full-screen) ──
+// Reuses community_posts entirely (a video is just a post with
+// video_url set) so likes/comments/sharing all work identically to
+// text/photo posts, with zero duplicated infrastructure.
+let discoverVideoCache = [];
+
+async function buildDiscoverTab() {
+  const panel = document.getElementById('community-tab-discover');
+  if (!panel) return;
+  panel.innerHTML = `
+    <div style="display:flex;gap:8px;margin-bottom:1rem">
+      <button class="btn-gold" style="flex:1;justify-content:center" onclick="openVideoUploadModal()">
+        <i class="ti ti-video-plus"></i> Upload a Cooking Video
+      </button>
+      <button class="btn-outline" id="myDraftsBtn" style="display:none" onclick="openMyDrafts()">
+        <i class="ti ti-file-text"></i> Drafts
+      </button>
+    </div>
+    <div id="discoverGrid" class="discover-grid"><div class="dash-loading">Loading videos…</div></div>`;
+
+  const sb = getSupabase();
+  if (!sb) return;
+
+  if (currentUser) {
+    const { data: drafts } = await sb.from('community_posts').select('id').eq('user_id', currentUser.id).eq('status', 'draft');
+    const draftsBtn = document.getElementById('myDraftsBtn');
+    if (draftsBtn && drafts?.length) {
+      draftsBtn.style.display = '';
+      draftsBtn.innerHTML = `<i class="ti ti-file-text"></i> Drafts (${drafts.length})`;
+    }
+  }
+
+  const { data, error } = await sb.from('community_posts')
+    .select('*')
+    .not('video_url', 'is', null)
+    .eq('status', 'published')
+    .order('created_at', { ascending: false })
+    .limit(60);
+
+  const grid = document.getElementById('discoverGrid');
+  if (error) {
+    console.error('[GieesK] Could not load videos:', error);
+    grid.innerHTML = '<p style="text-align:center;color:var(--text-muted);padding:2rem 0">Could not load videos right now.</p>';
+    return;
+  }
+
+  discoverVideoCache = data || [];
+  if (!discoverVideoCache.length) {
+    grid.innerHTML = '<p style="text-align:center;color:var(--text-muted);padding:2rem 0">No videos yet — be the first to share one!</p>';
+    return;
+  }
+
+  grid.innerHTML = discoverVideoCache.map((v, i) => `
+    <div class="discover-tile" onclick="openVideoFullscreen(${i})">
+      <video src="${v.video_url}" muted preload="metadata"></video>
+      <div class="discover-tile-play"><i class="ti ti-player-play-filled"></i></div>
+      ${v.recipe_title ? `<div class="discover-tile-title">${escapeHTML(v.recipe_title)}</div>` : ''}
+    </div>`).join('');
+}
+
+function openVideoFullscreen(startIndex) {
+  const overlay = document.getElementById('discoverFullscreen');
+  if (!overlay || !discoverVideoCache.length) return;
+
+  overlay.innerHTML = `
+    <button class="app-header-btn discover-close-btn" onclick="closeVideoFullscreen()"><i class="ti ti-x"></i></button>
+    <div class="discover-scroller" id="discoverScroller"></div>`;
+  const scroller = document.getElementById('discoverScroller');
+
+  discoverVideoCache.forEach((v, i) => {
+    const avatarHTML = v.author_avatar
+      ? `<img src="${v.author_avatar}" style="width:100%;height:100%;object-fit:cover;border-radius:50%">`
+      : escapeHTML((v.author_name || '?').charAt(0).toUpperCase());
+    const recipeHTML = v.recipe_title ? `
+      <div class="discover-recipe-chip" onclick="${v.recipe_id ? `openRecipeModalById('${v.recipe_id}')` : ''}">
+        <i class="ti ti-tools-kitchen-2"></i> ${escapeHTML(v.recipe_title)} ${v.recipe_id ? '· View Recipe' : ''}
+      </div>` : '';
+    const isOwner = currentUser && v.user_id === currentUser.id;
+    const deleteBtnHTML = isOwner ? `
+      <button class="discover-action-btn" onclick="deleteOwnVideo('${v.id}')"><i class="ti ti-trash"></i></button>` : '';
+
+    const slide = document.createElement('div');
+    slide.className = 'discover-slide';
+    slide.dataset.index = i;
+    slide.innerHTML = `
+      <video class="discover-video" loop playsinline muted data-src="${v.video_url}" onclick="toggleDiscoverMute(this)"></video>
+      <button class="discover-mute-btn" onclick="toggleDiscoverMute(this.previousElementSibling)"><i class="ti ti-volume-3"></i></button>
+      <div class="discover-overlay">
+        <div class="discover-author">
+          <div class="post-avatar" style="width:36px;height:36px">${avatarHTML}</div>
+          <span>${escapeHTML(v.author_name)}</span>
+        </div>
+        <p class="discover-caption">${escapeHTML(v.text || '')}</p>
+        ${recipeHTML}
+      </div>
+      <div class="discover-actions">
+        <button class="discover-action-btn" id="like-${v.id}" onclick="toggleLike('${v.id}')"><i class="ti ti-heart"></i><span id="like-count-${v.id}">0</span></button>
+        <button class="discover-action-btn" onclick="openDiscoverComments('${v.id}')"><i class="ti ti-message-circle"></i><span id="comment-count-${v.id}">0</span></button>
+        <button class="discover-action-btn" onclick="sharePost('${v.id}')"><i class="ti ti-share"></i></button>
+        ${deleteBtnHTML}
+      </div>`;
+    scroller.appendChild(slide);
+  });
+
+  // Lazy-load + autoplay only the video currently in view — with videos
+  // up to 3 minutes long, loading every single one upfront the moment
+  // this opens would be a real, unnecessary amount of data. Videos start
+  // muted deliberately: browsers block autoplay-with-sound outright, so
+  // starting unmuted meant play() was very likely failing silently —
+  // which looked like "the video isn't playing" and gave the impression
+  // of a sound problem, when really no sound (or video) was playing at all.
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      const video = entry.target.querySelector('video');
+      if (!video) return;
+      if (entry.isIntersecting) {
+        if (!video.src) video.src = video.dataset.src;
+        video.play().catch(() => {});
+      } else {
+        video.pause();
+      }
+    });
+  }, { threshold: 0.6 });
+  scroller.querySelectorAll('.discover-slide').forEach((s) => observer.observe(s));
+  overlay.dataset.observerActive = 'true';
+
+  overlay.classList.add('open');
+  document.body.style.overflow = 'hidden';
+  scroller.children[startIndex]?.scrollIntoView({ behavior: 'instant' });
+
+  // Fetch real like/comment counts for just these videos, same batched
+  // pattern buildFeed already uses — no need to duplicate that logic.
+  hydrateDiscoverCounts(discoverVideoCache.map((v) => v.id));
+}
+
+async function hydrateDiscoverCounts(postIds) {
+  if (!postIds.length) return;
+  const sb = getSupabase();
+  if (!sb) return;
+  const [{ data: likes }, { data: comments }] = await Promise.all([
+    sb.from('post_likes').select('post_id, user_id').in('post_id', postIds),
+    sb.from('post_comments').select('post_id').in('post_id', postIds),
+  ]);
+  postIds.forEach((id) => {
+    const likeCount = (likes || []).filter((l) => l.post_id === id).length;
+    const liked = currentUser && (likes || []).some((l) => l.post_id === id && l.user_id === currentUser.id);
+    const commentCount = (comments || []).filter((c) => c.post_id === id).length;
+    const likeBtn = document.getElementById(`like-${id}`);
+    const likeCountEl = document.getElementById(`like-count-${id}`);
+    const commentCountEl = document.getElementById(`comment-count-${id}`);
+    if (likeCountEl) likeCountEl.textContent = likeCount;
+    if (commentCountEl) commentCountEl.textContent = commentCount;
+    if (likeBtn && liked) { likeBtn.classList.add('liked'); likeBtn.querySelector('i').className = 'ti ti-heart-filled'; }
+  });
+}
+
+function openDiscoverComments(postId) {
+  const overlay = document.getElementById('discoverFullscreen');
+  if (!overlay) return;
+  let sheet = document.getElementById('discoverCommentSheet');
+  if (sheet) sheet.remove();
+
+  sheet = document.createElement('div');
+  sheet.id = 'discoverCommentSheet';
+  sheet.className = 'discover-comment-sheet open';
+  sheet.innerHTML = `
+    <div class="discover-comment-sheet-header">
+      <span>Comments</span>
+      <button class="app-header-btn" onclick="document.getElementById('discoverCommentSheet').remove()"><i class="ti ti-x"></i></button>
+    </div>
+    <div id="comments-list-${postId}" class="post-comments-list discover-comment-list"><div class="dash-loading">Loading…</div></div>
+    <div class="post-comment-input-row">
+      <input class="shopping-add-input" id="comment-input-${postId}" placeholder="Write a comment…" onkeydown="if(event.key==='Enter')submitComment('${postId}')" />
+      <button class="btn-gold" style="padding:8px 16px" onclick="submitComment('${postId}')">Post</button>
+    </div>`;
+  overlay.appendChild(sheet);
+  loadComments(postId);
+}
+
+async function openMyDrafts() {
+  if (!currentUser) return;
+  const sb = getSupabase();
+  if (!sb) return;
+
+  const overlay = document.getElementById('discoverFullscreen');
+  if (!overlay) return;
+  overlay.innerHTML = `
+    <button class="app-header-btn discover-close-btn" onclick="closeVideoFullscreen()"><i class="ti ti-x"></i></button>
+    <div class="discover-drafts-panel">
+      <h2>My Drafts</h2>
+      <div id="myDraftsList"><div class="dash-loading">Loading…</div></div>
+    </div>`;
+  overlay.classList.add('open');
+  document.body.style.overflow = 'hidden';
+
+  const { data: drafts, error } = await sb.from('community_posts').select('*').eq('user_id', currentUser.id).eq('status', 'draft').order('created_at', { ascending: false });
+  const list = document.getElementById('myDraftsList');
+  if (!list) return;
+
+  if (error || !drafts?.length) {
+    list.innerHTML = '<p style="color:var(--text-muted);text-align:center;padding:2rem 0">No drafts saved.</p>';
+    return;
+  }
+
+  list.innerHTML = drafts.map((d) => `
+    <div class="discover-draft-item">
+      <video src="${d.video_url}" muted preload="metadata"></video>
+      <div class="discover-draft-info">
+        <p>${escapeHTML(d.text || d.recipe_title || 'Untitled video')}</p>
+        <div class="discover-draft-actions">
+          <button class="btn-gold" style="padding:6px 14px" onclick="publishDraft('${d.id}')">Publish</button>
+          <button class="btn-ghost" style="padding:6px 14px" onclick="deleteOwnVideo('${d.id}')">Delete</button>
+        </div>
+      </div>
+    </div>`).join('');
+}
+
+async function publishDraft(postId) {
+  const sb = getSupabase();
+  if (!sb || !currentUser) return;
+  const { error } = await sb.from('community_posts').update({ status: 'published' }).eq('id', postId).eq('user_id', currentUser.id);
+  if (error) {
+    console.error('[GieesK] Could not publish draft:', error);
+    if (typeof showGenericToast === 'function') showGenericToast("Couldn't publish — please try again.");
+    return;
+  }
+  if (typeof showGenericToast === 'function') showGenericToast('Video posted!');
+  openMyDrafts();
+}
+
+function toggleDiscoverMute(video) {
+  if (!video) return;
+  video.muted = !video.muted;
+  const btn = video.nextElementSibling;
+  if (btn && btn.classList.contains('discover-mute-btn')) {
+    btn.querySelector('i').className = video.muted ? 'ti ti-volume-3' : 'ti ti-volume';
+  }
+}
+
+async function deleteOwnVideo(postId) {
+  if (!currentUser) return;
+  if (!confirm('Delete this video? This cannot be undone.')) return;
+
+  const sb = getSupabase();
+  if (!sb) return;
+  // RLS on community_posts should already restrict deletes to the row's
+  // own user_id, but the explicit filter here keeps the intent clear and
+  // gives a correct result either way.
+  const { error } = await sb.from('community_posts').delete().eq('id', postId).eq('user_id', currentUser.id);
+  if (error) {
+    console.error('[GieesK] Could not delete video:', error);
+    if (typeof showGenericToast === 'function') showGenericToast("Couldn't delete this video — please try again.");
+    return;
+  }
+
+  closeVideoFullscreen();
+  buildDiscoverTab();
+  if (typeof showGenericToast === 'function') showGenericToast('Video deleted.');
+}
+
+function closeVideoFullscreen() {
+  const overlay = document.getElementById('discoverFullscreen');
+  if (!overlay) return;
+  overlay.classList.remove('open');
+  document.body.style.overflow = '';
+  overlay.querySelectorAll('video').forEach((v) => v.pause());
+  overlay.innerHTML = '';
 }
 
 async function buildChallengesTab() {
@@ -1017,6 +1333,165 @@ async function previewPostPhoto(input) {
 
   const { data: urlData } = sb.storage.from('post-images').getPublicUrl(path);
   pendingPostImageUrl = urlData.publicUrl;
+}
+
+// ── Video upload (Discover) ───────────────
+let pendingPostVideoUrl = null;
+let postVideoUploadInProgress = false;
+const MAX_VIDEO_SECONDS = 180; // 3 minutes
+
+function openVideoUploadModal() {
+  if (!currentUser) { openAuthModal('login'); return; }
+  document.getElementById('videoUploadModalOverlay')?.classList.add('open');
+}
+function closeVideoUploadModal() {
+  document.getElementById('videoUploadModalOverlay')?.classList.remove('open');
+}
+
+function showVideoUploadError(message) {
+  const err = document.getElementById('videoUploadError');
+  if (err) { err.textContent = message; err.style.display = ''; }
+  if (typeof showGenericToast === 'function') showGenericToast(message);
+}
+function clearVideoUploadError() {
+  const err = document.getElementById('videoUploadError');
+  if (err) { err.textContent = ''; err.style.display = 'none'; }
+}
+
+async function previewPostVideo(input) {
+  const file = input.files?.[0];
+  if (!file) return;
+  if (postVideoUploadInProgress) { input.value = ''; return; }
+  clearVideoUploadError();
+
+  const MAX_BYTES = 150 * 1024 * 1024; // 150MB — generous enough for a 3-minute clip at reasonable quality
+  const preview = document.getElementById('uploadVideoPreview');
+  const placeholder = document.getElementById('uploadVideoPlaceholder');
+  const statusEl = document.getElementById('uploadVideoStatus');
+
+  if (!file.type.startsWith('video/')) {
+    showVideoUploadError('Please choose a video file (like .mp4 or .mov).');
+    input.value = '';
+    return;
+  }
+  if (file.size > MAX_BYTES) {
+    showVideoUploadError(`That video is ${(file.size / 1024 / 1024).toFixed(0)}MB — please choose one under 150MB.`);
+    input.value = '';
+    return;
+  }
+
+  // Duration has to be checked by actually loading the file into a video
+  // element first — the file object alone doesn't carry this. A genuine
+  // load failure (unsupported codec, corrupt file) and "too long" are
+  // different problems, so they get different messages instead of both
+  // being reported as "too long".
+  const tempUrl = URL.createObjectURL(file);
+  const probeResult = await new Promise((resolve) => {
+    const probe = document.createElement('video');
+    probe.preload = 'metadata';
+    probe.onloadedmetadata = () => resolve({ ok: probe.duration <= MAX_VIDEO_SECONDS, duration: probe.duration });
+    probe.onerror = () => resolve({ ok: false, unreadable: true });
+    probe.src = tempUrl;
+  });
+  if (!probeResult.ok) {
+    URL.revokeObjectURL(tempUrl);
+    input.value = '';
+    if (probeResult.unreadable) {
+      showVideoUploadError("Couldn't read that video file — please try a different one.");
+    } else {
+      showVideoUploadError(`That video is too long — please keep it under ${MAX_VIDEO_SECONDS / 60} minutes.`);
+    }
+    return;
+  }
+
+  postVideoUploadInProgress = true;
+  if (statusEl) statusEl.textContent = 'Uploading…';
+  if (preview) { preview.src = tempUrl; preview.style.display = ''; }
+  if (placeholder) placeholder.style.display = 'none';
+
+  const sb = getSupabase();
+  if (!sb || !currentUser) { postVideoUploadInProgress = false; input.value = ''; return; }
+
+  const ext = file.name.split('.').pop() || 'mp4';
+  const path = `${currentUser.id}/${Date.now()}.${ext}`;
+
+  const { error: uploadError } = await sb.storage.from('cooking-videos').upload(path, file, { cacheControl: '3600' });
+  postVideoUploadInProgress = false;
+  input.value = '';
+
+  if (uploadError) {
+    console.error('[GieesK] Video upload failed — has the cooking-videos storage bucket been created?', uploadError.message);
+    if (statusEl) statusEl.textContent = '';
+    showVideoUploadError(`Upload failed: ${uploadError.message || 'please try again.'}`);
+    return;
+  }
+
+  const { data: urlData } = sb.storage.from('cooking-videos').getPublicUrl(path);
+  pendingPostVideoUrl = urlData.publicUrl;
+  if (statusEl) statusEl.textContent = 'Video ready ✓';
+}
+
+async function submitVideoPost(status) {
+  if (!currentUser) { openAuthModal('login'); return; }
+  clearVideoUploadError();
+  if (!pendingPostVideoUrl) {
+    showVideoUploadError('Please choose a video first.');
+    return;
+  }
+
+  const caption = document.getElementById('videoUploadCaption')?.value.trim() || '';
+  const recipeTitle = document.getElementById('videoUploadRecipeTitle')?.value.trim() || null;
+  const tags = (document.getElementById('videoUploadTags')?.value || '').split(',').map((t) => t.trim()).filter(Boolean);
+  const draftBtn = document.getElementById('videoDraftBtn');
+  const submitBtn = document.getElementById('videoUploadSubmitBtn');
+  const sb = getSupabase();
+  if (!sb) return;
+
+  // Prefer the user's own chosen username over their Google/Apple profile
+  // name — someone who signed in with a social account may not want their
+  // real name shown on posts by default.
+  const { data: profile } = await sb.from('profiles').select('username').eq('id', currentUser.id).single();
+  const name = profile?.username || currentUser.user_metadata?.full_name || currentUser.email?.split('@')[0] || 'You';
+  const avatar = currentUser.user_metadata?.avatar_url || currentUser.user_metadata?.picture || null;
+
+  if (draftBtn) draftBtn.disabled = true;
+  if (submitBtn) { submitBtn.disabled = true; submitBtn.textContent = status === 'draft' ? 'Saving…' : 'Posting…'; }
+
+  const { error } = await sb.from('community_posts').insert({
+    user_id: currentUser.id,
+    author_name: name,
+    author_avatar: avatar,
+    text: caption,
+    recipe_title: recipeTitle,
+    tags,
+    video_url: pendingPostVideoUrl,
+    status,
+  });
+
+  if (draftBtn) draftBtn.disabled = false;
+  if (submitBtn) { submitBtn.disabled = false; submitBtn.textContent = 'Post Video'; }
+
+  if (error) {
+    console.error('[GieesK] Could not publish video post:', error);
+    showVideoUploadError(`Couldn't save your video: ${error.message || 'please try again.'}`);
+    return;
+  }
+
+  closeVideoUploadModal();
+  ['videoUploadCaption', 'videoUploadRecipeTitle', 'videoUploadTags'].forEach((id) => {
+    const el = document.getElementById(id);
+    if (el) el.value = '';
+  });
+  pendingPostVideoUrl = null;
+  const preview = document.getElementById('uploadVideoPreview');
+  const placeholder = document.getElementById('uploadVideoPlaceholder');
+  const statusEl = document.getElementById('uploadVideoStatus');
+  if (preview) { preview.src = ''; preview.style.display = 'none'; }
+  if (placeholder) placeholder.style.display = '';
+  if (statusEl) statusEl.textContent = '';
+
+  buildDiscoverTab();
+  if (typeof showGenericToast === 'function') showGenericToast(status === 'draft' ? 'Saved to drafts' : 'Video posted!');
 }
 
 function openUploadModal() {
