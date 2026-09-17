@@ -242,6 +242,7 @@ function buildProfilePanel(panel) {
                   <small id="pfUsernameStatus" class="username-status" aria-live="polite"></small>
                   <small style="display:block;margin-top:6px;font-size:11.5px;color:var(--text-muted)">Shown on your videos and comments. Your full name is never shown publicly.</small>
                   <button type="button" class="btn-ghost" style="margin-top:8px;padding:6px 12px;font-size:12.5px" onclick="if(typeof openUserProfile==='function'&&currentUser)openUserProfile(currentUser.id)"><i class="ti ti-user-circle"></i> View public profile</button>
+                  <div id="pfVerifyRow" class="pf-verify-row"></div>
                   <label class="video-manage-row pf-privacy-row">
                     <span><i class="ti ti-eye"></i> Profile view history<small>See who viewed your profile. When off, your visits to others aren’t shown either.</small></span>
                     <input type="checkbox" class="vs-switch" id="pfViewHistory" checked onchange="if(typeof setProfileViewHistory==='function')setProfileViewHistory(this.checked)" />
@@ -383,6 +384,7 @@ async function loadProfile() {
   profileLoadedUsername = data.username || '';
   const viewHistory = document.getElementById('pfViewHistory');
   if (viewHistory && typeof data.profile_view_history === 'boolean') viewHistory.checked = data.profile_view_history;
+  renderVerificationRow(data);
   if (data.username && document.getElementById('pfUsername')) document.getElementById('pfUsername').value = data.username;
   if (data.bio       && document.getElementById('pfBio'))      document.getElementById('pfBio').value      = data.bio;
   if (data.country          && document.getElementById('pfCountry')) { document.getElementById('pfCountry').value = data.country; document.getElementById('pfCountry').dispatchEvent(new Event('change')); }
@@ -391,6 +393,58 @@ async function loadProfile() {
     document.querySelectorAll('#dietTags .diet-tag').forEach(function (el) {
       el.classList.toggle('active', data.dietary_preferences.includes(el.textContent.trim()));
     });
+  }
+}
+
+// GieesK Verified: the badge is a paid, identity-checked subscription
+// (supabase-verified-badge.sql). The purchase itself can't happen inside
+// the app — Google Play requires native billing for in-app digital
+// purchases — so, like Gieesk Pro, it opens the website in a browser.
+function renderVerificationRow(profile) {
+  const row = document.getElementById('pfVerifyRow');
+  if (!row) return;
+  const status = profile?.verification_status || 'none';
+  const verified = !!profile?.is_verified;
+  const paidUntil = profile?.verification_paid_until ? new Date(profile.verification_paid_until) : null;
+  const renews = paidUntil ? paidUntil.toLocaleDateString(undefined, { month: 'long', day: 'numeric', year: 'numeric' }) : null;
+
+  let icon = 'ti-rosette-discount-check';
+  let title = 'Get verified';
+  let sub = 'A gold tick next to your name, after an ID check. $29.99 a year.';
+  let action = 'Learn more';
+
+  if (verified) {
+    icon = 'ti-rosette-discount-check-filled';
+    title = 'Verified';
+    sub = renews ? `Your badge renews on ${renews}.` : 'Your badge is active.';
+    action = 'Manage';
+  } else if (status === 'awaiting_id' || status === 'failed') {
+    title = status === 'failed' ? 'ID check didn’t pass' : 'One step left';
+    sub = status === 'failed' ? 'Try the identity check again to get your badge.' : 'Confirm your identity to get your badge.';
+    action = 'Continue';
+  } else if (status === 'processing') {
+    title = 'Checking your ID';
+    sub = 'Your badge appears as soon as the check passes.';
+    action = 'View';
+  } else if (status === 'lapsed') {
+    title = 'Badge lapsed';
+    sub = 'The verification subscription ended, so the tick was removed.';
+    action = 'Renew';
+  }
+
+  row.innerHTML = `<button type="button" class="pf-verify-btn${verified ? ' is-verified' : ''}" onclick="openVerifyPage()">
+      <i class="ti ${icon}"></i>
+      <span class="pf-verify-text"><strong>${title}</strong><small>${sub}</small></span>
+      <span class="pf-verify-action">${action}<i class="ti ti-chevron-right"></i></span>
+    </button>`;
+}
+
+function openVerifyPage() {
+  const url = (typeof publicSiteOrigin === 'function' ? publicSiteOrigin() : 'https://gieesk.com') + '/verify.html';
+  if (window.Capacitor?.Plugins?.Browser) {
+    window.Capacitor.Plugins.Browser.open({ url });
+  } else {
+    window.open(url, '_blank');
   }
 }
 

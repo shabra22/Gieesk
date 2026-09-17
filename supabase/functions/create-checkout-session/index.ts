@@ -1,121 +1,61 @@
 // ═══════════════════════════════════════════════════════════════
-// GieesK Recipes — Create Stripe Checkout Session
-// ───────────────────────────────────────────────────────────────
-// Called from the WEBSITE (never the app directly — Google Play's
-// billing policy requires in-app digital subscriptions to go through
-// Google Play Billing, not a third-party processor. This function is
-// only ever reached via a browser, whether that's someone on
-// gieesk.com directly, or the app opening gieesk.com/upgrade in an
-// external browser tab.) via:
-//   sb.functions.invoke('create-checkout-session')
+// Starts a Stripe Checkout session.
+//   { plan: "pro" }       → Gieesk Pro, monthly   (upgrade.html)
+//   { plan: "verified" }  → GieesK Verified, yearly (verify.html)
+// No body at all means "pro", so the existing upgrade page keeps
+// working unchanged.
 //
-// Creates (or reuses) a Stripe Customer for the signed-in user, then
-// creates a Checkout Session for the Gieesk Pro monthly subscription
-// and returns its URL for the browser to redirect to.
-//
-// Requires these secrets:
-//   supabase secrets set STRIPE_SECRET_KEY=sk_...
-//   supabase secrets set STRIPE_PRICE_ID=price_...
-//   supabase secrets set SUPABASE_SERVICE_ROLE_KEY=eyJ...   (from Project Settings → API)
-//
-// Deploy:
-//   supabase functions deploy create-checkout-session
+// Returns { url } — the browser goes there. The purchase is finished by
+// Stripe and reported to the stripe-webhook function; nothing here
+// grants anything.
 // ═══════════════════════════════════════════════════════════════
 
-import { createClient } from 'https://esm.sh/@supabase/supabase-js@2';
-
-const STRIPE_SECRET_KEY = Deno.env.get('STRIPE_SECRET_KEY')!;
-const STRIPE_PRICE_ID = Deno.env.get('STRIPE_PRICE_ID')!;
-const SUPABASE_URL = Deno.env.get('SUPABASE_URL')!;
-const SUPABASE_SERVICE_ROLE_KEY = Deno.env.get('SUPABASE_SERVICE_ROLE_KEY')!;
-const SITE_URL = 'https://gieesk.com';
-
-const corsHeaders = {
-  'Access-Control-Allow-Origin': '*', // TODO: restrict to https://gieesk.com once confirmed stable
-  'Access-Control-Allow-Headers': 'authorization, x-client-info, apikey, content-type',
-  'Access-Control-Allow-Methods': 'POST, OPTIONS',
-};
-
-async function stripeRequest(path: string, body: Record<string, string>) {
-  const res = await fetch(`https://api.stripe.com/v1/${path}`, {
-    method: 'POST',
-    headers: {
-      Authorization: `Bearer ${STRIPE_SECRET_KEY}`,
-      'Content-Type': 'application/x-www-form-urlencoded',
-    },
-    body: new URLSearchParams(body),
-  });
-  const data = await res.json();
-  if (!res.ok) throw new Error(data?.error?.message || `Stripe request to ${path} failed`);
-  return data;
-}
+import { stripe, siteUrl, json, corsHeaders, requireUser, ensureCustomer } from '../_shared/stripe.ts';
 
 Deno.serve(async (req) => {
-  if (req.method === 'OPTIONS') {
-    return new Response(null, { headers: corsHeaders });
-  }
-
-  if (!STRIPE_SECRET_KEY || !STRIPE_PRICE_ID) {
-    console.error('[GieesK] create-checkout-session: missing STRIPE_SECRET_KEY or STRIPE_PRICE_ID secret');
-    return new Response(JSON.stringify({ error: 'Payments are not configured yet' }), {
-      status: 500,
-      headers: { ...corsHeaders, 'Content-Type': 'application/json' },
-    });
-  }
+  if (req.method === 'OPTIONS') return new Response('ok', { headers: corsHeaders });
 
   try {
-    // Identify the signed-in user from their own Supabase session token —
-    // this function must never accept a user id from the request body
-    // itself, since that would let anyone create a checkout session (and
-    // eventually a premium flag) for an arbitrary account.
-    const authHeader = req.headers.get('Authorization');
-    if (!authHeader) {
-      return new Response(JSON.stringify({ error: 'Not signed in' }), {
-        status: 401,
-        headers: { ...corsHeaders, 'Content-Type': 'application/json' },
-      });
-    }
+    const user = await requireUser(req);
+    if (!user) return json({ error: 'Not signed in' }, 401);
 
-    const sb = createClient(SUPABASE_URL, SUPABASE_SERVICE_ROLE_KEY);
-    const jwt = authHeader.replace('Bearer ', '');
-    const { data: { user }, error: userError } = await sb.auth.getUser(jwt);
-    if (userError || !user) {
-      return new Response(JSON.stringify({ error: 'Not signed in' }), {
-        status: 401,
-        headers: { ...corsHeaders, 'Content-Type': 'application/json' },
-      });
-    }
+    let plan = 'pro';
+    try {
+      const body = await req.json();
+      if (body?.plan === 'verified') plan = 'verified';
+    } catch (_e) { /* no body: Pro */ }
 
-    const { data: profile } = await sb.from('profiles').select('stripe_customer_id').eq('id', user.id).single();
+    // STRIPE_PRICE_ID is the older secret name this project already had
+    // for Gieesk Pro; it still works.
+    const price = plan === 'verified'
+      ? Deno.env.get('STRIPE_PRICE_VERIFIED')
+      : (Deno.env.get('STRIPE_PRICE_PRO') || Deno.env.get('STRIPE_PRICE_ID'));
+    if (!price) return json({ error: `No price configured for ${plan}` }, 500);
 
-    let customerId = profile?.stripe_customer_id as string | undefined;
-    if (!customerId) {
-      const customer = await stripeRequest('customers', {
-        email: user.email || '',
-        'metadata[supabase_user_id]': user.id,
-      });
-      customerId = customer.id;
-      await sb.from('profiles').update({ stripe_customer_id: customerId }).eq('id', user.id);
-    }
+    const customer = await ensureCustomer(user.id, user.email);
+    const returnPage = plan === 'verified' ? 'verify.html' : 'upgrade.html';
 
-    const session = await stripeRequest('checkout/sessions', {
-      customer: customerId!,
+    const session = await stripe.checkout.sessions.create({
       mode: 'subscription',
-      'line_items[0][price]': STRIPE_PRICE_ID,
-      'line_items[0][quantity]': '1',
-      success_url: `${SITE_URL}/upgrade.html?success=true`,
-      cancel_url: `${SITE_URL}/upgrade.html?cancelled=true`,
-      'metadata[supabase_user_id]': user.id,
+      customer,
+      line_items: [{ price, quantity: 1 }],
+      // client_reference_id identifies the checkout; the subscription
+      // metadata is what every later invoice carries, which is how
+      // renewals find the right account.
+      client_reference_id: user.id,
+      // supabase_user_id is kept alongside user_id: the webhook this
+      // project ran before used that name, and old subscriptions still
+      // carry it.
+      metadata: { user_id: user.id, supabase_user_id: user.id, kind: plan },
+      subscription_data: { metadata: { user_id: user.id, supabase_user_id: user.id, kind: plan } },
+      allow_promotion_codes: true,
+      success_url: `${siteUrl}/${returnPage}?success=true&session_id={CHECKOUT_SESSION_ID}`,
+      cancel_url: `${siteUrl}/${returnPage}?cancelled=true`,
     });
 
-    return new Response(JSON.stringify({ url: session.url }), {
-      headers: { ...corsHeaders, 'Content-Type': 'application/json' },
-    });
+    return json({ url: session.url });
   } catch (err) {
-    console.error('[GieesK] create-checkout-session error:', err);
-    return new Response(JSON.stringify({ error: err instanceof Error ? err.message : 'Something went wrong' }), {
-      status: 500,
-      headers: { ...corsHeaders, 'Content-Type': 'application/json' },
-    });
+    console.error('[create-checkout-session]', err);
+    return json({ error: 'Could not start checkout' }, 500);
   }
 });

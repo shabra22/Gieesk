@@ -2814,3 +2814,32 @@ button.comment-mention {
 .discover-feed .discover-slide .discover-progress {
   bottom: var(--safe-area-inset-bottom, env(safe-area-inset-bottom, 0px));
 }
+
+/* ═══ GieesK Verified — the row in Account ═════════════════════════ */
+.pf-verify-row { margin-top: 12px; }
+.pf-verify-btn {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  padding: 12px 14px;
+  border-radius: 14px;
+  border: 1px solid var(--border-subtle);
+  background: var(--bg-elevated);
+  color: var(--text-primary);
+  font-family: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+.pf-verify-btn.is-verified { border-color: rgba(212,160,57,0.45); background: rgba(212,160,57,0.07); }
+.pf-verify-btn > i { font-size: 22px; color: var(--gold); flex-shrink: 0; }
+.pf-verify-text { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 2px; }
+.pf-verify-text strong { font-size: 14px; font-weight: 700; }
+.pf-verify-text small { font-size: 11.5px; color: var(--text-muted); line-height: 1.4; }
+.pf-verify-action {
+  display: inline-flex; align-items: center; gap: 2px;
+  flex-shrink: 0;
+  font-size: 12.5px;
+  font-weight: 700;
+  color: var(--gold);
+}
