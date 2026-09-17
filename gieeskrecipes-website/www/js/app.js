@@ -42,6 +42,8 @@ function initNavScrollSpy() {
 }
 
 function showLegal(type) {
+  if (typeof leaveDiscoverImmersive === 'function') leaveDiscoverImmersive();
+  document.body.classList.remove('discover-immersive');
   PAGES.forEach(function(id) {
     var el = document.getElementById(id);
     if (el) el.style.display = 'none';
@@ -68,6 +70,8 @@ function closeLegalPage() {
 }
 
 function openAbout() {
+  if (typeof leaveDiscoverImmersive === 'function') leaveDiscoverImmersive();
+  document.body.classList.remove('discover-immersive');
   PAGES.forEach(function(id) {
     var el = document.getElementById(id);
     if (el) el.style.display = 'none';
@@ -82,7 +86,10 @@ function showPage(page) {
   // Discover runs in immersive mode (no app header, no tab bar). Any
   // navigation away from it has to restore that chrome, so this is
   // cleared centrally rather than at each call site.
-  if (page !== 'discover') document.body.classList.remove('discover-immersive');
+  if (page !== 'discover') {
+    if (typeof leaveDiscoverImmersive === 'function') leaveDiscoverImmersive();
+    else document.body.classList.remove('discover-immersive');
+  }
 
   // Hide every page
   PAGES.forEach(id => {
@@ -301,6 +308,10 @@ document.addEventListener('DOMContentLoaded', () => {
   // and for sharing/bookmarking links to the legal pages).
   if (window.location.hash === '#privacy' || window.location.hash === '#terms') {
     showLegal(window.location.hash.slice(1));
+  } else if (window.location.hash === '#community' && typeof openCommunity === 'function') {
+    // Shared videos/posts link here (see sharePost). Without this the
+    // link just landed on the homepage.
+    openCommunity();
   }
 
   // Hero buttons

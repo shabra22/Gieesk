@@ -10,6 +10,11 @@ function openDashboard(tab) {
   // Hide every other page — was its own separate incomplete list
   // (missing page-about, page-privacy, page-terms), same bug pattern
   // found in openCommunity() and closeDashboard().
+  // Also has to release Discover's immersive mode: this path never went
+  // through showPage()/hideAllPages(), so going Discover -> Account (or
+  // back to Account from Discover) left the header and tab bar hidden.
+  if (typeof leaveDiscoverImmersive === 'function') leaveDiscoverImmersive();
+  document.body.classList.remove('discover-immersive');
   PAGES.forEach(function(id) {
     var el = document.getElementById(id);
     if (el) el.style.display = 'none';
@@ -228,12 +233,19 @@ function buildProfilePanel(panel) {
             <div class="profile-form">
               <div class="form-row">
                 <div class="form-field">
-                  <label class="form-label">Full Name</label>
+                  <label class="form-label">Full Name <span style="font-weight:400;color:var(--text-muted)">· private</span></label>
                   <input class="form-input" id="pfName" type="text" value="${name}" placeholder="Your full name" />
                 </div>
                 <div class="form-field">
-                  <label class="form-label">Username</label>
-                  <input class="form-input" id="pfUsername" type="text" placeholder="@username" />
+                  <label class="form-label">Username <span style="font-weight:400;color:var(--text-muted)">· public</span></label>
+                  <input class="form-input" id="pfUsername" type="text" placeholder="username" autocapitalize="none" autocorrect="off" spellcheck="false" maxlength="25" oninput="checkUsernameAvailability(this)" />
+                  <small id="pfUsernameStatus" class="username-status" aria-live="polite"></small>
+                  <small style="display:block;margin-top:6px;font-size:11.5px;color:var(--text-muted)">Shown on your videos and comments. Your full name is never shown publicly.</small>
+                  <button type="button" class="btn-ghost" style="margin-top:8px;padding:6px 12px;font-size:12.5px" onclick="if(typeof openUserProfile==='function'&&currentUser)openUserProfile(currentUser.id)"><i class="ti ti-user-circle"></i> View public profile</button>
+                  <label class="video-manage-row pf-privacy-row">
+                    <span><i class="ti ti-eye"></i> Profile view history<small>See who viewed your profile. When off, your visits to others aren’t shown either.</small></span>
+                    <input type="checkbox" class="vs-switch" id="pfViewHistory" checked onchange="if(typeof setProfileViewHistory==='function')setProfileViewHistory(this.checked)" />
+                  </label>
                 </div>
               </div>
               <div class="form-field">
@@ -352,7 +364,8 @@ async function resetProfileForm() {
   if (nameEl) nameEl.value = meta.full_name || meta.name || '';
 
   const { data } = await sb.from('profiles').select('*').eq('id', currentUser.id).single();
-  if (document.getElementById('pfUsername')) document.getElementById('pfUsername').value = (data && data.username) || '';
+  profileLoadedUsername = (data && data.username) || '';
+  if (document.getElementById('pfUsername')) document.getElementById('pfUsername').value = profileLoadedUsername;
   if (document.getElementById('pfBio'))      document.getElementById('pfBio').value      = (data && data.bio) || '';
   if (document.getElementById('pfCountry'))  { document.getElementById('pfCountry').value  = (data && data.country) || ''; document.getElementById('pfCountry').dispatchEvent(new Event('change')); }
   if (document.getElementById('pfCuisine'))  { document.getElementById('pfCuisine').value  = (data && data.favorite_cuisine) || ''; document.getElementById('pfCuisine').dispatchEvent(new Event('change')); }
@@ -367,6 +380,9 @@ async function loadProfile() {
   if (!sb || !currentUser) return;
   const { data } = await sb.from('profiles').select('*').eq('id', currentUser.id).single();
   if (!data) return;
+  profileLoadedUsername = data.username || '';
+  const viewHistory = document.getElementById('pfViewHistory');
+  if (viewHistory && typeof data.profile_view_history === 'boolean') viewHistory.checked = data.profile_view_history;
   if (data.username && document.getElementById('pfUsername')) document.getElementById('pfUsername').value = data.username;
   if (data.bio       && document.getElementById('pfBio'))      document.getElementById('pfBio').value      = data.bio;
   if (data.country          && document.getElementById('pfCountry')) { document.getElementById('pfCountry').value = data.country; document.getElementById('pfCountry').dispatchEvent(new Event('change')); }
@@ -378,36 +394,159 @@ async function loadProfile() {
   }
 }
 
+// Usernames feed @mentions, which only match letters, numbers and _.
+// A username with a space, dot or leading @ saved fine but could never be
+// mentioned.
+function normalizeUsername(raw) {
+  return String(raw || '').trim().replace(/^@+/, '').toLowerCase();
+}
+
+// Live "available / taken" hint under the username field while typing.
+// Debounced, and only the latest check is allowed to update the hint.
+let usernameCheckTimer = null;
+let usernameCheckSeq = 0;
+function checkUsernameAvailability(input) {
+  const statusEl = document.getElementById('pfUsernameStatus');
+  if (!statusEl) return;
+  clearTimeout(usernameCheckTimer);
+  const raw = input.value;
+  const clean = raw.trim().replace(/^@+/, '').toLowerCase();
+  const set = (text, state) => { statusEl.textContent = text; statusEl.dataset.state = state || ''; };
+
+  if (!clean) { set(''); return; }
+  if (/[^a-z0-9_]/.test(clean)) { set('Only letters, numbers and _ (no spaces or symbols).', 'bad'); return; }
+  if (clean.length < 3) { set('At least 3 characters.', 'bad'); return; }
+  if (clean.length > 24) { set('24 characters at most.', 'bad'); return; }
+  if (clean === profileLoadedUsername) { set('This is your username.', 'ok'); return; }
+
+  set('Checking…', 'pending');
+  const seq = ++usernameCheckSeq;
+  usernameCheckTimer = setTimeout(async () => {
+    const sb = getSupabase();
+    if (!sb) return;
+    const { data, error } = await sb.rpc('username_status', { name: clean });
+    if (seq !== usernameCheckSeq) return;
+    if (error) { set(''); return; } // function not installed: saving still checks
+    const messages = {
+      available: ['@' + clean + ' is available.', 'ok'],
+      yours: ['This is your username.', 'ok'],
+      taken: ['@' + clean + ' is already taken.', 'bad'],
+      reserved: ['That username isn’t available.', 'bad'],
+      invalid: ['Only letters, numbers and _, 3–24 characters.', 'bad'],
+    };
+    const [text, state] = messages[data] || ['', ''];
+    set(text, state);
+  }, 350);
+}
+
+// The username as last loaded from the database, so saving only renames
+// posts and comments when it actually changed.
+let profileLoadedUsername = '';
+
 async function saveProfile() {
   const sb = getSupabase();
   if (!sb || !currentUser) return;
-  const name     = document.getElementById('pfName')?.value.trim();
-  const username = document.getElementById('pfUsername')?.value.trim();
-  const bio      = document.getElementById('pfBio')?.value.trim();
-  const country  = document.getElementById('pfCountry')?.value || null;
-  const cuisine  = document.getElementById('pfCuisine')?.value || null;
-  const diets    = Array.from(document.querySelectorAll('#dietTags .diet-tag.active')).map(el => el.textContent.trim());
-
   const msg = document.getElementById('profileSaveMsg');
-  const { error } = await sb.from('profiles').upsert({ id: currentUser.id, full_name: name, username: username || null, bio, country, favorite_cuisine: cuisine, dietary_preferences: diets, updated_at: new Date().toISOString() });
+  const saveBtn = document.querySelector('#dash-panel-profile .form-actions .btn-gold');
 
-  if (error) {
-    // username has a unique constraint — this is the one failure a user
-    // is actually likely to hit, so it gets its own clear message rather
-    // than a raw database error string.
-    const friendly = error.message && error.message.toLowerCase().includes('username')
-      ? 'That username is already taken — please choose another.'
-      : "Couldn't save changes — please try again.";
-    if (msg) {
-      msg.textContent = friendly;
-      msg.style.color = '#F08060';
-      msg.style.display = '';
-      setTimeout(() => msg.style.display = 'none', 3500);
-    }
+  function show(text, ok) {
+    // The inline message sits at the top of the card while Save is at the
+    // bottom, often off-screen on a phone, so also show a toast.
+    if (typeof showGenericToast === 'function') showGenericToast(text);
+    if (!msg) return;
+    msg.textContent = text;
+    msg.style.color = ok ? 'var(--emerald)' : '#F08060';
+    msg.style.display = '';
+    clearTimeout(msg._hideTimer);
+    msg._hideTimer = setTimeout(() => { msg.style.display = 'none'; }, ok ? 2500 : 6000);
+  }
+
+  const name = document.getElementById('pfName')?.value.trim() || null;
+  const usernameInput = document.getElementById('pfUsername');
+  const username = normalizeUsername(usernameInput?.value);
+  const bio = document.getElementById('pfBio')?.value.trim() || null;
+  const country = document.getElementById('pfCountry')?.value || null;
+  const cuisine = document.getElementById('pfCuisine')?.value || null;
+  const diets = Array.from(document.querySelectorAll('#dietTags .diet-tag.active')).map(el => el.textContent.trim());
+
+  if (username && !/^[a-z0-9_]{3,24}$/.test(username)) {
+    show('Usernames can use 3–24 letters, numbers or _ (no spaces or symbols).', false);
+    usernameInput?.focus();
+    return;
+  }
+  if (usernameInput) usernameInput.value = username;
+
+  if (!username && profileLoadedUsername) {
+    show('A username is required: it is what others see instead of your name.', false);
+    usernameInput?.focus();
     return;
   }
 
-  await sb.auth.updateUser({ data: { full_name: name } });
+  const fields = {
+    full_name: name,
+    bio,
+    country,
+    favorite_cuisine: cuisine,
+    dietary_preferences: diets,
+    updated_at: new Date().toISOString(),
+  };
+
+  if (saveBtn) { saveBtn.disabled = true; saveBtn.dataset.label = saveBtn.textContent; saveBtn.textContent = 'Saving…'; }
+
+  // UPDATE the existing row rather than upsert. The profiles table only
+  // has a row-level-security policy for UPDATE (see supabase-setup.sql).
+  // An upsert is an INSERT ... ON CONFLICT, and Postgres checks the INSERT
+  // policy even when the row already exists, so every save was rejected
+  // with "new row violates row-level security policy". That error doesn't
+  // mention "username", so the user only ever saw the generic failure.
+  let { data: updated, error } = await sb.from('profiles')
+    .update(fields)
+    .eq('id', currentUser.id)
+    .select('id');
+
+  // No row yet (an account created before the auto-create trigger
+  // existed): create it. This path does need the INSERT policy.
+  if (!error && (!updated || !updated.length)) {
+    ({ error } = await sb.from('profiles').insert(Object.assign({ id: currentUser.id }, fields)));
+  }
+
+  // Username goes through setPublicUsername (community.js), which also
+  // replaces the name on your existing videos and comments. Saving it as a
+  // plain profile field left your old name on everything already posted.
+  // Called even when the username is unchanged: it also brings any older
+  // posts/comments that still carry a previous name up to date.
+  if (!error && username && typeof setPublicUsername === 'function') {
+    const result = await setPublicUsername(username);
+    if (result.error) error = result.error;
+    else profileLoadedUsername = result.username;
+  }
+
+  if (saveBtn) { saveBtn.disabled = false; saveBtn.textContent = saveBtn.dataset.label || 'Save Changes'; }
+
+  if (error) {
+    console.error('[GieesK] Profile save failed:', error);
+    const text = String(error.message || '').toLowerCase();
+    let friendly;
+    if (error.code === '22023') {
+      friendly = error.message;
+    } else if (error.code === '23505' || text.includes('duplicate') || text.includes('unique') || text.includes('taken')) {
+      friendly = /isn.?t available/i.test(String(error.message || ''))
+        ? 'That username isn’t available — please choose another.'
+        : 'That username is already taken — please choose another.';
+    } else if (error.code === '42501' || text.includes('row-level security') || text.includes('permission')) {
+      friendly = "Your profile couldn't be saved because of an account permission issue. Please contact support.";
+    } else if (error.code === '42703' || text.includes('column')) {
+      friendly = "Couldn't save changes: the profile database is missing a field. Please contact support.";
+    } else {
+      friendly = `Couldn't save changes: ${error.message || 'please try again.'}`;
+    }
+    show(friendly, false);
+    return;
+  }
+
+  // Keep auth metadata in step; a failure here doesn't undo the save.
+  const { error: metaError } = await sb.auth.updateUser({ data: { full_name: name } });
+  if (metaError) console.warn('[GieesK] Profile saved, but auth name update failed:', metaError);
 
   // The public display name is cached (community.js) to avoid refetching
   // it on every comment — clear it here so a username change takes effect
@@ -417,15 +556,10 @@ async function saveProfile() {
   // Update nav avatar name
   const nameEl = document.getElementById('userMenuName');
   const dashName = document.getElementById('dashHeroName');
-  if (nameEl)   nameEl.textContent   = name;
-  if (dashName) dashName.textContent = name;
+  if (nameEl && name) nameEl.textContent = name;
+  if (dashName && name) dashName.textContent = name;
 
-  if (msg) {
-    msg.textContent = '✓ Saved!';
-    msg.style.color = 'var(--emerald)';
-    msg.style.display = '';
-    setTimeout(() => msg.style.display = 'none', 2500);
-  }
+  show('✓ Saved!', true);
 }
 
 function togglePwdVisibility(inputId, btnEl) {
@@ -550,6 +684,13 @@ async function previewAvatar(input) {
   const publicUrl = urlData.publicUrl + '?t=' + Date.now();
 
   const { error: updateError } = await sb.auth.updateUser({ data: { avatar_url: publicUrl } });
+  // Also on the public profile, so other people see the new photo on your
+  // videos and profile page (it was only ever saved to the sign-in account).
+  if (!updateError) {
+    const { error: profileAvatarError } = await sb.from('profiles').update({ avatar_url: publicUrl }).eq('id', currentUser.id);
+    if (profileAvatarError) console.warn('[GieesK] Could not save photo to public profile:', profileAvatarError);
+    if (typeof publicProfileCache !== 'undefined') publicProfileCache.delete(String(currentUser.id));
+  }
   if (prev) prev.querySelector('.avatar-upload-overlay').innerHTML = '<i class="ti ti-camera"></i>';
   avatarUploadInProgress = false;
   input.value = '';

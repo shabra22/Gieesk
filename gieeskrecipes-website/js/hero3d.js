@@ -19,6 +19,12 @@
   var canvas = document.getElementById('heroCanvas');
   if (!canvas || typeof THREE === 'undefined') return;
 
+  // Not in the Android app. The canvas is hidden there (app-native-ui.css),
+  // but the WebGL scene was still created and rendered every frame on
+  // Home: a high-performance GPU context competing with video playback
+  // and draining battery for something nobody could see.
+  if (window.Capacitor && window.Capacitor.isNativePlatform && window.Capacitor.isNativePlatform()) return;
+
   var REDUCED = window.matchMedia &&
     window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 

@@ -12,7 +12,7 @@
   z-index: 500;
   background: var(--bg-elevated, #16150F);
   border-top: 1px solid rgba(255,255,255,0.08);
-  padding: 6px 4px calc(6px + env(safe-area-inset-bottom, 0px));
+  padding: 6px 4px calc(6px + var(--safe-area-inset-bottom, env(safe-area-inset-bottom, 0px)));
   justify-content: space-around;
   align-items: center;
 }
@@ -23,7 +23,7 @@ body.is-native-app .app-tab-bar {
 
 /* Push page content up so the tab bar never covers it */
 body.is-native-app {
-  padding-bottom: calc(58px + env(safe-area-inset-bottom, 0px));
+  padding-bottom: calc(58px + var(--safe-area-inset-bottom, env(safe-area-inset-bottom, 0px)));
 }
 
 /* The existing top nav's link list is redundant once the bottom

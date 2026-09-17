@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>GieesK Verified — Get the badge | GieesK Recipes</title>
+  <meta name="description" content="GieesK Verified confirms you're really you: a gold tick next to your name on every video, comment and profile." />
+  <link rel="canonical" href="https://gieesk.com/verify.html" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css" />
+  <link rel="stylesheet" href="css/variables.css" />
+  <link rel="stylesheet" href="css/base.css" />
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <style>
+    body { background: var(--bg-void, #0A0A09); min-height: 100vh; }
+    .vf-wrap { max-width: 480px; margin: 0 auto; padding: 60px 24px 48px; }
+    .vf-back { color: var(--text-muted, #8A8A82); font-size: 14px; text-decoration: none; display: inline-flex; align-items: center; gap: 6px; margin-bottom: 32px; }
+    .vf-badge { display: inline-flex; align-items: center; gap: 6px; padding: 5px 14px; border-radius: 999px; background: rgba(212,160,57,0.12); color: var(--gold, #D4A039); font-size: 12.5px; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; margin-bottom: 16px; }
+    .vf-title { font-family: var(--font-display, serif); font-size: 34px; color: var(--text-primary, #F0EEE8); margin: 0 0 8px; }
+    .vf-sub { color: var(--text-muted, #8A8A82); font-size: 14.5px; line-height: 1.6; margin: 0; }
+    .vf-name-demo { display: flex; align-items: center; gap: 8px; margin: 26px 0 0; padding: 14px 16px; border-radius: 14px; background: var(--bg-elevated, #161512); border: 1px solid var(--border-subtle, rgba(255,255,255,0.08)); }
+    .vf-name-demo .vf-dot { width: 34px; height: 34px; border-radius: 50%; background: linear-gradient(135deg, #3a3833, #1b1a17); }
+    .vf-name-demo strong { color: var(--text-primary, #F0EEE8); font-size: 15px; }
+    .vf-name-demo i { color: var(--gold, #D4A039); font-size: 17px; }
+    .vf-price { font-size: 40px; font-weight: 800; color: var(--text-primary, #F0EEE8); margin: 26px 0 4px; }
+    .vf-price span { font-size: 16px; font-weight: 500; color: var(--text-muted, #8A8A82); }
+    .vf-list { list-style: none; padding: 0; margin: 24px 0; display: flex; flex-direction: column; gap: 14px; }
+    .vf-list li { display: flex; align-items: flex-start; gap: 12px; color: var(--text-secondary, #B8B6AE); font-size: 14.5px; line-height: 1.5; }
+    .vf-list i { color: var(--gold, #D4A039); font-size: 18px; margin-top: 1px; flex-shrink: 0; }
+    .vf-btn { width: 100%; padding: 15px; border-radius: 999px; background: var(--gold, #D4A039); color: #0A0A09; border: none; font-weight: 700; font-size: 15px; cursor: pointer; font-family: inherit; }
+    .vf-btn:disabled { opacity: 0.6; cursor: default; }
+    .vf-btn-ghost { width: 100%; margin-top: 10px; padding: 13px; border-radius: 999px; background: none; border: 1px solid var(--border-subtle, rgba(255,255,255,0.14)); color: var(--text-secondary, #B8B6AE); font-family: inherit; font-size: 14px; font-weight: 600; cursor: pointer; }
+    .vf-state { margin: 24px 0 0; padding: 16px 18px; border-radius: 14px; border: 1px solid var(--border-subtle, rgba(255,255,255,0.08)); background: var(--bg-elevated, #161512); }
+    .vf-state h2 { margin: 0 0 6px; font-size: 16px; color: var(--text-primary, #F0EEE8); }
+    .vf-state p { margin: 0; font-size: 13.5px; color: var(--text-muted, #8A8A82); line-height: 1.55; }
+    .vf-state.is-good { border-color: rgba(29,158,117,0.4); }
+    .vf-state.is-warn { border-color: rgba(240,128,96,0.4); }
+    .vf-msg { font-size: 13.5px; margin-top: 14px; text-align: center; display: none; }
+    .vf-note { font-size: 12.5px; color: var(--text-muted, #8A8A82); line-height: 1.6; margin-top: 18px; }
+    .vf-steps { counter-reset: s; list-style: none; padding: 0; margin: 20px 0 0; display: flex; flex-direction: column; gap: 12px; }
+    .vf-steps li { counter-increment: s; display: flex; gap: 12px; color: var(--text-secondary, #B8B6AE); font-size: 14px; }
+    .vf-steps li::before { content: counter(s); flex-shrink: 0; width: 22px; height: 22px; border-radius: 50%; background: rgba(212,160,57,0.15); color: var(--gold, #D4A039); font-size: 12px; font-weight: 800; display: flex; align-items: center; justify-content: center; }
+  </style>
+</head>
+<body>
+  <div class="vf-wrap">
+    <a href="/" class="vf-back"><i class="ti ti-arrow-left"></i> Back to GieesK Recipes</a>
+
+    <span class="vf-badge"><i class="ti ti-rosette-discount-check-filled"></i> GieesK Verified</span>
+    <h1 class="vf-title">Prove it's really you.</h1>
+    <p class="vf-sub">A gold tick next to your name wherever you appear — videos, comments, your profile — so people know the cook they're following is the real one.</p>
+
+    <div class="vf-name-demo">
+      <span class="vf-dot"></span>
+      <strong>your_username</strong>
+      <i class="ti ti-rosette-discount-check-filled"></i>
+    </div>
+
+    <!-- Keep this in step with the yearly price you created in Stripe. -->
+    <div class="vf-price" id="vfPrice">$29.99 <span>/ year</span></div>
+
+    <ul class="vf-list">
+      <li><i class="ti ti-rosette-discount-check"></i> The verified tick on every video, comment and profile view</li>
+      <li><i class="ti ti-shield-lock"></i> Your name is protected from impersonation — one verified account per person</li>
+      <li><i class="ti ti-id"></i> A one-off ID and selfie check, handled entirely by Stripe</li>
+      <li><i class="ti ti-refresh"></i> Renews yearly. Cancel anytime; the tick stays until the year is up</li>
+    </ul>
+
+    <div id="vfBody">
+      <p class="vf-sub">Loading…</p>
+    </div>
+
+    <div id="vfMsg" class="vf-msg"></div>
+
+    <p class="vf-note">
+      <strong>About your ID:</strong> the document and selfie go straight to Stripe Identity, which runs the check.
+      GieesK never receives or stores your document, ID number or date of birth — only whether the check passed.
+      A tick means the identity check passed and the subscription is active; it isn't an endorsement of what someone cooks or posts.
+    </p>
+  </div>
+
+  <script src="js/supabase.js"></script>
+  <script>
+    (async function () {
+      const params = new URLSearchParams(window.location.search);
+      const body = document.getElementById('vfBody');
+      const msg = document.getElementById('vfMsg');
+      const sb = getSupabase();
+
+      function showMsg(text, color) {
+        msg.textContent = text;
+        msg.style.color = color;
+        msg.style.display = '';
+      }
+      const fmtDate = (d) => new Date(d).toLocaleDateString(undefined, { year: 'numeric', month: 'long', day: 'numeric' });
+
+      const { data: { session } } = await sb.auth.getSession();
+      if (!session) {
+        body.innerHTML = '<button class="vf-btn" id="vfSignIn">Sign in to get verified</button>';
+        document.getElementById('vfSignIn').addEventListener('click', () => {
+          window.location.href = '/?login=true&then=verify';
+        });
+        return;
+      }
+
+      async function callFunction(name, payload) {
+        const { data, error } = await sb.functions.invoke(name, {
+          headers: { Authorization: `Bearer ${session.access_token}` },
+          body: payload || {},
+        });
+        if (error || !data?.url) throw new Error(data?.error || error?.message || 'failed');
+        return data.url;
+      }
+
+      async function loadState() {
+        const { data, error } = await sb.rpc('get_my_verification');
+        if (error) return null;
+        return Array.isArray(data) ? data[0] : data;
+      }
+
+      function render(state) {
+        const status = state?.verification_status || 'none';
+        const paidUntil = state?.paid_until ? new Date(state.paid_until) : null;
+        const paid = !!paidUntil && paidUntil > new Date();
+
+        // Already verified.
+        if (state?.is_verified) {
+          body.innerHTML = `
+            <div class="vf-state is-good">
+              <h2><i class="ti ti-rosette-discount-check-filled" style="color:var(--gold)"></i> You're verified</h2>
+              <p>Verified since ${state.verified_since ? fmtDate(state.verified_since) : 'recently'}.
+                 ${paidUntil ? `Renews on ${fmtDate(paidUntil)}.` : ''}</p>
+            </div>
+            <button class="vf-btn-ghost" id="vfBilling">Manage billing</button>`;
+          wireBilling();
+          return;
+        }
+
+        // Paid, identity check still to do (or to redo).
+        if (paid && (status === 'awaiting_id' || status === 'failed')) {
+          body.innerHTML = `
+            <div class="vf-state ${status === 'failed' ? 'is-warn' : ''}">
+              <h2>${status === 'failed' ? 'That check didn\'t pass' : 'One step left'}</h2>
+              <p>${status === 'failed'
+                ? (state.note ? escapeText(state.note) : 'Stripe couldn\'t confirm your ID.') + ' You can try again — have your ID ready and good light.'
+                : 'Confirm your identity with Stripe: a photo of your ID and a selfie. It takes about two minutes.'}</p>
+            </div>
+            <ol class="vf-steps">
+              <li>Have a passport, national ID or driving licence ready</li>
+              <li>Stripe photographs the document and your face</li>
+              <li>The tick appears on your profile once it passes</li>
+            </ol>
+            <button class="vf-btn" id="vfIdentity" style="margin-top:20px">${status === 'failed' ? 'Try the check again' : 'Verify my identity'}</button>
+            <button class="vf-btn-ghost" id="vfBilling">Manage billing</button>`;
+          wireIdentity();
+          wireBilling();
+          return;
+        }
+
+        // Check submitted, waiting on Stripe.
+        if (status === 'processing') {
+          body.innerHTML = `
+            <div class="vf-state">
+              <h2>Checking your ID</h2>
+              <p>Stripe is reviewing what you submitted. This usually takes a couple of minutes, sometimes longer. You can close this page — the tick appears on your profile as soon as it passes.</p>
+            </div>
+            <button class="vf-btn-ghost" id="vfRefresh">Check again</button>`;
+          document.getElementById('vfRefresh').addEventListener('click', async () => {
+            render(await loadState());
+          });
+          return;
+        }
+
+        // Lapsed: was verified, subscription ended.
+        if (status === 'lapsed') {
+          body.innerHTML = `
+            <div class="vf-state is-warn">
+              <h2>Your badge has lapsed</h2>
+              <p>The verification subscription ended, so the tick was removed. Subscribing again restores it${state.verified_since ? ' without a new ID check in most cases' : ''}.</p>
+            </div>
+            <button class="vf-btn" id="vfBuy" style="margin-top:16px">Get verified again</button>`;
+          wireBuy();
+          return;
+        }
+
+        // Nothing yet.
+        body.innerHTML = `
+          <ol class="vf-steps">
+            <li>Subscribe to GieesK Verified</li>
+            <li>Confirm your identity with Stripe (ID + selfie)</li>
+            <li>The gold tick appears next to your name</li>
+          </ol>
+          <button class="vf-btn" id="vfBuy" style="margin-top:20px">Get verified</button>
+          <p class="vf-note" style="text-align:center;margin-top:12px">You'll be charged yearly. Cancel anytime from Manage billing.</p>`;
+        wireBuy();
+      }
+
+      function escapeText(s) {
+        return String(s).replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+      }
+
+      function wireBuy() {
+        const btn = document.getElementById('vfBuy');
+        if (!btn) return;
+        btn.addEventListener('click', async () => {
+          btn.disabled = true;
+          btn.textContent = 'Opening checkout…';
+          try {
+            window.location.href = await callFunction('create-checkout-session', { plan: 'verified' });
+          } catch (e) {
+            btn.disabled = false;
+            btn.textContent = 'Get verified';
+            showMsg("Couldn't start checkout — please try again.", '#F08060');
+          }
+        });
+      }
+
+      function wireIdentity() {
+        const btn = document.getElementById('vfIdentity');
+        if (!btn) return;
+        btn.addEventListener('click', async () => {
+          const label = btn.textContent;
+          btn.disabled = true;
+          btn.textContent = 'Opening Stripe…';
+          try {
+            window.location.href = await callFunction('create-identity-session');
+          } catch (e) {
+            btn.disabled = false;
+            btn.textContent = label;
+            showMsg("Couldn't start the identity check — please try again.", '#F08060');
+          }
+        });
+      }
+
+      function wireBilling() {
+        const btn = document.getElementById('vfBilling');
+        if (!btn) return;
+        btn.addEventListener('click', async () => {
+          btn.disabled = true;
+          try {
+            window.location.href = await callFunction('create-billing-portal-session');
+          } catch (e) {
+            btn.disabled = false;
+            showMsg("Couldn't open billing — please try again.", '#F08060');
+          }
+        });
+      }
+
+      if (params.get('cancelled') === 'true') showMsg('Checkout cancelled — no charge was made.', '#8A8A82');
+      if (params.get('success') === 'true') showMsg('Payment received. One step left: the identity check.', '#1D9E75');
+      if (params.get('checked') === 'true') showMsg('Thanks — Stripe is checking your ID now.', '#8A8A82');
+
+      let state = await loadState();
+      render(state);
+
+      // Straight after paying or submitting, the webhook may land a
+      // second or two later. Re-check a few times rather than showing a
+      // stale screen.
+      if (params.get('success') === 'true' || params.get('checked') === 'true') {
+        let tries = 0;
+        const timer = setInterval(async () => {
+          tries += 1;
+          const next = await loadState();
+          if (JSON.stringify(next) !== JSON.stringify(state)) {
+            state = next;
+            render(state);
+          }
+          if (tries >= 6) clearInterval(timer);
+        }, 2500);
+      }
+    })();
+  </script>
+</body>
+</html>

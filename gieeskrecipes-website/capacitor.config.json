@@ -21,6 +21,9 @@
       "style": "DARK",
       "backgroundColor": "#0A0A09"
     },
+    "SystemBars": {
+      "insetsHandling": "css"
+    },
     "GoogleAuth": {
       "scopes": ["profile", "email"],
       "androidClientId": "692564793366-29ecu7vufmgmsqest0vji70d42nu1lfl.apps.googleusercontent.com",

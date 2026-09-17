@@ -482,42 +482,74 @@ async function saveCurrentRecipeFromModal() {
 //   1. Capacitor's native Share plugin (app) — the real OS share sheet
 //   2. Web Share API (modern mobile browsers) — the browser's own share sheet
 //   3. Copy link to clipboard — universal fallback, works everywhere
-async function shareCurrentRecipeFromModal() {
-  var recipe = window._currentModalRecipe;
-  if (!recipe) return;
+// Public site origin for links that leave the app. Inside the Capacitor
+// app window.location.origin is https://localhost, so building share
+// links from it sent people a URL that only works on the sender's phone.
+function publicSiteOrigin() {
+  var o = window.location.origin || '';
+  if (!/^https?:\/\//.test(o) || /localhost|127\.0\.0\.1|capacitor:/.test(o)) {
+    return 'https://gieesk.com';
+  }
+  return o;
+}
 
-  var url = window.location.origin + '/recipes/' + recipe.id + '.html';
-  var shareData = {
-    title: recipe.title,
-    text: 'Check out this recipe for ' + recipe.title + ' on GieesK Recipes!',
-    url: url
-  };
-
+// One share path for the whole site/app. Opens the system share sheet
+// (WhatsApp, Instagram, Messages, etc.) and only falls back to copying
+// the link when no share sheet exists at all.
+//   1. Capacitor Share plugin: the real Android share sheet in-app.
+//      Android's WebView has no navigator.share, so without this plugin
+//      the app could only ever copy the link.
+//   2. navigator.share: mobile browsers on the website.
+//   3. Clipboard: desktop browsers with no share sheet.
+async function shareContent(shareData) {
   var CapShare = window.Capacitor?.Plugins?.Share;
   if (CapShare) {
     try {
-      await CapShare.share(shareData);
-      return;
+      await CapShare.share({
+        title: shareData.title,
+        text: shareData.text,
+        url: shareData.url,
+        dialogTitle: shareData.dialogTitle || 'Share via'
+      });
+      return 'shared';
     } catch (err) {
-      if (err?.message?.toLowerCase().includes('cancel')) return; // user backed out — not an error
+      var msg = String(err?.message || err || '').toLowerCase();
+      if (msg.includes('cancel')) return 'cancelled'; // user closed the sheet
+      console.warn('[GieesK] Native share failed, trying fallback:', err);
     }
   }
 
   if (navigator.share) {
     try {
       await navigator.share(shareData);
-      return;
+      return 'shared';
     } catch (err) {
-      if (err?.name === 'AbortError') return; // user cancelled the native share sheet
+      if (err?.name === 'AbortError') return 'cancelled';
+      console.warn('[GieesK] Web share failed, trying fallback:', err);
     }
   }
 
   try {
-    await navigator.clipboard.writeText(url);
+    await navigator.clipboard.writeText(shareData.url);
     showGenericToast('Link copied to clipboard!');
+    return 'copied';
   } catch (err) {
     console.warn('[GieesK] Could not copy share link:', err);
+    showGenericToast("Couldn't share right now. Please try again.");
+    return 'failed';
   }
+}
+
+async function shareCurrentRecipeFromModal() {
+  var recipe = window._currentModalRecipe;
+  if (!recipe) return;
+
+  await shareContent({
+    title: recipe.title,
+    text: 'Check out this recipe for ' + recipe.title + ' on GieesK Recipes!',
+    url: publicSiteOrigin() + '/recipes/' + recipe.id + '.html',
+    dialogTitle: 'Share recipe'
+  });
 }
 
 // A small, standalone toast — not tied to any specific modal's DOM, so

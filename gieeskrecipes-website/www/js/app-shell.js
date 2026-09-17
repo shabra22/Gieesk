@@ -250,44 +250,75 @@ function hapticTap() {
     if (!panel || !openBtn) return;
     openBtn.addEventListener('click', function () {
       panel.classList.add('open');
+      // Remember the previous "seen" time so new items can be highlighted.
+      try {
+        localStorage.setItem('gieesk:notifsSeenAtPrev', localStorage.getItem('gieesk:notifsSeenAt') || '');
+        localStorage.setItem('gieesk:notifsSeenAt', new Date().toISOString());
+      } catch (e) {}
       loadNotifications();
-      try { localStorage.setItem('gieesk:notifsSeenAt', new Date().toISOString()); } catch (e) {}
       var badge = document.getElementById('appNotifBadge');
       if (badge) badge.style.display = 'none';
     });
     if (closeBtn) closeBtn.addEventListener('click', function () { panel.classList.remove('open'); });
     refreshNotifBadge();
+    // The badge used to be checked once at startup only. Now also every
+    // two minutes while the app is open, and whenever it comes back to
+    // the foreground.
+    setInterval(function () { if (!document.hidden) refreshNotifBadge(); }, 2 * 60 * 1000);
+    document.addEventListener('visibilitychange', function () { if (!document.hidden) refreshNotifBadge(); });
+    window.addEventListener('gieesk:authSucceeded', function () { setTimeout(refreshNotifBadge, 2000); });
   }
 
+  // Built from activity the app can already read, rather than a
+  // notifications table anyone could write to:
+  //  • likes and comments on your posts and videos
+  //  • likes on your comments
+  //  • new followers
+  //  • profile views (who visited, once a day each; see profile views)
+  // Names are each person's current username.
   async function fetchNotifications() {
     if (typeof getSupabase !== 'function' || typeof currentUser === 'undefined' || !currentUser) return [];
     var sb = getSupabase();
     if (!sb) return [];
+    var me = currentUser.id;
 
-    var myPosts = await sb.from('community_posts')
-      .select('id, text, recipe_title, video_url')
-      .eq('user_id', currentUser.id);
-    var posts = myPosts.data || [];
-    if (!posts.length) return [];
+    var base = await Promise.all([
+      sb.from('community_posts').select('id, text, recipe_title, video_url').eq('user_id', me).limit(200),
+      sb.from('post_comments').select('id, text').eq('user_id', me).order('created_at', { ascending: false }).limit(200),
+      sb.from('profiles').select('username').eq('id', me).maybeSingle(),
+    ]);
+    var posts = base[0].data || [];
+    var myComments = base[1].data || [];
+    var myUsername = base[2].data && base[2].data.username;
 
     var postIds = posts.map(function (p) { return p.id; });
     var postById = {};
     posts.forEach(function (p) { postById[p.id] = p; });
+    var commentById = {};
+    myComments.forEach(function (c) { commentById[c.id] = c; });
+    var none = Promise.resolve({ data: [] });
 
     var results = await Promise.all([
-      sb.from('post_likes').select('post_id, user_id, created_at').in('post_id', postIds).limit(100),
-      sb.from('post_comments').select('post_id, user_id, author_name, text, created_at').in('post_id', postIds).limit(100),
+      postIds.length ? sb.from('post_likes').select('post_id, user_id, created_at').in('post_id', postIds).order('created_at', { ascending: false }).limit(100) : none,
+      postIds.length ? sb.from('post_comments').select('post_id, user_id, author_name, text, created_at').in('post_id', postIds).order('created_at', { ascending: false }).limit(100) : none,
+      myComments.length ? sb.from('comment_likes').select('comment_id, user_id, created_at').in('comment_id', myComments.map(function (c) { return c.id; })).order('created_at', { ascending: false }).limit(100) : none,
+      myUsername ? sb.from('chef_follows').select('user_id, created_at').eq('chef_name', myUsername).order('created_at', { ascending: false }).limit(100) : none,
+      sb.rpc('get_my_profile_views', { p_limit: 50 }),
     ]);
-    var likes = (results[0].data || []).filter(function (l) { return l.user_id !== currentUser.id; });
-    var comments = (results[1].data || []).filter(function (c) { return c.user_id !== currentUser.id; });
+    // Any of these can be missing on an older database; each is optional.
+    function rows(r) { return (r && !r.error && r.data) ? r.data : []; }
+    var likes = rows(results[0]).filter(function (l) { return l.user_id !== me; });
+    var comments = rows(results[1]).filter(function (c) { return c.user_id !== me; });
+    var commentLikes = rows(results[2]).filter(function (l) { return l.user_id !== me; });
+    var follows = rows(results[3]).filter(function (f) { return f.user_id !== me && f.created_at; });
+    var views = rows(results[4]);
 
-    // Likes only store a user id, so resolve those to real usernames in
-    // one batched lookup rather than showing "someone liked your post".
-    var likerIds = likes.map(function (l) { return l.user_id; });
-    var nameById = {};
-    if (likerIds.length) {
-      var profs = await sb.from('profiles').select('id, username, full_name').in('id', likerIds);
-      (profs.data || []).forEach(function (p) { nameById[p.id] = p.username || p.full_name || 'Someone'; });
+    var actorIds = [];
+    [likes, comments, commentLikes, follows].forEach(function (list) { list.forEach(function (r) { actorIds.push(r.user_id); }); });
+    var profiles = (typeof fetchPublicProfiles === 'function' && actorIds.length) ? await fetchPublicProfiles(actorIds) : new Map();
+    function nameOf(userId, fallback) {
+      var pub = profiles.get ? profiles.get(String(userId)) : null;
+      return (pub && pub.username) || fallback || 'Someone';
     }
 
     function label(post) {
@@ -295,55 +326,76 @@ function hapticTap() {
       var t = post.recipe_title || post.text || (post.video_url ? 'your video' : 'your post');
       return t.length > 40 ? t.slice(0, 40) + '…' : t;
     }
+    function snippet(text) {
+      text = String(text || '');
+      return text.length > 40 ? text.slice(0, 40) + '…' : text;
+    }
 
     var items = [];
     likes.forEach(function (l) {
-      items.push({
-        icon: 'ti-heart-filled', color: '#F08060',
-        who: nameById[l.user_id] || 'Someone',
-        action: 'liked', detail: label(postById[l.post_id]),
-        at: l.created_at,
-      });
+      items.push({ icon: 'ti-heart-filled', color: '#F08060', who: nameOf(l.user_id), userId: l.user_id,
+        action: 'liked', detail: label(postById[l.post_id]), at: l.created_at });
     });
     comments.forEach(function (c) {
-      items.push({
-        icon: 'ti-message-circle', color: 'var(--gold)',
-        who: c.author_name || 'Someone',
-        action: 'commented on', detail: label(postById[c.post_id]),
-        body: c.text, at: c.created_at,
-      });
+      items.push({ icon: 'ti-message-circle', color: 'var(--gold)', who: nameOf(c.user_id, c.author_name), userId: c.user_id,
+        action: 'commented on', detail: label(postById[c.post_id]), body: c.text, at: c.created_at });
+    });
+    commentLikes.forEach(function (l) {
+      items.push({ icon: 'ti-heart', color: '#F08060', who: nameOf(l.user_id), userId: l.user_id,
+        action: 'liked your comment', detail: snippet(commentById[l.comment_id] && commentById[l.comment_id].text), at: l.created_at });
+    });
+    follows.forEach(function (f) {
+      items.push({ icon: 'ti-user-plus', color: 'var(--emerald, #1D9E75)', who: nameOf(f.user_id), userId: f.user_id,
+        action: 'started following you', detail: '', at: f.created_at });
+    });
+    views.forEach(function (v) {
+      items.push({ icon: 'ti-eye', color: '#8FB3FF', who: v.username || 'Someone', userId: v.viewer_id,
+        action: 'viewed your profile', detail: '', at: v.viewed_at, kind: 'view' });
     });
 
     items.sort(function (a, b) { return new Date(b.at) - new Date(a.at); });
-    return items.slice(0, 40);
+    return items.slice(0, 60);
   }
 
   async function loadNotifications() {
     var list = document.getElementById('appNotifList');
     if (!list) return;
     list.innerHTML = '<div class="dash-loading">Loading…</div>';
+    var seenBefore = null;
+    try { seenBefore = localStorage.getItem('gieesk:notifsSeenAtPrev'); } catch (e) {}
     var items = await fetchNotifications();
     if (!items.length) {
       list.innerHTML = '<div class="app-notif-empty"><i class="ti ti-bell"></i>'
         + '<p>No notifications yet</p>'
-        + '<span>Likes and comments on your posts will show up here.</span></div>';
+        + '<span>Likes, comments, new followers and profile views will show up here.</span></div>';
       return;
     }
     var esc = (typeof escapeHTML === 'function') ? escapeHTML : function (s) { return s; };
     list.innerHTML = items.map(function (n) {
-      return '<div class="app-notif-item">'
+      var unread = seenBefore ? new Date(n.at) > new Date(seenBefore) : false;
+      var who = n.who && n.who !== 'Someone' ? '@' + n.who : 'Someone';
+      return '<button type="button" class="app-notif-item' + (unread ? ' is-unread' : '') + '"'
+        + (n.userId ? ' data-user-id="' + esc(n.userId) + '"' : '') + '>'
         + '<i class="ti ' + n.icon + '" style="color:' + n.color + '"></i>'
-        + '<div class="app-notif-text">'
-        + '<p><strong>' + esc(n.who) + '</strong> ' + n.action + ' <em>' + esc(n.detail) + '</em></p>'
+        + '<span class="app-notif-text">'
+        + '<span class="app-notif-line"><strong>' + esc(who) + '</strong> ' + esc(n.action) + (n.detail ? ' <em>' + esc(n.detail) + '</em>' : '') + '</span>'
         + (n.body ? '<span class="app-notif-body">"' + esc(n.body) + '"</span>' : '')
         + '<span class="app-notif-time">' + (typeof timeAgo === 'function' ? timeAgo(n.at) : '') + '</span>'
-        + '</div></div>';
+        + '</span></button>';
     }).join('');
+    // Tapping a notification opens that person's profile.
+    list.querySelectorAll('.app-notif-item[data-user-id]').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        document.getElementById('appNotifPanel').classList.remove('open');
+        if (typeof openUserProfile === 'function') openUserProfile(btn.dataset.userId);
+      });
+    });
   }
 
   async function refreshNotifBadge() {
     var badge = document.getElementById('appNotifBadge');
     if (!badge) return;
+    if (document.getElementById('appNotifPanel') && document.getElementById('appNotifPanel').classList.contains('open')) return;
     var items = await fetchNotifications();
     var seenAt = null;
     try { seenAt = localStorage.getItem('gieesk:notifsSeenAt'); } catch (e) {}
@@ -438,8 +490,10 @@ function hapticTap() {
     strip.querySelectorAll('.app-chef-item').forEach(function (item) {
       item.addEventListener('click', function () {
         setActiveAppTab(document.querySelector('.app-tab[data-page="community"]'));
-        openCommunity();
-        setTimeout(function () { openChefProfile(parseInt(item.dataset.index, 10)); }, 100);
+        // Straight to the profile. This used to open Community first and
+        // then the profile 100ms later, which put an extra Community step
+        // in the back history: Home -> chef -> back landed on Community.
+        openChefProfile(parseInt(item.dataset.index, 10));
       });
     });
 
@@ -526,87 +580,107 @@ function hapticTap() {
     setTimeout(function () { toast.remove(); }, 2000);
   }
 
+  // Closes the top-most open layer (sheet, modal, overlay) if there is
+  // one. Returns true if it closed something. Ordered top-most first, so
+  // e.g. the comment sheet closes before the video it sits on.
+  function closeTopLayer() {
+    function isOpen(id) {
+      var el = document.getElementById(id);
+      return !!el && el.classList.contains('open');
+    }
+    function call(fnName) {
+      if (typeof window[fnName] === 'function') { window[fnName](); return true; }
+      return false;
+    }
+    function call2(fnName, arg) {
+      if (typeof window[fnName] === 'function') { window[fnName](arg); return true; }
+      return false;
+    }
+
+    if (isOpen('appOptionPicker'))   { call('closeOptionPicker'); return true; }
+    if (isOpen('appPaywallOverlay')) { document.getElementById('appPaywallOverlay').classList.remove('open'); return true; }
+
+    // Only when it's an ordinary login prompt. As the mandatory sign-in
+    // gate it must not be dismissable (see the auth-gate check in the
+    // back handler).
+    if (isOpen('authModal') && !document.body.classList.contains('auth-gate-active')) {
+      if (!call('closeAuthModal')) {
+        document.getElementById('authModal').classList.remove('open');
+        document.body.style.overflow = '';
+      }
+      return true;
+    }
+
+    if (isOpen('reportVideoModalOverlay')) { call('closeReportVideoModal'); return true; }
+
+    // Video sheets are created on demand and removed on close. They were
+    // missing from the back handler entirely, so back with comments open
+    // skipped the sheet and left Discover altogether.
+    if (document.getElementById('avatarViewer')) { call('closeAvatarViewer'); return true; }
+    if (document.getElementById('profileViewersSheet')) { call2('closeVideoSheet', 'profileViewersSheet'); return true; }
+    var shareSheet = document.getElementById('videoShareSheet');
+    if (shareSheet) { if (!call2('closeVideoSheet', 'videoShareSheet')) shareSheet.remove(); return true; }
+    if (document.getElementById('videoMoreSheet')) { call2('closeVideoSheet', 'videoMoreSheet'); return true; }
+    var manageSheet = document.getElementById('videoManageSheet');
+    if (manageSheet) { if (!call2('closeVideoSheet', 'videoManageSheet')) manageSheet.remove(); return true; }
+    var commentSheet = document.getElementById('discoverCommentSheet');
+    if (commentSheet) {
+      // A reply in progress is cancelled first; the next back closes the sheet.
+      var chip = commentSheet.querySelector('.post-reply-chip');
+      if (chip && chip.style.display !== 'none' && typeof window.cancelReplyTarget === 'function') {
+        window.cancelReplyTarget(commentSheet.dataset.postId);
+        return true;
+      }
+      if (!call('closeDiscoverComments')) commentSheet.remove();
+      return true;
+    }
+
+    if (isOpen('videoUploadModalOverlay')) { call('closeVideoUploadModal'); return true; }
+    if (isOpen('uploadModalOverlay'))      { call('closeUploadModal'); return true; }
+
+    if (isOpen('recipeModal')) {
+      // The named close also restores body scrolling, which a plain
+      // classList.remove skipped and left scrolling broken app-wide.
+      if (!call('closeRecipeModal')) {
+        document.getElementById('recipeModal').classList.remove('open');
+        document.body.style.overflow = '';
+      }
+      return true;
+    }
+
+    // Own close path: just hiding it would leave the video playing.
+    if (isOpen('discoverFullscreen')) { call('closeVideoFullscreen'); return true; }
+    if (isOpen('discoverSheet'))      { call('closeDiscoverSheet'); return true; }
+    if (isOpen('plannerPicker'))      { call('closePicker'); return true; }
+
+    if (isOpen('appSearchOverlay')) {
+      var searchClose = document.getElementById('appSearchClose');
+      if (searchClose) searchClose.click();
+      else document.getElementById('appSearchOverlay').classList.remove('open');
+      return true;
+    }
+    if (isOpen('appNotifPanel')) { document.getElementById('appNotifPanel').classList.remove('open'); return true; }
+
+    // Cookie preferences are shown with opacity, not an .open class, so
+    // the old '#cookiePrefsModal.open' check could never match.
+    var cookies = document.getElementById('cookiePrefsModal');
+    if (cookies && cookies.style.opacity === '1' && cookies.style.pointerEvents !== 'none') {
+      call('closeCookiePrefs');
+      return true;
+    }
+
+    return false;
+  }
+
   function initBackButton() {
-    // @capacitor/app's backButton event fires on Android's hardware/gesture back.
-    // Without this, Android's default behavior is to exit the app immediately,
-    // which feels jarring — instead: close any open modal first, or return to
-    // the Home tab if elsewhere, and only exit after a second back press within
-    // 2 seconds of the first (the standard "press again to exit" pattern), so
-    // one accidental swipe/press can never accidentally close the app.
+    // @capacitor/app's backButton event fires on Android's hardware/gesture
+    // back. Without a listener Android exits the app immediately. Order:
+    //   1. close whatever is on top (sheet, modal, overlay)
+    //   2. go back one screen in the navigation history
+    //   3. on Home: scroll to top first, then "press again to exit"
     if (!window.Capacitor || !window.Capacitor.Plugins || !window.Capacitor.Plugins.App) return;
 
-    window.Capacitor.Plugins.App.addListener('backButton', function () {
-      // Needs its own close path rather than the generic modal handling
-      // below — that just hides the element, which would leave the video
-      // still playing invisibly in the background.
-      var discoverOverlay = document.getElementById('discoverFullscreen');
-      if (discoverOverlay && discoverOverlay.classList.contains('open')) {
-        if (typeof closeVideoFullscreen === 'function') closeVideoFullscreen();
-        return;
-      }
-
-      // Search/library sheet sits over the feed — close that before
-      // leaving Discover entirely.
-      var discoverSheet = document.getElementById('discoverSheet');
-      if (discoverSheet && discoverSheet.classList.contains('open')) {
-        if (typeof closeDiscoverSheet === 'function') closeDiscoverSheet();
-        return;
-      }
-
-      // Immersive Discover hides the tab bar, so back is the only way
-      // out — it must restore the normal app chrome, not sit on a
-      // chrome-less screen.
-      if (document.body.classList.contains('discover-immersive')) {
-        if (typeof showPage === 'function') showPage('home');
-        var homeTab = document.querySelector('.app-tab[data-page="home"]');
-        if (homeTab) setActiveAppTab(homeTab);
-        return;
-      }
-
-      var openModal = document.querySelector('#recipeModal.open, #cookiePrefsModal.open, #appSearchOverlay.open, #appNotifPanel.open, #reportVideoModalOverlay.open, #videoUploadModalOverlay.open');
-      // #authModal is excluded above when it's the mandatory login gate —
-      // back button must not be able to dismiss required sign-in. Once
-      // signed in, it's never open outside of an explicit user action
-      // anyway, so this exclusion only matters during the gate itself.
-      if (!openModal && !document.body.classList.contains('auth-gate-active')) {
-        openModal = document.querySelector('#authModal.open');
-      }
-      if (openModal) {
-        openModal.classList.remove('open');
-        // Recipe/auth modals lock body scroll while open — only their
-        // own named close functions were resetting that. Closing via
-        // hardware back skipped it entirely, permanently breaking
-        // scrolling app-wide from that point on.
-        document.body.style.overflow = '';
-        return;
-      }
-
-      var homeTab = document.querySelector('.app-tab[data-page="home"]');
-      var homePageEl = document.getElementById('page-home');
-      // Check the actual page that's showing, not just which tab looks
-      // active — those can desync (e.g. the "Explore all" cuisines action
-      // deliberately clears every tab's active state while still being on
-      // the Home page).
-      var onHome = !!homePageEl && homePageEl.style.display !== 'none';
-
-      if (!onHome) {
-        setActiveAppTab(homeTab);
-        if (typeof showPage === 'function') showPage('home');
-        lastBackPressTime = 0; // moving to home resets the exit-confirmation window
-        return;
-      }
-
-      // Already on Home — if scrolled down (e.g. from "Explore all"),
-      // the first back press should return to the top, matching how
-      // most native apps behave, rather than immediately counting
-      // toward the exit-confirmation.
-      if (window.scrollY > 40) {
-        setActiveAppTab(homeTab);
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-        lastBackPressTime = 0;
-        return;
-      }
-
+    function exitOrWarn() {
       var now = Date.now();
       if (now - lastBackPressTime < 2000) {
         window.Capacitor.Plugins.App.exitApp();
@@ -614,6 +688,45 @@ function hapticTap() {
         lastBackPressTime = now;
         showExitToast();
       }
+    }
+
+    window.Capacitor.Plugins.App.addListener('backButton', function () {
+      // The mandatory sign-in gate can't be dismissed or navigated around
+      // with back; the only way out of it is exiting.
+      if (document.body.classList.contains('auth-gate-active')) {
+        exitOrWarn();
+        return;
+      }
+
+      if (closeTopLayer()) { lastBackPressTime = 0; return; }
+
+      if (navigateBack()) { lastBackPressTime = 0; return; }
+
+      // History is at Home. If the screen somehow isn't Home (e.g. a page
+      // opened by code that isn't tracked), recover to Home.
+      var homeTab = document.querySelector('.app-tab[data-page="home"]');
+      var homePageEl = document.getElementById('page-home');
+      // Check the page that's actually showing, not which tab looks
+      // active; those can desync (e.g. "Explore all" clears every tab's
+      // active state while still on Home).
+      var onHome = !!homePageEl && homePageEl.style.display !== 'none';
+      if (!onHome) {
+        setActiveAppTab(homeTab);
+        if (typeof showPage === 'function') showPage('home');
+        lastBackPressTime = 0;
+        return;
+      }
+
+      // On Home but scrolled down: first back returns to the top, as most
+      // native apps do, before counting toward exit.
+      if (window.scrollY > 40) {
+        setActiveAppTab(homeTab);
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+        lastBackPressTime = 0;
+        return;
+      }
+
+      exitOrWarn();
     });
   }
 
@@ -840,8 +953,11 @@ function hapticTap() {
 
     if (typeof window.openCommunity === 'function') {
       var originalOpenCommunity = window.openCommunity;
-      window.openCommunity = function () {
-        originalOpenCommunity();
+      window.openCommunity = function (initialTab) {
+        // Must pass the tab through. This wrapper used to call
+        // originalOpenCommunity() with no arguments, so every
+        // openCommunity('chefs') etc. silently opened the Feed instead.
+        originalOpenCommunity(initialTab);
         setDashboardVisible(false);
         applyPageTransition('page-community');
       };
@@ -855,6 +971,203 @@ function hapticTap() {
         applyPageTransition('page-dashboard');
       };
     }
+
+    // These three also switch pages without going through showPage(), and
+    // were never wrapped, so the Home dashboard stayed visible on top of
+    // them (the same "bypassing showPage()" bug as before).
+    if (typeof window.openChefProfile === 'function') {
+      var originalOpenChefProfile = window.openChefProfile;
+      window.openChefProfile = function (index) {
+        setDashboardVisible(false);
+        originalOpenChefProfile(index);
+        applyPageTransition('page-chef-profile');
+      };
+    }
+
+    if (typeof window.openUserProfile === 'function') {
+      var originalOpenUserProfile = window.openUserProfile;
+      window.openUserProfile = function (userId) {
+        setDashboardVisible(false);
+        var result = originalOpenUserProfile(userId);
+        applyPageTransition('page-user-profile');
+        return result;
+      };
+    }
+
+    if (typeof window.openAbout === 'function') {
+      var originalOpenAbout = window.openAbout;
+      window.openAbout = function () {
+        setDashboardVisible(false);
+        originalOpenAbout();
+        applyPageTransition('page-about');
+      };
+    }
+
+    if (typeof window.showLegal === 'function') {
+      var originalShowLegal = window.showLegal;
+      window.showLegal = function (type) {
+        setDashboardVisible(false);
+        originalShowLegal(type);
+        applyPageTransition('page-' + type);
+      };
+    }
+  }
+
+  // ---- Navigation history: Android back goes one real step back ----
+  // Back used to jump straight to Home from any page. Every page change
+  // is now recorded here and back returns to the previous screen, with
+  // its scroll position, until Home is reached.
+  //
+  // Rules, chosen to match how people expect a phone app to behave:
+  //  - Home is always the bottom of the history. Going to Home (tab or
+  //    otherwise) clears everything above it.
+  //  - A screen appears in the history at most once. Revisiting it moves
+  //    it to the top, so back can never loop A -> B -> A -> B.
+  //  - Tabs INSIDE a page (Community Feed/Chefs, Account Profile/Saved,
+  //    Privacy/Terms, Discover For You/Trending) are not separate steps.
+  //    They update the current entry, so back leaves the page, and
+  //    returning to it reopens the same tab.
+  //  - Each chef profile is its own screen.
+  var navStack = [];
+  var navRestoring = false;
+  var NAV_MAX = 30;
+
+  var PAGE_TAB = {
+    home: 'home', recipes: 'recipes', 'ai-chef': 'ai-chef',
+    community: 'community', 'chef-profile': 'community', discover: 'discover'
+  };
+
+  function navKey(page, arg) {
+    // Each chef or user profile is its own screen in the history.
+    return (page === 'chef-profile' || page === 'user-profile') ? page + ':' + arg : page;
+  }
+
+  function currentScrollY() {
+    return window.scrollY || document.documentElement.scrollTop || 0;
+  }
+
+  function recordNav(page, arg) {
+    if (navRestoring || !page) return;
+    var key = navKey(page, arg);
+    var top = navStack[navStack.length - 1];
+
+    // Same screen (e.g. switching an in-page tab): update, don't add a step.
+    if (top && top.key === key) {
+      if (arg !== undefined) top.arg = arg;
+      return;
+    }
+
+    // Leaving a screen: remember where it was scrolled to for back.
+    if (top) top.scrollY = currentScrollY();
+
+    if (key === 'home') {
+      navStack = [{ key: 'home', page: 'home', arg: undefined, scrollY: 0 }];
+      return;
+    }
+
+    navStack = navStack.filter(function (entry) { return entry.key !== key; });
+    navStack.push({ key: key, page: page, arg: arg, scrollY: 0 });
+    if (navStack.length > NAV_MAX) navStack.splice(1, navStack.length - NAV_MAX);
+  }
+
+  // Re-apply a saved scroll position a few times: some pages (Community,
+  // Account) fill in after a network fetch, so the first attempt can hit
+  // a page that isn't tall enough yet. Stops as soon as the user scrolls.
+  function restoreScroll(y) {
+    var lastSet = null;
+    [60, 350, 900].forEach(function (ms) {
+      setTimeout(function () {
+        if (lastSet !== null && Math.abs(currentScrollY() - lastSet) > 4) return;
+        window.scrollTo({ top: y, behavior: 'instant' });
+        lastSet = currentScrollY();
+      }, ms);
+    });
+  }
+
+  function restoreRoute(route) {
+    navRestoring = true;
+    try {
+      switch (route.page) {
+        case 'community':    openCommunity(route.arg); break;
+        case 'dashboard':    openDashboard(route.arg || 'profile'); break;
+        case 'chef-profile': openChefProfile(route.arg); break;
+        case 'user-profile': openUserProfile(route.arg); break;
+        case 'about':        openAbout(); break;
+        case 'legal':        showLegal(route.arg || 'privacy'); break;
+        default:             showPage(route.page);
+      }
+    } catch (err) {
+      console.error('[GieesK] Could not go back to', route.page, err);
+      navRestoring = false;
+      navStack = [{ key: 'home', page: 'home', arg: undefined, scrollY: 0 }];
+      showPage('home');
+    } finally {
+      navRestoring = false;
+    }
+
+    var tabName = PAGE_TAB[route.page];
+    setActiveAppTab(tabName ? document.querySelector('.app-tab[data-page="' + tabName + '"]') : null);
+    if (route.scrollY > 0) restoreScroll(route.scrollY);
+  }
+
+  // Returns true if it navigated. Also exposed for in-page "Back" buttons.
+  function navigateBack() {
+    if (navStack.length < 2) return false;
+    navStack.pop();
+    restoreRoute(navStack[navStack.length - 1]);
+    return true;
+  }
+
+  function initNavigationHistory() {
+    navStack = [{ key: 'home', page: 'home', arg: undefined, scrollY: 0 }];
+    window.appGoBack = navigateBack;
+
+    // Wraps the page-level entry points. Runs after
+    // initDashboardVisibilitySync so it sits outermost and records the
+    // step BEFORE the page's own scroll-to-top wipes the scroll position.
+    function track(name, toRoute) {
+      var original = window[name];
+      if (typeof original !== 'function') return;
+      window[name] = function () {
+        var route = toRoute.apply(null, arguments);
+        if (route) recordNav(route[0], route[1]);
+        return original.apply(this, arguments);
+      };
+    }
+
+    function pageVisible(id) {
+      var el = document.getElementById(id);
+      return !!el && el.style.display !== 'none';
+    }
+
+    track('showPage',        function (page) { return [page]; });
+    track('openCommunity',   function (tab) { return ['community', tab || 'feed']; });
+    // Signed out, openDashboard only shows the login modal and never
+    // changes page, so it must not add a history step.
+    track('openDashboard',   function (tab) {
+      if (typeof currentUser === 'undefined' || !currentUser) return null;
+      return ['dashboard', tab || 'profile'];
+    });
+    track('openChefProfile', function (index) { return ['chef-profile', index]; });
+    track('openUserProfile', function (userId) { return userId ? ['user-profile', String(userId)] : null; });
+    track('openAbout',       function () { return ['about']; });
+    track('showLegal',       function (type) { return ['legal', type]; });
+
+    // In-page tabs: only update the entry when that page is actually the
+    // one on screen (filterFeedByTag can switch the Community tab from
+    // elsewhere).
+    track('switchCommunityTab', function (tab) {
+      return pageVisible('page-community') ? ['community', tab] : null;
+    });
+    track('switchDashTab', function (tab) {
+      return pageVisible('page-dashboard') ? ['dashboard', tab] : null;
+    });
+
+    // Signing out brings back the login gate; nothing behind it should be
+    // reachable with back afterwards.
+    window.addEventListener('gieesk:signedOut', function () {
+      navStack = [{ key: 'home', page: 'home', arg: undefined, scrollY: 0 }];
+    });
   }
 
   // Explicitly hide the status bar via Capacitor's own StatusBar plugin —
@@ -1075,6 +1388,7 @@ function hapticTap() {
       initNotifPanel();
       initWelcomeScreen();
       initDashboardVisibilitySync();
+      initNavigationHistory(); // after the visibility wrappers, so it wraps outermost
       initHeaderScrollBlend();
       initImmersiveDisplay();
       initPullToRefresh();

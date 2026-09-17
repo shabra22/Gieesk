@@ -413,6 +413,11 @@
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 4px;
+  /* Rows must size to the tiles. Inside the height-limited search sheet
+     the implicit rows were squeezed to ~50px while each 9:16 tile stayed
+     ~220px tall, so tiles overlapped each other. */
+  grid-auto-rows: max-content;
+  align-content: start;
 }
 .discover-tile {
   position: relative;
@@ -422,7 +427,9 @@
   background: var(--bg-elevated);
   cursor: pointer;
 }
-.discover-tile video {
+.discover-tile video,
+.discover-tile img {
+  display: block;
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -465,7 +472,7 @@ body:has(#discoverFullscreen.open) #recipeModal,
 body:has(#discoverFullscreen.open) #authModal { z-index: 3100; }
 .discover-close-btn {
   position: absolute;
-  top: calc(16px + env(safe-area-inset-top, 0px));
+  top: calc(16px + var(--safe-area-inset-top, env(safe-area-inset-top, 0px)));
   right: 16px;
   z-index: 10;
   color: #fff;
@@ -484,6 +491,10 @@ body:has(#discoverFullscreen.open) #authModal { z-index: 3100; }
   display: flex;
   align-items: center;
   justify-content: center;
+  /* Each slide is self-contained: changes inside one (progress, counts,
+     animations) don't make the browser re-check the whole feed. */
+  contain: layout paint style;
+  overflow: hidden;
 }
 .discover-video {
   width: 100%;
@@ -495,7 +506,7 @@ body:has(#discoverFullscreen.open) #authModal { z-index: 3100; }
   position: absolute;
   left: 16px;
   right: 84px;
-  bottom: calc(24px + env(safe-area-inset-bottom, 0px));
+  bottom: calc(24px + var(--safe-area-inset-bottom, env(safe-area-inset-bottom, 0px)));
   color: #fff;
   /* Same layering issue as .discover-actions — the follow button,
      hashtags and recipe chip in here were unclickable underneath the
@@ -531,7 +542,7 @@ body:has(#discoverFullscreen.open) #authModal { z-index: 3100; }
 .discover-actions {
   position: absolute;
   right: 12px;
-  bottom: calc(24px + env(safe-area-inset-bottom, 0px));
+  bottom: calc(24px + var(--safe-area-inset-bottom, env(safe-area-inset-bottom, 0px)));
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -615,7 +626,7 @@ body:has(#discoverFullscreen.open) #authModal { z-index: 3100; }
 /* ---- Discover mute toggle ---- */
 .discover-mute-btn {
   position: absolute;
-  top: calc(16px + env(safe-area-inset-top, 0px));
+  top: calc(16px + var(--safe-area-inset-top, env(safe-area-inset-top, 0px)));
   left: 16px;
   z-index: 10;
   width: 36px;
@@ -635,7 +646,7 @@ body:has(#discoverFullscreen.open) #authModal { z-index: 3100; }
 .discover-drafts-panel {
   height: 100%;
   overflow-y: auto;
-  padding: calc(64px + env(safe-area-inset-top, 0px)) 16px 24px;
+  padding: calc(64px + var(--safe-area-inset-top, env(safe-area-inset-top, 0px))) 16px 24px;
   color: var(--text-primary, #F0EEE8);
 }
 .discover-drafts-panel h2 {
@@ -651,7 +662,9 @@ body:has(#discoverFullscreen.open) #authModal { z-index: 3100; }
   background: var(--bg-elevated);
   margin-bottom: 12px;
 }
-.discover-draft-item video {
+.discover-draft-item video,
+.discover-draft-item img {
+  background: #0b0b0a;
   width: 80px;
   height: 100px;
   object-fit: cover;
@@ -670,27 +683,81 @@ body:has(#discoverFullscreen.open) #authModal { z-index: 3100; }
 }
 .discover-progress {
   position: absolute;
-  top: env(safe-area-inset-top, 0px);
+  top: var(--safe-area-inset-top, env(safe-area-inset-top, 0px));
   left: 0; right: 0;
   height: 2.5px;
   background: rgba(255,255,255,0.2);
   z-index: 15;
 }
+/* Progress animates with transform, not width. Changing width forces a
+   layout pass on every timeupdate (several times a second, per video);
+   scaleX is handled by the compositor. */
 .discover-progress-fill {
   height: 100%;
-  width: 0%;
+  width: 100%;
   background: #fff;
-  transition: width 0.1s linear;
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 0.25s linear;
 }
+/* ── Video loading states (classes set in buildVideoSlideHTML) ──
+   Before: Android drew its own big grey play-button graphic while a video
+   loaded, with a tiny spinner on top. Now the slide shows the video's
+   cover frame (or a quiet dark gradient for older videos without one),
+   and a thin spinner fades in only if loading takes more than a moment,
+   so quick loads never flash a spinner at all. */
+.discover-poster {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  background-color: #0b0b0a;
+  background-size: cover;
+  background-position: center;
+  pointer-events: none;
+  transition: opacity 0.25s ease;
+}
+.discover-poster-empty {
+  background-image:
+    radial-gradient(120% 70% at 50% 35%, rgba(212,160,57,0.10), transparent 60%),
+    linear-gradient(180deg, #161512 0%, #0b0b0a 100%);
+}
+.discover-slide.has-frame .discover-poster { opacity: 0; }
+
 .discover-spinner {
-  display: none;
+  display: block;
+  position: absolute;
+  top: 50%; left: 50%;
+  width: 38px; height: 38px;
+  margin: -19px 0 0 -19px;
+  border-radius: 50%;
+  border: 2.5px solid rgba(255,255,255,0.18);
+  border-top-color: rgba(255,255,255,0.9);
+  z-index: 8;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+  animation: spin 0.8s linear infinite;
+  /* Not spinning while invisible would be ideal, but toggling the
+     animation restarts it visibly; an invisible element costs little. */
+}
+.discover-slide.is-buffering .discover-spinner {
+  opacity: 1;
+  transition-delay: 0.35s;
+}
+.discover-slide.has-error::after {
+  content: "Couldn't play this video";
   position: absolute;
   top: 50%; left: 50%;
   transform: translate(-50%, -50%);
-  color: #fff;
-  font-size: 32px;
   z-index: 8;
-  animation: spin 0.8s linear infinite;
+  padding: 8px 14px;
+  border-radius: 999px;
+  background: rgba(0,0,0,0.6);
+  color: rgba(255,255,255,0.85);
+  font-size: 13px;
+  font-weight: 600;
+  white-space: nowrap;
+  pointer-events: none;
 }
 .discover-center-icon {
   position: absolute;
@@ -915,8 +982,8 @@ body:has(#discoverFullscreen.open) #authModal { z-index: 3100; }
      6px + ~46px + 6px + inset-bottom. dvh (not vh) keeps this correct
      when mobile browser chrome shows and hides mid-scroll. */
   height: calc(100dvh
-    - (48px + env(safe-area-inset-top, 0px))
-    - (58px + env(safe-area-inset-bottom, 0px)));
+    - (48px + var(--safe-area-inset-top, env(safe-area-inset-top, 0px)))
+    - (58px + var(--safe-area-inset-bottom, env(safe-area-inset-bottom, 0px))));
   background: #000;
   overflow: hidden;
 }
@@ -1079,7 +1146,7 @@ body:has(#discoverFullscreen.open) #authModal { z-index: 3100; }
 #discoverSheetGrid {
   flex: 1;
   overflow-y: auto;
-  padding: 0 12px calc(16px + env(safe-area-inset-bottom, 0px));
+  padding: 0 12px calc(16px + var(--safe-area-inset-bottom, env(safe-area-inset-bottom, 0px)));
 }
 
 .discover-tile-meta {
@@ -1191,7 +1258,7 @@ body.discover-immersive .discover-feed .discover-slide { height: 100dvh; }
 /* Brand lock-up — sits inside the safe area so the notch/status bar can
    never clip it, with a gradient behind for contrast on bright video. */
 .discover-topbar {
-  padding-top: calc(10px + env(safe-area-inset-top, 0px));
+  padding-top: calc(10px + var(--safe-area-inset-top, env(safe-area-inset-top, 0px)));
   justify-content: space-between;
   align-items: flex-start;
   /* No background of its own. The topbar and tabs row each used to paint
@@ -1207,7 +1274,7 @@ body.discover-immersive .discover-feed .discover-slide { height: 100dvh; }
   content: '';
   position: absolute;
   top: 0; left: 0; right: 0;
-  height: calc(130px + env(safe-area-inset-top, 0px));
+  height: calc(130px + var(--safe-area-inset-top, env(safe-area-inset-top, 0px)));
   background: linear-gradient(
     rgba(0,0,0,0.55) 0%,
     rgba(0,0,0,0.32) 45%,
@@ -1223,13 +1290,14 @@ body.discover-immersive .discover-feed .discover-slide { height: 100dvh; }
   pointer-events: none;
 }
 .discover-brand img {
-  width: 30px; height: 30px;
+  height: 26px;
+  width: auto;
   flex-shrink: 0;
-  object-fit: cover;
-  border-radius: 8px;
-  /* The mark is a dark tile; a hairline ring + shadow keeps its edge
-     readable over dark or busy video instead of melting into it. */
-  box-shadow: 0 0 0 1px rgba(255,255,255,0.18), 0 2px 8px rgba(0,0,0,0.45);
+  display: block;
+  /* No tile behind the logo now. The dark metal letters need a faint
+     light edge to stay readable over dark video, and a soft shadow for
+     bright video. */
+  filter: drop-shadow(0 0 1px rgba(255,255,255,0.35)) drop-shadow(0 1px 4px rgba(0,0,0,0.55));
 }
 .discover-brand span {
   font-family: var(--font-display);
@@ -1244,7 +1312,7 @@ body.discover-immersive .discover-feed .discover-slide { height: 100dvh; }
 /* Tabs on their own row under the brand, so neither can crowd the other */
 .discover-tabs-row {
   position: absolute;
-  top: calc(48px + env(safe-area-inset-top, 0px));
+  top: calc(48px + var(--safe-area-inset-top, env(safe-area-inset-top, 0px)));
   left: 0; right: 0;
   z-index: 30;
   padding: 0 10px 14px;
@@ -1264,7 +1332,7 @@ body.discover-immersive .discover-feed .discover-slide { height: 100dvh; }
 
 /* Engagement rail: icon with its count beneath */
 .discover-feed .discover-actions {
-  bottom: calc(22px + env(safe-area-inset-bottom, 0px));
+  bottom: calc(22px + var(--safe-area-inset-bottom, env(safe-area-inset-bottom, 0px)));
   gap: 22px;
 }
 .discover-feed .discover-action-btn {
@@ -1288,7 +1356,7 @@ body.discover-immersive .discover-feed .discover-slide { height: 100dvh; }
 
 /* Creator block bottom-left */
 .discover-feed .discover-overlay {
-  bottom: calc(22px + env(safe-area-inset-bottom, 0px));
+  bottom: calc(22px + var(--safe-area-inset-bottom, env(safe-area-inset-bottom, 0px)));
   right: 78px;
 }
 .discover-feed .discover-author { margin-bottom: 6px; font-size: 14.5px; }
@@ -1315,11 +1383,19 @@ body.discover-immersive .discover-feed .discover-slide { height: 100dvh; }
   color: #0A0A09;
   font-weight: 700;
 }
+/* backdrop-filter: blur() over a playing video re-blurs that part of the
+   frame on every video frame, a well-known cause of stutter in Android
+   WebViews. The chip gets a solid tint instead. */
+.discover-slide .discover-recipe-chip {
+  -webkit-backdrop-filter: none;
+  backdrop-filter: none;
+}
+.discover-scroller .discover-recipe-chip { background: rgba(0,0,0,0.55); }
 .discover-feed .discover-hashtags span { color: rgba(255,255,255,0.9); }
 
 /* The search/library sheet must clear the notch in immersive mode */
 body.discover-immersive .discover-sheet-head {
-  padding-top: calc(12px + env(safe-area-inset-top, 0px));
+  padding-top: calc(12px + var(--safe-area-inset-top, env(safe-area-inset-top, 0px)));
 }
 
 /* Comment sheet over the immersive feed: 70% tall, video still visible
@@ -1328,11 +1404,11 @@ body.discover-immersive .discover-comment-sheet {
   max-height: 72%;
   z-index: 120;
   box-shadow: 0 -8px 40px rgba(0,0,0,0.6);
-  padding-bottom: env(safe-area-inset-bottom, 0px);
+  padding-bottom: var(--safe-area-inset-bottom, env(safe-area-inset-bottom, 0px));
 }
 body.discover-immersive #videoManageSheet {
   z-index: 120;
-  padding-bottom: env(safe-area-inset-bottom, 0px);
+  padding-bottom: var(--safe-area-inset-bottom, env(safe-area-inset-bottom, 0px));
 }
 /* Dim the video behind an open sheet without hiding it */
 body.discover-immersive .discover-stage:has(.discover-comment-sheet) .discover-feed::after,
@@ -1343,4 +1419,1427 @@ body.discover-immersive .discover-stage:has(#videoManageSheet) .discover-feed::a
   background: rgba(0,0,0,0.45);
   z-index: 110;
   pointer-events: none;
+}
+/* ═══ Video upload (vu-*) ═══════════════════════════════════════════
+   Full-screen sheet on phones, centred card on larger screens. Header and
+   Post/Draft actions stay pinned while the form scrolls. */
+.vu-modal [hidden] { display: none !important; }
+
+.upload-modal-overlay.vu-overlay {
+  /* Solid dim instead of backdrop blur: blurring a playing video behind
+     the form is expensive on phones. */
+  -webkit-backdrop-filter: none;
+  backdrop-filter: none;
+  background: rgba(0,0,0,0.78);
+  z-index: 3200; /* above the fullscreen player, so Upload works from anywhere */
+}
+.upload-modal.vu-modal {
+  display: flex;
+  flex-direction: column;
+  max-width: 520px;
+  max-height: min(92vh, 900px);
+  overflow: hidden;
+  padding: 0;
+}
+@media (max-width: 600px) {
+  .upload-modal-overlay.vu-overlay { padding: 0; align-items: stretch; }
+  .upload-modal.vu-modal {
+    max-width: none;
+    max-height: none;
+    height: 100%;
+    height: 100dvh;
+    border-radius: 0;
+    border: none;
+  }
+}
+
+.vu-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: calc(10px + var(--safe-area-inset-top, env(safe-area-inset-top, 0px))) 12px 10px;
+  border-bottom: 1px solid var(--border-dim);
+  flex-shrink: 0;
+}
+.vu-title {
+  flex: 1;
+  text-align: center;
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+.vu-icon-btn {
+  width: 38px; height: 38px;
+  border-radius: 50%;
+  border: none;
+  background: transparent;
+  color: var(--text-primary);
+  font-size: 20px;
+  display: inline-flex; align-items: center; justify-content: center;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+.vu-icon-btn:active { background: var(--bg-elevated); }
+.vu-spacer { visibility: hidden; }
+
+.vu-body {
+  flex: 1;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+.vu-section { display: flex; flex-direction: column; gap: 10px; }
+
+/* Picker */
+.vu-picker {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  width: 100%;
+  padding: 34px 20px;
+  border-radius: var(--r-lg, 16px);
+  border: 1.5px dashed var(--border-subtle);
+  background: var(--bg-elevated);
+  color: var(--text-muted);
+  font-family: inherit;
+  font-size: 12.5px;
+  cursor: pointer;
+  transition: border-color 0.15s ease, background 0.15s ease;
+}
+.vu-picker:hover, .vu-picker:focus-visible { border-color: var(--gold); }
+.vu-picker strong { font-size: 15px; color: var(--text-primary); }
+.vu-picker-icon {
+  width: 52px; height: 52px;
+  border-radius: 50%;
+  background: rgba(212,160,57,0.12);
+  color: var(--gold);
+  font-size: 26px;
+  display: flex; align-items: center; justify-content: center;
+  margin-bottom: 4px;
+}
+
+/* Preview */
+.vu-media {
+  position: relative;
+  border-radius: var(--r-lg, 16px);
+  overflow: hidden;
+  background: #000;
+}
+.vu-media video {
+  display: block;
+  width: 100%;
+  max-height: 46vh;
+  background: #000;
+  object-fit: contain;
+}
+.vu-media-actions {
+  position: absolute;
+  top: 10px; right: 10px;
+  display: flex; gap: 8px;
+}
+.vu-pill {
+  display: inline-flex; align-items: center; gap: 5px;
+  padding: 7px 12px;
+  border-radius: 999px;
+  border: none;
+  background: rgba(0,0,0,0.62);
+  color: #fff;
+  font-family: inherit;
+  font-size: 12.5px;
+  font-weight: 600;
+  cursor: pointer;
+}
+.vu-pill-danger { color: #FF9C85; }
+
+/* File + progress */
+.vu-file-meta {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  font-size: 12.5px;
+}
+.vu-file-name {
+  color: var(--text-primary);
+  font-weight: 600;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.vu-file-info { color: var(--text-muted); flex-shrink: 0; }
+.vu-progress {
+  height: 4px;
+  border-radius: 4px;
+  background: var(--bg-elevated);
+  overflow: hidden;
+  margin-top: 8px;
+}
+.vu-progress-fill {
+  height: 100%;
+  width: 100%;
+  background: var(--gold);
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 0.2s linear, background 0.2s ease;
+}
+.vu-progress.is-done .vu-progress-fill { background: var(--emerald, #1D9E75); }
+.vu-progress.is-error .vu-progress-fill { background: #F08060; }
+.vu-status-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: 6px;
+  min-height: 22px;
+}
+.vu-status { font-size: 12.5px; color: var(--text-muted); }
+.vu-link-btn {
+  border: none;
+  background: none;
+  padding: 4px 0;
+  color: var(--gold);
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+/* Cover */
+.vu-cover-row { display: flex; gap: 14px; align-items: center; }
+.vu-cover-frame {
+  width: 72px;
+  aspect-ratio: 9 / 16;
+  border-radius: 10px;
+  overflow: hidden;
+  background: var(--bg-elevated);
+  flex-shrink: 0;
+  box-shadow: 0 0 0 2px var(--gold);
+}
+.vu-cover-frame img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.vu-cover-controls { flex: 1; display: flex; flex-direction: column; gap: 8px; min-width: 0; }
+.vu-cover-controls input[type="range"] { width: 100%; accent-color: var(--gold); }
+
+/* Fields */
+.vu-label {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-top: 4px;
+}
+.vu-optional, .vu-count, .vu-hint {
+  font-size: 11.5px;
+  font-weight: 500;
+  color: var(--text-muted);
+}
+.vu-count.is-near { color: #F0A060; }
+.vu-input, .vu-search, .vu-tags {
+  width: 100%;
+  background: var(--bg-elevated);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--r-md, 12px);
+  color: var(--text-primary);
+  font-family: inherit;
+  font-size: 14.5px;
+  transition: border-color 0.15s ease;
+}
+.vu-input { padding: 11px 14px; resize: vertical; outline: none; }
+.vu-input:focus, .vu-search:focus-within, .vu-tags:focus-within { border-color: var(--gold); }
+.vu-input-bare {
+  flex: 1;
+  min-width: 0;
+  border: none;
+  outline: none;
+  background: transparent;
+  color: var(--text-primary);
+  font-family: inherit;
+  font-size: 14.5px;
+  padding: 11px 0;
+}
+.vu-search { display: flex; align-items: center; gap: 10px; padding: 0 14px; }
+.vu-search > i { color: var(--text-muted); font-size: 16px; }
+
+.vu-recipe { position: relative; }
+.vu-dropdown {
+  margin-top: 6px;
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--r-md, 12px);
+  background: var(--bg-panel, #141412);
+  overflow: hidden;
+}
+.vu-dropdown-item {
+  display: flex; align-items: center; gap: 12px;
+  width: 100%;
+  padding: 10px 14px;
+  border: none;
+  background: none;
+  text-align: left;
+  color: var(--text-primary);
+  font-family: inherit;
+  cursor: pointer;
+}
+.vu-dropdown-item + .vu-dropdown-item { border-top: 1px solid var(--border-dim); }
+.vu-dropdown-item.is-active, .vu-dropdown-item:hover { background: rgba(212,160,57,0.10); }
+.vu-dropdown-emoji { font-size: 20px; }
+.vu-dropdown-text { display: flex; flex-direction: column; min-width: 0; }
+.vu-dropdown-text strong { font-size: 14px; font-weight: 600; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.vu-dropdown-text small { font-size: 12px; color: var(--text-muted); }
+.vu-dropdown-empty { padding: 12px 14px; font-size: 13px; color: var(--text-muted); }
+
+.vu-linked {
+  display: flex; align-items: center; gap: 12px;
+  padding: 10px 14px;
+  border-radius: var(--r-md, 12px);
+  border: 1px solid var(--border-gold, rgba(212,160,57,0.4));
+  background: rgba(212,160,57,0.08);
+}
+.vu-linked-emoji { font-size: 22px; }
+.vu-linked-text { flex: 1; display: flex; flex-direction: column; min-width: 0; }
+.vu-linked-text strong { font-size: 14px; color: var(--text-primary); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.vu-linked-text small { font-size: 12px; color: var(--text-muted); }
+
+.vu-tags {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 10px;
+  cursor: text;
+}
+.vu-tag {
+  display: inline-flex; align-items: center; gap: 2px;
+  padding: 5px 4px 5px 10px;
+  border-radius: 999px;
+  background: rgba(212,160,57,0.14);
+  color: var(--gold-light, #E8C06A);
+  font-size: 13px;
+  font-weight: 600;
+}
+.vu-tag button {
+  width: 20px; height: 20px;
+  border: none; border-radius: 50%;
+  background: transparent;
+  color: inherit;
+  font-size: 12px;
+  display: inline-flex; align-items: center; justify-content: center;
+  cursor: pointer;
+}
+.vu-tag-input { min-width: 120px; padding: 6px 0; }
+
+.vu-error {
+  padding: 10px 14px;
+  border-radius: var(--r-md, 12px);
+  background: rgba(240,128,96,0.10);
+  border: 1px solid rgba(240,128,96,0.35);
+  color: #F5A28C;
+  font-size: 13px;
+  line-height: 1.45;
+}
+
+.vu-footer {
+  display: flex;
+  gap: 10px;
+  padding: 12px 16px calc(12px + var(--safe-area-inset-bottom, env(safe-area-inset-bottom, 0px)));
+  border-top: 1px solid var(--border-dim);
+  background: var(--bg-panel);
+  flex-shrink: 0;
+}
+.vu-footer-btn {
+  flex: 1;
+  justify-content: center;
+  padding: 13px;
+}
+.vu-footer-btn:disabled { opacity: 0.45; cursor: not-allowed; }
+
+/* ═══ Tappable authors (name/photo → public profile) ═══════════════ */
+.author-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 0;
+  margin: 0;
+  border: none;
+  background: none;
+  color: inherit;
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+.author-link:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; border-radius: 8px; }
+.post-author-link { gap: 12px; }
+.comment-author-link { display: inline; }
+.comment-author-link strong { color: var(--text-primary); }
+.discover-author-link .author-link-name {
+  font-weight: 700;
+  text-shadow: 0 1px 3px rgba(0,0,0,0.6);
+}
+
+/* Create button in the Discover top bar */
+.discover-topbar-icons .discover-create-btn {
+  background: var(--gold);
+  color: #0A0A09;
+  font-size: 18px;
+  font-weight: 700;
+}
+
+/* ═══ Public user profile (up-*) ════════════════════════════════════ */
+#page-user-profile {
+  min-height: 100vh;
+  background: var(--bg-void);
+  padding-top: var(--nav-h);
+}
+body.is-native-app #page-user-profile { padding-top: 0; }
+.up-wrap {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 0 12px calc(90px + var(--safe-area-inset-bottom, env(safe-area-inset-bottom, 0px)));
+}
+.up-topbar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 0;
+}
+.up-topbar-title {
+  flex: 1;
+  text-align: center;
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--text-primary);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.up-icon-btn {
+  width: 38px; height: 38px;
+  border-radius: 50%;
+  border: none;
+  background: transparent;
+  color: var(--text-primary);
+  font-size: 20px;
+  display: inline-flex; align-items: center; justify-content: center;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+.up-icon-btn:active { background: var(--bg-elevated); }
+
+.up-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 8px 8px 18px;
+}
+.up-avatar {
+  width: 92px; height: 92px;
+  border-radius: 50%;
+  overflow: hidden;
+  background: var(--bg-elevated);
+  border: 2px solid var(--border-gold, rgba(212,160,57,0.45));
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--font-display);
+  font-size: 36px;
+  font-weight: 700;
+  color: var(--gold);
+}
+.up-avatar img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.up-name {
+  margin: 12px 0 2px;
+  font-size: 19px;
+  font-weight: 800;
+  color: var(--text-primary);
+  word-break: break-word;
+}
+.up-joined { margin: 0; font-size: 12.5px; color: var(--text-muted); }
+
+.up-stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  width: 100%;
+  max-width: 420px;
+  margin: 18px 0 16px;
+}
+.up-stats > div { display: flex; flex-direction: column; gap: 2px; }
+.up-stats > div + div { border-left: 1px solid var(--border-dim); }
+.up-stats strong { font-size: 17px; font-weight: 800; color: var(--text-primary); }
+.up-stats span { font-size: 11.5px; color: var(--text-muted); }
+
+.up-actions { display: flex; gap: 10px; width: 100%; max-width: 420px; }
+.up-btn {
+  flex: 1;
+  justify-content: center;
+  padding: 11px 14px;
+  font-size: 14px;
+}
+.up-follow-btn {
+  border-radius: 999px;
+  border: 1.5px solid var(--gold);
+  background: var(--gold);
+  color: #0A0A09;
+  font-family: inherit;
+  font-weight: 700;
+  cursor: pointer;
+}
+.up-follow-btn[data-following="true"] { background: transparent; }
+.up-follow-btn:disabled { opacity: 0.6; }
+.up-bio {
+  margin: 14px 0 0;
+  max-width: 420px;
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--text-secondary);
+  white-space: pre-line;
+}
+
+.up-tabs {
+  display: flex;
+  gap: 8px;
+  padding: 10px 0;
+  border-top: 1px solid var(--border-dim);
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+.up-tabs::-webkit-scrollbar { display: none; }
+.up-tab {
+  display: inline-flex; align-items: center; gap: 6px;
+  flex-shrink: 0;
+  padding: 7px 14px;
+  border-radius: 999px;
+  border: 1px solid var(--border-subtle);
+  background: transparent;
+  color: var(--text-muted);
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+}
+.up-tab.active { background: var(--gold); border-color: var(--gold); color: #0A0A09; }
+
+.up-grid { gap: 3px; }
+.up-tile { padding: 0; border: none; border-radius: 6px; }
+.up-tile-likes {
+  position: absolute;
+  left: 6px; bottom: 5px;
+  display: inline-flex; align-items: center; gap: 3px;
+  font-size: 11.5px;
+  font-weight: 700;
+  color: #fff;
+  text-shadow: 0 1px 3px rgba(0,0,0,0.8);
+}
+.up-empty { padding: 48px 20px; }
+
+.up-skeleton .up-avatar,
+.up-skel-line {
+  background: linear-gradient(90deg, var(--bg-elevated) 25%, rgba(255,255,255,0.06) 50%, var(--bg-elevated) 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.4s ease-in-out infinite;
+  border-color: transparent;
+}
+.up-skel-line { height: 14px; border-radius: 6px; margin-top: 12px; }
+
+/* Live username availability hint (Account → Profile) */
+.username-status {
+  display: block;
+  min-height: 16px;
+  margin-top: 6px;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-muted);
+}
+.username-status[data-state="ok"] { color: var(--emerald, #1D9E75); }
+.username-status[data-state="bad"] { color: #F08060; }
+
+/* ═══ Discover polish: sheets, comments, share, seek bar ═══════════ */
+
+/* Bottom sheets (comments, share, manage): a dimmed backdrop you can tap
+   to close, and a panel that slides up and can be dragged down. */
+.cs-wrap {
+  position: absolute;
+  inset: 0;
+  z-index: 125;
+  pointer-events: none;
+}
+.cs-wrap.cs-wrap-fixed { position: fixed; z-index: 3150; }
+.cs-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.35);
+  opacity: 0;
+  transition: opacity 0.22s ease;
+  pointer-events: auto;
+}
+.cs-wrap.open .cs-backdrop { opacity: 1; }
+.cs-wrap .cs-panel {
+  position: absolute;
+  left: 0; right: 0; bottom: 0;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  max-height: 74%;
+  height: 74%;
+  background: var(--bg-panel, #141412);
+  border-radius: 18px 18px 0 0;
+  box-shadow: 0 -10px 40px rgba(0,0,0,0.5);
+  padding-bottom: var(--safe-area-inset-bottom, env(safe-area-inset-bottom, 0px));
+  transform: translateY(100%);
+  transition: transform 0.24s cubic-bezier(0.32, 0.72, 0, 1);
+  pointer-events: auto;
+}
+.cs-wrap.open .cs-panel { transform: translateY(0); }
+.cs-wrap .cs-panel.cs-panel-compact { height: auto; max-height: 80%; }
+/* The old full-feed dim is replaced by the sheet's own backdrop. */
+body.discover-immersive .discover-stage:has(.discover-comment-sheet) .discover-feed::after { display: none; }
+
+.cs-grab { display: flex; justify-content: center; padding: 8px 0 2px; touch-action: none; }
+.cs-grab span { width: 38px; height: 4px; border-radius: 4px; background: rgba(255,255,255,0.22); }
+.cs-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 4px 12px 10px 16px;
+  border-bottom: 1px solid var(--border-dim);
+  touch-action: none;
+}
+.cs-title { flex: 1; font-size: 14.5px; font-weight: 700; color: var(--text-primary); }
+.cs-sort { display: flex; gap: 2px; background: var(--bg-elevated); border-radius: 999px; padding: 3px; }
+.cs-sort button {
+  border: none; background: none;
+  padding: 5px 11px;
+  border-radius: 999px;
+  color: var(--text-muted);
+  font-family: inherit; font-size: 12px; font-weight: 700;
+  cursor: pointer;
+}
+.cs-sort button.active { background: rgba(255,255,255,0.12); color: var(--text-primary); }
+.cs-close {
+  width: 34px; height: 34px;
+  border: none; border-radius: 50%;
+  background: transparent;
+  color: var(--text-primary);
+  font-size: 18px;
+  display: inline-flex; align-items: center; justify-content: center;
+  cursor: pointer;
+}
+
+.cs-panel .discover-comment-list { flex: 1; min-height: 0; overflow-y: auto; padding: 6px 14px 10px; overscroll-behavior: contain; }
+
+/* One comment */
+.cs-comment {
+  display: flex;
+  gap: 10px;
+  padding: 10px 0;
+  align-items: flex-start;
+}
+.cs-avatar {
+  width: 34px; height: 34px;
+  border-radius: 50%;
+  overflow: hidden;
+  flex-shrink: 0;
+  background: var(--bg-elevated);
+  display: inline-flex; align-items: center; justify-content: center;
+  color: var(--gold);
+  font-weight: 700;
+  font-size: 14px;
+}
+.cs-avatar img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.post-comment-replies .cs-avatar { width: 26px; height: 26px; font-size: 11px; }
+.cs-main { flex: 1; min-width: 0; }
+.cs-meta { display: flex; align-items: center; flex-wrap: wrap; gap: 6px; font-size: 12.5px; }
+.cs-meta .author-link-name { font-size: 12.5px; color: var(--text-secondary); font-weight: 700; }
+.cs-badge {
+  padding: 1px 6px;
+  border-radius: 4px;
+  background: rgba(212,160,57,0.18);
+  color: var(--gold);
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+}
+.cs-comment .post-comment-time { font-size: 11.5px; color: var(--text-muted); }
+.cs-comment .post-comment-edited { font-size: 11px; color: var(--text-muted); }
+.cs-text {
+  margin-top: 2px;
+  font-size: 14px;
+  line-height: 1.42;
+  color: var(--text-primary);
+  word-wrap: break-word;
+  overflow-wrap: anywhere;
+  white-space: pre-wrap;
+}
+.cs-comment .post-comment-actions { gap: 16px; margin-top: 5px; align-items: center; }
+.cs-creator-liked {
+  display: inline-flex; align-items: center; gap: 3px;
+  font-size: 11px; font-weight: 700;
+  color: var(--text-muted);
+}
+.cs-creator-liked i { color: #F08060; font-size: 11px; }
+.cs-comment .post-comment-view-replies {
+  display: inline-flex; align-items: center; gap: 8px;
+  color: var(--text-muted);
+  font-size: 12px;
+}
+.cs-reply-line { width: 22px; height: 1px; background: var(--border-subtle); display: inline-block; }
+.cs-comment .post-comment-replies { margin-left: 0; padding-left: 0; border-left: none; }
+
+.cs-like {
+  display: flex; flex-direction: column; align-items: center; gap: 1px;
+  min-width: 34px;
+  padding: 4px 0;
+  border: none; background: none;
+  color: var(--text-muted);
+  font-family: inherit;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+.cs-like i { font-size: 17px; }
+.cs-like span { font-size: 11px; font-weight: 600; min-height: 13px; }
+.cs-like.liked { color: #F0605A; }
+
+.cs-empty {
+  display: flex; flex-direction: column; align-items: center; gap: 6px;
+  padding: 44px 16px;
+  text-align: center;
+  color: var(--text-muted);
+}
+.cs-empty i { font-size: 30px; opacity: 0.6; }
+.cs-empty p { margin: 0; font-size: 14.5px; font-weight: 700; color: var(--text-primary); }
+.cs-empty span { font-size: 12.5px; }
+
+.cs-skeleton { display: flex; gap: 10px; padding: 12px 0; }
+.cs-skeleton > span { width: 34px; height: 34px; border-radius: 50%; }
+.cs-skeleton > div { flex: 1; display: flex; flex-direction: column; gap: 8px; padding-top: 3px; }
+.cs-skeleton i { display: block; height: 10px; border-radius: 5px; width: 40%; }
+.cs-skeleton i + i { width: 80%; }
+.cs-skeleton > span, .cs-skeleton i {
+  background: linear-gradient(90deg, var(--bg-elevated) 25%, rgba(255,255,255,0.06) 50%, var(--bg-elevated) 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.4s ease-in-out infinite;
+}
+
+/* Composer */
+.cs-composer { border-top: 1px solid var(--border-dim); padding: 8px 12px 10px; background: var(--bg-panel, #141412); }
+.cs-composer .post-reply-chip {
+  display: flex; align-items: center; justify-content: space-between;
+  margin: 0 0 6px;
+}
+.cs-chip-x { border: none; background: none; color: var(--text-muted); cursor: pointer; font-size: 14px; padding: 2px 4px; }
+.cs-emojis {
+  display: flex;
+  justify-content: space-between;
+  padding: 2px 2px 8px;
+}
+.cs-emojis button {
+  border: none; background: none;
+  font-size: 21px;
+  line-height: 1;
+  padding: 4px;
+  cursor: pointer;
+  border-radius: 8px;
+}
+.cs-emojis button:active { transform: scale(1.2); }
+.cs-input-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--bg-elevated);
+  border: 1px solid var(--border-subtle);
+  border-radius: 999px;
+  padding: 4px 4px 4px 14px;
+}
+.cs-input-row:focus-within { border-color: var(--gold); }
+.cs-input {
+  flex: 1; min-width: 0;
+  border: none; outline: none; background: transparent;
+  color: var(--text-primary);
+  font-family: inherit;
+  font-size: 14.5px;
+  padding: 8px 0;
+}
+.cs-input:disabled { opacity: 0.6; }
+.cs-counter { font-size: 11px; color: var(--text-muted); }
+.cs-counter.is-over { color: #F08060; }
+.cs-send {
+  width: 34px; height: 34px;
+  border-radius: 50%;
+  border: none;
+  background: var(--gold);
+  color: #0A0A09;
+  font-size: 17px;
+  display: inline-flex; align-items: center; justify-content: center;
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: opacity 0.15s ease;
+}
+.cs-send:disabled { opacity: 0.35; cursor: default; }
+.cs-input-row .mention-dropdown { left: 0; right: 0; bottom: calc(100% + 6px); }
+
+/* Share / manage sheets */
+.vs-actions {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 6px;
+  padding: 16px 12px 10px;
+}
+.vs-action {
+  display: flex; flex-direction: column; align-items: center; gap: 8px;
+  border: none; background: none;
+  color: var(--text-secondary);
+  font-family: inherit; font-size: 12px; font-weight: 600;
+  cursor: pointer;
+}
+.vs-action-icon {
+  width: 52px; height: 52px;
+  border-radius: 50%;
+  background: var(--bg-elevated);
+  color: var(--text-primary);
+  font-size: 22px;
+  display: flex; align-items: center; justify-content: center;
+}
+.vs-action.is-disabled { opacity: 0.45; }
+.vs-note {
+  margin: 0;
+  padding: 4px 18px 16px;
+  font-size: 12.5px;
+  line-height: 1.5;
+  color: var(--text-muted);
+  text-align: center;
+}
+.vs-note .vu-link-btn { font-size: 12.5px; padding: 0; }
+.vs-list { padding: 4px 16px 16px; }
+.video-manage-row small {
+  display: block;
+  margin-top: 2px;
+  font-size: 11.5px;
+  font-weight: 400;
+  color: var(--text-muted);
+}
+.video-manage-row span:has(small) { flex-wrap: wrap; row-gap: 0; }
+.video-manage-row span:has(small) small { flex-basis: 100%; padding-left: 28px; }
+.vu-settings { display: flex; flex-direction: column; }
+.vu-settings .video-manage-row { padding: 12px 2px; }
+
+/* iOS-style switch for settings checkboxes */
+.vs-switch {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 42px; height: 24px;
+  border-radius: 999px;
+  background: rgba(255,255,255,0.16);
+  position: relative;
+  flex-shrink: 0;
+  cursor: pointer;
+  transition: background 0.18s ease;
+}
+.vs-switch::after {
+  content: '';
+  position: absolute;
+  top: 3px; left: 3px;
+  width: 18px; height: 18px;
+  border-radius: 50%;
+  background: #fff;
+  transition: transform 0.18s ease;
+}
+.vs-switch:checked { background: var(--gold); }
+.vs-switch:checked::after { transform: translateX(18px); }
+.vs-switch:disabled { opacity: 0.5; }
+
+/* Seek bar: a larger invisible touch strip around the thin line, which
+   thickens and shows the time while dragging. */
+.discover-slide .discover-progress {
+  height: 18px;
+  background: transparent;
+  display: flex;
+  align-items: flex-end;
+  touch-action: none;
+  cursor: pointer;
+}
+.discover-feed .discover-progress { bottom: 0; height: 18px; background: transparent; }
+.discover-progress-track {
+  position: relative;
+  width: 100%;
+  height: 2px;
+  background: rgba(255,255,255,0.18);
+  overflow: hidden;
+  transition: height 0.15s ease;
+}
+.discover-slide.is-scrubbing .discover-progress-track { height: 6px; border-radius: 3px; }
+.discover-slide.is-scrubbing .discover-overlay,
+.discover-slide.is-scrubbing .discover-actions { opacity: 0; transition: opacity 0.15s ease; }
+.discover-scrub-time {
+  position: absolute;
+  left: 50%;
+  bottom: 34px;
+  transform: translateX(-50%);
+  padding: 6px 12px;
+  border-radius: 999px;
+  background: rgba(0,0,0,0.6);
+  color: #fff;
+  font-size: 15px;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+}
+.discover-slide.is-scrubbing .discover-scrub-time { opacity: 1; }
+
+/* Error state is tappable now: say so. */
+.discover-slide.has-error::after { content: "Couldn't play this video · Tap to retry"; }
+
+/* Like / save pop */
+@keyframes gieeskPop {
+  0% { transform: scale(1); }
+  40% { transform: scale(1.28); }
+  100% { transform: scale(1); }
+}
+.discover-action-btn.pop i,
+.cs-like.pop i,
+.post-action-btn.pop i { animation: gieeskPop 0.32s ease-out; }
+.discover-slide .discover-progress { top: auto; bottom: 0; }
+.vs-actions { padding-bottom: 20px; }
+/* Community post cards use the same comment rows */
+.post-comments .cs-comment { padding: 8px 0; }
+.post-comments .cs-like { align-self: flex-start; }
+
+/* ═══ Follow "+" on profile photos ══════════════════════════════════ */
+.avatar-follow-wrap {
+  position: relative;
+  display: inline-flex;
+  flex-shrink: 0;
+}
+.discover-author { align-items: center; gap: 10px; }
+.discover-author-avatar { border-radius: 50%; }
+.discover-author-avatar .post-avatar {
+  border: 1.5px solid rgba(255,255,255,0.9);
+}
+.follow-plus {
+  position: absolute;
+  left: 50%;
+  bottom: -7px;
+  transform: translateX(-50%);
+  width: 20px; height: 20px;
+  border-radius: 50%;
+  border: 2px solid #0A0A09;
+  background: var(--gold);
+  color: #0A0A09;
+  font-size: 12px;
+  display: flex; align-items: center; justify-content: center;
+  padding: 0;
+  cursor: pointer;
+  z-index: 2;
+  transition: background 0.2s ease, opacity 0.3s ease, transform 0.3s ease;
+  -webkit-tap-highlight-color: transparent;
+}
+.follow-plus i { font-weight: 700; line-height: 1; }
+/* Just followed: tick for a moment, then it fades out. */
+.follow-plus.is-following { background: var(--emerald, #1D9E75); color: #fff; pointer-events: none; }
+.follow-plus.just-followed { animation: followPlusDone 1.3s ease forwards; }
+.follow-plus.is-following:not(.just-followed) { opacity: 0; transform: translateX(-50%) scale(0.4); }
+@keyframes followPlusDone {
+  0%   { transform: translateX(-50%) scale(1); opacity: 1; }
+  20%  { transform: translateX(-50%) scale(1.25); opacity: 1; }
+  70%  { transform: translateX(-50%) scale(1); opacity: 1; }
+  100% { transform: translateX(-50%) scale(0.4); opacity: 0; }
+}
+.follow-plus-lg { width: 30px; height: 30px; font-size: 16px; bottom: -4px; left: auto; right: -2px; transform: none; border-width: 3px; }
+.follow-plus-lg.just-followed { animation: followPlusDoneLg 1.3s ease forwards; }
+.follow-plus-lg.is-following:not(.just-followed) { transform: scale(0.4); }
+@keyframes followPlusDoneLg {
+  0% { transform: scale(1); opacity: 1; } 20% { transform: scale(1.25); opacity: 1; }
+  70% { transform: scale(1); opacity: 1; } 100% { transform: scale(0.4); opacity: 0; }
+}
+
+/* Profile page photo: tappable to view */
+.up-avatar-wrap { margin: 0 auto; }
+button.up-avatar { padding: 0; cursor: zoom-in; font: inherit; }
+.avatar-edit-badge {
+  position: absolute;
+  right: -2px; bottom: -2px;
+  width: 30px; height: 30px;
+  border-radius: 50%;
+  border: 3px solid var(--bg-void, #0A0A09);
+  background: var(--bg-elevated);
+  color: var(--text-primary);
+  font-size: 14px;
+  display: flex; align-items: center; justify-content: center;
+  cursor: pointer;
+}
+.up-btn-icon { flex: 0 0 48px; padding: 11px 0; }
+
+/* ═══ Photo viewer ══════════════════════════════════════════════════ */
+.avatar-viewer {
+  position: fixed;
+  inset: 0;
+  z-index: 3300;
+  background: rgba(0,0,0,0.94);
+  display: flex;
+  flex-direction: column;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+.avatar-viewer.open { opacity: 1; }
+.avatar-viewer-bar {
+  display: flex; align-items: center; gap: 8px;
+  padding: calc(8px + var(--safe-area-inset-top, env(safe-area-inset-top, 0px))) 8px 8px;
+  color: #fff;
+  font-weight: 700;
+}
+.avatar-viewer-bar > span:not(.up-icon-btn) { flex: 1; text-align: center; }
+.avatar-viewer .up-icon-btn { color: #fff; }
+.avatar-viewer-stage {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  overflow: hidden;
+}
+.avatar-viewer-stage img {
+  width: min(88vw, 520px);
+  height: min(88vw, 520px);
+  object-fit: cover;
+  border-radius: 50%;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.6);
+  transform: scale(0.92);
+  transition: transform 0.25s ease, border-radius 0.25s ease;
+  cursor: zoom-in;
+}
+.avatar-viewer.open .avatar-viewer-stage img { transform: scale(1); }
+.avatar-viewer .avatar-viewer-stage img.zoomed {
+  width: 100%; height: auto; max-height: 100%;
+  object-fit: contain;
+  border-radius: 12px;
+  cursor: zoom-out;
+}
+.avatar-viewer-actions {
+  display: flex; justify-content: center;
+  padding: 12px 16px calc(20px + var(--safe-area-inset-bottom, env(safe-area-inset-bottom, 0px)));
+}
+
+/* ═══ Profile views ═════════════════════════════════════════════════ */
+.up-views {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  max-width: 420px;
+  margin-top: 14px;
+  padding: 11px 14px;
+  border-radius: 12px;
+  border: 1px solid var(--border-subtle);
+  background: var(--bg-elevated);
+  color: var(--text-primary);
+  font-family: inherit;
+  font-size: 13.5px;
+  font-weight: 600;
+  text-align: left;
+  cursor: pointer;
+}
+.up-views > i { color: #8FB3FF; font-size: 17px; }
+.up-views > span { margin-left: auto; display: inline-flex; align-items: center; gap: 2px; font-size: 12px; font-weight: 500; color: var(--text-muted); }
+.pv-list { padding: 4px 8px; }
+.pv-row {
+  display: flex; align-items: center; gap: 12px;
+  width: 100%;
+  padding: 10px 8px;
+  border: none; background: none;
+  border-radius: 12px;
+  color: var(--text-primary);
+  font-family: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+.pv-row:active { background: var(--bg-elevated); }
+.pv-row .cs-avatar { width: 42px; height: 42px; }
+.pv-text { flex: 1; min-width: 0; display: flex; flex-direction: column; }
+.pv-text strong { font-size: 14px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.pv-text small { font-size: 12px; color: var(--text-muted); }
+.pv-new { width: 8px; height: 8px; border-radius: 50%; background: var(--gold); }
+.pv-row > i { color: var(--text-muted); }
+.pv-foot {
+  display: flex; align-items: center; gap: 10px;
+  padding: 10px 16px 12px;
+  border-top: 1px solid var(--border-dim);
+  font-size: 11.5px;
+  line-height: 1.4;
+  color: var(--text-muted);
+}
+.pv-foot .vu-link-btn { flex-shrink: 0; font-size: 12.5px; }
+.pf-privacy-row { margin-top: 10px; padding: 12px 0; border-bottom: none; border-top: 1px solid var(--border-subtle); }
+
+/* ═══ Discover feed — final pass (video first, UI over it) ══════════ */
+/* Top bar: three quiet round icons */
+.discover-topbar-icons { gap: 8px; }
+.discover-topbar-icons button,
+.discover-topbar-icons .discover-mute-btn {
+  width: 34px; height: 34px;
+  border-radius: 50%;
+  background: rgba(0,0,0,0.32);
+  border: 1px solid rgba(255,255,255,0.12);
+  color: #fff;
+  font-size: 17px;
+}
+.discover-topbar-icons button:active { transform: scale(0.92); }
+
+/* Creator row */
+.discover-feed .discover-author,
+.discover-slide .discover-author {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 6px;
+  min-width: 0;
+}
+.discover-slide .discover-author-avatar .post-avatar {
+  border: 1.5px solid rgba(255,255,255,0.9);
+  box-shadow: 0 1px 4px rgba(0,0,0,0.4);
+}
+.discover-slide .discover-author-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  min-width: 0;
+}
+.discover-slide .discover-author-link .author-link-name {
+  font-size: 15.5px;
+  font-weight: 800;
+  color: #fff;
+  text-shadow: 0 1px 4px rgba(0,0,0,0.75);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.discover-verified {
+  color: var(--gold);
+  font-size: 16px;
+  flex-shrink: 0;
+  filter: drop-shadow(0 1px 2px rgba(0,0,0,0.6));
+}
+.up-name .discover-verified { font-size: 0.8em; vertical-align: middle; }
+
+.follow-pill {
+  flex-shrink: 0;
+  padding: 4px 12px;
+  border-radius: 999px;
+  border: none;
+  background: var(--gold);
+  color: #0A0A09;
+  font-family: inherit;
+  font-size: 12px;
+  font-weight: 800;
+  line-height: 1.3;
+  cursor: pointer;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.35);
+  -webkit-tap-highlight-color: transparent;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+.follow-pill:active { transform: scale(0.94); }
+.follow-pill.is-following { display: none; }
+.follow-pill.is-following.just-followed {
+  display: inline-block;
+  background: rgba(0,0,0,0.45);
+  color: #fff;
+  box-shadow: inset 0 0 0 1px rgba(255,255,255,0.5);
+  pointer-events: none;
+  animation: followPillDone 1.6s ease forwards;
+}
+@keyframes followPillDone {
+  0%, 65% { opacity: 1; transform: scale(1); }
+  100% { opacity: 0; transform: scale(0.85); }
+}
+
+.discover-reposted {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  margin-bottom: 6px;
+  padding: 2px 8px;
+  border-radius: 999px;
+  background: rgba(0,0,0,0.38);
+  color: rgba(255,255,255,0.9);
+  font-size: 11.5px;
+  font-weight: 600;
+}
+
+/* Caption: two lines, then "more" */
+.discover-caption-wrap { margin-bottom: 6px; }
+.discover-slide .discover-caption-wrap .discover-caption {
+  margin: 0;
+  font-size: 13.5px;
+  line-height: 1.4;
+  color: #fff;
+  text-shadow: 0 1px 3px rgba(0,0,0,0.7);
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.discover-caption-more {
+  display: none;
+  padding: 0;
+  border: none;
+  background: none;
+  color: #fff;
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 800;
+  text-shadow: 0 1px 3px rgba(0,0,0,0.7);
+  cursor: pointer;
+}
+.discover-caption-wrap.is-clamped .discover-caption-more,
+.discover-caption-wrap.expanded .discover-caption-more { display: inline; }
+.discover-slide .discover-caption-wrap.expanded .discover-caption {
+  display: block;
+  -webkit-line-clamp: unset;
+  max-height: 38vh;
+  overflow-y: auto;
+}
+.discover-caption-wrap.expanded { padding: 8px 10px; margin-left: -10px; border-radius: 12px; background: rgba(0,0,0,0.4); }
+
+/* Hashtags: subtle */
+.discover-slide .discover-hashtags { gap: 6px 10px; margin-bottom: 6px; }
+.discover-slide .discover-hashtags span { color: rgba(255,255,255,0.78); font-size: 12.5px; font-weight: 600; }
+
+/* Original sound */
+.discover-sound {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  max-width: 78%;
+  margin-bottom: 8px;
+  color: rgba(255,255,255,0.9);
+  font-size: 12.5px;
+  text-shadow: 0 1px 3px rgba(0,0,0,0.7);
+}
+.discover-sound i { font-size: 14px; flex-shrink: 0; }
+.discover-sound span { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.discover-slide.no-audio .discover-sound { display: none; }
+
+/* View Recipe: compact gold call to action */
+.discover-slide .discover-recipe-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  max-width: 100%;
+  padding: 7px 12px;
+  border: none;
+  border-radius: 999px;
+  background: rgba(212,160,57,0.95);
+  color: #0A0A09;
+  font-family: inherit;
+  font-size: 12.5px;
+  font-weight: 800;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.35);
+}
+.discover-recipe-chip i { font-size: 15px; flex-shrink: 0; }
+.discover-recipe-title {
+  font-weight: 600;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-width: 150px;
+  opacity: 0.8;
+}
+.discover-recipe-title::before { content: '· '; }
+
+/* Right-side engagement bar */
+.discover-slide .discover-actions { gap: 16px; }
+.discover-slide .discover-action-btn { font-size: 29px; color: #fff; }
+.discover-slide .discover-action-btn.reposted i { color: var(--gold); }
+.discover-slide .discover-action-more { font-size: 24px; }
+.discover-disc {
+  position: relative;
+  width: 40px; height: 40px;
+  margin-top: 2px;
+  padding: 0;
+  border: none;
+  border-radius: 50%;
+  background: conic-gradient(#2a2926, #0d0d0c, #2a2926, #0d0d0c, #2a2926);
+  box-shadow: 0 1px 6px rgba(0,0,0,0.5);
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+.discover-disc-inner {
+  position: absolute;
+  inset: 9px;
+  border-radius: 50%;
+  overflow: hidden;
+  display: flex; align-items: center; justify-content: center;
+  background: var(--bg-elevated, #222);
+  color: var(--gold);
+  font-size: 11px;
+  font-weight: 800;
+  animation: discoverDiscSpin 5s linear infinite;
+  animation-play-state: paused;
+}
+.discover-disc-inner img { width: 100%; height: 100%; object-fit: cover; }
+.discover-slide.is-playing .discover-disc-inner { animation-play-state: running; }
+.discover-slide.no-audio .discover-disc { display: none; }
+@keyframes discoverDiscSpin { to { transform: rotate(360deg); } }
+.discover-disc-muted {
+  position: absolute;
+  right: -3px; bottom: -3px;
+  width: 17px; height: 17px;
+  border-radius: 50%;
+  background: rgba(0,0,0,0.75);
+  color: #fff;
+  font-size: 11px;
+  display: flex; align-items: center; justify-content: center;
+}
+body.discover-sound-on .discover-disc-muted { display: none; }
+
+/* Fit: vertical videos fill the screen; landscape/square ones are shown
+   whole over a blurred copy of their cover (never stretched). */
+.discover-slide.fit-contain .discover-video {
+  position: relative;
+  z-index: 3;
+  object-fit: contain;
+  background: transparent;
+}
+/* The blurred cover sits BEHIND the video here (normally it's in front
+   until the first frame arrives). */
+.discover-slide.fit-contain.has-frame .discover-poster {
+  z-index: 1;
+  opacity: 1;
+  filter: blur(26px) brightness(0.45) saturate(1.1);
+  transform: scale(1.2);
+}
+.discover-slide.fit-contain.has-frame .discover-poster-empty { opacity: 0; }
+
+/* Error: clear message with Retry */
+.discover-slide.has-error::after { content: none !important; display: none !important; }
+.discover-error {
+  display: none;
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 12;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  padding: 18px 22px;
+  border-radius: 16px;
+  background: rgba(10,10,9,0.72);
+  color: #fff;
+  text-align: center;
+}
+.discover-error i { font-size: 30px; color: rgba(255,255,255,0.7); }
+.discover-error p { margin: 0; font-size: 14px; font-weight: 700; white-space: nowrap; }
+.discover-error button {
+  display: inline-flex; align-items: center; gap: 6px;
+  margin-top: 4px;
+  padding: 8px 18px;
+  border: none;
+  border-radius: 999px;
+  background: var(--gold);
+  color: #0A0A09;
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 800;
+  cursor: pointer;
+}
+.discover-slide.has-error .discover-error { display: flex; }
+.discover-slide.has-error .discover-spinner { display: none; }
+
+/* Not interested */
+.discover-slide.is-hidden-video .discover-video,
+.discover-slide.is-hidden-video .discover-overlay,
+.discover-slide.is-hidden-video .discover-actions { visibility: hidden; }
+.discover-hidden-note {
+  position: absolute;
+  inset: 0;
+  z-index: 15;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  gap: 10px;
+  padding: 24px;
+  background: #0b0b0a;
+  color: #fff;
+  text-align: center;
+}
+.discover-hidden-note i { font-size: 32px; color: var(--text-muted); }
+.discover-hidden-note p { margin: 0; font-size: 14px; color: rgba(255,255,255,0.85); }
+.discover-hidden-note button {
+  padding: 8px 20px;
+  border-radius: 999px;
+  border: 1px solid rgba(255,255,255,0.3);
+  background: none;
+  color: #fff;
+  font-family: inherit;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+/* More sheet */
+.vm-list { display: flex; flex-direction: column; padding: 4px 8px 12px; }
+.vm-row {
+  display: flex; align-items: center; gap: 14px;
+  width: 100%;
+  padding: 13px 10px;
+  border: none; border-radius: 12px;
+  background: none;
+  color: var(--text-primary);
+  font-family: inherit;
+  font-size: 15px;
+  font-weight: 600;
+  text-align: left;
+  cursor: pointer;
+}
+.vm-row i { font-size: 21px; width: 24px; text-align: center; color: var(--text-secondary); }
+.vm-row:active { background: var(--bg-elevated); }
+.vm-danger, .vm-danger i { color: #F08060; }
+.vs-repost.is-on .vs-action-icon { background: var(--gold); color: #0A0A09; }
+
+/* Comments: tappable mentions, report */
+button.comment-mention {
+  padding: 0;
+  border: none;
+  background: none;
+  font: inherit;
+  font-weight: 600;
+  color: var(--gold);
+  cursor: pointer;
+}
+.post-comment-actions .cs-report { opacity: 0.7; }
+
+/* Progress line sits just above the phone's gesture bar, not under it. */
+.discover-feed .discover-slide .discover-progress {
+  bottom: var(--safe-area-inset-bottom, env(safe-area-inset-bottom, 0px));
+}
+
+/* ═══ GieesK Verified — the row in Account ═════════════════════════ */
+.pf-verify-row { margin-top: 12px; }
+.pf-verify-btn {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  padding: 12px 14px;
+  border-radius: 14px;
+  border: 1px solid var(--border-subtle);
+  background: var(--bg-elevated);
+  color: var(--text-primary);
+  font-family: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+.pf-verify-btn.is-verified { border-color: rgba(212,160,57,0.45); background: rgba(212,160,57,0.07); }
+.pf-verify-btn > i { font-size: 22px; color: var(--gold); flex-shrink: 0; }
+.pf-verify-text { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 2px; }
+.pf-verify-text strong { font-size: 14px; font-weight: 700; }
+.pf-verify-text small { font-size: 11.5px; color: var(--text-muted); line-height: 1.4; }
+.pf-verify-action {
+  display: inline-flex; align-items: center; gap: 2px;
+  flex-shrink: 0;
+  font-size: 12.5px;
+  font-weight: 700;
+  color: var(--gold);
 }
