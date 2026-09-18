@@ -2843,3 +2843,7 @@ button.comment-mention {
   font-weight: 700;
   color: var(--gold);
 }
+
+/* The tick sits inline with a comment author's name. */
+.comment-author-link { display: inline-flex; align-items: center; gap: 3px; }
+.comment-author-link .discover-verified { font-size: 13px; }

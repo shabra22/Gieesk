@@ -329,6 +329,9 @@
           <button class="user-drop-item" onclick="closeUserDropdown();openDashboard('planner')"><i class="ti ti-calendar"></i> Meal Planner</button>
           <button class="user-drop-item" onclick="closeUserDropdown();openDashboard('shopping')"><i class="ti ti-shopping-cart"></i> Shopping List</button>
           <div class="user-drop-divider"></div>
+          <a class="user-drop-item" href="upgrade.html"><i class="ti ti-crown"></i> Gieesk Pro</a>
+          <a class="user-drop-item" href="verify.html"><i class="ti ti-rosette-discount-check"></i> Get verified</a>
+          <div class="user-drop-divider"></div>
           <button class="user-drop-item danger" onclick="signOut()"><i class="ti ti-logout"></i> Sign Out</button>
         </div>
       </div>
@@ -1084,7 +1087,8 @@
         <div class="footer-col">
           <h4>Account</h4>
           <a href="#" onclick="event.preventDefault();openAuthModal('signup')">Sign Up Free</a>
-          <a href="#" onclick="event.preventDefault();openAuthModal('signup')">Premium Plan</a>
+          <a href="upgrade.html">Gieesk Pro</a>
+          <a href="verify.html">Verified Badge</a>
           <a href="#" onclick="event.preventDefault();openCommunity();setTimeout(function(){switchCommunityTab('chefs');},300)">Chef Membership</a>
           <a href="#" onclick="event.preventDefault();openDashboard('planner')">Meal Planner</a>
           <a href="#" onclick="event.preventDefault();openDashboard('shopping')">Shopping List</a>

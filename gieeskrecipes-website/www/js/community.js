@@ -622,7 +622,9 @@ function applyUsernameLocally(username) {
   cachedDisplayName = username;
   if (!currentUser) return;
   const cached = publicProfileCache.get(String(currentUser.id));
-  publicProfileCache.set(String(currentUser.id), { username, avatar_url: cached ? cached.avatar_url : null, at: Date.now() });
+  // Keep everything else the cache already knew — rewriting only the
+  // username here used to wipe is_verified, and the gold tick with it.
+  publicProfileCache.set(String(currentUser.id), Object.assign({}, cached, { username, at: Date.now() }));
   document.querySelectorAll(`.author-link[data-user-id="${currentUser.id}"] .author-link-name`).forEach((el) => { el.textContent = username; });
   const pools = [
     typeof discoverVideoCache !== 'undefined' ? discoverVideoCache : null,
@@ -715,7 +717,7 @@ async function fetchPublicProfiles(ids) {
         found.add(String(row.id));
         publicProfileCache.set(String(row.id), { username: row.username || null, avatar_url: row.avatar_url || null, is_verified: !!row.is_verified, at: now });
       });
-      missing.forEach((id) => { if (!found.has(id)) publicProfileCache.set(id, { username: null, avatar_url: null, at: now }); });
+      missing.forEach((id) => { if (!found.has(id)) publicProfileCache.set(id, { username: null, avatar_url: null, is_verified: false, at: now }); });
     }
   }
   return publicProfileCache;
@@ -740,7 +742,7 @@ async function resolvePublicAuthors(rows) {
       row.author_name = myName;
       row._username = myName;
     }
-    if (pub && pub.is_verified) row._verified = true;
+    if (pub && typeof pub.is_verified === 'boolean') row._verified = pub.is_verified;
     if (pub && pub.avatar_url) { row.author_avatar = pub.avatar_url; row._avatar = pub.avatar_url; }
     else if (currentUser && row.user_id === currentUser.id && myAvatar) {
       if ('author_avatar' in row) row.author_avatar = myAvatar;
@@ -1040,7 +1042,7 @@ function renderCommentHTML(c, postId, replies, topLevelId, ctx) {
       <div class="cs-main">
         <div class="post-comment-body">
           <div class="cs-meta">
-            <button type="button" class="author-link comment-author-link" data-user-id="${esc(c.user_id || '')}" onclick="openUserProfile(this.dataset.userId)"><strong class="author-link-name">${esc(c.author_name)}</strong></button>
+            <button type="button" class="author-link comment-author-link" data-user-id="${esc(c.user_id || '')}" onclick="openUserProfile(this.dataset.userId)"><strong class="author-link-name">${esc(c.author_name)}</strong>${c._verified ? '<i class="ti ti-rosette-discount-check-filled discover-verified" aria-label="Verified"></i>' : ''}</button>
             ${isCreatorComment ? '<span class="cs-badge">Creator</span>' : ''}
             <span class="post-comment-time">${timeAgo(c.created_at)}</span>
             ${editedTag}
@@ -3563,6 +3565,18 @@ async function openUserProfile(userId) {
   if (!sb) { renderUserProfileError(page, "Couldn't load this profile. Check your connection."); return; }
   const isMe = !!(currentUser && currentUser.id === userId);
 
+  // Anything that leaves this page on its skeleton — a request that never
+  // comes back, a query the database refuses in a way we didn't expect —
+  // used to look like a frozen app. After 12 seconds it becomes a plain
+  // message with Try again instead.
+  clearTimeout(page._loadWatchdog);
+  page._loadWatchdog = setTimeout(() => {
+    if (loadId !== userProfileLoadId) return;
+    if (page.querySelector('.up-skeleton')) {
+      renderUserProfileError(page, "This profile is taking too long to load.");
+    }
+  }, 12000);
+
   try {
     const [profileRes, videosRes] = await Promise.all([
       sb.rpc('get_public_profile', { p_user: userId }),
@@ -3642,6 +3656,7 @@ async function buildFallbackPublicProfile(sb, userId, videos, isMe) {
 }
 
 function renderUserProfileError(page, message) {
+  clearTimeout(page._loadWatchdog);
   page.innerHTML = `
     <div class="up-wrap">
       <div class="up-topbar">
@@ -3656,6 +3671,7 @@ function renderUserProfileError(page, message) {
 }
 
 function renderUserProfile(page, d) {
+  clearTimeout(page._loadWatchdog);
   page._renderData = d;
   // Re-renders (e.g. after closing the player) must reflect a follow or
   // unfollow made in the meantime.

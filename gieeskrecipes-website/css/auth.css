@@ -353,3 +353,6 @@
   .auth-inner { padding: 2rem 1.25rem 1.5rem; }
   #userMenuName { display: none; }
 }
+/* The dropdown now holds links (Gieesk Pro, Get verified) as well as
+   buttons, so the shared row style has to cover both. */
+a.user-drop-item { text-decoration: none; box-sizing: border-box; }
