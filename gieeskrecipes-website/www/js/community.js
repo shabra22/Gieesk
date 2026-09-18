@@ -1,3 +1,17 @@
+// escapeHTML lives in render.js. If that file doesn't execute — an ad
+// blocker, a CDN hiccup, a script-reordering "optimisation" — every
+// screen built here used to die on its first line with
+// "escapeHTML is not defined", which is how the account page turned into
+// a blank strip above the footer. One tiny fallback ends that class of
+// failure for good.
+if (typeof escapeHTML !== 'function') {
+  window.escapeHTML = function (str) {
+    return String(str == null ? '' : str)
+      .replace(/&/g, '&amp;').replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+  };
+}
+
 /* ═══════════════════════════════════════════
    GIEESKRECIPES — Community System
 ═══════════════════════════════════════════ */
