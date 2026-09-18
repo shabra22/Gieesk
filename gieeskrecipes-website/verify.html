@@ -38,6 +38,11 @@
     .vf-note { font-size: 12.5px; color: var(--text-muted, #8A8A82); line-height: 1.6; margin-top: 18px; }
     .vf-steps { counter-reset: s; list-style: none; padding: 0; margin: 20px 0 0; display: flex; flex-direction: column; gap: 12px; }
     .vf-steps li { counter-increment: s; display: flex; gap: 12px; color: var(--text-secondary, #B8B6AE); font-size: 14px; }
+    svg.gk-verified { width: 1em; height: 1em; flex-shrink: 0; vertical-align: -0.12em; }
+    .gk-verified-star { fill: var(--gold, #D4A039); }
+    .gk-verified-check { fill: #0A0A09; }
+    .vf-badge svg.gk-verified { width: 15px; height: 15px; }
+    .vf-name-demo svg.gk-verified { width: 18px; height: 18px; }
     .vf-steps li::before { content: counter(s); flex-shrink: 0; width: 22px; height: 22px; border-radius: 50%; background: rgba(212,160,57,0.15); color: var(--gold, #D4A039); font-size: 12px; font-weight: 800; display: flex; align-items: center; justify-content: center; }
   </style>
 </head>
@@ -45,21 +50,21 @@
   <div class="vf-wrap">
     <a href="/" class="vf-back"><i class="ti ti-arrow-left"></i> Back to GieesK Recipes</a>
 
-    <span class="vf-badge"><i class="ti ti-rosette-discount-check-filled"></i> GieesK Verified</span>
+    <span class="vf-badge"><svg class="gk-verified" viewBox="0 0 24 24" role="img" aria-label="Verified" focusable="false"><path class="gk-verified-star" d="M12 1.5l2.7 2.2 3.4-.3 1 3.3 3 1.8-1.2 3.2 1.2 3.2-3 1.8-1 3.3-3.4-.3L12 22.5 9.3 20.3l-3.4.3-1-3.3-3-1.8L3.1 12 1.9 8.8l3-1.8 1-3.3 3.4.3z"/><path class="gk-verified-check" d="M10.7 15.6l-3-3 1.4-1.4 1.6 1.6 3.9-3.9 1.4 1.4z"/></svg> GieesK Verified</span>
     <h1 class="vf-title">Prove it's really you.</h1>
     <p class="vf-sub">A gold tick next to your name wherever you appear — videos, comments, your profile — so people know the cook they're following is the real one.</p>
 
     <div class="vf-name-demo">
       <span class="vf-dot"></span>
       <strong>your_username</strong>
-      <i class="ti ti-rosette-discount-check-filled"></i>
+      <svg class="gk-verified" viewBox="0 0 24 24" role="img" aria-label="Verified" focusable="false"><path class="gk-verified-star" d="M12 1.5l2.7 2.2 3.4-.3 1 3.3 3 1.8-1.2 3.2 1.2 3.2-3 1.8-1 3.3-3.4-.3L12 22.5 9.3 20.3l-3.4.3-1-3.3-3-1.8L3.1 12 1.9 8.8l3-1.8 1-3.3 3.4.3z"/><path class="gk-verified-check" d="M10.7 15.6l-3-3 1.4-1.4 1.6 1.6 3.9-3.9 1.4 1.4z"/></svg>
     </div>
 
     <!-- Keep this in step with the yearly price you created in Stripe. -->
     <div class="vf-price" id="vfPrice">$29.99 <span>/ year</span></div>
 
     <ul class="vf-list">
-      <li><i class="ti ti-rosette-discount-check"></i> The verified tick on every video, comment and profile view</li>
+      <li><svg class="gk-verified" viewBox="0 0 24 24" role="img" aria-label="Verified" focusable="false"><path class="gk-verified-star" d="M12 1.5l2.7 2.2 3.4-.3 1 3.3 3 1.8-1.2 3.2 1.2 3.2-3 1.8-1 3.3-3.4-.3L12 22.5 9.3 20.3l-3.4.3-1-3.3-3-1.8L3.1 12 1.9 8.8l3-1.8 1-3.3 3.4.3z"/><path class="gk-verified-check" d="M10.7 15.6l-3-3 1.4-1.4 1.6 1.6 3.9-3.9 1.4 1.4z"/></svg> The verified tick on every video, comment and profile view</li>
       <li><i class="ti ti-shield-lock"></i> Your name is protected from impersonation — one verified account per person</li>
       <li><i class="ti ti-id"></i> A one-off ID and selfie check, handled entirely by Stripe</li>
       <li><i class="ti ti-refresh"></i> Renews yearly. Cancel anytime; the tick stays until the year is up</li>
@@ -128,7 +133,7 @@
         if (state?.is_verified) {
           body.innerHTML = `
             <div class="vf-state is-good">
-              <h2><i class="ti ti-rosette-discount-check-filled" style="color:var(--gold)"></i> You're verified</h2>
+              <h2><svg class="gk-verified" viewBox="0 0 24 24" role="img" aria-label="Verified" focusable="false"><path class="gk-verified-star" d="M12 1.5l2.7 2.2 3.4-.3 1 3.3 3 1.8-1.2 3.2 1.2 3.2-3 1.8-1 3.3-3.4-.3L12 22.5 9.3 20.3l-3.4.3-1-3.3-3-1.8L3.1 12 1.9 8.8l3-1.8 1-3.3 3.4.3z"/><path class="gk-verified-check" d="M10.7 15.6l-3-3 1.4-1.4 1.6 1.6 3.9-3.9 1.4 1.4z"/></svg> You're verified</h2>
               <p>Verified since ${state.verified_since ? fmtDate(state.verified_since) : 'recently'}.
                  ${paidUntil ? `Renews on ${fmtDate(paidUntil)}.` : ''}</p>
             </div>

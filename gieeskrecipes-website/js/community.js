@@ -743,6 +743,7 @@ async function fetchPublicProfiles(ids) {
 // database function.
 async function resolvePublicAuthors(rows) {
   if (!Array.isArray(rows) || !rows.length) return rows;
+  if (currentUser && rows.some((r) => r && r.user_id === currentUser.id)) await fetchMyVerifiedFlag();
   const cache = await fetchPublicProfiles(rows.map((r) => r.user_id));
   const myName = currentUser ? cachedDisplayName : null;
   const myAvatar = currentUser ? (currentUser.user_metadata?.avatar_url || currentUser.user_metadata?.picture || null) : null;
@@ -757,6 +758,7 @@ async function resolvePublicAuthors(rows) {
       row._username = myName;
     }
     if (pub && typeof pub.is_verified === 'boolean') row._verified = pub.is_verified;
+    else if (currentUser && row.user_id === currentUser.id && myVerifiedFlag) row._verified = true;
     if (pub && pub.avatar_url) { row.author_avatar = pub.avatar_url; row._avatar = pub.avatar_url; }
     else if (currentUser && row.user_id === currentUser.id && myAvatar) {
       if ('author_avatar' in row) row.author_avatar = myAvatar;
@@ -993,6 +995,23 @@ function renderCommentText(text) {
     '<button type="button" class="comment-mention" data-username="$1" onclick="event.stopPropagation();openUserProfileByUsername(this.dataset.username)">@$1</button>');
 }
 
+// Drawn here rather than taken from the icon font: the webfont build we
+// load has no rosette-check glyph, so the badge was rendering as an empty
+// space on every screen. An inline SVG can't go missing.
+const GK_VERIFIED_SVG = '<svg class="gk-verified" viewBox="0 0 24 24" role="img" aria-label="Verified" focusable="false"><path class="gk-verified-star" d="M12 1.5l2.7 2.2 3.4-.3 1 3.3 3 1.8-1.2 3.2 1.2 3.2-3 1.8-1 3.3-3.4-.3L12 22.5 9.3 20.3l-3.4.3-1-3.3-3-1.8L3.1 12 1.9 8.8l3-1.8 1-3.3 3.4.3z"/><path class="gk-verified-check" d="M10.7 15.6l-3-3 1.4-1.4 1.6 1.6 3.9-3.9 1.4 1.4z"/></svg>';
+function verifiedTickHTML() { return GK_VERIFIED_SVG; }
+
+let myVerifiedFlag = null;
+async function fetchMyVerifiedFlag() {
+  if (!currentUser) return false;
+  if (myVerifiedFlag !== null) return myVerifiedFlag;
+  const sb = getSupabase();
+  if (!sb) return false;
+  const { data, error } = await sb.from('profiles').select('is_verified').eq('id', currentUser.id).maybeSingle();
+  myVerifiedFlag = !error && !!data?.is_verified;
+  return myVerifiedFlag;
+}
+
 const profileIdByUsername = new Map();
 async function openUserProfileByUsername(username) {
   const name = String(username || '').replace(/^@+/, '').toLowerCase();
@@ -1056,7 +1075,7 @@ function renderCommentHTML(c, postId, replies, topLevelId, ctx) {
       <div class="cs-main">
         <div class="post-comment-body">
           <div class="cs-meta">
-            <button type="button" class="author-link comment-author-link" data-user-id="${esc(c.user_id || '')}" onclick="openUserProfile(this.dataset.userId)"><strong class="author-link-name">${esc(c.author_name)}</strong>${c._verified ? '<i class="ti ti-rosette-discount-check-filled discover-verified" aria-label="Verified"></i>' : ''}</button>
+            <button type="button" class="author-link comment-author-link" data-user-id="${esc(c.user_id || '')}" onclick="openUserProfile(this.dataset.userId)"><strong class="author-link-name">${esc(c.author_name)}</strong>${c._verified ? verifiedTickHTML() : ''}</button>
             ${isCreatorComment ? '<span class="cs-badge">Creator</span>' : ''}
             <span class="post-comment-time">${timeAgo(c.created_at)}</span>
             ${editedTag}
@@ -2056,7 +2075,7 @@ function buildVideoSlideHTML(v, i, uniqueAuthors) {
   const saveCount = typeof v._saves === 'number' ? v._saves : 0;
   const shareCount = (v._shares || 0) + (v._reposts || 0);
   const creatorName = esc(v.author_name || '');
-  const verifiedHTML = v._verified ? '<i class="ti ti-rosette-discount-check-filled discover-verified" aria-label="Verified"></i>' : '';
+  const verifiedHTML = v._verified ? verifiedTickHTML() : '';
   const discAvatar = v.author_avatar
     ? `<img src="${esc(v.author_avatar)}" alt="" loading="lazy">`
     : `<span>${esc((v.author_name || '?').charAt(0).toUpperCase())}</span>`;
@@ -3634,6 +3653,13 @@ async function openUserProfile(userId) {
       following = !!(names && names.has(followKey));
     }
 
+    // A profile rebuilt from posts has no verified flag. For your own
+    // profile we can still read it from your row.
+    if (profile && typeof profile.is_verified !== 'boolean' && isMe) {
+      profile.is_verified = await fetchMyVerifiedFlag();
+      if (loadId !== userProfileLoadId) return;
+    }
+
     page._videos = videos;
     page._profile = { userId, username, displayName, avatar };
     renderUserProfile(page, { profile, username, displayName, followKey, avatar, videos, isMe, following });
@@ -3748,7 +3774,7 @@ function renderUserProfile(page, d) {
           ${!d.isMe && d.followKey && !d.following ? followPlusHTML(d.followKey, false).replace('follow-plus', 'follow-plus follow-plus-lg') : ''}
           ${d.isMe ? '<button type="button" class="avatar-edit-badge" onclick="openDashboard(\'profile\')" aria-label="Change photo"><i class="ti ti-camera"></i></button>' : ''}
         </div>
-        <h1 class="up-name">${esc(handle)}${d.profile && d.profile.is_verified ? ' <i class="ti ti-rosette-discount-check-filled discover-verified" aria-label="Verified"></i>' : ''}</h1>
+        <h1 class="up-name">${esc(handle)}${d.profile && d.profile.is_verified ? ' ' + verifiedTickHTML() : ''}</h1>
         ${p.joined_at ? `<p class="up-joined">${esc(formatJoined(p.joined_at))}</p>` : ''}
 
         <div class="up-stats">
