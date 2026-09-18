@@ -136,6 +136,43 @@ async function sendAIMessage(prompt) {
     });
 }
 
+// The website had no sign of Gieesk Pro at all: the chat box invited
+// everyone to type and only failed at the end. This locks the composer
+// and says what's going on, in the section itself.
+async function applyAIChefGate() {
+  const input = document.getElementById('aiInput');
+  const sendBtn = document.getElementById('aiSend');
+  const messages = document.getElementById('aiMessages');
+  if (!input || !messages) return;
+
+  const allowed = await aiChefAllowed();
+  const locked = allowed !== 'ok';
+  document.getElementById('aiChefLock')?.remove();
+
+  input.disabled = locked;
+  if (sendBtn) sendBtn.disabled = locked;
+  input.placeholder = locked
+    ? (allowed === 'signin' ? 'Sign in to use the AI Chef' : 'AI Chef is part of Gieesk Pro')
+    : 'Ask the chef anything…';
+  if (!locked) return;
+
+  const url = (typeof publicSiteOrigin === 'function' ? publicSiteOrigin() : 'https://gieesk.com') + '/upgrade.html';
+  const card = document.createElement('div');
+  card.id = 'aiChefLock';
+  card.className = 'ai-chef-lock';
+  card.innerHTML = allowed === 'signin'
+    ? `<i class="ti ti-lock"></i>
+       <h3>Sign in to cook with the AI Chef</h3>
+       <p>Unlimited cooking help comes with Gieesk Pro.</p>
+       <button type="button" class="btn-gold" onclick="if(typeof openAuthModal==='function')openAuthModal('login')">Sign in</button>`
+    : `<i class="ti ti-lock"></i>
+       <h3>AI Chef is a Gieesk Pro feature</h3>
+       <p>Unlimited AI cooking help, full meal planning and advanced dietary filters — $4.99 a month, cancel anytime.</p>
+       <a class="btn-gold" href="${url}" target="_blank" rel="noopener">Upgrade to Pro</a>`;
+  messages.appendChild(card);
+}
+window.applyAIChefGate = applyAIChefGate;
+
 function initAI() {
   var input   = document.getElementById('aiInput');
   var sendBtn = document.getElementById('aiSend');
@@ -157,6 +194,8 @@ function initAI() {
       sendAIMessage(input.value);
     }
   });
+
+  applyAIChefGate();
 
   // Suggestion chips — attach after a tick to make sure they exist
   setTimeout(function() {

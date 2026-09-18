@@ -178,6 +178,8 @@ async function initAuth() {
 
 // ── Updates nav UI based on login state ──
 function onAuthStateChange(user) {
+  // Signing in or out changes what Pro features are open.
+  if (typeof applyAIChefGate === 'function') setTimeout(applyAIChefGate, 0);
   // Wait for DOM to be ready before touching elements
   const update = () => {
   const btnLogin  = document.getElementById('btnLogin');

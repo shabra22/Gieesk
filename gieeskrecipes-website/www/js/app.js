@@ -123,6 +123,9 @@ function showPage(page) {
     // Built lazily on first visit, like recipes/community above.
     if (typeof openDiscoverPage === 'function') openDiscoverPage();
   }
+  // Re-check the Pro lock every time AI Chef opens: someone may have
+  // signed in or subscribed since the page loaded.
+  if (page === 'ai-chef' && typeof applyAIChefGate === 'function') applyAIChefGate();
 }
 
 // ── Recipes page ─────────────────────────
