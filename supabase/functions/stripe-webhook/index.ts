@@ -57,11 +57,43 @@ async function resolveUserId(obj: Any): Promise<string | null> {
   return data?.id ?? null;
 }
 
-function kindOf(obj: Any): 'pro' | 'verified' {
-  const kind = obj?.metadata?.kind
+const PRICE_VERIFIED = Deno.env.get('STRIPE_PRICE_VERIFIED') || '';
+const PRICE_PRO = Deno.env.get('STRIPE_PRICE_PRO') || Deno.env.get('STRIPE_PRICE_ID') || '';
+
+function priceIdsOf(obj: Any): string[] {
+  const ids: string[] = [];
+  const add = (v: unknown) => { if (typeof v === 'string' && v) ids.push(v); };
+  (obj?.items?.data || []).forEach((i: Any) => { add(i?.price?.id); add(i?.plan?.id); });
+  (obj?.lines?.data || []).forEach((l: Any) => {
+    add(l?.price?.id);
+    add(l?.plan?.id);
+    add(l?.pricing?.price_details?.price);
+  });
+  return ids;
+}
+
+// Which product is this event about? Our own metadata first. A
+// subscription created by hand in the Stripe dashboard has none, so the
+// price id decides. If neither says, we grant NOTHING — guessing "pro"
+// here would hand out Gieesk Pro to anyone who bought the badge.
+async function kindOf(obj: Any, eventType?: string): Promise<'pro' | 'verified' | null> {
+  const meta = obj?.metadata?.kind
     || obj?.parent?.subscription_details?.metadata?.kind
     || obj?.subscription_details?.metadata?.kind;
-  return kind === 'verified' ? 'verified' : 'pro';
+  if (meta === 'verified' || meta === 'pro') return meta;
+
+  let ids = priceIdsOf(obj);
+  if (!ids.length && eventType === 'checkout.session.completed' && obj?.id) {
+    try {
+      const items = await stripe.checkout.sessions.listLineItems(obj.id, { limit: 5 });
+      ids = (items.data || []).map((i: Any) => i?.price?.id).filter(Boolean);
+    } catch (e) {
+      console.warn('[stripe-webhook] could not read line items', e);
+    }
+  }
+  if (PRICE_VERIFIED && ids.includes(PRICE_VERIFIED)) return 'verified';
+  if (PRICE_PRO && ids.includes(PRICE_PRO)) return 'pro';
+  return null;
 }
 
 // End of the period this invoice paid for, straight from the invoice
@@ -137,8 +169,9 @@ Deno.serve(async (req) => {
     switch (event.type) {
       case 'checkout.session.completed': {
         const userId = await resolveUserId(obj);
-        const kind = kindOf(obj);
+        const kind = await kindOf(obj, event.type);
         if (!userId) break;
+        if (!kind) { await logEvent(userId, 'unknown.plan.checkout', null, obj.id); break; }
         const customerId = typeof obj.customer === 'string' ? obj.customer : obj.customer?.id;
         // invoice.paid arrives with the exact period and refines this.
         const until = new Date(Date.now() + (kind === 'verified' ? YEAR_MS : MONTH_MS)).toISOString();
@@ -155,8 +188,9 @@ Deno.serve(async (req) => {
 
       case 'invoice.paid': {
         const userId = await resolveUserId(obj);
-        const kind = kindOf(obj);
+        const kind = await kindOf(obj, event.type);
         if (!userId) break;
+        if (!kind) { await logEvent(userId, 'unknown.plan.invoice', null, obj.id); break; }
         const customerId = typeof obj.customer === 'string' ? obj.customer : obj.customer?.id;
         await grantPaid(userId, kind, paidUntilFromInvoice(obj, kind), customerId);
         await logEvent(userId, `invoice.paid.${kind}`, null, obj.id);
@@ -174,8 +208,11 @@ Deno.serve(async (req) => {
       case 'customer.subscription.updated':
       case 'customer.subscription.deleted': {
         const userId = await resolveUserId(obj);
-        const kind = kindOf(obj);
+        const kind = await kindOf(obj, event.type);
         if (!userId) break;
+        // Unknown product: log it rather than removing access we can't
+        // attribute. verification_events shows these so you can check.
+        if (!kind) { await logEvent(userId, 'unknown.plan.subscription', String(obj.status || ''), obj.id); break; }
         const status = String(obj.status || '');
         const dead = event.type === 'customer.subscription.deleted'
           || ['canceled', 'unpaid', 'incomplete_expired'].includes(status);

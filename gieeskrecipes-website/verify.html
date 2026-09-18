@@ -107,6 +107,8 @@
           headers: { Authorization: `Bearer ${session.access_token}` },
           body: payload || {},
         });
+        // The identity call can answer "already verified" instead of a URL.
+        if (data?.verified) return null;
         if (error || !data?.url) throw new Error(data?.error || error?.message || 'failed');
         return data.url;
       }
@@ -163,7 +165,12 @@
               <h2>Checking your ID</h2>
               <p>Stripe is reviewing what you submitted. This usually takes a couple of minutes, sometimes longer. You can close this page — the tick appears on your profile as soon as it passes.</p>
             </div>
-            <button class="vf-btn-ghost" id="vfRefresh">Check again</button>`;
+            <button class="vf-btn" id="vfIdentity" style="margin-top:16px">Check the status, or start again</button>
+            <button class="vf-btn-ghost" id="vfRefresh">Refresh this page</button>`;
+          // Starting again asks Stripe what became of the last check: if
+          // it passed, the badge is granted now; if it was abandoned, a
+          // fresh check opens.
+          wireIdentity();
           document.getElementById('vfRefresh').addEventListener('click', async () => {
             render(await loadState());
           });
@@ -222,7 +229,9 @@
           btn.disabled = true;
           btn.textContent = 'Opening Stripe…';
           try {
-            window.location.href = await callFunction('create-identity-session');
+            const url = await callFunction('create-identity-session');
+            if (!url) { showMsg('Your identity check passed — you\'re verified.', '#1D9E75'); render(await loadState()); return; }
+            window.location.href = url;
           } catch (e) {
             btn.disabled = false;
             btn.textContent = label;

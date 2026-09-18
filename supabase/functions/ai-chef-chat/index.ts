@@ -2,6 +2,7 @@
 // AI Chef chat handler — proxies chat messages to the Claude API
 
 import "jsr:@supabase/functions-js/edge-runtime.d.ts";
+import { createClient } from "npm:@supabase/supabase-js@^2";
 
 const ANTHROPIC_API_KEY = Deno.env.get("ANTHROPIC_API_KEY");
 const ANTHROPIC_API_URL = "https://api.anthropic.com/v1/messages";
@@ -36,6 +37,36 @@ const corsHeaders = {
   "Access-Control-Allow-Methods": "POST, OPTIONS",
 };
 
+// AI Chef is a paid feature, and this function holds the Anthropic key —
+// so it has to check for itself who is calling. Before this, any request
+// to this URL got a full Claude answer, subscription or not.
+async function checkAccess(req: Request): Promise<{ ok: true; userId: string } | { ok: false; status: number; error: string }> {
+  const token = (req.headers.get("Authorization") ?? "").replace(/^Bearer\s+/i, "");
+  if (!token) return { ok: false, status: 401, error: "Please sign in to use the AI Chef" };
+
+  const admin = createClient(
+    Deno.env.get("SUPABASE_URL")!,
+    Deno.env.get("SUPABASE_SERVICE_ROLE_KEY")!,
+    { auth: { persistSession: false } },
+  );
+
+  // An anon key in this header is not a signed-in person: getUser rejects it.
+  const { data, error } = await admin.auth.getUser(token);
+  if (error || !data?.user) return { ok: false, status: 401, error: "Please sign in to use the AI Chef" };
+
+  const { data: profile } = await admin
+    .from("profiles")
+    .select("is_premium, premium_until")
+    .eq("id", data.user.id)
+    .maybeSingle();
+
+  const until = profile?.premium_until ? new Date(profile.premium_until) : null;
+  const active = !!profile?.is_premium && (!until || until > new Date());
+  if (!active) return { ok: false, status: 402, error: "AI Chef is part of Gieesk Pro" };
+
+  return { ok: true, userId: data.user.id };
+}
+
 interface ChatMessage {
   role: "user" | "assistant";
   content: string;
@@ -63,6 +94,14 @@ Deno.serve(async (req: Request) => {
     return new Response(
       JSON.stringify({ error: "Server misconfiguration: missing API key" }),
       { status: 500, headers: { ...corsHeaders, "Content-Type": "application/json" } }
+    );
+  }
+
+  const access = await checkAccess(req);
+  if (!access.ok) {
+    return new Response(
+      JSON.stringify({ error: access.error }),
+      { status: access.status, headers: { ...corsHeaders, "Content-Type": "application/json" } },
     );
   }
 

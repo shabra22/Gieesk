@@ -30,8 +30,38 @@ Deno.serve(async (req) => {
     const paidUntil = profile?.verification_paid_until ? new Date(profile.verification_paid_until) : null;
     const paid = !!paidUntil && paidUntil > new Date();
     if (!paid) return json({ error: 'No active verification subscription' }, 402);
-    if (profile?.verification_status === 'processing') {
-      return json({ error: 'Your last check is still being reviewed' }, 409);
+    // A check already under way. Ask Stripe what actually happened to it
+    // rather than trusting our own 'processing' flag: someone who closed
+    // the Stripe page mid-check would otherwise be stuck forever.
+    if (profile?.verification_status === 'processing' && profile?.verification_session_id) {
+      try {
+        const existing = await stripe.identity.verificationSessions.retrieve(profile.verification_session_id);
+        if (existing.status === 'verified') {
+          await admin.from('profiles').update({
+            is_verified: true,
+            verification_status: 'verified',
+            verified_since: new Date().toISOString(),
+            verification_note: null,
+          }).eq('id', user.id);
+          await admin.from('verification_events').insert({
+            user_id: user.id, event: 'identity.verified.synced', stripe_id: existing.id,
+          });
+          return json({ verified: true });
+        }
+        if (existing.status === 'processing') {
+          return json({ error: 'Your last check is still being reviewed' }, 409);
+        }
+        if (existing.status === 'requires_input') {
+          await admin.from('profiles').update({
+            verification_status: 'failed',
+            verification_note: String(existing.last_error?.reason || 'The check was not completed.').slice(0, 300),
+          }).eq('id', user.id);
+        }
+        // requires_input or canceled: start a fresh check below.
+        await stripe.identity.verificationSessions.cancel(existing.id).catch(() => {});
+      } catch (e) {
+        console.warn('[create-identity-session] could not read previous session', e);
+      }
     }
 
     const session = await stripe.identity.verificationSessions.create({
