@@ -163,3 +163,30 @@
   flex-shrink: 0;
   font-size: 17px;
 }
+
+/* Gieesk Pro lock inside the AI Chef section */
+.ai-chef-lock {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  margin: auto;
+  padding: 28px 22px;
+  text-align: center;
+}
+.ai-chef-lock i { font-size: 34px; color: var(--gold, #D4A039); }
+.ai-chef-lock h3 {
+  margin: 4px 0 0;
+  font-family: var(--font-display, serif);
+  font-size: 19px;
+  color: var(--text-primary, #F0EEE8);
+}
+.ai-chef-lock p {
+  margin: 0 0 8px;
+  max-width: 340px;
+  font-size: 13.5px;
+  line-height: 1.55;
+  color: var(--text-muted, #8A8A82);
+}
+.ai-chef-lock .btn-gold { display: inline-block; text-decoration: none; }
+.ai-chip.is-locked { opacity: 0.45; }

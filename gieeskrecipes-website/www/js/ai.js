@@ -65,9 +65,47 @@ async function fetchAIChefReply(message) {
   return data.reply;
 }
 
-function sendAIMessage(prompt) {
+// AI Chef is a Gieesk Pro feature. The app checked this on its tab, but
+// the website let anyone type — and the Edge Function itself didn't check
+// at all, so the Anthropic key was effectively open to the internet. The
+// function now refuses non-subscribers; this is the polite version of
+// the same rule, so people see why instead of getting an error.
+function aiChefLockMessage(reason) {
+  var url = (typeof publicSiteOrigin === 'function' ? publicSiteOrigin() : 'https://gieesk.com') + '/upgrade.html';
+  var messages = document.getElementById('aiMessages');
+  if (!messages) return;
+  var msg = document.createElement('div');
+  msg.className = 'ai-msg bot';
+  msg.innerHTML = reason === 'signin'
+    ? '<div class="msg-bubble">Sign in to cook with the AI Chef.</div>'
+    : '<div class="msg-bubble">AI Chef is part of Gieesk Pro — unlimited cooking help, meal planning and advanced filters for $4.99 a month.'
+      + ' <a href="' + url + '" target="_blank" rel="noopener" style="color:var(--gold);font-weight:700">See Gieesk Pro</a></div>';
+  messages.appendChild(msg);
+  messages.scrollTop = messages.scrollHeight;
+}
+
+async function aiChefAllowed() {
+  if (typeof currentUser === 'undefined' || !currentUser) return 'signin';
+  if (typeof isPremiumUser !== 'function') return 'ok';
+  try {
+    return (await isPremiumUser()) ? 'ok' : 'upgrade';
+  } catch (e) {
+    return 'ok'; // never block on a failed check; the function still enforces it
+  }
+}
+
+async function sendAIMessage(prompt) {
   prompt = (prompt || '').trim();
   if (!prompt) return;
+
+  var allowed = await aiChefAllowed();
+  if (allowed !== 'ok') {
+    var inputEl = document.getElementById('aiInput');
+    if (inputEl) inputEl.value = '';
+    appendMessage(prompt, 'user');
+    aiChefLockMessage(allowed);
+    return;
+  }
 
   var input = document.getElementById('aiInput');
   if (input) input.value = '';
@@ -87,6 +125,9 @@ function sendAIMessage(prompt) {
     .catch(function (err) {
       console.error('[GieesK] AI Chef error:', err);
       removeTyping();
+      var text = String((err && err.message) || '');
+      if (/sign in/i.test(text)) { aiChefLockMessage('signin'); return; }
+      if (/pro|subscription/i.test(text)) { aiChefLockMessage('upgrade'); return; }
       appendMessage("Sorry, the chef is having trouble responding right now. Please try again in a moment.", 'bot');
     })
     .finally(function () {
