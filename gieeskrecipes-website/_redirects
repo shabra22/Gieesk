@@ -1,0 +1,14 @@
+# ── Cloudflare Pages routing ─────────────────────────────────────
+# Order matters: the first match wins.
+
+# Android App Links read this file to confirm the app may open
+# gieesk.com links. Pages can skip dot-folders on upload depending on
+# how the build is wired, so a copy lives at the root and this line
+# guarantees the well-known URL resolves either way.
+/.well-known/assetlinks.json   /assetlinks.json   200
+
+# Clean profile links: /u/<username>. 200 is a rewrite, not a redirect —
+# index.html is served while the address bar keeps /u/<username>, which
+# is what makes it shareable and what the Android intent filter matches.
+# js/deep-links.js reads the path and opens that profile.
+/u/*                           /index.html        200

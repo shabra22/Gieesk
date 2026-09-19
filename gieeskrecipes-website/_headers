@@ -13,3 +13,13 @@
   Cache-Control: public, max-age=604800
 /css/*
   Cache-Control: public, max-age=604800
+
+# Android App Links: Google's verifier fetches this over HTTPS and wants
+# JSON. Short cache so a fingerprint change (a new signing key) is picked
+# up the same day rather than weeks later.
+/.well-known/assetlinks.json
+  Content-Type: application/json
+  Cache-Control: public, max-age=3600
+/assetlinks.json
+  Content-Type: application/json
+  Cache-Control: public, max-age=3600

@@ -77,7 +77,8 @@
     try {
       const params = new URLSearchParams(location.search);
       if (params.get('ref') === 'share') return true;
-      if (/^#u\//.test(location.hash)) return true;
+      if (/^\/u\//.test(location.pathname)) return true;   // a shared profile link
+      if (/^#u\//.test(location.hash)) return true;         // the older form
       const ref = document.referrer;
       if (ref && new URL(ref).host !== location.host) return true;
     } catch (e) {}
@@ -102,7 +103,8 @@
   // Who they came to see, when we can tell — a named creator is a much
   // better reason to install than a generic pitch.
   function shareSubject() {
-    const m = location.hash.match(/^#u\/([A-Za-z0-9_%-]+)/);
+    const m = location.pathname.match(/^\/u\/([A-Za-z0-9_]{1,40})/)
+      || location.hash.match(/^#u\/([A-Za-z0-9_%-]+)/);
     if (m) { try { return '@' + decodeURIComponent(m[1]); } catch (e) { return '@' + m[1]; } }
     return null;
   }

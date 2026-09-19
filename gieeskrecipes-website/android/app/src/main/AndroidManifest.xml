@@ -24,6 +24,30 @@
                 <category android:name="android.intent.category.BROWSABLE" />
                 <data android:scheme="com.gieesk.recipes" />
             </intent-filter>
+
+            <!-- Android App Links: a tapped gieesk.com link opens the app
+                 directly for anyone who has it installed, instead of the
+                 browser. Android checks
+                 https://gieesk.com/.well-known/assetlinks.json against
+                 this app's signing certificate; until the fingerprints in
+                 that file are real, verification fails and links simply
+                 open in the browser as before. See APP-LINKS.md.
+
+                 Only the apex host is declared: autoVerify covers every
+                 host in the filter, and www.gieesk.com redirects to the
+                 apex rather than serving assetlinks.json itself, which
+                 would fail verification and take the apex down with it.
+
+                 Paths are deliberately narrow — the two kinds of link
+                 the app can actually show. The bare homepage is left to
+                 the browser. -->
+            <intent-filter android:autoVerify="true">
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data android:scheme="https" android:host="gieesk.com" android:pathPrefix="/u/" />
+                <data android:scheme="https" android:host="gieesk.com" android:pathPrefix="/recipes/" />
+            </intent-filter>
         </activity>
 
         <provider
