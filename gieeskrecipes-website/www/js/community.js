@@ -1604,7 +1604,7 @@ function sharePost(postId) {
       // No per-post page exists, so a shared post points at its author's
       // profile when we know who that is, and the feed otherwise.
       url: post && post._username
-        ? shareUrl(`${origin}/`, `#u/${encodeURIComponent(post._username)}`)
+        ? shareUrl(`${origin}/u/${encodeURIComponent(post._username)}`)
         : shareUrl(`${origin}/`, '#community'),
     };
   }
@@ -4230,8 +4230,11 @@ function shareUserProfile() {
   // just opened the feed — whoever you shared, the person opening it had
   // to go and find them. #u/<username> opens the profile itself (see the
   // deep-link handler in app.js).
+  // /u/<username> rather than #u/<username>: a real path is what the
+  // Android intent filter can match, so on a phone with the app this
+  // link opens the profile in the app instead of the browser.
   const url = info.username
-    ? shareUrl(`${origin}/`, `#u/${encodeURIComponent(info.username)}`)
+    ? shareUrl(`${origin}/u/${encodeURIComponent(info.username)}`)
     : shareUrl(`${origin}/`, '#community');
   shareContent({
     title: `${handle} on GieesK Recipes`,

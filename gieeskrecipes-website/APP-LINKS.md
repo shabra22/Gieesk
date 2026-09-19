@@ -5,8 +5,9 @@ app opens on that profile or recipe. No browser, no "open in app" banner.
 Someone without the app gets the website, plus the invite in
 `js/app-invite.js`.
 
-Everything in the code is done. Two things need you: the signing
-fingerprints, and a deploy.
+Everything in the code is done, and the debug key's fingerprint is in
+place, so this works today on a build installed from Android Studio.
+Add Play's app-signing fingerprint when the app is published.
 
 ---
 
@@ -21,53 +22,58 @@ fingerprints, and a deploy.
 | Link handling | `js/deep-links.js` | Turns `/u/<name>`, `#u/<name>` and `/recipes/<id>.html` into the right screen, in the app and on the website |
 | Share links | `js/community.js` | Shares now produce `https://gieesk.com/u/<username>?ref=share` |
 
-Verification currently **fails on purpose** — the fingerprints below are
-placeholders. Until you replace them, links open in the browser exactly
-as they do today. Nothing is broken in the meantime.
+Verification is live for the debug key. A link tapped on a phone running
+a Play-installed build will keep opening the browser until Play's own
+signing fingerprint is added (Step 1) — nothing breaks, it just doesn't
+jump into the app yet.
 
 ---
 
-## Step 1 — get the two fingerprints
+## Step 1 — fingerprints
 
-**The one that matters in production** comes from Google, not from your
-machine, because Play re-signs your app:
-
-> Play Console → your app → **Release → Setup → App signing** →
-> **App signing key certificate** → copy the **SHA-256 certificate
-> fingerprint**
-
-**The upload key** is the one on your computer. It lets App Links work
-in internal testing and in builds you install over USB:
+**Done for the debug build.** `assetlinks.json` already carries the
+SHA-256 of the debug key on the development machine:
 
 ```
-keytool -list -v -keystore "C:\path\to\your-upload-key.jks" -alias your-alias
+EB:30:0F:33:92:22:1A:60:54:D6:8F:0A:FC:0D:A3:5D:89:76:84:7D:F4:2B:64:94:D2:E0:AA:DF:E2:8D:A8:55
 ```
 
-(For a debug build it's the debug keystore:
-`keytool -list -v -keystore "%USERPROFILE%\.android\debug.keystore" -alias androiddebugkey -storepass android -keypass android`)
+That makes App Links work for builds installed from Android Studio, on
+that machine. It will NOT work for anyone who installs from Play,
+because Play re-signs every upload with its own key.
 
-Both come out as 32 hex pairs — `AB:CD:EF:...`. Keep the colons.
+**At publish time**, add two more fingerprints to the array:
 
-## Step 2 — put them in the file
+1. Play Console → your app → **Release → Setup → App signing** →
+   **App signing key certificate** → SHA-256. This is the one that
+   matters for real users.
+2. Your upload key's SHA-256, once you create an upload keystore
+   (there isn't one yet — `android/app/build.gradle` has no
+   `signingConfigs` block).
 
-Open `assetlinks.json` and replace the two placeholders:
+To read a keystore's fingerprint on Windows, where `keytool` isn't on
+the PATH:
 
-```json
-"sha256_cert_fingerprints": [
-  "AB:CD:...:99",   ← Play app signing
-  "12:34:...:FF"    ← your upload key
-]
+```
+$kt = Get-ChildItem "C:\Program Files\Android","$env:USERPROFILE\.jdks" -Recurse -Filter keytool.exe -ErrorAction SilentlyContinue | Select-Object -First 1
+& $kt.FullName -list -v -keystore "PATH\TO\your-key.jks" -alias your-alias | Select-String "SHA256"
 ```
 
-Then copy the same file over `.well-known/assetlinks.json` so both
-copies match:
+Listing several fingerprints is normal: the app verifies whichever key
+it happens to be signed with.
+
+## Step 2 — keep both copies in step
+
+There are two copies of the same file, and they must match:
 
 ```
 copy assetlinks.json .well-known\assetlinks.json
 ```
 
-Listing both keys is normal and safe: it means the app verifies whether
-it was installed from Play or straight from your machine.
+The root copy exists because Cloudflare Pages can skip dot-folders
+depending on how the build is wired. Right now it serves
+`/.well-known/` correctly — confirmed live — and the `_redirects` line
+covers it either way.
 
 ## Step 3 — deploy and confirm the URL
 

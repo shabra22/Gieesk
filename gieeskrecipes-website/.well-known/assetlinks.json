@@ -5,8 +5,7 @@
       "namespace": "android_app",
       "package_name": "com.gieesk.recipes",
       "sha256_cert_fingerprints": [
-        "PLAY_APP_SIGNING_SHA256_GOES_HERE",
-        "UPLOAD_KEY_SHA256_GOES_HERE"
+        "EB:30:0F:33:92:22:1A:60:54:D6:8F:0A:FC:0D:A3:5D:89:76:84:7D:F4:2B:64:94:D2:E0:AA:DF:E2:8D:A8:55"
       ]
     }
   }

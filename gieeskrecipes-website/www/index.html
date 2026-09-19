@@ -1,6 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<!-- Every asset on this page is referenced relatively (js/…, css/…,
+     assets/…). The clean profile URL /u/<username> is served this same
+     file by _redirects, and at that depth those paths would resolve to
+     /u/js/… and 404. This anchors them to the site root, which is
+     exactly where they already resolved from the homepage. -->
+<base href="/" />
   <meta charset="UTF-8" />
   <!-- Browser compatibility & error handler -->
   <script>
@@ -1130,6 +1136,7 @@
   <script src="js/app.js?v=20260919" defer></script>
   <script src="js/app-shell.js?v=20260919" defer></script>
   <script src="js/app-invite.js?v=20260919" defer></script>
+  <script src="js/deep-links.js?v=20260919" defer></script>
 
   <!-- ═══════════ COOKIE CONSENT BANNER ═══════════ -->
   <div id="cookieBanner" style="
