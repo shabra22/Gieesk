@@ -1593,7 +1593,7 @@ function sharePost(postId) {
     shareData = {
       title: post.recipe_title || 'GieesK Recipes',
       text: `Watch ${author} video${post.recipe_title ? ` for ${post.recipe_title}` : ''} and get the recipe on GieesK Recipes`,
-      url: `${origin}/recipes/${post.recipe_id}.html`,
+      url: shareUrl(`${origin}/recipes/${post.recipe_id}.html`),
     };
   } else {
     shareData = {
@@ -1604,8 +1604,8 @@ function sharePost(postId) {
       // No per-post page exists, so a shared post points at its author's
       // profile when we know who that is, and the feed otherwise.
       url: post && post._username
-        ? `${origin}/#u/${encodeURIComponent(post._username)}`
-        : `${origin}/#community`,
+        ? shareUrl(`${origin}/`, `#u/${encodeURIComponent(post._username)}`)
+        : shareUrl(`${origin}/`, '#community'),
     };
   }
   shareData.dialogTitle = post?.video_url ? 'Share video' : 'Share';
@@ -2857,9 +2857,21 @@ function openVideoMoreSheet(postId) {
   attachSheetDragToClose(sheet.querySelector('.cs-panel'), sheet.querySelector('.cs-grab'), () => closeVideoSheet('videoMoreSheet'));
 }
 
+// Shared links carry ?ref=share so the website can tell a visitor
+// arrived from someone else's share and offer the app once (js/app-invite.js).
+// The marker goes BEFORE the hash, or the browser reads it as part of the
+// fragment and the deep link stops working.
+function shareUrl(path, hash) {
+  const base = String(path || '');
+  const sep = base.includes('?') ? '&' : '?';
+  return base + sep + 'ref=share' + (hash ? hash : '');
+}
+
 function videoShareLink(v) {
   const origin = typeof publicSiteOrigin === 'function' ? publicSiteOrigin() : 'https://gieesk.com';
-  return v && v.recipe_id ? `${origin}/recipes/${encodeURIComponent(v.recipe_id)}.html` : `${origin}/#community`;
+  return v && v.recipe_id
+    ? shareUrl(`${origin}/recipes/${encodeURIComponent(v.recipe_id)}.html`)
+    : shareUrl(`${origin}/`, '#community');
 }
 
 async function copyVideoLink(postId) {
@@ -4219,8 +4231,8 @@ function shareUserProfile() {
   // to go and find them. #u/<username> opens the profile itself (see the
   // deep-link handler in app.js).
   const url = info.username
-    ? `${origin}/#u/${encodeURIComponent(info.username)}`
-    : `${origin}/#community`;
+    ? shareUrl(`${origin}/`, `#u/${encodeURIComponent(info.username)}`)
+    : shareUrl(`${origin}/`, '#community');
   shareContent({
     title: `${handle} on GieesK Recipes`,
     text: `Watch ${handle}'s cooking videos on GieesK Recipes`,

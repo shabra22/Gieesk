@@ -90,13 +90,22 @@ function buildCommunityPage() {
   el.id = 'page-community';
   el.style.cssText = 'background:var(--bg-void);min-height:100vh;';
 
+  // These come from other files (render.js, data-loader.js). If either
+  // fails to execute — an ad blocker, a CDN hiccup — calling them threw
+  // here and the whole Community page came out blank, the same failure
+  // that once turned the account page into an empty strip.
+  const recipes = (typeof RECIPES !== 'undefined' && Array.isArray(RECIPES)) ? RECIPES : [];
+  const chefList = (typeof CHEFS !== 'undefined' && Array.isArray(CHEFS)) ? CHEFS : [];
+  const countries = new Set(recipes.map(r => r.country).filter(Boolean)).size;
+  const recipeCountOf = (name) => (typeof getChefRecipeCount === 'function' ? getChefRecipeCount(name) : 0);
+
   el.innerHTML = `
     <!-- Hero -->
     <div class="community-page-hero">
       <div class="container">
         <p class="section-eyebrow" style="justify-content:center;display:flex">🌍 Global Cooking Community</p>
         <h1 class="community-hero-title">Cook. Share.<br/><em>Inspire the World.</em></h1>
-        <p class="community-hero-sub">Join our growing community of cooks from ${new Set(RECIPES.map(r => r.country).filter(Boolean)).size} countries. Share your recipes, enter challenges, follow master chefs, and earn your place on the leaderboard.</p>
+        <p class="community-hero-sub">Join our growing community of cooks from <span id="communityCountryCount">${countries}</span> countries. Share your recipes, enter challenges, follow master chefs, and earn your place on the leaderboard.</p>
         <div class="community-hero-actions">
           <button class="btn-gold btn-lg" onclick="openUploadModal()">
             <i class="ti ti-plus"></i> Share a Recipe
@@ -110,9 +119,9 @@ function buildCommunityPage() {
         </div>
         <div class="community-hero-stats">
           <div><div class="community-hero-stat-num" id="communityMemberCount">—</div><div class="community-hero-stat-label">Members</div></div>
-          <div><div class="community-hero-stat-num">${RECIPES.length}</div><div class="community-hero-stat-label">Recipes</div></div>
-          <div><div class="community-hero-stat-num">${new Set(RECIPES.map(r => r.country).filter(Boolean)).size}</div><div class="community-hero-stat-label">Countries</div></div>
-          <div><div class="community-hero-stat-num">${CHEFS.length}</div><div class="community-hero-stat-label">Chefs</div></div>
+          <div><div class="community-hero-stat-num" id="communityRecipeCount">${recipes.length}</div><div class="community-hero-stat-label">Recipes</div></div>
+          <div><div class="community-hero-stat-num" id="communityCountryStat">${countries}</div><div class="community-hero-stat-label">Countries</div></div>
+          <div><div class="community-hero-stat-num">${chefList.length}</div><div class="community-hero-stat-label">Chefs</div></div>
         </div>
       </div>
     </div>
@@ -164,19 +173,19 @@ function buildCommunityPage() {
           <div class="sidebar-widget">
             <div class="sidebar-widget-header"><i class="ti ti-star"></i> Top Chefs This Week</div>
             <div class="sidebar-widget-body" id="sidebarTopChefs">
-              ${CHEFS
+              ${chefList
                 // Was just the first 5 in array order under a "Top" label
                 // implying ranking — sort by real recipe count so the
                 // label actually means something, since follower counts
                 // (shown below) are all genuinely 0 at this stage and
                 // can't yet distinguish anyone.
-                .map((c, originalIndex) => ({ c, originalIndex, recipeCount: getChefRecipeCount(c.name) }))
+                .map((c, originalIndex) => ({ c, originalIndex, recipeCount: recipeCountOf(c.name) }))
                 .sort((a, b) => b.recipeCount - a.recipeCount)
                 .slice(0, 5)
                 .map(({ c, originalIndex, recipeCount }) => `
                 <div class="top-chef-row" onclick="openChefProfile(${originalIndex})">
-                  <div class="top-chef-avatar">${c.emoji}</div>
-                  <div class="top-chef-name">${c.name}</div>
+                  <div class="top-chef-avatar">${escapeHTML(c.emoji || '')}</div>
+                  <div class="top-chef-name">${escapeHTML(c.name)}</div>
                   <div class="top-chef-score" data-follower-count="${c.name.replace(/"/g,'&quot;')}">–</div>
                 </div>`).join('')}
               <button class="btn-ghost" style="width:100%;justify-content:center;margin-top:8px;font-size:13px" onclick="switchCommunityTab('chefs')">
@@ -410,57 +419,93 @@ async function buildFeed() {
     const av = document.getElementById('uploadPromptAvatar');
     const avatar = currentUser.user_metadata?.avatar_url || currentUser.user_metadata?.picture;
     const name   = currentUser.user_metadata?.full_name || currentUser.email?.split('@')[0] || 'C';
-    if (av) av.innerHTML = avatar ? `<img src="${avatar}" style="width:100%;height:100%;object-fit:cover;border-radius:50%">` : name.charAt(0).toUpperCase();
+    if (av) av.innerHTML = avatar
+      ? `<img src="${escapeHTML(avatar)}" alt="" style="width:100%;height:100%;object-fit:cover;border-radius:50%">`
+      : escapeHTML(String(name).charAt(0).toUpperCase());
   }
 
   feed.innerHTML = '<div class="dash-loading">Loading the feed…</div>';
+  refreshCommunityHeroCounts();
 
   const sb = getSupabase();
   if (!sb) { feed.innerHTML = '<div class="dash-loading">Community feed unavailable.</div>'; return; }
 
-  // Videos belong to Discover. They used to show up here too, as bare
-  // text cards with just the caption and tags and no video.
-  const { data: posts, error } = await sb
-    .from('community_posts')
-    .select('*')
-    .eq('status', 'published')
-    .is('video_url', null)
-    .order('created_at', { ascending: false })
-    .limit(50);
+  // Every await below is inside this try. Without it, a rejected request
+  // (dropped connection mid-fetch) left the feed sitting on "Loading the
+  // feed…" for the rest of the session with nothing to tap.
+  try {
+    // Videos belong to Discover. They used to show up here too, as bare
+    // text cards with just the caption and tags and no video.
+    const { data: posts, error } = await sb
+      .from('community_posts')
+      .select('*')
+      .eq('status', 'published')
+      .is('video_url', null)
+      .order('created_at', { ascending: false })
+      .limit(50);
 
-  if (error) {
-    console.error('[GieesK] community_posts query failed — has supabase/community.sql been run?', error);
-    feed.innerHTML = '<div class="dash-loading">Couldn\'t load the feed. Please try again shortly.</div>';
-    return;
+    if (error) {
+      console.error('[GieesK] community_posts query failed — has supabase/community.sql been run?', error);
+      renderFeedError(feed);
+      return;
+    }
+
+    if (!posts || posts.length === 0) {
+      window._communityFeedPosts = [];
+      feed.innerHTML = `<div class="saved-empty"><i class="ti ti-users"></i><h3>No posts yet</h3><p>Be the first to share a recipe with the community.</p></div>`;
+      return;
+    }
+
+    await resolvePublicAuthors(posts);
+    const postIds = posts.map(p => p.id);
+
+    // Batch-fetch likes and comments for ALL visible posts in two queries
+    // total, rather than one query per post (N+1) — then aggregate client-side.
+    const [{ data: likes }, { data: comments }] = await Promise.all([
+      sb.from('post_likes').select('post_id, user_id').in('post_id', postIds),
+      sb.from('post_comments').select('post_id').in('post_id', postIds)
+    ]);
+
+    const likeCounts = {}, likedByMe = {}, commentCounts = {};
+    (likes || []).forEach(l => {
+      likeCounts[l.post_id] = (likeCounts[l.post_id] || 0) + 1;
+      if (currentUser && l.user_id === currentUser.id) likedByMe[l.post_id] = true;
+    });
+    (comments || []).forEach(c => { commentCounts[c.post_id] = (commentCounts[c.post_id] || 0) + 1; });
+
+    // Sharing a post needs the post itself; sharePost() only ever looked
+    // in the video caches, so every text post shared a bare link to the
+    // feed even when it carried a recipe.
+    window._communityFeedPosts = posts;
+
+    feed.innerHTML = posts.map((post, idx) => buildPostHTML(post, idx, {
+      likes: likeCounts[post.id] || 0,
+      liked: !!likedByMe[post.id],
+      comments: commentCounts[post.id] || 0
+    })).join('');
+  } catch (err) {
+    console.error('[GieesK] Feed failed to load:', err);
+    renderFeedError(feed);
   }
+}
 
-  if (!posts || posts.length === 0) {
-    feed.innerHTML = `<div class="saved-empty"><i class="ti ti-users"></i><h3>No posts yet</h3><p>Be the first to share a recipe with the community.</p></div>`;
-    return;
-  }
+function renderFeedError(feed) {
+  if (!feed) return;
+  feed.innerHTML = `<div class="saved-empty"><i class="ti ti-wifi-off"></i><h3>Couldn’t load the feed</h3>
+    <p>Check your connection and try again.</p>
+    <button class="btn-gold" onclick="buildFeed()">Try again</button></div>`;
+}
 
-  await resolvePublicAuthors(posts);
-  const postIds = posts.map(p => p.id);
-
-  // Batch-fetch likes and comments for ALL visible posts in two queries
-  // total, rather than one query per post (N+1) — then aggregate client-side.
-  const [{ data: likes }, { data: comments }] = await Promise.all([
-    sb.from('post_likes').select('post_id, user_id').in('post_id', postIds),
-    sb.from('post_comments').select('post_id').in('post_id', postIds)
-  ]);
-
-  const likeCounts = {}, likedByMe = {}, commentCounts = {};
-  (likes || []).forEach(l => {
-    likeCounts[l.post_id] = (likeCounts[l.post_id] || 0) + 1;
-    if (currentUser && l.user_id === currentUser.id) likedByMe[l.post_id] = true;
-  });
-  (comments || []).forEach(c => { commentCounts[c.post_id] = (commentCounts[c.post_id] || 0) + 1; });
-
-  feed.innerHTML = posts.map((post, idx) => buildPostHTML(post, idx, {
-    likes: likeCounts[post.id] || 0,
-    liked: !!likedByMe[post.id],
-    comments: commentCounts[post.id] || 0
-  })).join('');
+// The hero's recipe and country numbers are baked in when the page is
+// built. Opening Community before data/index.json has arrived showed
+// "0 countries" until a full reload; this refreshes them in place.
+function refreshCommunityHeroCounts() {
+  if (typeof RECIPES === 'undefined' || !Array.isArray(RECIPES) || !RECIPES.length) return;
+  const countries = new Set(RECIPES.map(r => r.country).filter(Boolean)).size;
+  const set = (id, value) => { const el = document.getElementById(id); if (el) el.textContent = value; };
+  set('communityRecipeCount', typeof formatNum === 'function' ? formatNum(RECIPES.length) : RECIPES.length);
+  set('communityCountryCount', countries);
+  set('communityCountryStat', countries);
 }
 
 function buildPostHTML(post, idx, counts) {
@@ -536,9 +581,11 @@ function buildPostHTML(post, idx, counts) {
         <div class="post-comment-input-row" style="position:relative">
           <div class="mention-dropdown" id="mention-dropdown-${post.id}" style="display:none"></div>
           <input class="shopping-add-input" id="comment-input-${post.id}" placeholder="Write a comment…"
-                 oninput="handleCommentInput(this,'${post.id}')"
-                 onkeydown="if(event.key==='Enter') submitComment('${post.id}')" />
-          <button class="btn-gold" style="padding:8px 16px" onclick="submitComment('${post.id}')">Post</button>
+                 maxlength="${COMMENT_MAX_LENGTH}" autocomplete="off"
+                 oninput="handleCommentInput(this,'${post.id}');updateCommentComposer('${post.id}')"
+                 onkeydown="if(event.key==='Enter'){event.preventDefault();submitComment('${post.id}')}" />
+          <span class="cs-counter" id="comment-counter-${post.id}"></span>
+          <button class="btn-gold" style="padding:8px 16px" id="comment-send-${post.id}" onclick="submitComment('${post.id}')">Post</button>
         </div>
       </div>
     </div>`;
@@ -879,14 +926,17 @@ async function toggleLike(postId) {
 }
 
 async function focusComment(postId) {
-  if (!currentUser) { openAuthModal('login'); return; }
+  // Reading comments needs no account — the sign-in prompt belongs on
+  // posting, which submitComment already does. Gating it here meant
+  // tapping the comment count while signed out threw up a login modal
+  // instead of showing the conversation, which Discover never did.
   const box = document.getElementById(`comments-${postId}`);
   if (!box) return;
   const opening = box.style.display === 'none';
   box.style.display = opening ? '' : 'none';
   if (opening) {
     await loadComments(postId);
-    commentEl(postId, `comment-input-${postId}`)?.focus();
+    if (currentUser) commentEl(postId, `comment-input-${postId}`)?.focus();
   }
 }
 
@@ -916,6 +966,13 @@ function commentEl(postId, id) {
 const commentSort = {};           // postId -> 'top' | 'newest'
 const expandedReplies = new Set(); // comment ids whose replies are open
 let commentLikesUnavailable = false;
+// Threaded replies and edits need two columns on post_comments
+// (parent_comment_id, updated_at) plus an UPDATE policy — see
+// supabase-community-comments.sql. Until that runs, these two flags let
+// the rest of the comment system work normally instead of erroring.
+let commentRepliesUnavailable = false;
+let commentEditUnavailable = false;
+const COMMENT_PAGE_SIZE = 300;
 
 function isMissingTableError(error) {
   const code = String(error?.code || '');
@@ -923,17 +980,40 @@ function isMissingTableError(error) {
   return code === '42P01' || code === 'PGRST205' || msg.includes('could not find the table') || msg.includes('does not exist');
 }
 
+// "column X does not exist" (42703) or PostgREST's schema-cache version
+// of the same ("Could not find the 'X' column of …", PGRST204).
+function isMissingColumnError(error, column) {
+  const code = String(error?.code || '');
+  const msg = String(error?.message || '').toLowerCase();
+  if (!msg.includes(String(column).toLowerCase())) return false;
+  return code === '42703' || code === 'PGRST204' || msg.includes('does not exist') || msg.includes('could not find');
+}
+
+// The row exists but the policy refuses the write (or matches no row).
+function isPolicyError(error) {
+  const code = String(error?.code || '');
+  const msg = String(error?.message || '').toLowerCase();
+  return code === '42501' || msg.includes('row-level security') || msg.includes('violates policy');
+}
+
 async function loadComments(postId) {
   const sb = getSupabase();
   const list = commentEl(postId, `comments-list-${postId}`);
   if (!sb || !list) return;
-  const { data, error } = await sb.from('post_comments').select('*').eq('post_id', postId).order('created_at', { ascending: true });
+  // Newest first with a ceiling, then flipped back into posting order.
+  // Unbounded and ascending, a post with thousands of comments fetched
+  // and rendered every single one — and the oldest ones at that, since
+  // PostgREST caps the response anyway.
+  const { data, error } = await sb.from('post_comments').select('*')
+    .eq('post_id', postId)
+    .order('created_at', { ascending: false })
+    .limit(COMMENT_PAGE_SIZE);
   if (error) {
     console.error('[GieesK] Could not load comments:', error);
     list.innerHTML = `<div class="cs-empty"><p>Couldn't load comments.</p><button class="btn-ghost" onclick="loadComments('${safePostId(postId)}')">Try again</button></div>`;
     return;
   }
-  const comments = data || [];
+  const comments = (data || []).slice().reverse();
   const [, postRes, likesRes] = await Promise.all([
     resolvePublicAuthors(comments),
     // The post owner can moderate comments on it and gets a Creator badge.
@@ -1041,7 +1121,7 @@ function renderCommentHTML(c, postId, replies, topLevelId, ctx) {
   const isPostOwner = !!(currentUser && ctx.postOwnerId && ctx.postOwnerId === currentUser.id);
   const isCreatorComment = !!(ctx.postOwnerId && c.user_id === ctx.postOwnerId);
   const editedTag = c.updated_at ? '<span class="post-comment-edited">edited</span>' : '';
-  const ownerActionsHTML = (isAuthor ? `
+  const ownerActionsHTML = ((isAuthor && !commentEditUnavailable) ? `
     <button type="button" onclick="startEditComment('${esc(id)}','${pid}')">Edit</button>` : '')
     + ((isAuthor || isPostOwner) ? `
     <button type="button" onclick="deleteCommentAction('${esc(id)}','${pid}')">Delete</button>` : '');
@@ -1049,7 +1129,7 @@ function renderCommentHTML(c, postId, replies, topLevelId, ctx) {
 
   const open = expandedReplies.has(id);
   const repliesHTML = replies.length ? `
-    <button type="button" class="post-comment-view-replies" onclick="toggleReplies('${esc(id)}')" id="toggle-replies-${esc(id)}">
+    <button type="button" class="post-comment-view-replies" onclick="toggleReplies('${esc(id)}', this)" id="toggle-replies-${esc(id)}">
       <span class="cs-reply-line"></span>${open ? 'Hide replies' : `View ${replies.length} ${replies.length === 1 ? 'reply' : 'replies'}`}
     </button>
     <div class="post-comment-replies" id="replies-${esc(id)}" data-count="${replies.length}" ${open ? '' : 'style="display:none"'}>
@@ -1083,7 +1163,7 @@ function renderCommentHTML(c, postId, replies, topLevelId, ctx) {
           <div class="cs-text" id="comment-text-${esc(id)}">${renderCommentText(c.text)}</div>
         </div>
         <div class="post-comment-actions">
-          <button type="button" data-author="${esc(c.author_name || '')}" onclick="setReplyTarget('${pid}','${esc(replyTargetId)}', this.dataset.author)">Reply</button>
+          ${commentRepliesUnavailable ? '' : `<button type="button" data-author="${esc(c.author_name || '')}" onclick="setReplyTarget('${pid}','${esc(replyTargetId)}', this.dataset.author)">Reply</button>`}
           ${ownerActionsHTML}
           ${!isAuthor ? `<button type="button" class="cs-report" onclick="reportComment('${esc(id)}','${pid}')">Report</button>` : ''}
           ${ctx.likedByCreator && ctx.likedByCreator.has(id) && !isCreatorComment ? '<span class="cs-creator-liked"><i class="ti ti-heart-filled"></i> by creator</span>' : ''}
@@ -1094,9 +1174,15 @@ function renderCommentHTML(c, postId, replies, topLevelId, ctx) {
     </div>`;
 }
 
-function toggleReplies(commentId) {
-  const box = document.getElementById(`replies-${commentId}`);
-  const btn = document.getElementById(`toggle-replies-${commentId}`);
+function toggleReplies(commentId, btnEl) {
+  // The same comment can be on screen twice — a feed card and the
+  // Discover sheet — and both copies carry the same ids.
+  // getElementById returns the first one, so tapping "View replies" in
+  // the sheet expanded the hidden copy in the feed and nothing moved.
+  const scope = btnEl ? btnEl.closest('.cs-comment, .post-comment') : null;
+  const btn = btnEl || document.getElementById(`toggle-replies-${commentId}`);
+  const box = (scope && scope.querySelector(`[id="replies-${commentId}"]`))
+    || document.getElementById(`replies-${commentId}`);
   if (!box || !btn) return;
   const opening = box.style.display === 'none';
   box.style.display = opening ? '' : 'none';
@@ -1295,8 +1381,10 @@ async function startEditComment(commentId, postId) {
   const originalText = span.textContent;
   const wrapper = document.createElement('div');
   wrapper.id = `comment-text-${commentId}`;
+  // escapeHTML, not a lone quote swap: a comment containing the literal
+  // text "&quot;" came back out of the input as a double quote.
   wrapper.innerHTML = `
-    <input type="text" class="shopping-add-input" id="edit-input-${commentId}" value="${originalText.replace(/"/g, '&quot;')}" style="width:100%;margin:4px 0" />
+    <input type="text" class="shopping-add-input" id="edit-input-${commentId}" maxlength="${COMMENT_MAX_LENGTH}" value="${escapeHTML(originalText)}" style="width:100%;margin:4px 0" />
     <div style="display:flex;gap:8px;margin-top:4px">
       <button class="btn-gold" style="padding:4px 12px;font-size:12px" onclick="saveEditComment('${commentId}','${postId}')">Save</button>
       <button class="btn-ghost" style="padding:4px 12px;font-size:12px" onclick="loadComments('${postId}')">Cancel</button>
@@ -1307,14 +1395,37 @@ async function startEditComment(commentId, postId) {
 
 async function saveEditComment(commentId, postId) {
   const input = commentEl(postId, `edit-input-${commentId}`);
-  const newText = input?.value.trim();
+  const newText = input?.value.trim().slice(0, COMMENT_MAX_LENGTH);
   if (!newText) return;
   const sb = getSupabase();
-  if (!sb) return;
-  const { error } = await sb.from('post_comments').update({ text: newText, updated_at: new Date().toISOString() }).eq('id', commentId);
-  if (error) {
-    console.error('[GieesK] Could not edit comment:', error);
-    if (typeof showGenericToast === 'function') showGenericToast("Couldn't save your edit — please try again.");
+  if (!sb || !currentUser) return;
+
+  // Two things can be missing here: the updated_at column (which carries
+  // the "edited" tag) and an UPDATE policy on post_comments. Without the
+  // column the edit failed outright; without the policy it silently
+  // matched no rows and the old text came straight back, looking like the
+  // save had simply been ignored.
+  let { data: saved, error } = await sb.from('post_comments')
+    .update({ text: newText, updated_at: new Date().toISOString() })
+    .eq('id', commentId).eq('user_id', currentUser.id).select('id');
+
+  if (error && isMissingColumnError(error, 'updated_at')) {
+    console.warn('[GieesK] post_comments.updated_at is missing — run supabase-community-comments.sql for edit timestamps.');
+    ({ data: saved, error } = await sb.from('post_comments')
+      .update({ text: newText })
+      .eq('id', commentId).eq('user_id', currentUser.id).select('id'));
+  }
+
+  if (error || !saved || !saved.length) {
+    if (error) console.error('[GieesK] Could not edit comment:', error);
+    else console.warn('[GieesK] Edit changed no rows — post_comments has no UPDATE policy. Run supabase-community-comments.sql.');
+    commentEditUnavailable = !error || isPolicyError(error);
+    if (typeof showGenericToast === 'function') {
+      showGenericToast(commentEditUnavailable
+        ? "Editing comments isn't enabled yet — you can delete and repost."
+        : "Couldn't save your edit — please try again.");
+    }
+    await loadComments(postId);
     return;
   }
   await loadComments(postId);
@@ -1409,13 +1520,21 @@ async function submitComment(postId) {
   try {
     const name = await getPublicDisplayName();
     const replyTarget = activeReplyTarget[postId];
-    const { data: inserted, error } = await sb.from('post_comments').insert({
-      post_id: postId,
-      user_id: currentUser.id,
-      author_name: name,
-      text,
-      parent_comment_id: replyTarget?.parentCommentId || null,
-    }).select('id').single();
+    const row = { post_id: postId, user_id: currentUser.id, author_name: name, text };
+    if (!commentRepliesUnavailable) row.parent_comment_id = replyTarget?.parentCommentId || null;
+
+    let { data: inserted, error } = await sb.from('post_comments').insert(row).select('id').single();
+
+    // The database may not have parent_comment_id yet. Sending an unknown
+    // column fails the whole insert, so every comment — reply or not —
+    // was rejected. Post it as a plain comment instead of losing it, and
+    // stop offering Reply until the column exists.
+    if (error && isMissingColumnError(error, 'parent_comment_id')) {
+      commentRepliesUnavailable = true;
+      console.warn('[GieesK] post_comments.parent_comment_id is missing — run supabase-community-comments.sql to enable threaded replies.');
+      delete row.parent_comment_id;
+      ({ data: inserted, error } = await sb.from('post_comments').insert(row).select('id').single());
+    }
     if (error) {
       console.error('[GieesK] comment failed:', error);
       if (typeof showGenericToast === 'function') {
@@ -1457,7 +1576,10 @@ async function submitComment(postId) {
 // Community page. Nothing here pretends a per-video link exists.
 function sharePost(postId) {
   const origin = typeof publicSiteOrigin === 'function' ? publicSiteOrigin() : 'https://gieesk.com';
-  const pools = [discoverVideoCache, window._discoverGridVideos, window._savedVideosForViewer, window._linkedRecipeVideos];
+  // The community feed's own posts are in here too now: without them a
+  // text post always fell through to the generic "check this out" link,
+  // even when it linked one of the site's recipes.
+  const pools = [discoverVideoCache, window._discoverGridVideos, window._savedVideosForViewer, window._linkedRecipeVideos, window._communityFeedPosts];
   let post = null;
   for (const pool of pools) {
     if (!Array.isArray(pool)) continue;
@@ -1465,7 +1587,7 @@ function sharePost(postId) {
     if (post) break;
   }
 
-  const author = post?.author_name ? `${post.author_name}'s` : 'this';
+  const author = post?.author_name ? `@${String(post.author_name).replace(/^@/, '')}'s` : 'this';
   let shareData;
   if (post?.recipe_id) {
     shareData = {
@@ -1479,7 +1601,11 @@ function sharePost(postId) {
       text: post
         ? `Check out ${author} ${post.video_url ? 'cooking video' : 'post'} on GieesK Recipes`
         : 'Check this out on GieesK Recipes',
-      url: `${origin}/#community`,
+      // No per-post page exists, so a shared post points at its author's
+      // profile when we know who that is, and the feed otherwise.
+      url: post && post._username
+        ? `${origin}/#u/${encodeURIComponent(post._username)}`
+        : `${origin}/#community`,
     };
   }
   shareData.dialogTitle = post?.video_url ? 'Share video' : 'Share';
@@ -1541,35 +1667,52 @@ async function filterFeedByTag(tag) {
   if (!feed || !sb) return;
 
   feed.innerHTML = '<div class="dash-loading">Loading…</div>';
-  const { data: posts, error } = await sb
-    .from('community_posts')
-    .select('*')
-    .eq('status', 'published')
-    .is('video_url', null)
-    .contains('tags', [tag])
-    .order('created_at', { ascending: false });
+  const clean = String(tag).replace(/^#+/, '');
 
-  if (error || !posts || posts.length === 0) {
-    feed.innerHTML = `<div class="saved-empty"><i class="ti ti-hash"></i><h3>No posts tagged #${escapeHTML(String(tag).replace(/^#+/, ''))}</h3><p>Be the first to use this tag.</p></div>`;
-    return;
+  try {
+    // Older posts stored their tags WITH the "#", newer ones without, so
+    // `contains('tags', ['ugali'])` missed every post tagged '#ugali' and
+    // the pill looked broken. overlaps matches either spelling.
+    const { data: posts, error } = await sb
+      .from('community_posts')
+      .select('*')
+      .eq('status', 'published')
+      .is('video_url', null)
+      .overlaps('tags', [clean, '#' + clean])
+      .order('created_at', { ascending: false })
+      .limit(50);
+
+    if (error || !posts || posts.length === 0) {
+      if (error) console.warn('[GieesK] tag filter failed:', error);
+      window._communityFeedPosts = [];
+      feed.innerHTML = `<div class="saved-empty"><i class="ti ti-hash"></i><h3>No posts tagged #${escapeHTML(clean)}</h3><p>Be the first to use this tag.</p>
+        <button class="btn-ghost" onclick="filterFeedByTag('')">Show all posts</button></div>`;
+      return;
+    }
+
+    await resolvePublicAuthors(posts);
+    const postIds = posts.map(p => p.id);
+    const [{ data: likes }, { data: comments }] = await Promise.all([
+      sb.from('post_likes').select('post_id, user_id').in('post_id', postIds),
+      sb.from('post_comments').select('post_id').in('post_id', postIds)
+    ]);
+    const likeCounts = {}, likedByMe = {}, commentCounts = {};
+    (likes || []).forEach(l => {
+      likeCounts[l.post_id] = (likeCounts[l.post_id] || 0) + 1;
+      if (currentUser && l.user_id === currentUser.id) likedByMe[l.post_id] = true;
+    });
+    (comments || []).forEach(c => { commentCounts[c.post_id] = (commentCounts[c.post_id] || 0) + 1; });
+
+    window._communityFeedPosts = posts;
+    feed.innerHTML = `<button class="btn-ghost" style="margin:0 0 14px;font-size:13px" onclick="filterFeedByTag('')">
+        <i class="ti ti-x"></i> Clear #${escapeHTML(clean)}
+      </button>` + posts.map((post, idx) => buildPostHTML(post, idx, {
+      likes: likeCounts[post.id] || 0, liked: !!likedByMe[post.id], comments: commentCounts[post.id] || 0
+    })).join('');
+  } catch (err) {
+    console.error('[GieesK] tag filter failed:', err);
+    renderFeedError(feed);
   }
-
-  await resolvePublicAuthors(posts);
-  const postIds = posts.map(p => p.id);
-  const [{ data: likes }, { data: comments }] = await Promise.all([
-    sb.from('post_likes').select('post_id, user_id').in('post_id', postIds),
-    sb.from('post_comments').select('post_id').in('post_id', postIds)
-  ]);
-  const likeCounts = {}, likedByMe = {}, commentCounts = {};
-  (likes || []).forEach(l => {
-    likeCounts[l.post_id] = (likeCounts[l.post_id] || 0) + 1;
-    if (currentUser && l.user_id === currentUser.id) likedByMe[l.post_id] = true;
-  });
-  (comments || []).forEach(c => { commentCounts[c.post_id] = (commentCounts[c.post_id] || 0) + 1; });
-
-  feed.innerHTML = posts.map((post, idx) => buildPostHTML(post, idx, {
-    likes: likeCounts[post.id] || 0, liked: !!likedByMe[post.id], comments: commentCounts[post.id] || 0
-  })).join('');
 }
 
 // ── Build Challenges tab ──────────────────
@@ -1654,8 +1797,8 @@ async function loadSidebarChallenges() {
   body.innerHTML = challenges.map(c => `
     <div style="padding:8px 0;border-bottom:1px solid var(--border-dim);cursor:pointer" onclick="switchCommunityTab('challenges')">
       <div style="display:flex;align-items:center;gap:8px;margin-bottom:4px">
-        <span style="font-size:1.2rem">${c.icon || '🏆'}</span>
-        <span style="font-size:13px;font-weight:600;color:var(--text-primary)">${c.title}</span>
+        <span style="font-size:1.2rem">${escapeHTML(c.icon || '🏆')}</span>
+        <span style="font-size:13px;font-weight:600;color:var(--text-primary)">${escapeHTML(c.title || 'Challenge')}</span>
       </div>
       <div style="display:flex;justify-content:space-between">
         <span style="font-size:11px;color:var(--text-muted)">${entryCounts[c.id] || 0} entries</span>
@@ -3291,33 +3434,34 @@ async function buildChallengesTab() {
       return `
     <div class="challenge-card" style="animation-delay:${idx*80}ms">
       <div class="challenge-header">
-        <span class="challenge-icon">${c.icon || '🏆'}</span>
+        <span class="challenge-icon">${escapeHTML(c.icon || '🏆')}</span>
         <div>
-          <div class="challenge-title">${c.title}</div>
-          <div class="challenge-meta">${formatDeadline(c.deadline)} · #${c.tag || ''}</div>
+          <div class="challenge-title">${escapeHTML(c.title || 'Challenge')}</div>
+          <div class="challenge-meta">${formatDeadline(c.deadline)} · #${escapeHTML(String(c.tag || '').replace(/^#+/, ''))}</div>
         </div>
         <span class="badge badge-coral" style="margin-left:auto">LIVE</span>
       </div>
       <div class="challenge-body">
-        <p class="challenge-desc">${c.description || ''}</p>
-        <button class="btn-gold" ${entered ? 'disabled' : ''} onclick="enterChallenge('${c.id}')">
+        <p class="challenge-desc">${escapeHTML(c.description || '')}</p>
+        <button class="btn-gold" ${entered ? 'disabled' : ''} onclick="enterChallenge('${c.id}', this)">
           <i class="ti ${entered ? 'ti-check' : 'ti-plus'}"></i> ${entered ? 'Entered' : 'Enter Challenge'}
         </button>
       </div>
       <div class="challenge-footer">
         <div class="challenge-entries"><i class="ti ti-users"></i> ${entryCounts[c.id] || 0} entries</div>
-        <div class="challenge-prize">${c.prize || ''}</div>
+        <div class="challenge-prize">${escapeHTML(c.prize || '')}</div>
       </div>
     </div>`;
     }).join('');
 }
 
-async function enterChallenge(id) {
+async function enterChallenge(id, btn) {
   if (!currentUser) { openAuthModal('login'); return; }
   const sb = getSupabase();
   if (!sb) return;
+  if (btn) { btn.disabled = true; }
 
-  const { data: challenge } = await sb.from('challenges').select('tag').eq('id', id).single();
+  const { data: challenge } = await sb.from('challenges').select('tag').eq('id', id).maybeSingle();
 
   const { error } = await sb.from('challenge_entries').insert({ challenge_id: id, user_id: currentUser.id });
   if (error && error.code !== '23505') {
@@ -3325,9 +3469,14 @@ async function enterChallenge(id) {
     // anything else is a genuine failure and shouldn't proceed as if
     // the entry was recorded.
     console.error('[GieesK] challenge entry failed:', error);
+    if (btn) btn.disabled = false;
     if (typeof showGenericToast === 'function') showGenericToast("Couldn't enter the challenge — please try again.");
     return;
   }
+
+  // The card said "Enter Challenge" until the whole tab was rebuilt, so
+  // entering looked like it hadn't registered.
+  if (btn) btn.innerHTML = '<i class="ti ti-check"></i> Entered';
 
   openUploadModal();
   if (challenge) {
@@ -3356,16 +3505,16 @@ function buildChefsTab() {
     card.className = 'chef-card';
     card.style.animationDelay = (i * 70) + 'ms';
     card.innerHTML = `
-      <div class="chef-photo">${chef.emoji}</div>
-      <div class="chef-name">${chef.name}</div>
-      <div class="chef-origin"><i class="ti ti-map-pin" style="font-size:11px"></i> ${chef.origin}</div>
+      <div class="chef-photo">${escapeHTML(chef.emoji || '')}</div>
+      <div class="chef-name">${escapeHTML(chef.name)}</div>
+      <div class="chef-origin"><i class="ti ti-map-pin" style="font-size:11px"></i> ${escapeHTML(chef.origin || '')}</div>
       <div class="chef-stats">
-        <div><div class="chef-stat-num">${getChefRecipeCount(chef.name)}</div><div class="chef-stat-label">Recipes</div></div>
-        <div><div class="chef-stat-num" data-follower-count="${chef.name.replace(/"/g,'&quot;')}">–</div><div class="chef-stat-label">Followers</div></div>
-        <div><div class="chef-stat-num">${chef.rating}</div><div class="chef-stat-label">Rating</div></div>
+        <div><div class="chef-stat-num">${typeof getChefRecipeCount === 'function' ? getChefRecipeCount(chef.name) : 0}</div><div class="chef-stat-label">Recipes</div></div>
+        <div><div class="chef-stat-num" data-follower-count="${escapeHTML(chef.name)}">–</div><div class="chef-stat-label">Followers</div></div>
+        <div><div class="chef-stat-num">${escapeHTML(String(chef.rating || ''))}</div><div class="chef-stat-label">Rating</div></div>
       </div>
-      <div style="font-size:11px;color:var(--text-muted);margin-bottom:12px">${chef.specialty}</div>
-      <button class="btn-ghost" data-follow-btn="${chef.name.replace(/"/g,'&quot;')}" style="width:100%;justify-content:center;font-size:12px;padding:7px 12px" onclick="event.stopPropagation();followChef('${chef.name.replace(/'/g,"\\'")}',this)">
+      <div style="font-size:11px;color:var(--text-muted);margin-bottom:12px">${escapeHTML(chef.specialty || '')}</div>
+      <button class="btn-ghost" data-follow-btn="${escapeHTML(chef.name)}" style="width:100%;justify-content:center;font-size:12px;padding:7px 12px" onclick="event.stopPropagation();followChef(this.dataset.followBtn,this)">
         Follow
       </button>`;
     card.addEventListener('click', e => {
@@ -3478,10 +3627,16 @@ async function buildLeaderboardTab() {
   const sb = getSupabase();
   if (!sb) { panel.innerHTML = '<div class="dash-loading">Leaderboard unavailable.</div>'; return; }
 
+  // Published only, and capped. This used to pull every row in
+  // community_posts and post_likes with no filter at all: drafts counted
+  // towards the ranking, and past a thousand posts PostgREST truncates
+  // the response anyway, so the "all-time" table was quietly built from
+  // an arbitrary slice.
   const [{ data: posts }, { data: likes }, { data: entries }] = await Promise.all([
-    sb.from('community_posts').select('id, user_id, author_name, author_avatar'),
-    sb.from('post_likes').select('post_id'),
-    sb.from('challenge_entries').select('user_id')
+    sb.from('community_posts').select('id, user_id, author_name, author_avatar')
+      .eq('status', 'published').limit(1000),
+    sb.from('post_likes').select('post_id').limit(5000),
+    sb.from('challenge_entries').select('user_id').limit(2000)
   ]);
 
   if (!posts || posts.length === 0) {
@@ -3493,9 +3648,14 @@ async function buildLeaderboardTab() {
   const likesPerPost = {};
   (likes || []).forEach(l => { likesPerPost[l.post_id] = (likesPerPost[l.post_id] || 0) + 1; });
 
+  // Names and photos as they are NOW. Without this the board showed the
+  // name stored on each post, so anyone who later set a username was
+  // still listed under the real name their Google account supplied.
+  await resolvePublicAuthors(posts);
+
   const byUser = {};
   posts.forEach(p => {
-    if (!byUser[p.user_id]) byUser[p.user_id] = { name: p.author_name, avatar: p.author_avatar, postCount: 0, likeCount: 0, entryCount: 0 };
+    if (!byUser[p.user_id]) byUser[p.user_id] = { id: p.user_id, name: p.author_name, avatar: p.author_avatar, postCount: 0, likeCount: 0, entryCount: 0 };
     byUser[p.user_id].postCount++;
     byUser[p.user_id].likeCount += likesPerPost[p.id] || 0;
   });
@@ -3521,11 +3681,19 @@ async function buildLeaderboardTab() {
           const rank = i + 1;
           const rankIcon = rank === 1 ? '🥇' : rank === 2 ? '🥈' : rank === 3 ? '🥉' : `#${rank}`;
           const rankClass = rank <= 3 ? ['gold','silver','bronze'][rank-1] : '';
-          const avatarHTML = entry.avatar ? `<img src="${entry.avatar}" style="width:100%;height:100%;object-fit:cover;border-radius:50%">` : (entry.name||'?').charAt(0).toUpperCase();
-          return `<div class="lb-row" style="${rank <= 3 ? 'background:rgba(201,150,58,0.04)' : ''}">
+          // author_name and author_avatar are written by the client that
+          // created the post, so they are untrusted text. Interpolated
+          // raw, as they were here, a name like `<img onerror=…>` ran as
+          // markup on every visitor's leaderboard. Every other screen
+          // escapes these; this one didn't.
+          const avatarHTML = entry.avatar
+            ? `<img src="${escapeHTML(entry.avatar)}" alt="" loading="lazy" style="width:100%;height:100%;object-fit:cover;border-radius:50%">`
+            : escapeHTML(String(entry.name || '?').charAt(0).toUpperCase());
+          const tap = entry.id ? ` data-user-id="${escapeHTML(entry.id)}" onclick="openUserProfile(this.dataset.userId)" style="cursor:pointer;${rank <= 3 ? 'background:rgba(201,150,58,0.04)' : ''}"` : ` style="${rank <= 3 ? 'background:rgba(201,150,58,0.04)' : ''}"`;
+          return `<div class="lb-row"${tap}>
             <div class="lb-rank ${rankClass}" style="font-size:${rank<=3?'1.2rem':'12px'}">${rankIcon}</div>
             <div class="lb-avatar">${avatarHTML}</div>
-            <div class="lb-name">${entry.name}</div>
+            <div class="lb-name">${escapeHTML(entry.name || 'GieesK cook')}</div>
             <div style="display:flex;gap:8px;align-items:center">
               <div class="lb-score">${formatNum(entry.score)}</div>
               <span style="font-size:11px;color:var(--text-hint)">pts</span>
@@ -4072,7 +4240,9 @@ function openChefProfile(index) {
   if (!page) { page = document.createElement('div'); page.id = 'page-chef-profile'; document.body.insertBefore(page, document.querySelector('footer')); }
   page.style.display = 'block';
 
-  const chefRecipes = RECIPES.filter(r => r.author === chef.name);
+  const chefRecipes = (typeof RECIPES !== 'undefined' && Array.isArray(RECIPES))
+    ? RECIPES.filter(r => r.author === chef.name)
+    : [];
 
   page.innerHTML = `
     <div class="chef-profile-page">
@@ -4082,17 +4252,17 @@ function openChefProfile(index) {
             <i class="ti ti-arrow-left"></i> Back to Community
           </button>
           <div class="chef-profile-inner">
-            <div class="chef-profile-photo">${chef.emoji}</div>
+            <div class="chef-profile-photo">${escapeHTML(chef.emoji || '')}</div>
             <div>
-              <div class="chef-profile-name">${chef.name} <span class="post-chef-badge" style="font-size:12px;vertical-align:middle">CHEF</span></div>
-              <div class="chef-profile-origin"><i class="ti ti-map-pin"></i> ${chef.origin} · ${chef.specialty}</div>
+              <div class="chef-profile-name">${escapeHTML(chef.name)} <span class="post-chef-badge" style="font-size:12px;vertical-align:middle">CHEF</span></div>
+              <div class="chef-profile-origin"><i class="ti ti-map-pin"></i> ${escapeHTML(chef.origin || '')} · ${escapeHTML(chef.specialty || '')}</div>
               <div class="chef-profile-stats">
                 <div class="dash-hero-stat"><div class="dash-hero-stat-num">${chefRecipes.length}</div><div class="dash-hero-stat-label">Recipes</div></div>
-                <div class="dash-hero-stat"><div class="dash-hero-stat-num" data-follower-count="${chef.name.replace(/"/g,'&quot;')}">–</div><div class="dash-hero-stat-label">Followers</div></div>
-                <div class="dash-hero-stat"><div class="dash-hero-stat-num">${chef.rating} ⭐</div><div class="dash-hero-stat-label">Rating</div></div>
+                <div class="dash-hero-stat"><div class="dash-hero-stat-num" data-follower-count="${escapeHTML(chef.name)}">–</div><div class="dash-hero-stat-label">Followers</div></div>
+                <div class="dash-hero-stat"><div class="dash-hero-stat-num">${escapeHTML(String(chef.rating || ''))} ⭐</div><div class="dash-hero-stat-label">Rating</div></div>
               </div>
               <div class="chef-profile-actions">
-                <button class="btn-gold" data-follow-btn="${chef.name.replace(/"/g,'&quot;')}" onclick="followChef('${chef.name.replace(/'/g,"\\'")}',this)">Follow</button>
+                <button class="btn-gold" data-follow-btn="${escapeHTML(chef.name)}" onclick="followChef(this.dataset.followBtn,this)">Follow</button>
               </div>
 
               <div class="join-community-cta" style="max-width:480px">
@@ -4112,11 +4282,11 @@ function openChefProfile(index) {
 
       <div class="container" style="padding:2rem 24px 4rem">
         <h3 style="font-family:var(--font-display);font-size:1.2rem;font-weight:700;color:var(--text-primary);margin-bottom:1.25rem">
-          Recipes by ${chef.name}
+          Recipes by ${escapeHTML(chef.name)}
         </h3>
         ${chefRecipes.length
-          ? `<div class="recipe-grid">${chefRecipes.map((r,i) => { const card = createRecipeCard(r, i*80); return card.outerHTML; }).join('')}</div>`
-          : `<div style="text-align:center;padding:3rem;color:var(--text-muted)"><i class="ti ti-chef-hat" style="font-size:2.5rem;display:block;margin-bottom:1rem"></i><p>Recipes from ${chef.name} coming soon.</p></div>`
+          ? `<div class="recipe-grid">${typeof createRecipeCard === 'function' ? chefRecipes.map((r,i) => createRecipeCard(r, i*80).outerHTML).join('') : ''}</div>`
+          : `<div style="text-align:center;padding:3rem;color:var(--text-muted)"><i class="ti ti-chef-hat" style="font-size:2.5rem;display:block;margin-bottom:1rem"></i><p>Recipes from ${escapeHTML(chef.name)} coming soon.</p></div>`
         }
       </div>
     </div>`;
@@ -4184,21 +4354,37 @@ async function previewPostPhoto(input) {
 
   postPhotoUploadInProgress = true;
 
+  // Same race as the avatar upload: the reader can finish AFTER the
+  // upload, and then repaints the spinner over the finished state, where
+  // it span until the modal was closed.
+  let uploadSettled = false;
+  const SPINNER = '<i class="ti ti-loader-2" style="animation:spin 0.8s linear infinite"></i>';
+  const CAMERA = '<i class="ti ti-camera"></i>';
+  function setOverlay(html) {
+    const overlay = preview && preview.querySelector('.avatar-upload-overlay');
+    if (overlay) overlay.innerHTML = html;
+  }
+
   const reader = new FileReader();
   reader.onload = e => {
     if (preview) {
-      preview.style.backgroundImage = `url(${e.target.result})`;
+      preview.style.backgroundImage = cssUrl ? `url("${cssUrl(e.target.result)}")` : `url(${e.target.result})`;
       preview.style.backgroundSize = 'cover';
       preview.style.backgroundPosition = 'center';
       if (placeholder) placeholder.style.display = 'none';
-      var overlay = preview.querySelector('.avatar-upload-overlay');
-      if (overlay) overlay.innerHTML = '<i class="ti ti-loader-2" style="animation:spin 0.8s linear infinite"></i>';
+      setOverlay(uploadSettled ? CAMERA : SPINNER);
     }
   };
   reader.readAsDataURL(file);
 
   const sb = getSupabase();
-  if (!sb || !currentUser) { postPhotoUploadInProgress = false; input.value = ''; return; }
+  if (!sb || !currentUser) {
+    uploadSettled = true;
+    setOverlay(CAMERA);
+    postPhotoUploadInProgress = false;
+    input.value = '';
+    return;
+  }
 
   const extFromType = { 'image/jpeg': 'jpg', 'image/png': 'png', 'image/gif': 'gif', 'image/webp': 'webp' }[file.type];
   const ext = extFromType || file.name.split('.').pop() || 'jpg';
@@ -4207,8 +4393,8 @@ async function previewPostPhoto(input) {
   const { error: uploadError } = await sb.storage.from('post-images').upload(path, file, { cacheControl: '3600' });
   postPhotoUploadInProgress = false;
   input.value = '';
-  const overlay = preview?.querySelector('.avatar-upload-overlay');
-  if (overlay) overlay.innerHTML = '<i class="ti ti-camera"></i>';
+  uploadSettled = true;
+  setOverlay(CAMERA);
 
   if (uploadError) {
     console.error('[GieesK] Post photo upload failed — has the post-images storage bucket been created?', uploadError.message);
@@ -4921,6 +5107,30 @@ function openUploadModal() {
 }
 function closeUploadModal() {
   document.getElementById('uploadModalOverlay')?.classList.remove('open');
+  // Closing used to leave the uploaded photo attached: pick a photo,
+  // cancel, come back later for a different recipe, and the old picture
+  // was silently posted with it.
+  resetPostComposer();
+}
+
+function resetPostComposer() {
+  ['uploadTitle','uploadDesc','uploadCuisine','uploadTime','uploadCal','uploadIngredients','uploadSteps','uploadTags'].forEach(id => {
+    const el = document.getElementById(id);
+    if (el) el.value = '';
+  });
+  pendingPostImageUrl = null;
+  const err = document.getElementById('uploadError');
+  if (err) err.style.display = 'none';
+  const preview = document.getElementById('uploadPhotoPreview');
+  if (preview) {
+    preview.style.backgroundImage = '';
+    const overlay = preview.querySelector('.avatar-upload-overlay');
+    if (overlay) overlay.innerHTML = '<i class="ti ti-camera"></i>';
+  }
+  const placeholder = document.getElementById('uploadPhotoPlaceholder');
+  if (placeholder) placeholder.style.display = '';
+  const photoInput = document.getElementById('uploadPhotoInput');
+  if (photoInput) photoInput.value = '';
 }
 
 async function submitCommunityPost() {
@@ -4977,17 +5187,10 @@ async function submitCommunityPost() {
     return;
   }
 
-  closeUploadModal();
+  closeUploadModal();      // also clears the form and the pending photo
+  // switchCommunityTab('feed') fetches the feed itself. Calling buildFeed()
+  // straight after fired a second, parallel fetch of the same 50 posts,
+  // and whichever landed last won.
   switchCommunityTab('feed');
-  buildFeed();   // re-fetch from Supabase so the real, saved post (with its real id) shows up
-
-  ['uploadTitle','uploadDesc','uploadCuisine','uploadTime','uploadCal','uploadIngredients','uploadSteps','uploadTags'].forEach(id => {
-    const el = document.getElementById(id);
-    if (el) el.value = '';
-  });
-  pendingPostImageUrl = null;
-  const preview = document.getElementById('uploadPhotoPreview');
-  const placeholder = document.getElementById('uploadPhotoPlaceholder');
-  if (preview) { preview.style.backgroundImage = ''; }
-  if (placeholder) placeholder.style.display = '';
+  if (typeof showGenericToast === 'function') showGenericToast('Recipe shared!');
 }
