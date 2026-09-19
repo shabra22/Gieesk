@@ -447,7 +447,7 @@ function renderVerificationRow(profile) {
   }
 
   row.innerHTML = `<button type="button" class="pf-verify-btn${verified ? ' is-verified' : ''}" onclick="openVerifyPage()">
-      <i class="ti ${icon}"></i>
+      ${verified && typeof verifiedTickHTML === 'function' ? verifiedTickHTML() : `<i class="ti ${icon}"></i>`}
       <span class="pf-verify-text"><strong>${title}</strong><small>${sub}</small></span>
       <span class="pf-verify-action">${action}<i class="ti ti-chevron-right"></i></span>
     </button>`;
