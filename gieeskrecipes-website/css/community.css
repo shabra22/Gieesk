@@ -149,7 +149,20 @@
 .post-time { margin-left: auto; font-size: 12px; color: var(--text-hint); white-space: nowrap; }
 
 .post-body { padding: 0 16px 12px; }
-.post-text { font-size: 14px; color: var(--text-secondary); line-height: 1.65; margin-bottom: 10px; }
+.post-text {
+  font-size: 14px;
+  color: var(--text-secondary);
+  line-height: 1.65;
+  margin-bottom: 10px;
+  /* A post written as several paragraphs arrived as one run-on block:
+     the text is escaped and inserted as-is, so the line breaks the
+     author typed need preserving here. overflow-wrap stops a pasted
+     link from pushing the card sideways. */
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+/* Empty when a post has no tags, and it was still taking up its margin. */
+.post-tags:empty { display: none; }
 
 .post-recipe-card {
   background: var(--bg-elevated);

@@ -1617,7 +1617,7 @@ async function loadSidebarTopChefsFollowers() {
   if (!names.length) return;
   const counts = await getChefFollowerCounts(names);
   Object.keys(counts).forEach(name => {
-    const el = widget.querySelector(`[data-follower-count="${name.replace(/"/g,'\\"')}"]`);
+    const el = widget.querySelector(attrSel('data-follower-count', name));
     if (el) el.textContent = formatNum(counts[name]);
   });
 }
@@ -1832,7 +1832,7 @@ async function setFollowButtonStates(names) {
   const following = await fetchFollowingNames(getSupabase());
   if (!following) return;
   list.forEach((name) => {
-    document.querySelectorAll(`[data-follow-btn="${name.replace(/"/g, '\\"')}"]`)
+    document.querySelectorAll(attrSel('data-follow-btn', name))
       .forEach((btn) => applyFollowButtonState(btn, following.has(name)));
   });
 }
@@ -2004,6 +2004,18 @@ const VIDEO_BLANK_POSTER = 'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BA
 function cssUrl(url) {
   // encodeURIComponent leaves ' ( ) alone, so percent-encode by hand.
   return String(url || '').replace(/['"()\\\s<>]/g, (c) => '%' + c.charCodeAt(0).toString(16).toUpperCase().padStart(2, '0'));
+}
+
+// Follow state is keyed by the creator's public name, and that name ends
+// up inside a CSS attribute selector. Backslashing only the double quotes
+// wasn't enough: a name carrying a backslash produced an invalid selector,
+// querySelectorAll threw, and because these lookups run AFTER the follow is
+// already saved, the tap succeeded in the database while every button on
+// screen kept its old label. Escaping both characters a CSS string cares
+// about ends that.
+function attrSel(attr, value) {
+  const v = String(value == null ? '' : value).replace(/\\/g, '\\\\').replace(/"/g, '\\"');
+  return `[${attr}="${v}"]`;
 }
 
 function followPillHTML(name, following) {
@@ -2360,7 +2372,7 @@ function openVideoFullscreen(startIndex) {
 
 function setFollowButtonStatesFromCache(name) {
   if (!discoverFollowingNames || !name) return;
-  document.querySelectorAll(`[data-follow-btn="${name.replace(/"/g, '\\"')}"]`)
+  document.querySelectorAll(attrSel('data-follow-btn', name))
     .forEach((btn) => applyFollowButtonState(btn, discoverFollowingNames.has(name)));
 }
 
@@ -3365,7 +3377,7 @@ function buildChefsTab() {
 
   getChefFollowerCounts(CHEFS.map(c => c.name)).then(counts => {
     Object.keys(counts).forEach(name => {
-      const el = grid.querySelector(`[data-follower-count="${name.replace(/"/g,'\\"')}"]`);
+      const el = grid.querySelector(attrSel('data-follower-count', name));
       if (el) el.textContent = formatNum(counts[name]);
     });
   });
@@ -3399,7 +3411,7 @@ async function followChef(name, btn) {
   // Every Follow button for this creator, not just the tapped one: the
   // same creator usually has several videos in the feed, and the others
   // kept saying "Follow" after you'd followed.
-  document.querySelectorAll(`[data-follow-btn="${name.replace(/"/g, '\\"')}"]`)
+  document.querySelectorAll(attrSel('data-follow-btn', name))
     .forEach((b) => applyFollowButtonState(b, !isFollowing));
   if (btn.dataset.following !== String(!isFollowing)) applyFollowButtonState(btn, !isFollowing);
   if (typeof discoverFollowingNames !== 'undefined' && discoverFollowingNames) {
@@ -3408,7 +3420,7 @@ async function followChef(name, btn) {
 
   // Refresh the visible follower count next to this button, wherever it is
   const counts = await getChefFollowerCounts([name]);
-  document.querySelectorAll(`[data-follower-count="${name.replace(/"/g,'\\"')}"]`).forEach(el => {
+  document.querySelectorAll(attrSel('data-follower-count', name)).forEach(el => {
     el.textContent = formatNum(counts[name] || 0);
   });
 }
@@ -3444,7 +3456,7 @@ function applyFollowButtonState(btn, following) {
 // every matching button's initial state accordingly — without this,
 // a returning user would see "Follow" even on chefs they already follow.
 async function setFollowButtonState(chefName) {
-  const buttons = document.querySelectorAll(`[data-follow-btn="${chefName.replace(/"/g,'\\"')}"]`);
+  const buttons = document.querySelectorAll(attrSel('data-follow-btn', chefName));
   if (!buttons.length || !currentUser) return;
   const sb = getSupabase();
   if (!sb) return;
@@ -3571,6 +3583,7 @@ async function openUserProfile(userId) {
     document.body.insertBefore(page, document.querySelector('footer'));
   }
   releaseVideosIn(page);
+  if (page._tileObserver) { page._tileObserver.disconnect(); page._tileObserver = null; }
   page.style.display = 'block';
   page.dataset.userId = userId;
   window.scrollTo({ top: 0, behavior: 'instant' });
@@ -3653,11 +3666,20 @@ async function openUserProfile(userId) {
       following = !!(names && names.has(followKey));
     }
 
-    // A profile rebuilt from posts has no verified flag. For your own
-    // profile we can still read it from your row.
-    if (profile && typeof profile.is_verified !== 'boolean' && isMe) {
-      profile.is_verified = await fetchMyVerifiedFlag();
-      if (loadId !== userProfileLoadId) return;
+    // A profile rebuilt from posts has no verified flag of its own.
+    if (profile && typeof profile.is_verified !== 'boolean') {
+      if (isMe) {
+        profile.is_verified = await fetchMyVerifiedFlag();
+        if (loadId !== userProfileLoadId) return;
+      } else {
+        // resolvePublicAuthors just asked get_public_profiles about this
+        // person for the video grid, so the answer is already in hand —
+        // a verified creator whose profile came from the fallback path
+        // was losing their tick for no reason.
+        const known = publicProfileCache.get(userId);
+        if (known && typeof known.is_verified === 'boolean') profile.is_verified = known.is_verified;
+        else if (videos.length && typeof videos[0]._verified === 'boolean') profile.is_verified = videos[0]._verified;
+      }
     }
 
     page._videos = videos;
@@ -3697,6 +3719,7 @@ async function buildFallbackPublicProfile(sb, userId, videos, isMe) {
 
 function renderUserProfileError(page, message) {
   clearTimeout(page._loadWatchdog);
+  if (page._tileObserver) { page._tileObserver.disconnect(); page._tileObserver = null; }
   page.innerHTML = `
     <div class="up-wrap">
       <div class="up-topbar">
@@ -3712,6 +3735,13 @@ function renderUserProfileError(page, message) {
 
 function renderUserProfile(page, d) {
   clearTimeout(page._loadWatchdog);
+  // This runs again every time the video player closes. Without these two
+  // lines each render left behind a live IntersectionObserver and a set of
+  // still-buffering <video> thumbnails that nothing could reach any more:
+  // open a profile, watch a video, come back, ten times over, and the app
+  // was holding ten observers and ten grids' worth of decoders.
+  releaseVideosIn(page);
+  if (page._tileObserver) { page._tileObserver.disconnect(); page._tileObserver = null; }
   page._renderData = d;
   // Re-renders (e.g. after closing the player) must reflect a follow or
   // unfollow made in the meantime.
@@ -3764,7 +3794,7 @@ function renderUserProfile(page, d) {
     <div class="up-wrap">
       <div class="up-topbar">
         <button type="button" class="up-icon-btn" onclick="userProfileBack()" aria-label="Back"><i class="ti ti-arrow-left"></i></button>
-        <span class="up-topbar-title"></span>
+        <span class="up-topbar-title">${esc(handle)}</span>
         <button type="button" class="up-icon-btn" onclick="shareUserProfile()" aria-label="Share profile"><i class="ti ti-share"></i></button>
       </div>
 
@@ -4016,10 +4046,17 @@ function shareUserProfile() {
   if (!info || typeof shareContent !== 'function') return;
   const origin = typeof publicSiteOrigin === 'function' ? publicSiteOrigin() : 'https://gieesk.com';
   const handle = info.username ? '@' + info.username : info.displayName;
+  // Every shared profile used to carry the same #community link, which
+  // just opened the feed — whoever you shared, the person opening it had
+  // to go and find them. #u/<username> opens the profile itself (see the
+  // deep-link handler in app.js).
+  const url = info.username
+    ? `${origin}/#u/${encodeURIComponent(info.username)}`
+    : `${origin}/#community`;
   shareContent({
     title: `${handle} on GieesK Recipes`,
     text: `Watch ${handle}'s cooking videos on GieesK Recipes`,
-    url: `${origin}/#community`,
+    url,
     dialogTitle: 'Share profile',
   });
 }
@@ -4113,7 +4150,7 @@ function openChefProfile(index) {
   });
 
   getChefFollowerCounts([chef.name]).then(counts => {
-    const el = page.querySelector(`[data-follower-count="${chef.name.replace(/"/g,'\\"')}"]`);
+    const el = page.querySelector(attrSel('data-follower-count', chef.name));
     if (el) el.textContent = formatNum(counts[chef.name] || 0);
   });
   setFollowButtonState(chef.name);

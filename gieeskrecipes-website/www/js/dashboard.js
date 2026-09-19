@@ -39,6 +39,13 @@ function openDashboard(tab) {
   if (typeof setActiveNav === 'function') setActiveNav('dashboard');
 
   var dash = document.getElementById('page-dashboard');
+  // Rebuild for a different account: the hero name, email and photo are
+  // baked into the shell's HTML, so a reused shell showed the previous
+  // person's details after a sign-out/sign-in in the same session.
+  if (dash && dash.dataset.userId && dash.dataset.userId !== currentUser.id) {
+    dash.remove();
+    dash = null;
+  }
   if (!dash) {
     dash = buildDashboardShell();
     document.body.insertBefore(dash, document.querySelector('footer'));
@@ -72,13 +79,20 @@ function buildDashboardShell() {
   const user   = currentUser;
   if (!user) return document.createElement('div');
   const meta   = user.user_metadata || {};
-  const name   = escapeHTML(meta.full_name || meta.name || (user.email ? user.email.split('@')[0] : 'Chef'));
-  const email  = user.email || '';
+  const rawName = meta.full_name || meta.name || (user.email ? user.email.split('@')[0] : 'Chef');
+  const name   = escapeHTML(rawName);
+  const email  = escapeHTML(user.email || '');
   const avatar = meta.avatar_url || meta.picture || null;
-  const initial = name.charAt(0).toUpperCase();
+  // From the RAW name: the escaped one can start with "&" (as in "&lt;"),
+  // which would show a stray ampersand as someone's initial.
+  const initial = escapeHTML(String(rawName || 'C').charAt(0).toUpperCase());
 
   const el = document.createElement('div');
   el.id = 'page-dashboard';
+  // Which account this shell was built for. Signing out and back in as
+  // someone else reused the first account's hero name, email and photo,
+  // because the shell is only built once per page load.
+  el.dataset.userId = user.id;
   el.style.cssText = 'min-height:100vh;padding-top:var(--nav-h);background:var(--bg-void);';
 
   el.innerHTML = `
@@ -90,7 +104,7 @@ function buildDashboardShell() {
             <i class="ti ti-arrow-left"></i> Back
           </button>
           <div class="dash-hero-avatar" id="dashHeroAvatar">
-            ${avatar ? `<img src="${avatar}" alt="${name}">` : initial}
+            ${avatar ? `<img src="${escapeHTML(avatar)}" alt="${name}">` : initial}
           </div>
           <div class="dash-hero-info">
             <div class="dash-hero-name" id="dashHeroName">${name}</div>
@@ -198,9 +212,15 @@ async function loadDashboardStats() {
 function buildProfilePanel(panel) {
   const user   = currentUser;
   if (!user) { panel.innerHTML = '<div style="padding:2rem;text-align:center;color:var(--text-muted)">Please sign in to view your profile.</div>'; return; }
-  const name   = escapeHTML((user.user_metadata && (user.user_metadata.full_name || user.user_metadata.name)) || user.email.split('@')[0] || '');
+  // user.email is not guaranteed — a Google account without a shared
+  // email, or a future phone sign-in, has none. Reading .split() off it
+  // threw here, and the thrown error left the whole Profile tab blank.
+  const rawName = (user.user_metadata && (user.user_metadata.full_name || user.user_metadata.name))
+    || (user.email ? user.email.split('@')[0] : '')
+    || '';
+  const name   = escapeHTML(rawName);
   const avatar = (user.user_metadata && (user.user_metadata.avatar_url || user.user_metadata.picture)) || null;
-  const initial = (name || 'C').charAt(0).toUpperCase();
+  const initial = escapeHTML(String(rawName || 'C').charAt(0).toUpperCase());
 
   const diets = ['Vegetarian','Vegan','Gluten-Free','Dairy-Free','Keto','Halal','Kosher','Nut-Free'];
 
@@ -215,7 +235,7 @@ function buildProfilePanel(panel) {
           </div>
           <div class="dash-card-body" style="display:flex;flex-direction:column;align-items:center;gap:16px">
             <div class="avatar-upload-preview" id="avatarPreview" onclick="document.getElementById('avatarInput').click()">
-              ${avatar ? `<img src="${avatar}" id="avatarImg">` : `<span id="avatarInitial">${initial}</span>`}
+              ${avatar ? `<img src="${escapeHTML(avatar)}" id="avatarImg" alt="">` : `<span id="avatarInitial">${initial}</span>`}
               <div class="avatar-upload-overlay"><i class="ti ti-camera"></i></div>
             </div>
             <input type="file" id="avatarInput" accept="image/*" style="display:none" onchange="previewAvatar(this)">
@@ -265,7 +285,7 @@ function buildProfilePanel(panel) {
               </div>
               <div class="form-field">
                 <label class="form-label">Email</label>
-                <input class="form-input" type="email" value="${user.email || ''}" disabled style="opacity:0.5;cursor:not-allowed" />
+                <input class="form-input" type="email" value="${escapeHTML(user.email || '')}" disabled style="opacity:0.5;cursor:not-allowed" />
               </div>
               <div class="form-field">
                 <label class="form-label">Bio</label>
@@ -378,7 +398,7 @@ async function resetProfileForm() {
   const nameEl = document.getElementById('pfName');
   if (nameEl) nameEl.value = meta.full_name || meta.name || '';
 
-  const { data } = await sb.from('profiles').select('*').eq('id', currentUser.id).single();
+  const { data } = await sb.from('profiles').select('*').eq('id', currentUser.id).maybeSingle();
   profileLoadedUsername = (data && data.username) || '';
   if (document.getElementById('pfUsername')) document.getElementById('pfUsername').value = profileLoadedUsername;
   if (document.getElementById('pfBio'))      document.getElementById('pfBio').value      = (data && data.bio) || '';
@@ -393,8 +413,13 @@ async function resetProfileForm() {
 async function loadProfile() {
   const sb = getSupabase();
   if (!sb || !currentUser) return;
-  const { data } = await sb.from('profiles').select('*').eq('id', currentUser.id).single();
-  if (!data) return;
+  // maybeSingle, not single: an account with no profiles row yet (created
+  // before the auto-create trigger existed) made single() return an error
+  // and no data, and the early return below then skipped the verification
+  // row entirely — so the people most likely to be new had no "Get
+  // verified" entry point at all.
+  const { data } = await sb.from('profiles').select('*').eq('id', currentUser.id).maybeSingle();
+  if (!data) { renderVerificationRow({}); return; }
   profileLoadedUsername = data.username || '';
   const viewHistory = document.getElementById('pfViewHistory');
   if (viewHistory && typeof data.profile_view_history === 'boolean') viewHistory.checked = data.profile_view_history;
@@ -435,6 +460,10 @@ function renderVerificationRow(profile) {
   } else if (status === 'awaiting_id' || status === 'failed') {
     title = status === 'failed' ? 'ID check didn’t pass' : 'One step left';
     sub = status === 'failed' ? 'Try the identity check again to get your badge.' : 'Confirm your identity to get your badge.';
+    // Stripe's own reason, when there is one, is far more useful than
+    // "try again" — it says whether the photo was blurry, the document
+    // unsupported, and so on.
+    if (status === 'failed' && profile?.verification_note) sub = String(profile.verification_note);
     action = 'Continue';
   } else if (status === 'processing') {
     title = 'Checking your ID';
@@ -448,7 +477,7 @@ function renderVerificationRow(profile) {
 
   row.innerHTML = `<button type="button" class="pf-verify-btn${verified ? ' is-verified' : ''}" onclick="openVerifyPage()">
       ${verified && typeof verifiedTickHTML === 'function' ? verifiedTickHTML() : `<i class="ti ${icon}"></i>`}
-      <span class="pf-verify-text"><strong>${title}</strong><small>${sub}</small></span>
+      <span class="pf-verify-text"><strong>${escapeHTML(title)}</strong><small>${escapeHTML(sub)}</small></span>
       <span class="pf-verify-action">${action}<i class="ti ti-chevron-right"></i></span>
     </button>`;
 }
@@ -718,16 +747,51 @@ async function previewAvatar(input) {
 
   // Show the local preview immediately for instant feedback, while the
   // real upload happens in the background.
+  //
+  // The reader is asynchronous, so on a small photo and a fast connection
+  // the upload could finish FIRST. The old code then put the camera icon
+  // back on the overlay, and the reader's onload — arriving after —
+  // rebuilt the preview with the loading spinner, which stayed spinning
+  // for good. Both paths now go through this one state flag.
+  let uploadSettled = false;
+  const SPINNER = '<i class="ti ti-loader-2" style="animation:spin 0.8s linear infinite"></i>';
+  const CAMERA = '<i class="ti ti-camera"></i>';
+  function setOverlay(html) {
+    const overlay = prev && prev.querySelector('.avatar-upload-overlay');
+    if (overlay) overlay.innerHTML = html;
+  }
   const reader = new FileReader();
   reader.onload = e => {
-    if (prev) prev.innerHTML = `<img src="${e.target.result}" style="width:100%;height:100%;object-fit:cover;border-radius:50%"><div class="avatar-upload-overlay"><i class="ti ti-loader-2" style="animation:spin 0.8s linear infinite"></i></div>`;
+    if (!prev) return;
+    const img = document.createElement('img');
+    img.src = e.target.result;
+    img.style.cssText = 'width:100%;height:100%;object-fit:cover;border-radius:50%';
+    const overlay = document.createElement('div');
+    overlay.className = 'avatar-upload-overlay';
+    overlay.innerHTML = uploadSettled ? CAMERA : SPINNER;
+    prev.innerHTML = '';
+    prev.append(img, overlay);
   };
   reader.readAsDataURL(file);
 
+  // These two bail-outs used to leave the spinner turning with nothing
+  // behind it, so a signed-out session looked like an upload that never
+  // finished.
+  function giveUp() {
+    uploadSettled = true;
+    setOverlay(CAMERA);
+    avatarUploadInProgress = false;
+    input.value = '';
+  }
   const sb = getSupabase();
-  if (!sb) { avatarUploadInProgress = false; input.value = ''; return; }
+  if (!sb) { giveUp(); return; }
   const { data: { user } } = await sb.auth.getUser();
-  if (!user) { avatarUploadInProgress = false; input.value = ''; return; }
+  if (!user) {
+    giveUp();
+    const msgEl0 = document.getElementById('profileMsg');
+    if (msgEl0) showMsg(msgEl0, 'Please sign in again to change your photo.', 'red');
+    return;
+  }
 
   // MIME type is more reliable than the filename's own extension, which
   // can be missing or wrong depending on how the file was picked.
@@ -738,7 +802,8 @@ async function previewAvatar(input) {
   const { error: uploadError } = await sb.storage.from('avatars').upload(path, file, { upsert: true, cacheControl: '3600' });
   if (uploadError) {
     console.error('[GieesK] Avatar upload failed:', uploadError.message);
-    if (prev) prev.querySelector('.avatar-upload-overlay').innerHTML = '<i class="ti ti-camera"></i>';
+    uploadSettled = true;
+    setOverlay(CAMERA);
     const msgEl = document.getElementById('profileMsg');
     if (msgEl) showMsg(msgEl, 'Could not upload photo — please try again.', 'red');
     avatarUploadInProgress = false;
@@ -759,7 +824,8 @@ async function previewAvatar(input) {
     if (profileAvatarError) console.warn('[GieesK] Could not save photo to public profile:', profileAvatarError);
     if (typeof publicProfileCache !== 'undefined') publicProfileCache.delete(String(currentUser.id));
   }
-  if (prev) prev.querySelector('.avatar-upload-overlay').innerHTML = '<i class="ti ti-camera"></i>';
+  uploadSettled = true;
+  setOverlay(CAMERA);
   avatarUploadInProgress = false;
   input.value = '';
 
@@ -773,9 +839,17 @@ async function previewAvatar(input) {
     // profile hero avatar at the top is a separate element from the
     // upload card and was never being updated.
     var heroAvatar = document.getElementById('dashHeroAvatar');
-    if (heroAvatar) heroAvatar.innerHTML = `<img src="${publicUrl}" alt="">`;
-    document.querySelectorAll('#navUserAvatar, .nav-avatar img').forEach(function (img) {
-      if (img.tagName === 'IMG') img.src = publicUrl;
+    if (heroAvatar) heroAvatar.innerHTML = `<img src="${escapeHTML(publicUrl)}" alt="">`;
+    document.querySelectorAll('#navUserAvatar, .nav-avatar img').forEach(function (el) {
+      if (el.tagName === 'IMG') { el.src = publicUrl; return; }
+      // An account with no photo yet shows its initial in a <div> instead
+      // of an <img>, and that one was skipped entirely — the nav kept the
+      // letter until the next page load.
+      el.innerHTML = '';
+      var fresh = document.createElement('img');
+      fresh.src = publicUrl;
+      fresh.alt = '';
+      el.appendChild(fresh);
     });
   }
 }
@@ -785,7 +859,10 @@ function showMsg(el, text, color) {
   el.textContent = text;
   el.style.color   = color === 'emerald' ? 'var(--emerald)' : '#F08060';
   el.style.display = '';
-  setTimeout(() => el.style.display = 'none', 3000);
+  // Each call used to start its own timer, so a second message could be
+  // wiped a moment after appearing by the first message's countdown.
+  clearTimeout(el._hideTimer);
+  el._hideTimer = setTimeout(function () { el.style.display = 'none'; }, 3000);
 }
 
 // ══════════════════════════════════════════

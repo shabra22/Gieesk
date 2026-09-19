@@ -315,6 +315,9 @@ document.addEventListener('DOMContentLoaded', () => {
     // Shared videos/posts link here (see sharePost). Without this the
     // link just landed on the homepage.
     openCommunity();
+  } else if (/^#u\/./.test(window.location.hash) && typeof openUserProfileByUsername === 'function') {
+    // A shared creator profile: /#u/<username> (see shareUserProfile).
+    openUserProfileByUsername(decodeURIComponent(window.location.hash.slice(3)));
   }
 
   // Hero buttons
