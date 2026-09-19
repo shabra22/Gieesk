@@ -1112,6 +1112,9 @@ function hapticTap() {
 
   // Returns true if it navigated. Also exposed for in-page "Back" buttons.
   function navigateBack() {
+    // A Settings sub-page is a level of its own: back there goes up to
+    // the Settings list, not out of Account altogether.
+    if (typeof window.settingsHandleBack === 'function' && window.settingsHandleBack()) return true;
     if (navStack.length < 2) return false;
     navStack.pop();
     restoreRoute(navStack[navStack.length - 1]);
