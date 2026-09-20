@@ -20,6 +20,24 @@
         <item name="android:windowLayoutInDisplayCutoutMode">shortEdges</item>
         <item name="android:statusBarColor">@android:color/transparent</item>
         <item name="android:navigationBarColor">@android:color/transparent</item>
+
+        <!-- Text editing inside the WebView.
+
+             This theme is the one MainActivity runs under, and it never
+             set an accent, so every input inherited AppCompat's teal: a
+             teal caret and teal selection handles in a gold-and-charcoal
+             app. colorControlActivated is what the WebView's own handle
+             and cursor drawables are tinted from.
+
+             The app is dark whatever the phone's setting, so force the
+             dark night mode too — under DayNight a phone in light mode
+             was handing the WebView light-theme editing widgets over a
+             near-black page. -->
+        <item name="colorAccent">@color/gieeskGold</item>
+        <item name="colorControlActivated">@color/gieeskGold</item>
+        <item name="android:colorControlActivated">@color/gieeskGold</item>
+        <item name="android:colorAccent">@color/gieeskGold</item>
+        <item name="android:textColorHighlight">#59D4A039</item>
     </style>
 
 

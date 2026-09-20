@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- GieesK brand colours for the Android shell.
+
+     Capacitor's own colors.xml supplies colorPrimary / colorPrimaryDark /
+     colorAccent, and its accent is the AppCompat teal — which is why the
+     text cursor and the selection handles in every input were teal water
+     drops instead of gold. These override them. -->
+<resources>
+    <color name="gieeskGold">#D4A039</color>
+    <color name="gieeskVoid">#0A0A09</color>
+    <color name="gieeskElevated">#242422</color>
+</resources>

@@ -827,11 +827,21 @@ async function syncMyPublicProfile() {
   try {
     const uid = currentUser.id;
     const { data: prof } = await sb.from('profiles').select('username, avatar_url').eq('id', uid).maybeSingle();
-    const metaAvatar = currentUser.user_metadata?.avatar_url || currentUser.user_metadata?.picture || null;
-    if (prof && metaAvatar && prof.avatar_url !== metaAvatar) {
-      const { error } = await sb.from('profiles').update({ avatar_url: metaAvatar }).eq('id', uid);
-      if (!error) publicProfileCache.delete(String(uid));
-    }
+    // This used to copy user_metadata's avatar over profiles.avatar_url
+    // whenever the two differed — and that one line destroyed uploaded
+    // photos. profiles.avatar_url is the DURABLE copy: the only record
+    // of your photo that survives a sign-in, because Supabase rebuilds
+    // user_metadata from the sign-in provider every time you
+    // authenticate. So after one Google re-sign-in, metadata held
+    // Google's photo, this overwrote the row with it, and the uploaded
+    // avatar was unreachable forever — even though the file was still
+    // sitting in the bucket, perfectly intact.
+    //
+    // avatar_url now has exactly one writer: hydrateProfileIdentity()
+    // in supabase.js, which knows an uploaded photo (a URL in our own
+    // storage bucket) from a provider one and never lets the second
+    // replace the first. Two writers on a 900ms stagger was also a race
+    // this could lose.
     if (!prof || !prof.username) return;
     cachedDisplayName = prof.username;
     const [posts, comments] = await Promise.all([
