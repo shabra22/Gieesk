@@ -276,7 +276,10 @@ async function signOutEverywhere(btn) {
     if (typeof signOut === 'function') signOut();
     return;
   }
-  if (window.appLock) window.appLock.forget();
+  // The app lock is deliberately NOT cleared here. It belongs to this
+  // phone and to the account that set it, and "sign out everywhere" is
+  // something you do about your account — usually still your own phone
+  // in your own hand. It is cleared when a different account signs in.
   if (typeof closeDashboard === 'function') closeDashboard();
   if (typeof showGenericToast === 'function') showGenericToast('Signed out everywhere');
 }

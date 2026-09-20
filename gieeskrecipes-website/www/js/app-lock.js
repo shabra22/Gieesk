@@ -61,6 +61,48 @@
     try { localStorage.removeItem(KEY); localStorage.removeItem(ATTEMPT_KEY); } catch (e) {}
   }
 
+  // ── Whose lock is this? ──────────────────────────────────────────
+  // The lock used to be wiped on every sign-out, which meant anyone who
+  // signed out and back in — the same person, on the same phone — lost
+  // their PIN and their fingerprint setting and had to set both up
+  // again. What that clearing was actually for is narrower: a DIFFERENT
+  // account must not land behind a PIN it can't remove. So the lock now
+  // records who set it, survives a sign-out, and is cleared only when
+  // someone else signs in.
+  function currentUid() {
+    try {
+      if (typeof currentUser !== 'undefined' && currentUser && currentUser.id) return String(currentUser.id);
+    } catch (e) {}
+    return null;
+  }
+
+  // Called when we learn who is signed in. Three cases:
+  //   • same owner      → leave the lock exactly as it is
+  //   • no owner stored → a PIN set by an older build; adopt it, so
+  //                       upgrading doesn't silently wipe it
+  //   • other owner     → clear, and drop any lock screen still up
+  function claimFor(uid) {
+    if (!uid) return;
+    const s = read();
+    if (!s.enabled || !s.pinHash) return;        // nothing set; nothing to do
+    if (!s.owner) { write({ owner: uid }); return; }
+    if (s.owner === uid) return;
+    clearAll();
+    if (locked) { locked = false; close(); }
+  }
+
+  // currentUser is assigned by the auth listener in supabase.js, which
+  // may land a tick after the event we're reacting to.
+  function claimSoon() {
+    let tries = 0;
+    (function tick() {
+      const uid = currentUid();
+      if (uid) { claimFor(uid); return; }
+      if (++tries > 40) return;                  // ~6s, then give up quietly
+      setTimeout(tick, 150);
+    })();
+  }
+
   // ── PIN hashing ──────────────────────────────────────────────────
   function toHex(buf) {
     return Array.from(new Uint8Array(buf)).map((b) => b.toString(16).padStart(2, '0')).join('');
@@ -403,7 +445,9 @@ body.gk-locked { overflow: hidden !important; }`;
     }
     const salt = newSalt();
     const hash = await hashPin(first, salt);
-    const saved = write({ enabled: true, pinHash: hash, pinSalt: salt });
+    // Stamped with the account that set it, so signing out no longer has
+    // to throw the PIN away to keep the next account safe.
+    const saved = write({ enabled: true, pinHash: hash, pinSalt: salt, owner: currentUid() });
     noteRight();
     if (typeof showGenericToast === 'function') {
       showGenericToast(saved ? 'App lock is on' : "Couldn't save the PIN on this device");
@@ -491,13 +535,20 @@ body.gk-locked { overflow: hidden !important; }`;
     setBiometric,
     lockNow,
     isLocked: () => locked,
-    // Signing out clears the lock: the next person to sign in on this
-    // phone is a different account and must not inherit a PIN they
-    // can't turn off.
+    // Hard reset. Used by "Forgotten your PIN? Sign out" on the lock
+    // screen — the one exit that has to work without the PIN. Signing
+    // out normally no longer calls this.
     forget: clearAll,
+    claimFor,
   };
 
-  window.addEventListener('gieesk:signedOut', clearAll);
+  // A sign-out leaves the lock alone now; it belongs to the phone and to
+  // the account that set it, and that account is very often the one
+  // signing back in.
+  window.addEventListener('gieesk:authSucceeded', claimSoon);
+  // Covers a cold start where the session was already valid, so no
+  // authSucceeded event ever fires.
+  claimSoon();
 
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', wire);
   else wire();

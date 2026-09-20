@@ -180,6 +180,10 @@ async function initAuth() {
 function onAuthStateChange(user) {
   // Signing in or out changes what Pro features are open.
   if (typeof applyAIChefGate === 'function') setTimeout(applyAIChefGate, 0);
+  // Restore the photo and name from the profiles row. Guarded by
+  // profileHydratedFor, so the token refreshes that also land here don't
+  // each cost a query.
+  if (user) setTimeout(function () { hydrateProfileIdentity(); }, 0);
   // Wait for DOM to be ready before touching elements
   const update = () => {
   const btnLogin  = document.getElementById('btnLogin');
@@ -237,6 +241,97 @@ function onAuthStateChange(user) {
     update();
   }
 }
+
+// ── Keeping your photo and name across a sign-out ────────────────────
+// Every screen reads the avatar off currentUser.user_metadata, which is
+// the WRONG place for it to live alone. That object is rebuilt from the
+// sign-in provider each time you authenticate: an OAuth sign-in
+// regenerates it from Google's claims, so a photo uploaded in the app is
+// overwritten by whatever Google has (nothing, for an account with no
+// Google photo) and the avatar simply vanishes on the next sign-in.
+//
+// The durable copy is profiles.avatar_url — it's the row other people
+// already read to show your photo on your videos and profile page. So
+// after a session is established, the two are reconciled and the
+// metadata object is topped up from the profiles row. Nothing else has
+// to change: every existing read site keeps reading user_metadata.
+let profileHydratedFor = null;
+
+async function hydrateProfileIdentity(force) {
+  const sb = getSupabase();
+  if (!sb || !currentUser || !currentUser.id) return;
+  const uid = String(currentUser.id);
+  if (!force && profileHydratedFor === uid) return;
+  profileHydratedFor = uid;
+
+  let row = null;
+  try {
+    const res = await sb.from('profiles').select('full_name, avatar_url').eq('id', uid).maybeSingle();
+    if (res.error) throw res.error;
+    row = res.data;
+  } catch (e) {
+    // Offline, or the row doesn't exist yet. Allow a later retry.
+    profileHydratedFor = null;
+    return;
+  }
+  if (!currentUser || String(currentUser.id) !== uid) return;   // signed out mid-flight
+
+  const meta = currentUser.user_metadata || (currentUser.user_metadata = {});
+  const metaAvatar = meta.avatar_url || meta.picture || null;
+  const metaName = meta.full_name || meta.name || null;
+  const rowAvatar = (row && row.avatar_url) || null;
+  const rowName = (row && row.full_name) || null;
+
+  // A photo uploaded in the app lives in our own storage bucket; one
+  // that came from Google is a URL on their CDN. That difference decides
+  // who wins, because otherwise a stale Google URL cached in the row
+  // would keep overwriting a newer one from the provider forever.
+  const ours = !!rowAvatar && rowAvatar.indexOf('/storage/v1/object/public/avatars/') !== -1;
+
+  if (rowAvatar && (ours || !metaAvatar)) {
+    // The deliberate choice, or the only one there is: restore it.
+    if (rowAvatar !== meta.avatar_url) {
+      meta.avatar_url = rowAvatar;
+      repaintAvatar(rowAvatar);
+    }
+  }
+  if (rowName && !metaName) meta.full_name = rowName;
+
+  // Nothing durable saved yet — first sign-in with a Google photo, a row
+  // created before the photo was uploaded, or a provider photo that has
+  // since changed. Push it up so the next sign-in has something to
+  // restore from.
+  const patch = {};
+  if (metaAvatar && !ours && rowAvatar !== metaAvatar) patch.avatar_url = metaAvatar;
+  if (!rowName && metaName) patch.full_name = metaName;
+  if (Object.keys(patch).length && row) {
+    try { await sb.from('profiles').update(patch).eq('id', uid); }
+    catch (e) { console.warn('[GieesK] Could not save identity to profile:', e); }
+  }
+}
+
+// Repaint the places a photo is already on screen. Cheaper and less
+// disruptive than rebuilding the dashboard under someone's finger.
+function repaintAvatar(url) {
+  if (!url) return;
+  const img = '<img src="' + String(url).replace(/"/g, '&quot;')
+    + '" alt="" style="width:100%;height:100%;object-fit:cover;border-radius:50%">';
+  ['#userMenuAvatar', '#navUserAvatar', '#dashHeroAvatar', '.st-me-avatar', '#avatarPreview']
+    .forEach(function (sel) {
+      document.querySelectorAll(sel).forEach(function (el) {
+        const existing = el.querySelector('img');
+        if (existing) { existing.src = url; return; }
+        // An account with no photo shows its initial instead of an <img>.
+        el.innerHTML = img;
+      });
+    });
+}
+
+window.addEventListener('gieesk:authSucceeded', function () {
+  profileHydratedFor = null;
+  setTimeout(function () { hydrateProfileIdentity(true); }, 600);
+});
+window.addEventListener('gieesk:signedOut', function () { profileHydratedFor = null; });
 
 // ── Email sign up ─────────────────────────
 async function signUpEmail(name, email, password) {
