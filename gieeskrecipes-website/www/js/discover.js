@@ -7,8 +7,8 @@
 if (typeof escapeHTML !== 'function') {
   window.escapeHTML = function (str) {
     return String(str == null ? '' : str)
-      .replace(/&/g, '&amp;').replace(/</g, '&lt;')
-      .replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+      .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;').replace(/'/g, '&#39;').replace(/`/g, '&#96;');
   };
 }
 
@@ -32,9 +32,18 @@ let discoverSearchQuery = '';
 // 12.4K instead of 12400 — long numbers crowd the overlay on a phone.
 function formatCount(n) {
   n = Number(n) || 0;
-  if (n >= 1000000) return (n / 1000000).toFixed(n >= 10000000 ? 0 : 1).replace(/\.0$/, '') + 'M';
-  if (n >= 1000)    return (n / 1000).toFixed(n >= 10000 ? 0 : 1).replace(/\.0$/, '') + 'K';
-  return String(n);
+  // The bucket is chosen AFTER rounding. Choosing it first meant 999,999
+  // failed the million test, then rounded inside the thousands branch,
+  // and the like counter read "1000K".
+  if (n >= 999500) {
+    const m = n / 1000000;
+    return (m >= 10 ? m.toFixed(0) : m.toFixed(1)).replace(/\.0$/, '') + 'M';
+  }
+  if (n >= 999.5) {
+    const k = n / 1000;
+    return (k >= 10 ? k.toFixed(0) : k.toFixed(1)).replace(/\.0$/, '') + 'K';
+  }
+  return String(Math.round(n));
 }
 
 function buildDiscoverPage() {
@@ -121,6 +130,11 @@ function openDiscoverLibrary() {
   setDiscoverLibrary('mine');
 }
 function closeDiscoverSheet() {
+  // A keystroke within 250ms of closing left a pending timer that then
+  // ran loadDiscoverSheet — which pauses the feed. The video the user
+  // was watching stopped with no sheet on screen to explain it.
+  clearTimeout(discoverSearchTimer);
+  discoverSearchTimer = null;
   document.getElementById('discoverSheet')?.classList.remove('open');
   // Unload the grid thumbnails: each one is a video element holding a
   // decoder, and they stayed loaded after the sheet closed.
@@ -226,11 +240,19 @@ function discoverEmptyState(icon, title, sub, actionHTML) {
 // list is now cached briefly; the feed itself always asks for a fresh copy.
 let publicVideoCache = { at: 0, videos: null };
 function invalidatePublicVideoCache() { publicVideoCache = { at: 0, videos: null }; }
+// Signing in or out changes what "liked" and "saved" mean, so the cached
+// list must not outlive the session.
+window.addEventListener('gieesk:authSucceeded', invalidatePublicVideoCache);
+window.addEventListener('gieesk:signedOut', invalidatePublicVideoCache);
 
 async function fetchPublicVideos(sb, limit, opts) {
   opts = opts || {};
   if (!opts.fresh && publicVideoCache.videos && Date.now() - publicVideoCache.at < 60 * 1000) {
-    return { videos: publicVideoCache.videos.slice(), error: null };
+    // .map(copy), not .slice(): slice copies the ARRAY, leaving every
+    // caller pointing at the same row objects. Search then inherited the
+    // feed's _liked/_saved flags — including a previous account's, since
+    // hydration skips rows that already carry counts.
+    return { videos: publicVideoCache.videos.map((v) => Object.assign({}, v)), error: null };
   }
   const { data, error } = await sb.from('community_posts')
     .select('*')
@@ -305,7 +327,14 @@ async function loadDiscoverFeed() {
           '<button class="btn-gold" onclick="setDiscoverFeed(\'foryou\')">Discover creators</button>');
         return;
       }
-      const names = discoverFollowingNames || new Set();
+      // null means the query FAILED, which is not the same as following
+      // nobody — the empty state there tells someone who follows thirty
+      // cooks that they follow none.
+      if (discoverFollowingNames === null) {
+        showError("Couldn't load your follows", 'Check your connection and try again.');
+        return;
+      }
+      const names = discoverFollowingNames;
       // Videos from people you follow, plus what they reposted, newest first.
       const reposts = await fetchFollowingReposts(sb);
       if (stale()) return;

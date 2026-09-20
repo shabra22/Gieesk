@@ -7,8 +7,8 @@
 if (typeof escapeHTML !== 'function') {
   window.escapeHTML = function (str) {
     return String(str == null ? '' : str)
-      .replace(/&/g, '&amp;').replace(/</g, '&lt;')
-      .replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+      .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;').replace(/'/g, '&#39;').replace(/`/g, '&#96;');
   };
 }
 
@@ -515,7 +515,7 @@ function buildPostHTML(post, idx, counts) {
     .map(t => `<span class="badge badge-emerald">#${escapeHTML(t)}</span>`).join('');
   const recipeHTML = post.recipe_title ? `
     <div class="post-recipe-card" ${post.recipe_id ? `data-recipe-id="${escapeHTML(post.recipe_id)}"` : ''} onclick="if(this.dataset.recipeId)openRecipeModalById(this.dataset.recipeId)">
-      <span class="post-recipe-emoji">${post.recipe_emoji || '🍽'}</span>
+      <span class="post-recipe-emoji">${escapeHTML(String(post.recipe_emoji || '🍽').slice(0, 8))}</span>
       <div>
         <div class="post-recipe-title">${escapeHTML(post.recipe_title)}</div>
         <div class="post-recipe-meta">${escapeHTML(post.recipe_cuisine || '')} · ${post.recipe_time || '?'}min · ${post.recipe_cal || '?'} kcal</div>
@@ -573,7 +573,7 @@ function buildPostHTML(post, idx, counts) {
         <button class="post-action-btn" onclick="sharePost('${post.id}')">
           <i class="ti ti-share"></i>
         </button>
-        ${post.recipe_id ? `<button class="post-action-btn" onclick="saveRecipe('${post.recipe_id}')" style="margin-left:auto"><i class="ti ti-bookmark"></i> Save</button>` : ''}
+        ${post.recipe_id ? `<button class="post-action-btn" data-recipe-id="${escapeHTML(post.recipe_id)}" onclick="saveRecipe(this.dataset.recipeId)" style="margin-left:auto"><i class="ti ti-bookmark"></i> Save</button>` : ''}
       </div>
       <div class="post-comments" id="comments-${post.id}" style="display:none">
         <div class="post-comments-list" id="comments-list-${post.id}"></div>
@@ -1895,8 +1895,16 @@ function releaseVideo(video) {
 // Stop and unload every video under an element (feed, overlay, grid).
 function releaseVideosIn(root) {
   if (!root) return;
-  if (root._videoFeed) { root._videoFeed.destroy(); root._videoFeed = null; }
-  if (root._tileObserver) { root._tileObserver.disconnect(); root._tileObserver = null; }
+  // Descendants too. Every caller passes the OVERLAY, while
+  // mountVideoSlides puts _videoFeed on the scroller inside it — so each
+  // open/close of the player abandoned a live IntersectionObserver and
+  // the detached slides it was watching. The videos were freed, the
+  // observers were not, and they kept firing against nothing.
+  const holders = [root].concat(Array.prototype.slice.call(root.querySelectorAll('*')));
+  holders.forEach((el) => {
+    if (el._videoFeed) { el._videoFeed.destroy(); el._videoFeed = null; }
+    if (el._tileObserver) { el._tileObserver.disconnect(); el._tileObserver = null; }
+  });
   root.querySelectorAll('video').forEach(releaseVideo);
 }
 
@@ -1963,7 +1971,9 @@ let videoRepostsUnavailable = false;
 async function fetchFollowingNames(sb) {
   if (!sb || !currentUser) { discoverFollowingNames = new Set(); return discoverFollowingNames; }
   const { data, error } = await sb.from('chef_follows').select('chef_name').eq('user_id', currentUser.id);
-  if (error) { console.warn('[GieesK] Could not load follows:', error); return discoverFollowingNames; }
+  // Leaves discoverFollowingNames as null on failure — the Following
+  // feed checks for that and shows a retry instead of an empty state.
+  if (error) { console.warn('[GieesK] Could not load follows:', error); return null; }
   discoverFollowingNames = new Set((data || []).map((f) => f.chef_name));
   return discoverFollowingNames;
 }
@@ -1998,6 +2008,20 @@ function paintVideoState(postId, v) {
   document.querySelectorAll(`[id="save-${id}"]`).forEach((btn) => {
     btn.classList.toggle('saved', !!v._saved);
     const i = btn.querySelector('i'); if (i) i.className = `ti ti-bookmark${v._saved ? '-filled' : ''}`;
+  });
+  // These two were missing, which is the whole reason this function is
+  // called from the player: a video opened from Search, Saved, Drafts or
+  // a recipe rendered its save and share counts as 0, hydration fetched
+  // the real numbers, and nothing wrote them to the screen.
+  if (typeof v._saves === 'number') {
+    document.querySelectorAll(`[id="save-count-${id}"]`).forEach((el) => writeCount(el, v._saves));
+  }
+  if (typeof v._shares === 'number' || typeof v._reposts === 'number') {
+    const total = (v._shares || 0) + (v._reposts || 0);
+    document.querySelectorAll(`[id="share-count-${id}"]`).forEach((el) => writeCount(el, total));
+  }
+  document.querySelectorAll(`[id="share-btn-${id}"]`).forEach((btn) => {
+    btn.classList.toggle('reposted', !!v._reposted);
   });
 }
 

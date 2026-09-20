@@ -22,9 +22,14 @@ function diffColor(diff) {
   return { Easy:'emerald', Medium:'gold', Hard:'coral', Expert:'purple' }[diff] || 'gold';
 }
 
+// Escapes for HTML text AND for attribute values in either quote style.
+// The single quote and backtick matter: this codebase builds inline
+// onclick handlers, so an unescaped ' closes the JS string inside the
+// attribute and everything after it executes.
 function escapeHTML(str) {
   return String(str == null ? '' : str)
-    .replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+    .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;').replace(/'/g, '&#39;').replace(/`/g, '&#96;');
 }
 
 // ── Recipe Card ──────────────────────────

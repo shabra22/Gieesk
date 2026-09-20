@@ -145,6 +145,12 @@ function hapticTap() {
             if (typeof isPremiumUser === 'function') {
               isPremiumUser().then(function (premium) {
                 if (premium) openDashboard('planner'); else openUpgradePrompt('Meal Planner');
+              }).catch(function (err) {
+                // Couldn't reach the server: open the planner rather than
+                // tell a paying subscriber to pay again. It only reads
+                // their own rows, so there is nothing to protect here.
+                console.warn('[GieesK] Pro check failed, opening the planner anyway:', err);
+                openDashboard('planner');
               });
             } else {
               openDashboard('planner');
@@ -559,7 +565,21 @@ function hapticTap() {
     setInterval(setGreeting, 30 * 60 * 1000);
     if (window.Capacitor?.Plugins?.App?.addListener) {
       window.Capacitor.Plugins.App.addListener('appStateChange', function (state) {
-        if (state && state.isActive) setGreeting();
+        if (!state) return;
+        // autoRefreshToken runs on a JS timer, which Android suspends
+        // with the WebView. After a long background the access token
+        // was expired while currentUser still looked signed in, so
+        // saves and function calls came back 401 with no sign of why.
+        var sb = typeof getSupabase === 'function' ? getSupabase() : null;
+        if (sb && sb.auth) {
+          if (state.isActive) {
+            if (typeof sb.auth.startAutoRefresh === 'function') sb.auth.startAutoRefresh();
+            sb.auth.getSession().catch(function () {});
+          } else if (typeof sb.auth.stopAutoRefresh === 'function') {
+            sb.auth.stopAutoRefresh();
+          }
+        }
+        if (state.isActive) setGreeting();
       });
     }
   }
@@ -691,6 +711,12 @@ function hapticTap() {
     }
 
     window.Capacitor.Plugins.App.addListener('backButton', function () {
+      // The app-lock PIN screen is a keyguard: back does nothing at
+      // all there. Without this it fell through and navigated the page
+      // UNDERNEATH the lock, and a second press quit the app from a
+      // screen where quitting is the last thing anyone wants.
+      if (window.appLock && typeof window.appLock.isLocked === 'function' && window.appLock.isLocked()) return;
+
       // The mandatory sign-in gate can't be dismissed or navigated around
       // with back; the only way out of it is exiting.
       if (document.body.classList.contains('auth-gate-active')) {
@@ -1297,7 +1323,7 @@ function hapticTap() {
     if (closeBtn) closeBtn.addEventListener('click', function () { overlay.classList.remove('open'); });
     if (upgradeBtn) {
       upgradeBtn.addEventListener('click', function () {
-        var url = 'https://gieesk.com/upgrade.html';
+        var url = (typeof publicSiteOrigin === 'function' ? publicSiteOrigin() : 'https://gieesk.com') + '/upgrade.html';
         if (window.Capacitor?.Plugins?.Browser) {
           window.Capacitor.Plugins.Browser.open({ url: url });
         } else {
@@ -1312,7 +1338,16 @@ function hapticTap() {
   // since a subscription can change (webhook) between visits.
   window.guardAIChefTab = async function () {
     if (typeof isPremiumUser !== 'function') return true;
-    var premium = await isPremiumUser();
+    var premium;
+    try {
+      premium = await isPremiumUser();
+    } catch (err) {
+      // The edge function checks the subscription server-side on every
+      // message, so letting someone in on a failed check costs nothing
+      // and stops a dropped connection reading as "not subscribed".
+      console.warn('[GieesK] Pro check failed, letting AI Chef open:', err);
+      return true;
+    }
     if (!premium) openUpgradePrompt('AI Chef');
     return premium;
   };
