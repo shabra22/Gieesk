@@ -1192,6 +1192,32 @@ body:has(#discoverFullscreen.open) #authModal { z-index: 3100; }
 }
 .discover-empty span { font-size: 13.5px; display: block; margin-bottom: 16px; }
 
+/* In the immersive feed the brand row and the tab strip are absolutely
+   positioned ON TOP of the scroll container — deliberate, because a
+   video fills the screen and the chrome floats over it. A block of text
+   is not a video: every empty and error state started at the very top
+   of the container, so its icon landed beside the GieesK lock-up and
+   "Your Following feed is empty" sat across For You / Trending / Latest
+   / Following.
+   The loader (.discover-feed-msg) was never affected because it already
+   fills the height and centres itself; this gives the empty states the
+   same treatment, plus enough top padding to clear the chrome — the
+   same 130px the scrim above uses for exactly that height. */
+.discover-feed > .discover-empty {
+  box-sizing: border-box;
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding-top: calc(130px + var(--safe-area-inset-top, env(safe-area-inset-top, 0px)));
+  padding-bottom: calc(72px + var(--safe-area-inset-bottom, env(safe-area-inset-bottom, 0px)));
+}
+/* The children were laid out as blocks in a centred box; as flex items
+   they need their own centring and must not stretch edge to edge. */
+.discover-feed > .discover-empty p,
+.discover-feed > .discover-empty span { max-width: 22rem; }
+
 /* Inline feed: keep the close button (fullscreen-only) hidden */
 .discover-feed .discover-close-btn { display: none; }
 
