@@ -7,8 +7,8 @@
 if (typeof escapeHTML !== 'function') {
   window.escapeHTML = function (str) {
     return String(str == null ? '' : str)
-      .replace(/&/g, '&amp;').replace(/</g, '&lt;')
-      .replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+      .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;').replace(/'/g, '&#39;').replace(/`/g, '&#96;');
   };
 }
 
@@ -1121,13 +1121,20 @@ let pendingSlot = null;       // 'dayOfWeek-mealType', e.g. '1-breakfast'
 let pendingMealPlanRecipe = null;
 
 async function buildPlannerPanel(panel) {
-  if (typeof isPremiumUser === 'function' && !(await isPremiumUser())) {
+  // A failed check must not lock a subscriber out of their own meal plan,
+  // so only a definite "no" shows the paywall.
+  let plannerPro = true;
+  if (typeof isPremiumUser === 'function') {
+    try { plannerPro = !!(await isPremiumUser()); }
+    catch (err) { console.warn('[GieesK] Pro check failed, showing the planner:', err); plannerPro = true; }
+  }
+  if (!plannerPro) {
     panel.innerHTML = `
       <div style="text-align:center;padding:40px 20px">
         <i class="ti ti-lock" style="font-size:36px;color:var(--gold)"></i>
         <h3 style="font-family:var(--font-display);color:var(--text-primary);margin:12px 0 4px">Meal Planner is a Pro feature</h3>
         <p style="color:var(--text-muted);font-size:14px;margin-bottom:20px">Upgrade to Gieesk Pro to plan your whole week — $4.99/month, cancel anytime.</p>
-        <a class="btn-gold" href="https://gieesk.com/upgrade.html" target="_blank" style="display:inline-block">Upgrade to Pro</a>
+        <a class="btn-gold" href="${typeof publicSiteOrigin === 'function' ? publicSiteOrigin() : 'https://gieesk.com'}/upgrade.html" target="_blank" rel="noopener" style="display:inline-block">Upgrade to Pro</a>
       </div>`;
     return;
   }

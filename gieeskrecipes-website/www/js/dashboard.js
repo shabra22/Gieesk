@@ -166,7 +166,10 @@ function switchDashTab(tab) {
   // like the FIRST time it was opened, forever, until a hard page reload —
   // saving something new would never appear without one.
   if (panel) {
-    if (tab === 'profile')  buildProfilePanel(panel);
+    // The Profile tab is now the Settings list (js/settings.js), which
+    // opens each area as its own page. If that file is missing for any
+    // reason, the original single-panel version still renders.
+    if (tab === 'profile')  (typeof buildSettingsPanel === 'function' ? buildSettingsPanel : buildProfilePanel)(panel);
     if (tab === 'saved')    buildSavedPanel(panel);
     if (tab === 'planner')  buildPlannerPanel(panel);
     if (tab === 'shopping') buildShoppingPanel(panel);
@@ -209,26 +212,36 @@ async function loadDashboardStats() {
   if (statShopping) statShopping.textContent = shoppingCount || 0;
 }
 
-function buildProfilePanel(panel) {
-  const user   = currentUser;
-  if (!user) { panel.innerHTML = '<div style="padding:2rem;text-align:center;color:var(--text-muted)">Please sign in to view your profile.</div>'; return; }
+// ── The Profile tab, as separate cards ───────────────────────────
+// Settings (js/settings.js) shows these one per sub-page — Profile
+// photo, Personal data, Security. buildProfilePanel below still
+// composes all of them into one panel exactly as it always did, so
+// anything that calls it is unaffected.
+function profileIdentity() {
+  const user = currentUser;
+  if (!user) return null;
   // user.email is not guaranteed — a Google account without a shared
   // email, or a future phone sign-in, has none. Reading .split() off it
   // threw here, and the thrown error left the whole Profile tab blank.
   const rawName = (user.user_metadata && (user.user_metadata.full_name || user.user_metadata.name))
     || (user.email ? user.email.split('@')[0] : '')
     || '';
-  const name   = escapeHTML(rawName);
-  const avatar = (user.user_metadata && (user.user_metadata.avatar_url || user.user_metadata.picture)) || null;
-  const initial = escapeHTML(String(rawName || 'C').charAt(0).toUpperCase());
+  return {
+    user,
+    rawName,
+    name: escapeHTML(rawName),
+    avatar: (user.user_metadata && (user.user_metadata.avatar_url || user.user_metadata.picture)) || null,
+    initial: escapeHTML(String(rawName || 'C').charAt(0).toUpperCase()),
+  };
+}
 
-  const diets = ['Vegetarian','Vegan','Gluten-Free','Dairy-Free','Keto','Halal','Kosher','Nut-Free'];
+const PROFILE_DIETS = ['Vegetarian','Vegan','Gluten-Free','Dairy-Free','Keto','Halal','Kosher','Nut-Free'];
 
-  panel.innerHTML = `
-    <div class="profile-grid">
-
-      <!-- Left: avatar + diet prefs -->
-      <div>
+function profilePhotoCardHTML() {
+  const me = profileIdentity();
+  if (!me) return '';
+  const avatar = me.avatar, initial = me.initial;
+  return `
         <div class="dash-card">
           <div class="dash-card-header">
             <span class="dash-card-title"><i class="ti ti-camera"></i> Profile Photo</span>
@@ -242,8 +255,12 @@ function buildProfilePanel(panel) {
             <p style="font-size:12px;color:var(--text-muted);text-align:center">Click to upload a new photo.<br>JPG, PNG or GIF. Max 2MB.</p>
             <p id="profileMsg" style="display:none;font-size:12.5px;font-weight:600;text-align:center"></p>
           </div>
-        </div>
+        </div>`;
+}
 
+function profileDietCardHTML() {
+  const diets = PROFILE_DIETS;
+  return `
         <div class="dash-card" style="margin-top:1rem">
           <div class="dash-card-header">
             <span class="dash-card-title"><i class="ti ti-leaf"></i> Dietary Preferences</span>
@@ -253,11 +270,20 @@ function buildProfilePanel(panel) {
               ${diets.map(d => `<button class="diet-tag" onclick="this.classList.toggle('active')">${d}</button>`).join('')}
             </div>
           </div>
-        </div>
-      </div>
+        </div>`;
+}
 
-      <!-- Right: form fields -->
-      <div>
+// opts.verify / opts.privacy — the verification row and the profile-view
+// toggle live on their own Settings pages, so those pages ask for them
+// to be left out here. Both default to true, which is what the combined
+// panel has always rendered.
+function profilePersonalCardHTML(opts) {
+  const me = profileIdentity();
+  if (!me) return '';
+  const user = me.user, name = me.name;
+  const showVerify = !opts || opts.verify !== false;
+  const showPrivacy = !opts || opts.privacy !== false;
+  return `
         <div class="dash-card">
           <div class="dash-card-header">
             <span class="dash-card-title"><i class="ti ti-user"></i> Personal Information</span>
@@ -276,11 +302,11 @@ function buildProfilePanel(panel) {
                   <small id="pfUsernameStatus" class="username-status" aria-live="polite"></small>
                   <small style="display:block;margin-top:6px;font-size:11.5px;color:var(--text-muted)">Shown on your videos and comments. Your full name is never shown publicly.</small>
                   <button type="button" class="btn-ghost" style="margin-top:8px;padding:6px 12px;font-size:12.5px" onclick="if(typeof openUserProfile==='function'&&currentUser)openUserProfile(currentUser.id)"><i class="ti ti-user-circle"></i> View public profile</button>
-                  <div id="pfVerifyRow" class="pf-verify-row"></div>
-                  <label class="video-manage-row pf-privacy-row">
+                  ${showVerify ? '<div id="pfVerifyRow" class="pf-verify-row"></div>' : ''}
+                  ${showPrivacy ? `<label class="video-manage-row pf-privacy-row">
                     <span><i class="ti ti-eye"></i> Profile view history<small>See who viewed your profile. When off, your visits to others aren’t shown either.</small></span>
                     <input type="checkbox" class="vs-switch" id="pfViewHistory" checked onchange="if(typeof setProfileViewHistory==='function')setProfileViewHistory(this.checked)" />
-                  </label>
+                  </label>` : ''}
                 </div>
               </div>
               <div class="form-field">
@@ -313,8 +339,14 @@ function buildProfilePanel(panel) {
               </div>
             </div>
           </div>
-        </div>
+        </div>`;
+}
 
+function profilePasswordCardHTML() {
+  const me = profileIdentity();
+  if (!me) return '';
+  const user = me.user;
+  return `
         <!-- Change password -->
         ${(function () {
           var providers = (user.app_metadata && (user.app_metadata.providers || [user.app_metadata.provider])) || [];
@@ -363,8 +395,11 @@ function buildProfilePanel(panel) {
             </div>
           </div>
         </div>`;
-        })()}
+        })()}`;
+}
 
+function profileSignOutCardHTML() {
+  return `
         <!-- Sign out — previously the only way to sign out lived in the
              website's own nav dropdown, which the app never shows at all,
              meaning there was no way to sign out from within the app. -->
@@ -374,19 +409,41 @@ function buildProfilePanel(panel) {
               <i class="ti ti-logout"></i> Sign Out
             </button>
           </div>
-        </div>
+        </div>`;
+}
+
+// In-app, replace the native <select> dropdowns with a custom, searchable
+// picker — Android's own picker overlay has a rendering glitch on some
+// devices, and this sidesteps it entirely. Website keeps the plain
+// native select, where this isn't an issue.
+function profileEnhanceSelects() {
+  if (document.body.classList.contains('is-native-app') && typeof window.convertSelectToPicker === 'function') {
+    if (document.getElementById('pfCountry')) window.convertSelectToPicker('pfCountry', 'Select your country');
+    if (document.getElementById('pfCuisine')) window.convertSelectToPicker('pfCuisine', 'Select favourite cuisine');
+  }
+}
+
+function buildProfilePanel(panel) {
+  if (!currentUser) { panel.innerHTML = '<div style="padding:2rem;text-align:center;color:var(--text-muted)">Please sign in to view your profile.</div>'; return; }
+
+  panel.innerHTML = `
+    <div class="profile-grid">
+
+      <!-- Left: avatar + diet prefs -->
+      <div>
+        ${profilePhotoCardHTML()}
+        ${profileDietCardHTML()}
+      </div>
+
+      <!-- Right: form fields -->
+      <div>
+        ${profilePersonalCardHTML()}
+        ${profilePasswordCardHTML()}
+        ${profileSignOutCardHTML()}
       </div>
     </div>`;
 
-  // In-app, replace the native <select> dropdowns with a custom, searchable
-  // picker — Android's own picker overlay has a rendering glitch on some
-  // devices, and this sidesteps it entirely. Website keeps the plain
-  // native select, where this isn't an issue.
-  if (document.body.classList.contains('is-native-app') && typeof window.convertSelectToPicker === 'function') {
-    window.convertSelectToPicker('pfCountry', 'Select your country');
-    window.convertSelectToPicker('pfCuisine', 'Select favourite cuisine');
-  }
-
+  profileEnhanceSelects();
   // Load saved profile from Supabase
   loadProfile();
 }

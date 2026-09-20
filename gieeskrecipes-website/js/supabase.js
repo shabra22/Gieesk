@@ -374,26 +374,59 @@ async function signInApple() {
 // is_premium lives in the profiles table (set by the Stripe webhook),
 // not in auth user_metadata — this is the one place that checks it, so
 // every paywall gate stays consistent if the underlying logic ever changes.
+// Throws when it cannot find out, rather than answering "no": every
+// caller treated a dropped connection as a verdict and showed a paying
+// subscriber the paywall. The last known-good answer is cached for a
+// minute so the gates don't flicker between taps.
+let premiumCache = null;   // { at, value, userId }
 async function isPremiumUser() {
   if (!currentUser) return false;
   const sb = getSupabase();
-  if (!sb) return false;
-  const { data } = await sb.from('profiles').select('is_premium, premium_until').eq('id', currentUser.id).single();
+  if (!sb) throw new Error('Supabase client unavailable');
+  if (premiumCache && premiumCache.userId === currentUser.id && Date.now() - premiumCache.at < 60000) {
+    return premiumCache.value;
+  }
+  const { data, error } = await sb.from('profiles').select('is_premium, premium_until').eq('id', currentUser.id).maybeSingle();
+  if (error) throw error;
   if (!data) return false;
   // premium_until is a belt-and-suspenders check alongside is_premium
   // (which the webhook keeps in sync) — if it's ever present and in the
   // past, treat that as authoritative even if is_premium hasn't caught
   // up yet.
-  if (data.premium_until && new Date(data.premium_until) < new Date()) return false;
-  return !!data.is_premium;
+  if (data.premium_until && new Date(data.premium_until) < new Date()) {
+    premiumCache = { at: Date.now(), value: false, userId: currentUser.id };
+    return false;
+  }
+  premiumCache = { at: Date.now(), value: !!data.is_premium, userId: currentUser.id };
+  return premiumCache.value;
 }
+
+// Signing in as someone else, or buying Pro, must not be answered from
+// the previous minute's cache.
+window.addEventListener('gieesk:authSucceeded', function () { premiumCache = null; });
+window.addEventListener('gieesk:signedOut', function () { premiumCache = null; });
 
 // ── Sign out ──────────────────────────────
 async function signOut() {
   const sb = getSupabase();
   if (!sb) return;
-  await sb.auth.signOut();
+  // supabase-js RETURNS an error rather than throwing, and on a network
+  // failure it returns before clearing the stored session — so this used
+  // to close the dropdown and leave the user signed in on a shared
+  // phone. A local sign-out always tears the session down here.
+  let { error } = await sb.auth.signOut();
+  if (error) {
+    console.warn('[GieesK] Sign-out did not reach the server; clearing this device:', error);
+    const local = await sb.auth.signOut({ scope: 'local' });
+    if (local.error) {
+      console.error('[GieesK] Local sign-out failed:', local.error);
+      if (typeof showGenericToast === 'function') showGenericToast("Couldn't sign out — please try again.");
+      return { error: local.error };
+    }
+  }
+  premiumCache = null;
   closeUserDropdown();
+  return { error: null };
 }
 
 // ── Reset password ────────────────────────
@@ -410,6 +443,7 @@ async function resetPassword(email) {
 async function saveRecipe(recipeId) {
   if (!currentUser) { openAuthModal('login'); return false; }
   const sb = getSupabase();
+  if (!sb) return false;
   const { error } = await sb.from('saved_recipes').upsert({
     user_id:   currentUser.id,
     recipe_id: String(recipeId),
@@ -421,6 +455,7 @@ async function saveRecipe(recipeId) {
 async function unsaveRecipe(recipeId) {
   if (!currentUser) { openAuthModal('login'); return false; }
   const sb = getSupabase();
+  if (!sb) return false;
   const { error } = await sb.from('saved_recipes')
     .delete().eq('user_id', currentUser.id).eq('recipe_id', String(recipeId));
   return !error;
@@ -430,6 +465,7 @@ async function unsaveRecipe(recipeId) {
 async function saveVideo(postId) {
   if (!currentUser) { openAuthModal('login'); return false; }
   const sb = getSupabase();
+  if (!sb) return false;
   const { error } = await sb.from('saved_videos').upsert({
     user_id: currentUser.id,
     post_id: postId,
@@ -441,6 +477,7 @@ async function saveVideo(postId) {
 async function unsaveVideo(postId) {
   if (!currentUser) { openAuthModal('login'); return false; }
   const sb = getSupabase();
+  if (!sb) return false;
   const { error } = await sb.from('saved_videos')
     .delete().eq('user_id', currentUser.id).eq('post_id', postId);
   return !error;
@@ -450,6 +487,7 @@ async function unsaveVideo(postId) {
 async function getSavedRecipes() {
   if (!currentUser) return [];
   const sb = getSupabase();
+  if (!sb) return [];
   const { data, error } = await sb
     .from('saved_recipes')
     .select('recipe_id')
@@ -488,26 +526,67 @@ function closeUserDropdown() {
 // this path). Extracts the session from the callback URL, closes the
 // in-app browser tab, and lets Supabase's own auth-state listener
 // (registered in initAuth) pick up the SIGNED_IN event from there.
-if (window.Capacitor?.Plugins?.App) {
-  window.Capacitor.Plugins.App.addListener('appUrlOpen', async function (event) {
-    if (!event.url || !event.url.startsWith('com.gieesk.recipes://auth-callback')) return;
+async function handleOAuthCallback(url) {
+  const sb = getSupabase();
+  if (!sb) return false;
 
-    const sb = getSupabase();
-    if (!sb) return;
+  let ok = false;
+  try {
+    const parsed = new URL(url);
+    // Two shapes, because which one arrives depends on the flow the
+    // client is configured for, and getting this wrong is silent:
+    //   ?code=…            authorization code (PKCE)
+    //   #access_token=…    tokens in the fragment (implicit)
+    // The old code passed the WHOLE URL to exchangeCodeForSession, which
+    // expects the bare code — so the exchange always failed, and the
+    // person came back from Apple still signed out.
+    const code = parsed.searchParams.get('code');
+    const hash = new URLSearchParams((parsed.hash || '').replace(/^#/, ''));
+    const accessToken = hash.get('access_token');
+    const refreshToken = hash.get('refresh_token');
 
-    // Supabase's modern OAuth flow (PKCE) returns an authorization `code`
-    // as a query param, not tokens in a hash fragment — exchangeCodeForSession
-    // accepts the full callback URL directly and handles this correctly.
-    try {
-      const { error } = await sb.auth.exchangeCodeForSession(event.url);
+    if (code) {
+      const { error } = await sb.auth.exchangeCodeForSession(code);
       if (error) console.warn('[GieesK] OAuth code exchange failed:', error.message);
-    } catch (err) {
-      console.warn('[GieesK] OAuth callback error:', err);
+      else ok = true;
+    } else if (accessToken && refreshToken) {
+      const { error } = await sb.auth.setSession({ access_token: accessToken, refresh_token: refreshToken });
+      if (error) console.warn('[GieesK] OAuth session hand-off failed:', error.message);
+      else ok = true;
+    } else {
+      const err = hash.get('error_description') || parsed.searchParams.get('error_description');
+      console.warn('[GieesK] OAuth callback carried no session:', err || url.slice(0, 60));
     }
+  } catch (err) {
+    console.warn('[GieesK] OAuth callback error:', err);
+  }
 
-    if (window.Capacitor.Plugins.Browser) {
-      window.Capacitor.Plugins.Browser.close().catch(function () {});
-    }
-    if (typeof closeAuthModal === 'function') closeAuthModal();
+  if (window.Capacitor?.Plugins?.Browser) {
+    window.Capacitor.Plugins.Browser.close().catch(function () {});
+  }
+  // Only close the sign-in sheet when there is actually a session.
+  // closeAuthModal() dispatches gieesk:authSucceeded, which lowers the
+  // mandatory login gate — so closing it on failure dropped people into
+  // the app with no account at all.
+  if (ok && typeof closeAuthModal === 'function') closeAuthModal();
+  else if (!ok && typeof showAuthError === 'function') showAuthError("That sign-in didn't complete. Please try again.");
+  return ok;
+}
+
+if (window.Capacitor?.Plugins?.App) {
+  window.Capacitor.Plugins.App.addListener('appUrlOpen', function (event) {
+    if (!event.url || !event.url.startsWith('com.gieesk.recipes://auth-callback')) return;
+    handleOAuthCallback(event.url);
   });
+
+  // Android can kill the app while the sign-in tab is in the foreground.
+  // The callback then arrives as the LAUNCH url and no appUrlOpen event
+  // ever fires, so without this the sign-in was silently thrown away.
+  if (typeof window.Capacitor.Plugins.App.getLaunchUrl === 'function') {
+    window.Capacitor.Plugins.App.getLaunchUrl()
+      .then(function (res) {
+        if (res && res.url && res.url.startsWith('com.gieesk.recipes://auth-callback')) handleOAuthCallback(res.url);
+      })
+      .catch(function () {});
+  }
 }

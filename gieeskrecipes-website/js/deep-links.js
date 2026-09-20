@@ -74,6 +74,17 @@
   function route(target) {
     if (!target) return false;
 
+    // The app can require sign-in before anything else. Opening a shared
+    // recipe or profile on top of that gate left a modal the back button
+    // couldn't close (back is bound to "exit the app" while the gate is
+    // up), so the link waits for the sign-in to finish instead.
+    if (document.body.classList.contains('auth-gate-active')) {
+      window.addEventListener('gieesk:authSucceeded', function () {
+        setTimeout(function () { route(target); }, 400);
+      }, { once: true });
+      return true;
+    }
+
     if (target.kind === 'profile') {
       whenReady(
         () => typeof openUserProfileByUsername === 'function' && typeof getSupabase === 'function' && getSupabase(),

@@ -55,9 +55,16 @@ async function fetchAIChefReply(message) {
 
   var trimmedHistory = aiChefHistory.slice(-AI_CHEF_MAX_HISTORY);
 
-  var res = await sb.functions.invoke('ai-chef-chat', {
-    body: { message: message, history: trimmedHistory },
-  });
+  // A half-open mobile connection never settles the fetch, and both the
+  // typing indicator and the disabled composer are only cleared in
+  // .finally() — so without this the chat froze with no way back.
+  var timeout;
+  var res = await Promise.race([
+    sb.functions.invoke('ai-chef-chat', { body: { message: message, history: trimmedHistory } }),
+    new Promise(function (_, reject) {
+      timeout = setTimeout(function () { reject(new Error('The chef took too long to answer. Please try again.')); }, 30000);
+    }),
+  ]).finally(function () { clearTimeout(timeout); });
   var data = res.data, error = res.error;
 
   if (error) throw error;
@@ -111,8 +118,10 @@ async function sendAIMessage(prompt) {
   if (input) input.value = '';
 
   appendMessage(prompt, 'user');
-  aiChefHistory.push({ role: 'user', content: prompt });
-
+  // Deliberately NOT pushed yet. fetchAIChefReply sends `history` AND
+  // `message`, and the edge function appends `message` itself — pushing
+  // first meant every request carried the question twice, and a failed
+  // request left an unanswered user turn in the history for good.
   setAIChefSending(true);
   showTyping();
 
@@ -120,7 +129,7 @@ async function sendAIMessage(prompt) {
     .then(function (reply) {
       removeTyping();
       appendMessage(reply, 'bot');
-      aiChefHistory.push({ role: 'assistant', content: reply });
+      aiChefHistory.push({ role: 'user', content: prompt }, { role: 'assistant', content: reply });
     })
     .catch(function (err) {
       console.error('[GieesK] AI Chef error:', err);
@@ -216,3 +225,13 @@ function initAI() {
     });
   }, 100);
 }
+
+// Signing out has to clear the conversation: on a shared phone the next
+// person could read the previous one's chat, and their first message
+// would have sent those turns to the model as history.
+window.addEventListener('gieesk:signedOut', function () {
+  aiChefHistory = [];
+  var box = document.getElementById('aiMessages');
+  if (box) box.innerHTML = '';
+  if (typeof applyAIChefGate === 'function') applyAIChefGate();
+});

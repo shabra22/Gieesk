@@ -19,7 +19,8 @@
     "@capacitor/share": "^8.0.2",
     "@capacitor/splash-screen": "^8.0.2",
     "@capacitor/status-bar": "^8.0.3",
-    "@codetrix-studio/capacitor-google-auth": "^3.4.0-rc.4"
+    "@codetrix-studio/capacitor-google-auth": "^3.4.0-rc.4",
+    "capacitor-native-biometric": "^4.2.2"
   },
   "devDependencies": {
     "@capacitor/assets": "^3.0.5",

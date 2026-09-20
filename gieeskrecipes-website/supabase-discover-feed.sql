@@ -129,28 +129,16 @@ grant execute on function public.get_following_reposts(int) to authenticated;
 alter table public.profiles
   add column if not exists is_verified boolean not null default false;
 
-create or replace function public.protect_profile_verified()
-returns trigger
-language plpgsql
-as $$
-begin
-  -- Requests from the app carry the role anon/authenticated. The SQL
-  -- editor and the service role don't, so they can still verify people.
-  if coalesce(auth.role(), '') in ('anon', 'authenticated') then
-    if tg_op = 'INSERT' then
-      new.is_verified := false;
-    elsif new.is_verified is distinct from old.is_verified then
-      new.is_verified := old.is_verified;
-    end if;
-  end if;
-  return new;
-end;
-$$;
-
-drop trigger if exists profiles_protect_verified on public.profiles;
-create trigger profiles_protect_verified
-  before insert or update on public.profiles
-  for each row execute function public.protect_profile_verified();
+-- The trigger that stops the app writing is_verified is NOT defined
+-- here any more. This file used to carry a narrower copy that guarded
+-- only is_verified, and because all three files use `create or replace`,
+-- re-running this one replaced the full version and quietly left
+-- is_premium writable from the app — a free Gieesk Pro for anyone who
+-- sent one request. The authoritative version lives in
+-- supabase-lockdown.sql, which also enforces it with column privileges
+-- so file order stops mattering.
+--
+-- If you are setting up from scratch, run supabase-lockdown.sql last.
 
 -- get_public_profiles / get_public_profile now also return is_verified.
 -- Changing a function's columns needs a drop first.

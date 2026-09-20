@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Android 12+ reads this instead of android:fullBackupContent.
+
+  Nothing is backed up or transferred to a new device. The WebView's
+  localStorage holds the Supabase refresh token and the app-lock PIN
+  hash, and `adb backup` reads a backup-enabled app's storage without
+  root — which would hand both to anyone holding the unlocked phone,
+  the exact person the app lock exists to stop.
+
+  The cost is small: signing in again on a new phone restores
+  everything, because all of it lives in Postgres.
+-->
+<data-extraction-rules>
+    <cloud-backup>
+        <exclude domain="root" />
+        <exclude domain="database" />
+        <exclude domain="sharedpref" />
+        <exclude domain="file" />
+        <exclude domain="external" />
+    </cloud-backup>
+    <device-transfer>
+        <exclude domain="root" />
+        <exclude domain="database" />
+        <exclude domain="sharedpref" />
+        <exclude domain="file" />
+        <exclude domain="external" />
+    </device-transfer>
+</data-extraction-rules>

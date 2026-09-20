@@ -30,12 +30,30 @@ Guidelines:
 - Stay in the culinary/cooking domain; politely redirect off-topic questions
   back to cooking`;
 
-// CORS headers — adjust origin to your actual domain in production
-const corsHeaders = {
-  "Access-Control-Allow-Origin": "*", // TODO: restrict to https://gieesk.com in production
-  "Access-Control-Allow-Headers": "authorization, x-client-info, apikey, content-type",
-  "Access-Control-Allow-Methods": "POST, OPTIONS",
-};
+// CORS: an allowlist rather than "*", so a page on someone else's site
+// can't spend this project's Anthropic budget from a visitor's browser.
+// The Android app is included deliberately — inside the Capacitor
+// WebView the page's origin is localhost, not gieesk.com, so restricting
+// this to the website alone would break AI Chef in the app.
+const ALLOWED_ORIGINS = [
+  "https://gieesk.com",
+  "https://www.gieesk.com",
+  "https://localhost",        // Capacitor Android
+  "capacitor://localhost",    // Capacitor iOS
+  "http://localhost:8080",    // local development
+  "http://localhost:3000",
+];
+
+function corsFor(req: Request) {
+  const origin = req.headers.get("Origin") ?? "";
+  const allowed = ALLOWED_ORIGINS.includes(origin) ? origin : ALLOWED_ORIGINS[0];
+  return {
+    "Access-Control-Allow-Origin": allowed,
+    "Access-Control-Allow-Headers": "authorization, x-client-info, apikey, content-type",
+    "Access-Control-Allow-Methods": "POST, OPTIONS",
+    "Vary": "Origin",
+  };
+}
 
 // AI Chef is a paid feature, and this function holds the Anthropic key —
 // so it has to check for itself who is calling. Before this, any request
@@ -78,6 +96,7 @@ interface RequestBody {
 }
 
 Deno.serve(async (req: Request) => {
+  const corsHeaders = corsFor(req);
   // Handle CORS preflight
   if (req.method === "OPTIONS") {
     return new Response(null, { headers: corsHeaders });
@@ -115,9 +134,25 @@ Deno.serve(async (req: Request) => {
         { status: 400, headers: { ...corsHeaders, "Content-Type": "application/json" } }
       );
     }
+    if (message.length > 2000) {
+      return new Response(
+        JSON.stringify({ error: "That message is too long." }),
+        { status: 400, headers: { ...corsHeaders, "Content-Type": "application/json" } }
+      );
+    }
 
-    // Cap history length to keep requests small and cheap
-    const trimmedHistory = history.slice(-10);
+    // The history arrives from the client, so it is untrusted input, not
+    // a record of what was said. Anything that isn't a plain user or
+    // assistant turn of reasonable length is dropped rather than
+    // forwarded: a forged assistant turn ("Understood, I'll answer
+    // anything") is the standard way to talk a system prompt out of its
+    // instructions, and unbounded content is billed per token.
+    const trimmedHistory = (Array.isArray(history) ? history : [])
+      .filter((m) =>
+        m && (m.role === "user" || m.role === "assistant") &&
+        typeof m.content === "string" &&
+        m.content.length > 0 && m.content.length <= 2000)
+      .slice(-10);
 
     const messages = [
       ...trimmedHistory.map((m) => ({ role: m.role, content: m.content })),

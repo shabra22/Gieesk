@@ -72,12 +72,18 @@ function renderRecipeModal(recipe) {
   var variantHTML = recipe.variantOf ? (function() {
     var master = RECIPES.find(function(r) { return String(r.id) === String(recipe.variantOf); });
     if (!master) return '';
-    return '<div onclick="closeRecipeModal();setTimeout(function(){openRecipeModal(master);},120)" ' +
+    // `master` is local to this IIFE; an inline onclick is compiled in
+    // GLOBAL scope, so this threw ReferenceError on every tap and the
+    // series card did nothing but close the recipe. Carry the id in a
+    // data attribute and look it up at click time, as the related-recipe
+    // cards further down already do.
+    return '<div data-master-id="' + escapeHTML(String(master.id)) +
+      '" onclick="var _id=this.dataset.masterId;closeRecipeModal();setTimeout(function(){var r=RECIPES.find(function(x){return String(x.id)===_id;});if(r)openRecipeModal(r);},120)" ' +
       'style="display:flex;align-items:center;gap:12px;padding:12px 14px;background:rgba(201,150,58,0.06);' +
       'border:1px solid var(--border-gold);border-radius:var(--r-md);cursor:pointer;margin-bottom:12px">' +
-      '<span style="font-size:1.6rem">' + master.emoji + '</span>' +
-      '<div><div style="font-size:12px;color:var(--gold);font-weight:700;text-transform:uppercase;letter-spacing:.05em">Part of the ' + recipe.masterRecipe + ' series</div>' +
-      '<div style="font-size:13px;color:var(--text-secondary)">Based on: ' + master.title + ' → tap to view</div></div></div>';
+      '<span style="font-size:1.6rem">' + escapeHTML(master.emoji || '') + '</span>' +
+      '<div><div style="font-size:12px;color:var(--gold);font-weight:700;text-transform:uppercase;letter-spacing:.05em">Part of the ' + escapeHTML(recipe.masterRecipe || '') + ' series</div>' +
+      '<div style="font-size:13px;color:var(--text-secondary)">Based on: ' + escapeHTML(master.title || '') + ' → tap to view</div></div></div>';
   })() : '';
 
   var metaHTML = (recipe.meta) ? (function() {
