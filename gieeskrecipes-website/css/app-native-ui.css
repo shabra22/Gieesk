@@ -1293,3 +1293,43 @@ button.app-notif-item {
 button.app-notif-item:active { background: rgba(255,255,255,0.04); }
 .app-notif-item.is-unread { background: rgba(212,160,57,0.07); }
 .app-notif-text > span { display: block; }
+
+/* ── Dialogs have to clear the app's own chrome ────────────────────
+   The app header (z-index 600) and the bottom tab bar (500) are both
+   fixed, and every full-screen dialog was stacked BELOW them:
+   .modal-backdrop at 200, .upload-modal-overlay and .planner-picker
+   at 300. On the website that is harmless, because the web nav is
+   only 100 — but in the app the chrome painted straight over each
+   dialog at BOTH ends. On "Share a Recipe" that hid the modal's own
+   title and its X button behind the header, and put Share Recipe and
+   Cancel underneath the tab bar: a form you could neither submit nor
+   close without guessing where to tap.
+   1700 clears the header, the tab bar, the search overlay (1500) and
+   the notification panel (1600), and stays under the fullscreen
+   video stack (3000+). */
+body.is-native-app .modal-backdrop,
+body.is-native-app .upload-modal-overlay,
+body.is-native-app .planner-picker {
+  z-index: 1700;
+  /* Keep out of the notch and the home gesture bar too, so the first
+     and last rows of a dialog are always reachable. */
+  padding-top: calc(1rem + env(safe-area-inset-top, 0px));
+  padding-bottom: calc(1rem + env(safe-area-inset-bottom, 0px));
+}
+/* The panels cap themselves at 90vh, which is measured against the
+   whole screen and so ignored the padding above — tall dialogs still
+   ran off the bottom. Against the padded overlay, 100% is exactly the
+   room that is actually free. */
+body.is-native-app .upload-modal,
+body.is-native-app .modal-panel,
+body.is-native-app .planner-picker > * {
+  max-height: 100%;
+}
+
+/* An open dialog is modal, so the tab bar behind it should not still
+   be tappable — you could navigate away and leave the form open. */
+body.is-native-app:has(.upload-modal-overlay.open) .app-tab-bar,
+body.is-native-app:has(.modal-backdrop.open) .app-tab-bar,
+body.is-native-app:has(.planner-picker.open) .app-tab-bar {
+  display: none;
+}

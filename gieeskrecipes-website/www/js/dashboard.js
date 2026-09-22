@@ -452,10 +452,12 @@ async function resetProfileForm() {
   const sb = getSupabase();
   if (!sb || !currentUser) return;
   const meta = currentUser.user_metadata || {};
-  const nameEl = document.getElementById('pfName');
-  if (nameEl) nameEl.value = meta.full_name || meta.name || '';
-
   const { data } = await sb.from('profiles').select('*').eq('id', currentUser.id).maybeSingle();
+  // "Reset" means back to what is SAVED, so the stored name comes first
+  // and the provider's name is only the fallback. Reading metadata first
+  // made Reset quietly replace a saved name with Google's.
+  const nameEl = document.getElementById('pfName');
+  if (nameEl) nameEl.value = (data && data.full_name) || meta.full_name || meta.name || '';
   profileLoadedUsername = (data && data.username) || '';
   if (document.getElementById('pfUsername')) document.getElementById('pfUsername').value = profileLoadedUsername;
   if (document.getElementById('pfBio'))      document.getElementById('pfBio').value      = (data && data.bio) || '';
@@ -478,6 +480,14 @@ async function loadProfile() {
   const { data } = await sb.from('profiles').select('*').eq('id', currentUser.id).maybeSingle();
   if (!data) { renderVerificationRow({}); return; }
   profileLoadedUsername = data.username || '';
+  // Full Name was only ever filled from the markup, which reads
+  // user_metadata — and Supabase rebuilds that from the sign-in provider
+  // on every sign-in. So after signing in with Google the field showed
+  // Google's name, and pressing Save wrote Google's name over whatever
+  // you had actually typed. profiles.full_name is the durable copy, so
+  // it wins here, exactly as it does for the photo.
+  const nameEl = document.getElementById('pfName');
+  if (nameEl && data.full_name) nameEl.value = data.full_name;
   const viewHistory = document.getElementById('pfViewHistory');
   if (viewHistory && typeof data.profile_view_history === 'boolean') viewHistory.checked = data.profile_view_history;
   renderVerificationRow(data);
