@@ -244,20 +244,11 @@ function hapticTap() {
   }
 
   // ---- Notifications panel ----
-  // Now backed by a real notifications table (supabase-notifications.sql).
-  //
-  // The old objection to a table was that a client-writable one would
-  // have to allow inserting rows addressed to OTHER users — the exact
-  // hole someone would use to spam notifications. That was right, and
-  // the table answers it: clients have NO insert privilege at all. Rows
-  // are written by database triggers, and a client may only read its own
-  // and set read_at.
-  //
-  // What the derived version cost: six-plus queries pulling hundreds of
-  // rows, per user, every two minutes, to render one red dot — and read
-  // state in localStorage, so reading on your phone left everything
-  // unread on the web. Now it is one query, a realtime subscription
-  // instead of polling, and read state that follows the account.
+  // Derived from existing engagement data rather than a separate
+  // notifications table: a client-writable table would have to allow
+  // inserting rows addressed to OTHER users, which is exactly the hole
+  // someone would use to spam notifications. Reading likes/comments on
+  // your own posts needs no new permissions at all.
   function initNotifPanel() {
     var panel = document.getElementById('appNotifPanel');
     var openBtn = document.getElementById('appHeaderNotifications');
@@ -265,132 +256,107 @@ function hapticTap() {
     if (!panel || !openBtn) return;
     openBtn.addEventListener('click', function () {
       panel.classList.add('open');
-      // Render first, THEN mark read — otherwise everything would already
-      // be read by the time the list draws and nothing would be
-      // highlighted as new.
-      loadNotifications().then(function () {
-        var sb = (typeof getSupabase === 'function') ? getSupabase() : null;
-        if (sb && typeof currentUser !== 'undefined' && currentUser) {
-          sb.rpc('mark_notifications_read').then(function () { refreshNotifBadge(); });
-        }
-      });
+      // Remember the previous "seen" time so new items can be highlighted.
+      try {
+        localStorage.setItem('gieesk:notifsSeenAtPrev', localStorage.getItem('gieesk:notifsSeenAt') || '');
+        localStorage.setItem('gieesk:notifsSeenAt', new Date().toISOString());
+      } catch (e) {}
+      loadNotifications();
       var badge = document.getElementById('appNotifBadge');
       if (badge) badge.style.display = 'none';
     });
     if (closeBtn) closeBtn.addEventListener('click', function () { panel.classList.remove('open'); });
     refreshNotifBadge();
-    subscribeNotifications();
-    // Realtime can drop a message or fail to connect at all, so a slow
-    // poll stays as a safety net — ten minutes rather than two, because
-    // it is now one cheap RPC and no longer the primary mechanism.
-    setInterval(function () { if (!document.hidden) refreshNotifBadge(); }, 10 * 60 * 1000);
+    // The badge used to be checked once at startup only. Now also every
+    // two minutes while the app is open, and whenever it comes back to
+    // the foreground.
+    setInterval(function () { if (!document.hidden) refreshNotifBadge(); }, 2 * 60 * 1000);
     document.addEventListener('visibilitychange', function () { if (!document.hidden) refreshNotifBadge(); });
-    window.addEventListener('gieesk:authSucceeded', function () {
-      setTimeout(function () { refreshNotifBadge(); subscribeNotifications(); }, 2000);
-    });
-    window.addEventListener('gieesk:signedOut', function () {
-      unsubscribeNotifications();
-      var badge = document.getElementById('appNotifBadge');
-      if (badge) badge.style.display = 'none';
-    });
+    window.addEventListener('gieesk:authSucceeded', function () { setTimeout(refreshNotifBadge, 2000); });
   }
 
-  // ---- Realtime: the badge reacts the moment a row lands ----------
-  var notifChannel = null;
-  function subscribeNotifications() {
-    if (typeof getSupabase !== 'function' || typeof currentUser === 'undefined' || !currentUser) return;
-    var sb = getSupabase();
-    if (!sb || typeof sb.channel !== 'function') return;
-    unsubscribeNotifications();
-    try {
-      notifChannel = sb.channel('notif-' + currentUser.id)
-        .on('postgres_changes', {
-          event: 'INSERT',
-          schema: 'public',
-          table: 'notifications',
-          // Server-side filter: without it every client would be sent
-          // every insert and would have to discard other people's.
-          filter: 'user_id=eq.' + currentUser.id,
-        }, function () {
-          refreshNotifBadge();
-          var panel = document.getElementById('appNotifPanel');
-          if (panel && panel.classList.contains('open')) loadNotifications();
-        })
-        .subscribe();
-    } catch (e) {
-      console.warn('[GieesK] Notification realtime unavailable; polling instead:', e);
-      notifChannel = null;
-    }
-  }
-  function unsubscribeNotifications() {
-    if (!notifChannel) return;
-    try { notifChannel.unsubscribe(); } catch (e) {}
-    notifChannel = null;
-  }
-
-  // One query, not six. The heavy lifting moved into the database:
-  // triggers write a row per event, so this just reads the caller's own
-  // rows. Profile views stay separate on purpose — they have their own
-  // privacy-controlled RPC, they are high volume, and "someone looked at
-  // your profile" should not light up a badge. They are merged in for
-  // display only, and excluded from the unread count.
+  // Built from activity the app can already read, rather than a
+  // notifications table anyone could write to:
+  //  • likes and comments on your posts and videos
+  //  • likes on your comments
+  //  • new followers
+  //  • profile views (who visited, once a day each; see profile views)
+  // Names are each person's current username.
   async function fetchNotifications() {
     if (typeof getSupabase !== 'function' || typeof currentUser === 'undefined' || !currentUser) return [];
     var sb = getSupabase();
     if (!sb) return [];
+    var me = currentUser.id;
+
+    var base = await Promise.all([
+      sb.from('community_posts').select('id, text, recipe_title, video_url').eq('user_id', me).limit(200),
+      sb.from('post_comments').select('id, text').eq('user_id', me).order('created_at', { ascending: false }).limit(200),
+      sb.from('profiles').select('username').eq('id', me).maybeSingle(),
+    ]);
+    var posts = base[0].data || [];
+    var myComments = base[1].data || [];
+    var myUsername = base[2].data && base[2].data.username;
+
+    var postIds = posts.map(function (p) { return p.id; });
+    var postById = {};
+    posts.forEach(function (p) { postById[p.id] = p; });
+    var commentById = {};
+    myComments.forEach(function (c) { commentById[c.id] = c; });
+    var none = Promise.resolve({ data: [] });
 
     var results = await Promise.all([
-      sb.from('notifications').select('*').order('created_at', { ascending: false }).limit(60),
-      sb.rpc('get_my_profile_views', { p_limit: 30 }),
+      postIds.length ? sb.from('post_likes').select('post_id, user_id, created_at').in('post_id', postIds).order('created_at', { ascending: false }).limit(100) : none,
+      postIds.length ? sb.from('post_comments').select('post_id, user_id, author_name, text, created_at').in('post_id', postIds).order('created_at', { ascending: false }).limit(100) : none,
+      myComments.length ? sb.from('comment_likes').select('comment_id, user_id, created_at').in('comment_id', myComments.map(function (c) { return c.id; })).order('created_at', { ascending: false }).limit(100) : none,
+      myUsername ? sb.from('chef_follows').select('user_id, created_at').eq('chef_name', myUsername).order('created_at', { ascending: false }).limit(100) : none,
+      sb.rpc('get_my_profile_views', { p_limit: 50 }),
     ]);
+    // Any of these can be missing on an older database; each is optional.
+    function rows(r) { return (r && !r.error && r.data) ? r.data : []; }
+    var likes = rows(results[0]).filter(function (l) { return l.user_id !== me; });
+    var comments = rows(results[1]).filter(function (c) { return c.user_id !== me; });
+    var commentLikes = rows(results[2]).filter(function (l) { return l.user_id !== me; });
+    var follows = rows(results[3]).filter(function (f) { return f.user_id !== me && f.created_at; });
+    var views = rows(results[4]);
 
-    // A missing table means the SQL file hasn't been run yet. Say so in
-    // the console and fall back to views alone rather than showing an
-    // error to someone who can't act on it.
-    if (results[0].error) {
-      console.warn('[GieesK] notifications table unavailable — has supabase-notifications.sql been run?',
-        results[0].error.message);
+    var actorIds = [];
+    [likes, comments, commentLikes, follows].forEach(function (list) { list.forEach(function (r) { actorIds.push(r.user_id); }); });
+    var profiles = (typeof fetchPublicProfiles === 'function' && actorIds.length) ? await fetchPublicProfiles(actorIds) : new Map();
+    function nameOf(userId, fallback) {
+      var pub = profiles.get ? profiles.get(String(userId)) : null;
+      return (pub && pub.username) || fallback || 'Someone';
     }
-    // Explicitly discard data when there is an error rather than relying
-    // on the client returning null for it — the views line below already
-    // worked this way, and the two should not differ.
-    var rows = (!results[0].error && results[0].data) ? results[0].data : [];
-    var views = (results[1] && !results[1].error && results[1].data) ? results[1].data : [];
 
-    var LOOK = {
-      like:         { icon: 'ti-heart-filled',   color: '#F08060',                  action: 'liked' },
-      comment:      { icon: 'ti-message-circle', color: 'var(--gold)',              action: 'commented on' },
-      comment_like: { icon: 'ti-heart',          color: '#F08060',                  action: 'liked your comment' },
-      follow:       { icon: 'ti-user-plus',      color: 'var(--emerald, #1D9E75)',  action: 'started following you' },
-      challenge:    { icon: 'ti-trophy',         color: 'var(--gold)',              action: '' },
-      system:       { icon: 'ti-bell',           color: 'var(--gold)',              action: '' },
-    };
+    function label(post) {
+      if (!post) return 'your post';
+      var t = post.recipe_title || post.text || (post.video_url ? 'your video' : 'your post');
+      return t.length > 40 ? t.slice(0, 40) + '…' : t;
+    }
+    function snippet(text) {
+      text = String(text || '');
+      return text.length > 40 ? text.slice(0, 40) + '…' : text;
+    }
 
-    var items = rows.map(function (n) {
-      var look = LOOK[n.kind] || LOOK.system;
-      return {
-        id: n.id,
-        kind: n.kind,
-        icon: look.icon,
-        color: look.color,
-        who: n.actor_name || 'Someone',
-        userId: n.actor_id,
-        postId: n.post_id,
-        action: look.action,
-        // A follow has no subject; a like or comment has the recipe title.
-        detail: (n.kind === 'follow' || n.kind === 'comment_like') ? (n.kind === 'comment_like' ? n.subject : '') : n.subject,
-        body: n.body || '',
-        at: n.created_at,
-        unread: !n.read_at,
-      };
+    var items = [];
+    likes.forEach(function (l) {
+      items.push({ icon: 'ti-heart-filled', color: '#F08060', who: nameOf(l.user_id), userId: l.user_id,
+        action: 'liked', detail: label(postById[l.post_id]), at: l.created_at });
     });
-
+    comments.forEach(function (c) {
+      items.push({ icon: 'ti-message-circle', color: 'var(--gold)', who: nameOf(c.user_id, c.author_name), userId: c.user_id,
+        action: 'commented on', detail: label(postById[c.post_id]), body: c.text, at: c.created_at });
+    });
+    commentLikes.forEach(function (l) {
+      items.push({ icon: 'ti-heart', color: '#F08060', who: nameOf(l.user_id), userId: l.user_id,
+        action: 'liked your comment', detail: snippet(commentById[l.comment_id] && commentById[l.comment_id].text), at: l.created_at });
+    });
+    follows.forEach(function (f) {
+      items.push({ icon: 'ti-user-plus', color: 'var(--emerald, #1D9E75)', who: nameOf(f.user_id), userId: f.user_id,
+        action: 'started following you', detail: '', at: f.created_at });
+    });
     views.forEach(function (v) {
-      items.push({
-        kind: 'view', icon: 'ti-eye', color: '#8FB3FF',
-        who: v.username || 'Someone', userId: v.viewer_id,
-        action: 'viewed your profile', detail: '', at: v.viewed_at, unread: false,
-      });
+      items.push({ icon: 'ti-eye', color: '#8FB3FF', who: v.username || 'Someone', userId: v.viewer_id,
+        action: 'viewed your profile', detail: '', at: v.viewed_at, kind: 'view' });
     });
 
     items.sort(function (a, b) { return new Date(b.at) - new Date(a.at); });
@@ -401,6 +367,8 @@ function hapticTap() {
     var list = document.getElementById('appNotifList');
     if (!list) return;
     list.innerHTML = '<div class="dash-loading">Loading…</div>';
+    var seenBefore = null;
+    try { seenBefore = localStorage.getItem('gieesk:notifsSeenAtPrev'); } catch (e) {}
     var items = await fetchNotifications();
     if (!items.length) {
       list.innerHTML = '<div class="app-notif-empty"><i class="ti ti-bell"></i>'
@@ -410,79 +378,36 @@ function hapticTap() {
     }
     var esc = (typeof escapeHTML === 'function') ? escapeHTML : function (s) { return s; };
     list.innerHTML = items.map(function (n) {
+      var unread = seenBefore ? new Date(n.at) > new Date(seenBefore) : false;
       var who = n.who && n.who !== 'Someone' ? '@' + n.who : 'Someone';
-      return '<button type="button" class="app-notif-item' + (n.unread ? ' is-unread' : '') + '"'
-        + (n.userId ? ' data-user-id="' + esc(n.userId) + '"' : '')
-        + (n.postId ? ' data-post-id="' + esc(n.postId) + '"' : '')
-        + ' data-kind="' + esc(n.kind) + '">'
+      return '<button type="button" class="app-notif-item' + (unread ? ' is-unread' : '') + '"'
+        + (n.userId ? ' data-user-id="' + esc(n.userId) + '"' : '') + '>'
         + '<i class="ti ' + n.icon + '" style="color:' + n.color + '"></i>'
         + '<span class="app-notif-text">'
-        + '<span class="app-notif-line"><strong>' + esc(who) + '</strong> ' + esc(n.action)
-        + (n.detail ? ' <em>' + esc(n.detail) + '</em>' : '') + '</span>'
+        + '<span class="app-notif-line"><strong>' + esc(who) + '</strong> ' + esc(n.action) + (n.detail ? ' <em>' + esc(n.detail) + '</em>' : '') + '</span>'
         + (n.body ? '<span class="app-notif-body">"' + esc(n.body) + '"</span>' : '')
         + '<span class="app-notif-time">' + (typeof timeAgo === 'function' ? timeAgo(n.at) : '') + '</span>'
         + '</span></button>';
     }).join('');
-
-    // A tap used to always open the actor's profile, even for "bob
-    // commented on your Mandazi" — which took you away from the thing
-    // being talked about. Now anything attached to a post opens that
-    // post, and a comment opens its comments too.
-    list.querySelectorAll('.app-notif-item').forEach(function (btn) {
+    // Tapping a notification opens that person's profile.
+    list.querySelectorAll('.app-notif-item[data-user-id]').forEach(function (btn) {
       btn.addEventListener('click', function () {
-        var panel = document.getElementById('appNotifPanel');
-        if (panel) panel.classList.remove('open');
-        var postId = btn.dataset.postId;
-        var kind = btn.dataset.kind;
-        if (postId) { openNotifPost(postId, kind === 'comment'); return; }
-        if (btn.dataset.userId && typeof openUserProfile === 'function') openUserProfile(btn.dataset.userId);
+        document.getElementById('appNotifPanel').classList.remove('open');
+        if (typeof openUserProfile === 'function') openUserProfile(btn.dataset.userId);
       });
     });
   }
 
-  // Opens Community and brings the post into view. The post has to be in
-  // the loaded feed to be found; if it is older than that, fall back to
-  // the feed itself rather than appearing to do nothing.
-  function openNotifPost(postId, alsoComments) {
-    if (typeof openCommunity === 'function') openCommunity();
-    var deadline = Date.now() + 6000;
-    (function find() {
-      var el = document.getElementById('post-' + postId);
-      if (el) {
-        el.scrollIntoView({ behavior: 'smooth', block: 'center' });
-        el.classList.add('is-notif-target');
-        setTimeout(function () { el.classList.remove('is-notif-target'); }, 2200);
-        if (alsoComments && typeof focusComment === 'function') {
-          setTimeout(function () { focusComment(postId); }, 450);
-        }
-        return;
-      }
-      if (Date.now() < deadline) { setTimeout(find, 200); return; }
-      if (typeof showGenericToast === 'function') {
-        showGenericToast('That post isn\u2019t in your feed any more.');
-      }
-    })();
-  }
-
-  // One cheap RPC instead of rebuilding every notification to count them.
   async function refreshNotifBadge() {
     var badge = document.getElementById('appNotifBadge');
     if (!badge) return;
-    var panel = document.getElementById('appNotifPanel');
-    if (panel && panel.classList.contains('open')) return;
-    if (typeof getSupabase !== 'function' || typeof currentUser === 'undefined' || !currentUser) {
-      badge.style.display = 'none';
-      return;
-    }
-    var sb = getSupabase();
-    if (!sb) return;
-    var res = await sb.rpc('unread_notification_count');
-    if (res.error) {
-      console.warn('[GieesK] unread count unavailable:', res.error.message);
-      badge.style.display = 'none';
-      return;
-    }
-    var unread = Number(res.data) || 0;
+    if (document.getElementById('appNotifPanel') && document.getElementById('appNotifPanel').classList.contains('open')) return;
+    var items = await fetchNotifications();
+    var seenAt = null;
+    try { seenAt = localStorage.getItem('gieesk:notifsSeenAt'); } catch (e) {}
+    var unread = seenAt
+      ? items.filter(function (n) { return new Date(n.at) > new Date(seenAt); }).length
+      : items.length;
     if (unread > 0) {
       badge.textContent = unread > 9 ? '9+' : String(unread);
       badge.style.display = '';
@@ -490,7 +415,6 @@ function hapticTap() {
       badge.style.display = 'none';
     }
   }
-
 
   // ---- Hero banner: use a real top-rated recipe photo, cycle through a few ----
   var heroBannerIntervalId = null;

@@ -220,10 +220,32 @@ function buildCommunityPage() {
           <div>
             <div class="upload-step"><div class="upload-step-num">1</div> Recipe Details</div>
             <div style="display:flex;flex-direction:column;gap:12px">
-              <div class="avatar-upload-preview post-photo-upload-preview" id="uploadPhotoPreview" onclick="document.getElementById('uploadPhotoInput').click()">
-                <span id="uploadPhotoPlaceholder" style="display:flex;flex-direction:column;align-items:center;gap:6px;color:var(--text-muted);font-size:13px"><i class="ti ti-camera" style="font-size:24px"></i>Add a photo of your dish</span>
-                <div class="avatar-upload-overlay"><i class="ti ti-camera"></i></div>
+              <!-- Photo and video side by side. The video is optional,
+                   and when there is one the post is BOTH a recipe in the
+                   Community feed and a video in Discover — one row, each
+                   half linking to the other. -->
+              <div class="post-media-row">
+                <div class="avatar-upload-preview post-photo-upload-preview" id="uploadPhotoPreview" onclick="document.getElementById('uploadPhotoInput').click()">
+                  <span id="uploadPhotoPlaceholder" style="display:flex;flex-direction:column;align-items:center;gap:6px;color:var(--text-muted);font-size:13px"><i class="ti ti-camera" style="font-size:24px"></i>Add a photo of your dish</span>
+                  <div class="avatar-upload-overlay"><i class="ti ti-camera"></i></div>
+                </div>
+                <div class="rv-tile" id="rvTile" onclick="if(event.target.closest('button'))return;rvChooseFile()">
+                  <span id="rvPlaceholder" class="rv-placeholder"><i class="ti ti-video-plus" style="font-size:24px"></i>Add a video<small>Optional · up to 3 min</small></span>
+                  <video id="rvPreview" class="rv-preview" muted playsinline preload="metadata"></video>
+                  <div class="rv-panel" id="rvPanel" hidden>
+                    <span class="rv-meta" id="rvMeta"></span>
+                    <div class="rv-progress" id="rvProgress" hidden><div class="rv-progress-fill" id="rvProgressFill"></div></div>
+                    <div class="rv-row">
+                      <span class="rv-status" id="rvStatus" aria-live="polite"></span>
+                      <button type="button" class="vu-link-btn" id="rvCancelBtn" onclick="rvCancelUpload()" hidden>Cancel</button>
+                      <button type="button" class="vu-link-btn" id="rvRetryBtn" onclick="rvRetryUpload()" hidden>Retry</button>
+                      <button type="button" class="vu-link-btn" id="rvRemoveBtn" onclick="rvRemoveVideo()" hidden>Remove</button>
+                    </div>
+                  </div>
+                </div>
               </div>
+              <div id="rvError" class="vu-error" role="alert" hidden></div>
+              <input type="file" id="rvInput" accept="video/*" style="display:none" onchange="rvHandleFile(this)">
               <input type="file" id="uploadPhotoInput" accept="image/*" style="display:none" onchange="previewPostPhoto(this)">
               <input class="form-input" id="uploadTitle"   placeholder="Recipe name *" style="background:var(--bg-elevated);border:1px solid var(--border-subtle);border-radius:var(--r-md);padding:10px 14px;font-size:14px;color:var(--text-primary);outline:none;font-family:inherit;width:100%"/>
               <textarea class="form-textarea" id="uploadDesc" placeholder="Tell your story — what makes this recipe special to you? *" rows="3" style="background:var(--bg-elevated);border:1px solid var(--border-subtle);border-radius:var(--r-md);padding:10px 14px;font-size:14px;color:var(--text-primary);outline:none;font-family:inherit;width:100%;resize:vertical"></textarea>
@@ -596,9 +618,43 @@ function toggleRecipeContent(postId) {
   if (el) el.style.display = el.style.display === 'none' ? '' : 'none';
 }
 
-function openRecipeModalById(id) {
-  const r = RECIPES.find(x => String(x.id) === String(id));
-  if (r) openRecipeModal(r);
+async function openRecipeModalById(id) {
+  if (!id) return;
+  const r = typeof RECIPES !== 'undefined' && Array.isArray(RECIPES)
+    ? RECIPES.find(x => String(x.id) === String(id)) : null;
+  if (r) { openRecipeModal(r); return; }
+
+  // Not one of the site's own recipes, so it is a community recipe —
+  // a video can now be linked to one of those. This used to fall off
+  // the end and do nothing at all, so the recipe chip on such a video
+  // was a dead tap.
+  const sb = getSupabase();
+  if (!sb) return;
+  try {
+    const { data, error } = await sb.from('community_posts')
+      .select('id, recipe_title, recipe_emoji, recipe_cuisine, recipe_time, recipe_cal, ingredients, steps, image_url, text, author_name')
+      .eq('id', String(id))
+      .maybeSingle();
+    if (error || !data || !data.recipe_title) return;
+    // Shaped like a site recipe, so the existing modal renders it. It
+    // has ingredients and steps, which is what openRecipeModal checks
+    // before rendering straight away instead of fetching.
+    openRecipeModal({
+      id: String(data.id),
+      title: data.recipe_title,
+      emoji: data.recipe_emoji || '🍽',
+      cuisine: data.recipe_cuisine || '',
+      time: data.recipe_time || null,
+      calories: data.recipe_cal || null,
+      description: data.text || '',
+      ingredients: Array.isArray(data.ingredients) ? data.ingredients : [],
+      steps: Array.isArray(data.steps) ? data.steps : [],
+      image: data.image_url || null,
+      chef: data.author_name || '',
+    });
+  } catch (e) {
+    console.warn('[GieesK] Could not open that community recipe:', e);
+  }
 }
 
 // Calls the notify-engagement Edge Function directly, bypassing Database
@@ -1603,7 +1659,9 @@ function sharePost(postId) {
     shareData = {
       title: post.recipe_title || 'GieesK Recipes',
       text: `Watch ${author} video${post.recipe_title ? ` for ${post.recipe_title}` : ''} and get the recipe on GieesK Recipes`,
-      url: shareUrl(`${origin}/recipes/${post.recipe_id}.html`),
+      url: isSiteRecipeId(post.recipe_id)
+        ? shareUrl(`${origin}/recipes/${post.recipe_id}.html`)
+        : shareUrl(`${origin}/`, '#community'),
     };
   } else {
     shareData = {
@@ -2901,9 +2959,18 @@ function shareUrl(path, hash) {
   return base + sep + 'ref=share' + (hash ? hash : '');
 }
 
+// Only the site's OWN recipes have a built page at /recipes/<id>.html
+// (build-recipe-pages.js writes those). A video can now be linked to a
+// community recipe instead, whose id is a post uuid with no page behind
+// it — sharing one used to hand out a link straight to a 404.
+function isSiteRecipeId(id) {
+  return !!id && typeof RECIPES !== 'undefined' && Array.isArray(RECIPES)
+    && RECIPES.some((r) => String(r.id) === String(id));
+}
+
 function videoShareLink(v) {
   const origin = typeof publicSiteOrigin === 'function' ? publicSiteOrigin() : 'https://gieesk.com';
-  return v && v.recipe_id
+  return v && isSiteRecipeId(v.recipe_id)
     ? shareUrl(`${origin}/recipes/${encodeURIComponent(v.recipe_id)}.html`)
     : shareUrl(`${origin}/`, '#community');
 }
@@ -4981,16 +5048,53 @@ function handleRecipeLinkSearch(input) {
   clearTimeout(recipeLinkDebounce.current);
   const query = input.value.trim().toLowerCase();
   if (query.length < 2) { vuCloseRecipeDropdown(); return; }
-  recipeLinkDebounce.current = setTimeout(() => {
-    if (typeof RECIPES === 'undefined' || !Array.isArray(RECIPES)) return;
+  recipeLinkDebounce.current = setTimeout(async () => {
     // Titles that start with the query first, then other matches.
     const starts = [], contains = [];
-    RECIPES.forEach((r) => {
-      const title = String(r.title || '').toLowerCase();
-      if (title.startsWith(query)) starts.push(r);
-      else if (title.includes(query) || String(r.cuisine || '').toLowerCase().includes(query)) contains.push(r);
-    });
-    vu.recipeMatches = starts.concat(contains).slice(0, 6);
+    if (typeof RECIPES !== 'undefined' && Array.isArray(RECIPES)) {
+      RECIPES.forEach((r) => {
+        const title = String(r.title || '').toLowerCase();
+        if (title.startsWith(query)) starts.push(r);
+        else if (title.includes(query) || String(r.cuisine || '').toLowerCase().includes(query)) contains.push(r);
+      });
+    }
+
+    // Recipes people wrote themselves count too. This box used to search
+    // only the site's built-in recipes, which meant a video could never
+    // be attached to a community recipe — the two halves of the app
+    // could not be connected at all from this side.
+    let community = [];
+    try {
+      const sb = getSupabase();
+      if (sb) {
+        const { data, error } = await sb.from('community_posts')
+          .select('id, recipe_title, recipe_emoji, recipe_cuisine, author_name')
+          .not('recipe_title', 'is', null)
+          // A community recipe is a post with ingredients — not a plain
+          // caption that happens to carry a recipe title.
+          .not('ingredients', 'is', null)
+          .ilike('recipe_title', `%${query.replace(/[%_]/g, '\\$&')}%`)
+          .order('created_at', { ascending: false })
+          .limit(6);
+        if (error) throw error;
+        community = (data || []).map((p) => ({
+          id: String(p.id),
+          title: p.recipe_title,
+          emoji: p.recipe_emoji || '🍽',
+          cuisine: p.recipe_cuisine || (p.author_name ? `by ${p.author_name}` : ''),
+          _community: true,
+        }));
+      }
+    } catch (e) {
+      // Offline, or the column set differs. Built-in matches still show.
+      console.warn('[GieesK] Community recipe search unavailable:', e);
+    }
+
+    // The query may have moved on while that request was in flight.
+    const input2 = vuEl('videoUploadRecipeTitle');
+    if (input2 && input2.value.trim().toLowerCase() !== query) return;
+
+    vu.recipeMatches = starts.concat(contains).concat(community).slice(0, 8);
     vu.recipeActive = -1;
     vuRenderRecipeDropdown(query);
   }, 150);
@@ -5008,6 +5112,7 @@ function vuRenderRecipeDropdown(query) {
               aria-selected="${i === vu.recipeActive}" onmousedown="event.preventDefault()" onclick="selectRecipeLink(${i})">
         <span class="vu-dropdown-emoji">${escapeHTML(r.emoji || '🍽')}</span>
         <span class="vu-dropdown-text"><strong>${escapeHTML(r.title)}</strong><small>${escapeHTML(r.cuisine || r.country || '')}</small></span>
+        ${r._community ? '<span class="vu-dropdown-tag">Community</span>' : ''}
       </button>`).join('');
   }
   dropdown.hidden = false;
@@ -5180,6 +5285,12 @@ function resetPostComposer() {
   if (placeholder) placeholder.style.display = '';
   const photoInput = document.getElementById('uploadPhotoInput');
   if (photoInput) photoInput.value = '';
+  // Abandoning the form deletes an uploaded video from storage. Without
+  // this, cancelling a recipe left the file in the bucket with no row
+  // referencing it — paid for, unreachable, forever. submitCommunityPost
+  // calls keep() before this runs on a successful post, so a video that
+  // IS referenced is never removed.
+  if (window.recipeVideo) window.recipeVideo.reset({ deleteUploaded: true });
 }
 
 async function submitCommunityPost() {
@@ -5193,6 +5304,21 @@ async function submitCommunityPost() {
 
   if (!title || !desc || !cuisine) {
     if (err) { err.textContent = 'Please fill in the recipe name, description, and cuisine.'; err.style.display = ''; }
+    return;
+  }
+  // A video that hasn't finished uploading would be saved as a URL that
+  // isn't there yet, so the post would appear in Discover and play
+  // nothing. Wait, or let them drop the video and share the recipe now.
+  const rvState = window.recipeVideo;
+  if (rvState && rvState.isUploading()) {
+    if (err) { err.textContent = 'Your video is still uploading — give it a moment, then tap Share Recipe again.'; err.style.display = ''; }
+    return;
+  }
+  if (rvState && rvState.isUnfinished()) {
+    if (err) {
+      err.textContent = 'Your video didn’t finish uploading. Tap Retry on the video, or Remove it to share the recipe without one.';
+      err.style.display = '';
+    }
     return;
   }
   if (err) err.style.display = 'none';
@@ -5209,9 +5335,14 @@ async function submitCommunityPost() {
   const ingredients = (document.getElementById('uploadIngredients')?.value || '').split('\n').map(s => s.trim()).filter(Boolean);
   const steps       = (document.getElementById('uploadSteps')?.value || '').split('\n').map(s => s.trim()).filter(Boolean);
 
-  if (submitBtn) { submitBtn.disabled = true; submitBtn.textContent = 'Posting…'; }
+  if (submitBtn) { submitBtn.disabled = true; submitBtn.dataset.posting = '1'; submitBtn.textContent = 'Posting…'; }
 
-  const { error } = await sb.from('community_posts').insert({
+  // The video, if there is one. A post written while bytes are still in
+  // flight would carry a URL that 404s, so Share waits instead.
+  const rvApi = window.recipeVideo;
+  const posterUrl = rvApi && rvApi.hasVideo() ? await rvApi.uploadCover() : null;
+
+  const row = {
     user_id: currentUser.id,
     author_name: name,
     author_avatar: avatar,
@@ -5225,16 +5356,42 @@ async function submitCommunityPost() {
     tags,
     ingredients,
     steps,
-    image_url: pendingPostImageUrl
-  });
+    image_url: pendingPostImageUrl,
+  };
+  // Only set when there IS a video: Discover's feed is "posts where
+  // video_url is not null", so an empty string would put a photo-only
+  // recipe into the video feed with nothing to play.
+  const videoUrl = rvApi ? rvApi.url() : null;
+  if (videoUrl) {
+    row.video_url = videoUrl;
+    row.poster_url = posterUrl;
+    // Discover only publishes rows marked published; the recipe form has
+    // no draft state, so say so explicitly rather than relying on a
+    // column default that may differ.
+    row.status = 'published';
+  }
 
-  if (submitBtn) { submitBtn.disabled = false; submitBtn.textContent = 'Share Recipe'; }
+  let { error } = await sb.from('community_posts').insert(row);
+  // Database not fully migrated yet: drop the newer optional columns the
+  // error names and post without them, rather than losing the recipe.
+  // Same fallback the video uploader uses.
+  for (const optional of ['poster_url', 'status', 'video_url']) {
+    if (error && row[optional] !== undefined && new RegExp(optional).test(String(error.message || ''))) {
+      console.warn(`[GieesK] community_posts.${optional} is missing; run the latest Supabase SQL files. Posting without it.`);
+      delete row[optional];
+      ({ error } = await sb.from('community_posts').insert(row));
+    }
+  }
+
+  if (submitBtn) { submitBtn.disabled = false; delete submitBtn.dataset.posting; submitBtn.innerHTML = '<i class="ti ti-send"></i> Share Recipe'; }
 
   if (error) {
     console.error('[GieesK] Could not publish post — has supabase/community.sql been run?', error);
     if (err) { err.textContent = "Couldn't publish your post. Please try again."; err.style.display = ''; }
     return;
   }
+  // Posted: the uploaded video is referenced now, so keep the file.
+  if (rvApi) rvApi.keep();
 
   closeUploadModal();      // also clears the form and the pending photo
   // switchCommunityTab('feed') fetches the feed itself. Calling buildFeed()

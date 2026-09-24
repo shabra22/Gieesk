@@ -97,10 +97,6 @@ function buildSettingsPanel(panel) {
         }),
       ])}
 
-      ${settingsSection('Notifications', [
-        settingsRow({ icon: 'ti-bell', label: 'Notifications', sub: 'Which activity you hear about', onclick: "openSettingsPage('notifications')" }),
-      ])}
-
       ${settingsSection('Privacy', [
         settingsRow({ icon: 'ti-eye', label: 'Profile views', sub: 'Who can see that you visited', onclick: "openSettingsPage('privacy')" }),
       ])}
@@ -143,7 +139,6 @@ const SETTINGS_PAGES = {
   photo: { title: 'Profile photo' },
   diet: { title: 'Dietary preferences' },
   verification: { title: 'Verification' },
-  notifications: { title: 'Notifications' },
   privacy: { title: 'Profile views' },
   password: { title: 'Password' },
   applock: { title: 'App lock' },
@@ -197,9 +192,6 @@ function openSettingsPage(name) {
     if (typeof renderBadgeProgress === 'function') {
       renderBadgeProgress(document.getElementById('badgeProgress'));
     }
-  } else if (name === 'notifications') {
-    body.innerHTML = '<div id="notifSettings"></div>';
-    renderNotificationSettings(document.getElementById('notifSettings'));
   } else if (name === 'privacy') {
     body.innerHTML = `
       <div class="dash-card"><div class="dash-card-body">
@@ -301,83 +293,6 @@ async function signOutEverywhere(btn) {
   // in your own hand. It is cleared when a different account signs in.
   if (typeof closeDashboard === 'function') closeDashboard();
   if (typeof showGenericToast === 'function') showGenericToast('Signed out everywhere');
-}
-
-// ── Notifications page ────────────────────────────────────────────
-// Backed by notification_settings, one row per person. Turning a kind
-// off stops the notification being CREATED (push_notification() checks
-// these), not merely hidden — so it also stops the future push, and
-// there is no pile of unwanted history building up in the table.
-async function renderNotificationSettings(body) {
-  if (!body) return;
-  if (!currentUser) {
-    body.innerHTML = '<p class="st-note">Sign in to change your notifications.</p>';
-    return;
-  }
-  body.innerHTML = '<p class="st-note" style="margin-top:0">Loading…</p>';
-
-  const sb = getSupabase();
-  if (!sb) { body.innerHTML = '<p class="st-note">Not connected.</p>'; return; }
-
-  // Defaults are all on; a missing row means nobody has changed anything.
-  let prefs = { notify_likes: true, notify_comments: true, notify_follows: true, notify_challenges: true };
-  try {
-    const { data, error } = await sb.from('notification_settings')
-      .select('notify_likes, notify_comments, notify_follows, notify_challenges')
-      .eq('user_id', currentUser.id).maybeSingle();
-    if (error) throw error;
-    if (data) prefs = data;
-  } catch (e) {
-    console.warn('[GieesK] notification settings unavailable:', e);
-    body.innerHTML = '<p class="st-note" style="margin-top:0">Couldn\u2019t load your notification settings. '
-      + 'If this keeps happening, supabase-notifications.sql may not have been run yet.</p>';
-    return;
-  }
-
-  const rows = [
-    ['notify_likes', 'ti-heart', 'Likes', 'When someone likes your recipe, video or comment'],
-    ['notify_comments', 'ti-message-circle', 'Comments', 'When someone comments on something you posted'],
-    ['notify_follows', 'ti-user-plus', 'New followers', 'When someone starts following you'],
-    ['notify_challenges', 'ti-trophy', 'Challenges', 'When a new cooking challenge opens'],
-  ];
-
-  body.innerHTML = `
-    <div class="st-group">
-      ${rows.map(([key, icon, label, sub]) => settingsRow({
-        icon, label, sub, toggle: true, on: prefs[key] !== false,
-        onchange: `setNotificationPref('${key}', this.checked, this)`,
-      })).join('')}
-    </div>
-    <p class="st-note">Profile views are always listed here but never send a notification \u2014 they
-    appear in the panel only.</p>
-    <p class="st-note" id="notifPrefMsg" style="display:none"></p>`;
-}
-
-async function setNotificationPref(key, value, input) {
-  const sb = getSupabase();
-  if (!sb || !currentUser) return;
-  const msg = document.getElementById('notifPrefMsg');
-  const show = (text, bad) => {
-    if (!msg) return;
-    msg.textContent = text;
-    msg.style.color = bad ? '#F08060' : 'var(--text-muted)';
-    msg.style.display = '';
-    clearTimeout(msg._t);
-    msg._t = setTimeout(() => { msg.style.display = 'none'; }, 2600);
-  };
-  // Upsert, because the row may not exist yet — the defaults are
-  // implied by its absence rather than written at signup.
-  const patch = { user_id: currentUser.id, updated_at: new Date().toISOString() };
-  patch[key] = !!value;
-  const { error } = await sb.from('notification_settings').upsert(patch, { onConflict: 'user_id' });
-  if (error) {
-    console.error('[GieesK] Could not save that notification setting:', error);
-    // Put the switch back, so it never shows a state that was not saved.
-    if (input) input.checked = !value;
-    show('Couldn\u2019t save that. Please try again.', true);
-    return;
-  }
-  show('Saved');
 }
 
 // ── App lock page ─────────────────────────────────────────────────
