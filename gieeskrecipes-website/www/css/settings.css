@@ -170,3 +170,27 @@ label.st-row input:disabled { opacity: 0.4; }
   line-height: 1.55;
   color: var(--text-muted);
 }
+
+/* ── The verified-badge checklist ──────────────────────────────────
+   Replaces the old "get verified" paywall. The badge is earned, so the
+   page's job is to show exactly how far along someone is rather than
+   to sell anything. */
+.bp-head {
+  display: flex; align-items: center; gap: 10px;
+  margin-bottom: 14px;
+  font-size: 15.5px; color: var(--text-primary);
+}
+.bp-head svg.gk-verified { width: 22px; height: 22px; }
+
+.bp-steps { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; }
+.bp-step {
+  display: flex; align-items: flex-start; gap: 10px;
+  font-size: 13.5px; line-height: 1.45;
+  color: var(--text-muted);
+}
+.bp-step i { font-size: 18px; flex-shrink: 0; line-height: 1.2; color: var(--text-hint, #6b6a64); }
+/* Done steps read as done at a glance, not only by the icon — colour
+   alone would be invisible to anyone who can't distinguish it. */
+.bp-step.is-done { color: var(--text-primary); }
+.bp-step.is-done i { color: var(--emerald, #1D9E75); }
+.bp-step.is-done span { text-decoration: none; font-weight: 600; }

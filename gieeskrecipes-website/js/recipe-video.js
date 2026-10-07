@@ -49,6 +49,11 @@
     status: 'empty', // empty | uploading | uploaded | cancelled | error
     progress: 0,
     coverBlob: null,
+    // Set by the review sheet. Never re-encoded into the file — the
+    // player honours them (supabase-video-trim.sql).
+    trimStart: null,
+    trimEnd: null,
+    overlayText: null,
   };
 
   const el = (id) => document.getElementById(id);
@@ -177,6 +182,27 @@
     }
     const meta = el('rvMeta');
     if (meta) meta.textContent = `${duration(info.duration)} · ${bytes(file.size)}`;
+
+    // Review BEFORE uploading, not after: someone who trims eight
+    // seconds off a clip should not have waited for the whole thing to
+    // upload first, and backing out here costs no bandwidth at all.
+    if (window.videoReview) {
+      const choices = await window.videoReview.open({
+        objectUrl: objectUrl,
+        duration: info.duration,
+      });
+      if (!choices) { reset({ deleteUploaded: false }); return; }   // backed out
+      rv.trimStart = choices.trimStart;
+      rv.trimEnd = choices.trimEnd;
+      rv.overlayText = choices.overlayText;
+      if (choices.coverBlob) rv.coverBlob = choices.coverBlob;
+      const m2 = el('rvMeta');
+      if (m2 && (rv.trimStart != null || rv.trimEnd != null)) {
+        const from = rv.trimStart || 0;
+        const to = rv.trimEnd || info.duration;
+        m2.textContent = `${duration(to - from)} trimmed · ${bytes(file.size)}`;
+      }
+    }
 
     upload();
   }
@@ -331,6 +357,7 @@
     rv.file = null; rv.objectUrl = null; rv.duration = 0;
     rv.xhr = null; rv.path = null; rv.url = null;
     rv.status = 'empty'; rv.progress = 0; rv.coverBlob = null;
+    rv.trimStart = null; rv.trimEnd = null; rv.overlayText = null;
     error(''); status('');
     paint();
   }
@@ -347,6 +374,7 @@
     // rather than silently posting the recipe without it.
     isUnfinished: () => !!rv.file && rv.status !== 'uploaded',
     url: () => (rv.status === 'uploaded' ? rv.url : null),
+    trim: () => ({ start: rv.trimStart, end: rv.trimEnd, overlay: rv.overlayText }),
     uploadCover,
     reset,
     // Keeps the file when the post succeeded — it is referenced now.

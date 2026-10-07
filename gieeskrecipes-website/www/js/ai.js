@@ -77,8 +77,29 @@ async function fetchAIChefReply(message) {
 // at all, so the Anthropic key was effectively open to the internet. The
 // function now refuses non-subscribers; this is the polite version of
 // the same rule, so people see why instead of getting an error.
+// Where every "get Pro" button in the app goes now. In the app that is
+// Google Play's own purchase sheet — Play's payments policy forbids an
+// app leading people to any other payment method, including by linking
+// to a page that offers one. On the website there is no Play Billing, so
+// the web page is still the right destination there.
+function startProUpgrade() {
+  if (window.playBilling && window.playBilling.available()) {
+    window.playBilling.buy('gieesk_pro_yearly');
+    return;
+  }
+  var native = typeof isNativeApp === 'function' ? isNativeApp() : !!window.Capacitor;
+  if (native) {
+    if (typeof showGenericToast === 'function') {
+      showGenericToast('In-app purchases are not available on this device.');
+    }
+    return;
+  }
+  var origin = typeof publicSiteOrigin === 'function' ? publicSiteOrigin() : 'https://gieesk.com';
+  window.open(origin + '/upgrade.html', '_blank', 'noopener');
+}
+window.startProUpgrade = startProUpgrade;
+
 function aiChefLockMessage(reason) {
-  var url = (typeof publicSiteOrigin === 'function' ? publicSiteOrigin() : 'https://gieesk.com') + '/upgrade.html';
   var messages = document.getElementById('aiMessages');
   if (!messages) return;
   var msg = document.createElement('div');
@@ -86,7 +107,7 @@ function aiChefLockMessage(reason) {
   msg.innerHTML = reason === 'signin'
     ? '<div class="msg-bubble">Sign in to cook with the AI Chef.</div>'
     : '<div class="msg-bubble">AI Chef is part of Gieesk Pro — unlimited cooking help, meal planning and advanced filters for $4.99 a month.'
-      + ' <a href="' + url + '" target="_blank" rel="noopener" style="color:var(--gold);font-weight:700">See Gieesk Pro</a></div>';
+      + ' <button type="button" onclick="startProUpgrade()" style="background:none;border:none;padding:0;font:inherit;color:var(--gold);font-weight:700;cursor:pointer">See Gieesk Pro</button></div>';
   messages.appendChild(msg);
   messages.scrollTop = messages.scrollHeight;
 }
@@ -165,7 +186,6 @@ async function applyAIChefGate() {
     : 'Ask the chef anything…';
   if (!locked) return;
 
-  const url = (typeof publicSiteOrigin === 'function' ? publicSiteOrigin() : 'https://gieesk.com') + '/upgrade.html';
   const card = document.createElement('div');
   card.id = 'aiChefLock';
   card.className = 'ai-chef-lock';

@@ -2333,7 +2333,11 @@ function buildVideoSlideHTML(v, i, uniqueAuthors) {
   slide.dataset.postId = id;
   slide.innerHTML = `
     ${v.poster_url ? `<div class="discover-poster" style="background-image:url('${esc(cssUrl(v.poster_url))}')"></div>` : '<div class="discover-poster discover-poster-empty"></div>'}
-    <video class="discover-video" loop playsinline muted preload="none" poster="${VIDEO_BLANK_POSTER}" data-src="${esc(v.video_url || '')}"></video>
+    <video class="discover-video" loop playsinline muted preload="none" poster="${VIDEO_BLANK_POSTER}"
+           data-src="${esc(v.video_url || '')}"
+           ${v.trim_start != null ? `data-trim-start="${esc(v.trim_start)}"` : ''}
+           ${v.trim_end != null ? `data-trim-end="${esc(v.trim_end)}"` : ''}></video>
+    ${v.overlay_text ? `<div class="discover-overlay-text"><span>${esc(v.overlay_text)}</span></div>` : ''}
     <div class="discover-progress" aria-label="Seek" role="slider" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
       <div class="discover-progress-track"><div class="discover-progress-fill" id="progress-${id}"></div></div>
       <span class="discover-scrub-time" aria-hidden="true"></span>
@@ -2415,10 +2419,13 @@ function buildVideoSlideHTML(v, i, uniqueAuthors) {
   });
   video.addEventListener('timeupdate', () => {
     if (video.duration && !slide.classList.contains('is-scrubbing')) {
-      fill.style.transform = `scaleX(${video.currentTime / video.duration})`;
+      // Across the trim window, not the file — otherwise a clip trimmed
+      // to the middle would show the bar starting half full.
+      fill.style.transform = `scaleX(${trimProgress(video)})`;
     }
   });
   attachVideoScrubber(slide, video, fill);
+  wireTrim(slide, video);
   video.addEventListener('error', () => {
     if (!video.getAttribute('src')) return; // released on purpose, not a failure
     setBuffering(false);
@@ -2525,6 +2532,72 @@ function formatVideoTime(sec) {
 // Drag along the progress bar to jump through the video (videos can be
 // up to 3 minutes, so tapping to pause and waiting isn't enough). The
 // bar grows while dragging and shows the time you'll land on.
+// ── The trim window ───────────────────────────────────────────────
+// A trimmed video is not cut on disk — the file is whole and these
+// three numbers tell the player which slice of it to show. Everything
+// that reads currentTime has to work in window coordinates instead of
+// file coordinates, or the progress bar and the scrubber will disagree
+// with what is actually on screen.
+//
+// Values are clamped against the real duration on every read: a post
+// could carry a trim_end longer than its own video (a re-upload, a bad
+// edit), and a window past the end would loop on nothing.
+function trimWindow(video) {
+  var dur = Number(video.duration);
+  if (!isFinite(dur) || dur <= 0) return { start: 0, end: 0, span: 0, active: false };
+  var rawStart = parseFloat(video.dataset.trimStart);
+  var rawEnd = parseFloat(video.dataset.trimEnd);
+  var start = isFinite(rawStart) ? Math.max(0, Math.min(rawStart, dur)) : 0;
+  var end = isFinite(rawEnd) ? Math.max(0, Math.min(rawEnd, dur)) : dur;
+  // A window that ended up backwards or unplayably short is treated as
+  // no trim at all, which is always safe.
+  if (end - start < 0.5) { start = 0; end = dur; }
+  return { start: start, end: end, span: end - start, active: start > 0 || end < dur - 0.05 };
+}
+
+// Where playback is, as 0..1 across the WINDOW.
+function trimProgress(video) {
+  var w = trimWindow(video);
+  if (!w.span) return 0;
+  return Math.min(1, Math.max(0, (video.currentTime - w.start) / w.span));
+}
+
+function wireTrim(slide, video) {
+  // Native loop restarts at zero, which for a trimmed clip means
+  // playing the part the creator cut off. Loop by hand instead.
+  var w0 = trimWindow(video);
+  function applyStart() {
+    var w = trimWindow(video);
+    if (!w.active) { video.loop = true; return; }
+    video.loop = false;
+    if (video.currentTime < w.start - 0.1 || video.currentTime >= w.end) {
+      try { video.currentTime = w.start; } catch (e) {}
+    }
+  }
+  video.addEventListener('loadedmetadata', applyStart);
+  if (video.readyState >= 1) applyStart();
+
+  video.addEventListener('timeupdate', function () {
+    var w = trimWindow(video);
+    if (!w.active) return;
+    if (video.currentTime >= w.end) {
+      try { video.currentTime = w.start; } catch (e) {}
+      // Seeking near the end can pause on some Android builds; keep it
+      // running so a trimmed clip loops as smoothly as an untrimmed one.
+      if (video.paused && slide.classList.contains('is-playing')) {
+        video.play().catch(function () {});
+      }
+    }
+  });
+  // Belt and braces: if the file's real end is reached anyway.
+  video.addEventListener('ended', function () {
+    var w = trimWindow(video);
+    if (!w.active) return;
+    try { video.currentTime = w.start; } catch (e) {}
+    video.play().catch(function () {});
+  });
+}
+
 function attachVideoScrubber(slide, video, fill) {
   const bar = slide.querySelector('.discover-progress');
   const label = slide.querySelector('.discover-scrub-time');
@@ -2538,7 +2611,10 @@ function attachVideoScrubber(slide, video, fill) {
   const show = (ratio) => {
     targetRatio = ratio;
     fill.style.transform = `scaleX(${ratio})`;
-    if (label && video.duration) label.textContent = `${formatVideoTime(ratio * video.duration)} / ${formatVideoTime(video.duration)}`;
+    if (label && video.duration) {
+      var w = trimWindow(video);
+      label.textContent = `${formatVideoTime(ratio * w.span)} / ${formatVideoTime(w.span)}`;
+    }
     bar.setAttribute('aria-valuenow', String(Math.round(ratio * 100)));
   };
   const start = (clientX, e) => {
@@ -2558,7 +2634,13 @@ function attachVideoScrubber(slide, video, fill) {
     if (!dragging) return;
     dragging = false;
     slide.classList.remove('is-scrubbing');
-    if (video.duration) video.currentTime = targetRatio * video.duration;
+    if (video.duration) {
+      // Dragging to the far right means the end of the WINDOW, not the
+      // end of the file — dropping the handle there used to jump into
+      // footage the creator had trimmed away.
+      var w = trimWindow(video);
+      video.currentTime = w.start + targetRatio * w.span;
+    }
     if (wasPlaying) video.play().catch(() => {});
   };
 
@@ -4559,6 +4641,9 @@ const vu = {
   coverUrl: null,    // object URL for the cover preview
   coverSeeking: false,
   coverPendingTime: null,
+  trimStart: null,
+  trimEnd: null,
+  overlayText: null,
   tags: [],
   linkedRecipe: null,
   recipeMatches: [],
@@ -4724,6 +4809,24 @@ async function vuHandleFile(input) {
 
   vuEl('vuFileName').textContent = file.name || 'Video';
   vuEl('vuFileInfo').textContent = `${vuFormatDuration(info.duration)} · ${vuFormatBytes(file.size)}`;
+
+  // Trim and label it before a single byte goes up. Backing out here is
+  // free; backing out after a 150MB upload is not.
+  if (window.videoReview) {
+    const choices = await window.videoReview.open({ objectUrl: objectUrl, duration: info.duration });
+    if (!choices) { vuReset({ deleteUploaded: false }); return; }
+    vu.trimStart = choices.trimStart;
+    vu.trimEnd = choices.trimEnd;
+    vu.overlayText = choices.overlayText;
+    if (choices.coverBlob) vu.coverBlob = choices.coverBlob;
+    if (vu.trimStart != null || vu.trimEnd != null) {
+      const from = vu.trimStart || 0;
+      const to = vu.trimEnd || info.duration;
+      vuEl('vuFileInfo').textContent =
+        `${vuFormatDuration(to - from)} trimmed · ${vuFormatBytes(file.size)}`;
+    }
+  }
+
   vuStartUpload();
 }
 
@@ -4859,6 +4962,12 @@ function vuReset(opts) {
     if (caption) caption.value = '';
     vuUpdateCaptionCount();
     vu.tags = [];
+    // The trim and the overlay are the person's editing choices, so they
+    // belong with the caption and tags: kept on a keepDetails reset
+    // (picking a replacement file), cleared on a full one.
+    vu.trimStart = null;
+    vu.trimEnd = null;
+    vu.overlayText = null;
     ['vuAllowDownloads', 'vuCommentsOff'].forEach((id) => { const el = vuEl(id); if (el) el.checked = false; });
     const tagInput = vuEl('videoUploadTagInput');
     if (tagInput) tagInput.value = '';
@@ -5210,6 +5319,9 @@ async function submitVideoPost(status) {
       author_name: name,
       author_avatar: currentUser.user_metadata?.avatar_url || currentUser.user_metadata?.picture || null,
       text: caption,
+      trim_start: vu.trimStart != null ? vu.trimStart : null,
+      trim_end: vu.trimEnd != null ? vu.trimEnd : null,
+      overlay_text: vu.overlayText || null,
       recipe_title: vu.linkedRecipe ? vu.linkedRecipe.title : null,
       recipe_id: vu.linkedRecipe ? vu.linkedRecipe.id : null,
       tags: vu.tags.slice(),
@@ -5223,7 +5335,7 @@ async function submitVideoPost(status) {
     let { error } = await sb.from('community_posts').insert(row);
     // Database not fully updated yet: drop the newer optional columns the
     // error names and post without them, rather than failing the upload.
-    for (const optional of ['poster_url', 'allow_downloads']) {
+    for (const optional of ['trim_start', 'trim_end', 'overlay_text', 'poster_url', 'allow_downloads']) {
       if (error && new RegExp(optional).test(String(error.message || ''))) {
         console.warn(`[GieesK] community_posts.${optional} is missing; run the latest Supabase SQL files. Posting without it.`);
         delete row[optional];
@@ -5365,6 +5477,12 @@ async function submitCommunityPost() {
   if (videoUrl) {
     row.video_url = videoUrl;
     row.poster_url = posterUrl;
+    // From the review sheet. Nulls mean "no trim", which is the column
+    // default and what the constraint expects.
+    const t = rvApi.trim ? rvApi.trim() : {};
+    if (t.start != null) row.trim_start = t.start;
+    if (t.end != null) row.trim_end = t.end;
+    if (t.overlay) row.overlay_text = t.overlay;
     // Discover only publishes rows marked published; the recipe form has
     // no draft state, so say so explicitly rather than relying on a
     // column default that may differ.
@@ -5375,7 +5493,7 @@ async function submitCommunityPost() {
   // Database not fully migrated yet: drop the newer optional columns the
   // error names and post without them, rather than losing the recipe.
   // Same fallback the video uploader uses.
-  for (const optional of ['poster_url', 'status', 'video_url']) {
+  for (const optional of ['trim_start', 'trim_end', 'overlay_text', 'poster_url', 'status', 'video_url']) {
     if (error && row[optional] !== undefined && new RegExp(optional).test(String(error.message || ''))) {
       console.warn(`[GieesK] community_posts.${optional} is missing; run the latest Supabase SQL files. Posting without it.`);
       delete row[optional];

@@ -502,60 +502,89 @@ async function loadProfile() {
   }
 }
 
-// GieesK Verified: the badge is a paid, identity-checked subscription
-// (supabase-verified-badge.sql). The purchase itself can't happen inside
-// the app — Google Play requires native billing for in-app digital
-// purchases — so, like Gieesk Pro, it opens the website in a browser.
+// GieesK Verified: EARNED, not bought.
+//
+// It used to be a $29.99/year subscription with a Stripe Identity
+// document check behind it. Two things killed that design: Stripe
+// Identity is not available to businesses in the UAE at all, and a
+// paid digital badge sold in-app would have to go through Play Billing
+// while the ID capture needs a web flow — the two can't meet.
+//
+// So the badge now comes from public, checkable facts: how long the
+// account has existed, how many real recipes it has published, how many
+// people follow it. The rules live in badge_rules and the grant is made
+// by recompute_verified(); nothing here can grant it, and nothing a
+// client can write feeds into it.
+//
+// The copy below says exactly that. It previously said "after an ID
+// check", and leaving that in place while checking nothing of the kind
+// would tell people the tick means something it doesn't.
 function renderVerificationRow(profile) {
   const row = document.getElementById('pfVerifyRow');
   if (!row) return;
-  const status = profile?.verification_status || 'none';
   const verified = !!profile?.is_verified;
-  const paidUntil = profile?.verification_paid_until ? new Date(profile.verification_paid_until) : null;
-  const renews = paidUntil ? paidUntil.toLocaleDateString(undefined, { month: 'long', day: 'numeric', year: 'numeric' }) : null;
 
-  let icon = 'ti-rosette-discount-check';
-  let title = 'Get verified';
-  let sub = 'A gold tick next to your name, after an ID check. $29.99 a year.';
-  let action = 'Learn more';
+  const title = verified ? 'Verified' : 'Not verified yet';
+  const sub = verified
+    ? (profile?.verified_reason || 'Your badge is showing next to your name.')
+    : 'Earned by cooking, not bought. Tap to see what it takes.';
 
-  if (verified) {
-    icon = 'ti-rosette-discount-check-filled';
-    title = 'Verified';
-    sub = renews ? `Your badge renews on ${renews}.` : 'Your badge is active.';
-    action = 'Manage';
-  } else if (status === 'awaiting_id' || status === 'failed') {
-    title = status === 'failed' ? 'ID check didn’t pass' : 'One step left';
-    sub = status === 'failed' ? 'Try the identity check again to get your badge.' : 'Confirm your identity to get your badge.';
-    // Stripe's own reason, when there is one, is far more useful than
-    // "try again" — it says whether the photo was blurry, the document
-    // unsupported, and so on.
-    if (status === 'failed' && profile?.verification_note) sub = String(profile.verification_note);
-    action = 'Continue';
-  } else if (status === 'processing') {
-    title = 'Checking your ID';
-    sub = 'Your badge appears as soon as the check passes.';
-    action = 'View';
-  } else if (status === 'lapsed') {
-    title = 'Badge lapsed';
-    sub = 'The verification subscription ended, so the tick was removed.';
-    action = 'Renew';
-  }
-
-  row.innerHTML = `<button type="button" class="pf-verify-btn${verified ? ' is-verified' : ''}" onclick="openVerifyPage()">
-      ${verified && typeof verifiedTickHTML === 'function' ? verifiedTickHTML() : `<i class="ti ${icon}"></i>`}
+  row.innerHTML = `<button type="button" class="pf-verify-btn${verified ? ' is-verified' : ''}" onclick="openSettingsPage('verification')">
+      ${verified && typeof verifiedTickHTML === 'function' ? verifiedTickHTML() : '<i class="ti ti-rosette-discount-check"></i>'}
       <span class="pf-verify-text"><strong>${escapeHTML(title)}</strong><small>${escapeHTML(sub)}</small></span>
-      <span class="pf-verify-action">${action}<i class="ti ti-chevron-right"></i></span>
+      <span class="pf-verify-action">${verified ? 'Details' : 'How'}<i class="ti ti-chevron-right"></i></span>
     </button>`;
 }
 
-function openVerifyPage() {
-  const url = (typeof publicSiteOrigin === 'function' ? publicSiteOrigin() : 'https://gieesk.com') + '/verify.html';
-  if (window.Capacitor?.Plugins?.Browser) {
-    window.Capacitor.Plugins.Browser.open({ url });
-  } else {
-    window.open(url, '_blank');
+// The checklist. Reads my_badge_progress(), which answers only for the
+// caller — passing somebody else's id would leak their follower counts.
+async function renderBadgeProgress(host) {
+  if (!host) return;
+  host.innerHTML = '<p class="st-note" style="margin-top:0">Checking…</p>';
+  const sb = getSupabase();
+  if (!sb || !currentUser) { host.innerHTML = '<p class="st-note">Sign in to see your progress.</p>'; return; }
+
+  let p = null;
+  try {
+    const { data, error } = await sb.rpc('my_badge_progress');
+    if (error) throw error;
+    p = data;
+  } catch (e) {
+    console.warn('[GieesK] Badge progress unavailable:', e);
+    host.innerHTML = '<p class="st-note" style="margin-top:0">Couldn’t load your progress just now. '
+      + 'If this keeps happening, the latest Supabase SQL file may not have been run yet.</p>';
+    return;
   }
+  if (!p || p.signed_in === false) { host.innerHTML = '<p class="st-note">Sign in to see your progress.</p>'; return; }
+
+  const step = (done, label) => `
+    <li class="bp-step${done ? ' is-done' : ''}">
+      <i class="ti ${done ? 'ti-circle-check-filled' : 'ti-circle'}"></i>
+      <span>${escapeHTML(label)}</span>
+    </li>`;
+
+  const rows = [
+    step(!!p.has_username, 'Pick a username'),
+    step(p.recipes >= p.need_recipes, `Publish ${p.need_recipes} recipes with ingredients (${p.recipes} so far)`),
+    step(p.followers >= p.need_followers, `Reach ${p.need_followers} followers (${p.followers} so far)`),
+    step(p.account_age_days >= p.need_account_age_days,
+         `Account ${p.need_account_age_days} days old (${p.account_age_days} so far)`),
+  ].join('');
+
+  host.innerHTML = `
+    <div class="dash-card"><div class="dash-card-body">
+      <div class="bp-head">
+        ${p.verified && typeof verifiedTickHTML === 'function' ? verifiedTickHTML() : '<i class="ti ti-rosette-discount-check" style="color:var(--gold);font-size:22px"></i>'}
+        <strong>${p.verified ? 'You’re verified' : 'Working towards the badge'}</strong>
+      </div>
+      <ul class="bp-steps">${rows}</ul>
+      <p class="st-note">${p.verified
+        ? escapeHTML(p.reason || 'The badge is showing next to your name.')
+        : 'The tick appears on its own once all four are true — there is nothing to apply for and nothing to pay.'}</p>
+      <p class="st-note"><strong>What the tick means:</strong> this account has been around a while,
+      has published real recipes, and has an audience. It is not an identity check, and GieesK has not
+      verified who this person is. It is not an endorsement of what they cook or post.</p>
+    </div></div>`;
 }
 
 // Usernames feed @mentions, which only match letters, numbers and _.
@@ -1144,7 +1173,7 @@ async function buildPlannerPanel(panel) {
         <i class="ti ti-lock" style="font-size:36px;color:var(--gold)"></i>
         <h3 style="font-family:var(--font-display);color:var(--text-primary);margin:12px 0 4px">Meal Planner is a Pro feature</h3>
         <p style="color:var(--text-muted);font-size:14px;margin-bottom:20px">Upgrade to Gieesk Pro to plan your whole week — $4.99/month, cancel anytime.</p>
-        <a class="btn-gold" href="${typeof publicSiteOrigin === 'function' ? publicSiteOrigin() : 'https://gieesk.com'}/upgrade.html" target="_blank" rel="noopener" style="display:inline-block">Upgrade to Pro</a>
+        <button class="btn-gold" onclick="startProUpgrade()" style="display:inline-block">Upgrade to Pro</button>
       </div>`;
     return;
   }

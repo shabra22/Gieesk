@@ -38,18 +38,87 @@ function openRecipeModal(recipe) {
   renderRecipeModal(recipe);
 }
 
+/* Tapping a cross-reference inside an ingredient or step. Swaps the
+   modal for the referenced recipe rather than stacking a second one,
+   and leaves the current recipe reachable by the back button because
+   closeRecipeModal() runs first, as the related-recipe cards do. */
+function openRecipeXref(id) {
+  if (!id) return;
+  var ref = (typeof RECIPES !== 'undefined' && RECIPES)
+    ? RECIPES.find(function (r) { return String(r.id) === String(id); })
+    : null;
+  if (!ref) return;
+  closeRecipeModal();
+  setTimeout(function () { openRecipeModal(ref); }, 120);
+}
+
 function renderRecipeModal(recipe) {
   var modal   = document.getElementById('recipeModal');
   var content = document.getElementById('modalContent');
   if (!modal || !content || !recipe) return;
   window._currentModalRecipe = recipe;   // used by saveCurrentRecipeFromModal(), addCurrentRecipeToShoppingList(), addCurrentRecipeToMealPlan()
 
-  var ingredientsHTML = (recipe.ingredients || []).map(function(ing) {
-    return '<div class="ingredient-item">' + ing + '</div>';
+  /* ── Recipe text conventions ──────────────────────────────────
+     The dataset marks ingredient/step group headers with "//" and
+     cross-references other recipes by id — "1 tsp berbere (ETH091)".
+     436 of the 1228 recipes use one or both. build-recipe-pages.js and
+     dashboard.js have always understood them; this file never did, so
+     "// Fermentation starter" rendered as an ingredient and raw ids
+     went out on screen AND in the Recipe JSON-LD below.
+
+     js/recipe-text.js is the shared implementation. `rtx` returns
+     escaped HTML with the references turned into tappable links; `rtxt`
+     returns plain text for structured data. Both fall back to plain
+     escaping if the module somehow failed to load, so a missing script
+     degrades the links rather than breaking the modal. ────────────── */
+  var RT = window.RecipeText || null;
+
+  function resolveRef(id) {
+    if (typeof RECIPES === 'undefined' || !RECIPES) return null;
+    for (var ri = 0; ri < RECIPES.length; ri++) {
+      if (String(RECIPES[ri].id) === String(id)) return RECIPES[ri];
+    }
+    return null;
+  }
+
+  /* No href: a real link would navigate the Capacitor WebView away from
+     the app shell. Carry the id in a data attribute and look it up at
+     click time, exactly as the series card and related cards do. */
+  function xrefLink(id, labelHTML, ref) {
+    return '<a class="recipe-xref" role="button" tabindex="0" data-xref-id="' + escapeHTML(String(id)) + '"' +
+      ' title="Open ' + escapeHTML(ref.title || String(id)) + '"' +
+      ' aria-label="Open recipe: ' + escapeHTML(ref.title || String(id)) + '"' +
+      ' onclick="event.stopPropagation();openRecipeXref(this.dataset.xrefId)">' + labelHTML + '</a>';
+  }
+
+  function rtx(s) {
+    if (s == null) return '';
+    return RT ? RT.linkRefs(s, resolveRef, xrefLink) : escapeHTML(String(s));
+  }
+  function rtxt(s) {
+    if (s == null) return '';
+    return RT ? RT.stripRefs(s, resolveRef) : String(s);
+  }
+
+  var ingList = RT ? RT.normalize(recipe.ingredients) : (recipe.ingredients || []).map(function (i) {
+    return { header: false, text: String(i) };
+  });
+
+  var ingredientsHTML = ingList.map(function(it) {
+    if (it.header) return '<div class="ingredient-group">' + rtx(it.text) + '</div>';
+    return '<div class="ingredient-item"><span class="ingredient-text">' + rtx(it.text) + '</span></div>';
   }).join('');
 
-  var stepsHTML = (recipe.steps || []).map(function(s, i) {
-    return '<div class="step-item" id="step-' + (i+1) + '"><div class="step-num">' + (i+1) + '</div><div>' + s + '</div></div>';
+  /* Headers are not numbered, so the numbers here and the "#step-N"
+     anchors in the JSON-LD further down must both come from this one
+     pass — otherwise Google's step links point at the wrong step. */
+  var stepList = RT ? RT.normalize(recipe.steps) : (recipe.steps || []).map(function (s, i) {
+    return { header: false, n: i + 1, text: String(s) };
+  });
+
+  var stepsHTML = stepList.map(function(it) {
+    if (it.header) return '<div class="step-group">' + rtx(it.text) + '</div>';
+    return '<div class="step-item" id="step-' + it.n + '"><div class="step-num">' + it.n + '</div><div>' + rtx(it.text) + '</div></div>';
   }).join('');
 
   var n = recipe.nutrition || {};
@@ -58,15 +127,15 @@ function renderRecipeModal(recipe) {
     ? '<span class="badge badge-gold">' + recipe.countryFlag + ' ' + recipe.country + '</span>' : '';
 
   var localNameHTML = recipe.localName
-    ? '<p style="font-size:13px;color:var(--text-muted);margin-bottom:4px;font-style:italic">Local name: <strong style="color:var(--gold)">' + recipe.localName + '</strong></p>' : '';
+    ? '<p style="font-size:13px;color:var(--text-muted);margin-bottom:4px;font-style:italic">Local name: <strong style="color:var(--gold)">' + escapeHTML(recipe.localName) + '</strong></p>' : '';
 
   var longDescHTML = recipe.longDesc
-    ? '<p style="color:var(--text-muted);font-size:13px;line-height:1.75;margin-top:8px;padding:14px 16px;background:var(--bg-card);border-left:3px solid var(--gold);border-radius:0 var(--r-md) var(--r-md) 0">' + recipe.longDesc + '</p>' : '';
+    ? '<p style="color:var(--text-muted);font-size:13px;line-height:1.75;margin-top:8px;padding:14px 16px;background:var(--bg-card);border-left:3px solid var(--gold);border-radius:0 var(--r-md) var(--r-md) 0">' + rtx(recipe.longDesc) + '</p>' : '';
 
   var collectionsHTML = (recipe.collections && recipe.collections.length)
     ? '<div style="display:flex;flex-wrap:wrap;gap:6px;margin-bottom:10px">' +
         recipe.collections.map(function(c) {
-          return '<span style="padding:3px 10px;background:rgba(83,74,183,0.12);border:1px solid rgba(83,74,183,0.25);border-radius:var(--r-full);font-size:11px;font-weight:600;color:#AFA9EC">Collection: ' + c + '</span>';
+          return '<span style="padding:3px 10px;background:rgba(83,74,183,0.12);border:1px solid rgba(83,74,183,0.25);border-radius:var(--r-full);font-size:11px;font-weight:600;color:#AFA9EC">Collection: ' + escapeHTML(c) + '</span>';
         }).join('') + '</div>' : '';
 
   var variantHTML = recipe.variantOf ? (function() {
@@ -101,13 +170,13 @@ function renderRecipeModal(recipe) {
   var chefTipsHTML = recipe.chefTips
     ? '<div class="modal-section-title">Chef\'s Tips</div><div style="display:flex;flex-direction:column;gap:8px">' +
         recipe.chefTips.map(function(t) {
-          return '<div style="display:flex;gap:10px;align-items:flex-start;font-size:13px;color:var(--text-secondary)"><span style="color:var(--gold);flex-shrink:0;margin-top:2px"><i class="ti ti-bulb"></i></span>' + t + '</div>';
+          return '<div style="display:flex;gap:10px;align-items:flex-start;font-size:13px;color:var(--text-secondary)"><span style="color:var(--gold);flex-shrink:0;margin-top:2px"><i class="ti ti-bulb"></i></span>' + rtx(t) + '</div>';
         }).join('') + '</div>' : '';
 
   var mistakesHTML = recipe.commonMistakes
     ? '<div class="modal-section-title">Common Mistakes to Avoid</div><div style="display:flex;flex-direction:column;gap:8px">' +
         recipe.commonMistakes.map(function(m) {
-          return '<div style="display:flex;gap:10px;align-items:flex-start;font-size:13px;color:var(--text-secondary)"><span style="color:var(--coral);flex-shrink:0;margin-top:2px"><i class="ti ti-alert-circle"></i></span>' + m + '</div>';
+          return '<div style="display:flex;gap:10px;align-items:flex-start;font-size:13px;color:var(--text-secondary)"><span style="color:var(--coral);flex-shrink:0;margin-top:2px"><i class="ti ti-alert-circle"></i></span>' + rtx(m) + '</div>';
         }).join('') + '</div>' : '';
 
   var substitutionsHTML = (recipe.substitutions && recipe.substitutions.length)
@@ -115,34 +184,38 @@ function renderRecipeModal(recipe) {
       '<div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">' +
         recipe.substitutions.map(function(s) {
           return '<div style="padding:10px 12px;background:var(--bg-card);border:1px solid var(--border-dim);border-radius:var(--r-md)">' +
-            '<div style="font-size:11px;font-weight:700;color:var(--text-muted);text-transform:uppercase;letter-spacing:.04em;margin-bottom:3px">Instead of ' + s.original + '</div>' +
-            '<div style="font-size:13px;color:var(--text-secondary)">' + s.alternative + '</div></div>';
+            '<div style="font-size:11px;font-weight:700;color:var(--text-muted);text-transform:uppercase;letter-spacing:.04em;margin-bottom:3px">Instead of ' + rtx(s.original) + '</div>' +
+            '<div style="font-size:13px;color:var(--text-secondary)">' + rtx(s.alternative) + '</div></div>';
         }).join('') + '</div>' : '';
 
   var servedWithHTML = recipe.servedWith
     ? '<div class="modal-section-title">Best Served With</div>' +
       '<div style="display:flex;flex-wrap:wrap;gap:8px">' +
         recipe.servedWith.map(function(s) {
-          return '<span class="badge badge-emerald">' + s + '</span>';
+          var label = escapeHTML(rtxt(s));
+          var refs  = RT ? RT.refsIn(s, resolveRef) : [];
+          if (refs.length !== 1) return '<span class="badge badge-emerald">' + label + '</span>';
+          var ref = resolveRef(refs[0]);
+          return '<span class="badge badge-emerald is-xref">' + xrefLink(refs[0], label, ref) + '</span>';
         }).join('') + '</div>' : '';
 
   var culturalHTML = recipe.culturalNote
     ? '<div class="modal-section-title">Cultural Significance</div>' +
       '<div style="font-size:13px;color:var(--text-secondary);line-height:1.75;padding:14px 16px;background:var(--bg-card);border-radius:var(--r-md);border:1px solid var(--border-gold)">' +
-      '<i class="ti ti-world" style="color:var(--gold);margin-right:6px"></i>' + recipe.culturalNote + '</div>' : '';
+      '<i class="ti ti-world" style="color:var(--gold);margin-right:6px"></i>' + rtx(recipe.culturalNote) + '</div>' : '';
 
   var variationsHTML = recipe.regionalVariations
     ? '<div class="modal-section-title">Regional Variations</div>' +
       '<div style="display:flex;flex-direction:column;gap:6px">' +
         recipe.regionalVariations.map(function(v) {
-          return '<div style="display:flex;gap:8px;font-size:13px;color:var(--text-secondary)"><span style="color:var(--gold)">.</span>' + v + '</div>';
+          return '<div style="display:flex;gap:8px;font-size:13px;color:var(--text-secondary)"><span style="color:var(--gold)">.</span>' + rtx(v) + '</div>';
         }).join('') + '</div>' : '';
 
   var healthHTML = recipe.healthBenefits
     ? '<div class="modal-section-title">Health Benefits</div>' +
       '<div style="display:flex;flex-direction:column;gap:6px">' +
         recipe.healthBenefits.map(function(h) {
-          return '<div style="display:flex;gap:8px;font-size:13px;color:var(--text-secondary)"><span style="color:var(--emerald)"><i class="ti ti-heart"></i></span>' + h + '</div>';
+          return '<div style="display:flex;gap:8px;font-size:13px;color:var(--text-secondary)"><span style="color:var(--emerald)"><i class="ti ti-heart"></i></span>' + rtx(h) + '</div>';
         }).join('') + '</div>' : '';
 
   var relatedDishHTML = (function() {
@@ -154,7 +227,7 @@ function renderRecipeModal(recipe) {
     el.style.cssText = 'display:flex;gap:12px;align-items:flex-start;padding:14px 16px;background:rgba(29,158,117,0.06);border:1px solid rgba(29,158,117,0.2);border-radius:var(--r-md);margin-bottom:12px;cursor:pointer';
     el.innerHTML = '<span style="font-size:2rem;flex-shrink:0">' + related.emoji + '</span>' +
       '<div><div style="font-size:12px;font-weight:700;color:var(--emerald);text-transform:uppercase;letter-spacing:.05em;margin-bottom:4px">Related Dish: ' + related.title + '</div>' +
-      '<div style="font-size:13px;color:var(--text-secondary);line-height:1.6">' + rd.note + '</div></div>';
+      '<div style="font-size:13px;color:var(--text-secondary);line-height:1.6">' + rtx(rd.note) + '</div></div>';
     el.addEventListener('click', function() {
       closeRecipeModal();
       setTimeout(function() { openRecipeModal(related); }, 120);
@@ -165,13 +238,13 @@ function renderRecipeModal(recipe) {
   var regionalMapHTML = recipe.regionalMap ? (
     '<div class="modal-section-title">Where It\'s From</div>' +
     '<div style="background:var(--bg-card);border:1px solid var(--border-dim);border-radius:var(--r-md);padding:14px 16px;margin-bottom:8px">' +
-      '<div style="font-size:13px;font-weight:600;color:var(--text-primary);margin-bottom:10px">' + recipe.regionalMap.primaryRegion + '</div>' +
+      '<div style="font-size:13px;font-weight:600;color:var(--text-primary);margin-bottom:10px">' + escapeHTML(recipe.regionalMap.primaryRegion) + '</div>' +
       '<div style="display:flex;flex-wrap:wrap;gap:6px;margin-bottom:10px">' +
         (recipe.regionalMap.popularCounties || []).map(function(c) {
-          return '<span style="padding:3px 10px;background:var(--bg-elevated);border:1px solid var(--border-dim);border-radius:var(--r-full);font-size:12px;color:var(--text-secondary)">' + c + '</span>';
+          return '<span style="padding:3px 10px;background:var(--bg-elevated);border:1px solid var(--border-dim);border-radius:var(--r-full);font-size:12px;color:var(--text-secondary)">' + escapeHTML(c) + '</span>';
         }).join('') +
       '</div>' +
-      (recipe.regionalMap.alsoCommonIn ? '<div style="font-size:12px;color:var(--text-muted);font-style:italic">' + recipe.regionalMap.alsoCommonIn + '</div>' : '') +
+      (recipe.regionalMap.alsoCommonIn ? '<div style="font-size:12px;color:var(--text-muted);font-style:italic">' + rtx(recipe.regionalMap.alsoCommonIn) + '</div>' : '') +
     '</div>'
   ) : '';
 
@@ -180,17 +253,17 @@ function renderRecipeModal(recipe) {
     '<div style="background:var(--bg-card);border:1px solid var(--border-dim);border-radius:var(--r-lg);overflow:hidden;margin-bottom:8px">' +
       '<div style="padding:14px 16px;border-bottom:1px solid var(--border-dim);background:rgba(201,150,58,0.05)">' +
         '<div style="font-size:12px;font-weight:700;color:var(--gold);text-transform:uppercase;letter-spacing:.06em;margin-bottom:4px">Origin</div>' +
-        '<div style="font-size:13px;color:var(--text-secondary)">' + recipe.heritage.origin + '</div>' +
+        '<div style="font-size:13px;color:var(--text-secondary)">' + rtx(recipe.heritage.origin) + '</div>' +
       '</div>' +
       '<div style="padding:14px 16px;border-bottom:1px solid var(--border-dim)">' +
-        '<div style="font-size:13px;color:var(--text-secondary);line-height:1.7">' + recipe.heritage.history + '</div>' +
+        '<div style="font-size:13px;color:var(--text-secondary);line-height:1.7">' + rtx(recipe.heritage.history) + '</div>' +
       '</div>' +
       (recipe.heritage.traditionalUtensils ? (
         '<div style="padding:12px 16px;border-bottom:1px solid var(--border-dim)">' +
           '<div style="font-size:11px;font-weight:700;color:var(--text-muted);text-transform:uppercase;letter-spacing:.06em;margin-bottom:8px">Traditional Utensils</div>' +
           '<div style="display:flex;flex-wrap:wrap;gap:6px">' +
             recipe.heritage.traditionalUtensils.map(function(u) {
-              return '<span style="padding:3px 10px;background:var(--bg-elevated);border:1px solid var(--border-dim);border-radius:var(--r-full);font-size:12px;color:var(--text-secondary)">' + u + '</span>';
+              return '<span style="padding:3px 10px;background:var(--bg-elevated);border:1px solid var(--border-dim);border-radius:var(--r-full);font-size:12px;color:var(--text-secondary)">' + escapeHTML(u) + '</span>';
             }).join('') +
           '</div>' +
         '</div>'
@@ -198,21 +271,21 @@ function renderRecipeModal(recipe) {
       (recipe.heritage.modernEvolution ? (
         '<div style="padding:14px 16px">' +
           '<div style="font-size:11px;font-weight:700;color:var(--text-muted);text-transform:uppercase;letter-spacing:.06em;margin-bottom:6px">Modern Evolution</div>' +
-          '<div style="font-size:13px;color:var(--text-secondary);line-height:1.65">' + recipe.heritage.modernEvolution + '</div>' +
+          '<div style="font-size:13px;color:var(--text-secondary);line-height:1.65">' + rtx(recipe.heritage.modernEvolution) + '</div>' +
         '</div>'
       ) : '') +
     '</div>'
   ) : '';
 
   var spiceBlendHTML = recipe.spiceBlend ? (
-    '<div class="modal-section-title">Spice Blend: ' + recipe.spiceBlend.name + '</div>' +
+    '<div class="modal-section-title">Spice Blend: ' + escapeHTML(recipe.spiceBlend.name) + '</div>' +
     '<div style="background:var(--bg-card);border:1px solid var(--border-gold);border-radius:var(--r-md);padding:14px 16px;margin-bottom:10px">' +
       '<div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:10px">' +
         recipe.spiceBlend.components.map(function(c) {
-          return '<span style="padding:4px 10px;background:var(--gold-glow);border:1px solid var(--border-gold);border-radius:var(--r-full);font-size:12px;color:var(--gold-light)">' + c + '</span>';
+          return '<span style="padding:4px 10px;background:var(--gold-glow);border:1px solid var(--border-gold);border-radius:var(--r-full);font-size:12px;color:var(--gold-light)">' + escapeHTML(c) + '</span>';
         }).join('') +
       '</div>' +
-      '<p style="font-size:13px;color:var(--text-secondary);line-height:1.6">' + recipe.spiceBlend.method + '</p>' +
+      '<p style="font-size:13px;color:var(--text-secondary);line-height:1.6">' + rtx(recipe.spiceBlend.method) + '</p>' +
     '</div>'
   ) : '';
 
@@ -220,7 +293,7 @@ function renderRecipeModal(recipe) {
     '<div class="modal-section-title">Techniques Used</div>' +
     '<div style="display:flex;flex-wrap:wrap;gap:8px">' +
       recipe.techniques.map(function(t) {
-        return '<span style="padding:5px 12px;background:var(--bg-elevated);border:1px solid var(--border-subtle);border-radius:var(--r-full);font-size:12px;color:var(--text-secondary)"><i class="ti ti-school" style="color:var(--gold);font-size:13px"></i> ' + t + '</span>';
+        return '<span style="padding:5px 12px;background:var(--bg-elevated);border:1px solid var(--border-subtle);border-radius:var(--r-full);font-size:12px;color:var(--text-secondary)"><i class="ti ti-school" style="color:var(--gold);font-size:13px"></i> ' + escapeHTML(t) + '</span>';
       }).join('') +
     '</div>'
   ) : '';
@@ -231,10 +304,10 @@ function renderRecipeModal(recipe) {
       recipe.faqs.map(function(faq) {
         return '<div style="background:var(--bg-card);border:1px solid var(--border-dim);border-radius:var(--r-md);overflow:hidden">' +
           '<div style="padding:12px 16px;font-size:13px;font-weight:600;color:var(--text-primary);display:flex;gap:8px">' +
-            '<span style="color:var(--gold);flex-shrink:0">Q</span>' + faq.q +
+            '<span style="color:var(--gold);flex-shrink:0">Q</span>' + rtx(faq.q) +
           '</div>' +
           '<div style="padding:10px 16px 14px;font-size:13px;color:var(--text-secondary);line-height:1.7;border-top:1px solid var(--border-dim);display:flex;gap:8px">' +
-            '<span style="color:var(--emerald);flex-shrink:0;font-weight:700">A</span>' + faq.a +
+            '<span style="color:var(--emerald);flex-shrink:0;font-weight:700">A</span>' + rtx(faq.a) +
           '</div>' +
         '</div>';
       }).join('') +
@@ -244,7 +317,7 @@ function renderRecipeModal(recipe) {
   var cookingScienceHTML = recipe.cookingScience ? (
     '<div class="modal-section-title">Cooking Science</div>' +
     '<div style="padding:14px 16px;background:var(--bg-card);border:1px solid var(--border-dim);border-left:3px solid var(--emerald);border-radius:0 var(--r-md) var(--r-md) 0;font-size:13px;color:var(--text-secondary);line-height:1.75">' +
-      '<i class="ti ti-flask" style="color:var(--emerald);margin-right:6px"></i>' + recipe.cookingScience +
+      '<i class="ti ti-flask" style="color:var(--emerald);margin-right:6px"></i>' + rtx(recipe.cookingScience) +
     '</div>'
   ) : '';
 
@@ -253,7 +326,7 @@ function renderRecipeModal(recipe) {
     '<div style="display:flex;flex-direction:column;gap:8px">' +
       recipe.sustainabilityTips.map(function(tip) {
         return '<div style="display:flex;gap:10px;font-size:13px;color:var(--text-secondary);line-height:1.65">' +
-          '<span style="color:var(--emerald);flex-shrink:0;margin-top:2px"><i class="ti ti-leaf"></i></span>' + tip + '</div>';
+          '<span style="color:var(--emerald);flex-shrink:0;margin-top:2px"><i class="ti ti-leaf"></i></span>' + rtx(tip) + '</div>';
       }).join('') +
     '</div>'
   ) : '';
@@ -263,10 +336,10 @@ function renderRecipeModal(recipe) {
       '<div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">' +
         '<div style="padding:12px;background:var(--bg-card);border-radius:var(--r-md);border:1px solid var(--border-dim)">' +
           '<div style="font-size:11px;color:var(--gold);font-weight:700;text-transform:uppercase;letter-spacing:.06em;margin-bottom:5px"><i class="ti ti-fridge"></i> Storage</div>' +
-          '<div style="font-size:13px;color:var(--text-secondary)">' + recipe.storage + '</div></div>' +
+          '<div style="font-size:13px;color:var(--text-secondary)">' + rtx(recipe.storage) + '</div></div>' +
         '<div style="padding:12px;background:var(--bg-card);border-radius:var(--r-md);border:1px solid var(--border-dim)">' +
           '<div style="font-size:11px;color:var(--gold);font-weight:700;text-transform:uppercase;letter-spacing:.06em;margin-bottom:5px"><i class="ti ti-flame"></i> Reheating</div>' +
-          '<div style="font-size:13px;color:var(--text-secondary)">' + (recipe.reheating || 'Reheat until piping hot.') + '</div></div>' +
+          '<div style="font-size:13px;color:var(--text-secondary)">' + rtx(recipe.reheating || 'Reheat until piping hot.') + '</div></div>' +
       '</div>' : '';
 
   var relatedHTML = '';
@@ -296,7 +369,7 @@ function renderRecipeModal(recipe) {
   var nutCount = Object.values(n).filter(function(v) { return v !== undefined; }).length;
 
   var heroHTML = recipe.image
-    ? '<div class="modal-recipe-hero-photo"><img src="' + recipe.image + '" alt="' + recipe.title + '" loading="lazy" /></div>'
+    ? '<div class="modal-recipe-hero-photo"><img src="' + recipe.image + '" alt="' + escapeHTML(recipe.title) + '" loading="lazy" /></div>'
     : '<div class="modal-recipe-hero-placeholder">' + recipe.emoji + '</div>';
 
   content.innerHTML =
@@ -312,8 +385,8 @@ function renderRecipeModal(recipe) {
         (recipe.course ? '<span class="badge badge-purple">' + recipe.course + '</span>' : '') +
       '</div>' +
       localNameHTML +
-      '<h2 class="modal-recipe-title">' + recipe.title + '</h2>' +
-      '<p style="color:var(--text-secondary);font-size:14px;line-height:1.7;margin-bottom:8px">' + (recipe.desc || '') + '</p>' +
+      '<h2 class="modal-recipe-title">' + escapeHTML(recipe.title) + '</h2>' +
+      '<p style="color:var(--text-secondary);font-size:14px;line-height:1.7;margin-bottom:8px">' + rtx(recipe.desc || '') + '</p>' +
       longDescHTML +
       '<div class="modal-recipe-meta" style="margin-top:var(--space-lg)">' +
         (recipe.yieldDesc    ? '<span class="modal-meta-item"><i class="ti ti-stack"></i> ' + recipe.yieldDesc + '</span>' : '') +
@@ -377,7 +450,7 @@ function renderRecipeModal(recipe) {
     "@context": "https://schema.org",
     "@type": "Recipe",
     "name": recipe.title,
-    "description": recipe.desc || '',
+    "description": rtxt(recipe.desc || ''),
     "image": recipe.image ? [recipe.image] : undefined,
     "url": "https://gieesk.com/recipes/" + recipe.id + ".html",
     "keywords": (recipe.keywords || []).join(', '),
@@ -403,20 +476,40 @@ function renderRecipeModal(recipe) {
       "fatContent": n.fat ? n.fat + "g" : undefined,
       "fiberContent": n.fiber ? n.fiber + "g" : undefined
     } : undefined,
-    "recipeIngredient": recipe.ingredients || [],
+    /* Group headers and internal ids must not reach structured data:
+       "// Fermentation starter" is not an ingredient, and Google has no
+       idea what "(ETH091)" means. Built from the same normalize() pass
+       that produced the markup above, so "#step-N" here and the element
+       ids in the DOM always agree. */
+    "recipeIngredient": (function() {
+      var out = [];
+      ingList.forEach(function(it) {
+        if (it.header) return;
+        var t = rtxt(it.text);
+        if (t) out.push(t);
+      });
+      return out;
+    })(),
     // name/url on each step were missing here too — the same Google
     // Search Console complaints already fixed in build-recipe-pages.js
     // for the static pages, just never carried over to this separate,
     // client-side copy of the same schema logic.
-    "recipeInstructions": (recipe.steps || []).map(function(step, idx) {
-      return {
-        "@type": "HowToStep",
-        "position": idx + 1,
-        "name": String(step).length > 60 ? String(step).slice(0, 60) + '…' : String(step),
-        "text": step,
-        "url": "https://gieesk.com/recipes/" + recipe.id + ".html#step-" + (idx + 1)
-      };
-    }),
+    "recipeInstructions": (function() {
+      var out = [];
+      stepList.forEach(function(it) {
+        if (it.header) return;
+        var text = rtxt(it.text);
+        if (!text) return;
+        out.push({
+          "@type": "HowToStep",
+          "position": it.n,
+          "name": text.length > 60 ? text.slice(0, 60) + '…' : text,
+          "text": text,
+          "url": "https://gieesk.com/recipes/" + recipe.id + ".html#step-" + it.n
+        });
+      });
+      return out;
+    })(),
     "publisher": {
       "@type": "Organization",
       "name": "GieesK Recipes",

@@ -78,18 +78,27 @@ function iso8601(mins) {
   return 'PT' + (h ? h + 'H' : '') + (m ? m + 'M' : '') + (!h && !m ? '0M' : '');
 }
 
-// "2 kita flatbreads (ETH007) — freshly baked" -> "2 kita flatbreads — freshly baked"
-// "mursik (see KEN171) or yogurt" -> "mursik or yogurt"
-// Refs can appear mid-string (followed by more description), not just at the
-// end, and sometimes as "(see XXXnnn)" rather than a bare "(XXXnnn)".
-function cleanRef(s) {
-  return String(s)
-    .replace(/\s*\((?:see\s+)?[A-Z]{2,4}\d{2,4}\)/gi, '')
-    .replace(/\s{2,}/g, ' ')
-    .trim();
-}
+/* The "//" header and "(ETH091)" cross-reference conventions now live in
+   js/recipe-text.js, shared with the app's modal, so the static pages
+   and the in-app view can no longer drift apart. What used to be local
+   to this file handled only the simplest case: a bare "(XXXnnn)" at the
+   end of an ingredient. It missed the id inside a longer parenthetical
+   ("(Ethiopian spiced butter — ETH092)"), it never cleaned the header
+   lines themselves, and it left raw ids in servedWith and in the
+   "Related Recipes" link labels. */
+const RT = require('./js/recipe-text.js');
 
-function isHeader(line) { return /^\/\//.test(String(line).trim()); }
+const byId = new Map(RECIPES.map(r => [String(r.id), r]));
+const resolve = (id) => byId.get(String(id)) || null;
+
+// On a static page a real href is exactly what is wanted: it is another
+// crawlable page, and internal links between recipes are worth having.
+const pageLink = (id, labelHtml) =>
+  '<a class="rp-xref" href="/recipes/' + esc(id) + '.html">' + labelHtml + '</a>';
+
+const cleanRef = (s) => RT.stripRefs(s, resolve);
+const linkRef  = (s) => RT.linkRefs(s, resolve, pageLink);
+const isHeader = (line) => RT.isHeader(line);
 
 function truncate(s, n) {
   s = String(s || '');
@@ -101,22 +110,25 @@ function truncate(s, n) {
 
 /* ── JSON-LD Recipe schema ───────────────────────────────────── */
 function buildSchema(r, url) {
-  const ingredients = (r.ingredients || []).filter(i => !isHeader(i)).map(cleanRef);
+  const ingredients = RT.itemsOnly(r.ingredients, resolve);
   const stepImage = r.image || OG_IMAGE;
-  const steps = (r.steps || []).map((s, idx) => ({
-    '@type': 'HowToStep',
-    position: idx + 1,
-    name: truncate(String(s), 60),
-    text: String(s),
-    url: url + '#step-' + (idx + 1)
-  }));
+  const steps = RT.normalize(r.steps).filter(it => !it.header).map(it => {
+    const text = cleanRef(it.text);
+    return {
+      '@type': 'HowToStep',
+      position: it.n,
+      name: truncate(text, 60),
+      text: text,
+      url: url + '#step-' + it.n
+    };
+  }).filter(st => st.text);
   const prepMins = (Number(r.prepTime) || 0) + (Number(r.marinateTime) || 0) + (Number(r.restTime) || 0);
 
   const schema = {
     '@context': 'https://schema.org',
     '@type': 'Recipe',
     name: r.title,
-    description: r.desc || r.longDesc || '',
+    description: cleanRef(r.desc || r.longDesc || ''),
     image: [stepImage],
     author: { '@type': 'Organization', name: 'GieesK Recipes', url: SITE },
     datePublished: '2026-01-01',
@@ -163,14 +175,26 @@ function buildSchema(r, url) {
 function ingredientListHtml(ingredients) {
   if (!ingredients || !ingredients.length) return '';
   return '<ul class="rp-ingredients">' + ingredients.map(i => {
-    if (isHeader(i)) return '</ul><p class="rp-ing-header">' + esc(i.replace(/^\/\/\s*/, '')) + '</p><ul class="rp-ingredients">';
-    return '<li>' + esc(cleanRef(i)) + '</li>';
+    // The header was the one line cleanRef() was never applied to, which
+    // is why "Serving Hollow: 2 tbsp kibbeh (Ethiopian spiced butter —
+    // ETH092)" still showed the raw id on the live pages.
+    if (isHeader(i)) return '</ul><p class="rp-ing-header">' + linkRef(i) + '</p><ul class="rp-ingredients">';
+    return '<li>' + linkRef(i) + '</li>';
   }).join('') + '</ul>';
 }
 
+/* A "// " line among the steps is a stage heading ("// Day of"), not a
+   step, so it breaks the <ol> rather than taking a number — and the
+   numbers must match the "#step-N" anchors in the JSON-LD, which come
+   from the same RT.normalize() pass. */
 function stepsHtml(steps) {
   if (!steps || !steps.length) return '';
-  return '<ol class="rp-steps">' + steps.map((s, idx) => '<li id="step-' + (idx + 1) + '">' + esc(s) + '</li>').join('') + '</ol>';
+  let html = '<ol class="rp-steps">';
+  RT.normalize(steps).forEach(it => {
+    if (it.header) { html += '</ol><p class="rp-step-header">' + linkRef(it.text) + '</p><ol class="rp-steps">'; return; }
+    html += '<li id="step-' + it.n + '" value="' + it.n + '">' + linkRef(it.text) + '</li>';
+  });
+  return html + '</ol>';
 }
 
 function tagList(items) {
@@ -195,12 +219,21 @@ function factRow(r) {
 function renderPage(r) {
   const url = SITE + '/recipes/' + r.id + '.html';
   const title = r.title + (r.country ? ' — ' + r.country + ' Recipe' : ' Recipe') + ' | GieesK Recipes';
-  const description = truncate(r.desc || r.longDesc || ('Authentic ' + r.title + ' recipe.'), 158);
+  // This is the snippet Google prints under the result, so the internal
+  // ids have to be out of it before it is truncated.
+  const description = truncate(cleanRef(r.desc || r.longDesc || ('Authentic ' + r.title + ' recipe.')), 158);
   const shareImage = r.image || OG_IMAGE;
   const schema = buildSchema(r, url);
 
+  // These showed "ETH010 ETH011 ETH014 ETH091" — internal ids as link
+  // text, which means nothing to a reader and nothing to a crawler.
   const related = (r.relatedRecipes || []).slice(0, 4)
-    .map(id => '<a href="/recipes/' + esc(id) + '.html" class="rp-related-link">' + esc(id) + '</a>').join('');
+    .map(id => {
+      const ref = resolve(id);
+      if (!ref) return '';
+      return '<a href="/recipes/' + esc(id) + '.html" class="rp-related-link">' +
+             (ref.emoji ? esc(ref.emoji) + ' ' : '') + esc(ref.title) + '</a>';
+    }).filter(Boolean).join('');
 
   return `<!DOCTYPE html>
 <html lang="en">
@@ -259,18 +292,18 @@ function renderPage(r) {
       <p class="rp-eyebrow">${esc(r.countryFlag || '')} ${esc(r.cuisine || r.country || '')} ${r.category ? '· ' + esc(r.category) : ''}</p>
       <h1 class="rp-title">${esc(r.emoji || '')} ${esc(r.title)}</h1>
       ${r.localName ? '<p class="rp-localname">' + esc(r.localName) + '</p>' : ''}
-      <p class="rp-desc">${esc(r.desc || '')}</p>
+      <p class="rp-desc">${linkRef(r.desc || '')}</p>
       ${r.rating ? '<div class="rp-rating">★ ' + esc(r.rating) + ' <span>(' + esc(r.reviews||0) + ' reviews)</span></div>' : ''}
     </header>
 
     ${factRow(r)}
-    ${r.longDesc ? '<p class="rp-longdesc">' + esc(r.longDesc) + '</p>' : ''}
+    ${r.longDesc ? '<p class="rp-longdesc">' + linkRef(r.longDesc) + '</p>' : ''}
 
     ${r.heritage ? `
     <section class="rp-section">
       <h2>Heritage &amp; Origin</h2>
-      ${r.heritage.origin ? '<p><strong>Origin:</strong> ' + esc(r.heritage.origin) + '</p>' : ''}
-      ${r.heritage.history ? '<p>' + esc(r.heritage.history) + '</p>' : ''}
+      ${r.heritage.origin ? '<p><strong>Origin:</strong> ' + linkRef(r.heritage.origin) + '</p>' : ''}
+      ${r.heritage.history ? '<p>' + linkRef(r.heritage.history) + '</p>' : ''}
     </section>` : ''}
 
     <div class="rp-grid">
@@ -289,19 +322,19 @@ function renderPage(r) {
     ${r.chefTips && r.chefTips.length ? `
     <section class="rp-section">
       <h2>Chef Tips</h2>
-      <ul class="rp-list">${r.chefTips.map(t => '<li>' + esc(t) + '</li>').join('')}</ul>
+      <ul class="rp-list">${r.chefTips.map(t => '<li>' + linkRef(t) + '</li>').join('')}</ul>
     </section>` : ''}
 
     ${r.commonMistakes && r.commonMistakes.length ? `
     <section class="rp-section">
       <h2>Common Mistakes to Avoid</h2>
-      <ul class="rp-list">${r.commonMistakes.map(t => '<li>' + esc(t) + '</li>').join('')}</ul>
+      <ul class="rp-list">${r.commonMistakes.map(t => '<li>' + linkRef(t) + '</li>').join('')}</ul>
     </section>` : ''}
 
     ${r.cookingScience ? `
     <section class="rp-section">
       <h2>The Science</h2>
-      <p>${esc(r.cookingScience)}</p>
+      <p>${linkRef(r.cookingScience)}</p>
     </section>` : ''}
 
     ${r.nutrition ? `
@@ -320,24 +353,29 @@ function renderPage(r) {
     ${r.healthBenefits && r.healthBenefits.length ? `
     <section class="rp-section">
       <h2>Health Benefits</h2>
-      <ul class="rp-list">${r.healthBenefits.map(t => '<li>' + esc(t) + '</li>').join('')}</ul>
+      <ul class="rp-list">${r.healthBenefits.map(t => '<li>' + linkRef(t) + '</li>').join('')}</ul>
     </section>` : ''}
 
     ${r.culturalNote ? `
     <section class="rp-section">
       <h2>Cultural Note</h2>
-      <p>${esc(r.culturalNote)}</p>
+      <p>${linkRef(r.culturalNote)}</p>
     </section>` : ''}
 
     ${(r.storage || r.reheating || (r.servedWith && r.servedWith.length)) ? `
     <section class="rp-section">
       <h2>Storage &amp; Serving</h2>
-      ${r.storage ? '<p><strong>Storage:</strong> ' + esc(r.storage) + '</p>' : ''}
-      ${r.reheating ? '<p><strong>Reheating:</strong> ' + esc(r.reheating) + '</p>' : ''}
-      ${r.servedWith && r.servedWith.length ? '<p><strong>Serve with:</strong> ' + r.servedWith.map(esc).join(', ') + '</p>' : ''}
+      ${r.storage ? '<p><strong>Storage:</strong> ' + linkRef(r.storage) + '</p>' : ''}
+      ${r.reheating ? '<p><strong>Reheating:</strong> ' + linkRef(r.reheating) + '</p>' : ''}
+      ${r.servedWith && r.servedWith.length ? '<p><strong>Serve with:</strong> ' + r.servedWith.map(linkRef).join(', ') + '</p>' : ''}
     </section>` : ''}
 
-    ${tagList(r.tags)}
+    ${r.sources && r.sources.length ? `<section class="rp-section">
+      <h2>Adapted From</h2>
+      <ul class="rp-list rp-sources">${r.sources.map(x => '<li>' + linkRef(x) + '</li>').join('')}</ul>
+    </section>
+
+    ` : ''}${tagList(r.tags)}
 
     ${related ? '<section class="rp-section"><h2>Related Recipes</h2><div class="rp-related">' + related + '</div></section>' : ''}
 

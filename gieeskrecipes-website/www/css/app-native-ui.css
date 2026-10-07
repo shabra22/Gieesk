@@ -1333,3 +1333,23 @@ body.is-native-app:has(.modal-backdrop.open) .app-tab-bar,
 body.is-native-app:has(.planner-picker.open) .app-tab-bar {
   display: none;
 }
+
+/* ── The post a notification pointed at ───────────────────────────
+   Tapping "bob commented on your Mandazi" now scrolls to that post
+   rather than opening bob's profile. Without a moment of highlight you
+   land mid-feed with no idea which card you were sent to. */
+.community-post.is-notif-target {
+  animation: gkNotifTarget 2.2s ease-out;
+}
+@keyframes gkNotifTarget {
+  0%, 12% { box-shadow: 0 0 0 2px var(--gold, #D4A039), 0 0 22px rgba(212,160,57,0.35); }
+  100%    { box-shadow: 0 0 0 0 rgba(212,160,57,0); }
+}
+/* Respect a reduced-motion preference: still mark the card, just don't
+   animate it. */
+@media (prefers-reduced-motion: reduce) {
+  .community-post.is-notif-target {
+    animation: none;
+    box-shadow: 0 0 0 2px var(--gold, #D4A039);
+  }
+}

@@ -161,13 +161,18 @@ function renderCuisines() {
       // already filters precisely by real country and shows every
       // matching recipe on a real scrollable page — navigate there
       // and select the matching country tab instead.
+      // build-data.js now writes the real country onto every CUISINES
+      // entry, so a newly added cuisine needs no edit here. The map is
+      // kept only as a fallback for a site-data.js generated before
+      // that change.
       var cuisineToCountry = {
         Italian: 'Italy', Japanese: 'Japan', Mexican: 'Mexico', Indian: 'India',
         Thai: 'Thailand', Moroccan: 'Morocco', French: 'France', Lebanese: 'Lebanon',
         Chinese: 'China', Greek: 'Greece', Ethiopian: 'Ethiopia', Peruvian: 'Peru',
         Kenyan: 'Kenya', Tanzanian: 'Tanzania', Israeli: 'Israel', British: 'UK',
+        Somali: 'Somalia', 'South African': 'South Africa',
       };
-      var countryName = cuisineToCountry[c.name] || c.name;
+      var countryName = c.country || cuisineToCountry[c.name] || c.name;
       showPage('recipes');
       setTimeout(function() {
         var pills = document.querySelectorAll('#countryTabs .filter-chip');

@@ -78,12 +78,25 @@
   width: 6px; height: 6px; border-radius: 50%;
   background: var(--gold);
 }
-.rp-ing-header {
-  font-weight: 700; color: var(--gold); font-size: 13px;
-  text-transform: uppercase; letter-spacing: .04em;
+.rp-ing-header,
+.rp-step-header {
+  font-weight: 700; color: var(--gold); font-size: 13.5px;
+  letter-spacing: .01em;
   margin: 1rem 0 .3rem; padding-top: .5rem;
 }
 .rp-ing-header:first-child { margin-top: 0; padding-top: 0; }
+/* A stage heading among the steps ("Day of", "Two days before"). The
+   numbered list resumes after it, continuing the count. */
+.rp-step-header { margin: 1.2rem 0 .6rem; }
+
+/* A cross-reference to the recipe for one of the components — the
+   "(ETH091)" markers in the source data, resolved to real links. */
+.rp-xref {
+  color: var(--gold); font-weight: 500;
+  text-decoration: underline; text-decoration-style: dotted;
+  text-underline-offset: 2px;
+}
+.rp-xref:hover { text-decoration-style: solid; }
 
 .rp-steps { padding-left: 1.4rem; margin: 0; }
 .rp-steps li {

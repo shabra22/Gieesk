@@ -793,6 +793,14 @@ function hapticTap() {
       // screen where quitting is the last thing anyone wants.
       if (window.appLock && typeof window.appLock.isLocked === 'function' && window.appLock.isLocked()) return;
 
+      // The video review sheet is a full-screen editor over the upload
+      // form, so back means "cancel this edit" — not navigate the page
+      // behind it, which would leave the sheet orphaned on screen.
+      if (window.videoReview && window.videoReview.isOpen()) {
+        window.videoReview.cancel();
+        return;
+      }
+
       // The mandatory sign-in gate can't be dismissed or navigated around
       // with back; the only way out of it is exiting.
       if (document.body.classList.contains('auth-gate-active')) {
