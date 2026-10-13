@@ -325,6 +325,8 @@ const CUISINE_META = {
   Uganda:         { name: 'Ugandan',       color: '#D90000' },
   Nigeria:        { name: 'Nigerian',      color: '#008751' },
   Ghana:          { name: 'Ghanaian',      color: '#006B3F' },
+  Senegal:        { name: 'Senegalese',    color: '#00853F' },
+  Cameroon:       { name: 'Cameroonian',   color: '#007A5E' },
   Israel:         { name: 'Israeli',       color: '#0038B8' },
   UK:             { name: 'British',       color: '#C8102E' },
   // Not yet represented in the data — kept so the grid shows intent,
