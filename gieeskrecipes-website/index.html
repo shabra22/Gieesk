@@ -29,14 +29,14 @@
 
   <meta property="og:type" content="website" />
   <meta property="og:title" content="GieesK Recipes — Discover the World's Recipes" />
-  <meta property="og:description" content="1724+ authentic recipes from every corner of the globe. AI-powered recipe discovery, beautifully designed." />
+  <meta property="og:description" content="1927+ authentic recipes from every corner of the globe. AI-powered recipe discovery, beautifully designed." />
   <meta property="og:url" content="https://gieesk.com/" />
   <meta property="og:image" content="https://gieesk.com/assets/video/hero-poster.jpg" />
   <meta property="og:site_name" content="GieesK Recipes" />
 
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="GieesK Recipes — Discover the World's Recipes" />
-  <meta name="twitter:description" content="1724+ authentic recipes from every corner of the globe. AI-powered recipe discovery, beautifully designed." />
+  <meta name="twitter:description" content="1927+ authentic recipes from every corner of the globe. AI-powered recipe discovery, beautifully designed." />
   <meta name="twitter:image" content="https://gieesk.com/assets/video/hero-poster.jpg" />
 
   <!-- Schema.org structured data -->
@@ -49,7 +49,7 @@
         "@id": "https://gieesk.com/#website",
         "name": "GieesK Recipes",
         "url": "https://gieesk.com",
-        "description": "AI-powered global recipe discovery platform — 16 countries, 1724+ authentic recipes",
+        "description": "AI-powered global recipe discovery platform — 18 countries, 1927+ authentic recipes",
         "potentialAction": {
           "@type": "SearchAction",
           "target": {
@@ -88,10 +88,22 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css" />
   <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js" defer></script>
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2" defer></script>
+  <script>
+    /* Preload the first backdrop photo on the website only (not in the app). */
+    (function () {
+      if (window.Capacitor && window.Capacitor.isNativePlatform && window.Capacitor.isNativePlatform()) return;
+      var l = document.createElement('link');
+      l.rel = 'preload'; l.as = 'image'; l.href = "https://images.pexels.com/photos/36707709/pexels-photo-36707709.jpeg?auto=compress&cs=tinysrgb&w=1400";
+      l.setAttribute('imagesrcset', "https://images.pexels.com/photos/36707709/pexels-photo-36707709.jpeg?auto=compress&cs=tinysrgb&w=900 900w, https://images.pexels.com/photos/36707709/pexels-photo-36707709.jpeg?auto=compress&cs=tinysrgb&w=1400 1400w, https://images.pexels.com/photos/36707709/pexels-photo-36707709.jpeg?auto=compress&cs=tinysrgb&w=1920 1920w"); l.setAttribute('imagesizes', '100vw');
+      l.setAttribute('fetchpriority', 'high');
+      document.head.appendChild(l);
+    })();
+  </script>
+  <script src="js/theme.js?v=20261013"></script>
   <link rel="stylesheet" href="css/variables.css?v=20260924" />
   <link rel="stylesheet" href="css/base.css?v=20260924" />
   <link rel="stylesheet" href="css/nav.css?v=20260924" />
-  <link rel="stylesheet" href="css/hero.css?v=20260924" />
+  <link rel="stylesheet" href="css/hero.css?v=20261013" />
   <link rel="stylesheet" href="css/sections.css?v=20260924" />
   <link rel="stylesheet" href="css/cards.css?v=20260924" />
   <link rel="stylesheet" href="css/search.css?v=20260924" />
@@ -105,9 +117,42 @@
   <link rel="stylesheet" href="css/community.css?v=20260924" />
   <link rel="stylesheet" href="css/about.css?v=20260924" />
   <link rel="stylesheet" href="css/legal.css?v=20260924" />
-  <link rel="stylesheet" href="css/settings.css?v=20260924" />
+  <link rel="stylesheet" href="css/settings.css?v=20261013" />
+  <link rel="stylesheet" href="css/theme-light.css?v=20261013" />
 </head>
 <body>
+  <!-- Cinematic photo backdrop for the website (hidden inside the app).
+       Photos: Pexels, free to use; credit shown bottom-left of the hero.
+       Controlled by js/hero-photos.js. -->
+  <div class="site-backdrop" id="siteBackdrop" aria-hidden="true">
+    <div class="sb-slides">
+    <div class="sb-slide is-active" style="--sb-pos:50% 60%;--sb-x0:-1.2%;--sb-y0:0.6%;--sb-x1:1.2%;--sb-y1:-0.6%" data-credit="Photo: Jagaba Denis / Pexels" data-credit-url="https://www.pexels.com/photo/traditional-cooking-on-open-fire-in-nigeria-36707709/" data-caption="Open-fire cooking, Nigeria">
+      <img src="https://images.pexels.com/photos/36707709/pexels-photo-36707709.jpeg?auto=compress&cs=tinysrgb&amp;w=1400" srcset="https://images.pexels.com/photos/36707709/pexels-photo-36707709.jpeg?auto=compress&cs=tinysrgb&amp;w=900 900w, https://images.pexels.com/photos/36707709/pexels-photo-36707709.jpeg?auto=compress&cs=tinysrgb&amp;w=1400 1400w, https://images.pexels.com/photos/36707709/pexels-photo-36707709.jpeg?auto=compress&cs=tinysrgb&amp;w=1920 1920w" sizes="100vw" alt="" decoding="async" fetchpriority="high" />
+    </div>
+    <div class="sb-slide" style="--sb-pos:50% 55%;--sb-x0:1%;--sb-y0:1%;--sb-x1:-1%;--sb-y1:-0.6%" data-credit="Photo: Keesha's Kitchen / Pexels" data-credit-url="https://www.pexels.com/photo/rice-with-fish-and-vegetables-on-a-serving-dish-13915043/" data-caption="Jollof rice with grilled fish">
+      <img data-src="https://images.pexels.com/photos/13915043/pexels-photo-13915043.jpeg?auto=compress&cs=tinysrgb&amp;w=1400" data-srcset="https://images.pexels.com/photos/13915043/pexels-photo-13915043.jpeg?auto=compress&cs=tinysrgb&amp;w=900 900w, https://images.pexels.com/photos/13915043/pexels-photo-13915043.jpeg?auto=compress&cs=tinysrgb&amp;w=1400 1400w, https://images.pexels.com/photos/13915043/pexels-photo-13915043.jpeg?auto=compress&cs=tinysrgb&amp;w=1920 1920w" sizes="100vw" alt="" decoding="async" />
+    </div>
+    <div class="sb-slide" style="--sb-pos:50% 50%;--sb-x0:-1%;--sb-y0:0%;--sb-x1:1.2%;--sb-y1:-0.8%" data-credit="Photo: Vladimir Srajber / Pexels" data-credit-url="https://www.pexels.com/photo/grilling-fish-on-barbecue-in-ivanic-grad-34206381/" data-caption="Fish on the grill">
+      <img data-src="https://images.pexels.com/photos/34206381/pexels-photo-34206381.jpeg?auto=compress&cs=tinysrgb&amp;w=1400" data-srcset="https://images.pexels.com/photos/34206381/pexels-photo-34206381.jpeg?auto=compress&cs=tinysrgb&amp;w=900 900w, https://images.pexels.com/photos/34206381/pexels-photo-34206381.jpeg?auto=compress&cs=tinysrgb&amp;w=1400 1400w, https://images.pexels.com/photos/34206381/pexels-photo-34206381.jpeg?auto=compress&cs=tinysrgb&amp;w=1920 1920w" sizes="100vw" alt="" decoding="async" />
+    </div>
+    <div class="sb-slide" style="--sb-pos:50% 50%;--sb-x0:0.8%;--sb-y0:-0.8%;--sb-x1:-1%;--sb-y1:0.8%" data-credit="Photo: Keesha's Kitchen / Pexels" data-credit-url="https://www.pexels.com/photo/healthy-meal-on-wooden-tray-13994299/" data-caption="A platter of home cooking">
+      <img data-src="https://images.pexels.com/photos/13994299/pexels-photo-13994299.jpeg?auto=compress&cs=tinysrgb&amp;w=1400" data-srcset="https://images.pexels.com/photos/13994299/pexels-photo-13994299.jpeg?auto=compress&cs=tinysrgb&amp;w=900 900w, https://images.pexels.com/photos/13994299/pexels-photo-13994299.jpeg?auto=compress&cs=tinysrgb&amp;w=1400 1400w, https://images.pexels.com/photos/13994299/pexels-photo-13994299.jpeg?auto=compress&cs=tinysrgb&amp;w=1920 1920w" sizes="100vw" alt="" decoding="async" />
+    </div>
+    <div class="sb-slide" style="--sb-pos:50% 50%;--sb-x0:1%;--sb-y0:0.6%;--sb-x1:-1.2%;--sb-y1:-0.4%" data-credit="Photo: Kindel Media / Pexels" data-credit-url="https://www.pexels.com/photo/fresh-fishes-on-the-grill-8352777/" data-caption="Charcoal-grilled fish">
+      <img data-src="https://images.pexels.com/photos/8352777/pexels-photo-8352777.jpeg?auto=compress&cs=tinysrgb&amp;w=1400" data-srcset="https://images.pexels.com/photos/8352777/pexels-photo-8352777.jpeg?auto=compress&cs=tinysrgb&amp;w=900 900w, https://images.pexels.com/photos/8352777/pexels-photo-8352777.jpeg?auto=compress&cs=tinysrgb&amp;w=1400 1400w, https://images.pexels.com/photos/8352777/pexels-photo-8352777.jpeg?auto=compress&cs=tinysrgb&amp;w=1920 1920w" sizes="100vw" alt="" decoding="async" />
+    </div>
+    <div class="sb-slide" style="--sb-pos:50% 50%;--sb-x0:-0.8%;--sb-y0:0.8%;--sb-x1:1%;--sb-y1:-0.8%" data-credit="Photo: Eva Bronzini / Pexels" data-credit-url="https://www.pexels.com/photo/assorted-spices-on-the-table-5740292/" data-caption="Whole spices">
+      <img data-src="https://images.pexels.com/photos/5740292/pexels-photo-5740292.jpeg?auto=compress&cs=tinysrgb&amp;w=1400" data-srcset="https://images.pexels.com/photos/5740292/pexels-photo-5740292.jpeg?auto=compress&cs=tinysrgb&amp;w=900 900w, https://images.pexels.com/photos/5740292/pexels-photo-5740292.jpeg?auto=compress&cs=tinysrgb&amp;w=1400 1400w, https://images.pexels.com/photos/5740292/pexels-photo-5740292.jpeg?auto=compress&cs=tinysrgb&amp;w=1920 1920w" sizes="100vw" alt="" decoding="async" />
+    </div>
+    <div class="sb-slide" style="--sb-pos:50% 45%;--sb-x0:0.8%;--sb-y0:0.8%;--sb-x1:-1%;--sb-y1:-0.6%" data-credit="Photo: Evlogia Pictures / Pexels" data-credit-url="https://www.pexels.com/photo/man-roasting-meat-in-a-restaurant-17212202/" data-caption="Grilling meat">
+      <img data-src="https://images.pexels.com/photos/17212202/pexels-photo-17212202.jpeg?auto=compress&cs=tinysrgb&amp;w=1400" data-srcset="https://images.pexels.com/photos/17212202/pexels-photo-17212202.jpeg?auto=compress&cs=tinysrgb&amp;w=900 900w, https://images.pexels.com/photos/17212202/pexels-photo-17212202.jpeg?auto=compress&cs=tinysrgb&amp;w=1400 1400w, https://images.pexels.com/photos/17212202/pexels-photo-17212202.jpeg?auto=compress&cs=tinysrgb&amp;w=1920 1920w" sizes="100vw" alt="" decoding="async" />
+    </div>
+    </div>
+    <div class="sb-grade"></div>
+    <div class="sb-leak"></div>
+    <div class="sb-grain"></div>
+  </div>
+
 
   <!-- Detect the native app context SYNCHRONOUSLY, before anything else
        paints — this is what prevents a flash of the real home page behind
@@ -363,21 +408,21 @@
   <div id="page-home">
 
     <!-- HERO -->
-    <section class="hero" id="home" style="background:radial-gradient(ellipse 80% 60% at 50% 40%,#0D1A0F 0%,#0A0A09 100%)">
+    <section class="hero" id="home">
       <canvas id="heroCanvas"></canvas>
       <div class="hero-overlay"></div>
       <div class="hero-content" style="opacity:1!important;visibility:visible!important;position:relative;z-index:2">
         <p class="hero-eyebrow">AI-Powered Recipe Discovery</p>
         <h1 class="hero-title">The World's Finest<br /><em>Culinary Universe</em></h1>
-        <p class="hero-sub">Explore 1724+ recipes from every corner of the globe. Let AI craft your perfect meal. Experience food in three dimensions.</p>
+        <p class="hero-sub">Explore 1927+ recipes from every corner of the globe. Let AI craft your perfect meal. Experience food in three dimensions.</p>
         <div class="hero-cta">
           <button class="btn-gold btn-lg" id="heroExplore">Explore Recipes</button>
           <button class="btn-outline btn-lg" id="heroAI"><i class="ti ti-sparkles"></i> Ask AI Chef</button>
         </div>
         <div class="hero-stats">
-          <div class="stat"><span class="stat-num" data-target="1724">0</span><span class="stat-label">Recipes</span></div>
+          <div class="stat"><span class="stat-num" data-target="1927">0</span><span class="stat-label">Recipes</span></div>
           <div class="stat-divider"></div>
-          <div class="stat"><span class="stat-num" data-target="16">0</span><span class="stat-label">Countries</span></div>
+          <div class="stat"><span class="stat-num" data-target="18">0</span><span class="stat-label">Countries</span></div>
           <div class="stat-divider"></div>
           <div class="stat"><span class="stat-num" data-target="9">0</span><span class="stat-label">Chefs</span></div>
           <div class="stat-divider"></div>
@@ -385,6 +430,7 @@
         </div>
       </div>
       <button class="hero-sound-toggle" id="heroSoundToggle" aria-pressed="false" aria-label="Enable ambient sound" title="Ambient sound"><i class="ti ti-volume-3"></i><span>Ambience</span></button>
+      <a class="hero-photo-credit" id="heroPhotoCredit" href="https://www.pexels.com" target="_blank" rel="noopener noreferrer"><i class="ti ti-camera"></i><span>Photo / Pexels</span></a>
       <div class="hero-scroll-hint"><span>Scroll to explore</span><i class="ti ti-chevron-down"></i></div>
     </section>
 
@@ -1123,7 +1169,7 @@
   <script src="js/recipe-text.js?v=20260924" defer></script>
   <script src="js/data-loader.js?v=20260924" defer></script>
   <script src="js/site-data.js?v=20260924" defer></script>
-  <script src="js/hero-video.js?v=20260924" defer></script>
+  <script src="js/hero-photos.js?v=20261013" defer></script>
   <script src="js/hero-fx.js?v=20260924" defer></script>
   <script src="js/hero-audio.js?v=20260924" defer></script>
   <script src="js/hero3d.js?v=20260924" defer></script>
@@ -1144,7 +1190,7 @@
   <script src="js/app-shell.js?v=20260924" defer></script>
   <script src="js/app-invite.js?v=20260924" defer></script>
   <script src="js/deep-links.js?v=20260924" defer></script>
-  <script src="js/settings.js?v=20260924" defer></script>
+  <script src="js/settings.js?v=20261013" defer></script>
   <script src="js/app-lock.js?v=20260924" defer></script>
   <script src="js/play-billing.js?v=20260924" defer></script>
 

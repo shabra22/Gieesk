@@ -1,0 +1,188 @@
+/* ═══════════════════════════════════════════════════════════════
+   GIEESKRECIPES — Light theme (app)
+   ───────────────────────────────────────────────────────────────
+   Same layout, same gold, warm ivory instead of near-black.
+
+   How it works: js/theme.js sets  <html data-theme="light">  (only
+   inside the app, and only when the person chose Light — or Auto
+   while the phone is in light mode). Nearly every colour in the app
+   already comes from the tokens in variables.css, so flipping those
+   tokens re-themes most screens. The rules after the tokens handle
+   the handful of places that hard-code a dark colour.
+
+   Deliberately left dark in light mode, because they sit on top of
+   photos/video and would lose contrast otherwise:
+     • the Discover video feed and full-screen video player
+     • text drawn over recipe photos (hero banner, cuisine cards)
+═══════════════════════════════════════════════════════════════ */
+html[data-theme="light"] {
+  color-scheme: light;
+
+  /* Brand — gold is deepened a touch so gold TEXT passes contrast on
+     ivory; buttons keep their dark label. */
+  --gold:         #B07A1E;
+  --gold-light:   #C28A2B;
+  --gold-dark:    #8A6120;
+  --gold-glow:    rgba(176,122,30,0.14);
+  --emerald:      #17805F;
+  --emerald-dark: #0F6E56;
+  --coral:        #C4491F;
+
+  /* Surfaces */
+  --bg-void:      #F4EFE4;   /* page */
+  --bg-dark:      #FAF7F0;
+  --bg-panel:     #FFFFFF;
+  --bg-card:      #FFFFFF;
+  --bg-elevated:  #EFE9DB;
+  --bg-warm:      #FBF3E1;
+
+  /* Text */
+  --text-primary:   #1F1A12;
+  --text-secondary: #4B4538;
+  --text-muted:     #7B7464;
+  --text-hint:      #B3AB98;
+
+  /* Borders */
+  --border-dim:    rgba(70,52,20,0.08);
+  --border-subtle: rgba(70,52,20,0.14);
+  --border-gold:   rgba(176,122,30,0.40);
+
+  /* Shadows */
+  --shadow-card:  0 2px 14px rgba(70,52,20,0.10);
+  --shadow-gold:  0 0 30px rgba(176,122,30,0.12);
+  --shadow-lift:  0 10px 34px rgba(70,52,20,0.18);
+
+  /* Local helpers used by the rules below */
+  --lt-fill-1: rgba(70,52,20,0.045);
+  --lt-fill-2: rgba(70,52,20,0.08);
+  --lt-line:   rgba(70,52,20,0.10);
+  --lt-scrim:  rgba(250,247,240,0.92);
+}
+
+/* Smooth swap when the person changes theme (class added by theme.js
+   for ~350ms only, so it never slows normal scrolling). */
+html.theme-transition,
+html.theme-transition *,
+html.theme-transition *::before,
+html.theme-transition *::after {
+  transition: background-color .3s ease, color .3s ease, border-color .3s ease, box-shadow .3s ease !important;
+}
+
+html[data-theme="light"] body { background: var(--bg-void); color: var(--text-primary); }
+
+/* ── App chrome ─────────────────────────────────────────────── */
+html[data-theme="light"] body.is-native-app .app-header {
+  background: var(--lt-scrim);
+  border-bottom-color: var(--lt-line);
+}
+html[data-theme="light"] .app-header-btn { background: var(--lt-fill-2); color: var(--text-primary); }
+html[data-theme="light"] .app-header-btn:active { background: rgba(70,52,20,0.14); }
+html[data-theme="light"] body.app-header-transparent .app-header-btn { background: var(--lt-fill-2); }
+html[data-theme="light"] .app-header-mark { filter: none; }
+html[data-theme="light"] .app-tab-bar {
+  background: rgba(255,255,255,0.96);
+  border-top-color: var(--lt-line);
+  box-shadow: 0 -6px 24px rgba(70,52,20,0.07);
+}
+html[data-theme="light"] body.is-native-app .app-quick-bar {
+  background: radial-gradient(ellipse 120% 60% at 50% 0%, #FBF3E1 0%, var(--bg-void) 65%);
+}
+html[data-theme="light"] .app-smart-search {
+  background: #fff;
+  border-color: var(--lt-line);
+  box-shadow: 0 2px 10px rgba(70,52,20,0.06);
+}
+html[data-theme="light"] .app-action-tile {
+  background: #fff;
+  border-color: var(--lt-line);
+  box-shadow: 0 2px 10px rgba(70,52,20,0.05);
+}
+html[data-theme="light"] body.is-native-app .recipe-card { box-shadow: 0 3px 16px rgba(70,52,20,0.10); }
+html[data-theme="light"] .app-skeleton-card,
+html[data-theme="light"] .app-skeleton-circle {
+  background: linear-gradient(90deg, rgba(70,52,20,0.05) 25%, rgba(70,52,20,0.10) 37%, rgba(70,52,20,0.05) 63%);
+  background-size: 400% 100%;
+}
+html[data-theme="light"] .app-chef-avatar,
+html[data-theme="light"] .app-search-result-thumb { background: var(--bg-elevated); }
+
+/* Welcome / launch screen */
+html[data-theme="light"].is-native-app-early .app-welcome,
+html[data-theme="light"] body.is-native-app .app-welcome {
+  background: radial-gradient(ellipse 90% 70% at 50% 30%, #FBF3E1 0%, #F4EFE4 70%);
+}
+html[data-theme="light"] .app-welcome-loading-text { color: var(--text-muted); }
+
+/* Hero banner and other text laid over photos stays light-on-dark */
+html[data-theme="light"] .app-hero-banner-overlay,
+html[data-theme="light"] .app-hero-banner-overlay * { color: #fff; }
+html[data-theme="light"] .app-hero-banner-overlay em { color: #E8B96A; }
+html[data-theme="light"] .app-hero-banner-overlay .app-hero-banner-eyebrow,
+html[data-theme="light"] .app-hero-banner-eyebrow { color: #E8B96A; }
+html[data-theme="light"] .app-hero-banner-cta { background: rgba(255,255,255,0.18); color: #fff; }
+html[data-theme="light"] .cuisine-card-overlay,
+html[data-theme="light"] .cuisine-card-overlay * { color: #fff; }
+html[data-theme="light"] .recipe-save-btn { color: #fff; }
+
+/* ── Overlays, sheets and modals ────────────────────────────── */
+html[data-theme="light"] .modal-backdrop { background: rgba(31,26,18,0.55); }
+html[data-theme="light"] body.is-native-app #recipeModal.modal-backdrop,
+html[data-theme="light"] body.is-native-app #authModal.modal-backdrop {
+  background: var(--bg-void) !important;
+}
+html[data-theme="light"] body.is-native-app #recipeModal .modal-close { background: rgba(255,255,255,0.85); color: var(--text-primary); }
+html[data-theme="light"] .app-notif-panel,
+html[data-theme="light"] .app-search-overlay,
+html[data-theme="light"] body.is-native-app .app-option-picker { background: var(--bg-void); }
+html[data-theme="light"] .app-notif-header,
+html[data-theme="light"] .app-search-bar,
+html[data-theme="light"] .app-option-picker-header { border-bottom-color: var(--lt-line); }
+html[data-theme="light"] .app-search-bar input,
+html[data-theme="light"] .app-option-picker-search { background: var(--lt-fill-2); color: var(--text-primary); }
+html[data-theme="light"] .app-search-result-item { border-bottom-color: var(--lt-line); }
+html[data-theme="light"] .app-option-picker-item:active,
+html[data-theme="light"] button.app-notif-item:active,
+html[data-theme="light"] .st-row:active,
+html[data-theme="light"] .st-back:active { background: var(--lt-fill-2); }
+html[data-theme="light"] body.is-native-app .app-paywall-overlay { background: rgba(31,26,18,0.55); }
+html[data-theme="light"] .app-paywall-card { background: #fff; }
+html[data-theme="light"] .cs-grab span { background: rgba(70,52,20,0.25); }
+html[data-theme="light"] .cs-sort button.active { background: var(--lt-fill-2); }
+
+/* ── Navigation (website-style nav still used on some screens) ── */
+html[data-theme="light"] .nav.scrolled { background: var(--lt-scrim); }
+html[data-theme="light"] .nav-mobile { background: rgba(250,247,240,0.98); }
+
+/* ── Settings ───────────────────────────────────────────────── */
+html[data-theme="light"] .st-me-avatar { background: linear-gradient(135deg, #E9DFC8, #D8CAA6); }
+html[data-theme="light"] .st-group { background: #fff; box-shadow: 0 1px 8px rgba(70,52,20,0.05); }
+
+/* ── Skeleton shimmer used by community ─────────────────────── */
+html[data-theme="light"] .cs-skel,
+html[data-theme="light"] .skeleton {
+  background: linear-gradient(90deg, var(--bg-elevated) 25%, rgba(70,52,20,0.08) 50%, var(--bg-elevated) 75%);
+  background-size: 400% 100%;
+}
+
+/* ── Form controls ──────────────────────────────────────────── */
+html[data-theme="light"] input,
+html[data-theme="light"] textarea,
+html[data-theme="light"] select { color-scheme: light; }
+html[data-theme="light"] ::placeholder { color: var(--text-muted); opacity: .8; }
+
+
+/* ── Always-dark zones ──────────────────────────────────────────────
+   Discover and the full-screen video player sit on black video, so they
+   keep the original dark & gold tokens even when the app is in Light. */
+html[data-theme="light"] #page-discover,
+html[data-theme="light"] .discover-fullscreen-overlay {
+  color-scheme: dark;
+  --gold:#C9963A; --gold-light:#E8B96A; --gold-dark:#8A6120; --gold-glow:rgba(201,150,58,0.25);
+  --emerald:#1D9E75; --emerald-dark:#0F6E56; --coral:#D85A30;
+  --bg-void:#0A0A09; --bg-dark:#111110; --bg-panel:#171715; --bg-card:#1C1C1A; --bg-elevated:#242422; --bg-warm:#1A160E;
+  --text-primary:#F0EEE8; --text-secondary:#B8B6AE; --text-muted:#6B6A63; --text-hint:#3D3C37;
+  --border-dim:rgba(255,255,255,0.06); --border-subtle:rgba(255,255,255,0.10); --border-gold:rgba(201,150,58,0.30);
+  color: var(--text-primary);
+}
+
+/* Appearance picker (Settings → Appearance) ─ see settings.css */

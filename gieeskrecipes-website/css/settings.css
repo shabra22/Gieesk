@@ -194,3 +194,87 @@ label.st-row input:disabled { opacity: 0.4; }
 .bp-step.is-done { color: var(--text-primary); }
 .bp-step.is-done i { color: var(--emerald, #1D9E75); }
 .bp-step.is-done span { text-decoration: none; font-weight: 600; }
+
+/* ── Appearance (Settings → Appearance) ─────────────────────────────
+   Three cards, each with a tiny drawing of the app in that theme. The
+   previews use fixed colours on purpose: they must look the same in
+   every theme, because they show what you would be switching TO. */
+.th-grid { display: grid; gap: 12px; }
+.th-card {
+  position: relative;
+  display: flex; align-items: center; gap: 14px;
+  width: 100%;
+  padding: 12px 14px 12px 12px;
+  background: var(--bg-card, #121110);
+  border: 1.5px solid var(--border-subtle);
+  border-radius: 16px;
+  font-family: inherit;
+  text-align: left;
+  color: var(--text-primary);
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  transition: border-color .2s ease, background-color .2s ease;
+}
+.th-card:active { transform: scale(.992); }
+.th-card.is-selected { border-color: var(--gold); background: var(--gold-glow, rgba(212,160,57,.08)); }
+
+.th-meta { flex: 1; min-width: 0; line-height: 1.3; }
+.th-meta strong { display: block; font-size: 15px; font-weight: 700; }
+.th-meta small { display: block; margin-top: 2px; font-size: 12.5px; color: var(--text-muted); }
+
+.th-check {
+  width: 24px; height: 24px; flex-shrink: 0;
+  border-radius: 50%;
+  border: 1.5px solid var(--border-subtle);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 14px; color: transparent;
+  transition: all .2s ease;
+}
+.th-card.is-selected .th-check { background: var(--gold); border-color: var(--gold); color: #1a1408; }
+
+/* Miniature phone */
+.th-preview {
+  position: relative;
+  width: 58px; height: 84px; flex-shrink: 0;
+  border-radius: 10px;
+  overflow: hidden;
+  border: 1px solid rgba(128,128,128,.28);
+  display: block;
+}
+.th-preview > span { position: absolute; display: block; }
+.th-pv-bar   { left: 0; right: 0; top: 0; height: 9px; }
+.th-pv-hero  { left: 5px; right: 5px; top: 13px; height: 28px; border-radius: 5px; }
+.th-pv-line  { left: 5px; width: 34px; top: 46px; height: 4px; border-radius: 2px; }
+.th-pv-line.short { top: 54px; width: 22px; }
+.th-pv-tabs  { left: 0; right: 0; bottom: 0; height: 12px; display: flex; align-items: center; justify-content: space-around; }
+.th-pv-tabs i { width: 6px; height: 6px; border-radius: 50%; display: block; }
+
+.th-preview.is-dark  { background: #0A0A09; }
+.th-preview.is-dark  .th-pv-bar  { background: #14130f; }
+.th-preview.is-dark  .th-pv-hero { background: linear-gradient(135deg, #3d2f14, #1d1810); }
+.th-preview.is-dark  .th-pv-line { background: #3a372f; }
+.th-preview.is-dark  .th-pv-tabs { background: #14130f; }
+.th-preview.is-dark  .th-pv-tabs i { background: #4a463b; }
+.th-preview.is-dark  .th-pv-tabs i:first-child { background: #C9963A; }
+
+.th-preview.is-light { background: #F4EFE4; }
+.th-preview.is-light .th-pv-bar  { background: #FFFFFF; }
+.th-preview.is-light .th-pv-hero { background: linear-gradient(135deg, #E8C98A, #C9963A); }
+.th-preview.is-light .th-pv-line { background: #D9D0BC; }
+.th-preview.is-light .th-pv-tabs { background: #FFFFFF; }
+.th-preview.is-light .th-pv-tabs i { background: #CFC6B0; }
+.th-preview.is-light .th-pv-tabs i:first-child { background: #B07A1E; }
+
+/* Auto: dark and light halves, split on a diagonal */
+.th-preview.is-auto { background: #0A0A09; }
+.th-preview.is-auto::before {
+  content: ""; position: absolute; inset: 0;
+  background: #F4EFE4;
+  clip-path: inset(0 0 0 50%);
+}
+.th-preview.is-auto .th-pv-bar  { background: linear-gradient(90deg, #14130f 50%, #FFFFFF 50%); }
+.th-preview.is-auto .th-pv-hero { background: linear-gradient(90deg, #3d2f14 0 50%, #E8C98A 50% 100%); }
+.th-preview.is-auto .th-pv-line { background: linear-gradient(90deg, #3a372f 50%, #D9D0BC 50%); }
+.th-preview.is-auto .th-pv-tabs { background: linear-gradient(90deg, #14130f 50%, #FFFFFF 50%); }
+.th-preview.is-auto .th-pv-tabs i { background: #8a8470; }
+.th-preview.is-auto .th-pv-tabs i:first-child { background: #C9963A; }

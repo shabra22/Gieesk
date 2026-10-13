@@ -97,6 +97,10 @@ function buildSettingsPanel(panel) {
         }),
       ])}
 
+      ${(window.gkTheme && gkTheme.available()) ? settingsSection('Appearance', [
+        settingsRow({ icon: 'ti-sun-moon', label: 'Theme', sub: 'Dark & Gold, Light or follow your phone', value: themeLabel(gkTheme.get()), onclick: "openSettingsPage('appearance')" }),
+      ]) : ''}
+
       ${settingsSection('Notifications', [
         settingsRow({ icon: 'ti-bell', label: 'Notifications', sub: 'Which activity you hear about', onclick: "openSettingsPage('notifications')" }),
       ])}
@@ -143,6 +147,7 @@ const SETTINGS_PAGES = {
   photo: { title: 'Profile photo' },
   diet: { title: 'Dietary preferences' },
   verification: { title: 'Verification' },
+  appearance: { title: 'Appearance' },
   notifications: { title: 'Notifications' },
   privacy: { title: 'Profile views' },
   password: { title: 'Password' },
@@ -197,6 +202,8 @@ function openSettingsPage(name) {
     if (typeof renderBadgeProgress === 'function') {
       renderBadgeProgress(document.getElementById('badgeProgress'));
     }
+  } else if (name === 'appearance') {
+    renderAppearancePage(body);
   } else if (name === 'notifications') {
     body.innerHTML = '<div id="notifSettings"></div>';
     renderNotificationSettings(document.getElementById('notifSettings'));
@@ -237,6 +244,52 @@ function openSettingsPage(name) {
   const root = document.getElementById('page-dashboard');
   if (root) root.scrollIntoView({ block: 'start', behavior: 'instant' });
   window.scrollTo({ top: 0, behavior: 'instant' });
+}
+
+// ── Appearance ────────────────────────────────────────────────────
+const THEME_OPTIONS = [
+  { id: 'dark',  label: 'Dark & Gold', sub: 'The classic GieesK look',          cls: 'is-dark'  },
+  { id: 'light', label: 'Light',       sub: 'Warm ivory with the same gold',    cls: 'is-light' },
+  { id: 'auto',  label: 'Auto',        sub: 'Matches your phone’s setting',     cls: 'is-auto'  },
+];
+
+function themeLabel(mode) {
+  const o = THEME_OPTIONS.find((x) => x.id === mode);
+  return o ? o.label : 'Dark & Gold';
+}
+
+function renderAppearancePage(body) {
+  const current = (window.gkTheme && gkTheme.get()) || 'dark';
+  body.innerHTML = `
+    <div class="th-grid" role="radiogroup" aria-label="Theme">
+      ${THEME_OPTIONS.map((o) => `
+        <button type="button" class="th-card${o.id === current ? ' is-selected' : ''}" role="radio"
+                aria-checked="${o.id === current}" data-theme-id="${o.id}" onclick="chooseTheme('${o.id}')">
+          <span class="th-preview ${o.cls}" aria-hidden="true">
+            <span class="th-pv-bar"></span>
+            <span class="th-pv-hero"></span>
+            <span class="th-pv-line"></span>
+            <span class="th-pv-line short"></span>
+            <span class="th-pv-tabs"><i></i><i></i><i></i></span>
+          </span>
+          <span class="th-meta">
+            <strong>${escapeHTML(o.label)}</strong>
+            <small>${escapeHTML(o.sub)}</small>
+          </span>
+          <span class="th-check"><i class="ti ti-check"></i></span>
+        </button>`).join('')}
+    </div>
+    <p class="st-note">Your choice is saved on this phone. Discover keeps its dark, full-screen look in every theme so videos stay easy to watch.</p>`;
+}
+
+function chooseTheme(id) {
+  if (!window.gkTheme) return;
+  gkTheme.set(id);
+  document.querySelectorAll('.th-card').forEach((el) => {
+    const on = el.dataset.themeId === id;
+    el.classList.toggle('is-selected', on);
+    el.setAttribute('aria-checked', on ? 'true' : 'false');
+  });
 }
 
 // isPremiumUser() is async — treating the promise it returns as a
