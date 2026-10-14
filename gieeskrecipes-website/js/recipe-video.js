@@ -165,6 +165,19 @@
       return;
     }
 
+    // Nudity and sexual content aren't allowed: look at the video on this
+    // device before anything is uploaded.
+    if (window.gkModeration) {
+      status('Checking video content…');
+      const verdict = await window.gkModeration.checkVideo(file, objectUrl, info.duration);
+      if (!verdict.ok) {
+        URL.revokeObjectURL(objectUrl); status('');
+        error(verdict.message);
+        return;
+      }
+      status('');
+    }
+
     // Only replace the previous pick once this one has passed, so a bad
     // file never discards a good video already chosen.
     reset({ deleteUploaded: true });
