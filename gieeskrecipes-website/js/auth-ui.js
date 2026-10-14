@@ -28,7 +28,7 @@ function closeAuthModal() {
 function buildLoginHTML() {
   return `
   <div class="auth-inner">
-    <div class="auth-brand"><img src="assets/logo-transparent.png" alt="GieesK Recipes" class="auth-logo" /></div>
+    <div class="auth-brand"><img src="assets/logo-transparent-600.webp" alt="GieesK Recipes" class="auth-logo" width="600" height="195" /></div>
     <h2 class="auth-title">Welcome back</h2>
     <p class="auth-sub">Sign in to your GieesK Recipes account</p>
 
@@ -77,7 +77,7 @@ function buildLoginHTML() {
 function buildSignupHTML() {
   return `
   <div class="auth-inner">
-    <div class="auth-brand"><img src="assets/logo-transparent.png" alt="GieesK Recipes" class="auth-logo" /></div>
+    <div class="auth-brand"><img src="assets/logo-transparent-600.webp" alt="GieesK Recipes" class="auth-logo" width="600" height="195" /></div>
     <h2 class="auth-title">Create your account</h2>
     <p class="auth-sub">Join GieesK Recipes — it's free</p>
 
@@ -134,7 +134,7 @@ function buildSignupHTML() {
 function buildForgotHTML() {
   return `
   <div class="auth-inner">
-    <div class="auth-brand"><img src="assets/logo-transparent.png" alt="GieesK Recipes" class="auth-logo" /></div>
+    <div class="auth-brand"><img src="assets/logo-transparent-600.webp" alt="GieesK Recipes" class="auth-logo" width="600" height="195" /></div>
     <h2 class="auth-title">Reset password</h2>
     <p class="auth-sub">Enter your email and we'll send you a reset link</p>
     <div id="authError"   class="auth-error"   style="display:none"></div>

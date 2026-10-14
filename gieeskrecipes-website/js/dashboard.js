@@ -1398,7 +1398,7 @@ function buildPickerList() {
       ${r.image ? `<img class="planner-picker-thumb" src="${r.image}" alt="${escapeHTML(r.title)}" data-cover-emoji="${escapeHTML(r.emoji||'')}" data-cover-cuisine="${escapeHTML(r.cuisine||r.country||'')}" loading="lazy" />` : (window.gkCover ? gkCover.html({emoji:r.emoji,title:r.title,cuisine:r.cuisine||r.country,size:'sm',cls:'planner-picker-thumb'}) : `<span class="planner-picker-emoji">${r.emoji}</span>`)}
       <div>
         <div class="planner-picker-info-title">${r.title}</div>
-        <div class="planner-picker-info-meta">${r.countryFlag||''} ${r.cuisine||r.country||''} · ${r.time}min · ${r.cal} kcal</div>
+        <div class="planner-picker-info-meta">${typeof fmtFlag === 'function' ? fmtFlag(r, {cls:'gk-flag-inline'}) : ''} ${r.cuisine||r.country||''}${r.time > 0 ? ' · ' + fmtMin(r.time) : ''}${r.cal > 0 ? ' · ' + r.cal + ' kcal' : ''}</div>
       </div>
     </div>`).join('');
 }

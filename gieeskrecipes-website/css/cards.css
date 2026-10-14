@@ -305,3 +305,98 @@
     aspect-ratio: 4/3;
   }
 }
+
+
+/* ═══════════════════════════════════════════
+   Polish pass (Oct 2026)
+═══════════════════════════════════════════ */
+
+/* ── Flags are images (js/format.js): Windows has no flag emoji ── */
+.gk-flag {
+  display: inline-block;
+  width: 1.25em;
+  height: .94em;
+  object-fit: cover;
+  border-radius: 2px;
+  vertical-align: -0.14em;
+  box-shadow: 0 0 0 1px rgba(255,255,255,0.16);
+  flex-shrink: 0;
+}
+.gk-flag-globe { width: auto; height: auto; box-shadow: none; }
+.gk-flag-inline { margin-right: 2px; }
+.gk-flag-lg {
+  width: 40px; height: 30px;
+  border-radius: 5px;
+  vertical-align: middle;
+}
+.country-flag-lg { display: inline-flex; align-items: center; line-height: 1; }
+
+/* Cuisine tiles: a faded flag fills the tile, a crisp one sits above the name */
+.cuisine-flag-bg { position: absolute; inset: 0; overflow: hidden; }
+.cuisine-flag-bg .cuisine-flag-bg-img {
+  width: 100%; height: 100%;
+  border-radius: 0;
+  box-shadow: none;
+  object-fit: cover;
+  opacity: 0.34;
+  filter: saturate(1.15);
+}
+.cuisine-flag .cuisine-flag-img {
+  width: 44px; height: 33px;
+  border-radius: 5px;
+  vertical-align: top;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.45), 0 0 0 1px rgba(255,255,255,0.18);
+}
+
+/* Diet tags sit on photos of every brightness — give them their own backing */
+.recipe-card-badges .badge {
+  background: rgba(10,10,9,0.74);
+  -webkit-backdrop-filter: blur(6px);
+  backdrop-filter: blur(6px);
+  border: 1px solid rgba(255,255,255,0.12);
+}
+.recipe-card-badges .badge-emerald { color: #6EE7B7; }
+
+/* Trending: eight cards fill two complete rows on desktop; narrower screens
+   show as many as fill whole rows, so there is never a lone card. */
+body:not(.is-native-app) #trendingGrid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+@media (max-width: 1179px) {
+  body:not(.is-native-app) #trendingGrid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  body:not(.is-native-app) #trendingGrid > :nth-child(n+7) { display: none; }
+}
+@media (max-width: 760px) {
+  body:not(.is-native-app) #trendingGrid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  body:not(.is-native-app) #trendingGrid > :nth-child(n+5) { display: none; }
+}
+@media (max-width: 400px) {
+  body:not(.is-native-app) #trendingGrid { grid-template-columns: 1fr; }
+}
+
+/* Seasonal: the tall feature card's photo grows to fill its two rows
+   instead of leaving an empty panel under the title. */
+.seasonal-grid .recipe-card:first-child .recipe-card-link {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+.seasonal-grid .recipe-card:first-child .recipe-card-img {
+  flex: 1 1 auto;
+  height: auto;
+  min-height: 320px;
+}
+.seasonal-grid .recipe-card:first-child .recipe-card-body { flex: 0 0 auto; }
+@media (max-width: 700px) {
+  .seasonal-grid .recipe-card:first-child .recipe-card-img { flex: none; height: 200px; min-height: 0; }
+  .seasonal-grid > :nth-child(n+5) { display: none; }
+}
+
+/* Cuisine tiles on phones. The old 3-column grid with a 4:3 ratio and a
+   160px minimum forced each tile ~213px wide inside a ~114px column, so the
+   page scrolled sideways and the tiles overlapped. Two columns, fixed height. */
+@media (max-width: 600px) {
+  .cuisine-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+  .cuisine-card { aspect-ratio: auto; min-height: 0; height: 150px; }
+  .cuisine-card-overlay { padding: 12px; }
+  .cuisine-flag .cuisine-flag-img { width: 38px; height: 28px; }
+  .cuisine-name { font-size: 1rem; }
+}

@@ -88,6 +88,8 @@ function iso8601(mins) {
    lines themselves, and it left raw ids in servedWith and in the
    "Related Recipes" link labels. */
 const RT = require('./js/recipe-text.js');
+// Shared display helpers: durations ("2d 1h" not "2940 min") and flag images.
+const FMT = require('./js/format.js');
 
 const byId = new Map(RECIPES.map(r => [String(r.id), r]));
 const resolve = (id) => byId.get(String(id)) || null;
@@ -207,9 +209,9 @@ function tagList(items) {
 
 function factRow(r) {
   const facts = [];
-  if (r.time)     facts.push(['Total time', r.time + ' min']);
-  if (r.prepTime) facts.push(['Prep', r.prepTime + ' min']);
-  if (r.cookTime) facts.push(['Cook', r.cookTime + ' min']);
+  if (r.time)     facts.push(['Total time', FMT.minutes(r.time)]);
+  if (r.prepTime) facts.push(['Prep', FMT.minutes(r.prepTime)]);
+  if (r.cookTime) facts.push(['Cook', FMT.minutes(r.cookTime)]);
   if (r.servings) facts.push(['Servings', r.servings]);
   if (r.cal)      facts.push(['Calories', r.cal]);
   if (r.diff)     facts.push(['Difficulty', r.diff]);
@@ -260,14 +262,15 @@ function renderPage(r) {
 <meta name="twitter:description" content="${esc(description)}" />
 <meta name="twitter:image" content="${esc(shareImage)}" />
 
-<link rel="icon" type="image/png" href="/assets/gieeskrecipes-logo.svg" />
+<link rel="icon" type="image/svg+xml" href="/assets/gieeskrecipes-logo.svg" />
+<link rel="apple-touch-icon" href="/assets/app-mark.png" />
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/css/variables.css" />
 <link rel="stylesheet" href="/css/base.css" />
 <link rel="stylesheet" href="/css/nav.css" />
 <link rel="stylesheet" href="/css/footer.css" />
-<link rel="stylesheet" href="/css/recipe-page.css" />
+<link rel="stylesheet" href="/css/recipe-page.css?v=20261020" />
 
 <script type="application/ld+json">${schema}</script>
 </head>
@@ -292,7 +295,7 @@ function renderPage(r) {
     </nav>
 
     <header class="rp-header">
-      <p class="rp-eyebrow">${esc(r.countryFlag || '')} ${esc(r.cuisine || r.country || '')} ${r.category ? '· ' + esc(r.category) : ''}</p>
+      <p class="rp-eyebrow">${FMT.flag(r.countryFlag, r.country, { eager: true })} ${esc(r.cuisine || r.country || '')} ${r.category ? '· ' + esc(r.category) : ''}</p>
       <h1 class="rp-title">${esc(r.emoji || '')} ${esc(r.title)}</h1>
       ${r.localName ? '<p class="rp-localname">' + esc(r.localName) + '</p>' : ''}
       <p class="rp-desc">${linkRef(r.desc || '')}</p>

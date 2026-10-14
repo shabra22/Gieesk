@@ -273,3 +273,21 @@ input  { font-family: inherit; }
   background: #2b2b2b; color: #fff; font-size: 13px; line-height: 1.4; text-align: center;
   box-shadow: 0 6px 24px rgba(0,0,0,.28);
 }
+
+
+/* ── Cookie banner on phones ───────────────────────────────────────
+   The banner's rules are inline, so these need !important. The button row
+   used to refuse to shrink and pushed "Accept all" off the right edge. */
+@media (max-width: 600px) {
+  #cookieBanner .gk-cookie-inner { padding: 14px 16px calc(14px + env(safe-area-inset-bottom, 0px)) !important; gap: 12px !important; }
+  #cookieBanner .gk-cookie-text { min-width: 0 !important; }
+  #cookieBanner .gk-cookie-actions {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px !important;
+    width: 100%;
+    flex-shrink: 1 !important;
+  }
+  #cookieBanner .gk-cookie-actions button { width: 100%; padding: 11px 10px !important; }
+  #cookieBanner .gk-cookie-actions button:nth-child(2) { grid-column: 1 / -1; order: 3; }
+}

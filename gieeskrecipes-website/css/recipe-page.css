@@ -144,3 +144,15 @@
   .rp-fact { min-width: 33%; }
   .rp-fact:nth-child(3n) { border-right: none; }
 }
+
+/* Flag images (js/format.js) — Windows has no flag emoji */
+.gk-flag {
+  display: inline-block;
+  width: 1.25em;
+  height: .94em;
+  object-fit: cover;
+  border-radius: 2px;
+  vertical-align: -0.14em;
+  box-shadow: 0 0 0 1px rgba(255,255,255,0.16);
+}
+.gk-flag-globe { width: auto; height: auto; box-shadow: none; }

@@ -124,7 +124,7 @@ function renderRecipeModal(recipe) {
   var n = recipe.nutrition || {};
 
   var countryBadge = recipe.countryFlag
-    ? '<span class="badge badge-gold">' + recipe.countryFlag + ' ' + recipe.country + '</span>' : '';
+    ? '<span class="badge badge-gold">' + fmtFlag(recipe, { cls: 'gk-flag-inline', eager: true }) + ' ' + recipe.country + '</span>' : '';
 
   var localNameHTML = recipe.localName
     ? '<p style="font-size:13px;color:var(--text-muted);margin-bottom:4px;font-style:italic">Local name: <strong style="color:var(--gold)">' + escapeHTML(recipe.localName) + '</strong></p>' : '';
@@ -354,7 +354,7 @@ function renderRecipeModal(recipe) {
             return '<div class="modal-related-item" onclick="closeRecipeModal();setTimeout(function(){openRecipeModal(RECIPES.find(function(x){return String(x.id)===String(\'' + r.id + '\');}));},120)">' +
               '<span style="font-size:1.6rem;flex-shrink:0">' + r.emoji + '</span>' +
               '<div><div style="font-size:12px;font-weight:600;color:var(--text-primary);line-height:1.3">' + r.title + '</div>' +
-              '<div style="font-size:11px;color:var(--text-muted)">' + r.time + 'min</div></div></div>';
+              '<div style="font-size:11px;color:var(--text-muted)">' + (r.time > 0 ? fmtMin(r.time) : '') + '</div></div></div>';
           }).join('') + '</div>';
     }
   }
@@ -392,15 +392,15 @@ function renderRecipeModal(recipe) {
       longDescHTML +
       '<div class="modal-recipe-meta" style="margin-top:var(--space-lg)">' +
         (recipe.yieldDesc    ? '<span class="modal-meta-item"><i class="ti ti-stack"></i> ' + recipe.yieldDesc + '</span>' : '') +
-        (recipe.prepTime     ? '<span class="modal-meta-item"><i class="ti ti-clock"></i> ' + recipe.prepTime + 'm prep</span>' : '') +
-        (recipe.restTime     ? '<span class="modal-meta-item"><i class="ti ti-hourglass"></i> ' + recipe.restTime + 'm rest</span>' : '') +
-        (recipe.marinateTime ? '<span class="modal-meta-item"><i class="ti ti-clock-play"></i> ' + recipe.marinateTime + 'm marinate</span>' : '') +
-        (recipe.cookTime > 0 ? '<span class="modal-meta-item"><i class="ti ti-flame"></i> ' + recipe.cookTime + 'm cook</span>' : '') +
+        (recipe.prepTime     ? '<span class="modal-meta-item"><i class="ti ti-clock"></i> ' + fmtMin(recipe.prepTime) + ' prep</span>' : '') +
+        (recipe.restTime     ? '<span class="modal-meta-item"><i class="ti ti-hourglass"></i> ' + fmtMin(recipe.restTime) + ' rest</span>' : '') +
+        (recipe.marinateTime ? '<span class="modal-meta-item"><i class="ti ti-clock-play"></i> ' + fmtMin(recipe.marinateTime) + ' marinate</span>' : '') +
+        (recipe.cookTime > 0 ? '<span class="modal-meta-item"><i class="ti ti-flame"></i> ' + fmtMin(recipe.cookTime) + ' cook</span>' : '') +
         // A recipe shared from the community has no rating or difficulty and
         // often no time or calories — leave those out rather than print
         // "nullm total" or "undefined kcal".
-        (recipe.time ? '<span class="modal-meta-item"><i class="ti ti-clock"></i> ' + recipe.time + 'm total</span>' : '') +
-        ((recipe.cal || recipe.calories) ? '<span class="modal-meta-item"><i class="ti ti-fire"></i> ' + (recipe.cal || recipe.calories) + ' kcal</span>' : '') +
+        (recipe.time ? '<span class="modal-meta-item"><i class="ti ti-clock"></i> ' + fmtMin(recipe.time) + ' total</span>' : '') +
+        ((recipe.cal || recipe.calories) ? '<span class="modal-meta-item"><i class="ti ti-flame"></i> ' + (recipe.cal || recipe.calories) + ' kcal</span>' : '') +
         '<span class="modal-meta-item"><i class="ti ti-users"></i> Serves ' + (recipe.servings || 4) + '</span>' +
         (recipe.diff ? '<span class="modal-meta-item"><i class="ti ti-chart-bar"></i> ' + recipe.diff + '</span>' : '') +
         (GK_SHOW_RATINGS && recipe.rating ? '<span class="modal-meta-item" style="margin-left:auto"><div class="stars">' + starsHTML(recipe.rating) + '</div>&nbsp;' + recipe.rating + ' (' + (recipe.reviews || 0).toLocaleString() + ' reviews)</span>' : '') +

@@ -296,6 +296,19 @@ if (indexHtml !== before1) {
 // site-data.js from the recipes themselves, so neither can go stale
 // and a new country needs no hand-editing anywhere. CHEFS, BADGES and
 // AI_RESPONSES in that file are hand-authored and left untouched.
+// ── Flag repair ─────────────────────────────────────────────────
+// A few hundred recipes carry a damaged flag character (e.g. the Ethiopian
+// ones were saved with a stray letter, which shows as a box). The country
+// name is always right, so the flag is derived from it. js/format.js is the
+// single place that maps country → flag.
+const FMT = require('./js/format.js');
+let flagsRepaired = 0;
+RECIPES.forEach(r => {
+  const good = FMT.flagEmoji(r.country);
+  if (good && r.countryFlag !== good) { r.countryFlag = good; flagsRepaired++; }
+});
+if (flagsRepaired) console.log(`Repaired ${flagsRepaired} damaged flag character(s) from the country name.`);
+
 const countByCountry = {};
 const flagByCountry = {};
 const regionByCountry = {};

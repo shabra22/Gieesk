@@ -81,13 +81,14 @@
   <!-- Recipe database JSON export -->
   <link rel="alternate" type="application/json" href="/data/index.json" title="GieesK Recipes Recipe Database" />
   <title>GieesK Recipes — Discover the World's Recipes</title>
-  <link rel="icon" type="image/png" href="assets/gieeskrecipes-logo.svg" />
+  <link rel="icon" type="image/svg+xml" href="assets/gieeskrecipes-logo.svg" />
+  <link rel="apple-touch-icon" href="assets/app-mark.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" crossorigin rel="stylesheet" />
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@2.47.0/tabler-icons.min.css" />
   <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js" defer></script>
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.117.3" defer></script>
   <script>
     /* Preload the first backdrop photo on the website only (not in the app). */
     (function () {
@@ -118,11 +119,11 @@
     })();
   </script>
   <link rel="stylesheet" href="css/variables.css?v=20261016" />
-  <link rel="stylesheet" href="css/base.css?v=20261019" />
+  <link rel="stylesheet" href="css/base.css?v=20261020" />
   <link rel="stylesheet" href="css/nav.css?v=20260924" />
   <link rel="stylesheet" href="css/hero.css?v=20261017" />
   <link rel="stylesheet" href="css/sections.css?v=20260924" />
-  <link rel="stylesheet" href="css/cards.css?v=20260924" />
+  <link rel="stylesheet" href="css/cards.css?v=20261020" />
   <link rel="stylesheet" href="css/search.css?v=20260924" />
   <link rel="stylesheet" href="css/ai.css?v=20260924" />
   <link rel="stylesheet" href="css/modal.css?v=20260924" />
@@ -404,7 +405,7 @@
           <button class="user-drop-item" onclick="closeUserDropdown();openDashboard('shopping')"><i class="ti ti-shopping-cart"></i> Shopping List</button>
           <div class="user-drop-divider"></div>
           <a class="user-drop-item" href="upgrade.html"><i class="ti ti-crown"></i> Gieesk Pro</a>
-          <a class="user-drop-item" href="verify.html"><i class="ti ti-rosette-discount-check"></i> Get verified</a>
+          <a class="user-drop-item" href="verify.html"><i class="ti ti-discount-check"></i> Get verified</a>
           <div class="user-drop-divider"></div>
           <button class="user-drop-item danger" onclick="signOut()"><i class="ti ti-logout"></i> Sign Out</button>
         </div>
@@ -512,7 +513,7 @@
               <button class="ai-chip" data-prompt="What can I cook with chicken, lemon, and rice?">🍋 Chicken, lemon & rice</button>
               <button class="ai-chip" data-prompt="Give me a healthy keto dinner under 500 calories">💪 Keto dinner ideas</button>
               <button class="ai-chip" data-prompt="Quick vegan breakfast ideas for busy mornings">🌱 Quick vegan breakfast</button>
-              <button class="ai-chip" data-prompt="Show me traditional Kenyan recipes">🇰🇪 Kenyan recipes</button>
+              <button class="ai-chip" data-prompt="Show me traditional Kenyan recipes"><img class="gk-flag gk-flag-inline" src="/assets/flags/ke.svg" alt="" width="20" height="15"> Kenyan recipes</button>
             </div>
           </div>
           <div class="ai-right">
@@ -636,7 +637,7 @@
     <!-- Hero -->
     <div class="about-hero">
       <div class="container">
-        <img src="assets/logo-transparent.png" alt="GieesK Recipes" class="about-logo" />
+        <img src="assets/logo-transparent-600.webp" alt="GieesK Recipes" class="about-logo" width="600" height="195" />
         <div class="about-hero-tagline">Technology · Innovation · Impact</div>
         <h1 class="about-hero-title" style="margin-top:1.25rem">
           Shaping <em>What's Next</em>
@@ -1166,7 +1167,7 @@
       <div class="footer-grid">
         <div class="footer-brand">
           <div class="footer-logo">
-            <img src="assets/logo-transparent.png" alt="GieesK Recipes" class="footer-logo-img" />
+            <img src="assets/logo-transparent-600.webp" alt="GieesK Recipes" class="footer-logo-img" width="600" height="195" loading="lazy" />
           </div>
           <p class="footer-tagline">The world's most advanced recipe discovery platform. Powered by AI, crafted with love.</p>
           <!-- Social icons removed: every one linked to "#". Restore with the real profile URLs.
@@ -1225,6 +1226,7 @@
   <!-- Shared // header + (ETH091) cross-reference rules, used by modal.js
        and by build-recipe-pages.js at build time. Must load before modal.js. -->
   <script src="js/recipe-text.js?v=20260924" defer></script>
+  <script src="js/format.js?v=20261020" defer></script>
   <script src="js/data-loader.js?v=20261019" defer></script>
   <script src="js/site-data.js?v=20260924" defer></script>
   <script src="js/hero-photos.js?v=20261013" defer></script>
@@ -1232,21 +1234,21 @@
   <script src="js/hero-fx.js?v=20260924" defer></script>
   <script src="js/hero-audio.js?v=20260924" defer></script>
   <script src="js/hero3d.js?v=20261014" defer></script>
-  <script src="js/render.js?v=20261016" defer></script>
+  <script src="js/render.js?v=20261020" defer></script>
   <script src="js/search.js?v=20261016" defer></script>
   <script src="js/ai.js?v=20260924" defer></script>
-  <script src="js/auth-ui.js?v=20261016" defer></script>
-  <script src="js/modal.js?v=20261016" defer></script>
+  <script src="js/auth-ui.js?v=20261020" defer></script>
+  <script src="js/modal.js?v=20261020" defer></script>
   <script src="js/nav.js?v=20260924" defer></script>
   <script src="js/video-review.js?v=20260924" defer></script>
   <script src="js/moderation.js?v=20261018" defer></script>
   <script src="js/community.js?v=20261019" defer></script>
   <script src="js/recipe-video.js?v=20261018" defer></script>
   <script src="js/discover.js?v=20260924" defer></script>
-  <script src="js/dashboard.js?v=20261019" defer></script>
+  <script src="js/dashboard.js?v=20261020" defer></script>
   <script src="js/app-visual-fx.js?v=20260924" defer></script>
   <script src="js/cookies.js?v=20261016" defer></script>
-  <script src="js/app.js?v=20261016" defer></script>
+  <script src="js/app.js?v=20261020" defer></script>
   <script src="js/app-shell.js?v=20261016" defer></script>
   <script src="js/app-invite.js?v=20260924" defer></script>
   <script src="js/deep-links.js?v=20260924" defer></script>
@@ -1267,9 +1269,9 @@
     transition:transform 0.4s cubic-bezier(0.16,1,0.3,1);
     padding:0;
   ">
-    <div style="max-width:1200px;margin:0 auto;padding:20px 24px;display:flex;align-items:center;gap:1.5rem;flex-wrap:wrap">
+    <div class="gk-cookie-inner" style="max-width:1200px;margin:0 auto;padding:20px 24px;display:flex;align-items:center;gap:1.5rem;flex-wrap:wrap">
       <!-- Icon + text -->
-      <div style="display:flex;align-items:flex-start;gap:14px;flex:1;min-width:280px">
+      <div class="gk-cookie-text" style="display:flex;align-items:flex-start;gap:14px;flex:1;min-width:280px">
         <span style="font-size:1.8rem;flex-shrink:0;margin-top:2px">🍪</span>
         <div>
           <div style="font-size:14px;font-weight:700;color:var(--text-primary);margin-bottom:4px">We use cookies</div>
@@ -1280,7 +1282,7 @@
         </div>
       </div>
       <!-- Buttons -->
-      <div style="display:flex;gap:10px;flex-wrap:wrap;flex-shrink:0">
+      <div class="gk-cookie-actions" style="display:flex;gap:10px;flex-wrap:wrap;flex-shrink:0">
         <button onclick="rejectCookies()" style="
           padding:9px 18px;border-radius:var(--r-full);font-size:13px;font-weight:500;
           border:1px solid var(--border-subtle);background:var(--bg-elevated);

@@ -10,6 +10,14 @@
 // Flip this to true only once ratings come from real users.
 var GK_SHOW_RATINGS = false;
 
+// Display helpers (js/format.js loads first; these fall back to plain text if it is missing).
+function fmtMin(m) {
+  return (window.gkFmt && gkFmt.minutes(m)) || (m > 0 ? m + 'm' : '');
+}
+function fmtFlag(recipe, opts) {
+  return window.gkFmt ? gkFmt.flag(recipe.countryFlag, recipe.country || recipe.cuisine, opts) : (recipe.countryFlag || '');
+}
+
 function formatNum(n) {
   if (n >= 1000000) return (n/1000000).toFixed(1) + 'M';
   if (n >= 1000)    return (n/1000).toFixed(1) + 'k';
@@ -70,8 +78,9 @@ function createRecipeCard(recipe, delay) {
       '</div>' +
       '<div class="recipe-card-body">' +
         '<div class="recipe-card-meta">' +
-          '<span class="recipe-meta-item"><i class="ti ti-clock"></i>' + recipe.time + 'm</span>' +
-          '<span class="recipe-meta-item"><i class="ti ti-flame"></i>' + recipe.cal + ' cal</span>' +
+          // A recipe with no time or calories on file shows neither, not "0m" / "0 cal".
+          (recipe.time > 0 ? '<span class="recipe-meta-item"><i class="ti ti-clock"></i>' + fmtMin(recipe.time) + '</span>' : '') +
+          (recipe.cal > 0 ? '<span class="recipe-meta-item"><i class="ti ti-flame"></i>' + recipe.cal + ' cal</span>' : '') +
           '<span class="badge badge-' + diffColor(recipe.diff) + '">' + recipe.diff + '</span>' +
         '</div>' +
         '<h3 class="recipe-card-title">' + escTitle + '</h3>' +
@@ -127,11 +136,26 @@ function createRecipeCard(recipe, delay) {
   return card;
 }
 
+// Takes the first `n` recipes from an already-ranked list, but no more than
+// `perCountry` from any one country, so the home page reads as a world menu
+// rather than whichever cuisine has the most high-scoring entries. If the
+// cap leaves the list short, it is topped up from the ranked order.
+function pickVaried(ranked, n, perCountry) {
+  var seen = {}, out = [], rest = [];
+  ranked.forEach(function(r) {
+    var c = r.country || r.cuisine || '';
+    seen[c] = (seen[c] || 0);
+    if (out.length < n && seen[c] < perCountry) { out.push(r); seen[c]++; }
+    else rest.push(r);
+  });
+  return out.concat(rest.slice(0, Math.max(0, n - out.length)));
+}
+
 // ── Trending ─────────────────────────────
 function renderTrending() {
   var grid = document.getElementById('trendingGrid');
   if (!grid) return;
-  var top = RECIPES.slice().sort(function(a,b){ return b.rating - a.rating; }).slice(0,6);
+  var top = pickVaried(RECIPES.slice().sort(function(a,b){ return b.rating - a.rating; }), 8, 2);
   top.forEach(function(r, i) { grid.appendChild(createRecipeCard(r, i * 80)); });
 }
 
@@ -139,24 +163,29 @@ function renderTrending() {
 function renderSeasonal() {
   var grid = document.getElementById('seasonalGrid');
   if (!grid) return;
-  var seasonal = RECIPES.slice().sort(function(a,b){ return b.reviews - a.reviews; }).slice(0,4);
+  var seasonal = pickVaried(RECIPES.slice().sort(function(a,b){ return b.reviews - a.reviews; }), 5, 2);
   seasonal.forEach(function(r, i) { grid.appendChild(createRecipeCard(r, i * 80)); });
 }
 
 // ── Cuisines ─────────────────────────────
+function cuisineFlag(c, cls) {
+  return window.gkFmt ? gkFmt.flag(c.flag, c.country, { cls: cls }) : (c.flag || '');
+}
 function renderCuisines() {
   var grid = document.getElementById('cuisineGrid');
   if (!grid) return;
-  CUISINES.forEach(function(c, i) {
+  // A cuisine with no recipes yet stays out of the grid; it appears on its own
+  // as soon as its first recipe is added (build-data.js keeps the entry).
+  CUISINES.filter(function(c) { return c.count > 0; }).forEach(function(c, i) {
     var card = document.createElement('div');
     card.className = 'cuisine-card';
     card.style.animationDelay = (i * 60) + 'ms';
     var bgColor = c.color || '#1A1A18';
     card.style.background = 'linear-gradient(145deg, ' + bgColor + '33, ' + bgColor + '11)';
     card.innerHTML =
-      '<div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:6.5rem;opacity:0.55;filter:saturate(1.3)">' + c.flag + '</div>' +
+      '<div class="cuisine-flag-bg" aria-hidden="true">' + cuisineFlag(c, 'cuisine-flag-bg-img') + '</div>' +
       '<div class="cuisine-card-overlay">' +
-        '<div class="cuisine-flag">' + c.flag + '</div>' +
+        '<div class="cuisine-flag">' + cuisineFlag(c, 'cuisine-flag-img') + '</div>' +
         '<div class="cuisine-name">' + c.name + '</div>' +
         '<div class="cuisine-count">' + formatNum(c.count) + ' recipe' + (c.count === 1 ? '' : 's') + '</div>' +
       '</div>';

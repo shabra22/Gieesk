@@ -168,7 +168,7 @@ function buildRecipesPage() {
     const pill = document.createElement('button');
     pill.className = 'filter-chip';
     pill.id = `pill-${country.replace(/\s/g,'-')}`;
-    pill.innerHTML = `${d.flag} ${country} <span style="opacity:.92;font-size:11px">(${d.recipes.length})</span>`;
+    pill.innerHTML = `${window.gkFmt ? gkFmt.flag(d.flag, country, {cls:'gk-flag-inline'}) : d.flag} ${country} <span style="opacity:.92;font-size:11px">(${d.recipes.length})</span>`;
     pill.onclick = () => {
       document.querySelectorAll('.country-section').forEach(s => {
         s.style.display = s.dataset.country === country ? '' : 'none';
@@ -233,7 +233,7 @@ function buildRecipesPage() {
     section.style.marginBottom = '3rem';
     section.innerHTML = `
       <div style="display:flex;align-items:center;gap:12px;margin-bottom:1.25rem;padding-bottom:1rem;border-bottom:1px solid var(--border-dim)">
-        <span style="font-size:2rem">${d.flag}</span>
+        <span class="country-flag-lg">${window.gkFmt ? gkFmt.flag(d.flag, country, {cls:'gk-flag-lg'}) : d.flag}</span>
         <div>
           <h2 style="font-family:var(--font-display);font-size:1.4rem;font-weight:700;color:var(--text-primary)">${country}</h2>
           <p style="font-size:12px;color:var(--text-muted)">${d.recipes.length} recipe${d.recipes.length > 1 ? 's' : ''}</p>
@@ -428,7 +428,7 @@ document.addEventListener('DOMContentLoaded', () => {
               <div class="search-drop-thumb">${r.image ? `<img src="${r.image}" alt="${escapeHTML(r.title)}" data-cover-emoji="${escapeHTML(r.emoji||'')}" data-cover-cuisine="${escapeHTML(r.cuisine||r.country||'')}" loading="lazy" />` : (window.gkCover ? gkCover.html({emoji:r.emoji,title:r.title,cuisine:r.cuisine||r.country,size:'sm'}) : r.emoji)}</div>
               <div>
                 <div class="search-drop-title">${escapeHTML(r.title)}</div>
-                <div class="search-drop-meta">${r.countryFlag||''} ${escapeHTML(r.country||r.cuisine||'')} · ${r.time}min · ${r.cal} cal</div>
+                <div class="search-drop-meta">${fmtFlag(r, {cls:'gk-flag-inline'})} ${escapeHTML(r.country||r.cuisine||'')}${r.time > 0 ? ' · ' + fmtMin(r.time) : ''}${r.cal > 0 ? ' · ' + r.cal + ' cal' : ''}</div>
               </div>
             </div>`).join('')
           : `<div class="search-drop-empty">No recipes found for "<strong>${escapeHTML(q)}</strong>"</div>`;
