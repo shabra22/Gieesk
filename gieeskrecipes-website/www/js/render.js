@@ -65,7 +65,7 @@ function createRecipeCard(recipe, delay) {
 
   var coverOpts = { emoji: recipe.emoji, title: recipe.title, cuisine: recipe.cuisine || recipe.country, size: 'lg' };
   var mediaHTML = recipe.image
-    ? '<img src="' + recipe.image + '" alt="' + escTitle + '" loading="lazy" data-cover-emoji="' + escapeHTML(recipe.emoji || '') + '" data-cover-cuisine="' + escapeHTML(coverOpts.cuisine || '') + '" />'
+    ? '<img src="' + sizedPhoto(recipe.image, 560) + '" alt="' + escTitle + '" loading="lazy" data-cover-emoji="' + escapeHTML(recipe.emoji || '') + '" data-cover-cuisine="' + escapeHTML(coverOpts.cuisine || '') + '" />'
     : (window.gkCover
         ? gkCover.html(coverOpts)
         : '<div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:5rem;background:var(--bg-elevated)">' + recipe.emoji + '</div>');
@@ -169,6 +169,10 @@ function renderSeasonal() {
 
 // ── Cuisines ─────────────────────────────
 var CUISINE_MIN_RECIPES = 5;
+// Smaller copy of a recipe photo for cards (see gkFmt.photo in js/format.js).
+function sizedPhoto(url, w) {
+  return (window.gkFmt && window.gkFmt.photo) ? window.gkFmt.photo(url, w) : url;
+}
 function cuisineFlag(c, cls) {
   return window.gkFmt ? gkFmt.flag(c.flag, c.country, { cls: cls }) : (c.flag || '');
 }

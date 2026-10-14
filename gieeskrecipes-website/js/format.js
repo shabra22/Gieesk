@@ -108,5 +108,19 @@
     return code ? '/assets/flags/' + code + '.svg' : '';
   }
 
-  return { minutes: minutes, flag: flag, flagCode: flagCode, flagEmoji: flagEmoji, flagUrl: flagUrl };
+  /* ── Photo sizes ───────────────────────────────────────────────
+     Recipe photos are stored as 940x650 Pexels URLs. A card shows one at
+     roughly 300px and a search thumbnail at 40px, so sending the full size
+     wastes most of the download. photo(url, w) asks Pexels' image service for
+     a width-w copy with the same proportions. Anything that is not such a URL
+     (uploads, other hosts) is returned unchanged.
+       gkFmt.photo(url, 560)  → …&h=387&w=560 */
+  function photo(url, w) {
+    if (!url || typeof url !== 'string' || url.indexOf('images.pexels.com') === -1) return url;
+    if (!/[?&]w=940\b/.test(url) || !/[?&]h=650\b/.test(url)) return url;
+    var h = Math.round(w * 650 / 940);
+    return url.replace(/([?&])w=940\b/, '$1w=' + w).replace(/([?&])h=650\b/, '$1h=' + h);
+  }
+
+  return { minutes: minutes, flag: flag, flagCode: flagCode, flagEmoji: flagEmoji, flagUrl: flagUrl, photo: photo };
 });

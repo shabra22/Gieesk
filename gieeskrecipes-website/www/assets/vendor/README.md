@@ -11,6 +11,7 @@ replace the file and update the names in `js/motion.js`.
 | ScrollTrigger-3.15.0.min.js | GSAP ScrollTrigger plugin | 3.15.0 | same |
 | SplitText-3.15.0.min.js | GSAP SplitText plugin | 3.15.0 | same |
 | lenis-1.3.26.min.js | Lenis smooth scroll — https://github.com/darkroomengineering/lenis | 1.3.26 | MIT |
+| three-0.128.0.min.js | three.js (the 3D hero) — https://github.com/mrdoob/three.js | r128 (npm 0.128.0) | MIT |
 | tf-4.22.0.min.js | TensorFlow.js — https://github.com/tensorflow/tfjs | 4.22.0 | Apache-2.0 |
 | nsfw/gk-nsfw-model.json + nsfw/gk-nsfw.bin | NSFWJS MobileNetV2 image classifier — https://github.com/infinitered/nsfwjs (model by Gant Laborde) | 4.3.0 | MIT |
 

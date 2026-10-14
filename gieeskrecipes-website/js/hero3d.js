@@ -19,12 +19,6 @@
   var canvas = document.getElementById('heroCanvas');
   if (!canvas || typeof THREE === 'undefined') return;
 
-  // Not in the Android app. The canvas is hidden there (app-native-ui.css),
-  // but the WebGL scene was still created and rendered every frame on
-  // Home: a high-performance GPU context competing with video playback
-  // and draining battery for something nobody could see.
-  if (window.Capacitor && window.Capacitor.isNativePlatform && window.Capacitor.isNativePlatform()) return;
-
   var REDUCED = window.matchMedia &&
     window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
@@ -457,7 +451,7 @@
     H = canvas.clientHeight || window.innerHeight;
     camera.aspect = W/H; camera.updateProjectionMatrix();
     renderer.setSize(W,H);
-    dustMat.uniforms.uPR.value = renderer.getPixelRatio();
+    applyDPR(renderer.getPixelRatio());
   }, {passive:true});
 
   /* ── Cinematic video backdrop (progressive enhancement) ─────── */
@@ -514,9 +508,62 @@
   /* ── Loop ───────────────────────────────────────────────────── */
   var clock = new THREE.Clock(), raf = null, audioAccum = 0, videoAccum = 0;
 
+  /* ── Frame-rate governor ────────────────────────────────────────
+     The scene is tuned for a decent GPU. On a weaker one it would make the
+     whole page feel slow, so it watches its own frame time and steps down:
+       1. render at 1x pixel density and drop the god-rays (a big saving on
+          high-density screens),
+       2. if it is still struggling, stop and fade out, leaving the photo
+          hero (the page is far more useful than the effect).
+     A good machine never leaves step 0, so nothing changes for it. */
+  var gov = { last: 0, n: 0, sum: 0, tier: 0, done: false, off: false };
+  var WARMUP = 40, WINDOW = 90, SLOW1 = 28, SLOW2 = 45;   // frames, frames, ms, ms
+
+  function applyDPR(v) {
+    renderer.setPixelRatio(v);
+    renderer.setSize(W, H);
+    dustMat.uniforms.uPR.value = v;
+    for (var k in fxSystems) {
+      if (fxSystems[k].material && fxSystems[k].material.uniforms.uPR) fxSystems[k].material.uniforms.uPR.value = v;
+    }
+  }
+
+  function govSample() {
+    var now = performance.now();
+    if (gov.last) {
+      var d = now - gov.last;
+      if (d < 250) {                        // ignore tab-switch gaps
+        gov.n++;
+        if (gov.n > WARMUP && !gov.done) {
+          gov.sum += d;
+          if (gov.n === WARMUP + WINDOW) {
+            var avg = gov.sum / WINDOW;
+            gov.n = 0; gov.sum = 0;
+            if (gov.tier === 0 && avg > SLOW1) {
+              gov.tier = 1;
+              if (renderer.getPixelRatio() > 1) applyDPR(1);
+              if (rays) rays.visible = false;
+            } else if (gov.tier === 1 && avg > SLOW2) {
+              gov.tier = 2; gov.off = true;
+              if (raf) { cancelAnimationFrame(raf); raf = null; }
+              canvas.style.transition = 'opacity .6s ease';
+              canvas.style.opacity = '0';
+              document.documentElement.classList.add('gk-3d-off');
+            } else {
+              gov.done = true;              // settled — stop measuring
+            }
+          }
+        }
+      }
+    }
+    gov.last = now;
+  }
+
   function frame() {
     raf = requestAnimationFrame(frame);
-    if (!st.visible) return;
+    if (!st.visible) { gov.last = 0; return; }
+    if (!gov.done) govSample();
+    if (gov.off) return;
 
     var dt = Math.min(clock.getDelta(), 0.05);
     var t  = clock.elapsedTime;
@@ -673,6 +720,6 @@
 
   document.addEventListener('visibilitychange', function(){
     if (document.hidden) { if (raf) { cancelAnimationFrame(raf); raf = null; } }
-    else if (!raf && !REDUCED) { clock.getDelta(); frame(); }
+    else if (!raf && !REDUCED && !gov.off) { clock.getDelta(); gov.last = 0; frame(); }
   });
 })();

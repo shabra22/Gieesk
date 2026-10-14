@@ -87,7 +87,6 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" crossorigin rel="stylesheet" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@2.47.0/tabler-icons.min.css" />
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js" defer></script>
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.117.3" defer></script>
   <script>
     /* Preload the first backdrop photo on the website only (not in the app). */
@@ -1226,16 +1225,49 @@
   <!-- Shared // header + (ETH091) cross-reference rules, used by modal.js
        and by build-recipe-pages.js at build time. Must load before modal.js. -->
   <script src="js/recipe-text.js?v=20260924" defer></script>
-  <script src="js/format.js?v=20261020" defer></script>
+  <script src="js/format.js?v=20261022" defer></script>
   <script src="js/data-loader.js?v=20261019" defer></script>
   <script src="js/site-data.js?v=20260924" defer></script>
   <script src="js/hero-photos.js?v=20261013" defer></script>
   <script src="js/hero-orbit.js?v=20261014" defer></script>
   <script src="js/hero-fx.js?v=20260924" defer></script>
   <script src="js/hero-audio.js?v=20260924" defer></script>
-  <script src="js/hero3d.js?v=20261014" defer></script>
-  <script src="js/render.js?v=20261021" defer></script>
-  <script src="js/search.js?v=20261016" defer></script>
+  <script>
+    /* The 3D hero (three.js, ~600 KB, plus js/hero3d.js) is the heaviest thing
+       on the page. It used to load before the page could become interactive;
+       now it starts once the page has painted and the browser is idle, so the
+       recipes, search and menu are usable first. It is skipped where it cannot
+       run well: the app (its hero is hidden there), Data Saver, a slow
+       connection, or a very low-powered device. hero3d.js already does nothing
+       when three.js is absent, and the photo hero shows instead. */
+    (function () {
+      var cap = window.Capacitor;
+      if (cap && cap.isNativePlatform && cap.isNativePlatform()) return;
+      var c = navigator.connection || {};
+      if (c.saveData || /(^|-)2g$/.test(c.effectiveType || '')) return;
+      if ((navigator.hardwareConcurrency || 4) <= 2) return;
+      if (navigator.deviceMemory && navigator.deviceMemory < 2) return;
+      function add(src, done) {
+        var s = document.createElement('script');
+        s.src = src; s.async = false;
+        s.onload = done;
+        document.head.appendChild(s);
+      }
+      function start() {
+        add('assets/vendor/three-0.128.0.min.js', function () {
+          add('js/hero3d.js?v=20261022');
+        });
+      }
+      function idle() {
+        if (window.requestIdleCallback) requestIdleCallback(start, { timeout: 2500 });
+        else setTimeout(start, 1200);
+      }
+      if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', function () { setTimeout(idle, 250); });
+      else setTimeout(idle, 250);
+    })();
+  </script>
+  <script src="js/render.js?v=20261022" defer></script>
+  <script src="js/search.js?v=20261022" defer></script>
   <script src="js/ai.js?v=20260924" defer></script>
   <script src="js/auth-ui.js?v=20261020" defer></script>
   <script src="js/modal.js?v=20261020" defer></script>
@@ -1248,7 +1280,7 @@
   <script src="js/dashboard.js?v=20261020" defer></script>
   <script src="js/app-visual-fx.js?v=20260924" defer></script>
   <script src="js/cookies.js?v=20261016" defer></script>
-  <script src="js/app.js?v=20261020" defer></script>
+  <script src="js/app.js?v=20261022" defer></script>
   <script src="js/app-shell.js?v=20261016" defer></script>
   <script src="js/app-invite.js?v=20260924" defer></script>
   <script src="js/deep-links.js?v=20260924" defer></script>
