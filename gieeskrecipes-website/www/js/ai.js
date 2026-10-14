@@ -67,6 +67,17 @@ async function fetchAIChefReply(message) {
   ]).finally(function () { clearTimeout(timeout); });
   var data = res.data, error = res.error;
 
+  // A refusal from the function (daily limit, not a subscriber, not signed
+  // in) arrives as a generic "non-2xx" error; the useful sentence is in
+  // the response body.
+  if (error && error.context && typeof error.context.json === 'function') {
+    try {
+      var body = await error.context.json();
+      if (body && body.error) throw new Error(body.error);
+    } catch (parsed) {
+      if (parsed && parsed.message && !/JSON|Unexpected|body/i.test(parsed.message)) throw parsed;
+    }
+  }
   if (error) throw error;
   if (data && data.error) throw new Error(data.error);
   return data.reply;
@@ -156,6 +167,7 @@ async function sendAIMessage(prompt) {
       console.error('[GieesK] AI Chef error:', err);
       removeTyping();
       var text = String((err && err.message) || '');
+      if (/today.s AI Chef limit/i.test(text)) { appendMessage(text, 'bot'); return; }
       if (/sign in/i.test(text)) { aiChefLockMessage('signin'); return; }
       if (/pro|subscription/i.test(text)) { aiChefLockMessage('upgrade'); return; }
       appendMessage("Sorry, the chef is having trouble responding right now. Please try again in a moment.", 'bot');
