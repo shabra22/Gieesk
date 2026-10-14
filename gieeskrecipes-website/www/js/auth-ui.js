@@ -50,17 +50,17 @@ function buildLoginHTML() {
 
     <div class="auth-form" id="loginForm">
       <div class="auth-field">
-        <label class="auth-label">Email address</label>
+        <label class="auth-label" for="loginEmail">Email address</label>
         <input class="auth-input" type="email" id="loginEmail" placeholder="you@example.com" autocomplete="email" />
       </div>
       <div class="auth-field">
-        <label class="auth-label" style="display:flex;justify-content:space-between">
+        <label class="auth-label" for="loginPassword" style="display:flex;justify-content:space-between">
           Password
           <a href="#" class="auth-link" id="forgotPasswordLink">Forgot password?</a>
         </label>
         <div class="auth-input-wrap">
           <input class="auth-input" type="password" id="loginPassword" placeholder="Enter your password" autocomplete="current-password" />
-          <button class="auth-eye" id="toggleLoginPwd" type="button"><i class="ti ti-eye"></i></button>
+          <button class="auth-eye" id="toggleLoginPwd" type="button" aria-label="Show or hide password"><i class="ti ti-eye"></i></button>
         </div>
       </div>
       <button class="btn-gold auth-submit" id="btnEmailLogin">
@@ -99,18 +99,18 @@ function buildSignupHTML() {
 
     <div class="auth-form" id="signupForm">
       <div class="auth-field">
-        <label class="auth-label">Full name</label>
+        <label class="auth-label" for="signupName">Full name</label>
         <input class="auth-input" type="text" id="signupName" placeholder="Your name" autocomplete="name" />
       </div>
       <div class="auth-field">
-        <label class="auth-label">Email address</label>
+        <label class="auth-label" for="signupEmail">Email address</label>
         <input class="auth-input" type="email" id="signupEmail" placeholder="you@example.com" autocomplete="email" />
       </div>
       <div class="auth-field">
-        <label class="auth-label">Password</label>
+        <label class="auth-label" for="signupPassword">Password</label>
         <div class="auth-input-wrap">
           <input class="auth-input" type="password" id="signupPassword" placeholder="At least 8 characters" autocomplete="new-password" />
-          <button class="auth-eye" id="toggleSignupPwd" type="button"><i class="ti ti-eye"></i></button>
+          <button class="auth-eye" id="toggleSignupPwd" type="button" aria-label="Show or hide password"><i class="ti ti-eye"></i></button>
         </div>
         <div class="auth-strength" id="pwdStrength" style="display:none">
           <div class="strength-bar"><div class="strength-fill" id="strengthFill"></div></div>
@@ -118,7 +118,7 @@ function buildSignupHTML() {
         </div>
       </div>
       <div class="auth-terms">
-        By signing up you agree to our <a href="#" class="auth-link">Terms of Service</a> and <a href="#" class="auth-link">Privacy Policy</a>.
+        By signing up (with email, Google or Apple) you agree to our <a href="https://gieesk.com/terms.html" class="auth-link" target="_blank" rel="noopener">Terms of Service</a> and <a href="https://gieesk.com/privacy.html" class="auth-link" target="_blank" rel="noopener">Privacy Policy</a>. You must be at least 13.
       </div>
       <button class="btn-gold auth-submit" id="btnEmailSignup">
         <span class="btn-label">Create Account</span>
@@ -141,7 +141,7 @@ function buildForgotHTML() {
     <div id="authSuccess" class="auth-success" style="display:none"></div>
     <div class="auth-form">
       <div class="auth-field">
-        <label class="auth-label">Email address</label>
+        <label class="auth-label" for="resetEmail">Email address</label>
         <input class="auth-input" type="email" id="resetEmail" placeholder="you@example.com" />
       </div>
       <button class="btn-gold auth-submit" id="btnReset">

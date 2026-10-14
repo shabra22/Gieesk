@@ -2,6 +2,14 @@
    GIEESKRECIPES — DOM Renderers
 ═══════════════════════════════════════════ */
 
+// ── Ratings ───────────────────────────────
+// Every recipe in data.js carries a rating and a review count, but they are
+// stored numbers — nobody rated anything. Showing them as star ratings
+// (and as schema.org aggregateRating, which search engines treat as a
+// claim of real reviews) is a fake-review problem, so they stay hidden.
+// Flip this to true only once ratings come from real users.
+var GK_SHOW_RATINGS = false;
+
 function formatNum(n) {
   if (n >= 1000000) return (n/1000000).toFixed(1) + 'M';
   if (n >= 1000)    return (n/1000).toFixed(1) + 'k';
@@ -70,7 +78,7 @@ function createRecipeCard(recipe, delay) {
         '<div class="recipe-card-author">' +
           '<div class="author-avatar">' + (recipe.authorEmoji || '👨‍🍳') + '</div>' +
           '<span class="author-name">' + escAuthor + '</span>' +
-          '<span class="recipe-rating"><i class="ti ti-star-filled" style="font-size:12px"></i> ' + recipe.rating + '</span>' +
+          (GK_SHOW_RATINGS && recipe.rating ? '<span class="recipe-rating"><i class="ti ti-star-filled" style="font-size:12px"></i> ' + recipe.rating + '</span>' : '') +
         '</div>' +
       '</div>' +
     '</a>' +
@@ -239,7 +247,7 @@ function renderChefs() {
       '<div class="chef-stats">' +
         '<div><div class="chef-stat-num">' + getChefRecipeCount(chef.name) + '</div><div class="chef-stat-label">Recipes</div></div>' +
         '<div><div class="chef-stat-num" data-follower-count="' + chef.name.replace(/"/g,'&quot;') + '">–</div><div class="chef-stat-label">Followers</div></div>' +
-        '<div><div class="chef-stat-num">' + chef.rating + '</div><div class="chef-stat-label">Rating</div></div>' +
+        (GK_SHOW_RATINGS ? '<div><div class="chef-stat-num">' + chef.rating + '</div><div class="chef-stat-label">Rating</div></div>' : '') +
       '</div>' +
       '<div style="font-size:11px;color:var(--text-muted);margin-bottom:10px">' + chef.specialty + '</div>';
     card.addEventListener('click', function(e) {

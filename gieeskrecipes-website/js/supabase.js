@@ -26,7 +26,10 @@ function getSupabase() {
       detectSessionInUrl: true,  // automatically picks up token from URL hash
       persistSession: true,       // keeps user logged in across page refreshes
       autoRefreshToken: true,     // refreshes token before it expires
-    }
+    },
+    // Every request gets a time limit (js/resilience.js) so a bad
+    // connection ends in an error message, not an endless spinner.
+    global: window.gkNet && window.gkNet.supabaseFetch ? { fetch: window.gkNet.supabaseFetch } : {},
   });
   return _supabase;
 }

@@ -23,6 +23,12 @@
   var cache   = new Map();
   var inflight= new Map();
 
+  // A time limit on both requests (js/resilience.js), so a stalled
+  // connection becomes the existing retry / summary fallback, not a hang.
+  function netFetch(url, init, ms) {
+    return (window.gkNet && window.gkNet.fetch) ? window.gkNet.fetch(url, init, ms) : fetch(url, init);
+  }
+
   window.RECIPES = [];
 
   var resolveReady, rejectReady;
@@ -32,7 +38,7 @@
   // Retries once after a short delay — covers a transient network blip
   // or a deploy that was still propagating when the request landed.
   function fetchIndex(attempt) {
-    return fetch(INDEX_URL, { cache: 'default' }).then(function (r) {
+    return netFetch(INDEX_URL, { cache: 'default' }, 15000).then(function (r) {
       if (!r.ok) {
         var err = new Error('Fetched ' + INDEX_URL + ' → HTTP ' + r.status);
         err.status = r.status;
@@ -89,7 +95,7 @@
     if (cache.has(id))    return Promise.resolve(cache.get(id));
     if (inflight.has(id)) return inflight.get(id);      // dedupe concurrent calls
 
-    var p = fetch(DETAIL_URL + encodeURIComponent(id) + '.json', { cache: 'default' })
+    var p = netFetch(DETAIL_URL + encodeURIComponent(id) + '.json', { cache: 'default' }, 15000)
       .then(function (r) {
         if (!r.ok) throw new Error('recipe ' + id + ' → ' + r.status);
         return r.json();

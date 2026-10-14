@@ -101,10 +101,25 @@
   </script>
   <script src="js/theme.js?v=20261013"></script>
   <script src="js/cover.js?v=20261015"></script>
-  <link rel="stylesheet" href="css/variables.css?v=20260924" />
-  <link rel="stylesheet" href="css/base.css?v=20260924" />
+  <script>
+    /* Motion (js/motion.js) is website-only and off for reduced-motion.
+       This marks the page early so the hero can hold its text for the
+       entrance — and lets go after 3.5 s whatever happens. */
+    (function () {
+      try {
+        var d = document.documentElement;
+        var app = window.Capacitor && window.Capacitor.isNativePlatform && window.Capacitor.isNativePlatform();
+        var calm = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        if (app || calm) return;
+        d.classList.add('gk-motion');
+        setTimeout(function () { d.classList.add('gk-motion-timeout'); }, 3500);
+      } catch (e) {}
+    })();
+  </script>
+  <link rel="stylesheet" href="css/variables.css?v=20261016" />
+  <link rel="stylesheet" href="css/base.css?v=20261018" />
   <link rel="stylesheet" href="css/nav.css?v=20260924" />
-  <link rel="stylesheet" href="css/hero.css?v=20261014" />
+  <link rel="stylesheet" href="css/hero.css?v=20261017" />
   <link rel="stylesheet" href="css/sections.css?v=20260924" />
   <link rel="stylesheet" href="css/cards.css?v=20260924" />
   <link rel="stylesheet" href="css/search.css?v=20260924" />
@@ -115,13 +130,15 @@
   <link rel="stylesheet" href="css/dashboard.css?v=20260924" />
   <link rel="stylesheet" href="css/app-tab-bar.css?v=20260924" />
   <link rel="stylesheet" href="css/app-native-ui.css?v=20260924" />
-  <link rel="stylesheet" href="css/community.css?v=20260924" />
+  <link rel="stylesheet" href="css/community.css?v=20261016" />
   <link rel="stylesheet" href="css/about.css?v=20260924" />
   <link rel="stylesheet" href="css/legal.css?v=20260924" />
   <link rel="stylesheet" href="css/settings.css?v=20261013" />
   <link rel="stylesheet" href="css/access-gate.css?v=20261014" />
   <link rel="stylesheet" href="css/cover.css?v=20261015" />
-  <link rel="stylesheet" href="css/theme-light.css?v=20261013" />
+  <link rel="stylesheet" href="css/a11y.css?v=20261016" />
+  <link rel="stylesheet" href="css/motion.css?v=20261017" />
+  <link rel="stylesheet" href="css/theme-light.css?v=20261016" />
 </head>
 <body>
   <!-- Cinematic photo backdrop for the website (hidden inside the app).
@@ -428,10 +445,6 @@
           <div class="stat"><span class="stat-num" data-target="1927">0</span><span class="stat-label">Recipes</span></div>
           <div class="stat-divider"></div>
           <div class="stat"><span class="stat-num" data-target="18">0</span><span class="stat-label">Countries</span></div>
-          <div class="stat-divider"></div>
-          <div class="stat"><span class="stat-num" data-target="9">0</span><span class="stat-label">Chefs</span></div>
-          <div class="stat-divider"></div>
-          <div class="stat"><span class="stat-num" data-target="1200000">0</span><span class="stat-label">Cooks</span></div>
         </div>
       </div>
       <button class="hero-sound-toggle" id="heroSoundToggle" aria-pressed="false" aria-label="Enable ambient sound" title="Ambient sound"><i class="ti ti-volume-3"></i><span>Ambience</span></button>
@@ -511,9 +524,10 @@
                 <div class="ai-msg bot"><div class="msg-bubble">👋 Hello! I'm your personal AI chef. Ask me anything — ingredients you have, dietary goals, cuisine preferences, or meal planning. I'm here to help you cook something amazing.</div></div>
               </div>
               <div class="ai-input-row">
-                <input type="text" id="aiInput" placeholder="Ask the AI Chef…" autocomplete="off" />
-                <button id="aiSend" class="btn-gold"><i class="ti ti-send"></i></button>
+                <input type="text" id="aiInput" placeholder="Ask the AI Chef…" autocomplete="off" aria-label="Ask the AI Chef" />
+                <button id="aiSend" class="btn-gold" aria-label="Send message"><i class="ti ti-send"></i></button>
               </div>
+              <p class="ai-disclaimer">AI Chef can make mistakes. Check ingredients for allergens and follow safe food handling.</p>
             </div>
           </div>
         </div>
@@ -602,14 +616,14 @@
   <!-- MODALS -->
   <div class="modal-backdrop" id="recipeModal">
     <div class="modal-panel" id="modalPanel">
-      <button class="modal-close" id="modalClose"><i class="ti ti-x"></i></button>
+      <button class="modal-close" id="modalClose" aria-label="Close"><i class="ti ti-x"></i></button>
       <div class="modal-content" id="modalContent"></div>
     </div>
   </div>
 
   <div class="modal-backdrop" id="authModal">
     <div class="modal-panel modal-sm" id="authPanel">
-      <button class="modal-close" id="authClose"><i class="ti ti-x"></i></button>
+      <button class="modal-close" id="authClose" aria-label="Close"><i class="ti ti-x"></i></button>
       <div class="auth-content" id="authContent"></div>
     </div>
   </div>
@@ -763,7 +777,7 @@
         <h1 class="legal-hero-title">Privacy Policy</h1>
         <div class="legal-hero-meta">
           <span><i class="ti ti-calendar"></i> Effective: July 1, 2026</span>
-          <span><i class="ti ti-refresh"></i> Last updated: July 2026</span>
+          <span><i class="ti ti-refresh"></i> Last updated: October 2026</span>
           <span><i class="ti ti-world"></i> Applies worldwide</span>
         </div>
         <div style="margin-top:1.5rem;display:flex;gap:10px;flex-wrap:wrap">
@@ -781,7 +795,7 @@
           <a href="#priv-1">1. Information We Collect</a>
           <a href="#priv-2">2. How We Use Your Information</a>
           <a href="#priv-3">3. How We Share Your Information</a>
-          <a href="#priv-4">4. Cookies & Tracking</a>
+          <a href="#priv-4">4. Cookies, Tracking &amp; Third Parties</a>
           <a href="#priv-5">5. Data Security</a>
           <a href="#priv-6">6. Your Rights & Choices</a>
           <a href="#priv-7">7. Data Retention</a>
@@ -818,7 +832,6 @@
             <p class="legal-text"><strong style="color:var(--text-primary)">Information from Third Parties:</strong></p>
             <ul class="legal-list">
               <li>When you sign in with Google or Apple, we receive your name, email address, and profile photo</li>
-              <li>Analytics partners may share aggregated usage insights</li>
             </ul>
           </div>
 
@@ -853,7 +866,7 @@
 
           <div class="legal-section" id="priv-4">
             <div class="legal-section-num">Section 4</div>
-            <div class="legal-section-title">Cookies &amp; Tracking Technologies</div>
+            <div class="legal-section-title">Cookies, Tracking &amp; Third Parties</div>
             <p class="legal-text">We use cookies and similar technologies to:</p>
             <ul class="legal-list">
               <li>Keep you signed in to your account</li>
@@ -862,6 +875,17 @@
               <li>Improve performance and personalisation</li>
             </ul>
             <p class="legal-text">You can control cookies through your browser settings. Disabling certain cookies may affect your ability to use some features of the platform.</p>
+            <p class="legal-text">We do not currently use advertising cookies or third-party analytics trackers on our website. The cookies and browser storage we use are the ones needed to sign you in, keep your session secure and remember your settings (for example your theme and cookie choices). If we ever add optional analytics, it will stay switched off until you turn it on, and we will update this policy first.</p>
+            <p class="legal-text"><strong style="color:var(--text-primary)">Third-party services our pages load.</strong> Some parts of the site are served by other companies, so your browser contacts them directly and they receive your IP address and basic browser details:</p>
+            <ul class="legal-list">
+              <li><strong style="color:var(--text-primary)">Google Fonts</strong> (fonts.googleapis.com, fonts.gstatic.com) — the typefaces used on the site</li>
+              <li><strong style="color:var(--text-primary)">jsDelivr and cdnjs</strong> — open-source code libraries and the icon set</li>
+              <li><strong style="color:var(--text-primary)">Pexels</strong> (images.pexels.com, videos.pexels.com) — photographs and video clips shown on the site, used under the Pexels licence</li>
+              <li><strong style="color:var(--text-primary)">Supabase</strong> — our database, sign-in and file storage</li>
+              <li><strong style="color:var(--text-primary)">Google and Apple</strong> — only if you choose to sign in with them</li>
+              <li><strong style="color:var(--text-primary)">Google Play</strong> — in the Android app, subscriptions are billed and managed by Google Play</li>
+            </ul>
+            <p class="legal-text">Each of these companies has its own privacy policy that governs what it does with the data it receives.</p>
           </div>
 
           <div class="legal-section" id="priv-5">
@@ -890,6 +914,7 @@
               <li><strong style="color:var(--text-primary)">Restriction:</strong> Request that we limit how we use your data in certain circumstances</li>
             </ul>
             <p class="legal-text">To exercise any of these rights, please contact us at privacy@gieesk.com.</p>
+            <p class="legal-text">We honour these requests wherever you live. Depending on your location, the law may give you additional rights — for example under the EU and UK GDPR, Kenya's Data Protection Act 2019, or California privacy law. You can also complain to your local data protection authority (in Kenya, the Office of the Data Protection Commissioner). We do not sell your personal information, and we do not share it for cross-context behavioural advertising.</p>
           </div>
 
           <div class="legal-section" id="priv-7">
@@ -924,7 +949,7 @@
               <h4>GieesK Recipes Privacy Team</h4>
               <div class="legal-contact-row"><i class="ti ti-mail"></i> privacy@gieesk.com</div>
               <div class="legal-contact-row"><i class="ti ti-world"></i> gieesk.com</div>
-              <div class="legal-contact-row"><i class="ti ti-building"></i> GieesK Recipes Inc.</div>
+              <div class="legal-contact-row"><i class="ti ti-building"></i> GieesK Recipes</div>
             </div>
           </div>
 
@@ -941,7 +966,7 @@
         <h1 class="legal-hero-title">Terms &amp; Conditions</h1>
         <div class="legal-hero-meta">
           <span><i class="ti ti-calendar"></i> Effective: July 1, 2026</span>
-          <span><i class="ti ti-refresh"></i> Last updated: July 2026</span>
+          <span><i class="ti ti-refresh"></i> Last updated: October 2026</span>
           <span><i class="ti ti-world"></i> Applies worldwide</span>
         </div>
         <div style="margin-top:1.5rem;display:flex;gap:10px;flex-wrap:wrap">
@@ -961,7 +986,7 @@
           <a href="#terms-3">3. Account Registration</a>
           <a href="#terms-4">4. User Content</a>
           <a href="#terms-5">5. Intellectual Property</a>
-          <a href="#terms-6">6. Premium Subscriptions</a>
+          <a href="#terms-6">6. Premium Subscriptions &amp; Refunds</a>
           <a href="#terms-7">7. Prohibited Conduct</a>
           <a href="#terms-8">8. Disclaimer of Warranties</a>
           <a href="#terms-9">9. Limitation of Liability</a>
@@ -979,7 +1004,7 @@
           <div class="legal-section" id="terms-1">
             <div class="legal-section-num">Section 1</div>
             <div class="legal-section-title">Acceptance of Terms</div>
-            <p class="legal-text">By creating an account or using any part of the GieesK Recipes platform — including browsing recipes, using the AI Chef, participating in the community, or accessing any features — you agree to these Terms and Conditions and our Privacy Policy. These terms form a legally binding agreement between you and GieesK Recipes Inc.</p>
+            <p class="legal-text">By creating an account or using any part of the GieesK Recipes platform — including browsing recipes, using the AI Chef, participating in the community, or accessing any features — you agree to these Terms and Conditions and our Privacy Policy. These terms form a legally binding agreement between you and GieesK Recipes</p>
             <p class="legal-text">If you are using GieesK Recipes on behalf of an organisation, you represent that you have the authority to bind that organisation to these terms.</p>
           </div>
 
@@ -1022,25 +1047,47 @@
               <li>Confirm that your content complies with our Community Guidelines</li>
             </ul>
             <p class="legal-text">We reserve the right to remove any content that violates these terms, our Community Guidelines, or applicable law, without prior notice.</p>
+            <p class="legal-text"><strong style="color:var(--text-primary)">What you may not upload.</strong> GieesK Recipes is a cooking community. You must not upload, post, or link to any photo, video, profile picture, or text that contains:</p>
+            <ul class="legal-list">
+              <li>Nudity, pornography, or sexually explicit or sexually suggestive material of any kind</li>
+              <li>Any sexual or exploitative material involving a child, or anything that sexualises a minor. We report this to the authorities.</li>
+              <li>Graphic violence, gore, self-harm, cruelty to animals (other than ordinary food preparation), or dangerous acts</li>
+              <li>Hate speech, harassment, threats, or content that targets a person or group</li>
+              <li>Illegal activity, or offers to sell illegal goods, drugs, or weapons</li>
+              <li>Another person’s private images or personal information shared without their permission</li>
+              <li>Spam, scams, or content that has nothing to do with food and cooking</li>
+            </ul>
+            <p class="legal-text"><strong style="color:var(--text-primary)">How this is enforced.</strong> Photos, profile pictures, and videos are checked on your own device before they are uploaded, and files that appear to contain nudity or sexual content are blocked. That check happens on your device; the picture is not sent to us or to anyone else for it. No automatic check is perfect, so you can also report any recipe, video, or comment with the Report button, or by emailing legal@gieesk.com. We remove content that breaks these rules, and we may suspend or close the account of anyone who uploads it, with or without warning. Content that is illegal may be reported to the police or other authorities.</p>
           </div>
 
           <div class="legal-section" id="terms-5">
             <div class="legal-section-num">Section 5</div>
             <div class="legal-section-title">Intellectual Property</div>
-            <p class="legal-text">All content on the GieesK Recipes platform that is not User Content — including the design, logo, software, AI systems, text, graphics, and features — is owned by GieesK Recipes Inc. and protected by copyright, trademark, and other intellectual property laws.</p>
+            <p class="legal-text">All content on the GieesK Recipes platform that is not User Content — including the design, logo, software, AI systems, text, graphics, and features — is owned by GieesK Recipes and protected by copyright, trademark, and other intellectual property laws.</p>
+            <p class="legal-text"><strong style="color:var(--text-primary)">Third-party material.</strong> Photographs and video clips from Pexels are used under the Pexels licence and remain the property of their creators, who are credited where practical. Recipe photos uploaded by users belong to the users who uploaded them.</p>
+            <p class="legal-text"><strong style="color:var(--text-primary)">Copyright complaints.</strong> If you believe something on GieesK Recipes infringes your copyright, email legal@gieesk.com with: a description of the work, the page or link where you found it on our platform, your name and contact details, a statement that you believe in good faith the use is not authorised, and a statement that your information is accurate and that you are the owner or authorised to act for the owner. We review complaints promptly, remove content where appropriate, and may close the accounts of repeat infringers.</p>
             <p class="legal-text">You may not copy, reproduce, distribute, modify, or create derivative works from any GieesK Recipes content without our express written permission.</p>
           </div>
 
           <div class="legal-section" id="terms-6">
             <div class="legal-section-num">Section 6</div>
-            <div class="legal-section-title">Premium Subscriptions &amp; Payments</div>
+            <div class="legal-section-title">Premium Subscriptions, Payments &amp; Refunds</div>
             <p class="legal-text">GieesK Recipes offers free and paid subscription tiers. For paid plans:</p>
             <ul class="legal-list">
               <li>Subscriptions are billed monthly or annually as selected at purchase</li>
-              <li>Payments are processed securely through our payment provider</li>
+              <li>Payments are processed securely by our payment providers — Google Play for purchases in the Android app</li>
               <li>Subscriptions renew automatically unless cancelled before the renewal date</li>
-              <li>Refunds may be issued at our discretion within 7 days of initial purchase</li>
+              <li>Refunds are covered by the Refund Policy below</li>
               <li>We reserve the right to change pricing with 30 days notice to existing subscribers</li>
+            </ul>
+            <p class="legal-text" id="refund-policy"><strong style="color:var(--text-primary)">Refund Policy.</strong></p>
+            <ul class="legal-list">
+              <li><strong style="color:var(--text-primary)">Cancelling:</strong> you can cancel a subscription at any time. Cancelling stops future renewals; you keep access until the end of the period you have already paid for. For purchases made in the Android app, cancel in Google Play under Payments &amp; subscriptions.</li>
+              <li><strong style="color:var(--text-primary)">Refund window:</strong> if you ask within 7 days of your first purchase of a plan, we will consider a refund. Approval is at our discretion, for example when a feature does not work as described and we cannot fix it.</li>
+              <li><strong style="color:var(--text-primary)">Renewals:</strong> renewal charges are generally not refundable, so please cancel before the renewal date.</li>
+              <li><strong style="color:var(--text-primary)">Google Play purchases:</strong> Google processes these payments and may also refund them under its own policies. If Google refunds you, we will follow that decision.</li>
+              <li><strong style="color:var(--text-primary)">Your legal rights:</strong> nothing in this policy limits any refund or cooling-off right you have under the consumer law where you live.</li>
+              <li><strong style="color:var(--text-primary)">How to ask:</strong> contact us using the details in Section 13 and include the email on your account and the date of purchase.</li>
             </ul>
           </div>
 
@@ -1066,6 +1113,7 @@
             <div class="legal-section-title">Disclaimer of Warranties</div>
             <p class="legal-text">GieesK Recipes is provided "as is" and "as available" without warranties of any kind, express or implied. We do not warrant that the platform will be uninterrupted, error-free, or free of harmful components.</p>
             <p class="legal-text">Recipe content on GieesK Recipes is provided for informational purposes only. We are not responsible for the outcome of recipes, dietary suitability, or any health effects. Always consult a qualified professional for dietary, medical, or nutritional advice.</p>
+            <p class="legal-text">Calories and nutrition values are estimates and can vary with ingredients and portion sizes. Health information is general and is not medical advice. AI Chef answers are generated by an AI system and may be wrong or incomplete — always check ingredients for allergens and follow safe food-handling practice.</p>
           </div>
 
           <div class="legal-section" id="terms-9">
@@ -1085,7 +1133,7 @@
           <div class="legal-section" id="terms-11">
             <div class="legal-section-num">Section 11</div>
             <div class="legal-section-title">Governing Law</div>
-            <p class="legal-text">These Terms and Conditions are governed by and construed in accordance with applicable international law. Any disputes arising from these terms shall be resolved through good-faith negotiation, and if necessary, through binding arbitration or courts of competent jurisdiction.</p>
+            <p class="legal-text">These Terms and Conditions are governed by the laws of the Republic of Kenya, without regard to its conflict-of-law rules. Any dispute arising from these terms will first be addressed through good-faith negotiation and, if it is not resolved, may be brought in the courts of Kenya. Nothing in this section limits mandatory consumer-protection rights you have under the law of the country where you live.</p>
           </div>
 
           <div class="legal-section" id="terms-12">
@@ -1102,7 +1150,7 @@
               <h4>GieesK Recipes Legal Team</h4>
               <div class="legal-contact-row"><i class="ti ti-mail"></i> legal@gieesk.com</div>
               <div class="legal-contact-row"><i class="ti ti-world"></i> gieesk.com</div>
-              <div class="legal-contact-row"><i class="ti ti-building"></i> GieesK Recipes Inc.</div>
+              <div class="legal-contact-row"><i class="ti ti-building"></i> GieesK Recipes</div>
             </div>
           </div>
 
@@ -1120,12 +1168,14 @@
             <img src="assets/logo-transparent.png" alt="GieesK Recipes" class="footer-logo-img" />
           </div>
           <p class="footer-tagline">The world's most advanced recipe discovery platform. Powered by AI, crafted with love.</p>
+          <!-- Social icons removed: every one linked to "#". Restore with the real profile URLs.
           <div class="footer-social">
             <a href="#" aria-label="Instagram"><i class="ti ti-brand-instagram"></i></a>
             <a href="#" aria-label="Twitter"><i class="ti ti-brand-twitter"></i></a>
             <a href="#" aria-label="YouTube"><i class="ti ti-brand-youtube"></i></a>
             <a href="#" aria-label="TikTok"><i class="ti ti-brand-tiktok"></i></a>
           </div>
+          -->
         </div>
         <div class="footer-col">
           <h4>Discover</h4>
@@ -1155,15 +1205,17 @@
         <div class="footer-col">
           <h4>Company</h4>
           <a href="#" onclick="event.preventDefault();openAbout()">About GieesK Recipes</a>
-          <a href="#home" class="footer-nav" data-page="home">Blog</a>
-          <a href="#home" class="footer-nav" data-page="home">Careers</a>
-          <a href="#home" class="footer-nav" data-page="home">Press Kit</a>
-          <a href="#home" class="footer-nav" data-page="home">API Access</a>
+          <!-- Blog, Careers, Press Kit and API Access pointed at the home page —
+               pages that do not exist. Add them back when they do. -->
+          <a href="/terms.html#terms-13">Contact</a>
+          <a href="/privacy.html">Privacy Policy</a>
+          <a href="/terms.html">Terms of Service</a>
+          <a href="/terms.html#refund-policy">Refund Policy</a>
         </div>
       </div>
       <div class="footer-bottom">
-        <p>&copy; 2026 GieesK Recipes Inc. All rights reserved.</p>
-        <div class="footer-legal"><a href="/privacy.html">Privacy Policy</a><a href="/terms.html">Terms of Service</a><a href="#" onclick="event.preventDefault();openCookieSettings()">Cookie Settings</a></div>
+        <p>&copy; 2026 GieesK Recipes All rights reserved.</p>
+        <div class="footer-legal"><a href="/privacy.html">Privacy Policy</a><a href="/terms.html">Terms of Service</a><a href="/terms.html#refund-policy">Refund Policy</a><a href="#" onclick="event.preventDefault();openCookieSettings()">Cookie Settings</a></div>
       </div>
     </div>
   </footer>
@@ -1179,27 +1231,30 @@
   <script src="js/hero-fx.js?v=20260924" defer></script>
   <script src="js/hero-audio.js?v=20260924" defer></script>
   <script src="js/hero3d.js?v=20261014" defer></script>
-  <script src="js/render.js?v=20260924" defer></script>
-  <script src="js/search.js?v=20260924" defer></script>
+  <script src="js/render.js?v=20261016" defer></script>
+  <script src="js/search.js?v=20261016" defer></script>
   <script src="js/ai.js?v=20260924" defer></script>
-  <script src="js/auth-ui.js?v=20260924" defer></script>
-  <script src="js/modal.js?v=20260924" defer></script>
+  <script src="js/auth-ui.js?v=20261016" defer></script>
+  <script src="js/modal.js?v=20261016" defer></script>
   <script src="js/nav.js?v=20260924" defer></script>
   <script src="js/video-review.js?v=20260924" defer></script>
-  <script src="js/community.js?v=20260924" defer></script>
-  <script src="js/recipe-video.js?v=20260924" defer></script>
+  <script src="js/moderation.js?v=20261018" defer></script>
+  <script src="js/community.js?v=20261018" defer></script>
+  <script src="js/recipe-video.js?v=20261018" defer></script>
   <script src="js/discover.js?v=20260924" defer></script>
-  <script src="js/dashboard.js?v=20260924" defer></script>
+  <script src="js/dashboard.js?v=20261018" defer></script>
   <script src="js/app-visual-fx.js?v=20260924" defer></script>
-  <script src="js/cookies.js?v=20260924" defer></script>
-  <script src="js/app.js?v=20260924" defer></script>
-  <script src="js/app-shell.js?v=20260924" defer></script>
+  <script src="js/cookies.js?v=20261016" defer></script>
+  <script src="js/app.js?v=20261016" defer></script>
+  <script src="js/app-shell.js?v=20261016" defer></script>
   <script src="js/app-invite.js?v=20260924" defer></script>
   <script src="js/deep-links.js?v=20260924" defer></script>
-  <script src="js/settings.js?v=20261013" defer></script>
+  <script src="js/settings.js?v=20261016" defer></script>
   <script src="js/app-lock.js?v=20260924" defer></script>
   <script src="js/play-billing.js?v=20260924" defer></script>
   <script src="js/access-gate.js?v=20261014" defer></script>
+  <script src="js/a11y.js?v=20261016" defer></script>
+  <script src="js/motion.js?v=20261017" defer></script>
 
   <!-- ═══════════ COOKIE CONSENT BANNER ═══════════ -->
   <div id="cookieBanner" style="
@@ -1218,7 +1273,7 @@
         <div>
           <div style="font-size:14px;font-weight:700;color:var(--text-primary);margin-bottom:4px">We use cookies</div>
           <p style="font-size:13px;color:var(--text-muted);line-height:1.6;margin:0">
-            GieesK Recipes uses cookies to keep you signed in, personalise your experience, and improve our platform.
+            GieesK Recipes uses essential cookies and browser storage to keep you signed in and remember your settings. We don't use advertising trackers, and optional categories stay off unless you turn them on.
             <a href="/privacy.html" style="color:var(--gold);font-size:13px;text-decoration:underline">Learn more</a>
           </p>
         </div>
@@ -1286,10 +1341,10 @@
         <div style="display:flex;justify-content:space-between;align-items:flex-start;padding:14px 16px;background:var(--bg-elevated);border-radius:var(--r-md);border:1px solid var(--border-dim)">
           <div style="flex:1;padding-right:16px">
             <div style="font-size:14px;font-weight:600;color:var(--text-primary);margin-bottom:4px">Analytics Cookies</div>
-            <div style="font-size:12px;color:var(--text-muted);line-height:1.6">Help us understand how you use GieesK Recipes so we can improve performance and features.</div>
+            <div style="font-size:12px;color:var(--text-muted);line-height:1.6">We don't run analytics at the moment. If we add it later, it stays off unless you turn it on here.</div>
           </div>
           <label style="flex-shrink:0;position:relative;display:inline-block;width:44px;height:24px;cursor:pointer">
-            <input type="checkbox" id="cookieAnalytics" checked style="opacity:0;width:0;height:0">
+            <input type="checkbox" id="cookieAnalytics" style="opacity:0;width:0;height:0" tabindex="-1" aria-hidden="true">
             <span id="toggleAnalytics" onclick="toggleCookieSwitch('Analytics')" style="
               position:absolute;inset:0;background:#333;border-radius:12px;transition:.3s;cursor:pointer;
             ">
@@ -1305,7 +1360,7 @@
             <div style="font-size:12px;color:var(--text-muted);line-height:1.6">Remember your preferences, favourite cuisines, and personalise recipe recommendations.</div>
           </div>
           <label style="flex-shrink:0;position:relative;display:inline-block;width:44px;height:24px;cursor:pointer">
-            <input type="checkbox" id="cookiePersonal" checked style="opacity:0;width:0;height:0">
+            <input type="checkbox" id="cookiePersonal" style="opacity:0;width:0;height:0" tabindex="-1" aria-hidden="true">
             <span id="togglePersonal" onclick="toggleCookieSwitch('Personal')" style="
               position:absolute;inset:0;background:#333;border-radius:12px;transition:.3s;cursor:pointer;
             ">

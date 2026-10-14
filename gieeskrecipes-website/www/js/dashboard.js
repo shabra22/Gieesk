@@ -839,6 +839,24 @@ async function previewAvatar(input) {
     return;
   }
 
+  // Nudity and sexual content aren't allowed; check on this device first.
+  if (window.gkModeration) {
+    avatarUploadInProgress = true;
+    const verdict = await window.gkModeration.checkImage(file);
+    avatarUploadInProgress = false;
+    if (!verdict.ok) {
+      if (prev) {
+        var modErrEl = document.createElement('p');
+        modErrEl.style.cssText = 'color:#F08060;font-size:12px;text-align:center;margin-top:6px';
+        modErrEl.textContent = verdict.message;
+        prev.parentElement?.appendChild(modErrEl);
+        setTimeout(function () { modErrEl.remove(); }, 6000);
+      }
+      input.value = '';
+      return;
+    }
+  }
+
   avatarUploadInProgress = true;
 
   // Show the local preview immediately for instant feedback, while the

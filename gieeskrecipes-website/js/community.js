@@ -949,7 +949,19 @@ function popElement(el) {
   el.classList.add('pop');
 }
 
+// One like request per post at a time: a fast double tap used to send an
+// insert and a delete together and could leave the heart and the database
+// disagreeing.
+const likeInFlight = new Set();
 async function toggleLike(postId) {
+  const key = String(postId);
+  if (likeInFlight.has(key)) return;
+  likeInFlight.add(key);
+  try { await toggleLikeNow(postId); }
+  finally { likeInFlight.delete(key); }
+}
+
+async function toggleLikeNow(postId) {
   if (!currentUser) { openAuthModal('login'); return; }
   const sb = getSupabase();
   if (!sb) return;
@@ -3435,7 +3447,19 @@ function selectReportReason(reason, btn) {
   if (submitBtn) submitBtn.disabled = false;
 }
 
+// A second tap on Submit while the first is on its way would file the
+// same report twice.
+let reportInFlight = false;
 async function submitVideoReport() {
+  if (reportInFlight) return;
+  reportInFlight = true;
+  const btn = document.getElementById('submitReportBtn');
+  if (btn) btn.disabled = true;
+  try { await submitVideoReportNow(); }
+  finally { reportInFlight = false; if (btn && document.getElementById('reportVideoModalOverlay')?.classList.contains('open')) btn.disabled = !selectedReportReason; }
+}
+
+async function submitVideoReportNow() {
   if (!currentUser || !pendingReportPostId || !selectedReportReason) return;
   const details = document.getElementById('reportOtherDetails')?.value.trim();
   const reason = details ? `${selectedReportReason}: ${details}` : selectedReportReason;
@@ -4543,18 +4567,31 @@ let pendingPostImageUrl = null;
 let postPhotoUploadInProgress = false;
 
 async function previewPostPhoto(input) {
-  const file = input.files?.[0];
+  let file = input.files?.[0];
   if (!file) return;
   if (postPhotoUploadInProgress) { input.value = ''; return; }
 
   const preview = document.getElementById('uploadPhotoPreview');
   const placeholder = document.getElementById('uploadPhotoPlaceholder');
   const MAX_BYTES = 5 * 1024 * 1024; // posts can be a bit larger than an avatar
+  const MAX_RAW_BYTES = 25 * 1024 * 1024; // a phone photo, before it is shrunk
 
   if (!file.type.startsWith('image/')) {
     if (typeof showGenericToast === 'function') showGenericToast('Please choose an image file.');
     input.value = '';
     return;
+  }
+  if (file.size > MAX_RAW_BYTES) {
+    if (typeof showGenericToast === 'function') showGenericToast('That photo is too large — please choose one under 25MB.');
+    input.value = '';
+    return;
+  }
+  // Shrink big phone photos before upload: faster on mobile data, cheaper
+  // storage, quicker feed. Small files and GIFs are left alone.
+  if (window.gkNet && window.gkNet.compressImage) {
+    postPhotoUploadInProgress = true;
+    file = await window.gkNet.compressImage(file, { maxDim: 1600, quality: 0.82 });
+    postPhotoUploadInProgress = false;
   }
   if (file.size > MAX_BYTES) {
     if (typeof showGenericToast === 'function') showGenericToast('That photo is too large — please choose one under 5MB.');

@@ -22,8 +22,8 @@
   /* Text */
   --text-primary:   #F0EEE8;
   --text-secondary: #B8B6AE;
-  --text-muted:     #6B6A63;
-  --text-hint:      #3D3C37;
+  --text-muted:     #94928A; /* was #6B6A63: 3.1:1 on cards, below the 4.5:1 minimum */
+  --text-hint:      #85837A; /* was #3D3C37: 1.8:1 on the page background */
 
   /* Borders */
   --border-dim:    rgba(255,255,255,0.06);

@@ -807,7 +807,7 @@ async function changePassword() {
 let avatarUploadInProgress = false;
 
 async function previewAvatar(input) {
-  const file = input.files?.[0];
+  let file = input.files?.[0];
   if (!file) return;
 
   if (avatarUploadInProgress) { input.value = ''; return; }
@@ -825,6 +825,14 @@ async function previewAvatar(input) {
     }
     input.value = '';
     return;
+  }
+
+  // Profile pictures are shown small, so a big photo is shrunk first.
+  // That lets a normal phone photo through instead of rejecting it for size.
+  if (window.gkNet && window.gkNet.compressImage && file.size <= 25 * 1024 * 1024) {
+    avatarUploadInProgress = true;
+    file = await window.gkNet.compressImage(file, { maxDim: 640, quality: 0.85, skipBelow: 150 * 1024 });
+    avatarUploadInProgress = false;
   }
 
   if (file.size > MAX_BYTES) {

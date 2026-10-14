@@ -266,6 +266,7 @@ function buildCommunityPage() {
             <input class="form-input" id="uploadTags" placeholder="Add tags separated by commas (e.g. vegan, kenyan, quick)" style="background:var(--bg-elevated);border:1px solid var(--border-subtle);border-radius:var(--r-md);padding:10px 14px;font-size:14px;color:var(--text-primary);outline:none;font-family:inherit;width:100%"/>
           </div>
           <div id="uploadError" style="font-size:13px;color:#F08060;display:none"></div>
+          <p class="gk-note gk-rules-note">By posting you agree to our <a href="https://gieesk.com/terms.html#terms-4" target="_blank" rel="noopener">content rules</a>: cooking only — no nudity or sexual content. Files are checked on your device before upload.</p>
           <div style="display:flex;gap:10px">
             <button class="btn-gold" id="uploadSubmitBtn" style="flex:1;justify-content:center;padding:13px" onclick="submitCommunityPost()">
               <i class="ti ti-send"></i> Share Recipe
@@ -383,6 +384,7 @@ function ensureVideoModals() {
           </section>
 
           <div id="videoUploadError" class="vu-error" role="alert" hidden></div>
+          <p class="gk-note gk-rules-note">By posting you agree to our <a href="https://gieesk.com/terms.html#terms-4" target="_blank" rel="noopener">content rules</a>: cooking only — no nudity or sexual content. Files are checked on your device before upload.</p>
         </div>
 
         <div class="vu-footer">
@@ -3716,7 +3718,7 @@ function buildChefsTab() {
       <div class="chef-stats">
         <div><div class="chef-stat-num">${typeof getChefRecipeCount === 'function' ? getChefRecipeCount(chef.name) : 0}</div><div class="chef-stat-label">Recipes</div></div>
         <div><div class="chef-stat-num" data-follower-count="${escapeHTML(chef.name)}">–</div><div class="chef-stat-label">Followers</div></div>
-        <div><div class="chef-stat-num">${escapeHTML(String(chef.rating || ''))}</div><div class="chef-stat-label">Rating</div></div>
+        ${GK_SHOW_RATINGS ? `<div><div class="chef-stat-num">${escapeHTML(String(chef.rating || ''))}</div><div class="chef-stat-label">Rating</div></div>` : ''}
       </div>
       <div style="font-size:11px;color:var(--text-muted);margin-bottom:12px">${escapeHTML(chef.specialty || '')}</div>
       <button class="btn-ghost" data-follow-btn="${escapeHTML(chef.name)}" style="width:100%;justify-content:center;font-size:12px;padding:7px 12px" onclick="event.stopPropagation();followChef(this.dataset.followBtn,this)">
@@ -4467,7 +4469,7 @@ function openChefProfile(index) {
               <div class="chef-profile-stats">
                 <div class="dash-hero-stat"><div class="dash-hero-stat-num">${chefRecipes.length}</div><div class="dash-hero-stat-label">Recipes</div></div>
                 <div class="dash-hero-stat"><div class="dash-hero-stat-num" data-follower-count="${escapeHTML(chef.name)}">–</div><div class="dash-hero-stat-label">Followers</div></div>
-                <div class="dash-hero-stat"><div class="dash-hero-stat-num">${escapeHTML(String(chef.rating || ''))} ⭐</div><div class="dash-hero-stat-label">Rating</div></div>
+                ${GK_SHOW_RATINGS ? `<div class="dash-hero-stat"><div class="dash-hero-stat-num">${escapeHTML(String(chef.rating || ''))} ⭐</div><div class="dash-hero-stat-label">Rating</div></div>` : ''}
               </div>
               <div class="chef-profile-actions">
                 <button class="btn-gold" data-follow-btn="${escapeHTML(chef.name)}" onclick="followChef(this.dataset.followBtn,this)">Follow</button>
@@ -4558,6 +4560,18 @@ async function previewPostPhoto(input) {
     if (typeof showGenericToast === 'function') showGenericToast('That photo is too large — please choose one under 5MB.');
     input.value = '';
     return;
+  }
+
+  // Nudity and sexual content aren't allowed; check on this device first.
+  if (window.gkModeration) {
+    postPhotoUploadInProgress = true;
+    const verdict = await window.gkModeration.checkImage(file);
+    postPhotoUploadInProgress = false;
+    if (!verdict.ok) {
+      if (typeof showGenericToast === 'function') showGenericToast(verdict.message);
+      input.value = '';
+      return;
+    }
   }
 
   postPhotoUploadInProgress = true;
@@ -4799,6 +4813,20 @@ async function vuHandleFile(input) {
     vuSetStatus('');
     showVideoUploadError('That video is too short. Please choose one at least 2 seconds long.');
     return;
+  }
+
+  // Look at the video itself before anything is uploaded: nudity and
+  // sexual content aren't allowed (see the Terms). Runs on this device.
+  if (window.gkModeration) {
+    vuSetStatus('Checking video content…');
+    const verdict = await window.gkModeration.checkVideo(file, objectUrl, info.duration);
+    if (!verdict.ok) {
+      URL.revokeObjectURL(objectUrl);
+      vuSetStatus('');
+      showVideoUploadError(verdict.message);
+      return;
+    }
+    vuSetStatus('');
   }
 
   // Only now replace the previous choice, so a rejected pick never

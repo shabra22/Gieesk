@@ -264,3 +264,12 @@ input  { font-family: inherit; }
 /* The "content rules" note under the upload forms */
 .gk-rules-note a { color: var(--gold-light); text-decoration: underline; text-underline-offset: 2px; }
 .gk-rules-note { margin: 12px 0 0; }
+
+/* "You're offline" notice (js/resilience.js) */
+.gk-offline {
+  position: fixed; left: 50%; bottom: calc(16px + env(safe-area-inset-bottom, 0px)); transform: translateX(-50%);
+  z-index: 9999; max-width: calc(100vw - 32px);
+  padding: 10px 16px; border-radius: 999px;
+  background: #2b2b2b; color: #fff; font-size: 13px; line-height: 1.4; text-align: center;
+  box-shadow: 0 6px 24px rgba(0,0,0,.28);
+}

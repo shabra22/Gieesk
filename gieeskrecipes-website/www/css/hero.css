@@ -14,10 +14,18 @@
   background: transparent;
 }
 
-/* Force all hero text visible */
+/* Force all hero text visible — except while js/motion.js is running the
+   entrance animation, which needs to set opacity itself. If the motion
+   code never starts (reduced motion, the app, a failed load) the html
+   element lacks .gk-motion or gets .gk-motion-timeout, and this rule
+   applies exactly as before. */
 .hero-content * {
-  opacity: 1 !important;
   visibility: visible !important;
+}
+html:not(.gk-motion) .hero-content *,
+html.gk-motion-timeout .hero-content *,
+html.gk-motion-off .hero-content * {
+  opacity: 1 !important;
 }
 
 #heroCanvas {

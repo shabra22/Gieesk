@@ -23,3 +23,8 @@
 /assetlinks.json
   Content-Type: application/json
   Cache-Control: public, max-age=3600
+
+# Uptime monitors check this tiny file (see RELIABILITY.md)
+/health.txt
+  Cache-Control: no-store
+  Content-Type: text/plain; charset=utf-8

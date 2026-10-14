@@ -55,18 +55,35 @@ function corsFor(req: Request) {
   };
 }
 
+// One admin client for the whole function (access check and daily limit).
+const admin = createClient(
+  Deno.env.get("SUPABASE_URL")!,
+  Deno.env.get("SUPABASE_SERVICE_ROLE_KEY")!,
+  { auth: { persistSession: false } },
+);
+
+// Fair-use ceiling per person per day, so one stolen or scripted account
+// can't run up the Anthropic bill. Counted by gk_ai_chef_hit() from
+// supabase-hardening.sql; until that SQL is run the check is skipped (fails
+// open) and nothing changes. Set AI_CHEF_DAILY_LIMIT to change the number.
+const DAILY_LIMIT = Number(Deno.env.get("AI_CHEF_DAILY_LIMIT") ?? "150");
+
+async function overDailyLimit(userId: string): Promise<boolean> {
+  try {
+    const { data, error } = await admin.rpc("gk_ai_chef_hit", { p_user: userId, p_limit: DAILY_LIMIT });
+    if (error) return false;       // function not installed yet, or a hiccup: don't block people
+    return data === false;
+  } catch {
+    return false;
+  }
+}
+
 // AI Chef is a paid feature, and this function holds the Anthropic key —
 // so it has to check for itself who is calling. Before this, any request
 // to this URL got a full Claude answer, subscription or not.
 async function checkAccess(req: Request): Promise<{ ok: true; userId: string } | { ok: false; status: number; error: string }> {
   const token = (req.headers.get("Authorization") ?? "").replace(/^Bearer\s+/i, "");
   if (!token) return { ok: false, status: 401, error: "Please sign in to use the AI Chef" };
-
-  const admin = createClient(
-    Deno.env.get("SUPABASE_URL")!,
-    Deno.env.get("SUPABASE_SERVICE_ROLE_KEY")!,
-    { auth: { persistSession: false } },
-  );
 
   // An anon key in this header is not a signed-in person: getUser rejects it.
   const { data, error } = await admin.auth.getUser(token);
@@ -124,6 +141,13 @@ Deno.serve(async (req: Request) => {
     );
   }
 
+  if (await overDailyLimit(access.userId)) {
+    return new Response(
+      JSON.stringify({ error: "You've reached today's AI Chef limit. It resets at midnight UTC." }),
+      { status: 429, headers: { ...corsHeaders, "Content-Type": "application/json" } },
+    );
+  }
+
   try {
     const body: RequestBody = await req.json();
     const { message, history = [] } = body;
@@ -172,6 +196,9 @@ Deno.serve(async (req: Request) => {
         system: CHEF_SYSTEM_PROMPT,
         messages,
       }),
+      // The app gives up after 30 s; don't keep a paid request running
+      // after nobody is waiting for it.
+      signal: AbortSignal.timeout(28000),
     });
 
     if (!anthropicResponse.ok) {
@@ -196,6 +223,12 @@ Deno.serve(async (req: Request) => {
     );
   } catch (err) {
     console.error("ai-chef-chat error:", err);
+    if (err instanceof DOMException && (err.name === "TimeoutError" || err.name === "AbortError")) {
+      return new Response(
+        JSON.stringify({ error: "The chef took too long to answer. Please try again." }),
+        { status: 504, headers: { ...corsHeaders, "Content-Type": "application/json" } }
+      );
+    }
     return new Response(
       JSON.stringify({ error: "Something went wrong processing your request" }),
       { status: 500, headers: { ...corsHeaders, "Content-Type": "application/json" } }
