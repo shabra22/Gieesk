@@ -101,10 +101,25 @@
   </script>
   <script src="js/theme.js?v=20261013"></script>
   <script src="js/cover.js?v=20261015"></script>
+  <script>
+    /* Motion (js/motion.js) is website-only and off for reduced-motion.
+       This marks the page early so the hero can hold its text for the
+       entrance — and lets go after 3.5 s whatever happens. */
+    (function () {
+      try {
+        var d = document.documentElement;
+        var app = window.Capacitor && window.Capacitor.isNativePlatform && window.Capacitor.isNativePlatform();
+        var calm = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        if (app || calm) return;
+        d.classList.add('gk-motion');
+        setTimeout(function () { d.classList.add('gk-motion-timeout'); }, 3500);
+      } catch (e) {}
+    })();
+  </script>
   <link rel="stylesheet" href="css/variables.css?v=20261016" />
   <link rel="stylesheet" href="css/base.css?v=20261016" />
   <link rel="stylesheet" href="css/nav.css?v=20260924" />
-  <link rel="stylesheet" href="css/hero.css?v=20261014" />
+  <link rel="stylesheet" href="css/hero.css?v=20261017" />
   <link rel="stylesheet" href="css/sections.css?v=20260924" />
   <link rel="stylesheet" href="css/cards.css?v=20260924" />
   <link rel="stylesheet" href="css/search.css?v=20260924" />
@@ -122,6 +137,7 @@
   <link rel="stylesheet" href="css/access-gate.css?v=20261014" />
   <link rel="stylesheet" href="css/cover.css?v=20261015" />
   <link rel="stylesheet" href="css/a11y.css?v=20261016" />
+  <link rel="stylesheet" href="css/motion.css?v=20261017" />
   <link rel="stylesheet" href="css/theme-light.css?v=20261016" />
 </head>
 <body>
@@ -1226,6 +1242,7 @@
   <script src="js/play-billing.js?v=20260924" defer></script>
   <script src="js/access-gate.js?v=20261014" defer></script>
   <script src="js/a11y.js?v=20261016" defer></script>
+  <script src="js/motion.js?v=20261017" defer></script>
 
   <!-- ═══════════ COOKIE CONSENT BANNER ═══════════ -->
   <div id="cookieBanner" style="

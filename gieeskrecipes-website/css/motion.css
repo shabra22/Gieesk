@@ -1,0 +1,57 @@
+/* ═══════════════════════════════════════════
+   GIEESK — Motion (js/motion.js)
+   Website only; the app and reduced-motion visitors never get these
+   rules' effects (the classes below are never added for them).
+═══════════════════════════════════════════ */
+
+/* ── Lenis (smooth scroll), from the library's own stylesheet ─── */
+html.lenis, html.lenis body { height: auto; }
+.lenis.lenis-smooth { scroll-behavior: auto !important; }
+.lenis.lenis-smooth [data-lenis-prevent] { overscroll-behavior: contain; }
+.lenis.lenis-stopped { overflow: clip; }
+.lenis.lenis-smooth iframe { pointer-events: none; }
+
+/* ── Hero holds its text back for the entrance, never for long ──
+   Set by the snippet in <head>; released by motion.js once the starting
+   look is in place, or after 3.5 s if the libraries did not arrive. */
+html.gk-motion:not(.gk-motion-ready):not(.gk-motion-timeout):not(.gk-motion-off) .hero-content .hero-eyebrow,
+html.gk-motion:not(.gk-motion-ready):not(.gk-motion-timeout):not(.gk-motion-off) .hero-content .hero-title,
+html.gk-motion:not(.gk-motion-ready):not(.gk-motion-timeout):not(.gk-motion-off) .hero-content .hero-sub,
+html.gk-motion:not(.gk-motion-ready):not(.gk-motion-timeout):not(.gk-motion-off) .hero-content .hero-cta,
+html.gk-motion:not(.gk-motion-ready):not(.gk-motion-timeout):not(.gk-motion-off) .hero-content .hero-stats {
+  opacity: 0 !important;
+}
+.gk-word { display: inline-block; will-change: transform, opacity, filter; }
+
+/* ── Reading progress ───────────────────────────────────────── */
+.gk-progress {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  z-index: 9999;
+  transform: scaleX(0);
+  transform-origin: 0 50%;
+  background: linear-gradient(90deg, var(--gold, #C9963A), var(--gold-light, #E8B96A));
+  pointer-events: none;
+}
+
+/* ── Spotlight cards: a soft light that follows the mouse ────── */
+.recipe-card::after,
+.cuisine-card::after,
+.chef-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity .3s ease;
+  background: radial-gradient(360px circle at var(--mx, 50%) var(--my, 50%), rgba(232,185,106,0.16), transparent 62%);
+}
+.recipe-card:hover::after,
+.cuisine-card:hover::after,
+.chef-card:hover::after { opacity: 1; }
+.chef-card { position: relative; overflow: hidden; }
+@media (hover: none) {
+  .recipe-card::after, .cuisine-card::after, .chef-card::after { display: none; }
+}
