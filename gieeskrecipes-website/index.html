@@ -120,7 +120,7 @@
   </script>
   <link rel="stylesheet" href="css/variables.css?v=20261016" />
   <link rel="stylesheet" href="css/base.css?v=20261020" />
-  <link rel="stylesheet" href="css/nav.css?v=20260924" />
+  <link rel="stylesheet" href="css/nav.css?v=20261021" />
   <link rel="stylesheet" href="css/hero.css?v=20261017" />
   <link rel="stylesheet" href="css/sections.css?v=20260924" />
   <link rel="stylesheet" href="css/cards.css?v=20261020" />
@@ -133,7 +133,7 @@
   <link rel="stylesheet" href="css/app-tab-bar.css?v=20260924" />
   <link rel="stylesheet" href="css/app-native-ui.css?v=20260924" />
   <link rel="stylesheet" href="css/community.css?v=20261016" />
-  <link rel="stylesheet" href="css/about.css?v=20260924" />
+  <link rel="stylesheet" href="css/about.css?v=20261021" />
   <link rel="stylesheet" href="css/legal.css?v=20260924" />
   <link rel="stylesheet" href="css/settings.css?v=20261013" />
   <link rel="stylesheet" href="css/access-gate.css?v=20261014" />
@@ -370,8 +370,8 @@
   <!-- NAV -->
   <nav class="nav" id="nav">
     <div class="nav-inner">
-      <a href="#home" class="nav-logo">
-          <span class="nav-logo-text">GieesK</span>
+      <a href="#home" class="nav-logo" aria-label="GieesK Recipes — home">
+          <img class="nav-logo-img" src="assets/logo-transparent-600.webp" alt="GieesK Recipes" width="600" height="195" />
         </a>
       <ul class="nav-links">
         <li><a href="#home"      class="nav-link" data-page="home">Home</a></li>
@@ -638,12 +638,12 @@
     <div class="about-hero">
       <div class="container">
         <img src="assets/logo-transparent-600.webp" alt="GieesK Recipes" class="about-logo" width="600" height="195" />
-        <div class="about-hero-tagline">Technology · Innovation · Impact</div>
+        <div class="about-hero-tagline">Cooking · Culture · Community</div>
         <h1 class="about-hero-title" style="margin-top:1.25rem">
-          Shaping <em>What's Next</em>
+          Cooking the World, <em>One Dish at a Time</em>
         </h1>
         <p class="about-hero-sub">
-          GieesK Recipes is a technology-driven company dedicated to building innovative digital solutions that make everyday life smarter, simpler, and more connected.
+          GieesK Recipes is an independent project dedicated to bringing authentic home cooking from around the world into one place — easy to discover, easy to cook and easy to share.
         </p>
         <button class="btn-ghost app-hide-back" onclick="openAbout();window.scrollTo({top:0});" style="margin-right:10px">
           <i class="ti ti-arrow-left"></i> Back to Home
@@ -663,13 +663,13 @@
           <p class="about-section-label">Who We Are</p>
           <h2 class="about-section-title">About <em>GieesK Recipes</em></h2>
           <p class="about-body">
-            Founded with a vision to shape the future through creativity and technology, GieesK Recipes develops products that empower individuals, businesses, and communities. From intelligent software and AI-powered applications to global digital platforms and lifestyle solutions, we are committed to creating meaningful experiences that solve real-world problems.
+            GieesK Recipes started with a simple idea: authentic home cooking deserves to be easy to find. We collect recipes from kitchens across East Africa, West Africa, the Horn of Africa, Italy and more, and present each one with clear ingredients, step-by-step methods and the heritage behind the dish.
           </p>
           <p class="about-body">
-            One of our flagship initiatives is a global recipe platform that brings together cuisines from every corner of the world, making it easy for anyone to discover, learn, and share authentic recipes. But our ambition extends far beyond food. We are continuously expanding into emerging technologies, automation, artificial intelligence, financial technology, and other innovative digital services designed to improve how people live and work.
+            Alongside the recipes there is an AI Chef that helps you cook with what you already have, a meal planner and shopping list, and a community where you can share your own dishes and cooking videos. New cuisines and features are added all the time.
           </p>
           <p class="about-body">
-            At GieesK Recipes, innovation is driven by purpose. Every product we build is designed with simplicity, performance, and user experience at its core. We believe that technology should not only be powerful — it should be accessible, intuitive, and capable of creating opportunities for everyone.
+            We build GieesK around simplicity, speed and respect for every cuisine's traditions. Technology should make cooking more welcoming, not more complicated.
           </p>
         </div>
 
@@ -678,14 +678,14 @@
           <div class="vm-card">
             <span class="vm-icon">🌍</span>
             <div class="vm-label">Our Vision</div>
-            <div class="vm-title">A Globally Recognised Technology Company</div>
-            <p class="vm-text">To become a globally recognized technology company that empowers people through innovation, intelligence, and transformative digital experiences.</p>
+            <div class="vm-title">Good Food, Shared Everywhere</div>
+            <p class="vm-text">To make the world's home cooking easy to find, easy to cook and easy to share — with the story behind every dish.</p>
           </div>
           <div class="vm-card">
             <span class="vm-icon">🎯</span>
             <div class="vm-label">Our Mission</div>
-            <div class="vm-title">Technology That Solves Real Problems</div>
-            <p class="vm-text">To design and deliver innovative products and technologies that solve real-world challenges, inspire creativity, and improve everyday life for individuals and businesses around the world.</p>
+            <div class="vm-title">Real Recipes, Made Simple</div>
+            <p class="vm-text">To bring authentic recipes from many cultures into one clear, friendly place, with tools like the AI Chef that help people cook with what they have.</p>
           </div>
         </div>
 
@@ -717,7 +717,7 @@
             <div class="value-card">
               <span class="value-icon">🚀</span>
               <div class="value-name">Impact</div>
-              <p class="value-desc">We focus on creating technology that makes a meaningful difference in people's lives.</p>
+              <p class="value-desc">We want every home cook to feel welcome, from first-timers to seasoned family chefs.</p>
             </div>
             <div class="value-card">
               <span class="value-icon">🌐</span>
@@ -729,28 +729,28 @@
 
         <!-- Products -->
         <div class="about-section">
-          <p class="about-section-label">What We Build</p>
-          <h2 class="about-section-title">Our <em>Products</em></h2>
+          <p class="about-section-label">What's Inside</p>
+          <h2 class="about-section-title">Everything in <em>One Kitchen</em></h2>
           <div class="about-products">
             <div class="product-card">
               <span class="product-tag live"><i class="ti ti-circle-filled" style="font-size:8px"></i> Live</span>
-              <div class="product-name">GieesK Recipes Recipes</div>
-              <p class="product-desc">A global AI-powered recipe discovery platform bringing cuisines from 195 countries to one place.</p>
+              <div class="product-name">Recipes from Around the World</div>
+              <p class="product-desc">Ingredients, step-by-step methods and the heritage behind each dish, plus a meal planner and shopping list to turn them into your week.</p>
+            </div>
+            <div class="product-card">
+              <span class="product-tag live"><i class="ti ti-circle-filled" style="font-size:8px"></i> Live</span>
+              <div class="product-name">AI Chef</div>
+              <p class="product-desc">Tell it what is in your kitchen and it plans the meal. Powered by Claude.</p>
+            </div>
+            <div class="product-card">
+              <span class="product-tag live"><i class="ti ti-circle-filled" style="font-size:8px"></i> Live</span>
+              <div class="product-name">Community</div>
+              <p class="product-desc">Share your own recipes and cooking videos, take on challenges and climb the leaderboard.</p>
             </div>
             <div class="product-card">
               <span class="product-tag soon">Coming Soon</span>
-              <div class="product-name">GieesK Recipes AI</div>
-              <p class="product-desc">Intelligent AI-powered tools and applications for individuals and businesses.</p>
-            </div>
-            <div class="product-card">
-              <span class="product-tag soon">Coming Soon</span>
-              <div class="product-name">GieesK Recipes FinTech</div>
-              <p class="product-desc">Innovative financial technology solutions making money management accessible and smart.</p>
-            </div>
-            <div class="product-card">
-              <span class="product-tag soon">Coming Soon</span>
-              <div class="product-name">GieesK Recipes Automation</div>
-              <p class="product-desc">Digital automation tools that save time and improve productivity for businesses.</p>
+              <div class="product-name">Android App</div>
+              <p class="product-desc">Everything above, in your pocket and ready in the kitchen.</p>
             </div>
           </div>
         </div>
@@ -758,7 +758,7 @@
         <!-- Closing -->
         <div class="about-closing">
           <p class="about-closing-text">
-            GieesK Recipes isn't just building products —<br/>we're <em>shaping what's next.</em>
+            GieesK Recipes isn't just a recipe site —<br/>it's a place to <em>cook, share and explore.</em>
           </p>
           <button class="btn-gold btn-lg" onclick="openCommunity()">
             <i class="ti ti-users"></i> Join the GieesK Recipes Community
@@ -1234,7 +1234,7 @@
   <script src="js/hero-fx.js?v=20260924" defer></script>
   <script src="js/hero-audio.js?v=20260924" defer></script>
   <script src="js/hero3d.js?v=20261014" defer></script>
-  <script src="js/render.js?v=20261020" defer></script>
+  <script src="js/render.js?v=20261021" defer></script>
   <script src="js/search.js?v=20261016" defer></script>
   <script src="js/ai.js?v=20260924" defer></script>
   <script src="js/auth-ui.js?v=20261020" defer></script>

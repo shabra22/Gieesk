@@ -168,15 +168,17 @@ function renderSeasonal() {
 }
 
 // ── Cuisines ─────────────────────────────
+var CUISINE_MIN_RECIPES = 5;
 function cuisineFlag(c, cls) {
   return window.gkFmt ? gkFmt.flag(c.flag, c.country, { cls: cls }) : (c.flag || '');
 }
 function renderCuisines() {
   var grid = document.getElementById('cuisineGrid');
   if (!grid) return;
-  // A cuisine with no recipes yet stays out of the grid; it appears on its own
-  // as soon as its first recipe is added (build-data.js keeps the entry).
-  CUISINES.filter(function(c) { return c.count > 0; }).forEach(function(c, i) {
+  // A cuisine shows as a tile once it has a real selection (CUISINE_MIN_RECIPES).
+  // Smaller ones stay out of the grid but their recipes are still searchable and
+  // listed on the Recipes page; the tile appears on its own when the count grows.
+  CUISINES.filter(function(c) { return c.count >= CUISINE_MIN_RECIPES; }).forEach(function(c, i) {
     var card = document.createElement('div');
     card.className = 'cuisine-card';
     card.style.animationDelay = (i * 60) + 'ms';

@@ -268,7 +268,7 @@ function renderPage(r) {
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/css/variables.css" />
 <link rel="stylesheet" href="/css/base.css" />
-<link rel="stylesheet" href="/css/nav.css" />
+<link rel="stylesheet" href="/css/nav.css?v=20261021" />
 <link rel="stylesheet" href="/css/footer.css" />
 <link rel="stylesheet" href="/css/recipe-page.css?v=20261020" />
 
@@ -278,7 +278,7 @@ function renderPage(r) {
 
 <nav class="nav">
   <div class="nav-inner">
-    <a href="/" class="nav-logo"><span class="nav-logo-text">GieesK</span></a>
+    <a href="/" class="nav-logo" aria-label="GieesK Recipes — home"><img class="nav-logo-img" src="/assets/logo-transparent-600.webp" alt="GieesK Recipes" width="600" height="195"></a>
     <div class="nav-actions">
       <a href="/" class="btn-gold">Explore All Recipes</a>
     </div>

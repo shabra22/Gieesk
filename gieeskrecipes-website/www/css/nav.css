@@ -204,3 +204,15 @@
   .nav-actions .btn-gold { padding: 7px 13px; font-size: 11.5px; }
   .btn-search-nav{ font-size: 20px; }
 }
+
+
+/* Logo artwork in the nav (same mark as the footer, About and sign-in) */
+.nav-logo-img {
+  display: block;
+  height: 34px;
+  width: auto;
+  aspect-ratio: 600 / 195;
+  filter: drop-shadow(0 1px 5px rgba(0,0,0,0.55));
+}
+@media (max-width: 520px) { .nav-logo-img { height: 30px; } }
+@media (max-width: 380px) { .nav-logo-img { height: 27px; } }
