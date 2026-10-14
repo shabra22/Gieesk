@@ -535,12 +535,22 @@ function buildPostHTML(post, idx, counts) {
   // Older tags were saved with their own "#", which rendered as "##VIRAL".
   const tagsHTML = (post.tags || []).map(t => String(t).replace(/^#+/, '')).filter(Boolean)
     .map(t => `<span class="badge badge-emerald">#${escapeHTML(t)}</span>`).join('');
+  // Only say what is known: a from-scratch share often has no time or
+  // calories, and "· ?min · ? kcal" read as a bug.
+  const recipeMetaParts = [
+    post.recipe_cuisine ? escapeHTML(post.recipe_cuisine) : '',
+    post.recipe_time ? `${escapeHTML(post.recipe_time)} min` : '',
+    post.recipe_cal ? `${escapeHTML(post.recipe_cal)} kcal` : '',
+  ].filter(Boolean);
+  const recipeThumbHTML = window.gkCover
+    ? gkCover.html({ emoji: post.recipe_emoji, title: post.recipe_title, cuisine: post.recipe_cuisine, size: 'chip', cls: 'post-recipe-emoji' })
+    : `<span class="post-recipe-emoji">${escapeHTML(String(post.recipe_emoji || '🍽').slice(0, 8))}</span>`;
   const recipeHTML = post.recipe_title ? `
-    <div class="post-recipe-card" ${post.recipe_id ? `data-recipe-id="${escapeHTML(post.recipe_id)}"` : ''} onclick="if(this.dataset.recipeId)openRecipeModalById(this.dataset.recipeId)">
-      <span class="post-recipe-emoji">${escapeHTML(String(post.recipe_emoji || '🍽').slice(0, 8))}</span>
-      <div>
+    <div class="post-recipe-card${post.recipe_id ? ' is-link' : ''}" ${post.recipe_id ? `data-recipe-id="${escapeHTML(post.recipe_id)}"` : ''} onclick="if(this.dataset.recipeId)openRecipeModalById(this.dataset.recipeId)">
+      ${recipeThumbHTML}
+      <div class="post-recipe-text">
         <div class="post-recipe-title">${escapeHTML(post.recipe_title)}</div>
-        <div class="post-recipe-meta">${escapeHTML(post.recipe_cuisine || '')} · ${post.recipe_time || '?'}min · ${post.recipe_cal || '?'} kcal</div>
+        ${recipeMetaParts.length ? `<div class="post-recipe-meta">${recipeMetaParts.join(' · ')}</div>` : ''}
       </div>
       ${post.recipe_id ? '<i class="ti ti-arrow-right" style="margin-left:auto;color:var(--text-muted)"></i>' : ''}
     </div>` : '';
@@ -550,7 +560,7 @@ function buildPostHTML(post, idx, counts) {
     : escapeHTML((post.author_name || '?').charAt(0).toUpperCase());
 
   const imageHTML = post.image_url
-    ? `<img src="${escapeHTML(post.image_url)}" class="post-photo" alt="${escapeHTML(post.recipe_title || '')}" loading="lazy">`
+    ? `<img src="${escapeHTML(post.image_url)}" class="post-photo" alt="${escapeHTML(post.recipe_title || '')}" data-cover-emoji="${escapeHTML(post.recipe_emoji || '')}" data-cover-cuisine="${escapeHTML(post.recipe_cuisine || '')}" loading="lazy">`
     : '';
 
   const hasRecipeContent = (post.ingredients && post.ingredients.length) || (post.steps && post.steps.length);
@@ -642,7 +652,7 @@ async function openRecipeModalById(id) {
     openRecipeModal({
       id: String(data.id),
       title: data.recipe_title,
-      emoji: data.recipe_emoji || '🍽',
+      emoji: (window.gkCover ? gkCover.emoji(data.recipe_emoji, data.recipe_title) : (data.recipe_emoji || '🍽')),
       cuisine: data.recipe_cuisine || '',
       time: data.recipe_time || null,
       calories: data.recipe_cal || null,
@@ -5219,7 +5229,7 @@ function vuRenderRecipeDropdown(query) {
     dropdown.innerHTML = vu.recipeMatches.map((r, i) => `
       <button type="button" role="option" class="vu-dropdown-item${i === vu.recipeActive ? ' is-active' : ''}"
               aria-selected="${i === vu.recipeActive}" onmousedown="event.preventDefault()" onclick="selectRecipeLink(${i})">
-        <span class="vu-dropdown-emoji">${escapeHTML(r.emoji || '🍽')}</span>
+        <span class="vu-dropdown-emoji">${escapeHTML(window.gkCover ? gkCover.emoji(r.emoji, r.title) : (r.emoji || '🍽'))}</span>
         <span class="vu-dropdown-text"><strong>${escapeHTML(r.title)}</strong><small>${escapeHTML(r.cuisine || r.country || '')}</small></span>
         ${r._community ? '<span class="vu-dropdown-tag">Community</span>' : ''}
       </button>`).join('');
@@ -5262,7 +5272,7 @@ function selectRecipeLink(index) {
   const chip = vuEl('videoRecipeLinkChip');
   if (chip) {
     chip.innerHTML = `
-      <span class="vu-linked-emoji">${escapeHTML(vu.linkedRecipe.emoji)}</span>
+      <span class="vu-linked-emoji">${escapeHTML(window.gkCover ? gkCover.emoji(vu.linkedRecipe.emoji, vu.linkedRecipe.title) : vu.linkedRecipe.emoji)}</span>
       <span class="vu-linked-text"><strong>${escapeHTML(vu.linkedRecipe.title)}</strong><small>${escapeHTML(vu.linkedRecipe.cuisine)}</small></span>
       <button type="button" class="vu-link-btn" onclick="clearRecipeLink()">Change</button>`;
     chip.hidden = false;

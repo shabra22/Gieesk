@@ -1323,7 +1323,7 @@ async function renderPlanner() {
       if (item && recipe) {
         html += `<div class="planner-cell"><div class="planner-slot filled" onclick="openPicker('${key}')">
           <div class="planner-slot-recipe">
-            ${recipe.image ? `<img class="planner-slot-thumb" src="${recipe.image}" alt="${recipe.title}" loading="lazy" />` : `<span class="planner-slot-emoji">${recipe.emoji || ''}</span>`}${recipe.title}
+            ${recipe.image ? `<img class="planner-slot-thumb" src="${recipe.image}" alt="${escapeHTML(recipe.title)}" data-cover-emoji="${escapeHTML(recipe.emoji||'')}" data-cover-cuisine="${escapeHTML(recipe.cuisine||recipe.country||'')}" loading="lazy" />` : `<span class="planner-slot-emoji">${recipe.emoji || (window.gkCover ? gkCover.emoji('', recipe.title) : '')}</span>`}${recipe.title}
           </div>
           <div class="planner-slot-remove" onclick="event.stopPropagation();removeFromPlanner('${key}')"><i class="ti ti-x"></i></div>
         </div></div>`;
@@ -1369,7 +1369,7 @@ function buildPickerList() {
   if (!list) return;
   list.innerHTML = RECIPES.map(r => `
     <div class="planner-picker-item" onclick="addToPlanner('${r.id}','${r.title.replace(/'/g,"\\'")}','${r.emoji}')">
-      ${r.image ? `<img class="planner-picker-thumb" src="${r.image}" alt="${r.title}" loading="lazy" />` : `<span class="planner-picker-emoji">${r.emoji}</span>`}
+      ${r.image ? `<img class="planner-picker-thumb" src="${r.image}" alt="${escapeHTML(r.title)}" data-cover-emoji="${escapeHTML(r.emoji||'')}" data-cover-cuisine="${escapeHTML(r.cuisine||r.country||'')}" loading="lazy" />` : (window.gkCover ? gkCover.html({emoji:r.emoji,title:r.title,cuisine:r.cuisine||r.country,size:'sm',cls:'planner-picker-thumb'}) : `<span class="planner-picker-emoji">${r.emoji}</span>`)}
       <div>
         <div class="planner-picker-info-title">${r.title}</div>
         <div class="planner-picker-info-meta">${r.countryFlag||''} ${r.cuisine||r.country||''} · ${r.time}min · ${r.cal} kcal</div>

@@ -369,8 +369,10 @@ function renderRecipeModal(recipe) {
   var nutCount = Object.values(n).filter(function(v) { return v !== undefined; }).length;
 
   var heroHTML = recipe.image
-    ? '<div class="modal-recipe-hero-photo"><img src="' + recipe.image + '" alt="' + escapeHTML(recipe.title) + '" loading="lazy" /></div>'
-    : '<div class="modal-recipe-hero-placeholder">' + recipe.emoji + '</div>';
+    ? '<div class="modal-recipe-hero-photo"><img src="' + recipe.image + '" alt="' + escapeHTML(recipe.title) + '" loading="lazy" data-cover-emoji="' + escapeHTML(recipe.emoji || '') + '" data-cover-cuisine="' + escapeHTML(recipe.cuisine || recipe.country || '') + '" /></div>'
+    : (window.gkCover
+        ? '<div class="modal-recipe-hero-photo">' + gkCover.html({ emoji: recipe.emoji, title: recipe.title, cuisine: recipe.cuisine || recipe.country, size: 'hero' }) + '</div>'
+        : '<div class="modal-recipe-hero-placeholder">' + recipe.emoji + '</div>');
 
   content.innerHTML =
     heroHTML +
@@ -380,7 +382,7 @@ function renderRecipeModal(recipe) {
       metaHTML +
       '<div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:10px">' +
         (recipe.tags || []).map(function(t) { return '<span class="badge badge-emerald">' + t + '</span>'; }).join('') +
-        '<span class="badge badge-gold">' + (recipe.cuisine || '') + '</span>' +
+        (recipe.cuisine ? '<span class="badge badge-gold">' + recipe.cuisine + '</span>' : '') +
         countryBadge +
         (recipe.course ? '<span class="badge badge-purple">' + recipe.course + '</span>' : '') +
       '</div>' +
@@ -394,11 +396,14 @@ function renderRecipeModal(recipe) {
         (recipe.restTime     ? '<span class="modal-meta-item"><i class="ti ti-hourglass"></i> ' + recipe.restTime + 'm rest</span>' : '') +
         (recipe.marinateTime ? '<span class="modal-meta-item"><i class="ti ti-clock-play"></i> ' + recipe.marinateTime + 'm marinate</span>' : '') +
         (recipe.cookTime > 0 ? '<span class="modal-meta-item"><i class="ti ti-flame"></i> ' + recipe.cookTime + 'm cook</span>' : '') +
-        '<span class="modal-meta-item"><i class="ti ti-clock"></i> ' + recipe.time + 'm total</span>' +
-        '<span class="modal-meta-item"><i class="ti ti-fire"></i> ' + recipe.cal + ' kcal</span>' +
+        // A recipe shared from the community has no rating or difficulty and
+        // often no time or calories — leave those out rather than print
+        // "nullm total" or "undefined kcal".
+        (recipe.time ? '<span class="modal-meta-item"><i class="ti ti-clock"></i> ' + recipe.time + 'm total</span>' : '') +
+        ((recipe.cal || recipe.calories) ? '<span class="modal-meta-item"><i class="ti ti-fire"></i> ' + (recipe.cal || recipe.calories) + ' kcal</span>' : '') +
         '<span class="modal-meta-item"><i class="ti ti-users"></i> Serves ' + (recipe.servings || 4) + '</span>' +
-        '<span class="modal-meta-item"><i class="ti ti-chart-bar"></i> ' + recipe.diff + '</span>' +
-        '<span class="modal-meta-item" style="margin-left:auto"><div class="stars">' + starsHTML(recipe.rating) + '</div>&nbsp;' + recipe.rating + ' (' + (recipe.reviews || 0).toLocaleString() + ' reviews)</span>' +
+        (recipe.diff ? '<span class="modal-meta-item"><i class="ti ti-chart-bar"></i> ' + recipe.diff + '</span>' : '') +
+        (recipe.rating ? '<span class="modal-meta-item" style="margin-left:auto"><div class="stars">' + starsHTML(recipe.rating) + '</div>&nbsp;' + recipe.rating + ' (' + (recipe.reviews || 0).toLocaleString() + ' reviews)</span>' : '') +
       '</div>' +
       '<div class="modal-section-title">Ingredients</div>' +
       '<div class="ingredient-list">' + ingredientsHTML + '</div>' +
@@ -406,8 +411,8 @@ function renderRecipeModal(recipe) {
       '<div class="step-list">' + stepsHTML + '</div>' +
       chefTipsHTML +
       mistakesHTML +
-      '<div class="modal-section-title">Nutrition (per serving)</div>' +
-      '<div class="nutrition-grid" style="grid-template-columns:repeat(' + Math.min(nutCount, 6) + ',1fr)">' + nutCols + '</div>' +
+      (nutCols ? '<div class="modal-section-title">Nutrition (per serving)</div>' +
+      '<div class="nutrition-grid" style="grid-template-columns:repeat(' + Math.min(nutCount, 6) + ',1fr)">' + nutCols + '</div>' : '') +
       substitutionsHTML +
       servedWithHTML +
       healthHTML +

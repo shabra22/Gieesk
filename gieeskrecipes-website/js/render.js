@@ -47,11 +47,12 @@ function createRecipeCard(recipe, delay) {
   var escTitle = escapeHTML(recipe.title);
   var escAuthor = escapeHTML(recipe.author || '');
 
+  var coverOpts = { emoji: recipe.emoji, title: recipe.title, cuisine: recipe.cuisine || recipe.country, size: 'lg' };
   var mediaHTML = recipe.image
-    ? '<img src="' + recipe.image + '" alt="' + escTitle + '" loading="lazy" />'
-    : '<div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:5rem;background:var(--bg-elevated)">' +
-        recipe.emoji +
-      '</div>';
+    ? '<img src="' + recipe.image + '" alt="' + escTitle + '" loading="lazy" data-cover-emoji="' + escapeHTML(recipe.emoji || '') + '" data-cover-cuisine="' + escapeHTML(coverOpts.cuisine || '') + '" />'
+    : (window.gkCover
+        ? gkCover.html(coverOpts)
+        : '<div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:5rem;background:var(--bg-elevated)">' + recipe.emoji + '</div>');
 
   card.innerHTML =
     '<a class="recipe-card-link" href="/recipes/' + recipe.id + '.html" aria-label="' + escTitle + '">' +

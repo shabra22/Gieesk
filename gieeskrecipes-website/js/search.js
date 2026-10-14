@@ -66,7 +66,7 @@ function performSearch(query) {
       const item = document.createElement('div');
       item.className = 'search-drop-item';
       item.innerHTML = `
-        <div class="search-drop-thumb">${r.image ? `<img src="${r.image}" alt="${r.title}" loading="lazy" />` : r.emoji}</div>
+        <div class="search-drop-thumb">${r.image ? `<img src="${r.image}" alt="${escapeHTML(r.title)}" data-cover-emoji="${escapeHTML(r.emoji||'')}" data-cover-cuisine="${escapeHTML(r.cuisine||r.country||'')}" loading="lazy" />` : (window.gkCover ? gkCover.html({emoji:r.emoji,title:r.title,cuisine:r.cuisine||r.country,size:'sm'}) : r.emoji)}</div>
         <div>
           <div class="search-drop-title">${r.title}</div>
           <div class="search-drop-meta">${r.cuisine} · ${r.time}min · ${r.cal} cal</div>
