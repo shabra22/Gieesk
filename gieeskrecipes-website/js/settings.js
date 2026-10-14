@@ -235,6 +235,7 @@ function openSettingsPage(name) {
       <div class="st-group">
         ${settingsRow({ icon: 'ti-shield', label: 'Privacy policy', onclick: `openSettingsLink('${origin}/privacy.html')` })}
         ${settingsRow({ icon: 'ti-gavel', label: 'Terms of service', onclick: `openSettingsLink('${origin}/terms.html')` })}
+        ${settingsRow({ icon: 'ti-receipt-refund', label: 'Refund policy', onclick: `openSettingsLink('${origin}/terms.html#refund-policy')` })}
         ${settingsRow({ icon: 'ti-cookie', label: 'Cookie preferences', onclick: 'openCookiePrefsFromSettings()' })}
       </div>`;
   } else if (name === 'pro') {

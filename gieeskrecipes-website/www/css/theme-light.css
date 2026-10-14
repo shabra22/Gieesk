@@ -193,3 +193,17 @@ html[data-theme="light"] .discover-sheet-tabs button.active { color: #1F1A12; }
 html[data-theme="light"] .discover-sheet-head { background: transparent; }
 
 /* Appearance picker (Settings → Appearance) ─ see settings.css */
+
+/* hero.css forces every .btn-outline to near-white so the hero's buttons
+   stay readable on its dark photo. That rule is global, so in Light it
+   left outline buttons elsewhere (e.g. "Add to Meal Plan" in a recipe)
+   almost invisible. The hero itself is never light. */
+html[data-theme="light"] .btn-outline {
+  color: var(--text-primary) !important;
+  border-color: var(--border-subtle) !important;
+}
+html[data-theme="light"] .hero .btn-outline,
+html[data-theme="light"] .hero-cta .btn-outline {
+  color: #F0EEE8 !important;
+  border-color: rgba(255,255,255,0.10) !important;
+}

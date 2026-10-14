@@ -168,7 +168,7 @@ function buildRecipesPage() {
     const pill = document.createElement('button');
     pill.className = 'filter-chip';
     pill.id = `pill-${country.replace(/\s/g,'-')}`;
-    pill.innerHTML = `${d.flag} ${country} <span style="opacity:.5;font-size:11px">(${d.recipes.length})</span>`;
+    pill.innerHTML = `${d.flag} ${country} <span style="opacity:.92;font-size:11px">(${d.recipes.length})</span>`;
     pill.onclick = () => {
       document.querySelectorAll('.country-section').forEach(s => {
         s.style.display = s.dataset.country === country ? '' : 'none';

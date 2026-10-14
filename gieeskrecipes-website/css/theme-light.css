@@ -207,3 +207,30 @@ html[data-theme="light"] .hero-cta .btn-outline {
   color: #F0EEE8 !important;
   border-color: rgba(255,255,255,0.10) !important;
 }
+
+/* ── Contrast (checked with an automated WCAG scan) ──────────────────
+   Several text colours were chosen for the dark theme and are too pale
+   on cream: gold, mint and coral labels, and the muted greys. Text-only
+   changes — fills, borders and button colours are untouched. */
+html[data-theme="light"] {
+  --gold-light:   #8A5E10;   /* used for text; was #C28A2B (2.6:1) */
+  --text-muted:   #6A6354;   /* was #7B7464 (4.0:1 on the page colour) */
+  --text-hint:    #7A7261;   /* was #B3AB98 (2.3:1) */
+}
+html[data-theme="light"] .badge-emerald,
+html[data-theme="light"] .post-chef-badge,
+html[data-theme="light"] .badge.is-xref .recipe-xref,
+html[data-theme="light"] .auth-success,
+html[data-theme="light"] .product-tag.live { color: #0F6E56; }
+html[data-theme="light"] .badge-coral,
+html[data-theme="light"] .auth-error,
+html[data-theme="light"] .post-action-btn.liked,
+html[data-theme="light"] .user-drop-item.danger,
+html[data-theme="light"] .user-drop-item.danger i { color: #B03A12; }
+html[data-theme="light"] .country-section-viewall,
+html[data-theme="light"] .auth-link { color: #8A5E10; }
+html[data-theme="light"] .search-submit:hover { background: #B07A1E; }
+html[data-theme="light"] .modal-section-title,
+html[data-theme="light"] .section-eyebrow { color: #8A5E10; }
+html[data-theme="light"] .legal-section-num { color: #8A5E10; }
+html[data-theme="light"] .legal-highlight { color: #4B3A10; }

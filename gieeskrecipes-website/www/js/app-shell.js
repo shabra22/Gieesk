@@ -222,8 +222,10 @@ function hapticTap() {
 
       results.innerHTML = matches.map(function (r) {
         var thumb = r.image
-          ? '<img class="app-search-result-thumb" src="' + r.image + '" alt="" loading="lazy" />'
-          : '<div class="app-search-result-thumb" style="display:flex;align-items:center;justify-content:center;font-size:20px">' + (r.emoji || '🍽') + '</div>';
+          ? '<img class="app-search-result-thumb" src="' + r.image + '" alt="' + escapeHTML(r.title) + '" data-cover-emoji="' + escapeHTML(r.emoji || '') + '" data-cover-cuisine="' + escapeHTML(r.cuisine || r.country || '') + '" loading="lazy" />'
+          : (window.gkCover
+              ? gkCover.html({ emoji: r.emoji, title: r.title, cuisine: r.cuisine || r.country, size: 'sm', cls: 'app-search-result-thumb' })
+              : '<div class="app-search-result-thumb" style="display:flex;align-items:center;justify-content:center;font-size:20px">' + (r.emoji || '🍽') + '</div>');
         return '<div class="app-search-result-item" data-id="' + r.id + '">' + thumb +
           '<div class="app-search-result-info">' +
           '<div class="app-search-result-title">' + escapeHTML(r.title) + '</div>' +

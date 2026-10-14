@@ -71,9 +71,9 @@ function performSearch(query) {
           <div class="search-drop-title">${r.title}</div>
           <div class="search-drop-meta">${r.cuisine} · ${r.time}min · ${r.cal} cal</div>
         </div>
-        <div style="margin-left:auto">
+        ${GK_SHOW_RATINGS && r.rating ? `<div style="margin-left:auto">
           <span class="recipe-rating"><i class="ti ti-star-filled" style="font-size:11px"></i> ${r.rating}</span>
-        </div>`;
+        </div>` : ''}`;
       item.addEventListener('click', () => {
         openRecipeModal(r);
         drop.classList.remove('visible');

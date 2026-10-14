@@ -177,6 +177,11 @@
   margin-bottom: 10px;
 }
 .post-recipe-card:hover { border-color: var(--gold); }
+/* Only a card that opens something should look like a button. */
+.post-recipe-card:not(.is-link) { cursor: default; }
+.post-recipe-card:not(.is-link):hover { border-color: var(--border-dim); }
+.post-recipe-text { min-width: 0; }
+.post-recipe-title { overflow-wrap: anywhere; }
 .post-recipe-emoji { font-size: 2rem; flex-shrink: 0; }
 .post-recipe-title { font-size: 14px; font-weight: 600; color: var(--text-primary); }
 .post-recipe-meta  { font-size: 12px; color: var(--text-muted); margin-top: 2px; }

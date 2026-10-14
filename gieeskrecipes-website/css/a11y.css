@@ -1,0 +1,48 @@
+/* ═══════════════════════════════════════════
+   GIEESK — Accessibility (js/a11y.js)
+═══════════════════════════════════════════ */
+
+/* Skip link: off-screen until a keyboard user tabs to it. */
+.gk-skip {
+  position: fixed;
+  top: 8px; left: 8px;
+  z-index: 100000;
+  padding: 10px 16px;
+  border-radius: 999px;
+  background: var(--gold, #C9963A);
+  color: #0A0A09;
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1;
+  text-decoration: none;
+  transform: translateY(-160%);
+  transition: transform .15s ease;
+}
+.gk-skip:focus { transform: translateY(0); outline: 2px solid #fff; outline-offset: 2px; }
+
+/* A visible focus ring for keyboard users, wherever a control has none of
+   its own. Mouse and touch clicks do not trigger :focus-visible. */
+:focus-visible {
+  outline: 2px solid var(--gold-light, #E8B96A);
+  outline-offset: 2px;
+}
+html[data-theme="light"] :focus-visible { outline-color: var(--gold, #B07A1E); }
+input:focus-visible, textarea:focus-visible, select:focus-visible {
+  outline-offset: 0;
+}
+
+/* The page that is moved to by "Skip to content" does not need a ring. */
+[role="main"]:focus { outline: none; }
+
+/* Respect the system "reduce motion" setting site-wide. The hero already
+   checks it in script; this covers CSS animations and smooth scrolling. */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto !important; }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

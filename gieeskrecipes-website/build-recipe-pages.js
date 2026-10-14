@@ -26,6 +26,7 @@ const path = require('path');
 const vm = require('vm');
 
 const SITE = 'https://gieesk.com';
+const SHOW_RATINGS = false; // data.js ratings/reviews are stored numbers, not real reviews
 const OUT_DIR = path.join(__dirname, 'recipes');
 const OG_IMAGE = SITE + '/assets/video/hero-poster.jpg'; // fallback only, when a recipe has no image of its own
 
@@ -157,7 +158,9 @@ function buildSchema(r, url) {
     };
   }
 
-  if (r.rating && r.reviews) {
+  // Stored numbers, not real reviews — keep them out of the structured data.
+  // Set SHOW_RATINGS to true only once ratings come from real users.
+  if (SHOW_RATINGS && r.rating && r.reviews) {
     schema.aggregateRating = {
       '@type': 'AggregateRating',
       ratingValue: String(r.rating),
@@ -293,7 +296,7 @@ function renderPage(r) {
       <h1 class="rp-title">${esc(r.emoji || '')} ${esc(r.title)}</h1>
       ${r.localName ? '<p class="rp-localname">' + esc(r.localName) + '</p>' : ''}
       <p class="rp-desc">${linkRef(r.desc || '')}</p>
-      ${r.rating ? '<div class="rp-rating">★ ' + esc(r.rating) + ' <span>(' + esc(r.reviews||0) + ' reviews)</span></div>' : ''}
+      ${SHOW_RATINGS && r.rating ? '<div class="rp-rating">★ ' + esc(r.rating) + ' <span>(' + esc(r.reviews||0) + ' reviews)</span></div>' : ''}
     </header>
 
     ${factRow(r)}

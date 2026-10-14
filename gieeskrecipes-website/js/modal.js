@@ -403,7 +403,7 @@ function renderRecipeModal(recipe) {
         ((recipe.cal || recipe.calories) ? '<span class="modal-meta-item"><i class="ti ti-fire"></i> ' + (recipe.cal || recipe.calories) + ' kcal</span>' : '') +
         '<span class="modal-meta-item"><i class="ti ti-users"></i> Serves ' + (recipe.servings || 4) + '</span>' +
         (recipe.diff ? '<span class="modal-meta-item"><i class="ti ti-chart-bar"></i> ' + recipe.diff + '</span>' : '') +
-        (recipe.rating ? '<span class="modal-meta-item" style="margin-left:auto"><div class="stars">' + starsHTML(recipe.rating) + '</div>&nbsp;' + recipe.rating + ' (' + (recipe.reviews || 0).toLocaleString() + ' reviews)</span>' : '') +
+        (GK_SHOW_RATINGS && recipe.rating ? '<span class="modal-meta-item" style="margin-left:auto"><div class="stars">' + starsHTML(recipe.rating) + '</div>&nbsp;' + recipe.rating + ' (' + (recipe.reviews || 0).toLocaleString() + ' reviews)</span>' : '') +
       '</div>' +
       '<div class="modal-section-title">Ingredients</div>' +
       '<div class="ingredient-list">' + ingredientsHTML + '</div>' +
@@ -412,10 +412,12 @@ function renderRecipeModal(recipe) {
       chefTipsHTML +
       mistakesHTML +
       (nutCols ? '<div class="modal-section-title">Nutrition (per serving)</div>' +
-      '<div class="nutrition-grid" style="grid-template-columns:repeat(' + Math.min(nutCount, 6) + ',1fr)">' + nutCols + '</div>' : '') +
+      '<div class="nutrition-grid" style="grid-template-columns:repeat(' + Math.min(nutCount, 6) + ',1fr)">' + nutCols + '</div>' +
+      '<p class="gk-note">Nutrition values are estimates and vary with ingredients and portion size.</p>' : '') +
       substitutionsHTML +
       servedWithHTML +
       healthHTML +
+      (recipe.healthBenefits ? '<p class="gk-note">Health information is general and is not medical advice.</p>' : '') +
       culturalHTML +
       variationsHTML +
       relatedDishHTML +
@@ -466,7 +468,7 @@ function renderRecipeModal(recipe) {
     "prepTime": recipe.prepTime ? "PT" + recipe.prepTime + "M" : undefined,
     "cookTime": recipe.cookTime ? "PT" + recipe.cookTime + "M" : undefined,
     "author": { "@type": "Person", "name": recipe.author || "GieesK Recipes Chef" },
-    "aggregateRating": recipe.rating ? {
+    "aggregateRating": (GK_SHOW_RATINGS && recipe.rating) ? {
       "@type": "AggregateRating",
       "ratingValue": recipe.rating,
       "reviewCount": recipe.reviews || 0,

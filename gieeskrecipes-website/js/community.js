@@ -3716,7 +3716,7 @@ function buildChefsTab() {
       <div class="chef-stats">
         <div><div class="chef-stat-num">${typeof getChefRecipeCount === 'function' ? getChefRecipeCount(chef.name) : 0}</div><div class="chef-stat-label">Recipes</div></div>
         <div><div class="chef-stat-num" data-follower-count="${escapeHTML(chef.name)}">–</div><div class="chef-stat-label">Followers</div></div>
-        <div><div class="chef-stat-num">${escapeHTML(String(chef.rating || ''))}</div><div class="chef-stat-label">Rating</div></div>
+        ${GK_SHOW_RATINGS ? `<div><div class="chef-stat-num">${escapeHTML(String(chef.rating || ''))}</div><div class="chef-stat-label">Rating</div></div>` : ''}
       </div>
       <div style="font-size:11px;color:var(--text-muted);margin-bottom:12px">${escapeHTML(chef.specialty || '')}</div>
       <button class="btn-ghost" data-follow-btn="${escapeHTML(chef.name)}" style="width:100%;justify-content:center;font-size:12px;padding:7px 12px" onclick="event.stopPropagation();followChef(this.dataset.followBtn,this)">
@@ -4467,7 +4467,7 @@ function openChefProfile(index) {
               <div class="chef-profile-stats">
                 <div class="dash-hero-stat"><div class="dash-hero-stat-num">${chefRecipes.length}</div><div class="dash-hero-stat-label">Recipes</div></div>
                 <div class="dash-hero-stat"><div class="dash-hero-stat-num" data-follower-count="${escapeHTML(chef.name)}">–</div><div class="dash-hero-stat-label">Followers</div></div>
-                <div class="dash-hero-stat"><div class="dash-hero-stat-num">${escapeHTML(String(chef.rating || ''))} ⭐</div><div class="dash-hero-stat-label">Rating</div></div>
+                ${GK_SHOW_RATINGS ? `<div class="dash-hero-stat"><div class="dash-hero-stat-num">${escapeHTML(String(chef.rating || ''))} ⭐</div><div class="dash-hero-stat-label">Rating</div></div>` : ''}
               </div>
               <div class="chef-profile-actions">
                 <button class="btn-gold" data-follow-btn="${escapeHTML(chef.name)}" onclick="followChef(this.dataset.followBtn,this)">Follow</button>

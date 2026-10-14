@@ -425,7 +425,7 @@ document.addEventListener('DOMContentLoaded', () => {
         rsd.innerHTML = results.length
           ? results.slice(0,8).map(r => `
             <div class="search-drop-item" onclick="openRecipeModal(RECIPES.find(x=>String(x.id)==='${r.id}'));document.getElementById('recipesSearchDrop').classList.remove('visible')">
-              <div class="search-drop-thumb">${r.image ? `<img src="${r.image}" alt="${escapeHTML(r.title)}" loading="lazy" />` : r.emoji}</div>
+              <div class="search-drop-thumb">${r.image ? `<img src="${r.image}" alt="${escapeHTML(r.title)}" data-cover-emoji="${escapeHTML(r.emoji||'')}" data-cover-cuisine="${escapeHTML(r.cuisine||r.country||'')}" loading="lazy" />` : (window.gkCover ? gkCover.html({emoji:r.emoji,title:r.title,cuisine:r.cuisine||r.country,size:'sm'}) : r.emoji)}</div>
               <div>
                 <div class="search-drop-title">${escapeHTML(r.title)}</div>
                 <div class="search-drop-meta">${r.countryFlag||''} ${escapeHTML(r.country||r.cuisine||'')} · ${r.time}min · ${r.cal} cal</div>
