@@ -80,7 +80,7 @@ html[data-theme="light"] .app-header-btn:active { background: rgba(70,52,20,0.14
 html[data-theme="light"] body.app-header-transparent .app-header-btn { background: var(--lt-fill-2); }
 html[data-theme="light"] .app-header-mark { filter: none; }
 html[data-theme="light"] .app-tab-bar {
-  background: rgba(255,255,255,0.96);
+  background: #FFFFFF;   /* fully opaque: cards must never show through */
   border-top-color: var(--lt-line);
   box-shadow: 0 -6px 24px rgba(70,52,20,0.07);
 }
@@ -172,9 +172,13 @@ html[data-theme="light"] ::placeholder { color: var(--text-muted); opacity: .8; 
 
 
 /* ── Always-dark zones ──────────────────────────────────────────────
-   Discover and the full-screen video player sit on black video, so they
-   keep the original dark & gold tokens even when the app is in Light. */
-html[data-theme="light"] #page-discover,
+   The Discover feed and the full-screen video player sit on black video,
+   so they keep the original dark & gold tokens even when the app is in
+   Light. The search / My videos / Saved sheet and the comment sheet are
+   ordinary screens and follow the chosen theme. */
+html[data-theme="light"] #page-discover .discover-topbar,
+html[data-theme="light"] #page-discover .discover-tabs-row,
+html[data-theme="light"] #page-discover .discover-feed,
 html[data-theme="light"] .discover-fullscreen-overlay {
   color-scheme: dark;
   --gold:#C9963A; --gold-light:#E8B96A; --gold-dark:#8A6120; --gold-glow:rgba(201,150,58,0.25);
@@ -184,5 +188,8 @@ html[data-theme="light"] .discover-fullscreen-overlay {
   --border-dim:rgba(255,255,255,0.06); --border-subtle:rgba(255,255,255,0.10); --border-gold:rgba(201,150,58,0.30);
   color: var(--text-primary);
 }
+html[data-theme="light"] .discover-stage { background: #000; }
+html[data-theme="light"] .discover-sheet-tabs button.active { color: #1F1A12; }
+html[data-theme="light"] .discover-sheet-head { background: transparent; }
 
 /* Appearance picker (Settings → Appearance) ─ see settings.css */

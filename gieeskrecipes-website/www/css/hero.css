@@ -483,3 +483,108 @@ body.has-photo-bg #heroCanvas { opacity: .55; }
 html.is-native-app-early .site-backdrop,
 body.is-native-app .site-backdrop,
 body.is-native-app .hero-photo-credit { display: none !important; }
+
+/* ═══════════════════════════════════════════════════════════════
+   HERO ORBIT — real ingredient photographs & clips, floating in depth
+   Built by js/hero-orbit.js. Replaces the computer-generated 3D produce.
+   Layers: near ones are big, sharp and move most with the pointer;
+   far ones are small, soft and dim — that gap is what sells the depth.
+═══════════════════════════════════════════════════════════════ */
+.hero { overflow: hidden; }
+.hero-orbit {
+  position: absolute; inset: 0;
+  z-index: 1;                 /* above the canvas + scrim, below the copy */
+  pointer-events: none;
+  overflow: hidden;
+  -webkit-mask-image: linear-gradient(to bottom, #000 0, #000 82%, transparent 100%);
+          mask-image: linear-gradient(to bottom, #000 0, #000 82%, transparent 100%);
+}
+.orb {
+  position: absolute;
+  width: var(--s); height: var(--s);
+  margin: calc(var(--s) / -2) 0 0 calc(var(--s) / -2);
+  transform: translate3d(var(--tx, 0px), var(--ty, 0px), 0);
+  will-change: transform;
+}
+.orb-float {
+  position: absolute; inset: 0;
+  animation: orbBob var(--dur, 9s) ease-in-out var(--del, 0s) infinite alternate;
+}
+.orb-disc {
+  position: absolute; inset: 0;
+  border-radius: 50%;
+  overflow: hidden;
+  background: #121110;
+  opacity: 0;
+  filter: blur(14px);
+  transform: scale(.55);
+  box-shadow:
+    0 28px 60px rgba(0,0,0,.55),
+    0 0 0 1px rgba(255,255,255,.07),
+    0 0 60px rgba(201,150,58,calc(var(--d, 1) * .10));
+  transition:
+    opacity 1.4s cubic-bezier(.2,.7,.2,1) var(--in, 0s),
+    filter 1.4s cubic-bezier(.2,.7,.2,1) var(--in, 0s),
+    transform 1.6s cubic-bezier(.2,.8,.2,1) var(--in, 0s);
+}
+.orb.is-in .orb-disc {
+  opacity: var(--op, 1);
+  filter: blur(var(--blur, 0px));
+  transform: scale(1);
+}
+.orb-disc img,
+.orb-disc video {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%;
+  object-fit: cover;
+  display: block;
+  transform: scale(1.14);
+  filter: saturate(1.12) contrast(1.06) brightness(.92);
+}
+/* Light catching the glass: soft highlight + edge falloff */
+.orb-disc::after {
+  content: "";
+  position: absolute; inset: 0;
+  border-radius: 50%;
+  background:
+    radial-gradient(circle at 28% 22%, rgba(255,255,255,.20), transparent 38%),
+    radial-gradient(circle at 50% 50%, transparent 58%, rgba(0,0,0,.50) 100%);
+  pointer-events: none;
+}
+/* Fine gold ring with a single bead travelling around it */
+.orb-ring {
+  position: absolute; inset: -11px;
+  border-radius: 50%;
+  border: 1px solid rgba(201,150,58,.26);
+  opacity: 0;
+  transition: opacity 1.4s ease calc(var(--in, 0s) + .5s);
+  animation: orbSpin var(--spin, 26s) linear infinite;
+}
+.orb.is-in .orb-ring { opacity: var(--ring, 1); }
+.orb-ring::after {
+  content: "";
+  position: absolute; top: -3px; left: 50%;
+  width: 5px; height: 5px; margin-left: -2.5px;
+  border-radius: 50%;
+  background: #E8B96A;
+  box-shadow: 0 0 10px 2px rgba(232,185,106,.65);
+}
+
+@keyframes orbBob {
+  from { transform: translate3d(0, -9px, 0) rotate(calc(var(--rot, 4deg) * -1)); }
+  to   { transform: translate3d(0, 11px, 0) rotate(var(--rot, 4deg)); }
+}
+@keyframes orbSpin { to { transform: rotate(360deg); } }
+
+@media (max-width: 767px) {
+  .orb-ring { inset: -7px; }
+  .orb-ring::after { display: none; }
+  .orb-disc { box-shadow: 0 16px 34px rgba(0,0,0,.5), 0 0 0 1px rgba(255,255,255,.06); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .orb-float, .orb-ring { animation: none; }
+  .orb-disc { transition: opacity .4s ease; filter: none; transform: none; }
+  .orb.is-in .orb-disc { filter: none; }
+}
+/* The app has its own home; the orbit is a website thing. */
+html.is-native-app-early .hero-orbit, body.is-native-app .hero-orbit { display: none !important; }

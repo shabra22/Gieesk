@@ -283,7 +283,15 @@
   var FIELD_R = 15, Z_FAR = -34, Z_NEAR = 12;
   var fields = [], dummy = new THREE.Object3D();
 
+  // The procedural (computer-generated) tomatoes, chillies, onions etc. are
+  // only drawn when there is no real-photo layer on the page. With the
+  // photographic "orbit" (#heroOrbit) present they're skipped entirely —
+  // the dust, god-rays and atmospheric FX still render. Delete #heroOrbit
+  // from index.html and the 3D produce comes straight back.
+  var CGI_PRODUCE = !document.getElementById('heroOrbit');
+
   Object.keys(LIB).forEach(function (key) {
+    if (!CGI_PRODUCE) return;
     var def = LIB[key], count = QUALITY.perType;
     var geo = def.g(), mat = makeMaterial(def.gl);
     var mesh = new THREE.InstancedMesh(geo, mat, count);

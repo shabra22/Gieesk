@@ -46,6 +46,21 @@
     m.content = theme === 'light' ? '#F4EFE4' : '#0A0A09';
   }
 
+  // Tell Android which way to draw the system bars' icons (the gesture
+  // pill and, if it is ever shown, the clock/battery). Without this a
+  // phone in dark mode would draw pale icons on our ivory page. Capacitor's
+  // built-in SystemBars plugin does it; absent or failing is harmless.
+  function setSystemBars(theme) {
+    try {
+      var P = window.Capacitor && window.Capacitor.Plugins;
+      var sb = P && P.SystemBars;
+      if (sb && sb.setStyle) {
+        var r = sb.setStyle({ style: theme === 'light' ? 'LIGHT' : 'DARK' });
+        if (r && r.catch) r.catch(function () {});
+      }
+    } catch (e) {}
+  }
+
   function apply(mode, animate) {
     var theme = resolve(mode);
     if (animate) {
@@ -56,6 +71,7 @@
     root.setAttribute('data-theme', theme);
     root.style.colorScheme = theme;
     setMeta(theme);
+    setSystemBars(theme);
     try { window.dispatchEvent(new CustomEvent('gieesk-theme', { detail: { mode: mode, theme: theme } })); } catch (e) {}
     return theme;
   }
