@@ -330,6 +330,7 @@ const CUISINE_META = {
   India:          { name: 'Indian',        color: '#FF9933' },
   Thailand:       { name: 'Thai',          color: '#00247D' },
   Morocco:        { name: 'Moroccan',      color: '#C1272D' },
+  Egypt:          { name: 'Egyptian',      color: '#CE1126' },
   Ethiopia:       { name: 'Ethiopian',     color: '#FCDD09' },
   Kenya:          { name: 'Kenyan',        color: '#006600' },
   Tanzania:       { name: 'Tanzanian',     color: '#1EB53A' },

@@ -211,7 +211,7 @@ function renderCuisines() {
       // that change.
       var cuisineToCountry = {
         Italian: 'Italy', Japanese: 'Japan', Mexican: 'Mexico', Indian: 'India',
-        Thai: 'Thailand', Moroccan: 'Morocco', French: 'France', Lebanese: 'Lebanon',
+        Thai: 'Thailand', Moroccan: 'Morocco', Egyptian: 'Egypt', French: 'France', Lebanese: 'Lebanon',
         Chinese: 'China', Greek: 'Greece', Ethiopian: 'Ethiopia', Peruvian: 'Peru',
         Kenyan: 'Kenya', Tanzanian: 'Tanzania', Israeli: 'Israel', British: 'UK',
         Somali: 'Somalia', 'South African': 'South Africa',

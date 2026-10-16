@@ -46,13 +46,13 @@
     'Kenya': 'ke', 'Ethiopia': 'et', 'Italy': 'it', 'Tanzania': 'tz', 'Ghana': 'gh',
     'Nigeria': 'ng', 'Uganda': 'ug', 'Somalia': 'so', 'South Africa': 'za',
     'UK': 'gb', 'United Kingdom': 'gb', 'India': 'in', 'Israel': 'il', 'Japan': 'jp',
-    'Mexico': 'mx', 'Morocco': 'ma', 'Thailand': 'th', 'China': 'cn', 'France': 'fr',
+    'Mexico': 'mx', 'Morocco': 'ma', 'Egypt': 'eg', 'Thailand': 'th', 'China': 'cn', 'France': 'fr',
     'Greece': 'gr', 'Lebanon': 'lb', 'Peru': 'pe', 'Cameroon': 'cm', 'Senegal': 'sn',
     'USA': 'us', 'United States': 'us'
   };
   // Codes that have artwork in assets/flags/.
   var HAVE = {};
-  ['ke','et','it','tz','gh','ng','ug','so','za','gb','in','il','jp','mx','ma','th','cn','fr','gr','lb','pe','cm','sn','us']
+  ['ke','et','it','tz','gh','ng','ug','so','za','gb','in','il','jp','mx','ma','eg','th','cn','fr','gr','lb','pe','cm','sn','us']
     .forEach(function (c) { HAVE[c] = 1; });
 
   function emojiToCode(emoji) {

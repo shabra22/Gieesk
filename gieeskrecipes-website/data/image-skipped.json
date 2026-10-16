@@ -1,95 +1,17 @@
 {
- "UGA003": {
-  "reason": "Matooke cooked with cow intestines. No generic photo shows this and an offal-and-banana substitute would mislead."
+ "EGY018": {
+  "reason": "Taro and chard stew; no stock photo honestly shows this dish"
  },
- "UGA009": {
-  "reason": "Ghee whipped with rock salt to a pale creamy ceremonial sauce. A photo of any white sauce would misrepresent it, and eshabwe is not in stock libraries."
+ "EGY075": {
+  "reason": "Plain white cream filling; no stock photo honestly shows this"
  },
- "UGA023": {
-  "reason": "Bitter garden eggs with ground dried silverfish. Two ingredients stock libraries do not carry, in a combination nothing else resembles."
+ "EGY082": {
+  "reason": "Lamb fat wrapped kofta; no stock photo honestly shows this"
  },
- "UGA030": {
-  "reason": "Sweet banana and groundnut steamed in a banana-leaf parcel. The parcel is the dish; an unwrapped substitute shows nothing."
+ "EGY083": {
+  "reason": "Trotter fatta; no stock photo honestly shows this dish"
  },
- "UGA051": {
-  "reason": "Fresh shelled beans and pasta with katunkuma bitter berries. The berries are the point and they are not photographed."
- },
- "UGA055": {
-  "reason": "Street-fried cow lung in instant noodle broth. Nothing in a stock library is this, and a noodle-soup photo would hide the one ingredient that defines it."
- },
- "UGA061": {
-  "reason": "Roasted grasshoppers. Stock libraries carry live grasshoppers, not cleaned and roasted nsenene — a live-insect photo would be actively wrong."
- },
- "UGA062": {
-  "reason": "Winged termites, dewinged and roasted or pounded to flour. Same problem as nsenene: the available insect photography is of live insects."
- },
- "UGA063": {
-  "reason": "Roasted crickets. As above — a live cricket is not the dish."
- },
- "UGA070": {
-  "reason": "Sun-dried cowpea leaf ground to a powder. A pantry item, not a plated dish, and not photographed."
- },
- "UGA072": {
-  "reason": "Small sun-dried Lake Victoria fish in groundnut paste. Nkejje are specific and are not in stock libraries."
- },
- "UGA081": {
-  "reason": "Spider plant and amaranth leaves in groundnut sauce finished with sour milk. Jobyo is not photographed and the sour milk is invisible in any substitute."
- },
- "UGA082": {
-  "reason": "Skinned beans with dried silverfish. A bean-stew photo hides the mukene, which is half the dish."
- },
- "UGA084": {
-  "reason": "Ground unroasted sesame, pressed and rolled into balls. The single most distinctive northern Ugandan dish and entirely unphotographed."
- },
- "UGA086": {
-  "reason": "Millet beer drunk from a shared pot through long straws. The shared pot is the dish; no stock photo has it."
- },
- "UGA087": {
-  "reason": "Lugbara sorghum beer. Not photographed, and a beer glass would misrepresent it entirely."
- },
- "UGA088": {
-  "reason": "Fermented maize beverage. As above."
- },
- "UGA089": {
-  "reason": "Fermented sorghum and honey brew from Kigezi. Not photographed."
- },
- "UGA090": {
-  "reason": "Sorghum drink served in wooden cups. Not photographed."
- },
- "UGA091": {
-  "reason": "Mingled millet and cassava bread — a dark brown mound. Ugali photos are white and would be the wrong colour and the wrong grain."
- },
- "UGA093": {
-  "reason": "Mashed pigeon peas with shea butter, used to anoint Lango clan leaders. Ceremonial and unphotographed."
- },
- "UGA094": {
-  "reason": "Termites ground to a paste. See the other insect entries."
- },
- "UGA097": {
-  "reason": "A brown cooking liquid made from sieved plant ash. Not a plated dish and not photographed."
- },
- "UGA098": {
-  "reason": "Salt made by burning dried salty leaves. Not photographed."
- },
- "UGA099": {
-  "reason": "Pounded wingless termites cooked in leaves. See the other insect entries."
- },
- "UGA100": {
-  "reason": "Juice squeezed from pounded young maize. Not photographed, and a glass of milk would be wrong."
- },
- "UGA101": {
-  "reason": "Ground maize tied in a leaf and boiled into a block. The leaf parcel is the dish."
- },
- "UGA103": {
-  "reason": "Boned fish mashed into groundnut paste. One of very few documented Madi dishes and not photographed."
- },
- "UGA110": {
-  "reason": "Fermented termites rolled into balls and hardened in salted water. See the other insect entries."
- },
- "UGA112": {
-  "reason": "Stiff sorghum porridge from Karamoja. Same colour-and-grain problem as karo."
- },
- "UGA118": {
-  "reason": "Cassava-flour staple, mingled stiff. A white ugali photo is the wrong grain."
+ "EGY085": {
+  "reason": "Goose and egg wraps from Siwa; no honest stock photo"
  }
 }

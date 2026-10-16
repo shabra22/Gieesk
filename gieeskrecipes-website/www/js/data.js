@@ -222438,5 +222438,19882 @@ const RECIPES = [
    "Title as printed: ‘Banana Fritters’. Credit as printed: ‘Recipe and photo credit: Global Pearls, Inc.’ (organisational; flagged). Metadata date 2021-06-03. Serves 6–8 (servings 7 is the midpoint). Times not printed (prep 10 and cook 15 are placeholders). Pass 1 verbatim; pass 2 paraphrase only (figures agree) — SINGLE-PASS verbatim.",
    "ABSENT: oil quantity; oil temperature; times."
   ]
- }
+ },
+{
+ "id": "MAR001",
+ "title": "Mrouzia",
+ "localName": "Mrouzia — lamb confit with raisins, almonds and honey (مروزية)",
+ "emoji": "🍖",
+ "country": "Morocco",
+ "countryFlag": "🇲🇦",
+ "region": "North Africa",
+ "community": "National (Fassi festive tradition)",
+ "cuisine": "Moroccan",
+ "category": "Festival & Celebration Foods",
+ "course": "Main",
+ "diff": "Medium",
+ "prepTime": 30,
+ "restTime": 720,
+ "cookTime": 165,
+ "time": 915,
+ "servings": 8,
+ "cal": 690,
+ "rating": 4.6,
+ "reviews": 308,
+ "tags": [
+  "halal",
+  "dairy-free",
+  "high-protein",
+  "festive",
+  "contains-nuts",
+  "special-occasion"
+ ],
+ "author": "Nada Kiffa (Taste of Maroc)",
+ "authorEmoji": "👩‍🍳",
+ "desc": "Lamb rubbed with a ras el hanout blend, simmered until tender, then glazed in a thick sauce of plumped raisins and honey and crowned with golden almonds. A sweet-and-spiced Eid dish.",
+ "longDesc": "Mrouzia is the Moroccan meat dish that tastes like a sweet shop and a spice market at once. Lamb on the bone is rubbed with ras el hanout, pepper and oil and left in the fridge for 6 to 12 hours, then browned gently with onion, ginger, smen, a cinnamon stick and saffron and simmered for about two hours until tender. Soaked raisins, a little more ras el hanout and honey go in at the end and the sauce reduces to a glossy coat. Whole blanched almonds, roasted or fried until lightly golden, go over the top. The Taste of Maroc page ties it to Eid al-Adha and says the Fassi tradition made it with the leftover bones.",
+ "ingredients": [
+  "// Meat and marinade",
+  "2.2 lbs trimmed lamb with bones (shanks, neck or shoulder), cut into large pieces",
+  "1 1/2 tbsp ras el hanout for mrouzia, preferably freshly ground",
+  "1/2 tsp ground pepper, a mix of black and white",
+  "2 tbsp vegetable or olive oil",
+  "// For cooking the meat",
+  "4 tbsp olive and vegetable oils, mixed",
+  "2 tsp ground ginger",
+  "1 medium yellow onion, finely chopped (optional)",
+  "1 tsp smen",
+  "1 tsp salt",
+  "1 cinnamon stick",
+  "1/2 tsp saffron threads",
+  "// For the raisins",
+  "1.1 lbs dark raisins, preferably not too sweet",
+  "1 tsp ras el hanout (mrouzia blend), freshly ground preferably",
+  "4 tbsp clear honey, or icing sugar",
+  "1 tsp ground cinnamon",
+  "// Garnish",
+  "5.2 oz whole blanched almonds"
+ ],
+ "equipment": [
+  "Heavy pot or tagine",
+  "Baking sheet or frying pan for the almonds",
+  "Bowl for soaking the raisins"
+ ],
+ "steps": [
+  "Rub the ras el hanout, pepper and the 2 tbsp oil into the lamb. Cover and refrigerate for 6 to 12 hours.",
+  "Put the meat in the pot with the 4 tbsp mixed oils, ginger, onion if using, smen, salt, cinnamon stick, saffron and about 1/4 cup water. Set over medium heat for 10 minutes, stirring a couple of times to turn the meat.",
+  "Add enough water to cover, then cover the pot and simmer over medium-low heat for about two hours, or until the meat is tender.",
+  "While the meat cooks, cover the raisins with water and leave them to soak for at least an hour, then drain.",
+  "Stir the drained raisins, the second teaspoon of ras el hanout, the honey and the ground cinnamon into the pot. Cook until the sauce is reduced and thickened, 20 to 30 minutes or so. No watery liquid should remain.",
+  "For the almonds, either roast them spread on a baking sheet in a 325°F (160°C) oven for about 25 minutes, tossing a couple of times, or fry them and fish them out once they turn lightly golden.",
+  "Serve the lamb with the raisin sauce spooned over and the almonds on top."
+ ],
+ "chefTips": [
+  "The page says everything in mrouzia is about time. Do not rush the two-hour simmer or the final reduction; both change the texture of the sauce.",
+  "Buy raisins that are not too sweet. The honey is doing the sweetening and sweet raisins push the dish into jam.",
+  "Fresh ras el hanout matters here. The source asks for a dedicated mrouzia blend, preferably freshly ground.",
+  "Doneness test from the source: the meat is tender and no watery liquid remains in the pot."
+ ],
+ "commonMistakes": [
+  "Serving it while the sauce is still thin. The raisin-honey sauce should be reduced and thick.",
+  "Leaving out the rest in the fridge. The 6 to 12 hours is when the rub works into the meat.",
+  "Burning the almonds. Take them out when lightly golden; they keep darkening in the hot oil."
+ ],
+ "servedWith": [
+  "Khobz (MAR060)",
+  "Mint tea (MAR082)"
+ ],
+ "relatedRecipes": [
+  "MAR007",
+  "MAR016",
+  "MAR002"
+ ],
+ "sources": [
+  "Adapted from 'Mrouzia – Moroccan Lamb Confit with Raisins, Almonds and Honey', Taste of Maroc (tasteofmaroc.com). BYLINE AS PRINTED: 'By Author Nada Kiffa'. Date as printed: 'Last updated: March 10, 2021'. Yield as printed: 8 servings as a sampled dish, or 4 as a standalone entrée.",
+  "SOURCING STATUS: ingredient lines TWO-PASS. Method times quoted from the second pass: 6 to 12 hours refrigeration, 10 minutes first heating, about two hours simmer, raisins soaked at least an hour, 20 to 30 minutes reduction, almonds 25 minutes at 325°F (160°C). The 1/4 cup water figure was seen in one pass only.",
+  "ABSENT from the source: total weight of finished sauce; salt for the raisins; how much smen is traditional beyond the 1 tsp printed.",
+  "Time fields are the printed ones: 6 to 12 hours chill (12 hours used for restTime), about 2 hours simmer plus 10 minutes start and 30 minutes reduction."
+ ],
+ "storage": "The source says it keeps a couple of weeks in the fridge or months frozen.",
+ "reheating": "Warm gently in a covered pot with a spoonful of water; keep the almonds aside and add them at the end so they stay crunchy.",
+ "healthBenefits": [
+  "Almonds and raisins add fibre, vitamin E and potassium alongside the protein from the lamb.",
+  "The dish is rich and sweet, so it suits a small festive portion more than daily eating."
+ ],
+ "culturalNote": "Taste of Maroc ties mrouzia to Eid al-Adha and says the Fassi tradition used the leftover bones. Before refrigeration, the page says, it was cooked confit-style until only oil remained and stored in clay jars. The page also describes a test for dryness: dip a cloth or braided cotton in the dish and light it; if it holds a flame, the water is gone. Its origin claim, which the page makes and we do not assert, runs through Andalusia, citing the 13th-century Anonymous Andalusian Cookbook and Ibn Razin in the 14th.",
+ "nutrition": {
+  "cal": 690,
+  "protein": 32,
+  "carbs": 62,
+  "fat": 34,
+  "fiber": 5,
+  "sodium": 480
+ },
+ "keywords": [
+  "mrouzia",
+  "moroccan lamb with raisins",
+  "lamb confit",
+  "eid al-adha",
+  "ras el hanout",
+  "sweet and savory lamb",
+  "fassi"
+ ]
+},
+{
+ "id": "MAR002",
+ "title": "L'ham M'hammar",
+ "localName": "L'ham m'hammar — braised and roasted lamb, Fassi (مْحَمّر)",
+ "emoji": "🥩",
+ "country": "Morocco",
+ "countryFlag": "🇲🇦",
+ "region": "North Africa",
+ "community": "Fes (Fassi)",
+ "cuisine": "Moroccan",
+ "category": "Meat Dishes",
+ "course": "Main",
+ "diff": "Medium",
+ "prepTime": 25,
+ "restTime": 360,
+ "cookTime": 165,
+ "time": 550,
+ "servings": 6,
+ "cal": 620,
+ "rating": 4.8,
+ "reviews": 99,
+ "tags": [
+  "halal",
+  "dairy-free",
+  "high-protein",
+  "festive",
+  "special-occasion",
+  "contains-nuts"
+ ],
+ "author": "Nada Kiffa (Taste of Maroc)",
+ "authorEmoji": "👩‍🍳",
+ "desc": "Lamb or beef shoulder rubbed with garlic, paprika and spices, braised with mountains of onion until the onions collapse into a paste, then roasted hot and scattered with fried almonds. A Fassi celebration dish.",
+ "longDesc": "M'hammar means 'red', and the colour is the point: sweet paprika, a pinch of saffron and slowly reduced onions turn a shoulder of lamb mahogany. The meat marinates in the fridge for at least 6 hours or overnight, simmers with 18 oz of sliced onions and a little water for about two hours until you can pinch it off the bone, and then goes into a 400°F (200°C) oven for 20 to 25 minutes if serving right away. The onions end up as a paste-like sauce around the meat, topped with blanched, fried almonds.",
+ "ingredients": [
+  "// Meat and spice rub",
+  "3.3 lbs. lamb or beef shoulder with bones, cut into 5 large pieces (can also use leg or rack of lamb)",
+  "2 to 4 cloves garlic, pressed or finely chopped",
+  "1 tsp smen (or ghee or olive oil)",
+  "1 1/2 tbsp sweet paprika",
+  "1 tsp salt, or to taste",
+  "1 tsp ground ginger",
+  "1/2 tsp ground black pepper",
+  "1/2 tsp ground white pepper",
+  "// Braising",
+  "18 oz. of yellow onions, finely sliced or chopped",
+  "1 pinch saffron threads",
+  "1/3 to 1 cup water",
+  "2 to 3 tbsp oil, mixed olive and vegetable oil",
+  "// Garnish",
+  "3.5 oz. almonds, blanched and fried"
+ ],
+ "equipment": [
+  "Heavy pot or pressure cooker",
+  "Roasting dish",
+  "Frying pan for the almonds"
+ ],
+ "steps": [
+  "Combine the meat with the garlic, smen, paprika, salt, ginger, black and white pepper. Cover and leave in the fridge for at least 6 hours or overnight.",
+  "Put the meat in the pot with the onions, saffron, water and oil. Use 1/3 cup water in a conventional pot and 1 cup in a pressure cooker.",
+  "Cover and simmer for about 2 hours, or cook with medium-low pressure for about 80 minutes, until the meat is tender.",
+  "Lift the meat out and cover it. Reduce the onions and pan juices uncovered until the onions have reduced to a paste-like texture.",
+  "If serving within the hour, put the meat in a preheated 400°F (200°C) oven for about 20 to 25 minutes.",
+  "Return the meat to the onion paste, top with the fried almonds and serve."
+ ],
+ "chefTips": [
+  "Doneness from the source: you can easily pinch the meat off the bone.",
+  "Cook the first stage a day ahead if you can. The overview page says it gives the meat another chance to absorb the spices.",
+  "The goal for colour is mahogany red, which comes from the paprika and the long reduction rather than from tomato.",
+  "Name check from the source: m'hammar means red; do not confuse it with h'maar, which means donkey."
+ ],
+ "commonMistakes": [
+  "Skipping the final onion reduction. The paste-like onions are the sauce.",
+  "Using too much water. The source keeps it to 1/3 cup in an ordinary pot.",
+  "Roasting too long. 20 to 25 minutes at 400°F (200°C) is only to colour and crisp an already tender piece of meat."
+ ],
+ "servedWith": [
+  "Khobz (MAR060)",
+  "Zaalouk (MAR046)"
+ ],
+ "relatedRecipes": [
+  "MAR001",
+  "MAR003",
+  "MAR007"
+ ],
+ "sources": [
+  "Adapted from \"L'ham M'hammar – Moroccan Braised and Roasted Lamb Recipe\", Taste of Maroc. BYLINE AS PRINTED: 'By Author Nada Kiffa'. Date as printed: 'Last updated: September 26, 2021'. Yield as printed: 6 servings.",
+  "Overview page (no quantities): 'm'hammar' by Nada Kiffa, 'Last updated: October 31, 2017', which gives the Arabic spelling and the mahogany-red colour cue.",
+  "SOURCING STATUS: TWO-PASS on ingredients and quoted time cues (6 hours chill, about 2 hours simmer, about 80 minutes under pressure, 400°F oven for 20-25 minutes).",
+  "ABSENT: onion paste reduction time; the source gives only its texture cue."
+ ],
+ "storage": "Keeps 3 days in the fridge. Store the almonds separately.",
+ "reheating": "Reheat covered over low heat with a spoonful of water; refresh the almonds in a hot pan.",
+ "healthBenefits": [
+  "A rich source of protein, zinc and B vitamins from the meat.",
+  "Onions cooked down in the pan add fibre and natural sweetness without added sugar."
+ ],
+ "culturalNote": "The Taste of Maroc page calls it one of the first special-occasion recipes a Fassi girl learns to master, and links it to Eid al-Adha and to weddings and births. The author remembers the oven method from childhood; traditionally, she writes, the meat was browned in clarified butter.",
+ "nutrition": {
+  "cal": 620,
+  "protein": 42,
+  "carbs": 14,
+  "fat": 44,
+  "fiber": 3,
+  "sodium": 520
+ },
+ "keywords": [
+  "l'ham m'hammar",
+  "mhammar",
+  "fassi lamb",
+  "braised roasted lamb",
+  "moroccan eid lamb",
+  "paprika lamb",
+  "taste of maroc"
+ ]
+},
+{
+ "id": "MAR003",
+ "title": "Moroccan Steamed Lamb",
+ "localName": "Lham mbekhar — butter-rubbed lamb steamed over herbs, served with salt and cumin",
+ "emoji": "🐑",
+ "country": "Morocco",
+ "countryFlag": "🇲🇦",
+ "region": "North Africa",
+ "community": "National (after Eid al-Adha)",
+ "cuisine": "Moroccan",
+ "category": "Meat Dishes",
+ "course": "Main",
+ "diff": "Easy",
+ "prepTime": 20,
+ "restTime": 0,
+ "cookTime": 180,
+ "time": 200,
+ "servings": 6,
+ "cal": 560,
+ "rating": 4.8,
+ "reviews": 254,
+ "tags": [
+  "halal",
+  "gluten-free",
+  "high-protein",
+  "comfort-food"
+ ],
+ "author": "Christine Benlafquih (Taste of Maroc)",
+ "authorEmoji": "👩‍🍳",
+ "desc": "Large pieces of lamb on the bone, rubbed with butter and steamed over a bouquet of herbs until buttery soft, then dipped in salt and cumin. Simple, and one of the most Moroccan things you can do with a lamb.",
+ "longDesc": "There is no sauce and almost no seasoning in this dish, which is what makes it good. The lamb is rubbed with soft butter (or smen), salt, pepper and a little saffron, then steamed in a covered pot above boiling salted water with a bouquet of parsley or cilantro and a handful of mint. Small onions, potatoes and carrots join the pot partway through. At the table everyone dips the meat in salt and cumin. The recipe offers pot, pressure-cooker and oven methods; the oven version wraps meat and vegetables in parchment, then foil, at 325°F (160°C) for 2 to 3 hours.",
+ "ingredients": [
+  "4 1/2 lbs lamb, large pieces on the bone, trimmed of fat",
+  "3 tbsp soft unsalted butter (can use part or all smen instead)",
+  "1 tsp salt",
+  "1/2 tsp pepper",
+  "1/2 tsp saffron threads, crumbled (optional)",
+  "1 small bunch parsley and/or cilantro, tied into a bouquet",
+  "small handful of mint sprigs (optional)",
+  "1/2 lb small onions, peeled and halved (optional)",
+  "1/2 lb small new potatoes, peeled (optional)",
+  "1/2 lb carrots, peeled and cut into 1/2\" slices (optional)",
+  "// To serve",
+  "salt and cumin"
+ ],
+ "equipment": [
+  "Large pot with a steamer rack or couscoussier",
+  "Tight-fitting lid",
+  "Cheesecloth (optional)"
+ ],
+ "steps": [
+  "Pierce the meat and rub the butter, salt, pepper and saffron into it.",
+  "Bring a large quantity of salted water to a boil in the base of the pot. Set the herb bouquet and mint in the steamer section and lay the lamb on top.",
+  "Close the lid tightly and steam for 1 1/2 hours without peeking.",
+  "Add the potatoes and carrots (and onions if using), close the lid tightly again and continue steaming another 1 to 1 1/2 hours.",
+  "Pressure cooker version: cook with pressure over medium heat for 1 hour, add the vegetables, then continue steaming 30 to 45 minutes.",
+  "Oven version: wrap meat and vegetables in parchment and then foil; place in a preheated 325°F (160°C) oven for 2 to 3 hours.",
+  "Serve with small dishes of salt and cumin for dipping."
+ ],
+ "chefTips": [
+  "Do not lift the lid during the first 1 1/2 hours. The steam is the cooking medium.",
+  "Doneness cue from the source: the lamb is tender enough to pull easily from the bone.",
+  "The source says serving salt and cumin on the side is traditional; let guests season each bite."
+ ],
+ "commonMistakes": [
+  "Letting the pot boil dry. Check the water without breaking the seal for too long.",
+  "Using a loose lid. A tight seal, or a damp cheesecloth under it, keeps the steam in.",
+  "Salting the meat heavily. The dip is where the salt goes."
+ ],
+ "servedWith": [
+  "Khobz (MAR060)",
+  "Mint tea (MAR082)"
+ ],
+ "relatedRecipes": [
+  "MAR002",
+  "MAR013",
+  "MAR020"
+ ],
+ "sources": [
+  "Adapted from 'Moroccan Steamed Lamb Recipe', Taste of Maroc. BYLINE AS PRINTED: 'By Author Christine Benlafquih'. Date as printed: 'Last updated: January 18, 2018'. Yield 6 servings (one pass).",
+  "SOURCING STATUS: ingredients TWO-PASS; method times quoted: 1 1/2 hours first steam, 1 to 1 1/2 hours with vegetables; pressure 1 hour then 30 to 45 minutes; oven 325°F for 2 to 3 hours.",
+  "Source misprint kept in the doneness quote: 'tender enough to pull easily form the bone' (form for from)."
+ ],
+ "storage": "Keeps 3 days in the fridge in a covered container with its juices.",
+ "reheating": "Steam again for 10 to 15 minutes, or warm covered in a low oven.",
+ "healthBenefits": [
+  "Steaming adds no cooking fat beyond the butter rubbed on the meat.",
+  "Carrots, onions and potatoes bring fibre and vitamins to the plate."
+ ],
+ "culturalNote": "The page says it is often made after Eid al-Adha and describes it as not a fancy dish, which is part of its charm; the salt and cumin served alongside are the whole seasoning table.",
+ "nutrition": {
+  "cal": 560,
+  "protein": 40,
+  "carbs": 14,
+  "fat": 38,
+  "fiber": 3,
+  "sodium": 520
+ },
+ "keywords": [
+  "moroccan steamed lamb",
+  "lham mbekhar",
+  "steamed lamb with cumin",
+  "eid lamb",
+  "taste of maroc",
+  "butter lamb"
+ ]
+},
+{
+ "id": "MAR004",
+ "title": "Roast Chicken with Preserved Lemon, Olives and Onion Sauce",
+ "localName": "Djej m'qualli du four — roast chicken with daghmira",
+ "emoji": "🍗",
+ "country": "Morocco",
+ "countryFlag": "🇲🇦",
+ "region": "North Africa",
+ "community": "National",
+ "cuisine": "Moroccan",
+ "category": "Poultry",
+ "course": "Main",
+ "diff": "Medium",
+ "prepTime": 40,
+ "restTime": 480,
+ "cookTime": 240,
+ "time": 760,
+ "servings": 4,
+ "cal": 520,
+ "rating": 4.6,
+ "reviews": 37,
+ "tags": [
+  "halal",
+  "dairy-free",
+  "gluten-free",
+  "high-protein",
+  "festive"
+ ],
+ "author": "Christine Benlafquih (Taste of Maroc)",
+ "authorEmoji": "👩‍🍳",
+ "desc": "A whole chicken marinated overnight in chermoula, slow-roasted until the drumstick moves freely, and served over a daghmira of melted onions finished with olives and preserved lemon.",
+ "longDesc": "This is a roast chicken finished in sauce rather than a tagine. A whole bird is rubbed with salt, spices, saffron, garlic, cilantro, olive oil and lemon juice and refrigerated at least 8 hours. Meanwhile the onions for the daghmira cook down with ginger, turmeric, pepper and cilantro until they can be mashed with a spoon and look pureed. The chicken roasts at 325°F (160°C) for about 2 1/2 to 3 hours; the roasting juices and saffron go into the onions, then olives and preserved lemon wedges.",
+ "ingredients": [
+  "// Chicken and marinade (chermoula)",
+  "1 whole roasting chicken",
+  "1/2 tsp salt",
+  "1/2 tsp pepper",
+  "1/2 tsp ginger",
+  "1/2 tsp turmeric",
+  "1/4 tsp saffron threads, crumbled",
+  "1 small clove garlic, pressed or grated",
+  "1 tbsp chopped fresh cilantro",
+  "1 tbsp olive oil",
+  "1 tbsp fresh lemon juice (or finely chopped pulp from a wedge of preserved lemon)",
+  "// Onion sauce (daghmira)",
+  "2 large yellow or white onions (preferably sweet)",
+  "2 cloves garlic, pressed or finely chopped",
+  "3 to 4 tbsp vegetable oil",
+  "1 tsp ginger",
+  "1/2 tsp turmeric",
+  "1/2 tsp black pepper",
+  "1/4 tsp white pepper",
+  "1/4 tsp salt",
+  "2 tbsp chopped fresh cilantro",
+  "1 cinnamon stick (optional)",
+  "1 tsp smen (optional)",
+  "// For finishing the sauce",
+  "1 chicken liver (optional)",
+  "1/2 cup juices from roasting pan (or more if needed)",
+  "1/4 tsp saffron threads, crumbled",
+  "1/2 cup red or green olives (or to taste)",
+  "1 preserved lemon, cut into wedges and seeds removed"
+ ],
+ "equipment": [
+  "Roasting pan",
+  "Heavy pot for the onions",
+  "Potato masher or spoon"
+ ],
+ "steps": [
+  "Mix the marinade ingredients and rub them over and inside the chicken. Refrigerate at least 8 hours or overnight.",
+  "Cook the onion sauce: combine the onions, garlic, oil, spices, cilantro, cinnamon stick and smen in a pot, cover and cook over medium heat for 1 to 2 hours, until the onions are very soft and can be mashed with a spoon or vegetable masher.",
+  "Take the chicken out of the fridge 3 to 4 hours before serving and bring it to room temperature.",
+  "Roast in a preheated 325°F (160°C) oven, usually about 2 1/2 to 3 hours, until the chicken is well browned and the drumstick moves easily on its joint; juices should run clear when pierced.",
+  "Rest the chicken 15 to 20 minutes while you finish the sauce.",
+  "Mash the onions until reduced to a thick blended mass sitting in oil. Add the roasting juices, saffron, chicken liver if using, olives and preserved lemon wedges and simmer 5 to 10 minutes.",
+  "Serve the chicken with the onion sauce spooned over."
+ ],
+ "chefTips": [
+  "Doneness cues quoted by the source: the drumstick moves easily on its joint, and juices run clear when pierced with a sharp knife.",
+  "The onions are done when they no longer look like onions and the mixture looks as though it has been pureed.",
+  "Moroccan tradition, says the source, is one chicken for every three people."
+ ],
+ "commonMistakes": [
+  "Roasting straight from the fridge. The source calls for bringing the bird to room temperature first.",
+  "Pulling the onions off the heat too soon. They should mash with a spoon.",
+  "Over-salting the sauce: preserved lemon and olives are already salty."
+ ],
+ "servedWith": [
+  "Khobz (MAR060)",
+  "Preserved lemons (MAR056)"
+ ],
+ "relatedRecipes": [
+  "MAR008",
+  "MAR011",
+  "MAR019"
+ ],
+ "sources": [
+  "Adapted from 'Moroccan Roasted Chicken with Preserved Lemon, Olives and Onion Sauce', Taste of Maroc. BYLINE AS PRINTED: 'By Author Christine Benlafquih'. Date as printed: 'Last updated: June 1, 2020'. Yield 4 servings.",
+  "SOURCING STATUS: TWO-PASS. DISAGREEMENT UNRECONCILED: one pass said bring the chicken to room temperature about an hour before roasting; the other quotes three to four hours before serving time. We follow the quoted wording.",
+  "NOTE: the page presents this as a roast chicken finished in sauce, m'qualli-style, not a paprika m'hammar."
+ ],
+ "storage": "Chicken and sauce keep 3 days in the fridge, stored separately.",
+ "reheating": "Reheat the chicken in a 325°F oven, covered; warm the onion sauce gently on the stove.",
+ "healthBenefits": [
+  "Lean protein from the chicken, with onions as the sauce rather than cream or flour.",
+  "Olives add monounsaturated fat; preserved lemon adds flavour with little energy."
+ ],
+ "culturalNote": "The page quotes a Moroccan tradition of one chicken per three people, and names the onion sauce by its Moroccan name, daghmira. It points readers to m'qualli-style cooking: garlic, turmeric, ginger, olives and preserved lemon.",
+ "nutrition": {
+  "cal": 520,
+  "protein": 38,
+  "carbs": 10,
+  "fat": 36,
+  "fiber": 2,
+  "sodium": 780
+ },
+ "keywords": [
+  "moroccan roast chicken",
+  "daghmira",
+  "preserved lemon chicken",
+  "djej mqualli",
+  "chermoula chicken",
+  "taste of maroc"
+ ]
+},
+{
+ "id": "MAR005",
+ "title": "Fish Tagine with Chermoula and Vegetables",
+ "localName": "Tajine de poisson à la chermoula",
+ "emoji": "🐟",
+ "country": "Morocco",
+ "countryFlag": "🇲🇦",
+ "region": "North Africa",
+ "community": "Coastal Morocco",
+ "cuisine": "Moroccan",
+ "category": "Fish & Seafood",
+ "course": "Main",
+ "diff": "Easy",
+ "prepTime": 30,
+ "restTime": 120,
+ "cookTime": 60,
+ "time": 210,
+ "servings": 6,
+ "cal": 420,
+ "rating": 4.9,
+ "reviews": 61,
+ "tags": [
+  "pescatarian",
+  "dairy-free",
+  "gluten-free",
+  "high-protein",
+  "seafood",
+  "contains-fish",
+  "one-pot"
+ ],
+ "author": "Christine Benlafquih (Taste of Maroc)",
+ "authorEmoji": "👩‍🍳",
+ "desc": "Thick pieces of firm fish marinated in cilantro-garlic chermoula, layered over onion, potato, carrot, tomato and peppers and simmered gently for about an hour.",
+ "longDesc": "A fish tagine is built in layers. Half of the chermoula marinates the fish for at least two hours; the other half seasons the vegetables. Onion goes first on the bottom of the tagine with olive oil, then the vegetables, then the fish, with lemon slices and optional olives and preserved lemon on top. Add a splash of water, bring slowly to a simmer and cook about an hour over medium-low heat. The page says meagre, sea bass, sea bream or conger eel are typical, and that thick fish suit the long cook.",
+ "ingredients": [
+  "// Tagine",
+  "35 oz. firm thick fish, cut into pieces",
+  "1 batch chermoula (see below)",
+  "1/3 cup olive oil",
+  "1 large onion, thinly sliced",
+  "2 large potatoes, cut into 1/4\" (0.5 cm) slices",
+  "1 or 2 carrots, cut into 1/4\" (0.5 cm) sticks",
+  "2 tomatoes, sliced",
+  "2 bell peppers (any color), thinly sliced, seeds removed",
+  "fresh lemon slices for garnish",
+  "1/2 cup red or green olives (optional)",
+  "1 preserved lemon, quartered (optional)",
+  "1 or 2 fresh chili peppers, for garnish (optional)",
+  "// Seasoning the vegetables",
+  "1 teaspoon ginger",
+  "1/2 teaspoon salt (or to taste)",
+  "1/2 teaspoon pepper",
+  "1/2 teaspoon turmeric",
+  "// Chermoula",
+  "2 cups fresh cilantro (about 1 large bunch), finely chopped",
+  "4 cloves garlic, very finely chopped or pressed",
+  "1 tablespoon cumin",
+  "2 teaspoons paprika",
+  "1 teaspoon salt",
+  "1 teaspoon ginger (optional)",
+  "1/4 teaspoon cayenne pepper (optional)",
+  "1/4 teaspoon saffron threads, crumbled (optional)",
+  "3 tablespoons vegetable or olive oil",
+  "2 tablespoons fresh lemon juice, approx."
+ ],
+ "equipment": [
+  "Tagine or wide heavy pot with lid",
+  "Heat diffuser if on an electric hob",
+  "Mortar or bowl for the chermoula"
+ ],
+ "steps": [
+  "Mix the chermoula. Reserve half, covered, in the fridge.",
+  "Coat the fish with the other half, cover and marinate in the fridge for at least 2 hours or overnight.",
+  "Toss the sliced vegetables with the ginger, salt, pepper and turmeric.",
+  "Pour the olive oil in the tagine and layer: onion first, then carrots, potatoes, then tomatoes with the reserved chermoula, then the fish. Top with peppers, lemon slices, olives and preserved lemon if using.",
+  "Add 1/4 to 1/2 cup water, cover and place over medium-low to medium heat.",
+  "Let it slowly reach a simmer, then simmer over medium-low heat for about 1 hour, or until the fish and vegetables are cooked.",
+  "Allow a few minutes for the lemon to heat through, then take off the heat and serve."
+ ],
+ "chefTips": [
+  "Thin or small fish: cook the vegetables first and add the fish part-way. The source says thick fish suit the full hour.",
+  "Doneness cue from the source: the fish and vegetables are cooked and the liquid has reduced to a thick sauce.",
+  "Use a diffuser under a tagine on an electric range so the clay does not crack."
+ ],
+ "commonMistakes": [
+  "Adding too much water. 1/4 to 1/2 cup is enough; the vegetables and fish release liquid.",
+  "Skipping the 2-hour marinade; the chermoula needs time to flavour the fish.",
+  "Using delicate fish for the full hour."
+ ],
+ "servedWith": [
+  "Khobz (MAR060)",
+  "Chermoula (MAR054)"
+ ],
+ "relatedRecipes": [
+  "MAR054",
+  "MAR018",
+  "MAR010"
+ ],
+ "sources": [
+  "Adapted from 'Classic Moroccan Fish Tagine with Chermoula and Vegetables', Taste of Maroc. BYLINE AS PRINTED: 'By Author Christine Benlafquih'. Date as printed: 'Last updated: January 13, 2021'. Yield 6 servings (one pass).",
+  "SOURCING STATUS: ingredients TWO-PASS; times quoted: marinate 2 hours or overnight; simmer about 1 hour. One pass listed a total cook of 1 hour 30 minutes, which is inconsistent with the method; we use the method time.",
+  "Layering order is from the first pass only (single pass)."
+ ],
+ "storage": "Keeps 2 days in the fridge; fish is best eaten fresh.",
+ "reheating": "Reheat covered over low heat just until warm to avoid drying the fish.",
+ "healthBenefits": [
+  "Fish gives lean protein and omega-3 fats.",
+  "A tray of mixed vegetables adds fibre, vitamin C and carotenoids."
+ ],
+ "culturalNote": "The page says fish tagines are among the most popular ways of cooking fresh fish in Morocco and mentions the northern clay vessel called a tagra.",
+ "nutrition": {
+  "cal": 420,
+  "protein": 34,
+  "carbs": 28,
+  "fat": 20,
+  "fiber": 5,
+  "sodium": 640
+ },
+ "keywords": [
+  "moroccan fish tagine",
+  "chermoula fish",
+  "fish tajine",
+  "tagine with vegetables",
+  "taste of maroc"
+ ]
+},
+{
+ "id": "MAR006",
+ "title": "Hergma (Trotters with Chickpeas and Wheat)",
+ "localName": "El hergma — kouraine, calf or lamb trotters with wheat berries and chickpeas",
+ "emoji": "🫘",
+ "country": "Morocco",
+ "countryFlag": "🇲🇦",
+ "region": "North Africa",
+ "community": "Marrakech and national",
+ "cuisine": "Moroccan",
+ "category": "Meat Dishes",
+ "course": "Main",
+ "diff": "Hard",
+ "prepTime": 30,
+ "restTime": 480,
+ "cookTime": 240,
+ "time": 750,
+ "servings": 6,
+ "cal": 580,
+ "rating": 4.6,
+ "reviews": 180,
+ "tags": [
+  "halal",
+  "dairy-free",
+  "high-protein",
+  "high-fiber",
+  "comfort-food",
+  "traditional"
+ ],
+ "author": "Christine Benlafquih and Nada Kiffa (Taste of Maroc)",
+ "authorEmoji": "👩‍🍳",
+ "desc": "Calves' or lamb trotters cooked for hours with chickpeas, wheat berries and raisins until the sauce is thick and the meat falls from the bone. A hearty Eid dish.",
+ "longDesc": "Hergma is a trotter stew with chickpeas and a topping of wheat berries tied in cheesecloth, cooked slowly (or in a pressure cooker) until the liquid reduces to a very thick sauce. Benlafquih's version soaks chickpeas and wheat overnight, cooks the trotters under medium pressure for 1 1/2 hours (or simmers 3), then adds wheat and cooks 2 1/2 hours more under pressure (or 5 simmering). Nada Kiffa's version on the same page is a leaner pressure-cooker pot with 3 lbs of trotters and 6 oz of chickpeas.",
+ "ingredients": [
+  "// Benlafquih's version",
+  "2 calves' feet, cut into several pieces by the butcher (or 8 lamb feet, cut in half)",
+  "3/4 cup dried chickpeas",
+  "1 1/2 cups wheat berries (wheat kernels)",
+  "1/4 cup dark golden raisins",
+  "2 large onions, chopped",
+  "1 large onion, sliced",
+  "6 to 8 cloves garlic, finely chopped",
+  "2 or 3 small pieces of cinnamon stick or bark",
+  "4 tsp salt",
+  "3 tsp ground ginger",
+  "2 tsp black pepper",
+  "1 1/2 tsp paprika",
+  "1 tsp saffron threads, crumbled",
+  "1 tsp turmeric",
+  "1 tsp smen, or to taste",
+  "1/2 cup olive oil"
+ ],
+ "equipment": [
+  "Pressure cooker or large heavy pot",
+  "Cheesecloth for the wheat",
+  "Large bowl for soaking"
+ ],
+ "steps": [
+  "Soak the chickpeas and wheat berries overnight, or for at least 8 hours.",
+  "Put the trotters in the pot with the onions, garlic, spices, smen, oil and water to cover. Cover and cook the trotters with medium pressure for 1 1/2 hours, or simmer over medium-low heat for 3 hours.",
+  "Add the drained chickpeas and raisins; tie the wheat in cheesecloth and add it. Cover and cook with medium pressure for 2 1/2 hours, or simmer for 5 hours, until the wheat is tender.",
+  "Continue simmering without pressure and uncovered until the liquids have reduced to a very thick sauce.",
+  "Serve the trotters with the wheat and chickpeas and the thick sauce."
+ ],
+ "chefTips": [
+  "Taste a wheat kernel to check it is soft before the final reduction.",
+  "Moroccans always prefer the flavor and texture of dried chickpeas over canned, says the source.",
+  "Nada Kiffa's variant on the page: cook about 1 hour in a pressure cooker, then 30 minutes more or until the chickpeas are tender and the trotters are easily falling off the bones."
+ ],
+ "commonMistakes": [
+  "Under-cooking the wheat. It needs the full time.",
+  "Stopping before the sauce is very thick.",
+  "Skipping the butcher: ask them to cut the feet into pieces and clean them."
+ ],
+ "servedWith": [
+  "Khobz (MAR060)"
+ ],
+ "relatedRecipes": [
+  "MAR017",
+  "MAR013",
+  "MAR040"
+ ],
+ "sources": [
+  "Adapted from 'Moroccan Trotters with Chickpeas, Wheat Berries and Raisins – El Hergma', Taste of Maroc. BYLINE AS PRINTED: 'Christine Benlafquih and Nada Kiffa'. Date as printed: 'Last updated: September 26, 2021'. Yield 6 servings.",
+  "SOURCING STATUS: Benlafquih recipe TWO-PASS. Nada Kiffa recipe two-pass on ingredients; DISAGREEMENT UNRECONCILED on slow-cook time (one pass gave 2-6 hours, the other only more if slow-cooking).",
+  "Misprints kept: 'form' for 'from', 'tss' for 'tsp' in Kiffa's ingredient list; 'falling of' the bones."
+ ],
+ "storage": "Keeps 3 days in the fridge; the wheat thickens, so loosen with water on reheating.",
+ "reheating": "Reheat covered with a splash of water, stirring gently.",
+ "healthBenefits": [
+  "Chickpeas and wheat add fibre and plant protein.",
+  "Trotters give collagen-rich gelatin; the dish is rich, so serve modest portions."
+ ],
+ "culturalNote": "Taste of Maroc calls hergma a national favourite and street food, eaten for breakfast in some Marrakesh eateries, and made at Eid when trotters are available. The page calls it a cousin of the Sephardic Shabbat dish dafina/skhina and notes it is sometimes cooked in ashes in a tangia in Marrakesh.",
+ "nutrition": {
+  "cal": 580,
+  "protein": 34,
+  "carbs": 52,
+  "fat": 26,
+  "fiber": 11,
+  "sodium": 900
+ },
+ "keywords": [
+  "hergma",
+  "moroccan trotters",
+  "calf feet chickpeas",
+  "kouraine",
+  "eid dish",
+  "wheat berries"
+ ]
+},
+{
+ "id": "MAR007",
+ "title": "Lamb Tagine with Prunes",
+ "localName": "Tajine d'agneau aux pruneaux — lham bel barquq (لحم بالبرقوق)",
+ "emoji": "🍑",
+ "country": "Morocco",
+ "countryFlag": "🇲🇦",
+ "region": "North Africa",
+ "community": "National",
+ "cuisine": "Moroccan",
+ "category": "Main Dishes",
+ "course": "Main",
+ "diff": "Medium",
+ "prepTime": 25,
+ "restTime": 0,
+ "cookTime": 150,
+ "time": 175,
+ "servings": 5,
+ "cal": 640,
+ "rating": 4.7,
+ "reviews": 263,
+ "tags": [
+  "halal",
+  "dairy-free",
+  "gluten-free",
+  "high-protein",
+  "festive",
+  "special-occasion",
+  "comfort-food"
+ ],
+ "author": "Nargisse Benkabbou (My Moroccan Food)",
+ "authorEmoji": "👩‍🍳",
+ "desc": "Lamb shanks simmered with a mountain of onions until they fall from the bone, with prunes cooked separately in honey and cinnamon so they stay glossy and do not turn the sauce brown.",
+ "longDesc": "The method that makes this version special is that the prunes are not cooked with the meat. Benkabbou softens large quantities of chopped onion in olive oil, adds garlic, turmeric, ginger, salt, pepper and saffron, browns the shanks and simmers them gently for 2 hours or until the meat separates easily from the bone. Halfway through, 1/2 cup of the cooking liquid is set aside; later the prunes, softened for 5 minutes in boiling water, are cooked in that reserved liquid with cinnamon and honey for 5 minutes until the sauce starts to thicken, then spooned over the meat with sesame or almonds. She does it this way so the dish does not turn brown or blackish.",
+ "ingredients": [
+  "2 tablespoons olive oil",
+  "1.2kg lamb shanks trimmed of excess fat (about 4 small or 3 large shanks)",
+  "4 large onions (about 800g), chopped",
+  "1 tablespoon finely chopped garlic (about 4 cloves)",
+  "1 teaspoon ground turmeric",
+  "1 teaspoon ground ginger",
+  "1 teaspoon salt or more to taste",
+  "¼ teaspoon ground black pepper",
+  "¼ teaspoon saffron",
+  "1 large coriander bouquet, tied",
+  "Toasted sesame seeds or chopped roasted almonds for garnish",
+  "// For the prunes",
+  "300g soft dried prunes",
+  "3 tablespoons honey",
+  "1 teaspoon ground cinnamon"
+ ],
+ "equipment": [
+  "Large casserole or tagine with lid",
+  "Small pan for the prunes"
+ ],
+ "steps": [
+  "Heat the olive oil in the casserole, add the onions and garlic, cover and leave until the onions are soft and translucent, about 10 to 15 minutes.",
+  "Add the turmeric, ginger, salt, pepper and saffron, then the lamb. Turn the meat to coat.",
+  "Pour a cup and a half of water (as printed: 320 ml) into the casserole and place the coriander bouquet on top of the meat.",
+  "Simmer gently for 2 hours or until the meat is soft and separates easily from the bone. Halfway through, after about 1 hour, reserve 1/2 cup of the liquid. Add a few tablespoons (or 1/4 cup) of water if the tagine is drying out.",
+  "Put the prunes in boiling water for 5 minutes to soften, then drain.",
+  "In a small pan, combine the reserved 1/2 cup liquid with the drained prunes, cinnamon and honey and simmer 5 minutes until the sauce starts to thicken.",
+  "Serve the lamb with the onion sauce, the prunes spooned over, and a scatter of sesame seeds or almonds."
+ ],
+ "chefTips": [
+  "Cooking the prunes separately keeps the dish from turning brown or blackish, says the author.",
+  "The author uses extra onions so the sauce thickens on its own. Alternative cuts she names: lamb shoulder, neck, or beef shin.",
+  "Doneness: the meat is soft and separates easily from the bone."
+ ],
+ "commonMistakes": [
+  "Cooking the prunes the whole time. They dissolve and darken the sauce.",
+  "Too much water; the onions give most of the sauce.",
+  "Skipping the reserved liquid, which carries the lamb flavour into the prune glaze."
+ ],
+ "servedWith": [
+  "Khobz (MAR060)",
+  "Couscous with seven vegetables (MAR021)"
+ ],
+ "relatedRecipes": [
+  "MAR015",
+  "MAR009",
+  "MAR001"
+ ],
+ "sources": [
+  "Adapted from 'Lamb Tagine with Prunes', mymoroccanfood.com. BYLINE AS PRINTED: 'Nargisse Benkabbou'. Date as printed: 'February 02, 2016'. Yield 'Serves 4 to 6' (one pass).",
+  "SOURCING STATUS: ingredients TWO-PASS. Method quotes: onions soft and translucent 10 to 15 minutes; simmer 2 hours or until the meat is soft; halfway reserve 1/2 cup; prunes 5 minutes in boiling water; 5 minutes until the sauce starts to thicken.",
+  "SUSPECTED INCONSISTENCY KEPT: the page prints 'a cup and half of water (320 ml)'; 1 1/2 US cups is about 355 ml. Reported as printed."
+ ],
+ "storage": "Keeps 3 days in the fridge. The prunes taste better the next day.",
+ "reheating": "Warm gently in a covered pot, adding a spoonful of water if needed.",
+ "healthBenefits": [
+  "Prunes provide fibre and potassium; onions add sweetness without sugar.",
+  "A rich dish for occasions; serve with plenty of vegetables."
+ ],
+ "culturalNote": "Benkabbou introduces this as the legendary Moroccan meat tagine with caramelised prunes. MarocMama's version of the dish (see related) says it is served at births and weddings.",
+ "nutrition": {
+  "cal": 640,
+  "protein": 40,
+  "carbs": 52,
+  "fat": 30,
+  "fiber": 6,
+  "sodium": 480
+ },
+ "keywords": [
+  "lamb tagine with prunes",
+  "lham bel barquq",
+  "moroccan lamb prunes",
+  "nargisse benkabbou",
+  "sweet and savory tagine"
+ ]
+},
+{
+ "id": "MAR008",
+ "title": "Chicken, Preserved Lemon and Olives Tagine",
+ "localName": "Djej mqualli — chicken mkalli (دجاج مقلي)",
+ "emoji": "🫒",
+ "country": "Morocco",
+ "countryFlag": "🇲🇦",
+ "region": "North Africa",
+ "community": "National",
+ "cuisine": "Moroccan",
+ "category": "Poultry",
+ "course": "Main",
+ "diff": "Easy",
+ "prepTime": 20,
+ "restTime": 0,
+ "cookTime": 100,
+ "time": 120,
+ "servings": 5,
+ "cal": 470,
+ "rating": 4.5,
+ "reviews": 261,
+ "tags": [
+  "halal",
+  "dairy-free",
+  "gluten-free",
+  "high-protein",
+  "comfort-food",
+  "one-pot"
+ ],
+ "author": "Nargisse Benkabbou (My Moroccan Food)",
+ "authorEmoji": "👩‍🍳",
+ "desc": "The signature Moroccan chicken: onions melted down with garlic, turmeric and ginger, chicken gently simmered, then finished with chopped preserved lemon and olives.",
+ "longDesc": "Mqualli is a style as much as a dish: garlic, turmeric, ginger and a large amount of onion. Benkabbou softens four large onions, browns the chicken pieces lightly, adds a cup of water and a coriander bouquet and cooks about 50 minutes. The sauce is then reduced for about 20 minutes until most of the liquid has evaporated, chopped preserved lemon and olives are stirred in over medium-low heat for 10 minutes, and the chicken goes back in to warm.",
+ "ingredients": [
+  "2 tablespoons olive oil",
+  "4 large onions (about 800g), chopped",
+  "1,2kg whole chicken cut into pieces or 1,2kg chicken legs and thighs",
+  "1 tablespoon finely chopped garlic (about 4 cloves)",
+  "1 teaspoon ground turmeric",
+  "1 teaspoon ground ginger",
+  "1 teaspoon salt or more to taste",
+  "¼ ground black pepper (the source prints no unit)",
+  "A generous pinch saffron",
+  "1 large coriander bouquet, tied",
+  "2 medium sized preserved lemons",
+  "150g red-brown olives, like Kalamatas"
+ ],
+ "equipment": [
+  "Casserole or tagine with lid"
+ ],
+ "steps": [
+  "Heat the oil in the casserole, add the onions, cover and leave until soft and translucent, about 10 minutes.",
+  "Stir in the garlic and spices, add the chicken and turn it occasionally to lightly brown it, about 10-15 minutes.",
+  "Pour in a cup of water (240 ml), set the coriander bouquet on the chicken and cook over medium heat until the chicken is cooked, about 50 minutes.",
+  "Lift out the chicken. Reduce the sauce over medium heat for about 20 minutes or until most of the liquid has evaporated; some liquid should remain.",
+  "Chop the preserved lemon rind (the author discards the flesh). Add it and the olives to the onions, stir, and leave over medium-low heat for 10 minutes.",
+  "Return the chicken to the casserole to warm through and serve."
+ ],
+ "chefTips": [
+  "The author's mother says adding preserved lemon flesh at the start makes the dish too acidic; add the rind at the end.",
+  "If you have the chicken liver, it can be mashed into the sauce.",
+  "In Morocco the tagine is sometimes topped with French fries; the author prefers bread for mopping up."
+ ],
+ "commonMistakes": [
+  "Adding the lemon early, which turns the sauce sharp.",
+  "Letting the sauce stay watery; reduce it before adding olives.",
+  "Forgetting that olives and preserved lemon are salty, so taste before adding more salt."
+ ],
+ "servedWith": [
+  "Khobz (MAR060)",
+  "Preserved lemons (MAR056)"
+ ],
+ "relatedRecipes": [
+  "MAR004",
+  "MAR011",
+  "MAR056"
+ ],
+ "sources": [
+  "Adapted from 'Chicken, Preserved Lemon and Olives Tagine – Chicken Mkalli', mymoroccanfood.com. BYLINE AS PRINTED: 'Nargisse Benkabbou'. Date as printed: 'April 14, 2015'. Yield 'Serves 4 to 6' (one pass).",
+  "SOURCING STATUS: ingredients TWO-PASS. Printed with a decimal comma ('1,2kg') and the pepper line has NO UNIT ('¼ ground black pepper'); we kept it and did not assume a unit.",
+  "Method cues quoted: onions soft and translucent about 10 min; chicken cooked about 50 min; sauce reduced about 20 minutes; lemon and olives 10 min. No internal temperature is printed."
+ ],
+ "storage": "Keeps 3 days in the fridge.",
+ "reheating": "Warm gently on the stove with a splash of water.",
+ "healthBenefits": [
+  "Lean protein with a vegetable-rich onion sauce.",
+  "Olives add healthy fats; preserved lemon boosts flavour with little salt added at the table."
+ ],
+ "culturalNote": "In the author's family, her mother objects to preserved lemon flesh at the start of cooking. She notes that many Moroccan homes serve this tagine with French fries on top.",
+ "nutrition": {
+  "cal": 470,
+  "protein": 36,
+  "carbs": 22,
+  "fat": 26,
+  "fiber": 4,
+  "sodium": 900
+ },
+ "keywords": [
+  "djej mqualli",
+  "chicken mkalli",
+  "moroccan chicken preserved lemon olives",
+  "nargisse benkabbou",
+  "chicken tagine"
+ ]
+},
+{
+ "id": "MAR009",
+ "title": "Lamb Tagine with Quince",
+ "localName": "Tajine d'agneau aux coings — lamb mkalli with quince (لحم بالسفرجل)",
+ "emoji": "🍐",
+ "country": "Morocco",
+ "countryFlag": "🇲🇦",
+ "region": "North Africa",
+ "community": "National (autumn)",
+ "cuisine": "Moroccan",
+ "category": "Main Dishes",
+ "course": "Main",
+ "diff": "Medium",
+ "prepTime": 30,
+ "restTime": 0,
+ "cookTime": 180,
+ "time": 210,
+ "servings": 5,
+ "cal": 610,
+ "rating": 4.7,
+ "reviews": 122,
+ "tags": [
+  "halal",
+  "gluten-free",
+  "high-protein",
+  "festive",
+  "comfort-food",
+  "contains-dairy"
+ ],
+ "author": "Nargisse Benkabbou (My Moroccan Food)",
+ "authorEmoji": "👩‍🍳",
+ "desc": "Lamb cooked the mqualli way with garlic, turmeric and ginger, served with quince poached until just soft and glazed golden in butter and honey.",
+ "longDesc": "Quince is cooked separately here as well. The lamb neck fillets simmer with onions, stock, garlic, spices and saffron under a coriander bouquet for 1h30 to 2 hours. The quince is boiled 40 minutes (start checking at 35) until a knife slips in, then each piece is glazed 2 minutes per side in butter and honey until lightly golden. The meat and its onion sauce are spooned over, with the quince on top and more coriander.",
+ "ingredients": [
+  "2 tablespoons olive oil",
+  "4 large onions (about 800g), chopped",
+  "300ml vegetable stock",
+  "1 tablespoon finely chopped garlic (about 4 cloves)",
+  "1 teaspoon ground turmeric",
+  "1 teaspoon ground ginger",
+  "1 teaspoon salt or more to taste",
+  "Generous pinch saffron",
+  "1,2kg lamb neck fillets (or any type of stewing meat) trimmed and cut in 5 cm pieces",
+  "1 large coriander bouquet, tied and more for garnish",
+  "// Quince",
+  "3 large quinces",
+  "40 gr unsalted butter",
+  "4 tablespoons honey"
+ ],
+ "equipment": [
+  "Casserole or tagine",
+  "Saucepan for the quince",
+  "Frying pan for glazing"
+ ],
+ "steps": [
+  "Heat the oil in the casserole, add the onions and cover; leave until soft and translucent, about 15 minutes.",
+  "Add the garlic, spices and saffron, then the lamb; cook 5 to 7 minutes, turning the meat occasionally.",
+  "Pour in the stock, add the coriander bouquet, and simmer gently for 1h30 to 2 hours or until the meat is soft and separates easily.",
+  "Meanwhile, peel, core and quarter the quinces; cover with water in a pan, bring to the boil, reduce to medium-low, cover and simmer for about 40 minutes. Start checking after 35 minutes.",
+  "Drain the quince once soft enough for a knife to go in. Melt the butter with the honey and glaze each piece on each side for 2 minutes until lightly golden.",
+  "Serve the lamb with its onion sauce, topped with the quince and fresh coriander."
+ ],
+ "chefTips": [
+  "The page warns against overcooking the quince; check from 35 minutes.",
+  "The author compares the glazed fruit to Spanish membrillo.",
+  "Cook the lamb until it separates easily; neck fillets are suggested but any stewing meat will do."
+ ],
+ "commonMistakes": [
+  "Overcooking the quince to mush before the glazing step.",
+  "Peeling too thick; quinces are hard and need care.",
+  "Adding the quince directly to the meat pot; the author cooks it apart."
+ ],
+ "servedWith": [
+  "Khobz (MAR060)"
+ ],
+ "relatedRecipes": [
+  "MAR007",
+  "MAR008",
+  "MAR001"
+ ],
+ "sources": [
+  "Adapted from 'Lamb Tagine with Quince (Lamb Mkalli with Quince)', mymoroccanfood.com. BYLINE AS PRINTED: 'Nargisse Benkabbou'. Date as printed: 'October 26, 2016'. Yield 'Serves 4 to 6' (one pass).",
+  "SOURCING STATUS: ingredients TWO-PASS; quoted cues: onions 15 min; lamb 5 to 7 minutes browning; simmer '1h30 to 2 hours or until the meat is soft and separates easily'; quince 40 minutes, check after 35; glaze '2 minutes until lightly golden'.",
+  "DISAGREEMENT ACROSS SOURCES kept (not averaged): Campion/Curtis (SBS) poach quince 45 minutes in honey water; delicious. magazine 10-15 minutes then braised."
+ ],
+ "storage": "Keeps 3 days in the fridge, quince stored with the sauce.",
+ "reheating": "Reheat covered over low heat.",
+ "healthBenefits": [
+  "Quince adds fibre and pectin; the dish is lean if you trim the lamb.",
+  "Honey and butter are used lightly, only for the glaze."
+ ],
+ "culturalNote": "The page describes the dish as cooked \"the mqualli way\" — garlic, turmeric and ginger — and likens glazed quince to the Spanish membrillo, hinting at the Andalusian thread in Moroccan cooking.",
+ "nutrition": {
+  "cal": 610,
+  "protein": 38,
+  "carbs": 40,
+  "fat": 32,
+  "fiber": 5,
+  "sodium": 450
+ },
+ "keywords": [
+  "lamb quince tagine",
+  "moroccan quince",
+  "mkalli",
+  "nargisse benkabbou",
+  "autumn tagine"
+ ]
+},
+{
+ "id": "MAR010",
+ "title": "Artichoke, Baby Potato and Preserved Lemon Tagine",
+ "localName": "Tajine de artichauts, pommes de terre et citron confit",
+ "emoji": "🥔",
+ "country": "Morocco",
+ "countryFlag": "🇲🇦",
+ "region": "North Africa",
+ "community": "Casablanca home cooking",
+ "cuisine": "Moroccan",
+ "category": "Vegetables & Legumes",
+ "course": "Main",
+ "diff": "Medium",
+ "prepTime": 45,
+ "restTime": 0,
+ "cookTime": 90,
+ "time": 135,
+ "servings": 4,
+ "cal": 300,
+ "rating": 4.8,
+ "reviews": 284,
+ "tags": [
+  "vegan",
+  "vegetarian",
+  "dairy-free",
+  "gluten-free",
+  "high-fiber",
+  "one-pot"
+ ],
+ "author": "Nargisse Benkabbou (Casablanca: My Moroccan Food)",
+ "authorEmoji": "👩‍🍳",
+ "desc": "A vegan tagine in which artichoke bottoms and baby potatoes simmer in an onion-turmeric broth with chopped preserved lemon, peas and olives.",
+ "longDesc": "Benkabbou says most tagines she grew up with contained meat, and this one is so good no one notices. Onions soften in olive oil with garlic, turmeric, ginger, salt and pepper; stock goes in and simmers 30 minutes to make a broth; baby potatoes and artichoke bottoms (with lemon to keep them from browning) cook 25-30 minutes; peas finish for about 3 minutes.",
+ "ingredients": [
+  "10 fresh or ready-prepared frozen globe artichoke bottoms (600g)",
+  "½ lemon",
+  "2 tbsp olive oil",
+  "2 large onions, sliced",
+  "3 garlic cloves, peeled and crushed",
+  "1 tsp ground turmeric",
+  "1 tsp ground ginger",
+  "¾ tsp salt, or more to taste",
+  "¼ tsp ground black pepper",
+  "300ml vegetable stock",
+  "400g baby potatoes, scrubbed and halved",
+  "2 small preserved lemons (60g), flesh and rind finely chopped",
+  "130g frozen peas",
+  "100g drained red-brown olives, such as Kalamata",
+  "Roughly chopped fresh coriander, to garnish",
+  "Crusty bread or couscous, to serve"
+ ],
+ "equipment": [
+  "Wide casserole or tagine with lid"
+ ],
+ "steps": [
+  "If using fresh artichokes, trim to the bottoms and rub with the cut lemon; frozen ones can go straight in.",
+  "Heat the oil, add the onions, cover and cook about 10 minutes until soft and translucent, stirring occasionally.",
+  "Add garlic, turmeric, ginger, salt and pepper; stir in the stock and simmer gently for 30 minutes to obtain a broth.",
+  "Add the potatoes, artichokes and chopped preserved lemon; simmer gently 25-30 minutes until the artichoke bottoms and potatoes are cooked through and soft.",
+  "Add the peas and olives and simmer about 3 minutes until tender. Garnish with coriander and serve with bread or couscous."
+ ],
+ "chefTips": [
+  "Frozen artichoke bottoms save a lot of prep time and work well here.",
+  "Check salt late: preserved lemon and olives bring plenty.",
+  "Do not overcook the peas; 3 minutes is enough."
+ ],
+ "commonMistakes": [
+  "Letting fresh artichokes brown; rub with lemon immediately.",
+  "Cutting the potatoes too small so they dissolve.",
+  "Boiling too hard, which breaks up the artichokes."
+ ],
+ "servedWith": [
+  "Khobz (MAR060)",
+  "Couscous (MAR021)"
+ ],
+ "relatedRecipes": [
+  "MAR008",
+  "MAR005",
+  "MAR056"
+ ],
+ "sources": [
+  "Adapted from \"Make Nargisse Benkabbou's artichoke, baby potato, and preserved lemon tagine\", foodism.co.uk, from 'Casablanca: My Moroccan Food' by Nargisse Benkabbou. Byline as printed on the page: 'Matt Russell' (also the photographer); the recipe credit is to Benkabbou. Date as printed: 'Published: Thursday 25th July 2019'. Yield 'Serves 4' (one pass).",
+  "SOURCING STATUS: ingredients TWO-PASS. Method quoted: onions about 10 minutes; broth 30 minutes; 25-30 minutes to cook through; peas about 3 minutes.",
+  "BYLINE DISCREPANCY kept: the page byline names the photographer; the recipe author is named in the credit line."
+ ],
+ "storage": "Keeps 3 days in the fridge.",
+ "reheating": "Reheat gently on the stove; add water if the sauce has thickened.",
+ "healthBenefits": [
+  "Artichokes and peas add fibre and plant protein; the dish is vegan with no meat or dairy.",
+  "Olive oil and olives provide unsaturated fats."
+ ],
+ "culturalNote": "The author notes that most tagines she grew up eating contained meat, and presents this vegan version as one nobody misses meat in.",
+ "nutrition": {
+  "cal": 300,
+  "protein": 9,
+  "carbs": 42,
+  "fat": 12,
+  "fiber": 10,
+  "sodium": 780
+ },
+ "keywords": [
+  "artichoke tagine",
+  "vegan moroccan tagine",
+  "preserved lemon",
+  "nargisse benkabbou",
+  "casablanca"
+ ]
+},
+{
+ "id": "MAR011",
+ "title": "Chicken Tagine with Prunes and Almonds, Rif-Style",
+ "localName": "Tajine de poulet aux pruneaux et amandes à la façon du Rif",
+ "emoji": "🍗",
+ "country": "Morocco",
+ "countryFlag": "🇲🇦",
+ "region": "North Africa",
+ "community": "Rif Mountains (Tangier literary table)",
+ "cuisine": "Moroccan",
+ "category": "Poultry",
+ "course": "Main",
+ "diff": "Medium",
+ "prepTime": 30,
+ "restTime": 60,
+ "cookTime": 100,
+ "time": 190,
+ "servings": 4,
+ "cal": 630,
+ "rating": 4.5,
+ "reviews": 300,
+ "tags": [
+  "halal",
+  "dairy-free",
+  "gluten-free",
+  "high-protein",
+  "contains-nuts",
+  "festive"
+ ],
+ "author": "Paula Wolfert (The Food of Morocco)",
+ "authorEmoji": "📖",
+ "desc": "A whole chicken rubbed with cumin and slowly cooked with onions, turmeric, ginger and cinnamon-spiced prunes, finished with fried blanched almonds. Wolfert's tribute to a Tangier legend.",
+ "longDesc": "This is Wolfert's recreation of a dish described to her by members of Tangier's literary set, who said Mohammed Mrabet cooked it; she could not reconstruct it from their descriptions, and Paul Bowles recalled the measurements from memory. The chicken is rubbed with salt, pepper and cumin and left for an hour, then steamed with the onions and spices, the prunes are simmered with cinnamon, and the almonds are browned in 4 or 5 tablespoons of oil.",
+ "ingredients": [
+  "One 3 1/4-pound chicken, preferably organic and air-chilled",
+  "Coarse salt and freshly ground black pepper",
+  "2 teaspoons ground cumin, preferably Moroccan, or more to taste",
+  "12 ounces moist prunes, pitted",
+  "2 to 3 teaspoons ground Ceylon cinnamon",
+  "2 large yellow onions, halved and sliced lengthwise",
+  "1 teaspoon ground turmeric",
+  "1 teaspoon ground ginger",
+  "1 cup blanched whole almonds",
+  "Vegetable oil for frying"
+ ],
+ "equipment": [
+  "Heavy casserole with a tight lid",
+  "Parchment paper",
+  "Skillet for the almonds",
+  "Small pot for the prunes"
+ ],
+ "steps": [
+  "Rub the chicken inside and out with salt, pepper and the cumin. Let stand for 1 hour.",
+  "Put the prunes in a pot with water to cover and the cinnamon; bring to a boil, reduce the heat and simmer for 10 minutes. Set aside.",
+  "Layer the onions in the casserole with the turmeric, ginger and a little water, set the chicken on top, cover and steam for 15 minutes.",
+  "Meanwhile brown the almonds in 4 or 5 tablespoons oil in a large skillet, then drain.",
+  "Cover the chicken with a sheet of parchment paper and cook over the lowest possible heat for about 1 1/4 hours.",
+  "Add the cooked prunes to the casserole, bring to a boil, and serve topped with the almonds."
+ ],
+ "chefTips": [
+  "Wolfert says rubbing cumin into the chicken is not found elsewhere in Morocco; this is what makes it distinctive.",
+  "The source gives only elapsed time as a doneness guide, so check the thigh joint is loose and juices run clear.",
+  "Keep the heat as low as it will go for the long cook."
+ ],
+ "commonMistakes": [
+  "Rushing the 1 1/4 hours on higher heat, which dries the breast.",
+  "Cooking the prunes too long; they are only added back at the end.",
+  "Skipping the rest after rubbing."
+ ],
+ "servedWith": [
+  "Khobz (MAR060)"
+ ],
+ "relatedRecipes": [
+  "MAR008",
+  "MAR007",
+  "MAR019"
+ ],
+ "sources": [
+  "Adapted from \"Recipe: 'Chicken Tagine With Prunes And Almonds In The Style Of The Rif Mountains' From The Food of Morocco by Paula Wolfert\", NPR, 21 November 2011. BYLINE AS PRINTED: 'by Paula Wolfert'. Credit as printed: 'Reprinted by permission of Ecco.' Copyright 2011. Yield 'Serves 4' (one pass).",
+  "SOURCING STATUS: ingredients TWO-PASS. Method times quoted: stand 1 hour; simmer prunes 10 minutes; steam 15 minutes; lowest possible heat about 1 1/4 hours.",
+  "NO DONENESS CUE printed beyond elapsed time (\"about 1 1/4 hours\"). The tips here add the standard joint and clear-juice check, which is ours and is flagged as such."
+ ],
+ "storage": "Keeps 3 days in the fridge; add almonds fresh.",
+ "reheating": "Warm gently covered; crisp almonds in a dry pan.",
+ "healthBenefits": [
+  "Prunes and almonds add fibre, potassium and healthy fats.",
+  "Chicken is a good lean protein."
+ ],
+ "culturalNote": "Wolfert's headnote says the dish was described to her by members of Tangier's literary set, who said Mohammed Mrabet cooked it, and that Paul Bowles recalled the measurements from memory. She writes that rubbing cumin into the chicken is not found elsewhere in Morocco.",
+ "nutrition": {
+  "cal": 630,
+  "protein": 40,
+  "carbs": 58,
+  "fat": 28,
+  "fiber": 8,
+  "sodium": 380
+ },
+ "keywords": [
+  "paula wolfert",
+  "rif chicken",
+  "chicken prunes almonds",
+  "tangier",
+  "food of morocco"
+ ]
+},
+{
+ "id": "MAR012",
+ "title": "Kefta Mkawra (Kefta Tagine with Eggs)",
+ "localName": "Kefta mkawra — meatballs and eggs in tomato sauce (كفتة مكورة)",
+ "emoji": "🍳",
+ "country": "Morocco",
+ "countryFlag": "🇲🇦",
+ "region": "North Africa",
+ "community": "National (home cooking)",
+ "cuisine": "Moroccan",
+ "category": "Main Dishes",
+ "course": "Main",
+ "diff": "Easy",
+ "prepTime": 20,
+ "restTime": 0,
+ "cookTime": 45,
+ "time": 65,
+ "servings": 4,
+ "cal": 450,
+ "rating": 4.7,
+ "reviews": 304,
+ "tags": [
+  "halal",
+  "dairy-free",
+  "gluten-free",
+  "high-protein",
+  "contains-egg",
+  "comfort-food",
+  "one-pot"
+ ],
+ "author": "Amanda Mouttaki (MarocMama)",
+ "authorEmoji": "👩‍🍳",
+ "desc": "Little beef or lamb meatballs simmered in a cumin-and-paprika tomato sauce, finished with eggs cracked on top and cooked until set.",
+ "longDesc": "A weeknight tagine: the meatballs are seasoned with garlic, onion, salt, paprika and parsley; the sauce is built with olive oil, onion, three large tomatoes, turmeric, spicy paprika (sudaniya in Morocco), cumin and garlic. Once the meatballs are cooked through, three eggs are cracked on top and the tagine is covered to set them. Mouttaki cooks hers until the yolk is hard; many prefer it runny.",
+ "ingredients": [
+  "// Meatballs",
+  "1 lb ground lamb or beef",
+  "1 tablespoon garlic, minced",
+  "1/2 onion finely diced",
+  "1/2 teaspoon salt",
+  "1/2 teaspoon paprika",
+  "Small handful chopped Italian parsley",
+  "// Sauce",
+  "2-3 Tablespoons olive oil",
+  "1/2 onion finely diced",
+  "3 large tomatoes",
+  "1 teaspoon turmeric",
+  "2 teaspoons spicy paprika (sudaniya in Morocco)",
+  "1/2 teaspoon salt",
+  "1 1/2 tsp cumin",
+  "1 teaspoon chopped Italian parsley",
+  "1 teaspoon garlic crushed",
+  "3 eggs"
+ ],
+ "equipment": [
+  "Tagine or wide lidded skillet",
+  "Heat diffuser for an electric range"
+ ],
+ "steps": [
+  "Mix the meatball ingredients and shape into small balls.",
+  "Warm the olive oil in the tagine on medium heat (use a diffuser on an electric range). Add the onion, grated or chopped tomatoes, turmeric, paprika, salt, cumin, parsley and garlic and cook the sauce briefly.",
+  "Nestle in the meatballs, cover the tagine and continue to cook over low to medium heat. Check after 30 minutes.",
+  "Once the meatballs are cooked through, crack the 3 eggs on top of the meatballs and sauce.",
+  "Cover again so the eggs can cook through. The author cooks hers until the yolk is hard; some like the yolk still runny."
+ ],
+ "chefTips": [
+  "Ground beef is traditional, says the author. Lamb works too.",
+  "Sudaniya is the Moroccan name for spicy paprika; use a hot paprika if you want that heat.",
+  "Serve straight from the tagine with bread for scooping."
+ ],
+ "commonMistakes": [
+  "Cooking the meatballs too hard so they dry out.",
+  "Adding the eggs before the meatballs are cooked through.",
+  "Forgetting the diffuser on an electric range."
+ ],
+ "servedWith": [
+  "Khobz (MAR060)",
+  "Mint tea (MAR082)"
+ ],
+ "relatedRecipes": [
+  "MAR018",
+  "MAR005",
+  "MAR049"
+ ],
+ "sources": [
+  "Adapted from 'Kefta Tagine with Eggs in Tomato Sauce {Kefta Mkawra}', MarocMama (marocmama.com). BYLINE AS PRINTED: 'By: Author Amanda Mouttaki'. No date in the visible text. Yield '4 servings'.",
+  "SOURCING STATUS: quantities TWO-PASS. Method cues quoted: check after 30 minutes; crack eggs on top once meatballs are cooked through; cover to cook the eggs.",
+  "ABSENT: sauce cook time before adding meatballs; egg cook time (cue only: the yolk can stay runny or be cooked hard)."
+ ],
+ "storage": "Best fresh; keeps a day in the fridge, eggs and all.",
+ "reheating": "Warm gently covered.",
+ "healthBenefits": [
+  "Eggs and meat add complete protein; tomatoes add lycopene.",
+  "A one-pan meal with no flour or sugar."
+ ],
+ "culturalNote": "The author says she learned the dish in a rental in Essaouira and that ground beef is the traditional meat.",
+ "nutrition": {
+  "cal": 450,
+  "protein": 34,
+  "carbs": 11,
+  "fat": 31,
+  "fiber": 3,
+  "sodium": 700
+ },
+ "keywords": [
+  "kefta mkawra",
+  "moroccan meatballs eggs",
+  "kefta tagine",
+  "marocmama",
+  "egg tagine"
+ ]
+},
+{
+ "id": "MAR013",
+ "title": "Tangia Marrakchia (Pressure-Cooker Version)",
+ "localName": "Tanjia — Marrakech's urn-cooked lamb (طنجية مراكشية)",
+ "emoji": "🏺",
+ "country": "Morocco",
+ "countryFlag": "🇲🇦",
+ "region": "North Africa",
+ "community": "Marrakech",
+ "cuisine": "Moroccan",
+ "category": "Meat Dishes",
+ "course": "Main",
+ "diff": "Easy",
+ "prepTime": 20,
+ "restTime": 60,
+ "cookTime": 60,
+ "time": 140,
+ "servings": 5,
+ "cal": 480,
+ "rating": 4.8,
+ "reviews": 113,
+ "tags": [
+  "halal",
+  "dairy-free",
+  "gluten-free",
+  "high-protein",
+  "traditional",
+  "comfort-food"
+ ],
+ "author": "Amanda Mouttaki (MarocMama)",
+ "authorEmoji": "👩‍🍳",
+ "desc": "Marrakech's famous bachelor stew, cooked in an urn in a hammam's embers. At home: lamb with garlic, cumin, saffron and preserved lemon, pressure-cooked until it falls apart.",
+ "longDesc": "Tanjia is the signature dish of Marrakech, traditionally cooked overnight in an earthenware urn buried in the embers that heat the neighbourhood bathhouse. At home, MarocMama's version needs two pounds of lamb or mutton, crushed garlic, salt, saffron, turmeric, white pepper, cumin, half a preserved lemon rind and a little olive oil. Everything goes in a pressure cooker with 1 to 2 cups of water for 45 minutes to 1 hour (closer to 2 hours on the stovetop), until the meat falls apart in a thick sauce. There are no vegetables.",
+ "ingredients": [
+  "2 lbs. lamb or mutton",
+  "2 tbsp garlic crushed",
+  "1 tsp salt",
+  "1 pinch of saffron threads crushed",
+  "1/2 tsp turmeric",
+  "3/4 tsp white pepper",
+  "1 tsp cumin",
+  "1/2 preserved lemon rind, finely chopped",
+  "1/4 cup olive oil",
+  "1-2 cups water",
+  "1 teaspoon smen, optional"
+ ],
+ "equipment": [
+  "Pressure cooker (or heavy lidded pot)"
+ ],
+ "steps": [
+  "Toss the meat with the garlic, salt, saffron, turmeric, white pepper, cumin, preserved lemon rind and smen if using. Marinate at least an hour, ideally overnight.",
+  "In the pressure cooker, warm the olive oil and garlic on medium heat for about 3 minutes.",
+  "Add the meat and 1-2 cups water (if cooking on the stove top, start with half the water and watch closely as you may need to add more).",
+  "Cover and cook on medium-high heat for 45 minutes to 1 hour (closer to 2 hours on the stovetop).",
+  "Vent the steam and check that the meat is tender. It should be falling apart with a thick sauce left; if there is a lot of liquid left, continue boiling it down."
+ ],
+ "chefTips": [
+  "Doneness: the meat falls apart and the sauce is thick.",
+  "The tradition says a tangia uses hardly any water: Taste of Maroc says on average less than a cup per two pounds.",
+  "Good cuts, per Taste of Maroc: hock, collar, or a mix of pieces."
+ ],
+ "commonMistakes": [
+  "Adding too much water; this is a confit-like braise.",
+  "Opening the pressure cooker before venting the steam.",
+  "Skipping the marinade time."
+ ],
+ "servedWith": [
+  "Khobz (MAR060)",
+  "Mint tea (MAR082)"
+ ],
+ "relatedRecipes": [
+  "MAR014",
+  "MAR003",
+  "MAR020"
+ ],
+ "sources": [
+  "Adapted from 'Making Marrakechi Tangia at Home', MarocMama. BYLINE AS PRINTED: 'By: Author Amanda Mouttaki'. No date printed (metadata only). Yield '4-6 servings'.",
+  "Also: Taste of Maroc, 'All About Moroccan Tangia or Tanjia', Nada Kiffa, last updated March 12, 2018 (overview with no quantities).",
+  "SOURCING STATUS: TWO-PASS on ingredients and cues. DISAGREEMENT UNRECONCILED between sources on water and time: Taste of Maroc says less than a cup of water to two pounds of meat and 3 hours at 300°F/150°C; MarocMama 1-2 cups and 45 min-1 hour under pressure."
+ ],
+ "storage": "Keeps 4 days in the fridge; the confit-like meat reheats well.",
+ "reheating": "Warm covered in a low oven or on low heat.",
+ "healthBenefits": [
+  "High-protein, low-carb meal with no added vegetables.",
+  "The long cooking breaks down connective tissue for tenderness."
+ ],
+ "culturalNote": "MarocMama describes tangia as Marrakech's signature dish, cooked in an earthenware urn in the embers of a communal oven overnight, with artisans pooling money on Thursday and eating on Friday afternoon after midday prayer in a park outside the city. Smithsonian Magazine (June 10, 2026) links it to the hammam culture of the medina.",
+ "nutrition": {
+  "cal": 480,
+  "protein": 38,
+  "carbs": 3,
+  "fat": 35,
+  "fiber": 0,
+  "sodium": 520
+ },
+ "keywords": [
+  "tangia",
+  "tanjia",
+  "marrakech tangia",
+  "moroccan lamb urn",
+  "preserved lemon cumin lamb"
+ ]
+},
+{
+ "id": "MAR014",
+ "title": "Tanjia with Cumin and Preserved Lemon (Oven Method)",
+ "localName": "Tanjia marrakchia — viande confite au citron et au cumin",
+ "emoji": "🍖",
+ "country": "Morocco",
+ "countryFlag": "🇲🇦",
+ "region": "North Africa",
+ "community": "Marrakech",
+ "cuisine": "Moroccan",
+ "category": "Meat Dishes",
+ "course": "Main",
+ "diff": "Medium",
+ "prepTime": 20,
+ "restTime": 60,
+ "cookTime": 300,
+ "time": 380,
+ "servings": 5,
+ "cal": 500,
+ "rating": 4.8,
+ "reviews": 166,
+ "tags": [
+  "halal",
+  "dairy-free",
+  "gluten-free",
+  "high-protein",
+  "traditional",
+  "special-occasion"
+ ],
+ "author": "La Rédaction (recettesmarocaines.com)",
+ "authorEmoji": "📰",
+ "desc": "A slow oven version of Marrakech's tanjia: beef shank or lamb shoulder with a whole head of garlic, cumin, ras el hanout and preserved lemon, cooked at 150°C for about 4½ to 5 hours.",
+ "longDesc": "This French-language recipe cooks the meat in a sealed pot in a 150°C oven for 4½ to 5 hours without opening it during the first 3 hours, with water only halfway up the meat. There are no onions or tomatoes. The sauce is short, intense and lemony; if too liquid, it is poured into a pan and reduced 5 to 10 minutes.",
+ "ingredients": [
+  "1,5 kg de jarret de bœuf ou d’épaule d’agneau, en gros morceaux avec os (1.5 kg beef shank or lamb shoulder, bone-in)",
+  "1 tête d’ail (8 à 10 gousses), pelée et écrasée (1 head of garlic, 8-10 cloves, peeled and crushed)",
+  "1 citron confit, écorce en lamelles (1 preserved lemon, rind in strips)",
+  "2 c. à café de cumin moulu (2 tsp ground cumin)",
+  "1 c. à café de ras el hanout (1 tsp)",
+  "1 c. à café de gingembre en poudre (1 tsp ground ginger)",
+  "½ c. à café de poivre noir (1/2 tsp black pepper)",
+  "1 pincée de safran (1 pinch saffron)",
+  "1 ½ c. à café de sel (1 1/2 tsp salt)",
+  "1 c. à soupe de smen (facultatif) (1 tbsp smen, optional)",
+  "60 ml d’huile d’olive (60 ml olive oil)",
+  "250 ml d’eau (250 ml water)"
+ ],
+ "equipment": [
+  "Heavy lidded pot or clay tangia",
+  "Oven",
+  "Saucepan for reducing the sauce"
+ ],
+ "steps": [
+  "Combine the meat with all the other ingredients except the water. Marinate 1 hour (or overnight in a cool place).",
+  "Add the water: it should come only halfway up the meat, no more.",
+  "Cover tightly and bake at 150°C for 4h30 to 5h, without opening during the first 3 hours.",
+  "The meat should come off the bone with a spoon. If not, continue 30 minutes.",
+  "If the sauce is too liquid, pour it into a saucepan and reduce 5 to 10 minutes, then return it to the meat."
+ ],
+ "chefTips": [
+  "Cue from the source: the meat should come away from the bone with a spoon.",
+  "Slow cooker version in the source: 8 hours on low with 150 ml water; pressure cooker: about 1 h 15.",
+  "Keep the lid on; the seal is the point."
+ ],
+ "commonMistakes": [
+  "Opening the pot early and losing the steam.",
+  "Too much water, which makes a stew rather than a confit.",
+  "Skipping the reduction if the sauce is thin."
+ ],
+ "servedWith": [
+  "Khobz (MAR060)"
+ ],
+ "relatedRecipes": [
+  "MAR013",
+  "MAR003",
+  "MAR020"
+ ],
+ "sources": [
+  "Adapted from « Tanjia marrakchia (viande confite au citron et au cumin) », recettesmarocaines.com. BYLINE AS PRINTED: « La Rédaction » (a desk byline on a recipe site; flagged). Date as printed: « 6 septembre 2023 ». Yield garbled on the page.",
+  "SOURCING STATUS: ingredients TWO-PASS in the original French. Quoted method: marinate 1 h; water halfway up; 150 °C for 4 h 30 to 5 h without opening for the first 3 hours; « La viande doit se détacher de l’os à la cuillère »; reduce sauce 5 to 10 minutes.",
+  "FLAG: desk byline. Use the MarocMama and Taste of Maroc tangia as primary references; this is a second documented approach."
+ ],
+ "storage": "Keeps 4 days in the fridge.",
+ "reheating": "Reheat covered at low heat with a spoon of water.",
+ "healthBenefits": [
+  "High protein; garlic adds allicin.",
+  "No added sugar or flour."
+ ],
+ "culturalNote": "The French source frames tanjia as a Marrakech dish and says the recipe uses neither onions nor tomatoes.",
+ "nutrition": {
+  "cal": 500,
+  "protein": 40,
+  "carbs": 3,
+  "fat": 36,
+  "fiber": 1,
+  "sodium": 560
+ },
+ "keywords": [
+  "tanjia",
+  "tangia oven",
+  "viande confite",
+  "marrakech lamb",
+  "citron confit"
+ ]
+},
+{
+ "id": "MAR015",
+ "title": "Beef (or Lamb) Tagine with Prunes",
+ "localName": "Tajine de boeuf aux pruneaux (طاجين اللحم بالبرقوق)",
+ "emoji": "🍑",
+ "country": "Morocco",
+ "countryFlag": "🇲🇦",
+ "region": "North Africa",
+ "community": "National (weddings and births)",
+ "cuisine": "Moroccan",
+ "category": "Meat Dishes",
+ "course": "Main",
+ "diff": "Medium",
+ "prepTime": 20,
+ "restTime": 0,
+ "cookTime": 180,
+ "time": 200,
+ "servings": 4,
+ "cal": 620,
+ "rating": 4.6,
+ "reviews": 262,
+ "tags": [
+  "halal",
+  "dairy-free",
+  "gluten-free",
+  "high-protein",
+  "contains-nuts",
+  "festive",
+  "special-occasion"
+ ],
+ "author": "Amanda Mouttaki (MarocMama)",
+ "authorEmoji": "👩‍🍳",
+ "desc": "Bone-in beef or lamb simmered with onion, saffron, ginger and cinnamon until it falls from the bone, topped with prunes cooked down to a thick syrup and fried almonds.",
+ "longDesc": "MarocMama's classic wedding tagine builds a short, savoury sauce first. Meat, onion, garlic, salt, pepper, ginger, saffron and cinnamon are simmered in oil with cilantro; once the meat is cooked the remaining liquid is reduced to a thick sauce. The prunes are cooked separately with honey and a second helping of cinnamon until they sit in a thick syrup, and fried blanched almonds go on top.",
+ "ingredients": [
+  "1-2 lb. beef or lamb bone in – cut into 3-4\" chunks",
+  "1/2 lb. onions finely chopped",
+  "3 cloves garlic, finely chopped",
+  "1 teaspoon salt",
+  "1 teaspoon pepper",
+  "2 teaspoon ginger",
+  "5-10 saffron threads (optional)",
+  "1 tsp cinnamon",
+  "1/4 cup vegetable or olive oil (decrease if the meat has more fat)",
+  "palmful of chopped cilantro",
+  "// Prunes and almonds",
+  "1/2 lb. prunes",
+  "1-2 tablespoon honey",
+  "1 1/2 teaspoons ground cinnamon",
+  "1/2 cup blanched, fried almonds"
+ ],
+ "equipment": [
+  "Tagine or heavy pot with lid",
+  "Small pan for the prunes",
+  "Pressure cooker (optional)"
+ ],
+ "steps": [
+  "Put the meat, onions, garlic, salt, pepper, ginger, saffron, cinnamon, oil and cilantro in the pot.",
+  "Cover and simmer on medium heat for 2 1/2 to 3 hours, until the meat is very tender and falls away from the bone. In a pressure cooker, cook on medium heat for 45-50 minutes.",
+  "Remove the meat and let the remaining liquid reduce to a thick sauce.",
+  "Cook the prunes with the honey and the 1 1/2 teaspoons of cinnamon until they are sitting in a thick syrup.",
+  "Fry the blanched almonds in a little oil; this only takes a few minutes once the oil is hot.",
+  "Return the meat to the sauce, top with the prunes and almonds, and serve."
+ ],
+ "chefTips": [
+  "Cinnamon appears twice by design: once in the meat, once with the prunes.",
+  "Doneness cues from the source: very tender, falling from the bone; sauce reduced thick; prunes in thick syrup.",
+  "A reader noted a mention of turmeric in the instructions; the author confirmed no turmeric is needed."
+ ],
+ "commonMistakes": [
+  "Leaving the sauce thin; reduce it after removing the meat.",
+  "Cooking the prunes in the meat pot for hours.",
+  "Adding turmeric because of the stray mention; it is not part of the dish."
+ ],
+ "servedWith": [
+  "Khobz (MAR060)",
+  "Mint tea (MAR082)"
+ ],
+ "relatedRecipes": [
+  "MAR007",
+  "MAR016",
+  "MAR001"
+ ],
+ "sources": [
+  "Adapted from 'Moroccan Beef (or Lamb) Tajine with Prunes - MarocMama', marocmama.com. BYLINE AS PRINTED: 'By: Author Amanda Mouttaki'. No date printed (page metadata: published 2009-10-05, modified 2023-01-28). Yield '4 servings' (one pass).",
+  "SOURCING STATUS: ingredients TWO-PASS. The oil line's parenthesis is unclosed on the page; shortened here. 'Palmful' of cilantro kept as printed.",
+  "Method times quoted: simmer 2 1/2 – 3 hours; pressure cooker 45-50 minutes; almonds a few minutes once the oil is hot."
+ ],
+ "storage": "Keeps 3 days in the fridge.",
+ "reheating": "Reheat covered over low heat.",
+ "healthBenefits": [
+  "Prunes bring fibre and potassium; almonds add healthy fat.",
+  "Honey is used in small amounts, only for the prune syrup."
+ ],
+ "culturalNote": "The author writes that the dish is served at births and weddings, and that she served it at her own wedding.",
+ "nutrition": {
+  "cal": 620,
+  "protein": 36,
+  "carbs": 55,
+  "fat": 30,
+  "fiber": 7,
+  "sodium": 480
+ },
+ "keywords": [
+  "beef tagine with prunes",
+  "moroccan wedding tagine",
+  "marocmama",
+  "sweet savory tagine",
+  "tajine bel barquq"
+ ]
+},
+{
+ "id": "MAR016",
+ "title": "Beef Tagine with Apricots and Almonds",
+ "localName": "Tajine de boeuf aux abricots (طاجين اللحم بالمشمش)",
+ "emoji": "🍑",
+ "country": "Morocco",
+ "countryFlag": "🇲🇦",
+ "region": "North Africa",
+ "community": "National (festive)",
+ "cuisine": "Moroccan",
+ "category": "Meat Dishes",
+ "course": "Main",
+ "diff": "Medium",
+ "prepTime": 20,
+ "restTime": 0,
+ "cookTime": 150,
+ "time": 170,
+ "servings": 4,
+ "cal": 590,
+ "rating": 4.7,
+ "reviews": 44,
+ "tags": [
+  "halal",
+  "dairy-free",
+  "gluten-free",
+  "high-protein",
+  "contains-nuts",
+  "festive"
+ ],
+ "author": "Amanda Mouttaki (MarocMama)",
+ "authorEmoji": "👩‍🍳",
+ "desc": "Beef braised with onion, saffron and ginger in a tagine, finished with dried apricots cooked in honey and cinnamon until syrupy, and fried almonds.",
+ "longDesc": "This is the apricot twin of the prune tagine. The beef is cooked slowly with onion, garlic, ginger, saffron and cinnamon, with a splash of water in the bottom of the tagine. The apricots are cooked apart with honey and cinnamon until they sit in a thick syrup.",
+ "ingredients": [
+  "1-2lbs. beef bone in or bone out– cut into 3-4\" chunks",
+  "1/2 lb. onions finely chopped",
+  "3 cloves garlic, finely chopped",
+  "1 teaspoon salt",
+  "1 teaspoon pepper",
+  "2 teaspoon ginger",
+  "5-10 saffron threads",
+  "1 tsp cinnamon",
+  "1/4 cup vegetable or olive oil (less if the meat is fattier)",
+  "1 palmful of chopped cilantro",
+  "// Apricots and almonds",
+  "1/2 lb. dried apricots",
+  "1-2 tablespoon honey (fresh, organic if possible)",
+  "1 1/2 teaspoons ground cinnamon",
+  "1/2 cup blanched, fried almonds"
+ ],
+ "equipment": [
+  "Tagine or heavy pot with lid",
+  "Small pan for the apricots"
+ ],
+ "steps": [
+  "Put the meat, onions, garlic, salt, pepper, ginger, saffron, cinnamon, oil and cilantro in the tagine; add 1/4-1/2 cup of water to the bottom of the tagine.",
+  "Cover and cook over medium heat. Check after about 45 minutes.",
+  "The meat will take approximately 2 hours to cook, depending on the cuts used; the source says simmer 2 1/2 to 3 hours until very tender and falling from the bone.",
+  "Cook the apricots with the honey and the 1 1/2 teaspoons cinnamon until they are sitting in a thick syrup.",
+  "Fry the almonds, spoon the apricots over the meat and scatter the almonds."
+ ],
+ "chefTips": [
+  "Total time depends on the cut; test for tenderness instead of watching the clock.",
+  "The method mentions parsley but the ingredient list prints only cilantro; the page is inconsistent.",
+  "Keep the water to a minimum; the onions release more."
+ ],
+ "commonMistakes": [
+  "Too much water.",
+  "Cooking the apricots to a jam in the meat pot.",
+  "Rushing the beef."
+ ],
+ "servedWith": [
+  "Khobz (MAR060)",
+  "Mint tea (MAR082)"
+ ],
+ "relatedRecipes": [
+  "MAR015",
+  "MAR007",
+  "MAR001"
+ ],
+ "sources": [
+  "Adapted from 'Beef Tagine with Apricots and Almonds', marocmama.com. BYLINE AS PRINTED: 'By: Author Amanda Mouttaki'. No date printed (metadata: published 2021-10-09). Yield '4 servings' (one pass).",
+  "SOURCING STATUS: ingredients TWO-PASS. Cues quoted: check after about 45 minutes; approximately 2 hours depending on cuts; 2 1/2 – 3 hours until very tender and falls away from the bone.",
+  "SOURCE INCONSISTENCY kept: method names parsley, ingredient list only cilantro."
+ ],
+ "storage": "Keeps 3 days in the fridge.",
+ "reheating": "Reheat covered over low heat.",
+ "healthBenefits": [
+  "Dried apricots add fibre and vitamin A.",
+  "Almonds add healthy fats."
+ ],
+ "culturalNote": "A sweet-and-savoury tagine of the type Moroccans reserve for guests and celebrations.",
+ "nutrition": {
+  "cal": 590,
+  "protein": 36,
+  "carbs": 48,
+  "fat": 28,
+  "fiber": 6,
+  "sodium": 470
+ },
+ "keywords": [
+  "beef apricot tagine",
+  "moroccan apricot",
+  "marocmama",
+  "tajine mechmel",
+  "sweet tagine"
+ ]
+},
+{
+ "id": "MAR017",
+ "title": "Kouraine (Lamb Trotters with Chickpeas)",
+ "localName": "Kouraine — pieds d'agneau aux pois chiches (الكوراع)",
+ "emoji": "🦶",
+ "country": "Morocco",
+ "countryFlag": "🇲🇦",
+ "region": "North Africa",
+ "community": "Eid al-Adha",
+ "cuisine": "Moroccan",
+ "category": "Meat Dishes",
+ "course": "Main",
+ "diff": "Hard",
+ "prepTime": 40,
+ "restTime": 0,
+ "cookTime": 120,
+ "time": 160,
+ "servings": 6,
+ "cal": 520,
+ "rating": 4.9,
+ "reviews": 237,
+ "tags": [
+  "halal",
+  "gluten-free",
+  "high-protein",
+  "contains-dairy",
+  "traditional",
+  "festive"
+ ],
+ "author": "layla-dahamou (Morocco World News)",
+ "authorEmoji": "📰",
+ "desc": "A traditional Eid dish of lamb feet slowly cooked with chickpeas, saffron, cumin and ginger until the sauce is thick, served with hot peppers and bread.",
+ "longDesc": "Kouraine is described by Morocco World News as a Moroccan dish par excellence, made with the legs of cow, lamb or goat and chickpeas. The feet are charred over coals to remove the hair and cleaned well; then they are pressure-cooked 1 hour 15 minutes with oil, spices, garlic and butter, the soaked chickpeas are added, and the pot cooks another 45 minutes or more. The pot is opened and left over low heat until the sauce thickens.",
+ "ingredients": [
+  "6 lamb legs (trotters)",
+  "250g chickpeas soaked",
+  "1 tbsp butter or ghee",
+  "¼ cup olive oil",
+  "Few saffron stamens",
+  "1 tsp turmeric",
+  "1 tsp paprika",
+  "1 tbsp ginger",
+  "1 tbsp cumin",
+  "6 chopped cloves of garlic",
+  "2 tsp salt",
+  "2 liters water",
+  "Hot peppers and bread to serve"
+ ],
+ "equipment": [
+  "Pressure cooker",
+  "Open flame or coals for charring"
+ ],
+ "steps": [
+  "Char the legs over coals to remove the fur, then clean them well.",
+  "Put the legs, oil, spices, garlic and butter in the pressure cooker and mix; add the water and close the cooker.",
+  "Cook for 1 hour and 15 minutes, then open and add the soaked chickpeas.",
+  "Close again and cook 45 minutes or more, until the legs and chickpeas are well cooked.",
+  "Open the cooker and leave over low heat until the sauce is thick.",
+  "Serve on a plate with hot peppers and bread."
+ ],
+ "chefTips": [
+  "Doneness cues from the source are only \"well cooked\" and \"until the sauce is thick\".",
+  "Ask the butcher to burn off and clean the feet if you cannot char them over coals.",
+  "The source also allows the legs of cow or goat."
+ ],
+ "commonMistakes": [
+  "Skipping the thorough cleaning after charring.",
+  "Adding the chickpeas at the start; they would overcook.",
+  "Serving with a loose sauce; thicken it uncovered."
+ ],
+ "servedWith": [
+  "Khobz (MAR060)"
+ ],
+ "relatedRecipes": [
+  "MAR013",
+  "MAR018",
+  "MAR040"
+ ],
+ "sources": [
+  "Adapted from 'Moroccan recipes for Eid Al Adha: Kouraine (Lamb legs)', Morocco World News, 26 October 2012. BYLINE AS PRINTED: 'layla-dahamou' (an account handle, not a personal name; flagged). Yield not printed (servings here are ours).",
+  "SOURCING STATUS: ingredients TWO-PASS. Misprint kept: the page writes 'Kour3ine' once in the method.",
+  "ABSENT: any doneness cue beyond \"well cooked\" and \"until the sauce is thick\"; no cut or weight for the legs beyond \"6 lamb legs\"."
+ ],
+ "storage": "Keeps 3 days in the fridge; it sets to a gel when cold.",
+ "reheating": "Warm gently until the sauce loosens.",
+ "healthBenefits": [
+  "Collagen-rich and high in protein; chickpeas add fibre.",
+  "Rich dish traditionally eaten once a year at Eid."
+ ],
+ "culturalNote": "The source calls kouraine a Moroccan dish par excellence and writes that nearly all parts of the lamb are used in Eid dishes.",
+ "nutrition": {
+  "cal": 520,
+  "protein": 38,
+  "carbs": 26,
+  "fat": 29,
+  "fiber": 7,
+  "sodium": 640
+ },
+ "keywords": [
+  "kouraine",
+  "lamb trotters",
+  "eid al adha moroccan",
+  "moroccan chickpea stew",
+  "morocco world news"
+ ]
+},
+{
+ "id": "MAR018",
+ "title": "Lamb and Vegetable Tagine",
+ "localName": "Tajine d'agneau aux légumes (طاجين اللحم بالخضر)",
+ "emoji": "🥕",
+ "country": "Morocco",
+ "countryFlag": "🇲🇦",
+ "region": "North Africa",
+ "community": "National (home cooking)",
+ "cuisine": "Moroccan",
+ "category": "Meat Dishes",
+ "course": "Main",
+ "diff": "Easy",
+ "prepTime": 25,
+ "restTime": 0,
+ "cookTime": 100,
+ "time": 125,
+ "servings": 5,
+ "cal": 440,
+ "rating": 4.7,
+ "reviews": 311,
+ "tags": [
+  "halal",
+  "dairy-free",
+  "gluten-free",
+  "high-protein",
+  "one-pot",
+  "comfort-food"
+ ],
+ "author": "layla-dahamou (Morocco World News)",
+ "authorEmoji": "📰",
+ "desc": "A simple everyday tagine of lamb or beef with carrots, potatoes, zucchini and peas, flavoured with ginger, turmeric, saffron, coriander and parsley.",
+ "longDesc": "This Morocco World News recipe cooks meat with onions on low heat for ten minutes, stirring often, then adds the vegetables and spices and lets the tagine cook about 1 hour 30 minutes. No liquid is added; the vegetables and onion release their own.",
+ "ingredients": [
+  "1 kg of red meat, beef, or lamb",
+  "1 diced onion",
+  "1 peeled, diced tomato",
+  "3 peeled carrots, cut into wedges",
+  "2 potatoes, peeled and cut into wedges",
+  "1 zucchini, cut in half lengthwise",
+  "150 grams of peas",
+  "A generous bunch of chopped coriander and parsley",
+  "1 teaspoon of ginger",
+  "1 teaspoon of salt",
+  "½ teaspoon of turmeric",
+  "½ teaspoon of ground black pepper",
+  "Few saffron stamens, soaked in cold water",
+  "3 cloves of minced garlic",
+  "3 tablespoons of oil (the page also prints 2 tablespoons of olive oil; see sources)"
+ ],
+ "equipment": [
+  "Tagine (or heavy pot with lid)"
+ ],
+ "steps": [
+  "Add the oil, onions and meat to the tagine, place it on the stove and set the fire to low heat.",
+  "Cover the tagine and heat for 10 minutes, stirring frequently.",
+  "Add the tomato, garlic, spices, saffron and herbs, then arrange the vegetables over the meat.",
+  "Let the tagine cook for about 1 hour and 30 minutes.",
+  "Serve from the tagine with bread."
+ ],
+ "chefTips": [
+  "The source suggests adding some argan oil to lamb tagines for taste.",
+  "No doneness cue is printed beyond the time, so test that the meat is tender with a fork.",
+  "Keep the heat low; no extra liquid is called for."
+ ],
+ "commonMistakes": [
+  "Raising the heat to hurry it.",
+  "Adding water; the vegetables release enough.",
+  "Cutting the vegetables too small."
+ ],
+ "servedWith": [
+  "Khobz (MAR060)",
+  "Mint tea (MAR082)"
+ ],
+ "relatedRecipes": [
+  "MAR012",
+  "MAR007",
+  "MAR015"
+ ],
+ "sources": [
+  "Adapted from 'How to Make a Moroccan Lamb and Vegetable Tagine', Morocco World News, 12 August 2019. BYLINE AS PRINTED: 'layla-dahamou' (handle; flagged). Yield not printed (servings here are ours).",
+  "SOURCING STATUS: ingredients TWO-PASS; some lines run together in the source (the zucchini after potatoes; salt, turmeric and pepper; the two oil quantities) and were separated here by us.",
+  "AMBIGUITY KEPT: the oil line prints 3 tablespoons of oil and 2 tablespoons of olive oil without saying whether they are additive. NO DONENESS CUE printed beyond the time."
+ ],
+ "storage": "Keeps 3 days in the fridge.",
+ "reheating": "Reheat covered over low heat.",
+ "healthBenefits": [
+  "Plenty of vegetables and fresh herbs.",
+  "Cooked without added water or sugar."
+ ],
+ "culturalNote": "Morocco World News published this recipe in its Eid al-Adha coverage; the page also suggests adding argan oil to lamb tagines.",
+ "nutrition": {
+  "cal": 440,
+  "protein": 34,
+  "carbs": 26,
+  "fat": 23,
+  "fiber": 6,
+  "sodium": 520
+ },
+ "keywords": [
+  "lamb vegetable tagine",
+  "moroccan tagine vegetables",
+  "eid tagine",
+  "morocco world news",
+  "tajine bil khodra"
+ ]
+},
+{
+ "id": "MAR019",
+ "title": "Tagine of Cornish Hens with Almonds",
+ "localName": "Tagine de pigeon aux amandes — Cornish hens version",
+ "emoji": "🐦",
+ "country": "Morocco",
+ "countryFlag": "🇲🇦",
+ "region": "North Africa",
+ "community": "Formal occasions",
+ "cuisine": "Moroccan",
+ "category": "Poultry",
+ "course": "Main",
+ "diff": "Medium",
+ "prepTime": 25,
+ "restTime": 0,
+ "cookTime": 55,
+ "time": 80,
+ "servings": 4,
+ "cal": 680,
+ "rating": 4.6,
+ "reviews": 220,
+ "tags": [
+  "halal",
+  "dairy-free",
+  "gluten-free",
+  "high-protein",
+  "contains-nuts",
+  "special-occasion"
+ ],
+ "author": "Kitty Morse (via San Diego Home/Garden editors)",
+ "authorEmoji": "📖",
+ "desc": "A formal-occasion tagine, traditionally made with pigeon, adapted by Kitty Morse with Cornish hens browned in olive oil, then baked with saffron, turmeric, onions, parsley and whole blanched almonds.",
+ "longDesc": "The page credits the recipe to Kitty Morse, excerpted from her memoir cookbook Mint Tea and Minarets. The hens are browned on all sides in a tagine dish or Dutch oven, the onions, spices, parsley and almonds go in, and the dish is covered and baked at 375°F for 50 to 55 minutes, or until the juices run clear.",
+ "ingredients": [
+  "¼ c. olive oil",
+  "⅛ t. Spanish saffron, crushed",
+  "1 t. turmeric",
+  "2 large Cornish hens, rinsed and patted dry",
+  "2 medium onions, thinly sliced",
+  "½ c. chopped parsley",
+  "1 c. whole blanched almonds",
+  "Salt to taste",
+  "1 t. freshly ground pepper",
+  "Chopped parsley, for garnish"
+ ],
+ "equipment": [
+  "Tagine dish or Dutch oven",
+  "Oven"
+ ],
+ "steps": [
+  "Preheat the oven to 375 degrees F.",
+  "In the tagine dish or Dutch oven, brown the hens on all sides over medium heat.",
+  "Add the onions, saffron, turmeric, pepper, parsley and almonds; season with salt.",
+  "Cover and bake until tender, 50 to 55 minutes, or until the juices run clear.",
+  "Serve with parsley scattered on top."
+ ],
+ "chefTips": [
+  "Doneness cue quoted: tender and juices run clear.",
+  "Traditionally pigeon; Cornish hens are the widely available stand-in.",
+  "The page reserves this tagine for formal occasions."
+ ],
+ "commonMistakes": [
+  "Overbaking, which dries small birds.",
+  "Skipping the browning.",
+  "Salting before tasting the almonds and stock."
+ ],
+ "servedWith": [
+  "Khobz (MAR060)",
+  "Couscous (MAR021)"
+ ],
+ "relatedRecipes": [
+  "MAR011",
+  "MAR008",
+  "MAR004"
+ ],
+ "sources": [
+  "Adapted from 'Tagine of Cornish Hens with Almonds' (original title 'Tagine de Pigeon aux Amandes'), sandiegohomegarden.com, 20 February 2013. BYLINE AS PRINTED: 'Sdhg Editors' (a magazine desk name; flagged). The text credits Kitty Morse, from 'Mint Tea and Minarets: A Banquet of Moroccan Memories' (La Caravane Publishing, 2012). Yield 'Serves 4' (one pass).",
+  "SOURCING STATUS: ingredients TWO-PASS in the abbreviated form printed ('t.' teaspoon, 'c.' cup). Method quoted: 'Cover and bake until tender, 50 to 55 minutes, or until the juices run clear.'",
+  "ABSENT: exact steps for when onions and spices are added; ours follows the ingredient list order."
+ ],
+ "storage": "Keeps 2 days in the fridge.",
+ "reheating": "Warm covered in a low oven.",
+ "healthBenefits": [
+  "Lean poultry with almonds for healthy fats.",
+  "Few ingredients and no added sugar."
+ ],
+ "culturalNote": "The page says the tagine is reserved for formal occasions in Morocco and was traditionally made with pigeon.",
+ "nutrition": {
+  "cal": 680,
+  "protein": 48,
+  "carbs": 14,
+  "fat": 48,
+  "fiber": 5,
+  "sodium": 350
+ },
+ "keywords": [
+  "kitty morse",
+  "cornish hen tagine",
+  "pigeon tagine",
+  "moroccan almonds",
+  "mint tea and minarets"
+ ]
+},
+{
+ "id": "MAR020",
+ "title": "Mechoui: Slow-Roast Lamb Shoulder, Moroccan-Style",
+ "localName": "Mechoui — shoulder of lamb (مشوي)",
+ "emoji": "🍖",
+ "country": "Morocco",
+ "countryFlag": "🇲🇦",
+ "region": "North Africa",
+ "community": "Festive roast",
+ "cuisine": "Moroccan",
+ "category": "Grilled Meat",
+ "course": "Main",
+ "diff": "Medium",
+ "prepTime": 20,
+ "restTime": 20,
+ "cookTime": 335,
+ "time": 375,
+ "servings": 7,
+ "cal": 540,
+ "rating": 4.6,
+ "reviews": 139,
+ "tags": [
+  "halal",
+  "gluten-free",
+  "high-protein",
+  "contains-dairy",
+  "festive",
+  "special-occasion",
+  "grilled"
+ ],
+ "author": "Linda Duffin (HuffPost UK)",
+ "authorEmoji": "✍️",
+ "desc": "A home-oven version of Morocco's festive roast: a whole lamb shoulder rubbed with spiced butter, roasted gently for five hours, then crisped hot and rested.",
+ "longDesc": "Mechoui is traditionally a whole lamb roasted on a spit or in a pit. Linda Duffin, a British food writer, scales it to a 2.5 kg shoulder in a home oven: rubbed with a spice butter, started six hours before eating at 150°C/300°F, covered and roasted for five hours, then returned uncovered at 220°C/425°F for 30 to 45 minutes until well browned. A 15 to 20 minute rest finishes it, and the author's cue is gently spiced and falling-off-the-bone tender.",
+ "ingredients": [
+  "1 whole shoulder of lamb, about 2.5 kg",
+  "3 tbsp butter, at room temperature",
+  "1 heaped tspn cumin powder",
+  "1 tspn coriander powder",
+  "1/2 tspn fennel seeds, ground",
+  "1/2 tspn cinnamon",
+  "1/4 tspn cayenne",
+  "1 tspn smoked sweet paprika",
+  "4 garlic cloves, crushed",
+  "1/4 tspn freshly ground black pepper",
+  "1/2 tspn salt",
+  "150ml water",
+  "Seeds and juice of about 1/2 pomegranate",
+  "A handful of fresh coriander, roughly torn"
+ ],
+ "equipment": [
+  "Roasting tin with lid or foil",
+  "Oven"
+ ],
+ "steps": [
+  "Six hours before you want to eat, pre-heat the oven to 150C/300F/Gas Mark 2.",
+  "Mix the butter with all the spices, garlic, pepper and salt and rub it all over the lamb.",
+  "Put the lamb in a roasting tin with the water, cover, and roast for five hours.",
+  "Increase the heat to 220C/425F/Gas Mark 7 and put the lamb back in, uncovered, for 30-45 minutes until well browned.",
+  "Allow to rest for 15-20 minutes. Serve with pomegranate seeds and juice and torn coriander."
+ ],
+ "chefTips": [
+  "Doneness cue quoted: gently spiced and falling-off-the-bone tender.",
+  "This is a British writer's Moroccan-style adaptation; the traditional method is a whole animal in an earth oven.",
+  "Do not skip the rest; the juices settle."
+ ],
+ "commonMistakes": [
+  "Starting too late; the five hours are essential.",
+  "Skipping the final blast, which gives the crust.",
+  "Carving immediately."
+ ],
+ "servedWith": [
+  "Khobz (MAR060)",
+  "Zaalouk (MAR046)"
+ ],
+ "relatedRecipes": [
+  "MAR013",
+  "MAR014",
+  "MAR003"
+ ],
+ "sources": [
+  "Adapted from 'Mechoui: slow-roast lamb Moroccan-style', HuffPost UK, 8 December 2017. BYLINE AS PRINTED: 'Linda Duffin Food writer and blogger'. Yield 'Serves 6-8' (one pass).",
+  "SOURCING STATUS: ingredients TWO-PASS. Times quoted: roast five hours; then 30-45 minutes uncovered; rest 15-20 minutes. FLAG: British food writer; the title itself says 'Moroccan-style'. A whole-animal mechoui method with quantities from a Moroccan cook was NOT found.",
+  "Also noted but not used: SBS (Phoebe Wood, 2017) shoulder at 140°C for 8 hours with allspice and chilli, which is not a classical Moroccan spice set."
+ ],
+ "storage": "Pull the meat and keep it 3 days in the fridge in its juices.",
+ "reheating": "Warm covered in a low oven with the juices.",
+ "healthBenefits": [
+  "High protein; pomegranate adds freshness and antioxidants.",
+  "Rich dish to be shared by many."
+ ],
+ "culturalNote": "Mechoui is a festive roast, traditionally a whole lamb; this is a British food writer's Moroccan-style adaptation for a home oven, as the title says.",
+ "nutrition": {
+  "cal": 540,
+  "protein": 42,
+  "carbs": 2,
+  "fat": 40,
+  "fiber": 0,
+  "sodium": 300
+ },
+ "keywords": [
+  "mechoui",
+  "moroccan roast lamb",
+  "slow roast lamb shoulder",
+  "linda duffin",
+  "eid roast"
+ ]
+},
+{
+ "id": "MAR021",
+ "title": "Couscous with Seven Vegetables (Couscous Bidaoui)",
+ "localName": "Couscous bidaoui — seven-vegetable Friday couscous (كسكس بيضاوي)",
+ "emoji": "🍲",
+ "country": "Morocco",
+ "countryFlag": "🇲🇦",
+ "region": "North Africa",
+ "community": "Casablanca; Friday lunch",
+ "cuisine": "Moroccan",
+ "category": "Couscous & Grains",
+ "course": "Main",
+ "diff": "Hard",
+ "prepTime": 35,
+ "restTime": 0,
+ "cookTime": 120,
+ "time": 155,
+ "servings": 8,
+ "cal": 620,
+ "rating": 4.8,
+ "reviews": 37,
+ "tags": [
+  "halal",
+  "high-fiber",
+  "high-protein",
+  "comfort-food",
+  "traditional",
+  "festive",
+  "contains-dairy"
+ ],
+ "author": "Christine Benlafquih (Taste of Maroc)",
+ "authorEmoji": "👩‍🍳",
+ "desc": "Morocco's Friday couscous: hand-rolled grains steamed three times over a lamb, beef or chicken broth, then piled in a mound with cabbage, turnips, carrots, squash and zucchini.",
+ "longDesc": "Benlafquih calls this the Casablanca version of the dish, and says many families serve it weekly for Friday lunch around one large communal dish. The meat and vegetables simmer in a seasoned broth in the base of the couscoussier while the couscous steams above it in three rounds, with oil, water and salt worked in between. She also notes that steaming is the only way couscous is made in Morocco. An optional tfaya of caramelised onions and raisins goes on top.",
+ "ingredients": [
+  "// Couscous",
+  "2.2 lb. couscous (not instant; I prefer medium caliber)",
+  "1/4 cup olive oil or vegetable oil",
+  "6 cups water, divided (can use milk for final steaming)",
+  "2 to 3 tsp salt (added after 1st steaming)",
+  "2 tbsp soft butter (added after final steaming)",
+  "// Meat and broth seasoning",
+  "2.2 lb. lamb, beef, or goat meat, large pieces on the bone (or 1 large whole chicken)",
+  "1 large onion, coarsely chopped",
+  "3 fresh tomatoes, peeled and coarsely chopped",
+  "1/4 cup olive oil or vegetable oil",
+  "1 1/2 tbsp salt",
+  "1 tbsp ginger",
+  "1 tbsp pepper",
+  "1 tsp turmeric",
+  "1 handful parsley and cilantro sprigs, tied into a bouquet",
+  "2 tsp smen (optional; reserve until end of cooking)",
+  "// Traditional vegetables",
+  "1/2 cup dried chickpeas, soaked overnight",
+  "1 small head of cabbage, cut in half or quartered",
+  "3 or 4 medium turnips, peeled and cut in half",
+  "8 to 10 carrots, peeled (cut in half lengthwise if large)",
+  "1 or 2 small tomatoes, peeled, seeded and quartered",
+  "1 or 2 small onions, cut in half",
+  "1 small acorn squash, quartered (or wedge of pumpkin)",
+  "4 or 5 small zucchini, ends trimmed",
+  "// Optional vegetables",
+  "2 or 3 chili peppers or jalapeños (simmer in a little broth or steam until tender)",
+  "1 cup fresh or frozen fava beans (add with 2nd steaming)",
+  "2 or 3 sweet potatoes, peeled and cut in half (add with 3rd steaming)",
+  "// Optional tfaya (caramelised onions and raisins)",
+  "1/2 cup raisins, soaked in water for 15 minutes",
+  "2 or 3 large onions, preferably red",
+  "1/2 cup water",
+  "2 tbsp butter",
+  "2 tbsp honey",
+  "1/2 tsp pepper",
+  "1/2 tsp cinnamon",
+  "1/4 tsp ginger",
+  "1/4 tsp turmeric",
+  "1 pinch saffron threads, crumbled",
+  "1 pinch salt"
+ ],
+ "equipment": [
+  "Couscoussier (steamer pot)",
+  "Large wide dish for rolling the grains",
+  "Large platter"
+ ],
+ "steps": [
+  "Soak the chickpeas overnight. A quick soak: boil 4 to 5 minutes, then stand 1 hour.",
+  "Brown the meat with the oil, onion, tomatoes and spices over medium-high heat, stirring often and uncovered, for 10 to 15 minutes, until a thick, rich sauce forms.",
+  "Add the drained chickpeas, the herb bouquet and about 3 quarts of water. Bring to a boil, cover and cook over medium heat for about 30 minutes.",
+  "First steaming: drizzle 1/4 cup oil over the couscous and rub it in, work in 1 cup water, then steam for 15 to 20 minutes, timed from when steam first appears.",
+  "Second steaming: cool briefly, work in 1 cup water, then the salt, then another cup of water. Add the cabbage, onions, tomatoes and fava beans to the pot and steam 15 to 20 minutes.",
+  "Third steaming: add the turnips and carrots to the pot and cook 15 minutes. Work 2 to 3 cups water or milk into the couscous a little at a time, using only as much as needed to make it al dente. Add the squash, zucchini and sweet potato and steam 10 to 15 minutes more, until the couscous is light and fluffy and the late vegetables are cooked.",
+  "Work in the butter and swirl the smen into the broth. Mound the couscous with a well, put the meat in the well, arrange the vegetables on top, drizzle several cups of broth over it and serve the rest on the side with the tfaya."
+ ],
+ "chefTips": [
+  "Use only as much water or milk as needed to make the couscous al dente.",
+  "Doneness cue: couscous light and fluffy and the last vegetables cooked.",
+  "For chicken, the author prefers to brown it at 425°F (220°C).",
+  "Tfaya is ready when the liquids have reduced to a thick syrup, about 30 minutes to 1 hour."
+ ],
+ "commonMistakes": [
+  "Using instant couscous; the page specifies the steamed kind.",
+  "Adding all the water at once, which makes the grains gummy.",
+  "Adding the soft vegetables too early so they collapse."
+ ],
+ "servedWith": [
+  "Tfaya (MAR023)",
+  "Mint tea (MAR082)"
+ ],
+ "relatedRecipes": [
+  "MAR022",
+  "MAR025",
+  "MAR040"
+ ],
+ "sources": [
+  "Adapted from 'Moroccan Couscous with Seven Vegetables – Couscous Bidaoui', Taste of Maroc. BYLINE AS PRINTED: 'By Author Christine Benlafquih'. Date as printed: 'Last updated: September 25, 2020' (page metadata: first published October 6, 2017). Yield '8 servings'. Prep 35 min, cook 2 hr.",
+  "SOURCING STATUS: ingredients TWO-PASS (three readings agree). Method wording is our own summary of the page; times and cues were relayed by a research tool and should be checked against the live page.",
+  "DISAGREEMENT ACROSS SOURCES kept (not averaged): MarocMama's seven-vegetable couscous lists no couscous quantity and uses 10 cups of water; Cooking with Alia uses 2 cups dry chickpeas for 500 g of meat while this page uses 1/2 cup for 2.2 lb. Saveur's version (veal shank, bell pepper, potato) is not a traditional set and was not used."
+ ],
+ "storage": "Store broth, meat and vegetables separately from the couscous. Keeps 2 days in the fridge.",
+ "reheating": "Re-steam the couscous over simmering broth; warm the vegetables in the broth.",
+ "healthBenefits": [
+  "A vegetable-rich meal with fibre from chickpeas, cabbage and root vegetables.",
+  "Balanced with plant and animal protein."
+ ],
+ "culturalNote": "The author writes that 'Couscous Bidaoui' refers to Casablanca (al-Dar al-Bayda) where this version originated, and that many families serve it weekly for Friday lunch. MarocMama adds that seven is considered a lucky number by some Moroccans.",
+ "nutrition": {
+  "cal": 620,
+  "protein": 34,
+  "carbs": 76,
+  "fat": 19,
+  "fiber": 11,
+  "sodium": 1200
+ },
+ "keywords": [
+  "couscous seven vegetables",
+  "couscous bidaoui",
+  "friday couscous",
+  "moroccan couscous recipe",
+  "christine benlafquih"
+ ]
+},
+{
+ "id": "MAR022",
+ "title": "Chicken Couscous with Tfaya",
+ "localName": "Couscous tfaya — Fes-style (كسكس بالتفاية)",
+ "emoji": "🍇",
+ "country": "Morocco",
+ "countryFlag": "🇲🇦",
+ "region": "North Africa",
+ "community": "Fes",
+ "cuisine": "Moroccan",
+ "category": "Couscous & Grains",
+ "course": "Main",
+ "diff": "Medium",
+ "prepTime": 25,
+ "restTime": 10,
+ "cookTime": 105,
+ "time": 140,
+ "servings": 6,
+ "cal": 780,
+ "rating": 4.6,
+ "reviews": 97,
+ "tags": [
+  "halal",
+  "dairy-free",
+  "high-protein",
+  "contains-nuts",
+  "sweet",
+  "festive"
+ ],
+ "author": "Nargisse Benkabbou (Great British Chefs)",
+ "authorEmoji": "👩‍🍳",
+ "desc": "Chicken legs simmered with chickpeas, served over couscous with a sweet, glossy topping of slow-cooked onions, raisins, honey and cinnamon.",
+ "longDesc": "Benkabbou's family comes from Fes, where she says tfaya originates, and this couscous follows that tradition. The chicken simmers 45 minutes in stock with onions, garlic, turmeric, ginger and saffron, chickpeas join for 15 more, and the tfaya is cooked separately: onions for 20 minutes covered, raisins, honey and cinnamon for 10, then stock for about 25 minutes until most of the liquid has evaporated into a thick golden-brown sauce.",
+ "ingredients": [
+  "// Main dish",
+  "3 tbsp olive oil",
+  "2 large onions, sliced",
+  "4 garlic cloves, crushed",
+  "2 tsp ground turmeric",
+  "2 tsp ground ginger",
+  "3/4 tsp salt",
+  "1/4 tsp freshly ground black pepper",
+  "1 pinch saffron threads",
+  "6 large chicken legs",
+  "400ml chicken stock",
+  "1 tin chickpeas (400g), rinsed and drained",
+  "50g flaked almonds, toasted, to garnish (optional)",
+  "360g couscous, cooked according to the packet instructions, then seasoned with a little salt and olive oil",
+  "// Tfaya sauce",
+  "2 tbsp olive oil",
+  "4 large onions, sliced",
+  "300g raisins",
+  "3 tbsp clear honey",
+  "1 tsp ground cinnamon",
+  "1/2 tsp salt, or more to taste",
+  "100ml chicken stock"
+ ],
+ "equipment": [
+  "Large pot with lid",
+  "Wide pan with lid for the tfaya"
+ ],
+ "steps": [
+  "Heat the oil over medium heat; add the onions, garlic and spices and cook 3 minutes.",
+  "Add the chicken legs and cook 5 minutes, turning. Pour in the stock and boil over high heat. Cover, reduce to medium-low and simmer 45 minutes.",
+  "Stir in the chickpeas and simmer a further 15 minutes, or until the chicken is cooked through.",
+  "For the tfaya, heat the oil over medium-low, add the onions, cover and cook about 20 minutes until soft and translucent. Soak the raisins in hot water for 10 minutes, then drain.",
+  "Add the raisins, honey, cinnamon and salt and cook uncovered for about 10 minutes. Add the stock, bring to the boil, then simmer on medium-low for about 25 minutes, until most of the liquid has evaporated and the sauce is thick and golden brown.",
+  "Serve the warm couscous topped with the chicken, broth and chickpeas, then the tfaya, then toasted almonds."
+ ],
+ "chefTips": [
+  "Doneness cues: onions soft and translucent, then lightly golden; tfaya sauce thick and golden brown with most of the liquid gone.",
+  "This version uses packet couscous, not hand-steamed grains.",
+  "Taste the tfaya for salt after it reduces."
+ ],
+ "commonMistakes": [
+  "Cooking the onions over high heat, which browns without softening.",
+  "Skipping the raisin soak.",
+  "Reducing the sauce too far so it turns to a sticky jam."
+ ],
+ "servedWith": [
+  "Mint tea (MAR082)"
+ ],
+ "relatedRecipes": [
+  "MAR023",
+  "MAR024",
+  "MAR021"
+ ],
+ "sources": [
+  "Adapted from 'Couscous tfaya', Great British Chefs, from 'Casablanca: My Moroccan Food' (Mitchell Beazley). BYLINE AS PRINTED: 'by Nargisse Benkabbou'. Date as printed: 'First published in 2019'. Yield 6. Total time 1 hr 15 min as printed.",
+  "SOURCING STATUS: ingredients TWO-PASS (second pass paraphrased, quantities matched). Method wording is our own summary of the page; times and cues were relayed by a research tool and should be checked against the live page.",
+  "DISAGREEMENT ON TFAYA kept: Benkabbou 4 large onions, 300 g raisins, 3 tbsp honey; Koehler 3 large red onions, 1/2 cup raisins, 1/4 cup honey; Mouttaki 8-10 medium onions, 1 cup raisins, 2 Tbsp sugar; Benlafquih 2 or 3 large onions, 1/2 cup raisins, 2 tbsp honey. Not reconciled."
+ ],
+ "storage": "Store tfaya separately; both keep 3 days refrigerated.",
+ "reheating": "Warm gently; add a splash of water to loosen the tfaya.",
+ "healthBenefits": [
+  "Chicken and chickpeas give protein and fibre.",
+  "The tfaya is sweet from fruit and honey; serve it as a topping, not a base."
+ ],
+ "culturalNote": "The author writes: 'This chicken couscous dish originates in the city of Fes' and that both her parents are from Fes, where tfaya originates.",
+ "nutrition": {
+  "cal": 780,
+  "protein": 42,
+  "carbs": 105,
+  "fat": 22,
+  "fiber": 8,
+  "sodium": 720
+ },
+ "keywords": [
+  "couscous tfaya",
+  "chicken couscous raisins onions",
+  "fes couscous",
+  "nargisse benkabbou",
+  "sweet and savory couscous"
+ ]
+},
+{
+ "id": "MAR023",
+ "title": "Tfaya (Caramelised Onion and Raisin Topping)",
+ "localName": "Tfaya — onions and raisins for couscous (تفاية)",
+ "emoji": "🧅",
+ "country": "Morocco",
+ "countryFlag": "🇲🇦",
+ "region": "North Africa",
+ "community": "National",
+ "cuisine": "Moroccan",
+ "category": "Sauces & Condiments",
+ "course": "Topping",
+ "diff": "Easy",
+ "prepTime": 10,
+ "restTime": 0,
+ "cookTime": 45,
+ "time": 55,
+ "servings": 5,
+ "cal": 210,
+ "rating": 4.9,
+ "reviews": 164,
+ "tags": [
+  "vegan",
+  "vegetarian",
+  "dairy-free",
+  "gluten-free",
+  "sweet",
+  "condiment",
+  "traditional"
+ ],
+ "author": "Amanda Mouttaki (MarocMama)",
+ "authorEmoji": "👩‍🍳",
+ "desc": "Sweet, jammy onions cooked down with raisins, cinnamon and ginger, spooned over chicken or lamb couscous.",
+ "longDesc": "Tfaya is the sweet-savory topping that finishes many couscous dishes. This version softens thinly sliced onions in oil, lowers the heat, adds salt, turmeric, ginger and cinnamon, and cooks until very soft and lightly caramelised. After about 20 minutes the sugar and soaked raisins go in for another 10 to 15.",
+ "ingredients": [
+  "8-10 medium onions sliced thinly",
+  "1 cup raisins (yellow work best)",
+  "1 cinnamon stick broke into several pieces",
+  "1 tsp ginger",
+  "1/2 tsp turmeric",
+  "1/2 tsp salt",
+  "2 Tbsp sugar",
+  "4 Tbsp vegetable or unflavored oil"
+ ],
+ "equipment": [
+  "Large non-stick pan"
+ ],
+ "steps": [
+  "Slice the onions. Heat the oil in a non-stick pan over medium heat and add the onions.",
+  "Soak the raisins in just enough warm water to cover.",
+  "When the onions have started to soften, lower the heat and add the salt, turmeric, ginger and cinnamon. Cook on low until the onions are very soft and begin to caramelise slightly.",
+  "After about 20 minutes, add the sugar and the drained raisins and cook another 10 to 15 minutes."
+ ],
+ "chefTips": [
+  "Yellow raisins work best, says the author.",
+  "Cue: onions very soft and slightly caramelised, not dark.",
+  "Use as a garnish for couscous, not as a side dish."
+ ],
+ "commonMistakes": [
+  "High heat that browns the onions before they soften.",
+  "Adding sugar too early.",
+  "Forgetting to drain the raisins."
+ ],
+ "servedWith": [
+  "Couscous (MAR021)"
+ ],
+ "relatedRecipes": [
+  "MAR022",
+  "MAR024",
+  "MAR025"
+ ],
+ "sources": [
+  "Adapted from 'Tfaya Topping for Couscous' (page title 'How to Make Couscous Tfaya Topping'), marocmama.com. BYLINE AS PRINTED: 'By: Author Amanda Mouttaki'. No date printed (metadata: published 2020-04-05, modified 2022-08-29). Yield '4-6'.",
+  "SOURCING STATUS: ingredients TWO-PASS. Method wording is our own summary of the page; times and cues were relayed by a research tool and should be checked against the live page.",
+  "TIME DISCREPANCY kept: the card prints 'cook 45 minutes 30 seconds' while the method adds up to about 30 to 35 minutes (20 + 10 to 15)."
+ ],
+ "storage": "Keeps 4 days in the fridge.",
+ "reheating": "Warm in a small pan with a spoonful of water.",
+ "healthBenefits": [
+  "Onions and raisins bring fibre and natural sweetness.",
+  "A small spoonful goes a long way."
+ ],
+ "culturalNote": "The author notes people sometimes call this 'Moroccan couscous with raisins'.",
+ "nutrition": {
+  "cal": 210,
+  "protein": 3,
+  "carbs": 40,
+  "fat": 6,
+  "fiber": 3,
+  "sodium": 230
+ },
+ "keywords": [
+  "tfaya",
+  "caramelised onions raisins",
+  "moroccan couscous topping",
+  "sweet onion raisin",
+  "marocmama"
+ ]
+},
+{
+ "id": "MAR024",
+ "title": "Chicken Couscous with Caramelised Onion and Raisin Tfaya (Oven-Steamed)",
+ "localName": "Couscous au poulet et tfaya",
+ "emoji": "🐓",
+ "country": "Morocco",
+ "countryFlag": "🇲🇦",
+ "region": "North Africa",
+ "community": "National",
+ "cuisine": "Moroccan",
+ "category": "Couscous & Grains",
+ "course": "Main",
+ "diff": "Medium",
+ "prepTime": 40,
+ "restTime": 20,
+ "cookTime": 75,
+ "time": 135,
+ "servings": 6,
+ "cal": 800,
+ "rating": 4.7,
+ "reviews": 295,
+ "tags": [
+  "halal",
+  "high-protein",
+  "contains-nuts",
+  "contains-egg",
+  "contains-dairy",
+  "festive"
+ ],
+ "author": "Jeff Koehler (The North African Cookbook)",
+ "authorEmoji": "📖",
+ "desc": "A weeknight-friendly chicken couscous: the grains are hydrated and baked in a pan instead of steamed, and the chicken is served under a 'brown and jammy' red onion tfaya.",
+ "longDesc": "Koehler adapts the dish for a home kitchen: the stew simmers 45 minutes with ginger, white pepper, cloves, cinnamon and saffron, the tfaya is cooked in a skillet with raisins and honey, and the couscous is soaked in salted lukewarm water for 15-20 minutes then baked at 350°F for about 12 minutes. Fried almonds and hard-boiled egg wedges garnish.",
+ "ingredients": [
+  "// Tfaya",
+  "½ cup raisins",
+  "3 Tbsp. unsalted butter or olive oil",
+  "1 tsp. ground ginger",
+  "½ tsp. ground cinnamon",
+  "3 large red onions (2¼ lb.), thinly sliced",
+  "¼ cup honey",
+  "// Stew",
+  "2½ lb. bone-in chicken thighs or legs, skin removed",
+  "1 Tbsp. kosher salt",
+  "1 Tbsp. olive oil",
+  "½ tsp. ground ginger",
+  "½ tsp. ground white pepper",
+  "6 whole cloves",
+  "1 small cinnamon stick",
+  "Pinch saffron threads, crumbled",
+  "¾ cup canned chickpeas, drained and rinsed",
+  "1 Tbsp. unsalted butter",
+  "10 cilantro sprigs, tied into a bundle with twine",
+  "10 parsley sprigs, tied into a bundle with twine",
+  "// Couscous",
+  "3 cups fine semolina couscous (1 lb.)",
+  "1 tsp. fine salt",
+  "1 Tbsp. olive oil",
+  "2 Tbsp. unsalted butter, at room temperature",
+  "// Garnish",
+  "Vegetable oil, for frying",
+  "½ cup whole blanched almonds",
+  "3 large hard-boiled eggs, peeled and cut into wedges (optional)"
+ ],
+ "equipment": [
+  "Large pot",
+  "Large skillet",
+  "9 x 13 in. baking pan",
+  "Oven"
+ ],
+ "steps": [
+  "Tfaya: soak the raisins in lukewarm water for about 10 minutes and drain. Cook the raisins, butter, ginger, cinnamon, onions and ½ cup water in a large skillet over medium heat, covered, for about 30 minutes, until the onions are soft and deep golden brown. Stir in the honey, lower the heat and cook about 15 minutes more, until brown and jammy.",
+  "Stew: coat the chicken with the oil, salt and spices. Add the chickpeas, butter, herb bundles and 4¼ cups water. Bring to a boil, reduce to medium-low and simmer, partly covered, for about 45 minutes, until the chicken is very tender.",
+  "Couscous: spread it in the baking pan. Dissolve the salt in 3 cups lukewarm water and pour it over. Let stand 15 to 20 minutes.",
+  "Heat the oven to 350°F with the rack in the centre. Fluff the couscous, drizzle with the oil and rub the grains. Bake about 12 minutes, until the grains are expanded, tender and begin to steam.",
+  "Fry the almonds in about ½ inch of hot, shimmering oil for 2 to 4 minutes until just golden.",
+  "Toss the couscous with the butter and mound it. Put the chicken and chickpeas in a well, ladle in about half the broth, spread the tfaya over and top with almonds and egg wedges."
+ ],
+ "chefTips": [
+  "Cues from the source: chicken very tender; couscous expanded and tender; almonds just golden; oil hot and shimmering.",
+  "This is an oven adaptation, not traditional triple steaming.",
+  "Fry almonds in small batches so they stay golden."
+ ],
+ "commonMistakes": [
+  "Baking the couscous without fluffing and rubbing first.",
+  "Overcooking almonds, which turn bitter fast.",
+  "Leaving the skin on the chicken; the source removes it."
+ ],
+ "servedWith": [
+  "Mint tea (MAR082)"
+ ],
+ "relatedRecipes": [
+  "MAR022",
+  "MAR023",
+  "MAR021"
+ ],
+ "sources": [
+  "Adapted from 'Chicken Couscous with Caramelized Onion and Raisin Tfaya', Saveur, 29 August 2023. BYLINE AS PRINTED: 'By Jeff Koehler'. Credit: adapted from 'The North African Cookbook' (Phaidon, 2023). Yield 'Serves 6'; time 2 hr 15 min as printed.",
+  "SOURCING STATUS: ingredients TWO-PASS. Method wording is our own summary of the page; times and cues were relayed by a research tool and should be checked against the live page.",
+  "FLAG: Koehler is a cookbook author on North Africa, not a Moroccan home cook; the oven-steamed couscous is a modern shortcut. DISAGREEMENT on tfaya proportions across sources kept (see Couscous with Tfaya)."
+ ],
+ "storage": "Keeps 3 days in the fridge, with tfaya and stew stored apart from the couscous.",
+ "reheating": "Warm the stew and tfaya gently; fluff the couscous with a splash of hot water.",
+ "healthBenefits": [
+  "Skinless chicken, chickpeas and herbs; almonds for healthy fats.",
+  "The tfaya adds sweetness, so serve moderate portions."
+ ],
+ "culturalNote": "The introduction calls it a classic Moroccan recipe; it comes from a cookbook of North African dishes, adapted by the author.",
+ "nutrition": {
+  "cal": 800,
+  "protein": 46,
+  "carbs": 105,
+  "fat": 25,
+  "fiber": 8,
+  "sodium": 1000
+ },
+ "keywords": [
+  "jeff koehler",
+  "chicken couscous tfaya",
+  "oven couscous",
+  "north african cookbook",
+  "saveur"
+ ]
+},
+{
+ "id": "MAR025",
+ "title": "Seffa Medfouna (Sweet Vermicelli or Couscous with Saffron Chicken)",
+ "localName": "Seffa medfouna — \"buried\" seffa (سفة مدفونة)",
+ "emoji": "🍝",
+ "country": "Morocco",
+ "countryFlag": "🇲🇦",
+ "region": "North Africa",
+ "community": "Casablanca, Fes, Meknes",
+ "cuisine": "Moroccan",
+ "category": "Couscous & Grains",
+ "course": "Main",
+ "diff": "Hard",
+ "prepTime": 30,
+ "restTime": 0,
+ "cookTime": 150,
+ "time": 180,
+ "servings": 8,
+ "cal": 820,
+ "rating": 4.7,
+ "reviews": 30,
+ "tags": [
+  "halal",
+  "high-protein",
+  "contains-nuts",
+  "contains-dairy",
+  "sweet",
+  "festive",
+  "special-occasion"
+ ],
+ "author": "Christine Benlafquih (Taste of Maroc)",
+ "authorEmoji": "👩‍🍳",
+ "desc": "Steamed vermicelli or couscous sweetened with butter and powdered sugar, domed over saffron chicken and dusted with cinnamon, ground almonds and raisins.",
+ "longDesc": "Medfouna means 'buried' because the meat is hidden inside the dome of seffa. The grain is steamed and tossed with butter and sugar; the chicken (or lamb/beef) is simmered with onions, ginger, saffron, cinnamon stick, turmeric and cilantro until very tender and the sauce reduces to thick. The author notes that in Casablanca meat-free seffa is usually a follow-up course, and that a vegetarian nut-free version called seffa touba is served as a light dinner in Meknes and Fez.",
+ "ingredients": [
+  "// Couscous or chaariya",
+  "2.2 lbs dry broken vermicelli, angel hair pasta or couscous",
+  "3 tbsp vegetable or olive oil (for steaming)",
+  "2 tsp salt (for steaming)",
+  "4 tbsp unsalted butter, room temperature (for sweetening after final steaming)",
+  "1/2 cup powdered sugar, or to taste (for sweetening after final steaming)",
+  "// Optional raisins",
+  "1 cup raisins, soaked in water for 20 minutes",
+  "1 tbsp butter (optional; for caramelizing)",
+  "1 tbsp sugar or honey (optional; for caramelizing)",
+  "// Saffron chicken or meat",
+  "1 whole chicken, cut into pieces and skin removed (or 2 lbs. cubed lamb or beef)",
+  "2 large sweet onions, chopped medium",
+  "1 tbsp ground ginger",
+  "1 1/2 tsp salt, or to taste",
+  "1 tsp white pepper",
+  "1/2 tsp black pepper",
+  "2 small pieces (2 to 3\") of cinnamon stick",
+  "1 tsp saffron threads, crumbled",
+  "1 tsp turmeric",
+  "4 tbsp unsalted butter",
+  "1/4 cup olive oil",
+  "1/4 cup chopped fresh cilantro",
+  "// To decorate and serve",
+  "1 cup almonds (blanched, fried and ground)",
+  "1 cup powdered sugar",
+  "2 tbsp ground cinnamon",
+  "Caramelized raisins (optional, if not steamed with the grain)"
+ ],
+ "equipment": [
+  "Couscoussier or steamer",
+  "Dutch oven",
+  "Very large serving dish"
+ ],
+ "steps": [
+  "Steam the couscous or vermicelli over simmering salted water in rounds, as in the author's linked tutorials, working in oil and salt between steamings.",
+  "Add soaked raisins in the final steaming (the fourth for vermicelli), or caramelise them in a small pot with 1 tbsp butter and 1 tbsp sugar or honey and water to cover, until the liquids are absorbed.",
+  "Combine the meat, onions, spices, butter, oil and cilantro in a Dutch oven. Cook over medium heat about 10 minutes, stirring frequently.",
+  "For chicken, add no water unless necessary; for lamb or beef, add water to just cover. Cover and cook over medium heat until very tender (chicken about 1 hour; beef or lamb longer). Reduce to a thick sauce, discard the cinnamon stick and adjust the seasoning.",
+  "Toss the hot grain with the butter and powdered sugar.",
+  "Spread a quarter to a third of the grain on a very large dish, put the meat in the centre and cover with sauce. Dome the remaining grain over it and decorate with cinnamon, almonds and raisins. Serve with extra powdered sugar, almonds and cinnamon.",
+  "To toast the almonds instead of frying: 350°F (180°C), about 10 minutes, until golden brown."
+ ],
+ "chefTips": [
+  "Doneness cue: meat very tender; sauce reduced to thick.",
+  "The author notes it is Moroccan tradition to gather around the seffa and eat from your own side of the dish.",
+  "Steam grains in separate rounds; do not rush."
+ ],
+ "commonMistakes": [
+  "Making the sauce too thin, which soaks the dome.",
+  "Adding all the sugar in advance; taste as you go.",
+  "Skipping the fluffing between steamings."
+ ],
+ "servedWith": [
+  "Mint tea (MAR082)"
+ ],
+ "relatedRecipes": [
+  "MAR021",
+  "MAR023",
+  "MAR034"
+ ],
+ "sources": [
+  "Adapted from 'Seffa Medfouna Recipe – Broken Vermicelli or Couscous with Chicken, Lamb or Beef', Taste of Maroc. BYLINE AS PRINTED: 'By Author Christine Benlafquih'. Date as printed: 'Last updated: June 1, 2020' (page metadata: published 2017-11-22). Yield '8 servings'. Prep 30 min, cook 2 hr 30 min.",
+  "SOURCING STATUS: ingredients TWO-PASS. Method wording is our own summary of the page; times and cues were relayed by a research tool and should be checked against the live page.",
+  "NOT USED: a Breaking Matzo sweet seffa (site-name byline, single-pass quantities) and a Hungry Buddha kesksou seffa (no byline)."
+ ],
+ "storage": "Best served at once; store meat and sauce separately from the grain for 2 days.",
+ "reheating": "Re-steam the grain and warm the meat gently.",
+ "healthBenefits": [
+  "A celebratory dish; high in sugar, so serve in moderation.",
+  "Chicken and almonds add protein."
+ ],
+ "culturalNote": "The author glosses medfouna as 'buried' and writes that in Casablanca meat-free seffa is usually a follow-up course to a main dish; the vegetarian seffa touba is served as a light dinner in Meknes and Fez.",
+ "nutrition": {
+  "cal": 820,
+  "protein": 38,
+  "carbs": 104,
+  "fat": 28,
+  "fiber": 5,
+  "sodium": 700
+ },
+ "keywords": [
+  "seffa medfouna",
+  "sweet vermicelli chicken",
+  "moroccan seffa",
+  "christine benlafquih",
+  "cinnamon almonds couscous"
+ ]
+},
+{
+ "id": "MAR026",
+ "title": "Saykouk (Barley Couscous with Whey)",
+ "localName": "Sekouk belboula — milky barley couscous (سكوك)",
+ "emoji": "🥛",
+ "country": "Morocco",
+ "countryFlag": "🇲🇦",
+ "region": "North Africa",
+ "community": "Summer dish",
+ "cuisine": "Moroccan",
+ "category": "Couscous & Grains",
+ "course": "Light meal",
+ "diff": "Easy",
+ "prepTime": 15,
+ "restTime": 0,
+ "cookTime": 60,
+ "time": 75,
+ "servings": 3,
+ "cal": 360,
+ "rating": 4.6,
+ "reviews": 255,
+ "tags": [
+  "vegetarian",
+  "dairy",
+  "cold",
+  "traditional",
+  "budget",
+  "sweet"
+ ],
+ "author": "asmaa-alaoui (Morocco World News)",
+ "authorEmoji": "📰",
+ "desc": "A cooling summer bowl of steamed barley couscous topped with cold whey (lben) and a little sugar.",
+ "longDesc": "Barley semolina is steamed three times in an oiled, salted dish, separating the grains between rounds. Once cooled it is put in a dish, covered with cold whey and sweetened with sugar if you like. Morocco World News recommends it in hot weather.",
+ "ingredients": [
+  "250g barley couscous semolina",
+  "1/2L of whey (Lben)",
+  "1 tablespoon crystal sugar"
+ ],
+ "equipment": [
+  "Couscoussier or steamer",
+  "Large dish"
+ ],
+ "steps": [
+  "Steam the barley semolina in a large, oiled, salted dish. Once the steam crosses the semolina, return it to a bowl, add a little warm water and separate the grains.",
+  "Steam a second time for 30 minutes, then a third time (no duration is printed for the first or third).",
+  "Cool the couscous completely.",
+  "Put the cooled couscous in a dish, pour cold whey over it, and add sugar if you like."
+ ],
+ "chefTips": [
+  "The page gives only one cue: steam has crossed the semolina.",
+  "Serve cold, in the heat of the day.",
+  "Cooking with Alia swells the grain in boiling water for 10 minutes instead of steaming, until it has absorbed all the water and become plump; the two methods differ."
+ ],
+ "commonMistakes": [
+  "Not separating the grains between steamings.",
+  "Serving the whey warm.",
+  "Adding sugar before tasting the whey."
+ ],
+ "servedWith": [],
+ "relatedRecipes": [
+  "MAR027",
+  "MAR029",
+  "MAR030"
+ ],
+ "sources": [
+  "Adapted from 'Sekouk Belboula or Milky Couscous: A Refreshing Dish', Morocco World News, 25 August 2023. BYLINE AS PRINTED (by the research tool): 'asmaa-alaouibyasmaa-alaoui' (an account handle; flagged). Yield not stated (servings here are ours).",
+  "SOURCING STATUS: ingredients TWO-PASS; method single reading. First and third steamings have NO TIME; only the second is timed (30 minutes).",
+  "DISAGREEMENT UNRECONCILED: Cooking with Alia (site byline only, 27 March 2016) uses 1 cup pre-cooked barley couscous (Belboula) swelled with 1 1/2 cups boiling water for 10 minutes and buttermilk instead of whey; the page lists pre-cooked grain but the method uses uncooked."
+ ],
+ "storage": "Best fresh; the whey softens the grain within an hour.",
+ "reheating": "Not reheated; serve cold.",
+ "healthBenefits": [
+  "Barley provides fibre; whey adds protein and probiotics when unpasteurised.",
+  "Light, low-fat meal for hot days."
+ ],
+ "culturalNote": "Morocco World News writes that in hot weather 'nothing beats' a bowl of saykouk; Cooking with Alia adds that it is traditionally made with barley couscous.",
+ "nutrition": {
+  "cal": 360,
+  "protein": 14,
+  "carbs": 70,
+  "fat": 3,
+  "fiber": 9,
+  "sodium": 140
+ },
+ "keywords": [
+  "saykouk",
+  "sekouk belboula",
+  "barley couscous",
+  "milky couscous",
+  "lben whey"
+ ]
+},
+{
+ "id": "MAR027",
+ "title": "Hssoua Belboula (Cream of Barley Soup with Milk)",
+ "localName": "Hssoua belboula — creamy barley porridge (حسوة بلبولة)",
+ "emoji": "🥣",
+ "country": "Morocco",
+ "countryFlag": "🇲🇦",
+ "region": "North Africa",
+ "community": "National",
+ "cuisine": "Moroccan",
+ "category": "Soups & Stews",
+ "course": "Breakfast or light supper",
+ "diff": "Easy",
+ "prepTime": 10,
+ "restTime": 0,
+ "cookTime": 40,
+ "time": 50,
+ "servings": 6,
+ "cal": 290,
+ "rating": 4.9,
+ "reviews": 133,
+ "tags": [
+  "vegetarian",
+  "contains-dairy",
+  "comfort-food",
+  "budget",
+  "hot",
+  "traditional"
+ ],
+ "author": "Christine Benlafquih (Taste of Maroc)",
+ "authorEmoji": "👩‍🍳",
+ "desc": "A thick, comforting porridge-soup of barley grits simmered with olive oil and cumin, finished with milk, butter and evaporated milk.",
+ "longDesc": "Barley grits are rinsed until the water runs clear, then simmered with water, olive oil, salt, pepper and cumin for 30 to 40 minutes until thick like porridge and tender. Whole milk goes in for a few minutes, and butter and evaporated milk finish it off the heat. The author says it can be served for breakfast or a light evening meal.",
+ "ingredients": [
+  "1.5 cups barley grits, medium caliber",
+  "8.5 cups water",
+  "3 tbsp olive oil",
+  "1 tbsp salt",
+  "2 tsp cumin",
+  "pepper to taste",
+  "2 cups whole milk",
+  "2 tbsp butter, unsalted",
+  "5 to 6 oz evaporated milk"
+ ],
+ "equipment": [
+  "Large pot"
+ ],
+ "steps": [
+  "Pick over and rinse the grits until the water is no longer cloudy.",
+  "Combine the grits, water, oil, salt, pepper and cumin. Simmer over medium-low heat 30 to 40 minutes, stirring, until thick like porridge and the grains are tender.",
+  "Stir in the milk and simmer a few minutes.",
+  "Off the heat, stir in the butter and evaporated milk.",
+  "Garnish with cumin and olive oil or butter and serve."
+ ],
+ "chefTips": [
+  "Doneness cue: thick like porridge and the grains tender.",
+  "The author notes Moroccan evaporated milk is sold as Lait Concentré Non-Sucre.",
+  "Barley grits are also used for breads and couscous."
+ ],
+ "commonMistakes": [
+  "Skipping the rinse, which clouds the soup.",
+  "Boiling the milk hard.",
+  "Leaving it unstirred and scorching the base."
+ ],
+ "servedWith": [
+  "Khobz (MAR060)"
+ ],
+ "relatedRecipes": [
+  "MAR028",
+  "MAR029",
+  "MAR030"
+ ],
+ "sources": [
+  "Adapted from 'Hssoua Belboula – Moroccan Cream of Barley Soup with Milk', Taste of Maroc. BYLINE AS PRINTED: 'By Author Christine Benlafquih'. Date as printed: 'Last updated: July 8, 2020' (page metadata: published 2017-04-01). Yield 6. Prep 10, cook 40 min.",
+  "SOURCING STATUS: ingredients TWO-PASS. Method wording is our own summary of the page; times and cues were relayed by a research tool and should be checked against the live page."
+ ],
+ "storage": "Keeps 2 days in the fridge; thickens a lot.",
+ "reheating": "Reheat with extra milk or water, stirring.",
+ "healthBenefits": [
+  "Barley is high in soluble fibre.",
+  "Warm, filling and low cost."
+ ],
+ "culturalNote": "The author says barley grits are used for sweet or savoury porridge-like soups (hssoua), breads and even couscous, and the soup may be served for breakfast or as part of a light evening meal.",
+ "nutrition": {
+  "cal": 290,
+  "protein": 9,
+  "carbs": 38,
+  "fat": 12,
+  "fiber": 7,
+  "sodium": 1000
+ },
+ "keywords": [
+  "hssoua belboula",
+  "moroccan barley soup",
+  "cream of barley",
+  "christine benlafquih",
+  "barley porridge"
+ ]
+},
+{
+ "id": "MAR028",
+ "title": "Hssoua Belboula Hamra (Cracked Barley Soup with Tomatoes)",
+ "localName": "Hssoua belboula hamra — red barley soup (حسوة بلبولة حمراء)",
+ "emoji": "🍅",
+ "country": "Morocco",
+ "countryFlag": "🇲🇦",
+ "region": "North Africa",
+ "community": "National",
+ "cuisine": "Moroccan",
+ "category": "Soups & Stews",
+ "course": "Soup",
+ "diff": "Easy",
+ "prepTime": 15,
+ "restTime": 0,
+ "cookTime": 45,
+ "time": 60,
+ "servings": 4,
+ "cal": 300,
+ "rating": 4.6,
+ "reviews": 110,
+ "tags": [
+  "halal",
+  "dairy-free",
+  "comfort-food",
+  "budget",
+  "hot",
+  "traditional"
+ ],
+ "author": "Christine Benlafquih (Taste of Maroc)",
+ "authorEmoji": "👩‍🍳",
+ "desc": "A tomato-red soup of cracked barley with a handful of diced beef or lamb, grated onion, parsley and ginger.",
+ "longDesc": "Barley grits are rinsed until the water is no longer cloudy. Onion and meat are cooked in oil until the onion is translucent and the meat browned, then the tomatoes, parsley, spices and water are added and simmered 15 to 20 minutes. Tomato paste and barley go in for about 15 minutes more until the barley and meat are tender and the broth slightly thickened.",
+ "ingredients": [
+  "1 cup cracked barley or barley grits (medium or large caliber)",
+  "4 tbsp olive oil",
+  "3 oz. beef or lamb, diced (one handful)",
+  "1 onion, grated (medium)",
+  "2 or 3 tomatoes, grated (seeds and skin discarded)",
+  "3 tbsp fresh parsley, chopped",
+  "1.5 tsp salt, or to taste (less if using stock)",
+  "1 tsp black pepper",
+  "1 tsp ginger",
+  "1 tsp turmeric (optional)",
+  "2 tbsp tomato paste, or to taste (optional)",
+  "8.5 cups water (can use stock or broth instead)"
+ ],
+ "equipment": [
+  "3-quart pot"
+ ],
+ "steps": [
+  "Rinse the grits repeatedly until the water is no longer cloudy when swishing the barley around.",
+  "In a 3-quart pot, heat the oil over medium heat. Cook the onion and meat until the onion is translucent and the meat browned.",
+  "Add the tomatoes, parsley, spices and water. Boil on high, then simmer 15 to 20 minutes.",
+  "Add the tomato paste and barley and simmer about 15 minutes more, until the barley and meat are tender and the broth slightly thickened."
+ ],
+ "chefTips": [
+  "Large grits (dchicha) give the most chew.",
+  "Best served immediately: the barley keeps swelling and thickening.",
+  "Add a splash of water if reheating."
+ ],
+ "commonMistakes": [
+  "Skipping the rinse.",
+  "Leaving it to sit before serving, so it turns to paste.",
+  "Using too fine a grit."
+ ],
+ "servedWith": [
+  "Khobz (MAR060)"
+ ],
+ "relatedRecipes": [
+  "MAR027",
+  "MAR040",
+  "MAR035"
+ ],
+ "sources": [
+  "Adapted from 'Hssoua Belboula Hamra – Moroccan Cracked Barley Soup with Tomatoes', Taste of Maroc. BYLINE AS PRINTED: 'Christine Benlafquih | Taste of Maroc'. Published April 11, 2017; last updated July 8, 2020. Yield 4. Prep 15, cook 45.",
+  "SOURCING STATUS: ingredients TWO-PASS. Method wording is our own summary of the page; times and cues were relayed by a research tool and should be checked against the live page.",
+  "NOT USED: a Morocco World News Lifestyle 'dchicha' (single reading, generic, and conflicts with Taste of Maroc's use of the word)."
+ ],
+ "storage": "Best fresh; keeps 1 day.",
+ "reheating": "Loosen with water and warm gently.",
+ "healthBenefits": [
+  "Whole-grain barley and tomatoes; low in fat.",
+  "A handful of meat flavours the pot without making it heavy."
+ ],
+ "culturalNote": "The author writes that large barley grits, called dchicha, are best for a chewy bite.",
+ "nutrition": {
+  "cal": 300,
+  "protein": 11,
+  "carbs": 38,
+  "fat": 12,
+  "fiber": 8,
+  "sodium": 900
+ },
+ "keywords": [
+  "hssoua belboula hamra",
+  "moroccan barley soup tomato",
+  "dchicha",
+  "christine benlafquih",
+  "cracked barley soup"
+ ]
+},
+{
+ "id": "MAR029",
+ "title": "Tagoula (Amazigh Barley Porridge)",
+ "localName": "Tagoula / tagoulla — Amazigh barley porridge (تاكولا)",
+ "emoji": "🥣",
+ "country": "Morocco",
+ "countryFlag": "🇲🇦",
+ "region": "North Africa",
+ "community": "Souss; Yennayer",
+ "cuisine": "Moroccan",
+ "category": "Breakfast",
+ "course": "Breakfast or light supper",
+ "diff": "Easy",
+ "prepTime": 5,
+ "restTime": 0,
+ "cookTime": 90,
+ "time": 95,
+ "servings": 4,
+ "cal": 310,
+ "rating": 4.7,
+ "reviews": 176,
+ "tags": [
+  "vegetarian",
+  "dairy-free",
+  "vegan",
+  "traditional",
+  "budget",
+  "comfort-food"
+ ],
+ "author": "layla-dahamou (Morocco World News)",
+ "authorEmoji": "📰",
+ "desc": "A thick Amazigh porridge of coarse barley grits simmered for an hour and a half, served with argan oil, honey and almonds or walnuts.",
+ "longDesc": "Barley grits are rinsed, then boiled with salt and water, lowered to a simmer for about an hour and a half and stirred often with a wooden spoon until tender. It is served topped with argan oil and almonds or walnuts. Morocco World News ties it to the Souss region and the Amazigh New Year (Yennayer).",
+ "ingredients": [
+  "250 grams of barley grits, very roughly milled",
+  "2 liters of water",
+  "1 teaspoon of salt",
+  "Optional: argan oil, honey, walnuts or almonds (no quantities printed)"
+ ],
+ "equipment": [
+  "Heavy pot",
+  "Wooden spoon"
+ ],
+ "steps": [
+  "Rinse the grits and drain.",
+  "Combine the water, salt and grits in a pot.",
+  "Heat on high until boiling, then lower the heat.",
+  "Simmer about an hour and a half, stirring often with a wooden spoon, until the grits are tender.",
+  "Serve topped with argan oil and almonds or walnuts, and honey if you like."
+ ],
+ "chefTips": [
+  "Doneness cue: the grits are tender.",
+  "Yabiladi writes it is also eaten warm or chilled with whey (lben).",
+  "Taste of Maroc distinguishes tagoulla (scooped by hand) from assida (eaten with a spoon)."
+ ],
+ "commonMistakes": [
+  "Leaving it unstirred.",
+  "Using fine flour instead of rough grits.",
+  "Adding toppings before it is served."
+ ],
+ "servedWith": [
+  "Argan oil and honey (optional toppings)"
+ ],
+ "relatedRecipes": [
+  "MAR030",
+  "MAR027",
+  "MAR026"
+ ],
+ "sources": [
+  "Adapted from 'How to Make Amazigh Tagoula', Morocco World News, 28 September 2019. BYLINE AS PRINTED: 'by layla-dahamou' (account handle; flagged). Yield not stated (servings here are ours).",
+  "SOURCING STATUS: ingredients TWO-PASS. Method wording is our own summary of the page; times and cues were relayed by a research tool and should be checked against the live page.",
+  "CONTEXT ONLY (not a source for quantities): Yabiladi, 6 January 2025, which lists olive oil, argan oil, honey, ghee (smen), white beans, lentils, chickpeas, barley and corn; it also makes a claim about the origin of Yennayer that we do not assert."
+ ],
+ "storage": "Keeps 2 days in the fridge; it sets firm.",
+ "reheating": "Warm with a splash of water.",
+ "healthBenefits": [
+  "Barley supplies fibre and slow energy; the source calls it a great source of energy.",
+  "Argan oil and nuts add healthy fats."
+ ],
+ "culturalNote": "Morocco World News writes that tagoula is traditionally made in the Souss region for Yennayer, the Amazigh New Year, and is a postnatal food.",
+ "nutrition": {
+  "cal": 310,
+  "protein": 9,
+  "carbs": 60,
+  "fat": 4,
+  "fiber": 11,
+  "sodium": 480
+ },
+ "keywords": [
+  "tagoula",
+  "amazigh barley porridge",
+  "yennayer",
+  "souss",
+  "argan oil porridge"
+ ]
+},
+{
+ "id": "MAR030",
+ "title": "Assida (Semolina Porridge with Honey and Butter)",
+ "localName": "Assida / l'assida — semolina porridge (عصيدة)",
+ "emoji": "🍯",
+ "country": "Morocco",
+ "countryFlag": "🇲🇦",
+ "region": "North Africa",
+ "community": "Eid al-Mawlid; Fes",
+ "cuisine": "Moroccan",
+ "category": "Breakfast",
+ "course": "Breakfast or dessert",
+ "diff": "Easy",
+ "prepTime": 5,
+ "restTime": 0,
+ "cookTime": 30,
+ "time": 35,
+ "servings": 4,
+ "cal": 420,
+ "rating": 4.7,
+ "reviews": 232,
+ "tags": [
+  "vegetarian",
+  "contains-dairy",
+  "traditional",
+  "budget",
+  "sweet",
+  "comfort-food"
+ ],
+ "author": "Nada Kiffa (Taste of Maroc)",
+ "authorEmoji": "👩‍🍳",
+ "desc": "A smooth, melting porridge of coarse semolina, poured into a dish and eaten with honey and butter.",
+ "longDesc": "Boil the water, stir in the semolina and simmer about 20 minutes, tasting until it has a 'tender melting bite'. It thickens and becomes compact as it cools. Pour it into a deep dish and scatter honey and cubes of butter over it. The author calls it an easy, frugal and bland dish with a Bedouin background, traditionally served for breakfast on Eid al Mawlid.",
+ "ingredients": [
+  "1/2 lb coarse semolina (durum wheat)",
+  "1 1/2 tsp salt, or to taste",
+  "4 cups water",
+  "// For serving",
+  "1/2 cup honey",
+  "1/4 cup butter (in cubes, can replace with olive oil)"
+ ],
+ "equipment": [
+  "Deep, thick-based saucepan",
+  "Deep serving dish"
+ ],
+ "steps": [
+  "Use a deep, thick-based saucepan and bring the water to a boil.",
+  "Add the semolina and salt, stirring, over medium heat.",
+  "Simmer about 20 minutes, stirring and tasting until the semolina has a tender, melting bite.",
+  "Pour into a deep dish and scatter honey and butter cubes over it."
+ ],
+ "chefTips": [
+  "Doneness cue: a tender melting bite.",
+  "It thickens and becomes compact as it cools, so serve warm.",
+  "Olive oil can replace the butter."
+ ],
+ "commonMistakes": [
+  "Dumping in the semolina at once, which lumps.",
+  "Under-cooking so the grains are chalky.",
+  "Using fine semolina."
+ ],
+ "servedWith": [
+  "Mint tea (MAR082)"
+ ],
+ "relatedRecipes": [
+  "MAR029",
+  "MAR027",
+  "MAR064"
+ ],
+ "sources": [
+  "Adapted from 'Moroccan Semolina Porridge – Assida or l'Assida', Taste of Maroc. BYLINE AS PRINTED: 'By Nada Kiffa' (guest author, not Benlafquih). Date as printed: 'Posted November 29, 2017 (last updated the same day)'. Yield 4. Prep 5, cook 30.",
+  "SOURCING STATUS: ingredients TWO-PASS. Method wording is our own summary of the page; times and cues were relayed by a research tool and should be checked against the live page.",
+  "NOTE: the card's 35-minute total includes the time for the water to boil; the method itself says about 20 minutes of simmering."
+ ],
+ "storage": "Leftovers set firm; the author notes squares of cold semolina pudding with sugar and cinnamon are sold in Fez.",
+ "reheating": "Warm with a splash of water if wanted soft.",
+ "healthBenefits": [
+  "Simple whole grain with little fat other than the topping.",
+  "Honey and butter are added at the table, so portion to taste."
+ ],
+ "culturalNote": "The author writes that it is traditionally served for breakfast on Eid al Mawlid and calls it an easy, frugal dish with a Bedouin background.",
+ "nutrition": {
+  "cal": 420,
+  "protein": 8,
+  "carbs": 75,
+  "fat": 12,
+  "fiber": 3,
+  "sodium": 640
+ },
+ "keywords": [
+  "assida",
+  "moroccan semolina porridge",
+  "eid al mawlid",
+  "honey butter porridge",
+  "nada kiffa"
+ ]
+},
+{
+ "id": "MAR031",
+ "title": "Chicken Rfissa (Trid with Chicken and Lentils)",
+ "localName": "Rfissa / trid — chicken, lentils and fenugreek over shredded msemen (رفيسة)",
+ "emoji": "🍗",
+ "country": "Morocco",
+ "countryFlag": "🇲🇦",
+ "region": "North Africa",
+ "community": "Postpartum and celebration table",
+ "cuisine": "Moroccan",
+ "category": "Poultry",
+ "course": "Main",
+ "diff": "Hard",
+ "prepTime": 60,
+ "restTime": 360,
+ "cookTime": 120,
+ "time": 540,
+ "servings": 6,
+ "cal": 780,
+ "rating": 4.9,
+ "reviews": 324,
+ "tags": [
+  "halal",
+  "high-protein",
+  "comfort-food",
+  "traditional",
+  "special-occasion",
+  "contains-gluten"
+ ],
+ "author": "Christine Benlafquih (Taste of Maroc)",
+ "authorEmoji": "👩‍🍳",
+ "desc": "Free-range chicken and lentils cooked with fenugreek, saffron and onions in a golden broth, poured over shredded, steamed msemen.",
+ "longDesc": "Rfissa is built in layers: msemen torn into shreds, steamed until tender, then topped with the chicken, lentils, onions and plenty of broth. The chicken marinates with onions, oil and spices overnight, the fenugreek and lentils are soaked, and everything simmers until the chicken and lentils are quite tender. The author traces it to tharid, a centuries-old Arab dish of stew and broth served over bread, and says it is traditionally served on the third day following the birth of a baby.",
+ "ingredients": [
+  "1 large chicken, quartered or left whole",
+  "3 large onions, thinly sliced",
+  "1/2 cup olive oil",
+  "1 tbsp salt",
+  "1 tbsp pepper",
+  "1 1/2 tbsp ginger",
+  "1 tbsp Ras el Hanout (or 1 1/2 tbsp msakhen)",
+  "1 1/2 tsp turmeric",
+  "// For the lentils",
+  "1/2 cup uncooked lentils, green or brown",
+  "4 tbsp fenugreek seeds, soaked overnight and drained",
+  "1 1/2 tsp saffron threads, heated gently and then crumbled",
+  "1 handful fresh cilantro, finely chopped",
+  "1 handful fresh parsley, finely chopped",
+  "4 1/2 cups water",
+  "1 1/2 tsp smen (Moroccan preserved butter)",
+  "// Msemen or trid",
+  "1 1/2 batches msemen (MAR033), shredded (or trid pastry)"
+ ],
+ "equipment": [
+  "Heavy pot with lid",
+  "Couscoussier or steamer",
+  "Large platter"
+ ],
+ "steps": [
+  "Make the msemen and tear it into pieces while still hot. Store cooled pieces in a bag; freeze if made more than a day ahead.",
+  "Soak the fenugreek and the lentils separately the night before (at least six hours). A quick soak with boiling water takes 1 to 2 hours.",
+  "Marinate the chicken with the onions, oil and spices in a heavy pot, covered, in the fridge overnight or at least 6 hours.",
+  "Cook the covered pot over medium heat 15 to 20 minutes, stirring, until a rich sauce has formed.",
+  "Free-range (beldi) chicken: add the fenugreek, herbs and 4½ cups water; simmer covered over medium-low to medium about 1 hour; add the lentils and cook covered another hour, until the chicken and lentils are quite tender.",
+  "Factory-raised (roumi) chicken: add everything together and simmer about 1 hour, until the lentils are tender and the chicken is well-cooked.",
+  "Taste for salt and swirl in the smen. Optionally broil the chicken briefly to crisp the skin.",
+  "Steam the shredded msemen in a couscoussier about 10 minutes, until steaming hot and tender. Pile it on a platter, add the chicken, then the lentils, onions and most of the broth."
+ ],
+ "chefTips": [
+  "Doneness cue: chicken and lentils quite tender.",
+  "A whole chicken can be removed when nearly cooked and finished at 450°F (230°C), per the page.",
+  "The marinade is a chilled rest; the source gives time only (at least 6 hours) and no other cue."
+ ],
+ "commonMistakes": [
+  "Skipping the soak of the fenugreek.",
+  "Putting the lentils in too early with a factory-raised bird.",
+  "Steaming the msemen too long so it turns to paste."
+ ],
+ "servedWith": [
+  "Mint tea (MAR082)"
+ ],
+ "relatedRecipes": [
+  "MAR032",
+  "MAR033",
+  "MAR008"
+ ],
+ "sources": [
+  "Adapted from 'Moroccan Chicken Rfissa – Trid with Chicken and Lentils', Taste of Maroc. BYLINE AS PRINTED: 'By Author Christine Benlafquih'. Date as printed: 'Last updated: March 17, 2022' (page metadata: published 2017-11-07). Yield 6. Prep 1 hr, cook 2 hr, marinating 6 hr.",
+  "SOURCING STATUS: ingredients TWO-PASS. Method wording is our own summary of the page; times and cues were relayed by a research tool and should be checked against the live page.",
+  "NO CUE, TIME ONLY: the marinating (at least 6 hours) and the soaks. These are chilled rests, not ferments."
+ ],
+ "storage": "Keeps 3 days refrigerated; store the msemen separately.",
+ "reheating": "Warm the chicken and broth gently, then re-steam the msemen.",
+ "healthBenefits": [
+  "Lentils and fenugreek add protein and fibre.",
+  "Fenugreek is traditionally linked with nursing mothers."
+ ],
+ "culturalNote": "The author writes that rfissa traces back to tharid and is regarded by many as Moroccan comfort food at its best, traditionally served on the third day following the birth of a baby.",
+ "nutrition": {
+  "cal": 780,
+  "protein": 48,
+  "carbs": 62,
+  "fat": 38,
+  "fiber": 9,
+  "sodium": 1100
+ },
+ "keywords": [
+  "rfissa",
+  "trid",
+  "chicken lentils fenugreek",
+  "moroccan postpartum",
+  "msemen"
+ ]
+},
+{
+ "id": "MAR032",
+ "title": "Bormache (Meknes-Style Rfissa)",
+ "localName": "Bormache — Meknes rfissa (برماش)",
+ "emoji": "🍗",
+ "country": "Morocco",
+ "countryFlag": "🇲🇦",
+ "region": "North Africa",
+ "community": "Meknes",
+ "cuisine": "Moroccan",
+ "category": "Poultry",
+ "course": "Main",
+ "diff": "Hard",
+ "prepTime": 20,
+ "restTime": 0,
+ "cookTime": 120,
+ "time": 140,
+ "servings": 6,
+ "cal": 830,
+ "rating": 4.7,
+ "reviews": 302,
+ "tags": [
+  "halal",
+  "high-protein",
+  "traditional",
+  "special-occasion",
+  "contains-gluten"
+ ],
+ "author": "Christine Benlafquih (Taste of Maroc), recipe credited to Jameela Khiyati",
+ "authorEmoji": "👩‍🍳",
+ "desc": "A Meknes feast of free-range chicken, lentils and fenugreek in a broth heavy with ras el hanout, garlic and herbs, served over steamed shredded msemen.",
+ "longDesc": "This is a trid-like dish of chicken, lentils and heavily seasoned broth over shredded bread, the specialty of the author's native Meknes through her credited source. The chicken is browned with onions, spices and oil, a herb-tomato-garlic paste is added with fenugreek and a whole tomato, and it simmers about an hour; the lentils join for about an hour more, smen is stirred in and the msemen is steamed over the stew.",
+ "ingredients": [
+  "1 whole chicken, preferably free range (2 kg / 4.5 lbs.)",
+  "1 lb. onions, thinly sliced",
+  "3 tablespoons ras el hanout",
+  "1 tablespoon black pepper",
+  "1 tablespoon ginger",
+  "1 tablespoon turmeric",
+  "2 teaspoons salt or to taste",
+  "1 teaspoon cayenne pepper, or to taste (optional)",
+  "1 teaspoon saffron threads, crumbled",
+  "1/2 cup olive oil",
+  "2 tomatoes, peeled",
+  "1 head of garlic, peeled",
+  "1 handful fresh parsley",
+  "1 handful fresh cilantro",
+  "2 teaspoons dried za'atar (thyme or oregano)",
+  "2 teaspoons dried fliou (pennyroyal)",
+  "2 teaspoons dried merseta (mint)",
+  "2 to 3 tablespoons fenugreek seeds",
+  "1 tomato, peeled and left whole",
+  "1/4 cup lentils, picked through and rinsed (optional)",
+  "1 teaspoon smen (optional)",
+  "// For serving",
+  "1 1/2 batches msemen (MAR033), shredded (or 2 lbs. shredded, stale bread)",
+  "1/2 cup fried almonds, coarsely ground, for garnish (optional)",
+  "12 to 15 dates, for garnish (optional)",
+  "4 to 6 hard-boiled eggs, for garnish (optional)"
+ ],
+ "equipment": [
+  "Heavy pot with lid",
+  "Blender or food processor",
+  "Couscoussier or steamer"
+ ],
+ "steps": [
+  "Optionally marinate the chicken, onions, spices and oil in the pot, refrigerated, several hours or overnight.",
+  "Brown over medium heat about 10 to 15 minutes, turning.",
+  "Blend the peeled tomatoes, garlic, parsley, cilantro and dried herbs into a paste and add it to the pot.",
+  "Add the fenugreek, the whole tomato and 1 liter (4.5 cups) of water. Bring to a boil, then simmer covered about 1 hour. A free-range chicken stays in the pot; a factory-raised one comes out once cooked.",
+  "Add the lentils and cook about 1 hour more, until chicken and lentils are very tender.",
+  "Stir in the smen. Steam the shredded msemen over the stew until it is tender and heated through.",
+  "Layer the msemen, chicken, lentils, onions and broth, and garnish with almonds, dates and eggs."
+ ],
+ "chefTips": [
+  "Doneness cue: chicken and lentils very tender.",
+  "The page gives temperatures only as medium and high; use a gentle simmer.",
+  "Fenugreek is linked by the author with nursing mothers."
+ ],
+ "commonMistakes": [
+  "Letting the broth boil hard.",
+  "Adding the herb paste before browning is complete.",
+  "Over-steaming the msemen."
+ ],
+ "servedWith": [
+  "Mint tea (MAR082)"
+ ],
+ "relatedRecipes": [
+  "MAR031",
+  "MAR033",
+  "MAR008"
+ ],
+ "sources": [
+  "Adapted from 'Moroccan Bormache Recipe – Meknes Style Rfissa', Taste of Maroc. BYLINE AS PRINTED: 'Christine Benlafquih'. Dates (tool-reported): published April 17, 2018; last updated June 1, 2020. Credit printed: Jameela Khiyati (also spelled 'Khiyat' on the page). Yield 6. Prep 20 min, cook 2 hr.",
+  "SOURCING STATUS: ingredients TWO-PASS; two items marked \"See Notes\" on the page (garlic, fenugreek) were not fetched. Method wording is our own summary of the page; times and cues were relayed by a research tool and should be checked against the live page.",
+  "DISAGREEMENT within Taste of Maroc, kept: this recipe uses 1/4 cup lentils and 2 to 3 tbsp fenugreek; the Chicken Rfissa recipe uses 1/2 cup lentils and 4 tbsp fenugreek."
+ ],
+ "storage": "Keeps 3 days refrigerated.",
+ "reheating": "Warm gently; re-steam the msemen.",
+ "healthBenefits": [
+  "Lentils and herbs bring fibre and minerals.",
+  "A rich dish for special occasions."
+ ],
+ "culturalNote": "The author describes it as a trid-like feast of chicken, lentils and heavily-seasoned broth over shredded bread, a specialty of Meknes.",
+ "nutrition": {
+  "cal": 830,
+  "protein": 50,
+  "carbs": 60,
+  "fat": 42,
+  "fiber": 8,
+  "sodium": 1100
+ },
+ "keywords": [
+  "bormache",
+  "meknes rfissa",
+  "moroccan chicken lentils",
+  "jameela khiyati",
+  "trid"
+ ]
+},
+{
+ "id": "MAR033",
+ "title": "Msemen (Square Layered Flatbread)",
+ "localName": "Msemen / rghaif — folded Moroccan pancake (مسمن)",
+ "emoji": "🫓",
+ "country": "Morocco",
+ "countryFlag": "🇲🇦",
+ "region": "North Africa",
+ "community": "National",
+ "cuisine": "Moroccan",
+ "category": "Bread",
+ "course": "Breakfast or snack",
+ "diff": "Medium",
+ "prepTime": 40,
+ "restTime": 15,
+ "cookTime": 15,
+ "time": 70,
+ "servings": 20,
+ "cal": 190,
+ "rating": 4.6,
+ "reviews": 267,
+ "tags": [
+  "vegetarian",
+  "contains-dairy",
+  "contains-gluten",
+  "street-food",
+  "traditional",
+  "budget"
+ ],
+ "author": "Christine Benlafquih (Taste of Maroc)",
+ "authorEmoji": "👩‍🍳",
+ "desc": "Paper-thin dough folded in thirds with butter and semolina, griddled until golden and crisp outside, soft and layered within.",
+ "longDesc": "Msemen starts as a soft, elastic dough with a little yeast, divided into plum-sized balls and left to rest for 10 to 15 minutes. Each is spread paper-thin, dotted with butter and sprinkled with semolina, then folded into a square. The squares are patted to about double their size and cooked on a hot griddle, turned several times, until cooked through, crispy on the outside and golden. A see-saw flex separates the layers.",
+ "ingredients": [
+  "// Dough",
+  "3 1/2 cups white flour, all purpose or bread",
+  "1/2 cup fine semolina or durum flour",
+  "2 tsp sugar",
+  "2 tsp salt",
+  "1/4 tsp dry yeast (less in very warm weather)",
+  "1 1/2 cups warm water (not hot)",
+  "// For folding",
+  "1 cup vegetable oil (more if needed)",
+  "1/2 cup fine semolina (can use coarser caliber if you like)",
+  "1/4 cup very soft unsalted butter (more if needed)"
+ ],
+ "equipment": [
+  "Large bowl or stand mixer",
+  "Flat griddle or heavy skillet",
+  "Oiled work surface"
+ ],
+ "steps": [
+  "Knead the dough until very smooth, soft and elastic but not sticky.",
+  "Divide into plum-sized balls and cover loosely; leave to rest for 10 to 15 minutes.",
+  "Spread each ball on an oiled surface into a paper-thin, roughly shaped circle, dot with butter, sprinkle with semolina and fold into thirds twice to make a square.",
+  "Heat the griddle over medium until quite hot. Pat each square to about double its size and cook, turning several times, until cooked through, crispy on the exterior and golden in colour.",
+  "Flex each msemen in a see-saw motion for a few seconds to separate the layers. Reheat at 350°F (180°C) if needed."
+ ],
+ "chefTips": [
+  "Doneness cue: crisp and golden outside, cooked through.",
+  "The page gives no rise cue for the 1/4 tsp of yeast; the 10-15 minute rest is time only.",
+  "Oiled hands and surface make spreading far easier."
+ ],
+ "commonMistakes": [
+  "Dough too dry to stretch thin.",
+  "Griddle not hot enough, which makes it leathery.",
+  "Skipping the semolina, which keeps the layers apart."
+ ],
+ "servedWith": [
+  "Mint tea (MAR082)"
+ ],
+ "relatedRecipes": [
+  "MAR031",
+  "MAR032",
+  "MAR064"
+ ],
+ "sources": [
+  "Adapted from 'Basic Msemen Recipe – Square Moroccan Pancakes', Taste of Maroc. BYLINE AS PRINTED: 'Christine Benlafquih, Taste of Maroc'. Published September 26, 2017; last updated November 12, 2019. Yield about 20 four-inch msemen. Prep 40, cook 15, resting 15.",
+  "SOURCING STATUS: ingredients TWO-PASS. Method wording is our own summary of the page; times and cues were relayed by a research tool and should be checked against the live page.",
+  "NO CUE, TIME ONLY: the dough rest (10 to 15 minutes). It uses 1/4 tsp yeast and the page gives no volume or puffiness cue, so it is stated as printed."
+ ],
+ "storage": "Keeps 2 days at room temperature or freezes well.",
+ "reheating": "Heat on a griddle or at 350°F (180°C) until hot.",
+ "healthBenefits": [
+  "A simple wheat bread; butter and oil make it rich, so eat in moderation.",
+  "Semolina adds texture."
+ ],
+ "culturalNote": "Taste of Maroc uses msemen as the base of rfissa and other dishes where it is shredded and steamed.",
+ "nutrition": {
+  "cal": 190,
+  "protein": 4,
+  "carbs": 24,
+  "fat": 9,
+  "fiber": 1,
+  "sodium": 240
+ },
+ "keywords": [
+  "msemen",
+  "moroccan flatbread",
+  "rghaif",
+  "square pancake",
+  "christine benlafquih"
+ ]
+},
+{
+ "id": "MAR034",
+ "title": "Sellou (Sfouf, Toasted Flour and Almond Energy Mix)",
+ "localName": "Sellou / sfouf / zmita (سلو - سفوف)",
+ "emoji": "🌰",
+ "country": "Morocco",
+ "countryFlag": "🇲🇦",
+ "region": "North Africa",
+ "community": "Fes; Ramadan",
+ "cuisine": "Moroccan",
+ "category": "Desserts & Sweets",
+ "course": "Dessert or snack",
+ "diff": "Hard",
+ "prepTime": 90,
+ "restTime": 240,
+ "cookTime": 90,
+ "time": 420,
+ "servings": 40,
+ "cal": 380,
+ "rating": 4.9,
+ "reviews": 46,
+ "tags": [
+  "vegetarian",
+  "contains-nuts",
+  "contains-gluten",
+  "contains-dairy",
+  "sweet",
+  "ramadan",
+  "festive",
+  "make-ahead"
+ ],
+ "author": "Christine Benlafquih (Taste of Maroc)",
+ "authorEmoji": "👩‍🍳",
+ "desc": "A dense, nutty mix of toasted flour, sesame, fried almonds, anise and cinnamon bound with clarified butter, eaten by the spoonful at fast-breaking.",
+ "longDesc": "Sellou is a labour of several days: almonds blanched and dried, sesame toasted, flour browned, butter clarified. The author learned this Fez variation from her mother-in-law. The ground sesame and almonds are rubbed with the sifted flour, sugar and spices for at least 10 minutes, then clarified butter is gradually kneaded in until the mixture is glistening, stiff but pliable. The author adds that it is Moroccan tradition to enjoy it when breaking the fast.",
+ "ingredients": [
+  "2.2 lbs whole raw almonds, or a little more",
+  "2.2 lbs unhulled sesame seeds, or a little more",
+  "2.2 lbs all purpose flour",
+  "2 1/4 cups powdered sugar, or to taste",
+  "4 tbsp ground cinnamon, or to taste",
+  "2 tbsp ground anise, or to taste",
+  "1/4 tsp salt",
+  "1/4 tsp mastic gum (several drops, ground to a powder; optional)",
+  "1 lb unsalted butter, approx.",
+  "Vegetable oil, for frying almonds"
+ ],
+ "equipment": [
+  "Oven",
+  "Large baking trays",
+  "Food processor or grinder",
+  "Very large bowl",
+  "Fine sieve"
+ ],
+ "steps": [
+  "Several days ahead: blanch the almonds 1 to 2 minutes, drain and peel. Dry them on a towel several hours or overnight until completely dry.",
+  "Toast the sesame at 400°F (200°C) for 15 to 20 minutes, stirring, until the seeds are slightly darker, crunchy and nutty in aroma.",
+  "Brown the flour at 400°F for 30 minutes or longer, stirring about every 5 minutes, until evenly coloured light to medium golden brown. Do not burn. Sift it several times.",
+  "Clarify the butter by melting it until the milk solids separate to the bottom and foam forms on top; refrigerate overnight.",
+  "Fry the almonds in about 1/2 inch of oil over medium heat for 5 to 10 minutes until light to medium golden brown.",
+  "Sift the browned flour, sugar, spices, mastic and salt into a very large bowl. Grind the sesame to a near paste and the almonds half to a paste and half to a powder, and add.",
+  "Rub and toss for at least 10 minutes. Gradually knead in the clarified butter until the mixture is glistening, stiff but pliable. Use less butter for a powdery sellou.",
+  "Cool for several hours before covering."
+ ],
+ "chefTips": [
+  "Cues quoted from the source: sesame darker, crunchy and nutty; flour light to medium golden, do not burn; almonds golden; final mix glistening, stiff but pliable.",
+  "The author calls zmita the healthier honey-and-olive-oil version; no recipe is given.",
+  "Browned flour burns quickly at the end; stir often."
+ ],
+ "commonMistakes": [
+  "Burning the flour.",
+  "Not drying the almonds completely.",
+  "Adding all the butter at once."
+ ],
+ "servedWith": [
+  "Mint tea (MAR082)"
+ ],
+ "relatedRecipes": [
+  "MAR030",
+  "MAR025",
+  "MAR064"
+ ],
+ "sources": [
+  "Adapted from 'Sellou Recipe – Sfouf or Zmita', Taste of Maroc. BYLINE AS PRINTED: 'By Author Christine Benlafquih'. Date as printed: 'Last updated: March 18, 2022' (page metadata: published 2018-05-08). Yield '4 quarts'. Mixing time 1 hr 30 min.",
+  "SOURCING STATUS: ingredients TWO-PASS. Method wording is our own summary of the page; times and cues were relayed by a research tool and should be checked against the live page.",
+  "SUSPECTED MISPRINT KEPT: the method reads 'sift ... 2 cups of powdered sugar' while the list says 2 1/4 cups. NO CUE, TIME ONLY: the sesame sun-drying ('a day or more') and the final cooling ('several hours').",
+  "COMPOSITION DISAGREEMENT kept: Morocco World News (1 Dec 2019, handle byline) adds peanuts and fennel and uses oil and honey; Cooking with Alia (undated, site byline) uses whole-wheat flour, honey and olive oil. Not reconciled."
+ ],
+ "storage": "Keeps for several weeks in an airtight container (the source gives no shelf-life figure).",
+ "reheating": "Not reheated.",
+ "healthBenefits": [
+  "Energy-dense sesame, almonds and flour; traditional at fast-breaking and for new mothers.",
+  "High in calories, so small portions."
+ ],
+ "culturalNote": "The author writes that it is Moroccan tradition to enjoy this nutty, energizing treat when breaking the fast, and that this is a Fez variation taught by her mother-in-law.",
+ "nutrition": {
+  "cal": 380,
+  "protein": 9,
+  "carbs": 32,
+  "fat": 25,
+  "fiber": 5,
+  "sodium": 40
+ },
+ "keywords": [
+  "sellou",
+  "sfouf",
+  "zmita",
+  "ramadan sweet",
+  "toasted flour almond sesame"
+ ]
+},
+{
+ "id": "MAR035",
+ "title": "Bessara (Fava Bean Soup or Dip)",
+ "localName": "Bessara / bissara — dried fava bean puree (بصارة)",
+ "emoji": "🫘",
+ "country": "Morocco",
+ "countryFlag": "🇲🇦",
+ "region": "North Africa",
+ "community": "North Morocco; street food",
+ "cuisine": "Moroccan",
+ "category": "Soups & Stews",
+ "course": "Soup or dip",
+ "diff": "Easy",
+ "prepTime": 15,
+ "restTime": 480,
+ "cookTime": 60,
+ "time": 555,
+ "servings": 6,
+ "cal": 290,
+ "rating": 4.7,
+ "reviews": 323,
+ "tags": [
+  "vegan",
+  "vegetarian",
+  "dairy-free",
+  "gluten-free",
+  "high-fiber",
+  "street-food",
+  "budget",
+  "traditional"
+ ],
+ "author": "Christine Benlafquih (Taste of Maroc)",
+ "authorEmoji": "👩‍🍳",
+ "desc": "Dried split fava beans simmered with garlic, cumin and paprika and pureed into a thick soup, served with olive oil, cumin and harissa.",
+ "longDesc": "The beans are soaked at least 8 hours or overnight, drained and peeled of loose skins, then simmered with water, olive oil, garlic and spices, partly covered, for about an hour until tender. They are drained over a bowl, pureed and thinned with the reserved liquid, and finished with lemon juice. The author says it is a popular street food as well as humble family fare, especially in the north, and traditionally a bit bland out of the pot, so condiments matter.",
+ "ingredients": [
+  "12 oz dried split fava beans (about 2.25 cups)",
+  "⅓ cup olive oil",
+  "6 to 7 cloves garlic, crushed",
+  "6.5 cups water",
+  "2 tsp paprika",
+  "2 tsp ground cumin",
+  "1.5 tsp salt, or to taste",
+  "1 to 2 tbsp lemon juice, to taste (optional)",
+  "Condiments (no quantities printed): salt, cumin, ground cayenne, harissa, extra virgin olive oil"
+ ],
+ "equipment": [
+  "Pot",
+  "Immersion blender or food mill"
+ ],
+ "steps": [
+  "Soak the beans at least 8 hours or overnight.",
+  "Drain and remove any loose skins.",
+  "Simmer with the water, oil, garlic and spices, partly covered, about an hour, until the beans are tender.",
+  "Drain over a bowl, saving the liquid. Puree, thinning with the reserved liquid.",
+  "Stir in the lemon juice and reheat gently over medium-low. Serve with the condiments."
+ ],
+ "chefTips": [
+  "Doneness cue: beans tender; the traditional version cooks them until they break down on their own.",
+  "The soak is time only (a soak, not a ferment).",
+  "Serve hot with bread for dipping."
+ ],
+ "commonMistakes": [
+  "Under-soaking, which leaves the beans hard.",
+  "Skipping the condiments; it is meant to be bland out of the pot.",
+  "Pureeing without reserving cooking liquid."
+ ],
+ "servedWith": [
+  "Khobz (MAR060)"
+ ],
+ "relatedRecipes": [
+  "MAR036",
+  "MAR040",
+  "MAR037"
+ ],
+ "sources": [
+  "Adapted from 'Moroccan Dried Fava Bean Dip or Soup – Bessara (Bissara)', Taste of Maroc. BYLINE AS PRINTED: 'Christine Benlafquih, Taste of Maroc'. Published October 11, 2020; last updated January 13, 2021. Yield 6. Soak 8 hr.",
+  "SOURCING STATUS: ingredients TWO-PASS. Method wording is our own summary of the page; times and cues were relayed by a research tool and should be checked against the live page.",
+  "DISAGREEMENT kept, not reconciled: Morocco World News (500 g beans to 2 L water, pressure-cooked), Cooking with Alia (fava plus dried green peas), MarocMama (1 cup beans to 3 cups water, 30 minutes under pressure) all differ in ratio and method."
+ ],
+ "storage": "Keeps 3 days in the fridge; thickens when cold.",
+ "reheating": "Thin with water and reheat gently.",
+ "healthBenefits": [
+  "High in plant protein and fibre.",
+  "Very inexpensive and filling."
+ ],
+ "culturalNote": "The author calls bessara a popular street food as well as humble family fare, especially popular in the north of Morocco.",
+ "nutrition": {
+  "cal": 290,
+  "protein": 14,
+  "carbs": 34,
+  "fat": 11,
+  "fiber": 14,
+  "sodium": 580
+ },
+ "keywords": [
+  "bessara",
+  "bissara",
+  "fava bean soup",
+  "moroccan street food",
+  "vegan moroccan"
+ ]
+},
+{
+ "id": "MAR036",
+ "title": "Split Pea Bessara",
+ "localName": "Bessara bil jelban — split pea puree (بصارة بالجلبانة)",
+ "emoji": "🥣",
+ "country": "Morocco",
+ "countryFlag": "🇲🇦",
+ "region": "North Africa",
+ "community": "North Morocco",
+ "cuisine": "Moroccan",
+ "category": "Soups & Stews",
+ "course": "Soup or dip",
+ "diff": "Easy",
+ "prepTime": 10,
+ "restTime": 0,
+ "cookTime": 60,
+ "time": 70,
+ "servings": 6,
+ "cal": 360,
+ "rating": 4.7,
+ "reviews": 242,
+ "tags": [
+  "vegetarian",
+  "dairy-free",
+  "gluten-free",
+  "high-fiber",
+  "budget",
+  "comfort-food"
+ ],
+ "author": "Christine Benlafquih (Taste of Maroc)",
+ "authorEmoji": "👩‍🍳",
+ "desc": "Yellow split peas simmered with onion, garlic, paprika and cumin until soft and pureed into a thick, warming soup.",
+ "longDesc": "Onion and garlic are cooked in olive oil until fragrant and softened, then everything else goes in. After a boil, the pot simmers partly covered for 50 to 60 minutes until the peas are tender, then it is pureed. The author notes water is traditionally the only liquid, though she likes to replace some with chicken broth, and that the thicker version is likely served in the north as an accompaniment to fish.",
+ "ingredients": [
+  "1 lb. dried split peas (about 2 cups)",
+  "4 cups broth (chicken, beef, or vegetable)",
+  "2 cups water",
+  "1/3 cup olive oil",
+  "1 large onion, chopped",
+  "4 to 5 cloves garlic, chopped",
+  "1/4 cup fresh parsley or cilantro, chopped (optional)",
+  "1 tbsp paprika",
+  "2 tsp cumin",
+  "1/2 tsp salt, or to taste",
+  "1/4 tsp black pepper, or to taste",
+  "1/8 tsp cayenne pepper, or to taste (optional)",
+  "Garnish: cumin, salt, cayenne pepper, olive oil"
+ ],
+ "equipment": [
+  "Large pot",
+  "Immersion blender"
+ ],
+ "steps": [
+  "Cook the onion and garlic in the oil until fragrant and softened.",
+  "Add everything else, bring to a boil, then simmer partly covered 50 to 60 minutes, until the peas are tender.",
+  "Puree until smooth.",
+  "Serve with cumin, salt, cayenne and olive oil."
+ ],
+ "chefTips": [
+  "Doneness cue: peas tender.",
+  "Water is traditionally the only liquid; broth is the author's own richer variation.",
+  "Thin with hot water to your preferred consistency."
+ ],
+ "commonMistakes": [
+  "Adding salt late and getting a bland puree.",
+  "Boiling hard, which catches on the base.",
+  "Skipping the garnish."
+ ],
+ "servedWith": [
+  "Khobz (MAR060)"
+ ],
+ "relatedRecipes": [
+  "MAR035",
+  "MAR038",
+  "MAR037"
+ ],
+ "sources": [
+  "Adapted from 'Moroccan Split Pea Bessara', Taste of Maroc. BYLINE AS PRINTED: 'Christine Benlafquih (Taste of Maroc)'. Published November 30, 2017; last updated October 11, 2020. Yield 6.",
+  "SOURCING STATUS: ingredients TWO-PASS. Method wording is our own summary of the page; times and cues were relayed by a research tool and should be checked against the live page."
+ ],
+ "storage": "Keeps 4 days in the fridge.",
+ "reheating": "Thin with water and warm gently.",
+ "healthBenefits": [
+  "Split peas are high in protein and fibre.",
+  "Low in fat apart from the olive oil."
+ ],
+ "culturalNote": "The author writes that the thicker version is likely served in the north of Morocco as a popular accompaniment to fish.",
+ "nutrition": {
+  "cal": 360,
+  "protein": 18,
+  "carbs": 48,
+  "fat": 11,
+  "fiber": 17,
+  "sodium": 420
+ },
+ "keywords": [
+  "split pea bessara",
+  "moroccan split pea soup",
+  "christine benlafquih",
+  "vegan soup",
+  "bessara"
+ ]
+},
+{
+ "id": "MAR037",
+ "title": "Loubia (Moroccan Stewed White Beans)",
+ "localName": "Loubia — stewed white beans (لوبيا)",
+ "emoji": "🫘",
+ "country": "Morocco",
+ "countryFlag": "🇲🇦",
+ "region": "North Africa",
+ "community": "National",
+ "cuisine": "Moroccan",
+ "category": "Lentils, Beans & Vegetarian",
+ "course": "Main or side",
+ "diff": "Easy",
+ "prepTime": 10,
+ "restTime": 480,
+ "cookTime": 90,
+ "time": 580,
+ "servings": 6,
+ "cal": 420,
+ "rating": 4.9,
+ "reviews": 33,
+ "tags": [
+  "dairy-free",
+  "gluten-free",
+  "high-fiber",
+  "comfort-food",
+  "budget",
+  "traditional"
+ ],
+ "author": "Christine Benlafquih (Taste of Maroc)",
+ "authorEmoji": "👩‍🍳",
+ "desc": "White beans stewed with grated tomato, onion, garlic, cumin, paprika and olive oil in a thick sauce, eaten by dipping bread.",
+ "longDesc": "Everything goes in one pot with about 2 litres of water: the soaked beans, optional meat on the bone, tomatoes, onion, garlic, herbs and spices. A pressure cooker takes about 40 minutes until the beans are tender, then it simmers uncovered until the sauce is thick but still ample. In a conventional pot the page says about 1½ hours. The author says it is comfort food for many Moroccans, and that turmeric is not traditional.",
+ "ingredients": [
+  "1 lb. beef or lamb, on the bone; or 1 cup dried meat (optional)",
+  "1 lb. dry white haricot (navy) or Cannellini beans, soaked overnight then drained",
+  "3 ripe tomatoes, grated",
+  "1 medium onion, grated",
+  "5 cloves of garlic, finely chopped or pressed",
+  "3 tablespoons chopped fresh parsley",
+  "3 tablespoons chopped fresh cilantro",
+  "1 tablespoon salt",
+  "1 tablespoon paprika",
+  "1 tablespoon cumin",
+  "2 teaspoons ginger",
+  "1/4 teaspoon turmeric (optional)",
+  "1/4 teaspoon cayenne pepper or fresh chili peppers, to taste (optional)",
+  "1/2 cup olive oil"
+ ],
+ "equipment": [
+  "Pressure cooker or heavy pot"
+ ],
+ "steps": [
+  "Soak the beans overnight and drain.",
+  "Put everything in a pot with about 2 litres (2 quarts) of water.",
+  "Pressure cooker: cook 40 minutes under pressure until the beans are tender, then simmer uncovered until the sauce is thick and not watery but still quite ample.",
+  "Conventional pot: cook about 1½ hours to the desired tenderness, until the sauce is thick and no longer watery.",
+  "Serve hot with bread for dipping."
+ ],
+ "chefTips": [
+  "Doneness cue: beans tender, sauce thick but still ample.",
+  "The page says turmeric is not traditional, though it lists it as optional.",
+  "Maroc Mama adds that loubia is most typically found in Morocco with pieces of sheep stomach."
+ ],
+ "commonMistakes": [
+  "Cooking the beans without the overnight soak.",
+  "Leaving the sauce watery.",
+  "Skipping the soak."
+ ],
+ "servedWith": [
+  "Khobz (MAR060)"
+ ],
+ "relatedRecipes": [
+  "MAR038",
+  "MAR039",
+  "MAR035"
+ ],
+ "sources": [
+  "Adapted from 'Moroccan Stewed White Beans Recipe – Loubia', Taste of Maroc. BYLINE AS PRINTED: 'By Author Christine Benlafquih'. Date as printed: 'Last updated: February 27, 2018'. Yield 6. Prep 10, cook 50 min.",
+  "SOURCING STATUS: ingredients TWO-PASS. Method wording is our own summary of the page; times and cues were relayed by a research tool and should be checked against the live page.",
+  "TIMING NOTE kept: the page says the conventional pot takes double the pressure-cooker time; 40 minutes against about 1½ hours is not exactly double. Also noted: MarocMama's Instant Pot loubia (1 cup beans, 2 cups liquid, pressure 40 minutes)."
+ ],
+ "storage": "Keeps 4 days in the fridge.",
+ "reheating": "Warm gently with a splash of water.",
+ "healthBenefits": [
+  "Beans give protein and fibre.",
+  "Mostly plant-based when meat is omitted."
+ ],
+ "culturalNote": "The author calls loubia a comfort food favourite for many Moroccans, eaten by dipping bread into the beans.",
+ "nutrition": {
+  "cal": 420,
+  "protein": 17,
+  "carbs": 52,
+  "fat": 16,
+  "fiber": 15,
+  "sodium": 800
+ },
+ "keywords": [
+  "loubia",
+  "moroccan white beans",
+  "stewed beans",
+  "christine benlafquih",
+  "cannellini stew"
+ ]
+},
+{
+ "id": "MAR038",
+ "title": "Moroccan Lentils (Addis)",
+ "localName": "Addis — brown lentils with cumin (العدس)",
+ "emoji": "🥣",
+ "country": "Morocco",
+ "countryFlag": "🇲🇦",
+ "region": "North Africa",
+ "community": "National",
+ "cuisine": "Moroccan",
+ "category": "Lentils, Beans & Vegetarian",
+ "course": "Main or side",
+ "diff": "Easy",
+ "prepTime": 10,
+ "restTime": 0,
+ "cookTime": 30,
+ "time": 40,
+ "servings": 4,
+ "cal": 380,
+ "rating": 4.9,
+ "reviews": 239,
+ "tags": [
+  "vegan",
+  "vegetarian",
+  "dairy-free",
+  "gluten-free",
+  "high-fiber",
+  "budget",
+  "one-pot",
+  "quick"
+ ],
+ "author": "Amanda Mouttaki (MarocMama)",
+ "authorEmoji": "👩‍🍳",
+ "desc": "Brown lentils pressure-cooked with onion, tomatoes, cumin and turmeric into a thick, savoury stew, a staple for its affordability.",
+ "longDesc": "Onion is sautéed about 5 minutes in olive oil, spices go in, then the lentils, tomatoes, carrots, water and a whole hot pepper. A pressure cook of 20 minutes plus a 5-minute rest leaves the lentils very soft with a thick sauce. The author warns the recipe does not work with red lentils.",
+ "ingredients": [
+  "1/4 c chopped onion",
+  "¼ c olive oil",
+  "1 cup brown lentils",
+  "1 1/2 Tbsp cumin",
+  "1 tsp turmeric",
+  "½ tsp salt",
+  "1 tsp garlic powder or 3 garlic cloves",
+  "1 tsp pepper",
+  "3-4 grated medium tomatoes or 200 mL crushed canned tomatoes",
+  "¼ - ½ cup diced carrots (optional)",
+  "Whole hot pepper (optional)",
+  "1 cup water (the method adds water and saffron that are not listed; see sources)"
+ ],
+ "equipment": [
+  "Pressure cooker or Instant Pot"
+ ],
+ "steps": [
+  "Sauté the onion in the oil about 5 minutes.",
+  "Add the spices, then the drained lentils, tomatoes, carrots, water and hot pepper.",
+  "Cook under pressure for 20 minutes, then rest for 5 minutes.",
+  "The lentils should be very soft with a thick sauce remaining."
+ ],
+ "chefTips": [
+  "Doneness cue: lentils very soft and a thick sauce left.",
+  "The author warns: this recipe DOES NOT work with red lentils.",
+  "Moroccan lentils are a staple meal thanks to their affordability."
+ ],
+ "commonMistakes": [
+  "Using red lentils, which collapse.",
+  "Opening the cooker before the rest.",
+  "Adding too much water."
+ ],
+ "servedWith": [
+  "Khobz (MAR060)"
+ ],
+ "relatedRecipes": [
+  "MAR037",
+  "MAR036",
+  "MAR040"
+ ],
+ "sources": [
+  "Adapted from 'Instant Pot Moroccan Lentils / Addis', marocmama.com. BYLINE AS PRINTED: 'By: Author Amanda Mouttaki'. No visible date (metadata: published March 25, 2020). Yield not stated.",
+  "SOURCING STATUS: ingredients TWO-PASS. Method wording is our own summary of the page; times and cues were relayed by a research tool and should be checked against the live page.",
+  "PAGE DEFECTS kept: the method adds saffron and 1 cup of water that are not in the ingredient list (we list the water and omit saffron quantity), and the garlic line 'garlic powder of 3 garlic cloves' is ambiguous as printed."
+ ],
+ "storage": "Keeps 4 days in the fridge.",
+ "reheating": "Warm with a splash of water.",
+ "healthBenefits": [
+  "Lentils are rich in protein, iron and fibre.",
+  "Naturally vegan."
+ ],
+ "culturalNote": "The author calls Moroccan lentils (addis) a staple meal thanks to their affordability.",
+ "nutrition": {
+  "cal": 380,
+  "protein": 19,
+  "carbs": 47,
+  "fat": 14,
+  "fiber": 15,
+  "sodium": 320
+ },
+ "keywords": [
+  "moroccan lentils",
+  "addis",
+  "instant pot lentils",
+  "marocmama",
+  "vegan moroccan"
+ ]
+},
+{
+ "id": "MAR039",
+ "title": "Hommos (Moroccan Pressure-Cooked Chickpeas)",
+ "localName": "Hommos — cumin chickpeas (الحمص)",
+ "emoji": "🫘",
+ "country": "Morocco",
+ "countryFlag": "🇲🇦",
+ "region": "North Africa",
+ "community": "National",
+ "cuisine": "Moroccan",
+ "category": "Lentils, Beans & Vegetarian",
+ "course": "Snack or side",
+ "diff": "Easy",
+ "prepTime": 10,
+ "restTime": 480,
+ "cookTime": 60,
+ "time": 550,
+ "servings": 4,
+ "cal": 380,
+ "rating": 4.8,
+ "reviews": 275,
+ "tags": [
+  "vegetarian",
+  "contains-dairy",
+  "gluten-free",
+  "high-fiber",
+  "street-food",
+  "budget"
+ ],
+ "author": "Amanda Mouttaki (MarocMama)",
+ "authorEmoji": "👩‍🍳",
+ "desc": "Chickpeas pressure-cooked with garlic, cumin, saffron and a sliver of preserved lemon: the Moroccan snack, scooped up with bread.",
+ "longDesc": "Despite the name, this is not the dip. Hommos is the Arabic word for chickpea, and in Morocco the whole cooked chickpeas are eaten warm from the pot. Soaked chickpeas, garlic, preserved lemon, cumin, saffron, olive oil, butter and water go into a pressure cooker for about an hour on medium heat. The author says they should keep some firmness, but you can cook them as soft as you like.",
+ "ingredients": [
+  "1 1/2 cups (250 grams) dry chickpeas",
+  "4 cloves garlic",
+  "1/8 piece of a preserved lemon",
+  "2 Tbsp cumin",
+  "pinch of saffron threads",
+  "2-3 Tbsp olive oil",
+  "1 Tbsp butter",
+  "2 1/2 cups water"
+ ],
+ "equipment": [
+  "Pressure cooker"
+ ],
+ "steps": [
+  "Soak the chickpeas at least 8 hours, ideally longer.",
+  "Put everything in the pressure cooker and cook over medium heat for about 1 hour.",
+  "Serve warm, scooped up with bread."
+ ],
+ "chefTips": [
+  "Doneness cue: still some firmness, but cook as long as you like for the softness you prefer.",
+  "The soak is time only.",
+  "Serve with extra cumin and salt."
+ ],
+ "commonMistakes": [
+  "Not soaking.",
+  "Opening the cooker too soon.",
+  "Expecting hummus dip; this is whole chickpeas."
+ ],
+ "servedWith": [
+  "Khobz (MAR060)"
+ ],
+ "relatedRecipes": [
+  "MAR037",
+  "MAR038",
+  "MAR035"
+ ],
+ "sources": [
+  "Adapted from 'An Easy Recipe for Moroccan Chickpeas (Hommos)', marocmama.com. BYLINE AS PRINTED: 'By: Author Amanda Mouttaki'. No visible date (metadata: published March 26, 2020). Yield 4.",
+  "SOURCING STATUS: ingredients TWO-PASS. Method wording is our own summary of the page; times and cues were relayed by a research tool and should be checked against the live page."
+ ],
+ "storage": "Keeps 4 days in the fridge.",
+ "reheating": "Warm gently with a splash of water.",
+ "healthBenefits": [
+  "Chickpeas supply protein and fibre.",
+  "Olive oil and a little butter keep the dish simple."
+ ],
+ "culturalNote": "The author writes that, unlike in Middle Eastern countries, Moroccans don't eat hummus; hommos is the Arabic word for chickpea, and they are always scooped up with bread.",
+ "nutrition": {
+  "cal": 380,
+  "protein": 17,
+  "carbs": 50,
+  "fat": 12,
+  "fiber": 14,
+  "sodium": 140
+ },
+ "keywords": [
+  "hommos",
+  "moroccan chickpeas",
+  "pressure cooker chickpeas",
+  "marocmama",
+  "street snack"
+ ]
+},
+{
+ "id": "MAR040",
+ "title": "Harira (Tomato Soup with Chickpeas and Lentils)",
+ "localName": "Harira (حريرة)",
+ "emoji": "🍅",
+ "country": "Morocco",
+ "countryFlag": "🇲🇦",
+ "region": "North Africa",
+ "community": "National; Ramadan",
+ "cuisine": "Moroccan",
+ "category": "Soups & Stews",
+ "course": "Soup",
+ "diff": "Medium",
+ "prepTime": 30,
+ "restTime": 0,
+ "cookTime": 100,
+ "time": 130,
+ "servings": 6,
+ "cal": 330,
+ "rating": 4.8,
+ "reviews": 254,
+ "tags": [
+  "halal",
+  "dairy-free",
+  "high-fiber",
+  "ramadan",
+  "comfort-food",
+  "traditional",
+  "hot"
+ ],
+ "author": "Christine Benlafquih (Taste of Maroc)",
+ "authorEmoji": "👩‍🍳",
+ "desc": "Morocco's Ramadan soup: lamb, tomatoes, lentils, chickpeas, celery and herbs, thickened with a flour-and-water slurry to a silky consistency.",
+ "longDesc": "Many Moroccans consider a Ramadan meal incomplete without harira. This version browns diced meat, adds bones, chickpeas, tomato puree, onion and spices, pressure-cooks, then adds the lentils, tomato paste, celery, herbs and more water. Rice or vermicelli are added, and a flour-and-water thickener is stirred in at the end and simmered 5 to 10 minutes until the soup is silky and cream-like. The author says the word harira derives from the Arabic word for silk.",
+ "ingredients": [
+  "8 oz lamb, beef, or chicken, diced",
+  "3 tbsp vegetable or olive oil",
+  "Soup bones: several (optional)",
+  "2 lb ripe tomatoes (about 6 large)",
+  "1 handful dry chickpeas, soaked and peeled",
+  "2 handfuls dry green or brown lentils",
+  "1 large onion, grated",
+  "1 rib celery with leaves, chopped (or 1 small bunch Chinese celery)",
+  "1 small bunch flat-leaf parsley, finely chopped",
+  "1 small bunch cilantro, finely chopped",
+  "1 tbsp smen (optional)",
+  "1 tbsp salt",
+  "1 tbsp ginger",
+  "1.5 tsp black pepper",
+  "1 tsp ground cinnamon (optional)",
+  "1/2 tsp turmeric",
+  "3 tbsp tomato paste, mixed with 1 or 2 cups water",
+  "3 tbsp uncooked rice or broken vermicelli",
+  "1 cup flour, mixed with 2 cups water (the thickener)",
+  "3 cups (710 ml) water for the first stage and 8.5 cups (2 L) for the second",
+  "Lemon wedges and cilantro, optional garnish"
+ ],
+ "equipment": [
+  "Pressure cooker or large pot",
+  "Blender (for the tomatoes)"
+ ],
+ "steps": [
+  "Brown the meat in the oil. Add the bones, chickpeas, tomato puree, onion, spices, smen and 3 cups water; cook 25 minutes under pressure (or simmer 50 to 60).",
+  "Add the lentils, tomato paste, celery, herbs and 8.5 cups water.",
+  "Rice option: pressure 30 minutes (or 60 simmered), add the rice and cook 15 minutes more (or 30 simmered). Vermicelli option: pressure 45 minutes (or 90 simmered), then add the vermicelli and simmer until tender.",
+  "Stir in the flour-and-water thickener, using only as much as is needed, and simmer 5 to 10 minutes.",
+  "Serve hot with lemon wedges and cilantro."
+ ],
+ "chefTips": [
+  "Doneness cue: thickened to a silky, cream-like consistency.",
+  "The page times assume a pressure cooker and say to double them for a conventional pot.",
+  "Peel the soaked chickpeas for a smoother soup."
+ ],
+ "commonMistakes": [
+  "Dumping the thickener in at once so it lumps; stir it in gradually.",
+  "Over-thickening; use only as much as needed.",
+  "Overcooking the vermicelli."
+ ],
+ "servedWith": [
+  "Lemon wedges and cilantro (garnish)"
+ ],
+ "relatedRecipes": [
+  "MAR035",
+  "MAR028",
+  "MAR038"
+ ],
+ "sources": [
+  "Adapted from 'Harira Recipe – Moroccan Tomato Soup with Chickpeas and Lentils', Taste of Maroc. BYLINE AS PRINTED: 'Christine Benlafquih'. Published May 10, 2017; last updated January 27, 2022. Yield 6.",
+  "SOURCING STATUS: ingredients TWO-PASS. Method wording is our own summary of the page; times and cues were relayed by a research tool and should be checked against the live page.",
+  "AMBIGUITY KEPT: quantities of chickpeas and lentils are printed as handfuls; the water appears in two stages (3 cups, then 8.5 cups)."
+ ],
+ "storage": "Keeps 3 days in the fridge; it thickens further.",
+ "reheating": "Loosen with water and reheat, stirring.",
+ "healthBenefits": [
+  "Legumes and tomatoes supply protein, fibre and lycopene.",
+  "A traditional fast-breaking soup, hearty and warming."
+ ],
+ "culturalNote": "The author writes that many Moroccans consider a meal during Ramadan incomplete if harira isn't on the table, and that the word is derived from the Arabic word for silk.",
+ "nutrition": {
+  "cal": 330,
+  "protein": 19,
+  "carbs": 42,
+  "fat": 11,
+  "fiber": 10,
+  "sodium": 1100
+ },
+ "keywords": [
+  "harira",
+  "moroccan ramadan soup",
+  "chickpea lentil soup",
+  "christine benlafquih",
+  "iftar"
+ ]
+},
+{
+ "id": "MAR041",
+ "title": "Harira, Royal Mansour Style",
+ "localName": "Harira (حريرة) — chef's version",
+ "emoji": "🍲",
+ "country": "Morocco",
+ "countryFlag": "🇲🇦",
+ "region": "North Africa",
+ "community": "Marrakech (Royal Mansour hotel kitchen)",
+ "cuisine": "Moroccan",
+ "category": "Soups & Stews",
+ "course": "Soup",
+ "diff": "Medium",
+ "prepTime": 40,
+ "restTime": 0,
+ "cookTime": 65,
+ "time": 105,
+ "servings": 6,
+ "cal": 360,
+ "rating": 4.7,
+ "reviews": 152,
+ "tags": [
+  "halal",
+  "dairy-free",
+  "ramadan",
+  "high-protein",
+  "traditional",
+  "hot"
+ ],
+ "author": "Karim Benbaba (Royal Mansour), written by Nouha Hachami",
+ "authorEmoji": "👨‍🍳",
+ "desc": "A hotel-kitchen harira with lamb or beef, chickpeas, lentils, celery and large amounts of fresh herbs, thickened with cornstarch and finished with vermicelli.",
+ "longDesc": "This version, published by Marrakech's Royal Mansour, uses weights throughout: 900 g of meat to 4 litres of water, plenty of celery and fresh herbs, a stock cube, and a cornstarch thickener instead of the flour tedouira. After one hour on low heat the thickener is stirred in, vermicelli cooks 3 more minutes, and the soup is finished with chopped herbs.",
+ "ingredients": [
+  "200 g dry chickpeas (printed \"cheakpeas\")",
+  "100 g dry lentils",
+  "900 g lamb or beef",
+  "800 g tomatoes (400 g of crushed tomato pulp)",
+  "50 g tomato paste",
+  "300 g celery branch thinly sliced",
+  "200 g fresh chopped cilantro",
+  "200 g fresh chopped parsley",
+  "400 g onion",
+  "1 g saffron",
+  "2 g pepper",
+  "20 g salt",
+  "2 g turmeric",
+  "4 l water",
+  "1 lamb or beef stock cube",
+  "7 cl organic olive oil",
+  "25 g vermicelli or angel hair",
+  "50 g cornstarch",
+  "5 g rancid butter (traditional smen)"
+ ],
+ "equipment": [
+  "Large pot"
+ ],
+ "steps": [
+  "The night before, soak the chickpeas and lentils separately for 24 hours in the fridge. Remove the skin from the chickpeas and drain the lentils.",
+  "Cut the meat into 1 cm dice. Peel, seed and dice the tomatoes. Peel the celery stalks, split lengthwise and slice thinly.",
+  "In a large pot heat a drizzle of olive oil and brown the meat. Add the onions, celery, cilantro and parsley and brown 2 to 3 minutes.",
+  "Add the diced and crushed tomatoes, tomato paste, saffron, pepper, chickpeas, lentils and stock cube. Stir in the water, salt, bring to a boil and cook over low heat for 1 hour.",
+  "Keep the harira on the heat and add the thickener of cornstarch mixed with 1 cup of water, stirring constantly and keeping the soup simmering.",
+  "Add the vermicelli and cook another 3 minutes. Adjust the seasoning, sprinkle with chopped cilantro and parsley, and serve hot."
+ ],
+ "chefTips": [
+  "The page gives time only as a cue (\"cook over low heat for 1 hour\").",
+  "The page does not say when to use the turmeric or smen; add them with the spices.",
+  "Serve hot; it is not limited to Ramadan according to the page."
+ ],
+ "commonMistakes": [
+  "Adding the cornstarch off the heat, which lumps.",
+  "Overcooking the vermicelli.",
+  "Skipping the soak for the pulses."
+ ],
+ "servedWith": [
+  "Dates and chebakia (MAR072)"
+ ],
+ "relatedRecipes": [
+  "MAR040",
+  "MAR042",
+  "MAR043"
+ ],
+ "sources": [
+  "Adapted from 'The Moroccan Harira recipe by Chef Karim Benbaba', Royal Mansour (royalmansour.com). BYLINE AS PRINTED: 'Written by Nouha Hachami'. Date as printed: '28 April 2020' (metadata: modified 30 October 2023). Yield 'SERVES 6'.",
+  "SOURCING STATUS: ingredients TWO-PASS. Method wording is our own summary of the page; times and cues were relayed by a research tool and should be checked against the live page.",
+  "PAGE DEFECTS KEPT: turmeric (2 g) is listed but never used in the method; parsley and cilantro are 200 g each, large compared with other harira sources (possible misprint, not confirmed); the tomato line is ambiguous (800 g total, 400 g of it crushed pulp); 'cheakpeas' is a misprint."
+ ],
+ "storage": "Keeps 3 days in the fridge.",
+ "reheating": "Loosen with water and reheat gently.",
+ "healthBenefits": [
+  "Rich in herbs, pulses and lean meat.",
+  "Light thickening with cornstarch rather than flour."
+ ],
+ "culturalNote": "The page says harira is traditionally eaten during the holy month of Ramadan after a day of fasting, served with dates and chebakia, and is not limited to Ramadan.",
+ "nutrition": {
+  "cal": 360,
+  "protein": 28,
+  "carbs": 36,
+  "fat": 12,
+  "fiber": 9,
+  "sodium": 1400
+ },
+ "keywords": [
+  "harira royal mansour",
+  "karim benbaba",
+  "moroccan harira",
+  "chef harira",
+  "ramadan soup"
+ ]
+},
+{
+ "id": "MAR042",
+ "title": "Harira with Carrot-Potato Thickener",
+ "localName": "Harira (حريرة) — vegetable-thickened",
+ "emoji": "🥕",
+ "country": "Morocco",
+ "countryFlag": "🇲🇦",
+ "region": "North Africa",
+ "community": "Home version (university magazine)",
+ "cuisine": "Moroccan",
+ "category": "Soups & Stews",
+ "course": "Soup",
+ "diff": "Medium",
+ "prepTime": 30,
+ "restTime": 30,
+ "cookTime": 80,
+ "time": 140,
+ "servings": 6,
+ "cal": 330,
+ "rating": 4.7,
+ "reviews": 83,
+ "tags": [
+  "halal",
+  "dairy-free",
+  "ramadan",
+  "high-fiber",
+  "comfort-food",
+  "hot"
+ ],
+ "author": "Becky L. Schulthies (BYU Magazine, unsigned article)",
+ "authorEmoji": "🎓",
+ "desc": "A pressure-cooker harira of chickpeas, beef bones, lentils, herbs and tomatoes, thickened with a puree of boiled carrot, potato and flour.",
+ "longDesc": "This version appears as a recipe credited to a Rutgers linguistic anthropologist in a university alumni magazine. Onion, celery and tomatoes are pureed and pressure-cooked with chickpeas and beef bones for 1 hour; carrots and potatoes are boiled and pureed with flour as the thickener; lentils soaked for 30 minutes join with the herbs for 15 to 20 minutes until soft; the puree and tomato paste go in for the final 5 minutes.",
+ "ingredients": [
+  "2 c. chickpeas, soaked the night before in water",
+  "2 beef bones or 1/4 lb. small beef chunks",
+  "1 small onion",
+  "1 c. chopped Chinese celery or regular celery",
+  "4 large tomatoes, peeled and seeds removed",
+  "1 1/2 Tbsp. ground ginger",
+  "I Tbsp. pepper (printed \"I Tbsp.\")",
+  "2 Tbsp. salt",
+  "4 c. water",
+  "1 large carrot, peeled",
+  "2 medium potatoes, peeled",
+  "1 tsp. lemon juice",
+  "1 Tbsp. flour",
+  "1 c. brown lentils",
+  "1 bunch flat-leaf parsley, chopped",
+  "1 bunch cilantro, chopped",
+  "1 Tbsp. tomato paste",
+  "1 tsp. salt (for boiling the vegetables)"
+ ],
+ "equipment": [
+  "Pressure cooker",
+  "Separate pot",
+  "Blender"
+ ],
+ "steps": [
+  "Puree the onion, celery and tomatoes.",
+  "Pour into the pressure cooker with the chickpeas, beef bones or chunks, ginger, salt and pepper. Add 4 cups water.",
+  "Close the cooker and cook on medium-low heat for 1 hour. Release the pressure.",
+  "In a separate pot, boil the carrot and potatoes in water with 1 tsp salt and 1 tsp lemon juice until tender. Drain and puree with the flour.",
+  "Soak the lentils in boiling hot water for 30 minutes, rinse, and add to the pressure cooker with the parsley and cilantro.",
+  "Cook uncovered 15 to 20 minutes until the lentils are soft.",
+  "Add the pureed vegetables and tomato paste, cook another 5 minutes, stirring constantly, and serve warm with bread."
+ ],
+ "chefTips": [
+  "Doneness cues: carrot and potato tender; lentils soft.",
+  "The pepper line is printed with a capital I for the numeral 1 and is read here as 1 Tbsp.",
+  "This uses a carrot-potato-flour puree rather than the usual flour-and-water tedouira."
+ ],
+ "commonMistakes": [
+  "Opening the cooker before releasing pressure.",
+  "Skipping the stirring after the puree is added.",
+  "Over-reducing the soup."
+ ],
+ "servedWith": [
+  "Khobz (MAR060)"
+ ],
+ "relatedRecipes": [
+  "MAR040",
+  "MAR041",
+  "MAR035"
+ ],
+ "sources": [
+  "Adapted from 'A Taste of Morocco' (Harira and Vegetable Tagine Recipes), Y Magazine, BYU, Spring 2023 issue. BYLINE: NO article byline printed; the recipe is attributed in the text to Becky L. Schulthies, a Rutgers linguistic anthropologist (flagged: unsigned magazine article). No yield printed.",
+  "SOURCING STATUS: ingredients TWO-PASS. Method wording is our own summary of the page; times and cues were relayed by a research tool and should be checked against the live page.",
+  "MISPRINT KEPT: 'I Tbsp. pepper'. SOURCE REMARK: harira is often used to break the fast during Ramadan."
+ ],
+ "storage": "Keeps 2 to 3 days in the fridge, per the page.",
+ "reheating": "Reheat gently, loosening with water.",
+ "healthBenefits": [
+  "Pulses, vegetables and herbs supply fibre and protein.",
+  "Flour thickening adds little fat."
+ ],
+ "culturalNote": "The unsigned headnote says harira is often used to break the fast during Ramadan.",
+ "nutrition": {
+  "cal": 330,
+  "protein": 19,
+  "carbs": 56,
+  "fat": 3,
+  "fiber": 14,
+  "sodium": 1500
+ },
+ "keywords": [
+  "harira",
+  "becky schulthies",
+  "vegetable thickened harira",
+  "pressure cooker harira",
+  "ramadan soup"
+ ]
+},
+{
+ "id": "MAR043",
+ "title": "Moroccan Lentil Soup (Adas)",
+ "localName": "Adas — brown lentil soup (العدس على الطريقة المغربية)",
+ "emoji": "🥣",
+ "country": "Morocco",
+ "countryFlag": "🇲🇦",
+ "region": "North Africa",
+ "community": "Home cooking",
+ "cuisine": "Moroccan",
+ "category": "Soups & Stews",
+ "course": "Soup",
+ "diff": "Easy",
+ "prepTime": 10,
+ "restTime": 480,
+ "cookTime": 40,
+ "time": 530,
+ "servings": 4,
+ "cal": 330,
+ "rating": 4.9,
+ "reviews": 238,
+ "tags": [
+  "vegan",
+  "vegetarian",
+  "dairy-free",
+  "gluten-free",
+  "budget",
+  "high-fiber",
+  "hot"
+ ],
+ "author": "Cooking with Alia (site byline only)",
+ "authorEmoji": "📰",
+ "desc": "A simple brown-lentil soup with tomato, onion, parsley and paprika, eaten with a piece of bread.",
+ "longDesc": "Brown lentils are soaked overnight, then cooked in olive oil with onion, grated tomato, parsley and paprika for about 10 minutes before boiling water is added and the pot is covered for 30 minutes, stirring from time to time. The page says to taste and adjust the spices at the end.",
+ "ingredients": [
+  "250 grams (1 1/4 cups) brown lentils, soaked in water overnight",
+  "1 large onion",
+  "1 large tomato",
+  "3 tablespoons finely chopped parsley",
+  "2 teaspoons paprika",
+  "Salt and pepper, to taste",
+  "3 tablespoons olive oil",
+  "1 liter (4 cups) water"
+ ],
+ "equipment": [
+  "Large pot"
+ ],
+ "steps": [
+  "Soak the lentils overnight and drain. Grate the tomato pulp and discard the skin. Finely chop the parsley and onion.",
+  "On medium heat, heat the olive oil in a large pot; add the onion, grated tomato and lentils and mix. Add the parsley, then paprika, salt and pepper.",
+  "Mix and cook on medium heat for around 10 minutes.",
+  "Add boiling water, cover the pan and cook for 30 minutes, stirring from time to time.",
+  "Taste and adjust the salt, pepper and paprika. Serve hot with a piece of bread."
+ ],
+ "chefTips": [
+  "The page gives no doneness test; time (30 minutes) and tasting are the guide.",
+  "Soaking helps the lentils soften and cook easily.",
+  "Add a squeeze of lemon if you like; the page does not."
+ ],
+ "commonMistakes": [
+  "Skipping the soak.",
+  "Adding cold water, which slows cooking.",
+  "Not tasting for seasoning."
+ ],
+ "servedWith": [
+  "Khobz (MAR060)"
+ ],
+ "relatedRecipes": [
+  "MAR038",
+  "MAR040",
+  "MAR036"
+ ],
+ "sources": [
+  "Adapted from '462 – Moroccan Lentils Soup / العدس على الطريقة المغربية', Cooking with Alia (old.cookingwithalia.com), 22 December 2016. BYLINE: none printed; site name only (flagged). Yield 'Serves: 4'; cook time 40 min.",
+  "SOURCING STATUS: ingredients TWO-PASS. Method wording is our own summary of the page; times and cues were relayed by a research tool and should be checked against the live page.",
+  "NOT USED: Salima's Kitchen lentil soup, which says it is inspired by harira and uses vegetable broth and spinach, so it is not a documented traditional adas."
+ ],
+ "storage": "Keeps 4 days in the fridge.",
+ "reheating": "Add water to loosen and reheat.",
+ "healthBenefits": [
+  "Lentils are high in protein, iron and fibre.",
+  "Very low in fat."
+ ],
+ "culturalNote": "The page is part of a bilingual (English and Arabic) series on Moroccan home cooking.",
+ "nutrition": {
+  "cal": 330,
+  "protein": 17,
+  "carbs": 45,
+  "fat": 10,
+  "fiber": 14,
+  "sodium": 300
+ },
+ "keywords": [
+  "moroccan lentil soup",
+  "adas",
+  "brown lentil soup",
+  "cooking with alia",
+  "vegan soup"
+ ]
+},
+{
+ "id": "MAR044",
+ "title": "Chorba Fassia (Fes-Style Diced Vegetable Soup)",
+ "localName": "Chorba fassia (شوربة فاسية)",
+ "emoji": "🥣",
+ "country": "Morocco",
+ "countryFlag": "🇲🇦",
+ "region": "North Africa",
+ "community": "Fes",
+ "cuisine": "Moroccan",
+ "category": "Soups & Stews",
+ "course": "Soup",
+ "diff": "Easy",
+ "prepTime": 20,
+ "restTime": 0,
+ "cookTime": 60,
+ "time": 80,
+ "servings": 6,
+ "cal": 250,
+ "rating": 4.5,
+ "reviews": 248,
+ "tags": [
+  "halal",
+  "dairy-free",
+  "comfort-food",
+  "budget",
+  "hot",
+  "traditional"
+ ],
+ "author": "Nada Kiffa (Taste of Maroc)",
+ "authorEmoji": "👩‍🍳",
+ "desc": "A finely diced vegetable and vermicelli soup in a light turmeric broth, the way Fassi families like it: small pieces, not chunky.",
+ "longDesc": "Vegetables are cut small and braised with a little meat and smen to render their liquid and intensify flavour; stock goes in and simmers 30 minutes. Just before serving more water is added and the vermicelli cooks al dente, with herbs and pepper stirred in at the end. The pasta keeps absorbing liquid, so thin as you go. The author says relatives from Fez won't touch their bowls if the vegetables are too chunky.",
+ "ingredients": [
+  "1 cup cubed lamb, beef or chicken (cut less than 1″ thick)",
+  "1 tbsp olive oil",
+  "1 medium-size onion, finely chopped",
+  "2 medium-size carrots, peeled and finally diced (printed \"finally\")",
+  "2 tbsp tomato paste (or 2 grated pulpy tomatoes, seeds and skin discarded)",
+  "1 celery stalk, finely diced (optional)",
+  "1 small turnip, finely diced",
+  "2 small courgettes (or 1 Italian courgette), finely diced",
+  "2 medium-size potatoes, peeled and diced",
+  "1 cup sliced leeks (optional)",
+  "3 tbsp finely chopped parsley and coriander",
+  "1/2 tsp ground turmeric",
+  "1/2 tsp ground black pepper",
+  "1/2 tsp smen (or ghee or blue cheese)",
+  "1 cup broken vermicelli (or orzo or small macaroni)",
+  "salt to taste",
+  "2 qt water (or ready made stock)"
+ ],
+ "equipment": [
+  "Deep pot with lid"
+ ],
+ "steps": [
+  "Place a deep pot over medium-low heat. Add the oil, smen, meat and/or bones, onions, vegetables, tomatoes or paste, salt and turmeric, and stir to combine.",
+  "Cover and braise, stirring every few minutes to let the vegetables render their liquid and intensify in flavour. This makes the base.",
+  "Once the liquid has reduced, add the stock or water and simmer for 30 minutes. At this point the cooking can be interrupted until nearly serving time.",
+  "Shortly before serving, top up with more water and bring to a simmer. Add the broken vermicelli and continue cooking a few minutes.",
+  "Add the herbs and black pepper and simmer until the pasta is just about cooked (al dente).",
+  "Adjust the water and seasoning; thin as you go to your liking."
+ ],
+ "chefTips": [
+  "The pasta absorbs water quickly, so for leftovers add vermicelli only to the portion you will eat that day.",
+  "The page prints no braising time; the cue is that the liquid has reduced.",
+  "Cut vegetables very small; Fassi taste favours fine dice."
+ ],
+ "commonMistakes": [
+  "Cooking the vermicelli long before serving.",
+  "Cutting vegetables chunky.",
+  "Skipping the braise, which builds the flavour."
+ ],
+ "servedWith": [
+  "Khobz (MAR060)"
+ ],
+ "relatedRecipes": [
+  "MAR045",
+  "MAR028",
+  "MAR040"
+ ],
+ "sources": [
+  "Adapted from 'Moroccan Diced Vegetable Soup – Chorba Fassia', Taste of Maroc. BYLINE AS PRINTED: 'By Author Nada Kiffa'. Date as printed: 'Last updated: October 28, 2021' (metadata: original 2017-10-08). Yield 6 servings.",
+  "SOURCING STATUS: ingredients TWO-PASS. Method wording is our own summary of the page; times and cues were relayed by a research tool and should be checked against the live page.",
+  "MISPRINT KEPT: 'finally diced'. Smen alternatives (ghee, blue cheese) are the page's own notes."
+ ],
+ "storage": "Keep soup and pasta apart if making ahead; 3 days.",
+ "reheating": "Reheat the base and add fresh pasta.",
+ "healthBenefits": [
+  "Lots of vegetables in a light broth.",
+  "Small amount of meat keeps it low in fat."
+ ],
+ "culturalNote": "The author notes that 'chorba' means soup in Arabic, 'fassia' means from Fez, and that the smen is traditionally kept in a clay jar (khabia). Some of her Fassi relatives won't touch their bowls if the vegetables are too chunky.",
+ "nutrition": {
+  "cal": 250,
+  "protein": 12,
+  "carbs": 32,
+  "fat": 8,
+  "fiber": 5,
+  "sodium": 500
+ },
+ "keywords": [
+  "chorba fassia",
+  "moroccan vegetable soup",
+  "fez soup",
+  "nada kiffa",
+  "vermicelli soup"
+ ]
+},
+{
+ "id": "MAR045",
+ "title": "Chicken Chorba",
+ "localName": "Chorba dyal djej (شوربة بالدجاج)",
+ "emoji": "🍗",
+ "country": "Morocco",
+ "countryFlag": "🇲🇦",
+ "region": "North Africa",
+ "community": "Berber (Amazigh) tradition",
+ "cuisine": "Moroccan",
+ "category": "Soups & Stews",
+ "course": "Soup",
+ "diff": "Easy",
+ "prepTime": 15,
+ "restTime": 0,
+ "cookTime": 75,
+ "time": 90,
+ "servings": 6,
+ "cal": 390,
+ "rating": 4.7,
+ "reviews": 95,
+ "tags": [
+  "halal",
+  "dairy-free",
+  "high-protein",
+  "comfort-food",
+  "hot"
+ ],
+ "author": "Nargisse Benkabbou (My Moroccan Food)",
+ "authorEmoji": "👩‍🍳",
+ "desc": "A light, clear chicken soup with chickpeas, potatoes, grated tomato and broken spaghetti, golden with turmeric and saffron.",
+ "longDesc": "Benkabbou browns chicken wings with onions and spices, simmers them with chickpeas in 1.5 litres of water for 40 minutes, adds grated tomatoes, paste and diced potatoes for 15 more minutes, then cooks broken spaghetti and parsley in the pot. She says every Moroccan family has its own chorba recipe.",
+ "ingredients": [
+  "1 tablespoon olive oil",
+  "2 onions, finely sliced",
+  "1kg chicken wings",
+  "2 teaspoons turmeric",
+  "Generous pinch saffron threads",
+  "1 teaspoon salt or more to taste",
+  "½ teaspoon ground black pepper",
+  "150g dried chickpeas, soaked overnight and drained (or 300 gr canned chickpeas, drained)",
+  "2 medium sized tomatoes, grated",
+  "1 ½ tablespoon tomato paste",
+  "2 large white potatoes (500 gr) diced into 2 cm pieces",
+  "100g spaghetti broken into 3 cm long pieces",
+  "3 tablespoons chopped parsley and more for serving"
+ ],
+ "equipment": [
+  "Large casserole with lid"
+ ],
+ "steps": [
+  "In a large casserole warm the olive oil over medium-high heat and add the onions, chicken, spices, salt and pepper. Leave 7 to 10 minutes to lightly brown the chicken and sweat the onions, stirring occasionally.",
+  "Add the chickpeas and 1.5 litres of water and bring to a boil. Reduce to medium-low, cover and simmer gently for 40 minutes.",
+  "Add the grated tomatoes, tomato paste and potatoes; bring to a boil, reduce to medium-low, cover and simmer gently for 15 minutes. The chickpeas, potatoes and chicken should then be fully cooked.",
+  "Add the broken spaghetti and parsley; simmer until the pasta is fully cooked, adjusting the time to the package instructions.",
+  "Serve warm with more parsley."
+ ],
+ "chefTips": [
+  "If you forgot to soak chickpeas, use 300 g canned and add them with the potatoes.",
+  "Doneness cue: chickpeas, potatoes and chicken fully cooked.",
+  "The finished soup is fairly watery and clear."
+ ],
+ "commonMistakes": [
+  "Adding the pasta too early.",
+  "Skipping the browning.",
+  "Salting too heavily before tasting."
+ ],
+ "servedWith": [
+  "Khobz (MAR060)"
+ ],
+ "relatedRecipes": [
+  "MAR044",
+  "MAR040",
+  "MAR008"
+ ],
+ "sources": [
+  "Adapted from 'Chicken Chorba', mymoroccanfood.com. BYLINE AS PRINTED: 'Nargisse Benkabbou'. Date as printed: 'February 01, 2017'. Yield 'Serves 6'.",
+  "SOURCING STATUS: ingredients TWO-PASS. Method wording is our own summary of the page; times and cues were relayed by a research tool and should be checked against the live page."
+ ],
+ "storage": "Keeps 3 days in the fridge, without the pasta if possible.",
+ "reheating": "Reheat gently, adding water.",
+ "healthBenefits": [
+  "Protein from chicken and chickpeas; potatoes make it filling.",
+  "Light broth, low in fat once wings are skimmed."
+ ],
+ "culturalNote": "The author calls chorba a traditional Berber soup enjoyed across North Africa and says every Moroccan family has its own chorba recipe.",
+ "nutrition": {
+  "cal": 390,
+  "protein": 28,
+  "carbs": 40,
+  "fat": 14,
+  "fiber": 7,
+  "sodium": 520
+ },
+ "keywords": [
+  "chicken chorba",
+  "moroccan chicken soup",
+  "nargisse benkabbou",
+  "berber soup",
+  "chorba"
+ ]
+},
+{
+ "id": "MAR046",
+ "title": "Zaalouk (Eggplant and Tomato Salad)",
+ "localName": "Zaalouk (زعلوك)",
+ "emoji": "🍆",
+ "country": "Morocco",
+ "countryFlag": "🇲🇦",
+ "region": "North Africa",
+ "community": "National",
+ "cuisine": "Moroccan",
+ "category": "Salads & Mezze",
+ "course": "Salad or dip",
+ "diff": "Easy",
+ "prepTime": 15,
+ "restTime": 0,
+ "cookTime": 45,
+ "time": 60,
+ "servings": 4,
+ "cal": 190,
+ "rating": 4.5,
+ "reviews": 98,
+ "tags": [
+  "vegan",
+  "vegetarian",
+  "dairy-free",
+  "gluten-free",
+  "salad",
+  "condiment",
+  "budget",
+  "traditional"
+ ],
+ "author": "Christine Benlafquih (Taste of Maroc)",
+ "authorEmoji": "👩‍🍳",
+ "desc": "Charred eggplant mashed into a garlicky tomato sauce spiced with paprika and cumin, eaten as a cooked salad or dip with bread.",
+ "longDesc": "The eggplants are broiled close to the element for 20 to 25 minutes until the skins are charred and puckered and crumble like burnt paper, leaving very soft flesh. Meanwhile tomatoes cook down with garlic, herbs, oil and spices into a rich sauce in 10 to 20 minutes; the scooped flesh goes in and is mashed and cooked 5 to 10 more minutes, or longer for a drier, pastier salad.",
+ "ingredients": [
+  "2 large eggplants (or 3 medium)",
+  "2 medium or large tomatoes (or more to taste)",
+  "6 cloves garlic, pressed or finely chopped (or to taste)",
+  "2 tablespoons chopped fresh parsley (approx.)",
+  "2 tablespoons chopped fresh cilantro (approx.)",
+  "1 teaspoon salt (or to taste)",
+  "2 teaspoons paprika (or to taste)",
+  "2 teaspoons cumin (or to taste)",
+  "4 tablespoons olive oil (approx.; no need to measure)",
+  "Cayenne pepper or whole chili peppers (optional; to taste)",
+  "Lemon juice or small wedge of lemon (optional; to taste)",
+  "Chopped parsley or cilantro (optional; for garnish)",
+  "Olive oil (optional; to drizzle on top)"
+ ],
+ "equipment": [
+  "Broiler and baking sheet",
+  "Skillet"
+ ],
+ "steps": [
+  "Trim the stems and cut the eggplants in half lengthwise. Arrange skin side up on a foil-lined baking sheet and broil as close to the element as possible.",
+  "Roast about 20 to 25 minutes, until the skins are charred and puckered, with sections that crumble or crack like burnt paper when pressed. The flesh will be very soft.",
+  "Meanwhile peel, seed and chop the tomatoes. Put them in a skillet with the oil, garlic, herbs and spices (and the optional cayenne or chilies). Cook over medium heat, stirring frequently, until the tomatoes break down and a rich sauce forms, usually 10 to 20 minutes.",
+  "When the eggplant is cool enough to handle, scoop the flesh from the skin and add it to the tomato mixture. Mash any firm bits with a spoon or fork.",
+  "Cook 5 to 10 minutes to blend flavours, or longer for a drier, pastier salad. Taste, adjust and serve with bread."
+ ],
+ "chefTips": [
+  "Cues quoted: skins charred and puckered; flesh very soft; tomatoes broken down into a rich sauce.",
+  "The page offers a one-pot alternative where chopped eggplant and tomato cook covered with 1/4 to 1/3 cup water until soft enough to mash.",
+  "Drizzle olive oil on top to serve."
+ ],
+ "commonMistakes": [
+  "Under-charring the eggplant.",
+  "Leaving it watery.",
+  "Skipping the herbs."
+ ],
+ "servedWith": [
+  "Khobz (MAR060)",
+  "Chermoula (MAR054)"
+ ],
+ "relatedRecipes": [
+  "MAR047",
+  "MAR049",
+  "MAR054"
+ ],
+ "sources": [
+  "Adapted from 'Moroccan Zaalouk Recipe – Eggplant and Tomato Salad or Dip', Taste of Maroc. BYLINE AS PRINTED: 'By Author Christine Benlafquih'. Date as printed: 'Last updated: March 7, 2021'. Yield 4 servings.",
+  "SOURCING STATUS: ingredients and the roasted method TWO-PASS; the one-pot alternate is single-pass. Method wording is our own summary of the page; times and cues were relayed by a research tool and should be checked against the live page.",
+  "DISAGREEMENT kept: Morocco World News (Wissal Dardar, 26 Dec 2020) grills one pricked whole eggplant 'a couple of minutes' a side until golden brown with 1 clove of garlic; this page broils halves 20 to 25 minutes with 6 cloves. A mymoroccanfood.com zaalouk page had no byline or date and was not used."
+ ],
+ "storage": "Keeps 4 days in the fridge.",
+ "reheating": "Serve cold or warm gently.",
+ "healthBenefits": [
+  "Eggplant and tomatoes are low-calorie and high in fibre.",
+  "Olive oil provides unsaturated fat."
+ ],
+ "culturalNote": "The author describes zaalouk as a Moroccan cooked salad of eggplants and tomatoes usually eaten as a dip with Moroccan bread, and says she learned it from her mother-in-law.",
+ "nutrition": {
+  "cal": 190,
+  "protein": 3,
+  "carbs": 17,
+  "fat": 13,
+  "fiber": 7,
+  "sodium": 480
+ },
+ "keywords": [
+  "zaalouk",
+  "moroccan eggplant salad",
+  "eggplant dip",
+  "christine benlafquih",
+  "cooked salad"
+ ]
+},
+{
+ "id": "MAR047",
+ "title": "Taktouka (Green Pepper and Tomato Salad)",
+ "localName": "Taktouka / flifla (طاكطوكة)",
+ "emoji": "🫑",
+ "country": "Morocco",
+ "countryFlag": "🇲🇦",
+ "region": "North Africa",
+ "community": "National",
+ "cuisine": "Moroccan",
+ "category": "Salads & Mezze",
+ "course": "Salad or dip",
+ "diff": "Easy",
+ "prepTime": 20,
+ "restTime": 0,
+ "cookTime": 30,
+ "time": 50,
+ "servings": 4,
+ "cal": 150,
+ "rating": 4.7,
+ "reviews": 177,
+ "tags": [
+  "vegan",
+  "vegetarian",
+  "dairy-free",
+  "gluten-free",
+  "salad",
+  "condiment",
+  "budget",
+  "traditional"
+ ],
+ "author": "Nargisse Benkabbou (My Moroccan Food)",
+ "authorEmoji": "👩‍🍳",
+ "desc": "Charred green peppers peeled and folded into a slow-cooked tomato and garlic sauce with paprika and cumin.",
+ "longDesc": "Benkabbou chars two green peppers on a high grill, turning every 3 to 4 minutes until scorched and tender. Peeled tomatoes cook covered for 10 minutes with garlic, herbs and spices, the chopped peppers join uncovered for another 10 minutes until the liquids evaporate. She notes taktouka is a very common salad and dip, and says you can leave out the sugar if tomatoes are as sweet as in Morocco.",
+ "ingredients": [
+  "2 large sweet green peppers such as bell peppers",
+  "3 tablespoons olive oil",
+  "4 large tomatoes",
+  "1 teaspoon finely chopped garlic, about 2 cloves",
+  "4 tablespoons mixture of fresh chopped parsley and coriander",
+  "1 teaspoon paprika",
+  "½ teaspoon cumin",
+  "Pinch cayenne pepper",
+  "½ teaspoon salt or more to taste",
+  "½ teaspoon caster sugar"
+ ],
+ "equipment": [
+  "Grill or chargrill pan",
+  "Casserole or deep skillet"
+ ],
+ "steps": [
+  "Preheat the grill or pan to high. Grill the peppers, turning every 3 to 4 minutes, until each side is scorched and tender. Set aside to cool.",
+  "Peel, deseed and roughly chop the tomatoes into 1.5 cm (1 inch) pieces.",
+  "When the peppers reach room temperature, peel, deseed and chop them the same size.",
+  "In a casserole heat the olive oil over medium-low heat and add the tomatoes, garlic, spices, herbs, salt and sugar. Cover and cook 10 minutes until the tomatoes have softened, stirring occasionally.",
+  "Uncover, add the peppers and mix. Simmer gently for 10 minutes until all the liquids evaporate.",
+  "Enjoy warm or cold, as a side or a sandwich filling."
+ ],
+ "chefTips": [
+  "Cues quoted: peppers scorched and tender; tomatoes softened; liquids evaporated.",
+  "Leave out the sugar if your tomatoes are sweet.",
+  "Often eaten at room temperature."
+ ],
+ "commonMistakes": [
+  "Not peeling the peppers.",
+  "Leaving the sauce wet.",
+  "Adding sugar to already sweet tomatoes."
+ ],
+ "servedWith": [
+  "Khobz (MAR060)"
+ ],
+ "relatedRecipes": [
+  "MAR046",
+  "MAR049",
+  "MAR050"
+ ],
+ "sources": [
+  "Adapted from 'Taktouka – Green Peppers and Tomatoes Moroccan Salad', mymoroccanfood.com. BYLINE AS PRINTED: 'Nargisse Benkabbou'. Date as printed: 'June 29, 2016'. Yield 'Serves 3 to 4'.",
+  "SOURCING STATUS: ingredients TWO-PASS. Method wording is our own summary of the page; times and cues were relayed by a research tool and should be checked against the live page.",
+  "DISAGREEMENT kept: MarocMama's taktouka (date unclear: metadata and a reader comment conflict) uses 1/3 cup olive oil, black pepper, turmeric and no herbs, and roasts the peppers over a flame until completely black, then steams them in a sealed bag; Benkabbou uses 3 tbsp oil, herbs, cayenne and sugar. Printed '1, 5 cm' kept as 1.5 cm."
+ ],
+ "storage": "Keeps 4 days in the fridge.",
+ "reheating": "Serve cold or at room temperature.",
+ "healthBenefits": [
+  "Peppers and tomatoes are rich in vitamin C.",
+  "Low in calories apart from the olive oil."
+ ],
+ "culturalNote": "The author describes taktouka as a very common Moroccan salad and dip; a reader reply on MarocMama says it is usually eaten at room temperature in Morocco.",
+ "nutrition": {
+  "cal": 150,
+  "protein": 2,
+  "carbs": 14,
+  "fat": 10,
+  "fiber": 4,
+  "sodium": 300
+ },
+ "keywords": [
+  "taktouka",
+  "flifla",
+  "green pepper tomato salad",
+  "nargisse benkabbou",
+  "moroccan salad"
+ ]
+},
+{
+ "id": "MAR048",
+ "title": "Bakoula (Mallow Salad with Preserved Lemon)",
+ "localName": "Bakoula / khoubiza (بقولة - خبيزة)",
+ "emoji": "🌿",
+ "country": "Morocco",
+ "countryFlag": "🇲🇦",
+ "region": "North Africa",
+ "community": "National",
+ "cuisine": "Moroccan",
+ "category": "Salads & Mezze",
+ "course": "Salad or dip",
+ "diff": "Easy",
+ "prepTime": 20,
+ "restTime": 0,
+ "cookTime": 35,
+ "time": 55,
+ "servings": 4,
+ "cal": 290,
+ "rating": 4.6,
+ "reviews": 207,
+ "tags": [
+  "vegan",
+  "vegetarian",
+  "dairy-free",
+  "gluten-free",
+  "salad",
+  "traditional",
+  "budget"
+ ],
+ "author": "Christine Benlafquih (Taste of Maroc)",
+ "authorEmoji": "👩‍🍳",
+ "desc": "Steamed mallow leaves pressed dry and sautéed with garlic, herbs, cumin, paprika and preserved lemon, served warm or at room temperature.",
+ "longDesc": "Mallow is washed well, chopped and steamed for 15 to 20 minutes until tender, shrinking in bulk and darkening. After the water is pressed out it goes into a skillet where garlic, herbs and spices have been sautéed in olive oil until the herbs wilt and the garlic is fragrant; preserved lemon pulp and lemon juice go in for 5 to 10 minutes. It is garnished with olives and preserved lemon rind.",
+ "ingredients": [
+  "½ pound mallow leaves and stems (about 8 cups, packed)",
+  "½ cup olive oil",
+  "½ cup chopped parsley and/or cilantro (I use a mix)",
+  "4 cloves garlic, pressed or finely chopped (or more to taste)",
+  "1½ teaspoons paprika",
+  "1½ teaspoons cumin",
+  "¼ teaspoon salt (or more to taste)",
+  "¼ teaspoon cayenne pepper (or to taste; optional)",
+  "2 tablespoons lemon juice (or to taste)",
+  "1 preserved lemon pulp, chopped",
+  "Preserved lemon rind, for garnish",
+  "1 handful red olives, for garnish"
+ ],
+ "equipment": [
+  "Steamer basket",
+  "Large skillet"
+ ],
+ "steps": [
+  "Wash the mallow thoroughly in a large bowl or sink of water; rinse and drain well.",
+  "Chop the leaves and stems and steam in a basket over simmering water for 15 to 20 minutes, until tender; it will greatly reduce in bulk and turn darker.",
+  "Squeeze or press out the extra water.",
+  "While it steams, place the olive oil, garlic, herbs and spices in a large skillet and sauté over medium or medium-low heat for several minutes, until the herbs are wilted and the garlic is fragrant. Be careful not to burn the garlic.",
+  "Add the mallow, chopped preserved lemon pulp and lemon juice and sauté over medium heat for 5 to 10 minutes, until the flavours are well combined.",
+  "Serve warm or at room temperature, garnished with olives and preserved lemon rind."
+ ],
+ "chefTips": [
+  "Cues quoted: tender, reduced in bulk and darker; herbs wilted and garlic fragrant.",
+  "Morocco World News pressure-cooks chopped bakoula with a cup of water and a quarter cup of oil for up to 30 minutes instead.",
+  "Wash thoroughly; wild greens carry grit."
+ ],
+ "commonMistakes": [
+  "Burning the garlic.",
+  "Not pressing the water out.",
+  "Using too much salt with preserved lemon."
+ ],
+ "servedWith": [
+  "Khobz (MAR060)",
+  "Preserved lemons (MAR056)"
+ ],
+ "relatedRecipes": [
+  "MAR046",
+  "MAR047",
+  "MAR056"
+ ],
+ "sources": [
+  "Adapted from 'Moroccan Mallow Salad Recipe – Khoubiza or Bakkoula', Taste of Maroc. BYLINE AS PRINTED: 'Christine Benlafquih'. Date as printed: 'Last updated: October 27, 2021'. Yield 4 servings.",
+  "SOURCING STATUS: ingredients TWO-PASS. Method wording is our own summary of the page; times and cues were relayed by a research tool and should be checked against the live page.",
+  "DISAGREEMENT kept: Morocco World News (Safaa Kasraoui, 7 May 2023) gives no amount for the greens, pressure-cooks them with 1 cup water up to 30 minutes, and lists cayenne but uses 'red pepper' in the method. A Forager Chef adaptation with mixed wild greens was not used."
+ ],
+ "storage": "Keeps 3 days in the fridge.",
+ "reheating": "Serve at room temperature or warm lightly.",
+ "healthBenefits": [
+  "Mallow is a leafy green rich in fibre and minerals.",
+  "Cooked with olive oil."
+ ],
+ "culturalNote": "The author writes that Moroccans refer to both the mallow plant and the salad as khoubiza or bakkoula, and cites a journal article describing mallow as one of 17 weeds Moroccans include in their cuisine.",
+ "nutrition": {
+  "cal": 290,
+  "protein": 3,
+  "carbs": 10,
+  "fat": 28,
+  "fiber": 4,
+  "sodium": 360
+ },
+ "keywords": [
+  "bakoula",
+  "khoubiza",
+  "mallow salad",
+  "wild greens moroccan",
+  "christine benlafquih"
+ ]
+},
+{
+ "id": "MAR049",
+ "title": "Matbucha (Cooked Tomato and Pepper Salad)",
+ "localName": "Matbucha / maticha (מטבוחה)",
+ "emoji": "🍅",
+ "country": "Morocco",
+ "countryFlag": "🇲🇦",
+ "region": "North Africa",
+ "community": "Shabbat table (cookbook author)",
+ "cuisine": "Moroccan",
+ "category": "Salads & Mezze",
+ "course": "Salad or dip",
+ "diff": "Easy",
+ "prepTime": 20,
+ "restTime": 0,
+ "cookTime": 60,
+ "time": 80,
+ "servings": 8,
+ "cal": 130,
+ "rating": 4.9,
+ "reviews": 61,
+ "tags": [
+  "vegan",
+  "vegetarian",
+  "dairy-free",
+  "gluten-free",
+  "salad",
+  "make-ahead",
+  "condiment"
+ ],
+ "author": "Joan Nathan (Tablet Magazine)",
+ "authorEmoji": "📖",
+ "desc": "Charred green peppers and ripe tomatoes simmered slowly with garlic, paprika and a pinch of sugar into a thick, sauce-like salad.",
+ "longDesc": "Joan Nathan chars four green peppers on all sides over a flame or under the broiler (about 20 minutes), steams them in a closed bag for 10 minutes to loosen the skins, then simmers them with tomatoes and garlic over a low flame, mashing, until the liquid begins to evaporate and the salad is thick and sauce-like. She finishes with argan or olive oil and serves it at room temperature.",
+ "ingredients": [
+  "4 green peppers",
+  "¼ cup extra virgin olive oil",
+  "3 pounds very ripe fresh tomatoes (about 8), peeled, seeded, and diced or one 32-ounce can diced tomatoes, drained",
+  "6 cloves garlic, minced",
+  "1 teaspoon sugar",
+  "2 teaspoons sweet paprika",
+  "2 teaspoons salt, or to taste",
+  "1 tablespoon argan or extra virgin olive oil for drizzling",
+  "Freshly ground pepper to taste"
+ ],
+ "equipment": [
+  "Broiler or gas burner",
+  "Heavy skillet",
+  "Plastic bag"
+ ],
+ "steps": [
+  "Put the whole peppers under the broiler or directly on the gas burner, turning frequently with tongs, until charred on all sides, about 20 minutes.",
+  "Place them in a tightly closed plastic bag for 10 minutes to loosen the skins. Alternatively roast in a 450-degree oven, turning every 10 or so minutes for 20 minutes, until soft and charred.",
+  "Peel the charred skin, discard the seeds and cut the peppers into 1-inch squares.",
+  "Heat the oil in a heavy skillet and add the peppers, tomatoes, garlic, sugar, paprika, salt and pepper.",
+  "Simmer over a low flame, stirring occasionally and mashing with a fork or potato masher, until the liquid begins to evaporate; keep cooking until the salad has a thick, sauce-like consistency.",
+  "Adjust seasoning, drizzle with argan or olive oil and serve at room temperature."
+ ],
+ "chefTips": [
+  "No total simmer time is printed; use the thick, sauce-like cue.",
+  "Canned tomatoes are fine, drained.",
+  "It keeps well and improves overnight."
+ ],
+ "commonMistakes": [
+  "Leaving the peppers unpeeled.",
+  "Cooking over high heat and scorching.",
+  "Stopping while still watery."
+ ],
+ "servedWith": [
+  "Khobz (MAR060)"
+ ],
+ "relatedRecipes": [
+  "MAR046",
+  "MAR047",
+  "MAR012"
+ ],
+ "sources": [
+  "Adapted from 'Moroccan Matbucha Cooked Tomato and Pepper Salad', Tablet Magazine. BYLINE AS PRINTED: 'Joan Nathan'. Date as printed: 'April 01, 2021'. Yield '8 servings'.",
+  "SOURCING STATUS: ingredients TWO-PASS. Method wording is our own summary of the page; times and cues were relayed by a research tool and should be checked against the live page.",
+  "FLAG: the only matbucha source obtained is an American cookbook author; no Moroccan-born cook was found. The page makes no Moroccan origin claim; it is introduced as a Shabbat dinner favourite of Nathan."
+ ],
+ "storage": "Keeps 5 days in the fridge.",
+ "reheating": "Serve at room temperature or warmed lightly.",
+ "healthBenefits": [
+  "Tomatoes and peppers supply vitamin C and lycopene.",
+  "Naturally vegan."
+ ],
+ "culturalNote": "The page's intro (from the 'Joan Knows Best' video series) calls it a Shabbat dinner favourite of the author.",
+ "nutrition": {
+  "cal": 130,
+  "protein": 3,
+  "carbs": 14,
+  "fat": 8,
+  "fiber": 4,
+  "sodium": 540
+ },
+ "keywords": [
+  "matbucha",
+  "moroccan tomato pepper salad",
+  "joan nathan",
+  "cooked salad",
+  "shabbat"
+ ]
+},
+{
+ "id": "MAR050",
+ "title": "Moroccan Carrot Salad",
+ "localName": "Shlada dyal khizzou (سلطة الجزر)",
+ "emoji": "🥕",
+ "country": "Morocco",
+ "countryFlag": "🇲🇦",
+ "region": "North Africa",
+ "community": "National",
+ "cuisine": "Moroccan",
+ "category": "Salads & Mezze",
+ "course": "Salad",
+ "diff": "Easy",
+ "prepTime": 10,
+ "restTime": 0,
+ "cookTime": 20,
+ "time": 30,
+ "servings": 4,
+ "cal": 110,
+ "rating": 4.5,
+ "reviews": 111,
+ "tags": [
+  "vegan",
+  "vegetarian",
+  "dairy-free",
+  "gluten-free",
+  "salad",
+  "quick",
+  "budget"
+ ],
+ "author": "Nargisse Benkabbou (My Moroccan Food)",
+ "authorEmoji": "👩‍🍳",
+ "desc": "Carrots boiled until lightly crisp and tender, dressed warm with garlic, coriander, parsley, paprika, cumin and vinegar.",
+ "longDesc": "Benkabbou boils sliced carrots with two unpeeled garlic cloves 10 to 20 minutes depending on size, drains and rinses, then mixes them with a dressing made from the mashed garlic, herbs, spices, white wine vinegar and olive oil. Serve warm or cold. She adds a little pomegranate molasses though it is not traditional.",
+ "ingredients": [
+  "500g carrots, peeled and sliced or chopped",
+  "2 garlic cloves, unpeeled",
+  "3 tablespoons finely chopped coriander",
+  "3 tablespoons finely chopped parlsey (printed \"parlsey\")",
+  "1 teaspoon ground paprika",
+  "1 teaspoon ground cumin",
+  "2 tablespoons white wine vinegar",
+  "2 tablespoons olive oil",
+  "2 teaspoons pomegranate molasses (optional)",
+  "Salt to season"
+ ],
+ "equipment": [
+  "Medium pan"
+ ],
+ "steps": [
+  "Bring water to the boil, add the carrots and garlic cloves, reduce to medium and gently cook until lightly crisp and tender, about 10 to 20 minutes depending on size.",
+  "Drain, rinse under cold water and drain again.",
+  "Peel and finely chop the garlic cloves. In a small bowl combine the garlic, herbs, paprika, cumin, vinegar, olive oil, pomegranate molasses and salt; stir until smooth.",
+  "Gently combine the carrots with the dressing. Serve warm or cold."
+ ],
+ "chefTips": [
+  "Doneness cue: lightly crisp and tender.",
+  "The author says pomegranate molasses is not part of the traditional recipe, but she likes it.",
+  "Cook the garlic with the carrots to mellow it."
+ ],
+ "commonMistakes": [
+  "Overcooking the carrots to mush.",
+  "Dressing cold carrots too long ahead.",
+  "Skipping the rinse."
+ ],
+ "servedWith": [
+  "Khobz (MAR060)"
+ ],
+ "relatedRecipes": [
+  "MAR046",
+  "MAR051",
+  "MAR052"
+ ],
+ "sources": [
+  "Adapted from 'Moroccan Carrot Salad', mymoroccanfood.com. BYLINE AS PRINTED: 'Nargisse Benkabbou'. Date as printed: 'August 20, 2015'. Yield 'Serves 4'.",
+  "SOURCING STATUS: ingredients TWO-PASS. Method wording is our own summary of the page; times and cues were relayed by a research tool and should be checked against the live page.",
+  "DISAGREEMENT kept: Saveur (SAVEUR Editors, adapted from Alice Waters, not a Moroccan cook) uses 12 carrots, 6–8 minutes, lemon juice, cayenne and cinnamon."
+ ],
+ "storage": "Keeps 3 days in the fridge.",
+ "reheating": "Serve cold or warm.",
+ "healthBenefits": [
+  "Carrots supply beta-carotene.",
+  "Dressing is light on oil."
+ ],
+ "culturalNote": "The author writes that she has many memories of her mom making this salad.",
+ "nutrition": {
+  "cal": 110,
+  "protein": 1,
+  "carbs": 14,
+  "fat": 6,
+  "fiber": 4,
+  "sodium": 120
+ },
+ "keywords": [
+  "moroccan carrot salad",
+  "shlada khizzou",
+  "nargisse benkabbou",
+  "cumin carrot salad",
+  "cooked carrots"
+ ]
+},
+{
+ "id": "MAR051",
+ "title": "Orange and Cinnamon Dessert Salad",
+ "localName": "Shlada dyal limoun — oranges with cinnamon and orange flower water",
+ "emoji": "🍊",
+ "country": "Morocco",
+ "countryFlag": "🇲🇦",
+ "region": "North Africa",
+ "community": "National",
+ "cuisine": "Moroccan",
+ "category": "Salads & Mezze",
+ "course": "Dessert",
+ "diff": "Easy",
+ "prepTime": 10,
+ "restTime": 60,
+ "cookTime": 0,
+ "time": 70,
+ "servings": 2,
+ "cal": 100,
+ "rating": 4.6,
+ "reviews": 159,
+ "tags": [
+  "vegan",
+  "vegetarian",
+  "dairy-free",
+  "gluten-free",
+  "no-cook",
+  "cold",
+  "sweet",
+  "quick"
+ ],
+ "author": "Nada Kiffa (Taste of Maroc)",
+ "authorEmoji": "👩‍🍳",
+ "desc": "Sliced sweet oranges chilled with orange flower water and cinnamon: the usual end to a Moroccan meal.",
+ "longDesc": "Peel navel oranges and slice them 5 mm to 1 cm thick, toss with fresh orange juice, pure orange blossom water, a pinch of sugar if needed and cinnamon, cover and chill at least an hour. Serve cold with a last sprinkle of cinnamon.",
+ "ingredients": [
+  "2 sweet oranges, preferably Navel",
+  "2 to 4 tbsp orange juice, freshly squeezed",
+  "1 tbsp orange blossom water (pure, not imitation)",
+  "1 tsp sugar (optional; no need if the oranges are very sweet)",
+  "1/4 tsp ground cinnamon",
+  "1 pinch ground cinnamon for garnish"
+ ],
+ "equipment": [
+  "Bowl",
+  "Cling film"
+ ],
+ "steps": [
+  "Peel the oranges and remove the pith. Slice anywhere between 0.2″ (5 mm) and 0.4″ (1 cm) thick.",
+  "Add the juice, orange blossom water, sugar and 1/4 tsp cinnamon and toss the oranges delicately.",
+  "Cover with cling film and chill to macerate for at least an hour.",
+  "Arrange on dishes, sprinkle with cinnamon and serve cold."
+ ],
+ "chefTips": [
+  "The chill is time only (at least an hour).",
+  "Use pure orange blossom water, not imitation.",
+  "Skip sugar when oranges are very sweet."
+ ],
+ "commonMistakes": [
+  "Leaving the pith.",
+  "Too much orange flower water, which tastes soapy.",
+  "Slicing too thin."
+ ],
+ "servedWith": [
+  "Mint tea (MAR082)"
+ ],
+ "relatedRecipes": [
+  "MAR050",
+  "MAR052",
+  "MAR082"
+ ],
+ "sources": [
+  "Adapted from 'Moroccan Oranges with Cinnamon and Orange Flower Water' (heading 'Moroccan Orange and Cinnamon Dessert Salad'), Taste of Maroc. BYLINE AS PRINTED: 'By Author Nada Kiffa'. Date as printed: 'Last updated: October 24, 2017' (published September 28, 2017). Yield 2 servings.",
+  "SOURCING STATUS: ingredients TWO-PASS. Method wording is our own summary of the page; times and cues were relayed by a research tool and should be checked against the live page."
+ ],
+ "storage": "Best within a day.",
+ "reheating": "Not reheated; serve cold.",
+ "healthBenefits": [
+  "Vitamin C and fibre from whole fruit.",
+  "No added fat; minimal sugar."
+ ],
+ "culturalNote": "The page says it is usually served as a dessert salad at the end of a meal, especially when navel oranges are in season.",
+ "nutrition": {
+  "cal": 100,
+  "protein": 2,
+  "carbs": 25,
+  "fat": 0,
+  "fiber": 5,
+  "sodium": 0
+ },
+ "keywords": [
+  "moroccan orange salad",
+  "orange cinnamon",
+  "orange blossom water",
+  "nada kiffa",
+  "dessert salad"
+ ]
+},
+{
+ "id": "MAR052",
+ "title": "Moroccan Tomato and Onion Salad",
+ "localName": "Shlada dyal tomatim wa besla",
+ "emoji": "🍅",
+ "country": "Morocco",
+ "countryFlag": "🇲🇦",
+ "region": "North Africa",
+ "community": "National",
+ "cuisine": "Moroccan",
+ "category": "Salads & Mezze",
+ "course": "Salad",
+ "diff": "Easy",
+ "prepTime": 15,
+ "restTime": 0,
+ "cookTime": 0,
+ "time": 15,
+ "servings": 4,
+ "cal": 170,
+ "rating": 4.6,
+ "reviews": 39,
+ "tags": [
+  "vegan",
+  "vegetarian",
+  "dairy-free",
+  "gluten-free",
+  "salad",
+  "no-cook",
+  "quick",
+  "cold"
+ ],
+ "author": "Amanda Mouttaki (MarocMama)",
+ "authorEmoji": "👩‍🍳",
+ "desc": "Seeded tomatoes and paper-thin onion, both finely diced and dressed with olive oil and white vinegar.",
+ "longDesc": "Only the exterior flesh of the tomatoes is used: seed them, slice into strips and dice very fine. The onion is cut into the thinnest strips possible, then diced. A dressing of olive oil, vinegar, salt and pepper goes over the top, and the salad is served cold or at room temperature.",
+ "ingredients": [
+  "2 large, fresh tomatoes",
+  "1/2 Vidalia or other sweet onion",
+  "1 1/2 Tbsp white vinegar",
+  "3 Tbsp olive oil (good quality)",
+  "1/2 tsp salt",
+  "1/2 tsp pepper"
+ ],
+ "equipment": [
+  "Sharp knife",
+  "Bowl"
+ ],
+ "steps": [
+  "Wash the tomatoes and remove the seeds. You only want the exterior flesh. Slice into strips and then very finely dice.",
+  "Cut the onion into very thin strips, as thin as you possibly can, and dice.",
+  "Mix the onion and tomato together in a bowl.",
+  "Whisk together the olive oil, vinegar, salt and pepper, drizzle over, adjust the seasoning, and serve cold or at room temperature."
+ ],
+ "chefTips": [
+  "Cut as thin as you possibly can.",
+  "The author notes the salad exists in many cultures and has been called a Portuguese tomato and onion salad.",
+  "Vidalia is an American substitution; any sweet onion works."
+ ],
+ "commonMistakes": [
+  "Leaving seeds in, which waters the salad.",
+  "Cutting the onion thick.",
+  "Dressing too early."
+ ],
+ "servedWith": [
+  "Khobz (MAR060)"
+ ],
+ "relatedRecipes": [
+  "MAR050",
+  "MAR051",
+  "MAR047"
+ ],
+ "sources": [
+  "Adapted from 'Moroccan Tomato and Onion Salad', marocmama.com. BYLINE AS PRINTED: 'By: Author Amanda Mouttaki'. No visible date (metadata: published 2013-05-21, modified 2022-09-22). Yield '4 small servings'.",
+  "SOURCING STATUS: ingredients TWO-PASS. Method wording is our own summary of the page; times and cues were relayed by a research tool and should be checked against the live page.",
+  "FLAG: the page itself calls it a pan-regional salad. A Morocco World News cucumber-tomato 'Feggous and Tomato Shlada' is a different salad and was not used."
+ ],
+ "storage": "Best fresh; 1 day.",
+ "reheating": "Not reheated.",
+ "healthBenefits": [
+  "Raw vegetables with a light dressing.",
+  "Low in calories."
+ ],
+ "culturalNote": "The author writes that Moroccan salads are so important to the dinner table.",
+ "nutrition": {
+  "cal": 170,
+  "protein": 1,
+  "carbs": 8,
+  "fat": 15,
+  "fiber": 2,
+  "sodium": 300
+ },
+ "keywords": [
+  "moroccan tomato salad",
+  "tomato onion salad",
+  "marocmama",
+  "shlada",
+  "quick salad"
+ ]
+},
+{
+ "id": "MAR053",
+ "title": "Salade Merk Hzina (Moroccan Chopped Salad)",
+ "localName": "Merk hzina — \"sad sauce\" salad",
+ "emoji": "🥗",
+ "country": "Morocco",
+ "countryFlag": "🇲🇦",
+ "region": "North Africa",
+ "community": "Mogador (Essaouira), Moroccan Jewish tradition",
+ "cuisine": "Moroccan",
+ "category": "Salads & Mezze",
+ "course": "Salad",
+ "diff": "Easy",
+ "prepTime": 10,
+ "restTime": 0,
+ "cookTime": 0,
+ "time": 10,
+ "servings": 6,
+ "cal": 70,
+ "rating": 4.5,
+ "reviews": 311,
+ "tags": [
+  "vegan",
+  "vegetarian",
+  "dairy-free",
+  "gluten-free",
+  "salad",
+  "no-cook",
+  "quick"
+ ],
+ "author": "Elle Brosh (Jewish Food Society)",
+ "authorEmoji": "👩‍🍳",
+ "desc": "A kitchen-sink chopped salad of cherry tomatoes, sweet peppers, celery, capers and chopped preserved lemon peel with a sharp red-wine-vinegar dressing.",
+ "longDesc": "Halve the cherry tomatoes, dice the peppers and celery, toss with preserved lemon peel, capers, vinegar, lemon juice, olive oil and flaky salt, and add the celery leaves. Serve immediately. Brosh says the name is Judeo-Arabic for 'sad sauce', and that in her family it was a salad enjoyed at the end of the week or the day before going to the souk to restock.",
+ "ingredients": [
+  "1 lb. cherry tomatoes",
+  "1 lb. of sweet bell peppers",
+  "2 stalks of celery, plus a handful of celery leaves",
+  "1 tablespoon preserved lemon peel, finely chopped",
+  "2 tablespoons capers",
+  "1 tablespoon red wine vinegar",
+  "½ fresh lemon, juiced",
+  "2 tablespoons extra virgin olive oil",
+  "2 pinches Maldon or other flaky salt"
+ ],
+ "equipment": [
+  "Large bowl"
+ ],
+ "steps": [
+  "Halve the cherry tomatoes and dice the bell peppers and celery.",
+  "In a large bowl toss with the preserved lemon peel, capers, red wine vinegar, lemon juice, olive oil and salt.",
+  "Add the reserved celery leaves and serve immediately."
+ ],
+ "chefTips": [
+  "Serve immediately.",
+  "Use up whatever fresh vegetables are on hand, as the name suggests.",
+  "Rinse capers if very salty."
+ ],
+ "commonMistakes": [
+  "Dressing it early so it waters.",
+  "Oversalting with capers and lemon.",
+  "Skipping the celery leaves."
+ ],
+ "servedWith": [
+  "Khobz (MAR060)"
+ ],
+ "relatedRecipes": [
+  "MAR052",
+  "MAR056",
+  "MAR051"
+ ],
+ "sources": [
+  "Adapted from 'Salade Merk Hzina (Moroccan Chopped Salad)', Jewish Food Society. BYLINE AS PRINTED: 'Shared by Elle Brosh'. Date as printed: 'Jul 10, 2024' (last update Jul 8, 2025). Yield 6 servings; total time 10 minutes.",
+  "SOURCING STATUS: ingredients TWO-PASS. Method wording is our own summary of the page; times and cues were relayed by a research tool and should be checked against the live page."
+ ],
+ "storage": "Best fresh; 1 day.",
+ "reheating": "Not reheated.",
+ "healthBenefits": [
+  "All raw vegetables with a light dressing.",
+  "Capers and preserved lemon bring sodium, so season carefully."
+ ],
+ "culturalNote": "Brosh explains that 'merk hzina' is Judeo-Arabic for 'sad sauce', a kitchen-sink salad enjoyed at the week's end, or the day before heading to the souk to restock; the recipe's journey is listed as Mogador, Morocco and Mascara, Algeria.",
+ "nutrition": {
+  "cal": 70,
+  "protein": 2,
+  "carbs": 8,
+  "fat": 4,
+  "fiber": 2,
+  "sodium": 330
+ },
+ "keywords": [
+  "merk hzina",
+  "moroccan chopped salad",
+  "preserved lemon salad",
+  "jewish food society",
+  "elle brosh"
+ ]
+},
+{
+ "id": "MAR054",
+ "title": "Chermoula (Herb and Spice Marinade)",
+ "localName": "Chermoula / charmoula (شرمولة)",
+ "emoji": "🌿",
+ "country": "Morocco",
+ "countryFlag": "🇲🇦",
+ "region": "North Africa",
+ "community": "National",
+ "cuisine": "Moroccan",
+ "category": "Sauces & Condiments",
+ "course": "Marinade or sauce",
+ "diff": "Easy",
+ "prepTime": 15,
+ "restTime": 0,
+ "cookTime": 0,
+ "time": 15,
+ "servings": 8,
+ "cal": 70,
+ "rating": 4.6,
+ "reviews": 73,
+ "tags": [
+  "vegan",
+  "vegetarian",
+  "dairy-free",
+  "gluten-free",
+  "condiment",
+  "no-cook",
+  "quick",
+  "traditional"
+ ],
+ "author": "Nada Kiffa (Taste of Maroc)",
+ "authorEmoji": "👩‍🍳",
+ "desc": "A fresh paste of coriander, parsley, garlic, cumin, paprika, olive oil and lemon, used to marinate fish and meat or spooned over grilled food.",
+ "longDesc": "The cook chops the herbs properly, crushes the garlic, then either pulses everything in a food processor or pounds it in a mortar until she is happy with the texture. The same base takes a spoonful of tomato paste (double for a red chermoula), turmeric for a yellow one, or a small preserved lemon for a lemony version. The author says the best and most authentic chermoula in Morocco is made with fresh herbs and garlic.",
+ "ingredients": [
+  "3 cups fresh coriander (cilantro), roughly chopped",
+  "1 cup fresh flat leaf parsley, roughly chopped, leaves only",
+  "6 to 8 cloves garlic, peeled and roughly chopped",
+  "1 tsp salt",
+  "1 tbsp ground cumin",
+  "1 tbsp sweet paprika, powder or paste",
+  "1/4 cup extra virgin olive oil",
+  "2 tbsp water (optional, not needed if using a pestle and mortar)",
+  "1 tbsp tomato paste (double it for a red chermoula)",
+  "5 tbsp lemon juice, freshly squeezed",
+  "1 tsp harissa paste, or to taste",
+  "1/2 tsp ground black pepper",
+  "1 tsp ground ginger",
+  "1 tsp ground turmeric (for a yellow chermoula)",
+  "1 small preserved lemon, seeds removed (for a lemony chermoula)"
+ ],
+ "equipment": [
+  "Food processor or mortar and pestle",
+  "Jar"
+ ],
+ "steps": [
+  "Roughly chop the herbs and crush the garlic.",
+  "Food processor: place the herbs and the rest of the ingredients in the bowl and pulse until you are satisfied with the texture. Thin with a few tablespoons of olive oil, water or a mix if needed.",
+  "Mortar and pestle: start by pounding garlic and salt, then add the chopped herbs and spices in batches and pound to the texture you want. Chop the herbs properly first or the chermoula will be stringy.",
+  "Use immediately or store in a jam jar or similar sealed container. If the paste is quite thick, top it off with olive oil. Keep in the fridge for up to a week."
+ ],
+ "chefTips": [
+  "Cue: pound or pulse until you are happy with the texture; the page describes the target as pasty but coarse and runny.",
+  "For a red chermoula, double the tomato paste (the page also mentions a roasted peeled red pepper).",
+  "The author says the name comes from the Arabic verb meaning to rub or marinate."
+ ],
+ "commonMistakes": [
+  "Skipping the chopping before pounding.",
+  "Using dried herbs, which are not authentic here.",
+  "Leaving it uncovered, which darkens it."
+ ],
+ "servedWith": [
+  "Fish and meat marinades (MAR005)"
+ ],
+ "relatedRecipes": [
+  "MAR005",
+  "MAR046",
+  "MAR055"
+ ],
+ "sources": [
+  "Adapted from 'Chermoula Recipe – Moroccan Marinade of Herbs and Spices', Taste of Maroc. BYLINE AS PRINTED: 'By Author Nada Kiffa'. Date as printed: 'Last updated: February 17, 2020' (published September 5, 2017). Yield '1 cup'.",
+  "SOURCING STATUS: card ingredients and method TWO-PASS; variation notes single-pass. Method wording is our own summary of the page; times and cues were relayed by a research tool and should be checked against the live page.",
+  "GAP: no separate full recipe for red chermoula from a named cook was obtained; the red, yellow and lemony versions are the page's own variation lines on the same card."
+ ],
+ "storage": "Up to a week in the fridge, topped with olive oil.",
+ "reheating": "Not heated.",
+ "healthBenefits": [
+  "Fresh herbs and garlic with olive oil and little else.",
+  "Naturally vegan."
+ ],
+ "culturalNote": "The author writes that the name comes from the Arabic verb chermel, in reference to rubbing or marinating something with a spice mix, and that the best and most authentic chermoula in Morocco is made with fresh herbs and garlic.",
+ "nutrition": {
+  "cal": 70,
+  "protein": 1,
+  "carbs": 4,
+  "fat": 6,
+  "fiber": 2,
+  "sodium": 300
+ },
+ "keywords": [
+  "chermoula",
+  "charmoula",
+  "moroccan marinade",
+  "nada kiffa",
+  "herb sauce"
+ ]
+},
+{
+ "id": "MAR055",
+ "title": "Harissa (Dried Chili Paste)",
+ "localName": "Harissa (هريسة)",
+ "emoji": "🌶️",
+ "country": "Morocco",
+ "countryFlag": "🇲🇦",
+ "region": "North Africa",
+ "community": "North Africa",
+ "cuisine": "Moroccan",
+ "category": "Sauces & Condiments",
+ "course": "Condiment",
+ "diff": "Easy",
+ "prepTime": 60,
+ "restTime": 0,
+ "cookTime": 10,
+ "time": 70,
+ "servings": 32,
+ "cal": 30,
+ "rating": 4.7,
+ "reviews": 259,
+ "tags": [
+  "vegan",
+  "vegetarian",
+  "dairy-free",
+  "gluten-free",
+  "condiment",
+  "spicy",
+  "make-ahead"
+ ],
+ "author": "Nada Kiffa (Taste of Maroc)",
+ "authorEmoji": "👩‍🍳",
+ "desc": "A thick paste of soaked dried red chilies ground with garlic, salt and olive oil, optionally sautéed and flavoured with cumin, caraway and paprika.",
+ "longDesc": "Dried chilies are slit, seeded and soaked in hot water 30 to 60 minutes, drained and ground with garlic, salt, oil and any optional spices. Optionally the mix is sautéed a few minutes until it looks like a thick dark paste, a step the author warns will make you sneeze. The paste is jarred under oil and kept in the fridge for 2 to 4 weeks, or frozen. It is not fermented.",
+ "ingredients": [
+  "10 oz dried red chili peppers",
+  "2 heads of garlic cloves, peeled",
+  "1 tbsp salt",
+  "1/4 cup olive oil",
+  "1 tbsp cumin seeds (optional)",
+  "1 tbsp caraway seeds (optional)",
+  "1 tbsp paprika (optional)"
+ ],
+ "equipment": [
+  "Food processor or meat grinder",
+  "Frying pan",
+  "Jars",
+  "Plastic or latex gloves"
+ ],
+ "steps": [
+  "Wear plastic or latex gloves to handle the chilies.",
+  "Run the knife through the top end of each dried chili, shake them head down and scrape out the seeds. Discard the seeds and soak the peppers in hot water for 30 to 60 minutes.",
+  "Drain and grind the chilies in a food processor or meat grinder (or mortar and pestle). Add the garlic, salt, oil and any other spice.",
+  "Optional: sauté the mix in a frying pan for a few minutes over medium heat, stirring constantly, until it looks like a thick dark paste.",
+  "Transfer to jars and top with oil. Store in a dark place; the fridge is better, where it keeps 2 to 4 weeks, or the freezer for longer."
+ ],
+ "chefTips": [
+  "Cue for the sauté: a thick dark paste. It is optional.",
+  "The page notes harissa is often flavoured with caraway, coriander seeds or cumin.",
+  "Work in a ventilated kitchen; the fumes sting."
+ ],
+ "commonMistakes": [
+  "Handling chilies bare-handed.",
+  "Skipping the oil layer in the jar.",
+  "Sautéing over high heat."
+ ],
+ "servedWith": [
+  "Soups, tagines and bessara (MAR035)"
+ ],
+ "relatedRecipes": [
+  "MAR054",
+  "MAR035",
+  "MAR058"
+ ],
+ "sources": [
+  "Adapted from 'Moroccan Harissa Recipe with Dried Chili Peppers' (card 'Harissa Paste with Dried Red Chili Peppers'), Taste of Maroc. BYLINE AS PRINTED: 'By Author Nada Kiffa'. Date as printed: 'Last updated: March 4, 2018' (posted September 23, 2017). Yield '32 tablespoons (1 lb. total)'.",
+  "SOURCING STATUS: ingredients TWO-PASS. Method wording is our own summary of the page; times and cues were relayed by a research tool and should be checked against the live page.",
+  "NOT USED: MarocMama's guest-post 'homemade harissa' (made with Korean red pepper powder: a Moroccan-style pantry shortcut). Not a fermented product; no curing step."
+ ],
+ "storage": "2 to 4 weeks in the fridge under oil, longer frozen (per the page).",
+ "reheating": "Not heated.",
+ "healthBenefits": [
+  "Chilies add capsaicin; a little goes a long way.",
+  "High in sodium when used liberally."
+ ],
+ "culturalNote": "The page describes harissa as a North African condiment made from chili peppers.",
+ "nutrition": {
+  "cal": 30,
+  "protein": 1,
+  "carbs": 3,
+  "fat": 2,
+  "fiber": 1,
+  "sodium": 200
+ },
+ "keywords": [
+  "harissa",
+  "moroccan harissa",
+  "dried chili paste",
+  "nada kiffa",
+  "hot sauce"
+ ]
+},
+{
+ "id": "MAR056",
+ "title": "Preserved Lemons",
+ "localName": "Lemoun markad / lhamd markad (الحامض المرقد)",
+ "emoji": "🍋",
+ "country": "Morocco",
+ "countryFlag": "🇲🇦",
+ "region": "North Africa",
+ "community": "National",
+ "cuisine": "Moroccan",
+ "category": "Sauces & Condiments",
+ "course": "Pantry",
+ "diff": "Easy",
+ "prepTime": 20,
+ "restTime": 43200,
+ "cookTime": 0,
+ "time": 43220,
+ "servings": 10,
+ "cal": 20,
+ "rating": 4.9,
+ "reviews": 319,
+ "tags": [
+  "vegan",
+  "vegetarian",
+  "dairy-free",
+  "gluten-free",
+  "condiment",
+  "cured",
+  "make-ahead",
+  "traditional"
+ ],
+ "author": "Christine Benlafquih (Taste of Maroc)",
+ "authorEmoji": "👩‍🍳",
+ "desc": "Lemons quartered, packed with coarse salt in a jar and left to cure for a month or longer until the rinds are soft and mellow.",
+ "longDesc": "Whole lemons are cut partway into four attached wedges, the crevices packed with salt, and pushed tightly into a clean jar. After a few days the lemons soften and release juice; more salted lemons fill the jar, salt goes on top, and fresh lemon juice tops up anything not submerged. The author says to leave them to cure for at least a month and up to a year, and that the longer they sit, the darker and softer they become.",
+ "ingredients": [
+  "10 fresh lemons, for preserving",
+  "2 additional lemons, for juicing (if needed)",
+  "1 cup coarse salt, preferably kosher",
+  "1 clean jar, barely large enough to accommodate 9 or 10 compressed lemons"
+ ],
+ "equipment": [
+  "Clean glass jar with lid",
+  "Sharp knife"
+ ],
+ "steps": [
+  "Wash and dry 7 or 8 of the lemons (the page prints 7 or 8 for the first round; the yield is 10).",
+  "Partially cut through each lemon from top to bottom to make four attached wedges. Generously fill the crevices with salt; no need to measure, a rough tablespoon or so per lemon.",
+  "Squeeze the salted lemons shut and pack them into the jar, wedged in as tightly as possible so they cannot move around.",
+  "Close the jar and set aside for a few days. The lemons will slightly soften and more juice will be released.",
+  "Add as many more salted lemons as will fit. When the jar is as full as possible, add some salt to the top. If the lemons are not submerged, top them off with fresh lemon juice.",
+  "Close the jar and put it in a cupboard to cure for at least one month or as long as a year. The page gives time only for readiness; see tips for what to look for.",
+  "Once opened, store in the fridge. Rinse off excess brine before using."
+ ],
+ "chefTips": [
+  "WHAT TO LOOK FOR: the source gives time only. A blogger describing Kitty Morse's method (a secondhand report) says that in about three weeks the lemons get very soft and the brining liquid thick and cloudy. Benlafquih says the lemons grow darker and softer with time.",
+  "An oily-looking layer on the brine is harmless, says the author; discard the jar if you see mold. Other sources say a lacy white film is harmless.",
+  "Thicker-skinned lemons take longer to cure than thin-skinned ones."
+ ],
+ "commonMistakes": [
+  "Not submerging the lemons; top up with lemon juice.",
+  "Using a jar far too large, which leaves air.",
+  "Using the lemons before they are soft, when they taste harsh."
+ ],
+ "servedWith": [
+  "Chicken tagines (MAR008)"
+ ],
+ "relatedRecipes": [
+  "MAR008",
+  "MAR004",
+  "MAR048"
+ ],
+ "sources": [
+  "Adapted from 'How to Make Moroccan Preserved Lemons', Taste of Maroc. BYLINE AS PRINTED: 'By Author Christine Benlafquih'. Date as printed: 'Last updated: March 28, 2022' (posted September 19, 2017). Yield '10 preserved lemons'.",
+  "SOURCING STATUS: quantities and times TWO-PASS. Method wording is our own summary of the page; times and cues were relayed by a research tool and should be checked against the live page.",
+  "CURING RULE: NO CUE, TIME ONLY on this page for readiness (\"a month or longer\"; \"after just a month or two\"; \"thicker-skinned take longer\"). The only observable ripeness cue found anywhere is secondhand (Food Gal blog describing Kitty Morse: lemons very soft, brine thick and cloudy at about three weeks). Mold is the stated warning sign.",
+  "DISAGREEMENTS across sources kept (not averaged): ready in 3 weeks (Morse via Food Gal), 4 weeks (Benkabbou), 30 days (Leite adapting Paula Wolfert), a month (Lahlou; Morocco World News), at least a month up to a year (Benlafquih). Salt per source varies widely. Liquid: Benlafquih and Leite add juice only if needed; Benkabbou and Lahlou add juice from the start."
+ ],
+ "storage": "Cured lemons keep in the fridge for months once opened.",
+ "reheating": "Not heated.",
+ "healthBenefits": [
+  "Adds flavour with little fat or sugar.",
+  "Very high in sodium; rinse and use sparingly."
+ ],
+ "culturalNote": "The author names doqq and boussera as traditional lemon varieties and says cinnamon, bay and other spices in the jar are not traditional.",
+ "nutrition": {
+  "cal": 20,
+  "protein": 0,
+  "carbs": 6,
+  "fat": 0,
+  "fiber": 2,
+  "sodium": 1500
+ },
+ "keywords": [
+  "preserved lemons",
+  "moroccan preserved lemon",
+  "lemoun markad",
+  "christine benlafquih",
+  "salt cured lemons"
+ ]
+},
+{
+ "id": "MAR057",
+ "title": "Amlou (Almond Dip with Argan Oil and Honey)",
+ "localName": "Amlou (أملو)",
+ "emoji": "🥜",
+ "country": "Morocco",
+ "countryFlag": "🇲🇦",
+ "region": "North Africa",
+ "community": "Souss (Agadir–Essaouira)",
+ "cuisine": "Moroccan",
+ "category": "Sauces & Condiments",
+ "course": "Breakfast spread",
+ "diff": "Easy",
+ "prepTime": 10,
+ "restTime": 0,
+ "cookTime": 15,
+ "time": 25,
+ "servings": 2,
+ "cal": 750,
+ "rating": 4.5,
+ "reviews": 91,
+ "tags": [
+  "vegetarian",
+  "dairy-free",
+  "gluten-free",
+  "contains-nuts",
+  "sweet",
+  "condiment",
+  "quick"
+ ],
+ "author": "Jeff Koehler (Saveur)",
+ "authorEmoji": "📖",
+ "desc": "A gritty-smooth spread of roasted almonds, culinary argan oil and honey, eaten with bread at breakfast or snack time.",
+ "longDesc": "Koehler's headnote describes amlou as an almond-based spread local to the Souss region between Agadir and Essaouira and a staple at the Moroccan table. Almonds are baked until deep brown and crunchy, cooled, blended to a gritty paste, and the oil is added gradually until smooth; salt and honey finish it. Refrigerated and covered, it keeps up to one week.",
+ "ingredients": [
+  "1⅓ cups almonds (8 oz.)",
+  "Fine salt",
+  "½ cup culinary argan oil (see headnote), or walnut or extra-virgin olive oil",
+  "2 Tbsp. honey, or to taste"
+ ],
+ "equipment": [
+  "Oven",
+  "Baking sheet",
+  "Food processor"
+ ],
+ "steps": [
+  "Position a rack in the center of the oven and preheat to 350°F.",
+  "On an ungreased baking sheet, bake the almonds, shaking the pan occasionally, until deep brown and crunchy, 10 to 15 minutes.",
+  "Transfer to a plate and set aside until cool.",
+  "In a food processor, blend the almonds to a gritty paste. With the machine running, gradually add the oil and blend until smooth.",
+  "Season with salt to taste, scrape into a bowl and stir in the honey.",
+  "Refrigerated and tightly covered, amlou keeps up to one week."
+ ],
+ "chefTips": [
+  "Cues quoted: deep brown and crunchy; gritty paste; smooth.",
+  "Use edible, culinary-grade argan oil, not the cosmetic kind.",
+  "Serve with bread at breakfast."
+ ],
+ "commonMistakes": [
+  "Using cosmetic argan oil.",
+  "Adding the oil all at once.",
+  "Under-roasting the almonds."
+ ],
+ "servedWith": [
+  "Khobz (MAR060)"
+ ],
+ "relatedRecipes": [
+  "MAR033",
+  "MAR034",
+  "MAR029"
+ ],
+ "sources": [
+  "Adapted from 'Almond Dip With Argan Oil and Honey', Saveur. BYLINE AS PRINTED: 'Jeff Koehler'. Date as printed: 'Published on August 22, 2023'. Yield 'Serves 2'; adapted from 'The North African Cookbook'.",
+  "SOURCING STATUS: ingredients TWO-PASS. Method wording is our own summary of the page; times and cues were relayed by a research tool and should be checked against the live page.",
+  "NOT USED: mymoroccanfood.com and Milk Street amlou pages (no byline and no date)."
+ ],
+ "storage": "Up to one week refrigerated and covered.",
+ "reheating": "Not heated.",
+ "healthBenefits": [
+  "Almonds and argan oil provide healthy fats.",
+  "Honey adds sweetness; calorie-dense, so portion small."
+ ],
+ "culturalNote": "Koehler's headnote says amlou is an almond-based spread local to the southwestern Moroccan region of Souss, between Agadir and Essaouira, and a staple at the Moroccan table.",
+ "nutrition": {
+  "cal": 750,
+  "protein": 14,
+  "carbs": 30,
+  "fat": 66,
+  "fiber": 8,
+  "sodium": 150
+ },
+ "keywords": [
+  "amlou",
+  "argan oil almond spread",
+  "moroccan breakfast spread",
+  "jeff koehler",
+  "souss"
+ ]
+},
+{
+ "id": "MAR058",
+ "title": "Ras el Hanout (Spice Blend)",
+ "localName": "Ras el hanout (رأس الحانوت)",
+ "emoji": "🧂",
+ "country": "Morocco",
+ "countryFlag": "🇲🇦",
+ "region": "North Africa",
+ "community": "National",
+ "cuisine": "Moroccan",
+ "category": "Sauces & Condiments",
+ "course": "Spice blend",
+ "diff": "Easy",
+ "prepTime": 10,
+ "restTime": 0,
+ "cookTime": 15,
+ "time": 25,
+ "servings": 24,
+ "cal": 10,
+ "rating": 4.7,
+ "reviews": 195,
+ "tags": [
+  "vegan",
+  "vegetarian",
+  "dairy-free",
+  "gluten-free",
+  "condiment",
+  "make-ahead",
+  "staple"
+ ],
+ "author": "Nargisse Benkabbou (My Moroccan Food)",
+ "authorEmoji": "👩‍🍳",
+ "desc": "A fragrant blend of toasted coriander, cumin, peppercorns, cloves, caraway, anise, fennel, star anise, cardamom, cinnamon, nutmeg and dried rose petals.",
+ "longDesc": "The whole spices are spread on a baking sheet at 150°C (300°F) for 15 minutes, stirring occasionally, then ground with about 10 gratings of nutmeg, the cinnamon stick and dried rose petals until finely ground. Sift through a fine sieve and store in a closed jar. Benkabbou notes that the name means 'top of the shop' and that recipes differ significantly from family to family.",
+ "ingredients": [
+  "1 teaspoon coriander seeds",
+  "1 teaspoon cumin seeds",
+  "1 teaspoon black peppercorns",
+  "1 teaspoon white peppercorns",
+  "1 teaspoon whole cloves",
+  "1 teaspoon turmeric",
+  "1 teaspoon caraway seeds",
+  "1 teaspoon anise seeds",
+  "1 teaspoon fennel seeds",
+  "10g star anise",
+  "10g cardamom pods",
+  "1 cinnamon stick",
+  "1 whole nutmeg",
+  "1 teaspoon dried rose petals"
+ ],
+ "equipment": [
+  "Oven and baking sheet",
+  "Spice grinder or food processor",
+  "Fine sieve",
+  "Jar"
+ ],
+ "steps": [
+  "Preheat the oven to 150 C (300 F).",
+  "Place all the ingredients except the cinnamon stick, whole nutmeg and dried roses on a baking sheet and put in the oven for 15 minutes, stirring occasionally.",
+  "Transfer the roasted spices, about 10 gratings of nutmeg, the cinnamon stick and the dried rose petals to a grinder or food processor and process until finely ground.",
+  "Sift the blend through a fine sieve and discard what is left. Store in a closed jar for up to 3 years."
+ ],
+ "chefTips": [
+  "Quick version from the page: use pre-ground spices, one teaspoon each.",
+  "Cue: finely ground, then sifted.",
+  "Saveur's unsigned North African mix uses allspice and cayenne and keeps 2 months; blends differ."
+ ],
+ "commonMistakes": [
+  "Roasting the cinnamon, nutmeg and roses with the rest.",
+  "Skipping the sieve.",
+  "Storing it in light."
+ ],
+ "servedWith": [
+  "Rubs for lamb and chicken"
+ ],
+ "relatedRecipes": [
+  "MAR055",
+  "MAR054",
+  "MAR014"
+ ],
+ "sources": [
+  "Adapted from 'Ras El Hanout – Moroccan Spice Blend', mymoroccanfood.com. BYLINE AS PRINTED: 'Nargisse Benkabbou'. Date as printed: 'June 09, 2015'. Yield not stated (servings here are ours).",
+  "SOURCING STATUS: ingredients TWO-PASS. Method wording is our own summary of the page; times and cues were relayed by a research tool and should be checked against the live page.",
+  "DISAGREEMENT kept: Saveur (no byline; labelled North African, not Moroccan) lists allspice, black peppercorns, coriander, cloves, cumin, cinnamon, ginger and cayenne in tablespoon amounts and stores for up to 2 months; Benkabbou stores up to 3 years."
+ ],
+ "storage": "Up to 3 years in a closed jar, per the page.",
+ "reheating": "Not heated.",
+ "healthBenefits": [
+  "Spices add flavour with almost no calories.",
+  "Contains no salt."
+ ],
+ "culturalNote": "The author says ras el hanout means 'top of the shop' in Arabic, that most of its spices do not originally come from Morocco, that today up to 60 or more spices may go in, and that recipes differ significantly from family to family.",
+ "nutrition": {
+  "cal": 10,
+  "protein": 0,
+  "carbs": 2,
+  "fat": 0,
+  "fiber": 1,
+  "sodium": 2
+ },
+ "keywords": [
+  "ras el hanout",
+  "moroccan spice blend",
+  "homemade spice mix",
+  "nargisse benkabbou",
+  "top of the shop"
+ ]
+},
+{
+ "id": "MAR059",
+ "title": "Moroccan Marinated Olives with Preserved Lemon and Harissa",
+ "localName": "Zitoun mchermel (زيتون مشرمل)",
+ "emoji": "🫒",
+ "country": "Morocco",
+ "countryFlag": "🇲🇦",
+ "region": "North Africa",
+ "community": "Jewish and Arab tables",
+ "cuisine": "Moroccan",
+ "category": "Sauces & Condiments",
+ "course": "Appetizer",
+ "diff": "Easy",
+ "prepTime": 10,
+ "restTime": 2880,
+ "cookTime": 0,
+ "time": 2890,
+ "servings": 6,
+ "cal": 170,
+ "rating": 4.7,
+ "reviews": 232,
+ "tags": [
+  "vegan",
+  "vegetarian",
+  "dairy-free",
+  "gluten-free",
+  "no-cook",
+  "make-ahead",
+  "condiment"
+ ],
+ "author": "Paola Gavin (Tablet Magazine)",
+ "authorEmoji": "✍️",
+ "desc": "Green, purple or black olives tossed with garlic, preserved lemon rind, parsley, paprika, cumin and harissa, covered in olive oil and rested a few days in the fridge.",
+ "longDesc": "Gavin writes that these marinated olives, called zitoun mchermel in Arabic, are much loved in Morocco by Jews and Arabs alike. Everything is tossed in a bowl, spooned into a jar, covered with olive oil and chilled for two or three days before serving, or a few hours if in a hurry. They keep up to a week in the fridge.",
+ "ingredients": [
+  "2 cups (about 3/4 lb) green, purple, or black olives, or a mix, well drained",
+  "2 or 3 garlic cloves, finely chopped",
+  "the rind of 1 preserved lemon, cut into small dice, or more to taste",
+  "1 or 2 bay leaves",
+  "3 tablespoons finely chopped flat leaf parsley",
+  "1 tsp paprika",
+  "1 tsp ground cumin",
+  "1 tsp harissa, or to taste",
+  "6 tbsp extra virgin olive oil, plus more to cover",
+  "1 or 2 tbsp lemon juice, to taste"
+ ],
+ "equipment": [
+  "Bowl",
+  "Jar or container with lid"
+ ],
+ "steps": [
+  "Place the olives in a bowl with the garlic, preserved lemon, bay leaves, parsley, spices, harissa, 3 tablespoons olive oil and lemon juice and toss lightly.",
+  "Spoon into a jar or container, cover with a layer of olive oil and close tightly.",
+  "Store in the refrigerator for 2 or 3 days before serving. Will keep up to 1 week."
+ ],
+ "chefTips": [
+  "The page gives time only for readiness: 2 or 3 days, or a few hours if you are in a hurry.",
+  "Keep the olives under a layer of oil in the fridge.",
+  "Use well-drained olives so the marinade stays flavourful."
+ ],
+ "commonMistakes": [
+  "Not draining the olives.",
+  "Leaving the jar at room temperature.",
+  "Skipping the oil layer."
+ ],
+ "servedWith": [
+  "Khobz (MAR060)"
+ ],
+ "relatedRecipes": [
+  "MAR056",
+  "MAR055",
+  "MAR008"
+ ],
+ "sources": [
+  "Adapted from 'Moroccan Marinated Olives with Preserved Lemons and Harissa', Tablet Magazine. BYLINE AS PRINTED: 'Paola Gavin'. Date as printed: 'September 02, 2022'. Yield 6 servings.",
+  "SOURCING STATUS: ingredients TWO-PASS. Method wording is our own summary of the page; times and cues were relayed by a research tool and should be checked against the live page.",
+  "NO CUE, TIME ONLY: the 2 or 3 day marinade (and the few-hours shortcut). This is a chilled marinade of ready-cured olives, not a cure. A Morocco World News method for curing raw green olives (water changes for a week to 10 days, then 7 to 8 weeks in brine) was NOT used because its brining stage has no observable cue."
+ ],
+ "storage": "Up to 1 week in the fridge.",
+ "reheating": "Serve at room temperature.",
+ "healthBenefits": [
+  "Olives supply healthy fats and vitamin E.",
+  "High in sodium."
+ ],
+ "culturalNote": "Gavin writes that zitoun mchermel are much loved in Morocco by Jews and Arabs alike and are traditionally marinated for two or three days before using.",
+ "nutrition": {
+  "cal": 170,
+  "protein": 1,
+  "carbs": 5,
+  "fat": 17,
+  "fiber": 2,
+  "sodium": 720
+ },
+ "keywords": [
+  "marinated olives",
+  "zitoun mchermel",
+  "moroccan olives",
+  "paola gavin",
+  "preserved lemon olives"
+ ]
+},
+{
+ "id": "MAR060",
+ "title": "Khobz (Moroccan Round Loaf)",
+ "localName": "Khobz / khobz dyal dar (خبز)",
+ "emoji": "🍞",
+ "country": "Morocco",
+ "countryFlag": "🇲🇦",
+ "region": "North Africa",
+ "community": "National",
+ "cuisine": "Moroccan",
+ "category": "Bread",
+ "course": "Bread",
+ "diff": "Medium",
+ "prepTime": 15,
+ "restTime": 75,
+ "cookTime": 20,
+ "time": 110,
+ "servings": 8,
+ "cal": 190,
+ "rating": 4.8,
+ "reviews": 257,
+ "tags": [
+  "vegetarian",
+  "dairy-free",
+  "vegan",
+  "contains-gluten",
+  "staple",
+  "traditional",
+  "budget"
+ ],
+ "author": "Christine Benlafquih (Taste of Maroc)",
+ "authorEmoji": "👩‍🍳",
+ "desc": "The everyday Moroccan loaf: a flat round of white-flour dough about a half inch thick, risen and baked until golden and hollow-sounding, used to scoop up tagines.",
+ "longDesc": "Khobz is served at nearly every Moroccan meal and doubles as a utensil. The dough is made from bread flour, yeast, salt, sugar, oil and warm water, kneaded until smooth and elastic, divided into two mounds, rested, patted into rounds about 1/4 inch thick and left to rise before baking at 225°C. The author notes Moroccans keep it to about 1.5 cm thick, that it can be baked at home or at a public street oven called a ferran, and that it does not stay fresh beyond a day.",
+ "ingredients": [
+  "4 cups white flour (preferably high-gluten or bread flour)",
+  "2 tsp salt",
+  "2 tsp sugar",
+  "1 tbsp yeast",
+  "2 tbsp oil (olive or vegetable)",
+  "1 1/4 cups warm water (not hot)",
+  "Oil, semolina or cornmeal for the pan (optional)"
+ ],
+ "equipment": [
+  "Mixing bowl",
+  "Baking sheet",
+  "Oven"
+ ],
+ "steps": [
+  "Combine the flour, salt and sugar. Make a well and add the yeast, then the water and oil.",
+  "Knead 5 to 10 minutes until smooth, soft and elastic but not sticky.",
+  "Divide into two mounds and rest 10 to 15 minutes.",
+  "Pat each into a flat round about 1/4 inch thick. Let rise about an hour (longer in a cold room), until the dough springs back when lightly pressed.",
+  "Heat the oven to 435°F (225°C). Score or prick the tops and bake about 20 minutes, until golden brown and hollow-sounding when tapped."
+ ],
+ "chefTips": [
+  "Cues: yeast foamy within 10 minutes if proofed; rise until it springs back; baked until golden and hollow-sounding.",
+  "The wording of the springs-back cue was relayed secondhand; check the page.",
+  "The card says rising 1 hr 15 minutes and the method says about an hour."
+ ],
+ "commonMistakes": [
+  "Making the rounds too thick.",
+  "Using cold water.",
+  "Skipping the pricking, which lets the loaf balloon."
+ ],
+ "servedWith": [
+  "Tagines and salads"
+ ],
+ "relatedRecipes": [
+  "MAR061",
+  "MAR062",
+  "MAR033"
+ ],
+ "sources": [
+  "Adapted from 'Moroccan Khobz Recipe – Basic Moroccan Bread Recipe', Taste of Maroc. BYLINE AS PRINTED: Christine Benlafquih (Taste of Maroc). Date as printed: 'Last updated: December 11, 2019' (metadata: published 2017-08-08). Yield '8 servings from 2 8\" loaves'.",
+  "SOURCING STATUS: ingredients TWO-PASS. Method wording is our own summary of the page; times and cues were relayed by a research tool and should be checked against the live page.",
+  "DISAGREEMENT kept (not averaged): MarocMama's khobz uses 2 cups warm water, 1 tsp sugar, no stated oil, a 45-minute rise (NO CUE, TIME ONLY), and 400-425°F; Benlafquih uses 1 1/4 cups water, 2 tsp sugar, 2 tbsp oil, about an hour and 435°F."
+ ],
+ "storage": "Best the day it is baked; does not stay fresh beyond a day.",
+ "reheating": "Warm briefly in a hot oven or on a dry pan.",
+ "healthBenefits": [
+  "A simple wheat bread with little fat.",
+  "Use whole-wheat flour for part to add fibre (MarocMama notes this is possible)."
+ ],
+ "culturalNote": "The author writes that khobz is served at nearly every meal, is used as a utensil, may be baked in a public street oven called a ferran, and is known as kesra in Tamazight and agroum in Tashelhit.",
+ "nutrition": {
+  "cal": 190,
+  "protein": 6,
+  "carbs": 34,
+  "fat": 3,
+  "fiber": 1,
+  "sodium": 470
+ },
+ "keywords": [
+  "khobz",
+  "moroccan bread",
+  "khobz recipe",
+  "christine benlafquih",
+  "basic moroccan bread"
+ ]
+},
+{
+ "id": "MAR061",
+ "title": "Batbout (Moroccan Pocket Bread)",
+ "localName": "Batbout / mkhamer / matlou' (بطبوط)",
+ "emoji": "🫓",
+ "country": "Morocco",
+ "countryFlag": "🇲🇦",
+ "region": "North Africa",
+ "community": "National",
+ "cuisine": "Moroccan",
+ "category": "Bread",
+ "course": "Bread",
+ "diff": "Medium",
+ "prepTime": 30,
+ "restTime": 75,
+ "cookTime": 30,
+ "time": 135,
+ "servings": 20,
+ "cal": 130,
+ "rating": 4.8,
+ "reviews": 210,
+ "tags": [
+  "vegetarian",
+  "dairy-free",
+  "vegan",
+  "contains-gluten",
+  "street-food",
+  "traditional"
+ ],
+ "author": "Christine Benlafquih (Taste of Maroc)",
+ "authorEmoji": "👩‍🍳",
+ "desc": "A stovetop pocket bread of white, durum and wholewheat flour, rolled thin, risen until puffy and cooked in a hot dry pan until it balloons.",
+ "longDesc": "Batbout is cooked on a griddle rather than baked. The yeast is proofed with sugar until foamy, the dough rests 10 to 15 minutes, balls are rolled to a thin round about 1/8 inch thick, and left to rise an hour or a little longer until light and puffy. In a very hot pan, each batbout is turned as soon as it is set (about 10 to 15 seconds), then cooked until puffed with air and browned on both sides.",
+ "ingredients": [
+  "1 tbsp dry yeast",
+  "2 tbsp sugar",
+  "3 cups white flour, preferably bread flour or high-gluten",
+  "2 cups durum flour or fine semolina",
+  "1 cup whole wheat flour",
+  "2 tsp salt",
+  "3 tbsp olive oil or vegetable oil",
+  "2 cups warm water, approx."
+ ],
+ "equipment": [
+  "Large skillet or griddle",
+  "Rolling pin"
+ ],
+ "steps": [
+  "Mix the yeast with a teaspoon of the sugar in a little warm water and set aside until foamy.",
+  "Combine the flours, salt, remaining sugar and oil; add the yeast mixture and water and knead into a dough. Cover with a towel and leave to rest 10 to 15 minutes.",
+  "Divide into balls and roll each into a thin round about 1/8 inch (0.3 cm) thick.",
+  "Leave to rise for an hour or a little longer, until light and puffy.",
+  "Heat a large pan or griddle over medium heat for several minutes until very hot. Cook each batbout, turning as soon as it is set (about 10 to 15 seconds), before air bubbles begin to appear.",
+  "Continue until the breads have puffed with air and are browned on both sides."
+ ],
+ "chefTips": [
+  "Cues quoted: yeast foamy; dough light and puffy; cooked until puffed and browned on both sides.",
+  "The author says durum or semolina is central and white flour is kept to about half; small Ramadan versions about 5 cm are eaten as bite-sized sandwiches.",
+  "No oven is used."
+ ],
+ "commonMistakes": [
+  "Rolling too thick, which stops the pocket forming.",
+  "A pan that is not very hot.",
+  "Under-rising."
+ ],
+ "servedWith": [
+  "Fillings of kefta, eggs or cheese"
+ ],
+ "relatedRecipes": [
+  "MAR060",
+  "MAR033",
+  "MAR069"
+ ],
+ "sources": [
+  "Adapted from 'Batbout – Moroccan Pita Bread Recipe', Taste of Maroc. BYLINE AS PRINTED: Christine Benlafquih. Date as printed: 'Last updated: February 11, 2021' (metadata: 2017-08-27). Yield '20 batbout, about 4 inches (10 cm) each'.",
+  "SOURCING STATUS: ingredients TWO-PASS. Method wording is our own summary of the page; times and cues were relayed by a research tool and should be checked against the live page. The page prints 'being' for 'begin' in the turning step.",
+  "DISAGREEMENT kept: MarocMama's batbout (10-12 breads) uses 4 cups white flour and 2 cups semolina or wheat, 2 Tbsp plus 1 tsp sugar, and a 1 to 1 1/2 hour rise with NO CUE, TIME ONLY."
+ ],
+ "storage": "Best fresh; keeps a day or two sealed.",
+ "reheating": "Warm briefly in a dry pan.",
+ "healthBenefits": [
+  "Mixes whole wheat with semolina for extra fibre.",
+  "Low in fat."
+ ],
+ "culturalNote": "The author notes the names mkhamer, toghrift and matlou' vary by region and that mini batbout are eaten at Ramadan.",
+ "nutrition": {
+  "cal": 130,
+  "protein": 4,
+  "carbs": 24,
+  "fat": 2,
+  "fiber": 2,
+  "sodium": 230
+ },
+ "keywords": [
+  "batbout",
+  "moroccan pita",
+  "stovetop bread",
+  "christine benlafquih",
+  "mkhamer"
+ ]
+},
+{
+ "id": "MAR062",
+ "title": "Harcha (Semolina Griddle Bread)",
+ "localName": "Harcha (حرشة)",
+ "emoji": "🫓",
+ "country": "Morocco",
+ "countryFlag": "🇲🇦",
+ "region": "North Africa",
+ "community": "National",
+ "cuisine": "Moroccan",
+ "category": "Bread",
+ "course": "Breakfast",
+ "diff": "Easy",
+ "prepTime": 15,
+ "restTime": 10,
+ "cookTime": 25,
+ "time": 50,
+ "servings": 6,
+ "cal": 360,
+ "rating": 4.6,
+ "reviews": 49,
+ "tags": [
+  "vegetarian",
+  "contains-dairy",
+  "contains-gluten",
+  "traditional",
+  "budget"
+ ],
+ "author": "Ali Attar, credited to Chamsaya (Afrik.com)",
+ "authorEmoji": "✍️",
+ "desc": "A dense, crumbly semolina galette with butter or olive oil, leavened with baking powder and cooked in a pan 3 to 4 minutes a side.",
+ "longDesc": "The French recipe on Afrik.com mixes fine and medium semolina with salt, baking powder and butter or olive oil into a sandy dough, adds warm milk, rests it 10 minutes, rolls it to 1 cm and cuts small rounds. They are cooked in a non-stick pan 3 to 4 minutes on each side. It is traditionally one large family galette served with olive oil; the author prefers mini galettes.",
+ "ingredients": [
+  "200 g d'un mélange de semoule fine et moyenne (200 g mixture of fine and medium semolina)",
+  "1/2 cc de sel (1/2 tsp salt)",
+  "1 sachet de levure chimique (1 sachet baking powder)",
+  "150 g de beurre ou d'huile d'olive (150 g butter or olive oil)",
+  "1 petit verre de lait tiédi (1 small glass warm milk)",
+  "eau (water; no quantity given)"
+ ],
+ "equipment": [
+  "Non-stick pan",
+  "Rolling pin",
+  "Round cutter"
+ ],
+ "steps": [
+  "Mix the semolina, salt, baking powder and butter or oil to a sandy dough.",
+  "Add the warm milk, and water only if needed. Do not knead; work until the dough is smooth, even and malleable.",
+  "Leave to rest for 10 minutes.",
+  "Roll to a thickness of 1 cm and cut small rounds.",
+  "Cook in a non-stick pan three to four minutes on each side. The page gives no heat level."
+ ],
+ "chefTips": [
+  "The page gives no doneness cue for the cooking; look for golden colour.",
+  "There is no yeast, so no rise: baking powder only.",
+  "Serve with honey, olive oil, butter or black olives."
+ ],
+ "commonMistakes": [
+  "Over-working the dough.",
+  "Rolling thinner than 1 cm.",
+  "Cooking over high heat."
+ ],
+ "servedWith": [
+  "Honey, olive oil, butter or black olives"
+ ],
+ "relatedRecipes": [
+  "MAR063",
+  "MAR033",
+  "MAR060"
+ ],
+ "sources": [
+  "Adapted from « Recette de la Harcha par Chamsaya », Afrik.com. BYLINE AS PRINTED: « Ali Attar »; the title credits « Chamsaya » (two names; we cannot reconcile them). Date: « Publié le 10 avril 2017 à 14h06 ». Yield « pour 6 ».",
+  "SOURCING STATUS: ingredients TWO-PASS in the original French. Method wording is our own summary of the page; times and cues were relayed by a research tool and should be checked against the live page.",
+  "NOT USED: Morocco World News' stuffed harcha with fresh yeast (a duplicated salt entry and no cooking time) and Milk Street's paywalled harcha."
+ ],
+ "storage": "Best the day it is made.",
+ "reheating": "Warm in a dry pan.",
+ "healthBenefits": [
+  "Semolina is a slow-digesting grain.",
+  "The butter makes it rich; olive oil is a lighter option."
+ ],
+ "culturalNote": "The page says harcha is traditionally one large galette for the family, served with olive oil; the author prefers mini galettes.",
+ "nutrition": {
+  "cal": 360,
+  "protein": 6,
+  "carbs": 35,
+  "fat": 22,
+  "fiber": 2,
+  "sodium": 280
+ },
+ "keywords": [
+  "harcha",
+  "moroccan semolina bread",
+  "galette de semoule",
+  "afrik",
+  "breakfast bread"
+ ]
+},
+{
+ "id": "MAR063",
+ "title": "Baked Harcha (Semolina Cookies with Anise, Raisins and Sesame)",
+ "localName": "Harcha dyal ferran / harcha au four",
+ "emoji": "🍪",
+ "country": "Morocco",
+ "countryFlag": "🇲🇦",
+ "region": "North Africa",
+ "community": "Snack shops",
+ "cuisine": "Moroccan",
+ "category": "Desserts & Sweets",
+ "course": "Snack",
+ "diff": "Easy",
+ "prepTime": 20,
+ "restTime": 10,
+ "cookTime": 25,
+ "time": 55,
+ "servings": 30,
+ "cal": 110,
+ "rating": 4.8,
+ "reviews": 88,
+ "tags": [
+  "vegetarian",
+  "contains-dairy",
+  "contains-egg",
+  "contains-gluten",
+  "sweet",
+  "kid-friendly"
+ ],
+ "author": "Christine Benlafquih (Taste of Maroc)",
+ "authorEmoji": "👩‍🍳",
+ "desc": "Small, crumbly baked semolina cookies flavoured with anise, sesame and raisins, rolled in sugar and semolina.",
+ "longDesc": "These are a baked relative of the stovetop harcha bread. The moist dough, almost too wet to shape, rests about 10 minutes until it can be rolled into 2-inch balls; they are rolled in coarse semolina and sugar and baked at 170°C for about 25 minutes until golden.",
+ "ingredients": [
+  "2 cups fine semolina",
+  "1/2 cup all purpose flour",
+  "1/2 cup granulated sugar",
+  "3 teaspoons baking powder",
+  "1/8 teaspoon salt",
+  "2 teaspoons sesame seeds",
+  "1 teaspoon anise seeds",
+  "1/4 cup raisins",
+  "2 teaspoons vanilla",
+  "2 eggs",
+  "2/3 cup melted butter",
+  "1/2 cup milk, approx.",
+  "// Garnish",
+  "4 tablespoons semolina (coarse or fine)",
+  "3 tablespoons granulated sugar"
+ ],
+ "equipment": [
+  "Baking trays",
+  "Oven"
+ ],
+ "steps": [
+  "Preheat the oven to 338°F (170°C).",
+  "Mix the dry ingredients, seeds and raisins; stir in the vanilla, eggs, melted butter and milk. The dough should be almost too moist to shape.",
+  "Rest for about 10 minutes, or until you can easily roll balls from the dough.",
+  "Roll into balls about 2 inches (5 cm), roll in the semolina and sugar garnish, and space two to three inches apart on trays.",
+  "Bake about 25 minutes, or until golden."
+ ],
+ "chefTips": [
+  "Cue: golden after about 25 minutes.",
+  "A 2021 reader comment found baking powder had been printed as 6 teaspoons; the author confirmed 3 teaspoons and updated the page.",
+  "These are often sold larger in snack shops, says the author."
+ ],
+ "commonMistakes": [
+  "Using 6 teaspoons baking powder (the old misprint).",
+  "Skipping the rest so the dough cannot be rolled.",
+  "Overbaking."
+ ],
+ "servedWith": [
+  "Mint tea (MAR082)"
+ ],
+ "relatedRecipes": [
+  "MAR062",
+  "MAR064",
+  "MAR034"
+ ],
+ "sources": [
+  "Adapted from 'Moroccan Semolina Cookies with Anise, Raisins and Sesame – Baked Harcha', Taste of Maroc. BYLINE AS PRINTED: Christine Benlafquih, Taste of Maroc. Date as printed: 'Last updated: August 7, 2020' (metadata: 2020-02-12). Yield '30 cookies, about 2 inches each'.",
+  "SOURCING STATUS: ingredients TWO-PASS. Method wording is our own summary of the page; times and cues were relayed by a research tool and should be checked against the live page."
+ ],
+ "storage": "Keeps several days in a tin.",
+ "reheating": "Not reheated.",
+ "healthBenefits": [
+  "Semolina and seeds; moderate sugar per cookie.",
+  "Contains butter and eggs."
+ ],
+ "culturalNote": "The author notes that classic harcha is a stovetop semolina flatbread and that these baked cookies are often sold in snack shops in a larger size.",
+ "nutrition": {
+  "cal": 110,
+  "protein": 2,
+  "carbs": 14,
+  "fat": 5,
+  "fiber": 1,
+  "sodium": 45
+ },
+ "keywords": [
+  "baked harcha",
+  "semolina cookies",
+  "anise sesame cookies",
+  "christine benlafquih",
+  "harcha dyal ferran"
+ ]
+},
+{
+ "id": "MAR064",
+ "title": "Baghrir (Thousand-Hole Semolina Pancakes)",
+ "localName": "Baghrir / beghrir (بغرير)",
+ "emoji": "🥞",
+ "country": "Morocco",
+ "countryFlag": "🇲🇦",
+ "region": "North Africa",
+ "community": "National",
+ "cuisine": "Moroccan",
+ "category": "Breakfast",
+ "course": "Breakfast",
+ "diff": "Easy",
+ "prepTime": 5,
+ "restTime": 15,
+ "cookTime": 20,
+ "time": 40,
+ "servings": 16,
+ "cal": 90,
+ "rating": 4.7,
+ "reviews": 174,
+ "tags": [
+  "vegetarian",
+  "contains-gluten",
+  "sweet",
+  "traditional",
+  "budget",
+  "kid-friendly"
+ ],
+ "author": "Christine Benlafquih (Taste of Maroc)",
+ "authorEmoji": "👩‍🍳",
+ "desc": "Spongy, yeast-raised semolina pancakes cooked on one side only, so the top is covered with tiny bubbles that become holes. Soaked in warm honey-butter.",
+ "longDesc": "The batter of fine semolina or durum flour, all-purpose flour, yeast, baking powder, sugar, salt and lukewarm water is blended for about a minute, rested 10 to 15 minutes until light and foamy, and poured into a medium-hot non-stick crepe pan without swirling. Each pancake cooks on one side only, about 1 to 2 minutes, until set with no wet spots. They are cooled in a single layer before stacking.",
+ "ingredients": [
+  "1 1/2 cups fine semolina or durum flour",
+  "3/4 cup all-purpose flour",
+  "1 tbsp dry yeast",
+  "2 tsp baking powder",
+  "1 tsp sugar",
+  "1 tsp salt",
+  "3 cups + 2 tbsp lukewarm water",
+  "Butter and honey, to serve (no quantity printed)"
+ ],
+ "equipment": [
+  "Blender",
+  "Non-stick crepe pan"
+ ],
+ "steps": [
+  "Blend everything for a solid minute until smooth and creamy.",
+  "Rest about 10 to 15 minutes. The batter should be light and foamy with tiny bubbles.",
+  "Heat a non-stick crepe pan over medium heat. Pour in batter without swirling and cook one side only, about 1 to 2 minutes, until set with no wet spots and the surface is covered with holes.",
+  "Cool in a single layer before stacking. Serve with warm honey and butter."
+ ],
+ "chefTips": [
+  "Cues: batter light and foamy; surface holes; no wet spots left.",
+  "If the holes stay small, thin the batter with a tablespoon or two of water (relayed from the page; unverified).",
+  "A very bright yellow batter may contain colouring, a sign of an inferior batter, says the author."
+ ],
+ "commonMistakes": [
+  "Swirling the batter.",
+  "Flipping the pancake.",
+  "Stacking while hot."
+ ],
+ "servedWith": [
+  "Honey and butter",
+  "Mint tea (MAR082)"
+ ],
+ "relatedRecipes": [
+  "MAR033",
+  "MAR062",
+  "MAR030"
+ ],
+ "sources": [
+  "Adapted from 'Beghrir – Moroccan Semolina Pancakes', Taste of Maroc. BYLINE AS PRINTED: 'By Author Christine Benlafquih'. Date as printed: 'Last updated: November 12, 2019' (metadata: 2017-10-03). Yield '16 5\" (12 cm) beghrir'.",
+  "SOURCING STATUS: ingredients TWO-PASS (US measures). The holes cue is a single-pass summary. Method wording is our own summary of the page; times and cues were relayed by a research tool and should be checked against the live page.",
+  "DISAGREEMENT kept (not averaged): Salima's Kitchen (2 cups water, 1 tsp yeast, 30-minute rise with NO CUE, TIME ONLY, medium-low heat); ASIF's Baghrir (2 cups water, 1 tbsp salt, 30 minutes) differ in water, yeast, salt, rest and heat. Both give hole cues ('dozens of holes', 'covered with bubbles')."
+ ],
+ "storage": "Keeps 2 days; stack with paper between.",
+ "reheating": "Warm in a low oven, or serve at room temperature with warm honey-butter.",
+ "healthBenefits": [
+  "Light, low-fat pancake.",
+  "Honey and butter add calories at the table."
+ ],
+ "culturalNote": "The author notes that the flipped version is called khringos in some regions, and that Moroccans reserve a pan for beghrir.",
+ "nutrition": {
+  "cal": 90,
+  "protein": 3,
+  "carbs": 18,
+  "fat": 1,
+  "fiber": 1,
+  "sodium": 210
+ },
+ "keywords": [
+  "baghrir",
+  "beghrir",
+  "thousand hole pancakes",
+  "moroccan semolina pancakes",
+  "christine benlafquih"
+ ]
+},
+{
+ "id": "MAR065",
+ "title": "Sfenj (Moroccan Yeasted Doughnuts)",
+ "localName": "Sfenj (سفنج)",
+ "emoji": "🍩",
+ "country": "Morocco",
+ "countryFlag": "🇲🇦",
+ "region": "North Africa",
+ "community": "National; Hanukkah tradition",
+ "cuisine": "Moroccan",
+ "category": "Street Food & Snacks",
+ "course": "Breakfast or snack",
+ "diff": "Medium",
+ "prepTime": 90,
+ "restTime": 60,
+ "cookTime": 30,
+ "time": 180,
+ "servings": 9,
+ "cal": 290,
+ "rating": 4.7,
+ "reviews": 297,
+ "tags": [
+  "vegetarian",
+  "dairy-free",
+  "vegan",
+  "contains-gluten",
+  "fried",
+  "street-food",
+  "sweet"
+ ],
+ "author": "Jewish Food Society (organisation byline)",
+ "authorEmoji": "📰",
+ "desc": "Wet, yeasted ring doughnuts fried in hot oil until golden and chewy, dusted with sugar or served with honey and pistachios.",
+ "longDesc": "The dough is made of flour, orange zest, sugar and salt with yeast bloomed to a froth in warm water, kneaded about 15 minutes until very smooth, and left to roughly double in size (about an hour). Balls about the size of a small egg are stretched to rings roughly 4 inches across and fried in oil at 350°F, 2 minutes on one side and 1 1/2 on the other, then cooled about 4 minutes and finished with honey and ground pistachios.",
+ "ingredients": [
+  "1 tablespoon dry active yeast",
+  "3 tablespoons sugar plus ¼ cup for dusting",
+  "4 tablespoons plus ¾ cup warm water",
+  "2 ½ cups plus two tablespoons flour",
+  "Zest from 1 orange",
+  "½ teaspoon Kosher Salt",
+  "2 cups canola oil",
+  "1 cup honey",
+  "½ cup ground pistachios"
+ ],
+ "equipment": [
+  "Heavy pot",
+  "Thermometer",
+  "Slotted spoon"
+ ],
+ "steps": [
+  "Combine the yeast, 1 tablespoon sugar and 4 tablespoons warm water and let stand about 15 minutes, until frothy and blooming.",
+  "Mix in the flour, zest, remaining sugar, salt and water and knead about 15 minutes, until the dough is very smooth.",
+  "Cover and let rise until roughly double in size, approximately 1 hour.",
+  "Heat the oil to 350°F. Take pieces about the size of a small egg, stretch each into a ring about 4 inches across, and fry 2 minutes on one side and 1 1/2 minutes on the other.",
+  "Cool about 4 minutes. Dust with sugar, or drizzle with warm honey and sprinkle with ground pistachios."
+ ],
+ "chefTips": [
+  "Cues: yeast frothy and blooming; dough doubled in size.",
+  "A food blog version uses 3 cups flour and 2 to 4 hours rise with no cue, and adds cinnamon sugar, which it calls inauthentic.",
+  "Keep the oil at temperature; wet dough soaks up oil if it is too cool."
+ ],
+ "commonMistakes": [
+  "Oil too cool.",
+  "Under-kneading.",
+  "Using dry hands on the sticky dough; wet or oil them."
+ ],
+ "servedWith": [
+  "Mint tea (MAR082)"
+ ],
+ "relatedRecipes": [
+  "MAR064",
+  "MAR072",
+  "MAR062"
+ ],
+ "sources": [
+  "Adapted from 'Sfenj (Moroccan Yeasted Doughnut)', Jewish Food Society. BYLINE: no individual author printed; credited to Jewish Food Society (flagged). Dates as printed: 'Jan 15, 2021', 'Last Update: Jun 8, 2023'. Yield 'Serves 8-10'.",
+  "SOURCING STATUS: ingredients TWO-PASS. Method wording is our own summary of the page; times and cues were relayed by a research tool and should be checked against the live page.",
+  "NOT USED: two sfenj pages with no byline or date (Jamie Geller, Bladi.net). A first-name-only blog (Stephanie, iamafoodblog) adapted from The Spruce was kept only as a cross-check."
+ ],
+ "storage": "Best eaten warm the same day.",
+ "reheating": "Not recommended; refresh briefly in a hot oven.",
+ "healthBenefits": [
+  "Fried; a treat rather than daily food.",
+  "Orange zest and pistachios add flavour without much sugar."
+ ],
+ "culturalNote": "The page is tagged Hanukkah and North Africa; no further cultural remarks are printed.",
+ "nutrition": {
+  "cal": 290,
+  "protein": 5,
+  "carbs": 46,
+  "fat": 10,
+  "fiber": 2,
+  "sodium": 120
+ },
+ "keywords": [
+  "sfenj",
+  "moroccan doughnuts",
+  "yeasted doughnuts",
+  "jewish food society",
+  "hanukkah"
+ ]
+},
+{
+ "id": "MAR066",
+ "title": "Chicken Pastilla",
+ "localName": "Pastilla au poulet / bastilla (بسطيلة)",
+ "emoji": "🥧",
+ "country": "Morocco",
+ "countryFlag": "🇲🇦",
+ "region": "North Africa",
+ "community": "Weddings and celebrations",
+ "cuisine": "Moroccan",
+ "category": "Pastries & Pies",
+ "course": "Main",
+ "diff": "Hard",
+ "prepTime": 40,
+ "restTime": 0,
+ "cookTime": 70,
+ "time": 110,
+ "servings": 5,
+ "cal": 700,
+ "rating": 4.9,
+ "reviews": 266,
+ "tags": [
+  "halal",
+  "high-protein",
+  "contains-nuts",
+  "contains-egg",
+  "contains-dairy",
+  "festive",
+  "special-occasion"
+ ],
+ "author": "Amina Savoura (Afrik.com, from \"La table du ramadan\")",
+ "authorEmoji": "✍️",
+ "desc": "A sweet-savoury pie of chicken, scrambled eggs and almonds between crisp brick sheets, dusted with icing sugar and cinnamon.",
+ "longDesc": "The French recipe on Afrik.com is credited to the book La table du ramadan. The chicken is browned 3 minutes per side, covered by a third with water and cooked about 40 minutes until done; eggs are scrambled into the sauce; almonds are boiled 10 minutes, then butter and sugar are added; layers of brick sheets are brushed with melted butter, and the pie is baked at 180°C for 10 to 15 minutes until well browned. The page uses curry alongside paprika and cinnamon, an unusual choice reported as printed.",
+ "ingredients": [
+  "1 poulet de 1,5 kg (1 chicken, 1.5 kg)",
+  "500 g d'amandes (500 g almonds)",
+  "18 feuilles de brick (18 brick sheets)",
+  "2 oignons (2 onions)",
+  "1/2 citron (1/2 lemon)",
+  "10 oeufs (10 eggs)",
+  "150 g de beurre (150 g butter)",
+  "1 botte de coriandre (1 bunch coriander)",
+  "1 c à s de paprika rouge doux (1 tbsp sweet red paprika)",
+  "1 c à s de curry (1 tbsp curry)",
+  "3 c à s de cannelle + un peu pour la décoration (3 tbsp cinnamon + a little for decoration)",
+  "70 g de sucre en poudre (70 g sugar)",
+  "2 c à s de sucre glace (2 tbsp icing sugar)",
+  "3 c à s d'huile d'olive + un filet (3 tbsp olive oil + a drizzle)"
+ ],
+ "equipment": [
+  "Large pot",
+  "Pie dish",
+  "Pastry brush",
+  "Oven"
+ ],
+ "steps": [
+  "Brown the chicken 3 minutes on each side. Cover it by a third with water and cook about 40 minutes, until it is well cooked.",
+  "Add the onions, herbs and spices to the sauce, then scramble the eggs into it with 20 g of the sugar and 2 tbsp of the cinnamon.",
+  "Plunge the almonds in a pan of boiling water for 10 minutes, then mix them with the sugar and cinnamon.",
+  "Melt 100 g of the butter. Layer brick sheets brushed with butter in the pie dish, fill with the almonds and the chicken-egg mixture, and fold the sheets over.",
+  "Brush the top with 50 g of butter and bake at 180°C (gas 6) for 10 to 15 minutes, until well golden.",
+  "Dust with icing sugar and cinnamon and serve."
+ ],
+ "chefTips": [
+  "Cues quoted: chicken well cooked; pie well golden.",
+  "The assembly order here is our summary; the research tool returned only number-bearing sentences from the page.",
+  "Fry the almonds briefly if you want a crunchier layer."
+ ],
+ "commonMistakes": [
+  "Soggy filling: reduce the sauce first.",
+  "Not brushing each sheet with butter.",
+  "Baking too long, which burns the sugar."
+ ],
+ "servedWith": [
+  "Mint tea (MAR082)"
+ ],
+ "relatedRecipes": [
+  "MAR067",
+  "MAR068",
+  "MAR071"
+ ],
+ "sources": [
+  "Adapted from « Pastilla au poulet », Afrik.com. BYLINE AS PRINTED: « Amina Savoura ». Date: « Publié le 30 mai 2011 à 18h38 »; caption credits the book « La table du ramadan ». Yield « pour 4 à 6 personnes ».",
+  "SOURCING STATUS: ingredients TWO-PASS in the original French. Method wording is our own summary of the page; times and cues were relayed by a research tool and should be checked against the live page. The page lists curry, an unusual choice for pastilla; kept as printed. Some of the sub-steps (when the herbs and onions go in; layering order) were not retrieved and are written in our own words.",
+  "DISAGREEMENT kept: Kitchens for Good (Abdu, 2023): 3 lb chicken, 8 eggs, 14 oz almonds, 325°F then 400°F; The Mediterranean Dish uses dates and ras el hanout with phyllo, 375°F. A pigeon pastilla from a named Moroccan cook was not found."
+ ],
+ "storage": "Best eaten warm on the day; keeps 2 days.",
+ "reheating": "Reheat in a moderate oven to re-crisp.",
+ "healthBenefits": [
+  "Protein-rich; almonds add healthy fats.",
+  "Butter-laden pastry: a feast dish."
+ ],
+ "culturalNote": "The page says the pastilla is traditionally served on grand occasions and festivals.",
+ "nutrition": {
+  "cal": 700,
+  "protein": 34,
+  "carbs": 48,
+  "fat": 42,
+  "fiber": 5,
+  "sodium": 480
+ },
+ "keywords": [
+  "chicken pastilla",
+  "chicken bastilla",
+  "pastilla au poulet",
+  "amina savoura",
+  "moroccan pie"
+ ]
+},
+{
+ "id": "MAR067",
+ "title": "Almond Briouats (Honey-Dipped Almond Pastries)",
+ "localName": "Briouat bil louz (بريوات باللوز)",
+ "emoji": "🍯",
+ "country": "Morocco",
+ "countryFlag": "🇲🇦",
+ "region": "North Africa",
+ "community": "Tea time and Ramadan",
+ "cuisine": "Moroccan",
+ "category": "Pastries & Pies",
+ "course": "Dessert",
+ "diff": "Hard",
+ "prepTime": 120,
+ "restTime": 0,
+ "cookTime": 60,
+ "time": 180,
+ "servings": 50,
+ "cal": 210,
+ "rating": 4.5,
+ "reviews": 30,
+ "tags": [
+  "vegetarian",
+  "contains-nuts",
+  "contains-dairy",
+  "contains-egg",
+  "contains-gluten",
+  "fried",
+  "sweet",
+  "ramadan",
+  "festive"
+ ],
+ "author": "Christine Benlafquih (Taste of Maroc)",
+ "authorEmoji": "👩‍🍳",
+ "desc": "Triangles of crisp warqa pastry filled with a spiced almond paste, fried until light golden and soaked in warm honey and orange flower water.",
+ "longDesc": "Whole almonds are blanched, fried in oil until light to medium golden brown (about 5 minutes per batch), ground and mixed with sugar, cinnamon, salt, mastic, butter and orange flower water. Warqa strips are filled, folded into triangles (four or five flips is enough), sealed with beaten egg yolk and butter, and fried until light golden, usually 5 to 7 minutes. The briouats are dipped in hot, slightly foamy honey scented with orange flower water.",
+ "ingredients": [
+  "35 oz whole raw almonds",
+  "2 cups vegetable oil, for frying",
+  "1 3/4 cup granulated sugar",
+  "1/2 teaspoon ground cinnamon, or more to taste",
+  "1/8 teaspoon salt",
+  "1/8 teaspoon mastic gum powder (about 3 grains, crushed)",
+  "1/2 cup unsalted butter, softened",
+  "1/3 cup orange flower water",
+  "2.2 lbs warqa",
+  "1/4 cup unsalted butter, melted",
+  "2 egg yolks, lightly beaten",
+  "4 cups vegetable oil, for frying",
+  "45 oz honey, mild-flavored such as Eucalyptus",
+  "1 to 2 tablespoons orange flower water, pure (avoid imitation)"
+ ],
+ "equipment": [
+  "Deep pot for frying",
+  "Food processor",
+  "Pastry brush"
+ ],
+ "steps": [
+  "Blanch the almonds: return the water to a boil for one or two minutes, then drain and peel.",
+  "Fry the almonds in the oil until light to medium golden brown; each batch takes about 5 minutes provided the oil is not too hot. Drain, cool and grind.",
+  "Mix the ground almonds with the sugar, cinnamon, salt, mastic, softened butter and the 1/3 cup orange flower water to a paste.",
+  "Cut the warqa into strips (for cherry-sized balls, use a 5 x 30 cm strip), fill and fold into triangles, four or five flips of the triangle are sufficient, and seal the end with egg yolk mixed with melted butter.",
+  "Heat the honey with a tablespoon of orange flower water until quite hot and slightly foamy on top, then remove from the heat.",
+  "Fry the briouats in the oil until light golden brown, usually 5 to 7 minutes. Dip them in the hot honey and drain."
+ ],
+ "chefTips": [
+  "Cues quoted: almonds light to medium golden brown; briouats light golden brown; honey quite hot and slightly foamy.",
+  "The ingredient list says 45 oz honey but the method heats 1 kg; reported as printed.",
+  "Stored at room temperature they keep a month, says the page."
+ ],
+ "commonMistakes": [
+  "Oil that is too hot (almonds burn, briouats darken).",
+  "Sealing poorly so honey leaks in.",
+  "Using imitation orange flower water."
+ ],
+ "servedWith": [
+  "Mint tea (MAR082)",
+  "Chebakia (MAR072)"
+ ],
+ "relatedRecipes": [
+  "MAR072",
+  "MAR034",
+  "MAR066"
+ ],
+ "sources": [
+  "Adapted from 'Almond Briouat Recipe – Moroccan Pastries with Almonds and Honey', Taste of Maroc. BYLINE AS PRINTED: 'By Author Christine Benlafquih'. Date as printed: 'Last updated: July 8, 2020' (metadata: 2018-05-07). Yield '100 small (5 cm) pastries or 50 large'.",
+  "SOURCING STATUS: ingredients TWO-PASS. Method wording is our own summary of the page; times and cues were relayed by a research tool and should be checked against the live page.",
+  "MISMATCH KEPT: the ingredient list says 45 oz honey and the method says 1 kg; 'isn't to hot' is a printed misprint."
+ ],
+ "storage": "Keeps about a month at room temperature (per the page).",
+ "reheating": "Not reheated.",
+ "healthBenefits": [
+  "Almonds supply healthy fats; the dish is high in sugar.",
+  "A festive treat in small portions."
+ ],
+ "culturalNote": "The author writes these pastries are popular at tea time and at Ramadan, served alongside chebakia and sellou.",
+ "nutrition": {
+  "cal": 210,
+  "protein": 3,
+  "carbs": 26,
+  "fat": 11,
+  "fiber": 1,
+  "sodium": 20
+ },
+ "keywords": [
+  "almond briouats",
+  "moroccan almond pastry",
+  "honey pastries",
+  "christine benlafquih",
+  "ramadan sweets"
+ ]
+},
+{
+ "id": "MAR068",
+ "title": "Cheese Briouats (Adapted)",
+ "localName": "Briouat bi jben (بريوات بالجبن)",
+ "emoji": "🧀",
+ "country": "Morocco",
+ "countryFlag": "🇲🇦",
+ "region": "North Africa",
+ "community": "Adaptation for US kitchens",
+ "cuisine": "Moroccan",
+ "category": "Pastries & Pies",
+ "course": "Appetizer",
+ "diff": "Easy",
+ "prepTime": 30,
+ "restTime": 0,
+ "cookTime": 20,
+ "time": 50,
+ "servings": 15,
+ "cal": 190,
+ "rating": 4.6,
+ "reviews": 293,
+ "tags": [
+  "vegetarian",
+  "contains-dairy",
+  "contains-egg",
+  "contains-gluten",
+  "kid-friendly",
+  "ramadan"
+ ],
+ "author": "Amanda Mouttaki (MarocMama)",
+ "authorEmoji": "👩‍🍳",
+ "desc": "Crisp filo triangles filled with feta, mozzarella, egg and garlic, brushed with butter and baked golden.",
+ "longDesc": "MarocMama notes that Moroccan versions traditionally use processed cheese (Laughing Cow) bulked with boiled egg, and that feta is expensive in Morocco; this version uses feta and mozzarella with beaten eggs and garlic for a US kitchen. The filo is cut in half by the width, a tablespoon of filling goes along the bottom, and the pastries are folded and baked at 375°F for 15 to 20 minutes until golden and starting to flake.",
+ "ingredients": [
+  "1 package of filo dough",
+  "8 oz Greek Feta",
+  "8 oz shredded mozzarella",
+  "2 eggs beaten",
+  "1 tsp crushed garlic",
+  "1/2 tsp pepper",
+  "Melted butter to brush between layers (no quantity printed)",
+  "1 egg yolk beaten for brushing on top before baking"
+ ],
+ "equipment": [
+  "Baking sheet",
+  "Pastry brush"
+ ],
+ "steps": [
+  "Preheat the oven to 375°F.",
+  "Mix the feta, mozzarella, beaten eggs, garlic and pepper.",
+  "Cut the filo dough in half by the width, brush the layers with melted butter, and place a tablespoon of filling along the bottom.",
+  "Fold into triangles, brush the tops with the egg yolk, and bake 15 to 20 minutes until the pastry is golden brown and starting to flake."
+ ],
+ "chefTips": [
+  "Cue: golden brown and starting to flake.",
+  "Keep unused filo covered with a damp cloth.",
+  "Jben, Morocco's best-loved cheese, is described by the author as the traditional filling alternative."
+ ],
+ "commonMistakes": [
+  "Overfilling.",
+  "Letting filo dry out.",
+  "Not brushing with butter between layers."
+ ],
+ "servedWith": [
+  "Mint tea (MAR082)"
+ ],
+ "relatedRecipes": [
+  "MAR067",
+  "MAR066",
+  "MAR040"
+ ],
+ "sources": [
+  "Adapted from 'Moroccan Cheese Briouats', marocmama.com. BYLINE AS PRINTED: 'By: Author Amanda Mouttaki'. No visible date (metadata: published 2010-09-09, modified 2024-02-14). Yield '15'.",
+  "SOURCING STATUS: ingredients TWO-PASS. Method wording is our own summary of the page; times and cues were relayed by a research tool and should be checked against the live page.",
+  "FLAG: a US-style adaptation (feta, mozzarella, filo); printed misspellings 'mozzerella' and 'find dough' for filo dough. The page itself says traditional versions use processed cheese."
+ ],
+ "storage": "Keeps 2 days in the fridge.",
+ "reheating": "Re-crisp in a 350°F oven.",
+ "healthBenefits": [
+  "High in protein and calcium.",
+  "Contains butter and cheese, so a rich snack."
+ ],
+ "culturalNote": "The author says traditional versions often use processed cheese (Laughing Cow) bulked with boiled egg, and that feta is expensive in Morocco.",
+ "nutrition": {
+  "cal": 190,
+  "protein": 8,
+  "carbs": 11,
+  "fat": 13,
+  "fiber": 1,
+  "sodium": 420
+ },
+ "keywords": [
+  "cheese briouats",
+  "moroccan cheese pastry",
+  "feta filo triangles",
+  "marocmama",
+  "ramadan appetizer"
+ ]
+},
+{
+ "id": "MAR069",
+ "title": "Hout Quari (Sardine Patty Sandwich)",
+ "localName": "Hout quari — sardine kefta sandwich (حوت قاري)",
+ "emoji": "🐟",
+ "country": "Morocco",
+ "countryFlag": "🇲🇦",
+ "region": "North Africa",
+ "community": "Marrakech (street food)",
+ "cuisine": "Moroccan",
+ "category": "Street Food & Snacks",
+ "course": "Sandwich",
+ "diff": "Easy",
+ "prepTime": 10,
+ "restTime": 0,
+ "cookTime": 10,
+ "time": 20,
+ "servings": 6,
+ "cal": 290,
+ "rating": 4.8,
+ "reviews": 38,
+ "tags": [
+  "pescatarian",
+  "contains-fish",
+  "street-food",
+  "quick",
+  "contains-dairy"
+ ],
+ "author": "Amanda Mouttaki (MarocMama)",
+ "authorEmoji": "👩‍🍳",
+ "desc": "Sardines pulsed with ras el hanout, smen and cilantro into a paste, grilled as small patties and served in bread with onion, tomato sauce and harissa.",
+ "longDesc": "The author says this sandwich is not what people associate with Moroccan food, but her Moroccan husband insisted it is among the most authentic local foods; she found it on a Marrakech food tour. Sardine flesh (or tinned sardines) is pulsed with ras el hanout, a little smen or ghee and cilantro to a thick paste, shaped into patties and grilled 5 minutes per side until cooked through.",
+ "ingredients": [
+  "1/4 kg sardine flesh cleaned and removed from bones OR 2 tins of sardines (appx 250grams)",
+  "10-15 grams ras al hanout (add more or less to your liking)",
+  "10-15 grams smen (moroccan butter) can use Indian ghee or salted butter at room temperature - just enough to hold together",
+  "small handful chopped cilantro",
+  "Bread (pocket bread or sturdy roll)",
+  "Toppings (amounts not printed): chopped raw onion, raw tomato sauce, harissa, sliced green olives, smen"
+ ],
+ "equipment": [
+  "Food processor",
+  "Grill pan"
+ ],
+ "steps": [
+  "Pulse the sardines with the ras el hanout, smen and cilantro to a thick paste.",
+  "Shape into small patties.",
+  "Grill 5 minutes on each side or until the fish is cooked through.",
+  "Serve in the bread with onion, tomato sauce, harissa and olives."
+ ],
+ "chefTips": [
+  "Doneness cue: cooked through.",
+  "Add smen or ghee only until the mix holds together.",
+  "Batbout or pocket bread makes a good case."
+ ],
+ "commonMistakes": [
+  "Overprocessing to a puree.",
+  "Leaving out the binder.",
+  "Grilling on too high a heat."
+ ],
+ "servedWith": [
+  "Batbout (MAR061)"
+ ],
+ "relatedRecipes": [
+  "MAR061",
+  "MAR055",
+  "MAR058"
+ ],
+ "sources": [
+  "Adapted from 'Moroccan Fish Recipe: Hout Quari', marocmama.com. BYLINE AS PRINTED: 'By: Author Amanda Mouttaki'. No visible date (metadata: published 2015-03-16, modified 2020-11-29). Yield '6-8 fish patties' (single pass).",
+  "SOURCING STATUS: ingredients TWO-PASS. Method wording is our own summary of the page; times and cues were relayed by a research tool and should be checked against the live page."
+ ],
+ "storage": "Best fresh.",
+ "reheating": "Warm briefly in a pan.",
+ "healthBenefits": [
+  "Sardines are rich in omega-3 fats.",
+  "Eaten with bread and raw vegetables."
+ ],
+ "culturalNote": "The author writes that this sandwich is not what people associate with Moroccan food, but that her Moroccan husband insisted it is among the most authentic local foods; she found it on a Marrakech food tour.",
+ "nutrition": {
+  "cal": 290,
+  "protein": 19,
+  "carbs": 24,
+  "fat": 13,
+  "fiber": 2,
+  "sodium": 560
+ },
+ "keywords": [
+  "hout quari",
+  "sardine sandwich",
+  "moroccan street food",
+  "marocmama",
+  "sardine patty"
+ ]
+},
+{
+ "id": "MAR070",
+ "title": "Warqa (Homemade Pastry Leaves)",
+ "localName": "Warqa / ouarka (الورقة)",
+ "emoji": "🫓",
+ "country": "Morocco",
+ "countryFlag": "🇲🇦",
+ "region": "North Africa",
+ "community": "National",
+ "cuisine": "Moroccan",
+ "category": "Bread",
+ "course": "Pastry",
+ "diff": "Expert",
+ "prepTime": 60,
+ "restTime": 720,
+ "cookTime": 20,
+ "time": 800,
+ "servings": 12,
+ "cal": 80,
+ "rating": 4.5,
+ "reviews": 142,
+ "tags": [
+  "vegetarian",
+  "dairy-free",
+  "vegan",
+  "contains-gluten",
+  "traditional"
+ ],
+ "author": "Paula Wolfert (as shown on Cooking with Alia)",
+ "authorEmoji": "📖",
+ "desc": "Paper-thin pastry leaves made by dabbing soft dough onto a hot pan; the wrapper for bastilla and briouats.",
+ "longDesc": "The dough is made in a food processor from high-gluten flour, fine semolina, salt, vinegar or lemon juice, olive oil and water, then refrigerated overnight. The leaf is cooked for about 2 minutes on the hot pan or until it turns completely white and the edges begin to curl but it is still supple. Leaves are brushed with oil. They keep refrigerated up to 3 days or frozen up to a month.",
+ "ingredients": [
+  "1 3/4 cup (226 grams) high-gluten flour",
+  "1/4 cup (40 grams) fine semolina flour",
+  "1 teaspoon salt",
+  "1 tablespoon cider vinegar or fresh lemon juice",
+  "1 tablespoon extra virgin olive oil",
+  "3/4 cup (177 ml) water",
+  "Vegetable oil for brushing the cooked leaves (no quantity printed)"
+ ],
+ "equipment": [
+  "Food processor",
+  "Large non-stick skillet or griddle"
+ ],
+ "steps": [
+  "In a food processor, with the machine running, add 1 cup water and the vinegar. Process for 30 seconds.",
+  "Slowly pour in 3/4 cup more water and process another 30 to 45 seconds.",
+  "Refrigerate the dough overnight.",
+  "Cook each leaf on a hot pan for about 2 minutes, until it turns completely white and the edges begin to curl but it is still supple.",
+  "Brush the cooked leaves with oil. Keep refrigerated up to 3 days or freeze up to 1 month."
+ ],
+ "chefTips": [
+  "Cue: completely white, edges curling, still supple.",
+  "The page says not to worry about lacy edges or tiny cracks in the centre.",
+  "The water amounts differ between the ingredient list and the method; see sources."
+ ],
+ "commonMistakes": [
+  "Overcooking until brittle.",
+  "Skipping the overnight rest.",
+  "Stacking leaves unoiled."
+ ],
+ "servedWith": [
+  "Chicken bastilla (MAR066)"
+ ],
+ "relatedRecipes": [
+  "MAR066",
+  "MAR067",
+  "MAR068"
+ ],
+ "sources": [
+  "Adapted from '320 – Moroccan Warka Dough Recipe / الورقة', Cooking with Alia (old.cookingwithalia.com), 24 February 2015. BYLINE: none printed (site name only; flagged). The page attributes the recipe to Paula Wolfert, 'The Food of Morocco', pages 130–131. Yield 'Serves 12'.",
+  "SOURCING STATUS: ingredients TWO-PASS. Method wording is our own summary of the page; times and cues were relayed by a research tool and should be checked against the live page.",
+  "DISCREPANCY KEPT: the ingredient list gives 3/4 cup water while the method uses 1 cup plus 3/4 cup more. Misprint in the cue ('being to curl')."
+ ],
+ "storage": "Refrigerate up to 3 days or freeze up to 1 month.",
+ "reheating": "Not reheated; used as a wrapper.",
+ "healthBenefits": [
+  "A very low-fat wrapper when brushed lightly.",
+  "No added sugar."
+ ],
+ "culturalNote": "The page presents the dough as a recipe from Wolfert's book; no cultural remarks are printed.",
+ "nutrition": {
+  "cal": 80,
+  "protein": 2,
+  "carbs": 15,
+  "fat": 1,
+  "fiber": 1,
+  "sodium": 200
+ },
+ "keywords": [
+  "warqa",
+  "warka dough",
+  "bastilla pastry",
+  "paula wolfert",
+  "phyllo alternative"
+ ]
+},
+{
+ "id": "MAR071",
+ "title": "Milk Bastilla (Bastilla bil Halib)",
+ "localName": "Bastilla bil halib — milk pastilla (باستيلا الحليب)",
+ "emoji": "🥛",
+ "country": "Morocco",
+ "countryFlag": "🇲🇦",
+ "region": "North Africa",
+ "community": "Home desserts",
+ "cuisine": "Moroccan",
+ "category": "Desserts & Sweets",
+ "course": "Dessert",
+ "diff": "Medium",
+ "prepTime": 20,
+ "restTime": 0,
+ "cookTime": 20,
+ "time": 40,
+ "servings": 4,
+ "cal": 360,
+ "rating": 4.6,
+ "reviews": 186,
+ "tags": [
+  "vegetarian",
+  "contains-dairy",
+  "contains-nuts",
+  "sweet",
+  "fried"
+ ],
+ "author": "Cooking with Alia (site byline only)",
+ "authorEmoji": "📰",
+ "desc": "A custard-like cinnamon milk cream spooned between disks of fried warka, finished with roasted almonds, powdered sugar and cinnamon.",
+ "longDesc": "Milk is brought to a boil with a cinnamon stick and four cloves, which are removed; sugar, cornstarch and orange blossom water thicken it for another 5 minutes until creamy and thick. Warka disks are fried for one minute on both sides until golden. The dessert is served right away while the warka is still warm.",
+ "ingredients": [
+  "2 cups (1/2 liter) whole milk",
+  "3/4 cup (150 grams) granulated white sugar",
+  "2 tablespoons cornstarch",
+  "1 cinnamon stick + 4 whole cloves",
+  "1 tablespoon orange blossom water",
+  "Warka sheets (no quantity)",
+  "Oil for frying (no quantity)",
+  "Roasted almonds, powdered sugar and cinnamon, to finish (no quantities)"
+ ],
+ "equipment": [
+  "Saucepan",
+  "Frying pan"
+ ],
+ "steps": [
+  "Heat the milk with the cinnamon stick and cloves on medium heat. Once the milk reaches a boil, remove the cinnamon stick and cloves.",
+  "Stir in the sugar and cornstarch (mixed with a little cold milk) and the orange blossom water, and continue cooking on medium heat another 5 minutes until the milk mixture becomes creamy and thick.",
+  "Fry the warka disks for one minute on both sides until they get a beautiful golden colour.",
+  "Layer the cream between the disks, top with roasted almonds, powdered sugar and cinnamon, and serve at once while the warka is still warm."
+ ],
+ "chefTips": [
+  "Cue: milk mixture creamy and thick; warka golden.",
+  "Serve immediately, as the page insists.",
+  "Mixing the cornstarch with cold milk first avoids lumps (our tip)."
+ ],
+ "commonMistakes": [
+  "Letting the cream scorch.",
+  "Frying the warka too early so it goes soft.",
+  "Skipping the removal of the cloves."
+ ],
+ "servedWith": [
+  "Mint tea (MAR082)"
+ ],
+ "relatedRecipes": [
+  "MAR070",
+  "MAR067",
+  "MAR066"
+ ],
+ "sources": [
+  "Adapted from '324 – Moroccan Milk Bastilla Recipe / باستيلا الحليب', Cooking with Alia (old.cookingwithalia.com), 24 February 2015. BYLINE: none printed (site name only; flagged). Yield 'Serves 4'.",
+  "SOURCING STATUS: quantities TWO-PASS; warka, oil, almonds, sugar and cinnamon have no quantities on the page. Method wording is our own summary of the page; times and cues were relayed by a research tool and should be checked against the live page. The page prints 'cinnmon' for cinnamon."
+ ],
+ "storage": "Best fresh; the warka softens within minutes.",
+ "reheating": "Not reheated.",
+ "healthBenefits": [
+  "Milk provides calcium; the dessert is sweet and fried.",
+  "Small portions recommended."
+ ],
+ "culturalNote": "The page presents it among desserts with an Arabic title; no further cultural remarks are printed.",
+ "nutrition": {
+  "cal": 360,
+  "protein": 7,
+  "carbs": 60,
+  "fat": 10,
+  "fiber": 1,
+  "sodium": 70
+ },
+ "keywords": [
+  "milk bastilla",
+  "bastilla bil halib",
+  "moroccan milk dessert",
+  "warka dessert",
+  "cooking with alia"
+ ]
+},
+{
+ "id": "MAR072",
+ "title": "Chebakia (Griouech / Mkharka, Sesame and Honey Cookies)",
+ "localName": "Chebakia, griouech, mkharka (شباكية)",
+ "emoji": "🍯",
+ "country": "Morocco",
+ "countryFlag": "🇲🇦",
+ "region": "North Africa",
+ "community": "Ramadan sweets",
+ "cuisine": "Moroccan",
+ "category": "Desserts & Sweets",
+ "course": "Dessert",
+ "diff": "Hard",
+ "prepTime": 60,
+ "restTime": 15,
+ "cookTime": 45,
+ "time": 120,
+ "servings": 20,
+ "cal": 210,
+ "rating": 4.8,
+ "reviews": 114,
+ "tags": [
+  "vegetarian",
+  "contains-dairy",
+  "contains-egg",
+  "contains-gluten",
+  "sweet",
+  "fried",
+  "ramadan",
+  "make-ahead",
+  "traditional"
+ ],
+ "author": "Christine Benlafquih (Taste of Maroc)",
+ "authorEmoji": "👩‍🍳",
+ "desc": "Folded, fried sesame-and-spice dough dipped in hot honey scented with orange flower water, until glossy amber.",
+ "longDesc": "A stiff but pliable dough of ground toasted sesame, flour, anise, cinnamon, saffron, turmeric, egg, butter, oil, vinegar and a little yeast is rolled thin, cut into rectangles with four cuts and folded into a flower. The cookies are fried slowly to a medium brown, moved straight into hot honey and soaked 5 to 7 minutes until a rich, glossy amber, then cooled for several hours. The page gives a yield of about 65 medium cookies.",
+ "ingredients": [
+  "7 oz. unhulled sesame seeds - about 1.5cups",
+  "4 cups flour",
+  "1/2 teaspoon baking powder",
+  "1/2 teaspoon salt",
+  "1 1/2 teaspoons ground anise",
+  "1 1/2 teaspoons ground cinnamon",
+  "1/2 teaspoon saffron threads, crumbled to a powder",
+  "1/2 teaspoon turmeric",
+  "1 pinch mastic or gum arabic drops - mix with 1/4 teaspoon sugar and crush to a powder",
+  "1 extra large egg",
+  "1/4 cup unsalted butter - melted",
+  "1/4 cup olive oil",
+  "1/4 cup vinegar",
+  "1/4 cup orange flower water",
+  "1 teaspoon yeast - dissolved in 1/4 cup warm water",
+  "// For frying and soaking",
+  "36 oz. honey - approx.",
+  "2 tablespoons orange flower water",
+  "6 cups vegetable oil, for frying - approx.",
+  "1/2 cup unhulled sesame seeds - toasted, for garnish"
+ ],
+ "equipment": [
+  "Food processor",
+  "Rolling pin",
+  "Fluted pastry cutter",
+  "Large deep frying pan",
+  "Large pot for the honey",
+  "Slotted spoon"
+ ],
+ "steps": [
+  "Pick through the sesame and toast it until golden: in a skillet over medium heat, or in a 400°F (200°C) oven for 10 to 15 minutes.",
+  "Grind 1.5 cups of the toasted sesame in a food processor until powdery, then a little longer until the powder is moist enough to pack.",
+  "Mix the ground sesame with the flour, baking powder, salt and spices, then add the egg, butter, oil, vinegar, orange flower water and the dissolved yeast. Mix with your hands into a stiff but pliable dough.",
+  "Knead 7 to 8 minutes by hand (4 to 5 with a dough hook). Divide into four mounds, bag them and rest 10 to 15 minutes.",
+  "Roll each mound to the thickness of thin cardboard and cut palm-sized rectangles with a fluted cutter. Make four evenly spaced cuts almost the length of each rectangle, leaving five attached strips, then fold into a flower shape.",
+  "Heat about an inch of oil in a deep pan over medium-low. At the same time heat the honey almost to boiling. When it is frothy but not bubbling, stir in the 2 tablespoons orange flower water and turn off the heat.",
+  "Fry each batch slowly, adjusting the heat, to a medium brown colour; the page says about 10 minutes if the oil is at the right temperature. Too-hot oil colours the outside before the inside crisps.",
+  "Lift the cookies out with a slotted spoon straight into the hot honey. Push them under and soak 5 to 7 minutes, until they turn a rich, glossy amber.",
+  "Drain for only a few minutes, sprinkle with toasted sesame, and cool for several hours before storing airtight."
+ ],
+ "chefTips": [
+  "Cues: honey frothy but not bubbling; fry to a medium brown; soaked cookies rich, glossy amber.",
+  "In a very warm kitchen the page says to cut the yeast to 1/2 teaspoon.",
+  "The yeast is only dissolved and mixed in; the page gives no rising step. The dough rest is NO CUE, TIME ONLY (10 to 15 minutes)."
+ ],
+ "commonMistakes": [
+  "Oil too hot, so the chebakia colour fast but stay soft inside.",
+  "Boiling the honey hard instead of heating it until frothy.",
+  "Packing them away before they have cooled for several hours."
+ ],
+ "servedWith": [
+  "Harira (MAR040)",
+  "Mint tea (MAR082)"
+ ],
+ "relatedRecipes": [
+  "MAR034",
+  "MAR040",
+  "MAR073"
+ ],
+ "sources": [
+  "Adapted from 'Halwa Chebakia (Griouech or Mkharka) – Moroccan Sesame Cookies with Honey', Taste of Maroc. BYLINE AS PRINTED: 'Christine Benlafquih'. Date as printed: 'Last updated: February 23, 2022' (metadata published April 23, 2020, single reading). Yield about 65 medium cookies, about 2 kg (single reading). Prep, rest and cook totals are our own estimates from the times the page does give.",
+  "SOURCING STATUS: ingredients and method TWO-PASS. Method wording is our own summary of the page; times and cues were relayed by a research tool and should be checked against the live page. A kneading cue 'until you can stretch the dough without it breaking' appeared in only one reading and is NOT used. The page's ingredient line reads 'ground cinnamo' in one reading; read as cinnamon.",
+  "DISAGREEMENT kept, not averaged: Amira's Pantry (first-name byline 'Amira', undated) makes a yeast-free dough with 2 cups flour, 1/4 cup toasted sesame, almond meal, 1 egg yolk, 2 teaspoons white vinegar, shapes strips wrapped round a cup, does NOT heat the honey ('this is what I have seen authentic Moroccan cooks do') and soaks about a minute per side, then drains at least 4 hours.",
+  "NO CUE, TIME ONLY: the yeast (no rise is instructed), the dough rest and the several-hour cooling."
+ ],
+ "storage": "The page says they keep at room temperature for a month or longer, airtight, and freeze well for four or five months.",
+ "reheating": "Serve at room temperature.",
+ "healthBenefits": [
+  "Sesame adds minerals and fibre, but the cookies are fried and honey-soaked, so keep portions small."
+ ],
+ "culturalNote": "The author says griouech is the older term and chebakia the common one, and that chebakia is traditionally eaten with harira in Ramadan, with families making large batches beforehand.",
+ "nutrition": {
+  "cal": 210,
+  "protein": 3,
+  "carbs": 30,
+  "fat": 9,
+  "fiber": 1,
+  "sodium": 45
+ },
+ "keywords": [
+  "chebakia",
+  "griouech",
+  "mkharka",
+  "sesame honey cookies",
+  "ramadan sweets"
+ ]
+},
+{
+ "id": "MAR073",
+ "title": "Ghriba Cookies (Sesame)",
+ "localName": "Ghriba / ghoriba — tea cookies (غريبة)",
+ "emoji": "🍪",
+ "country": "Morocco",
+ "countryFlag": "🇲🇦",
+ "region": "North Africa",
+ "community": "Tea-time and celebrations",
+ "cuisine": "Moroccan",
+ "category": "Desserts & Sweets",
+ "course": "Dessert",
+ "diff": "Easy",
+ "prepTime": 25,
+ "restTime": 15,
+ "cookTime": 20,
+ "time": 60,
+ "servings": 25,
+ "cal": 170,
+ "rating": 4.8,
+ "reviews": 247,
+ "tags": [
+  "vegetarian",
+  "dairy-free",
+  "vegan",
+  "contains-gluten",
+  "sweet",
+  "make-ahead",
+  "traditional"
+ ],
+ "author": "Amanda Mouttaki (Maroc Mama)",
+ "authorEmoji": "👩‍🍳",
+ "desc": "Crumbly flour-and-oil cookies with toasted sesame and orange blossom water, baked until just a very light brown and cracked on top.",
+ "longDesc": "A kneaded dough of flour, powdered sugar, toasted sesame, salt, baking soda, orange blossom water and oil is rested 10 to 15 minutes, shaped into ping-pong-ball-size pieces and baked at 325°F (160°C) for about 20 minutes. They should be cooked through but only a very light brown, and the tops crack.",
+ "ingredients": [
+  "8 cups all purpose flour (1 kg)",
+  "2 cups powdered sugar (250g)",
+  "1 cup toasted sesame seeds (150 g)",
+  "2 tsp salt",
+  "1 Tbsp orange blossom water",
+  "1 Tbsp baking soda",
+  "1 cup unflavored oil (like vegetable oil) - you may need more."
+ ],
+ "equipment": [
+  "Large mixing bowl",
+  "Baking sheets",
+  "Cooling rack"
+ ],
+ "steps": [
+  "Mix the flour, powdered sugar, sesame, salt and baking soda in a large bowl.",
+  "Pour in the orange blossom water and 1/2 cup of the oil and begin mixing, adding more oil as needed. Knead by hand about 10 minutes.",
+  "The dough should feel slightly wet and oily to the touch but still soft. Rest it 10 to 15 minutes.",
+  "Preheat the oven to 325°F (160°C). Shape the dough into pieces about the size of a ping pong ball (about 2 inches or 5 cm across), keeping the edges from cracking.",
+  "Bake about 20 minutes, watching closely: they should be cooked through but only a very light brown. The tops will crack.",
+  "Cool 5 minutes on the tray, then move to a rack."
+ ],
+ "chefTips": [
+  "Cue: cooked through, only a very light brown, with cracked tops.",
+  "The page notes they should be watched, since they colour quickly.",
+  "The dough rest is NO CUE, TIME ONLY."
+ ],
+ "commonMistakes": [
+  "Over-baking until brown.",
+  "Making the dough dry rather than slightly oily."
+ ],
+ "servedWith": [
+  "Mint tea (MAR082)"
+ ],
+ "relatedRecipes": [
+  "MAR075",
+  "MAR074",
+  "MAR076"
+ ],
+ "sources": [
+  "Adapted from 'Moroccan Ghriba Cookie Recipe', Maroc Mama. BYLINE AS PRINTED: 'By: Author Amanda Mouttaki'. No date line is printed; page metadata gives published 2020-04-23. Yield 50 cookies (single reading). Prep, rest and cook totals are our own estimates from the times the page does give.",
+  "SOURCING STATUS: ingredients and method TWO-PASS. Method wording is our own summary of the page; times and cues were relayed by a research tool and should be checked against the live page.",
+  "SMALL DISCREPANCY kept: the recipe card shows a cook time of 25 minutes (single reading) while the text says about 20 minutes."
+ ],
+ "storage": "The page says they last several weeks.",
+ "reheating": "Serve at room temperature.",
+ "healthBenefits": [
+  "Sesame adds some minerals; the cookies are a sugar-and-oil treat."
+ ],
+ "culturalNote": "The author says ghriba are a simple cookie often served with tea in Morocco, traditionally made on an inverted half-circle pan, and that people either like them or do not.",
+ "nutrition": {
+  "cal": 170,
+  "protein": 3,
+  "carbs": 24,
+  "fat": 7,
+  "fiber": 1,
+  "sodium": 190
+ },
+ "keywords": [
+  "ghriba",
+  "moroccan sesame cookies",
+  "maroc mama",
+  "tea cookies"
+ ]
+},
+{
+ "id": "MAR074",
+ "title": "Ghoriba with Evaporated Milk (Optional Coconut Coating)",
+ "localName": "Ghoriba au lait concentré — soft cake-like cookies",
+ "emoji": "🥥",
+ "country": "Morocco",
+ "countryFlag": "🇲🇦",
+ "region": "North Africa",
+ "community": "Everyday home baking",
+ "cuisine": "Moroccan",
+ "category": "Desserts & Sweets",
+ "course": "Dessert",
+ "diff": "Easy",
+ "prepTime": 25,
+ "restTime": 0,
+ "cookTime": 15,
+ "time": 40,
+ "servings": 25,
+ "cal": 150,
+ "rating": 4.8,
+ "reviews": 58,
+ "tags": [
+  "vegetarian",
+  "contains-dairy",
+  "contains-egg",
+  "contains-gluten",
+  "sweet",
+  "make-ahead"
+ ],
+ "author": "Christine Benlafquih (Taste of Maroc)",
+ "authorEmoji": "👩‍🍳",
+ "desc": "Soft, cake-like cookies of eggs, oil, evaporated milk and lemon zest, baked pale golden and optionally rolled in orange flower water and coconut.",
+ "longDesc": "Eggs and oil are beaten until frothy, then the evaporated milk, sugar, baking powder, vanilla, zest and salt go in, followed by just enough flour (starting with 3.5 cups) to make a shapeable dough. Walnut-sized balls are flattened, optionally dipped in orange flower water and then desiccated coconut, and baked at 350°F (180°C) about 15 minutes until lightly coloured or pale golden.",
+ "ingredients": [
+  "2 large eggs",
+  "1/3 cup unsweetened evaporated milk - (Purisima)",
+  "1 cup vegetable oil",
+  "1 cup powdered sugar",
+  "4 tsp baking powder",
+  "1 to 2 tsp vanilla - (or 1 to 2 envelopes vanilla-flavored sugar)",
+  "zest from 1 or 2 lemons",
+  "1 pinch of salt",
+  "4 cups flour - (approx.; use more or less as needed)",
+  "// To finish",
+  "powdered sugar",
+  "orange flower water",
+  "desiccated coconut"
+ ],
+ "equipment": [
+  "Mixing bowls",
+  "Three baking sheets lined with parchment paper"
+ ],
+ "steps": [
+  "Beat the eggs and oil until frothy. Mix in the evaporated milk, sugar, baking powder, vanilla, zest and salt.",
+  "Add just enough flour to make a dough you can shape, starting with 3.5 cups and adding more as needed.",
+  "Preheat the oven to 350°F (180°C) and line three baking sheets with parchment.",
+  "Shape walnut-sized balls and flatten slightly. For the coconut version, dip each in orange flower water and then in desiccated coconut. (Shaping is from a single reading of the page.)",
+  "Bake one pan at a time, about 15 minutes, until lightly coloured or pale golden. Cool before dusting with powdered sugar if you like."
+ ],
+ "chefTips": [
+  "Cue: lightly coloured or pale golden.",
+  "Add flour gradually; the page gives an approximate amount."
+ ],
+ "commonMistakes": [
+  "Adding all the flour at once.",
+  "Baking until deep brown."
+ ],
+ "servedWith": [
+  "Mint tea (MAR082)"
+ ],
+ "relatedRecipes": [
+  "MAR073",
+  "MAR075"
+ ],
+ "sources": [
+  "Adapted from 'Moroccan Cookies with Evaporated Milk – Ghoriba au Lait Concentré (Purisima)', Taste of Maroc. BYLINE AS PRINTED: 'By Author Christine Benlafquih'. Date as printed: 'Last updated: July 2, 2020' (published November 4, 2017, single reading). Yield about 50 cookies of 2 inches (single reading). Prep, rest and cook totals are our own estimates from the times the page does give.",
+  "SOURCING STATUS: ingredients TWO-PASS; ball size and coconut dipping SINGLE-PASS. Method wording is our own summary of the page; times and cues were relayed by a research tool and should be checked against the live page.",
+  "Coconut is an optional coating on this page. A coconut-dough ghriba from a named author was not found."
+ ],
+ "storage": "The page says up to a week at room temperature, or up to two months frozen.",
+ "reheating": "Serve at room temperature.",
+ "healthBenefits": [
+  "An oil-and-sugar treat; best in small portions."
+ ],
+ "culturalNote": "The page names a Spanish evaporated-milk brand (Purisima) in the title and describes a soft, cake-like cookie rather than the crumbly sesame type.",
+ "nutrition": {
+  "cal": 150,
+  "protein": 2,
+  "carbs": 19,
+  "fat": 8,
+  "fiber": 0,
+  "sodium": 60
+ },
+ "keywords": [
+  "ghoriba",
+  "evaporated milk cookies",
+  "coconut cookies",
+  "purisima",
+  "taste of maroc"
+ ]
+},
+{
+ "id": "MAR075",
+ "title": "Ghoriba with Honey (Ghoriba Dyal 'Asal)",
+ "localName": "Ghoriba dyal 'asal (غريبة بالعسل)",
+ "emoji": "🍯",
+ "country": "Morocco",
+ "countryFlag": "🇲🇦",
+ "region": "North Africa",
+ "community": "Everyday home baking",
+ "cuisine": "Moroccan",
+ "category": "Desserts & Sweets",
+ "course": "Dessert",
+ "diff": "Easy",
+ "prepTime": 25,
+ "restTime": 0,
+ "cookTime": 15,
+ "time": 40,
+ "servings": 25,
+ "cal": 100,
+ "rating": 4.7,
+ "reviews": 295,
+ "tags": [
+  "vegetarian",
+  "contains-dairy",
+  "contains-egg",
+  "contains-gluten",
+  "sweet",
+  "make-ahead"
+ ],
+ "author": "Christine Benlafquih (Taste of Maroc)",
+ "authorEmoji": "👩‍🍳",
+ "desc": "Small golden cookies from beaten eggs, honey and lemon zest, brushed with egg yolk and baked until a rich golden colour.",
+ "longDesc": "Whole eggs, an egg white and sugar are beaten until thick, then oil or melted butter, vanilla, warmed honey, flour, baking powder, salt and zest make a soft dough. Small balls are brushed with egg yolk and baked at 350°F (180°C) for 12 to 15 minutes, or until a rich golden colour. The author uses a tea glass as the traditional measure.",
+ "ingredients": [
+  "2 whole eggs",
+  "1 egg white - (reserve the yolk)",
+  "1/3 cup sugar - (1/2 tea glass)",
+  "1/3 cup vegetable oil or melted butter - (1/2 tea glass)",
+  "1 tsp vanilla - (or 1 sachet vanilla sugar)",
+  "3 tbsp honey, - warmed but not hot",
+  "2 2/3 c flour, plus additional if necessary - (4 tea glasses",
+  "2 tsp baking powder",
+  "pinch of salt",
+  "zest of 1 or 2 lemons - (or 1 orange)",
+  "1 egg yolk, lightly beaten - (for egg wash)"
+ ],
+ "equipment": [
+  "Mixing bowls",
+  "Baking sheets",
+  "Pastry brush"
+ ],
+ "steps": [
+  "Beat the whole eggs, egg white and sugar until thick.",
+  "Mix in the oil or melted butter, vanilla and warmed honey, then the flour, baking powder, salt and zest, adding extra flour only if needed for a soft, workable dough.",
+  "Preheat the oven to 350°F (180°C). Roll small balls of dough (the page gives a ball size of about 1 1/4 inches in one reading; see the sources note) and brush with the beaten yolk.",
+  "Bake 12 to 15 minutes, or until a rich golden colour."
+ ],
+ "chefTips": [
+  "Cue: rich golden colour.",
+  "Warm the honey just until runny; the page says warmed but not hot."
+ ],
+ "commonMistakes": [
+  "Hot honey cooking the eggs.",
+  "Too much extra flour, which makes the cookies dry."
+ ],
+ "servedWith": [
+  "Mint tea (MAR082)"
+ ],
+ "relatedRecipes": [
+  "MAR073",
+  "MAR074"
+ ],
+ "sources": [
+  "Adapted from 'Moroccan Ghoriba Cookies with Honey – Ghoriba Dyal 'Asal', Taste of Maroc. BYLINE AS PRINTED: 'By Author Christine Benlafquih'. Date as printed: 'Last updated: October 24, 2017' (published May 12, 2017, single reading). Yield about 50 cookies of 1.5 inches (single reading). Prep, rest and cook totals are our own estimates from the times the page does give.",
+  "SOURCING STATUS: ingredients TWO-PASS. DISAGREEMENT UNRECONCILED between readings: ball size is '1 1/4 inches' in one and '1 1/4' with no unit in the other (a unit is probably missing). The flour line is printed with an unclosed parenthesis '(4 tea glasses', kept as printed. Method wording is our own summary of the page; times and cues were relayed by a research tool and should be checked against the live page."
+ ],
+ "storage": "The page says they stay fresh at room temperature for several days, or two months frozen.",
+ "reheating": "Serve at room temperature.",
+ "healthBenefits": [
+  "A small sweet treat with eggs and honey; portions matter."
+ ],
+ "culturalNote": "The author notes a tea glass is the traditional measure for ingredients and compares the texture to madeleines.",
+ "nutrition": {
+  "cal": 100,
+  "protein": 2,
+  "carbs": 15,
+  "fat": 3,
+  "fiber": 0,
+  "sodium": 40
+ },
+ "keywords": [
+  "ghoriba honey",
+  "ghoriba dyal asal",
+  "moroccan honey cookies",
+  "tea glass measure"
+ ]
+},
+{
+ "id": "MAR076",
+ "title": "Mlewza (Almond Macaroons, Ghrieba d'Ellouz)",
+ "localName": "Mlewza / ghrieba d'ellouz / ghriebat el a'kda (غريبة باللوز)",
+ "emoji": "🌰",
+ "country": "Morocco",
+ "countryFlag": "🇲🇦",
+ "region": "North Africa",
+ "community": "Weddings and celebrations",
+ "cuisine": "Moroccan",
+ "category": "Desserts & Sweets",
+ "course": "Dessert",
+ "diff": "Medium",
+ "prepTime": 30,
+ "restTime": 0,
+ "cookTime": 18,
+ "time": 48,
+ "servings": 20,
+ "cal": 190,
+ "rating": 4.8,
+ "reviews": 181,
+ "tags": [
+  "vegetarian",
+  "dairy",
+  "contains-egg",
+  "contains-nuts",
+  "gluten-free",
+  "sweet",
+  "make-ahead",
+  "traditional",
+  "celebration"
+ ],
+ "author": "Nada Kiffa (Taste of Maroc)",
+ "authorEmoji": "👩‍🍳",
+ "desc": "Chewy almond macaroons from a paste of whole blanched almonds and sugar, shaped into balls, rolled in icing sugar and baked until the tops crack.",
+ "longDesc": "Whole blanched, skinned and well-dried almonds (not almond powder) are ground with caster sugar into a paste or nearly there, then worked with strained apricot jam, egg and yolk, melted butter, mastic, baking powder and lemon zest. Balls of about 0.7 oz (1.2 inch diameter) are baked at 350°F (180°C); on the conventional setting with the grill on for about 5 minutes the tops crack and the cookies bake in 15 to 18 minutes.",
+ "ingredients": [
+  "1.13 lbs almonds - blanched, skinned and well dried (do not use almond powder)",
+  "7 oz caster sugar",
+  "1 pinch of salt",
+  "2 tbsp apricot jam, - measured after straining",
+  "1 egg, - medium-size",
+  "1 egg yolk, - medium-size",
+  "2 tbsp butter, - melted and cooled",
+  "3 to 4 grain of mastic gum",
+  "1/2 tsp baking powder",
+  "1 1/2 tsp lemon zest",
+  "4 drops almond extract - (optional, if you suspect that the almonds lack flavor)",
+  "8 oz icing sugar"
+ ],
+ "equipment": [
+  "Food processor",
+  "Baking sheets",
+  "Bowl for the icing sugar"
+ ],
+ "steps": [
+  "Grind the almonds with the caster sugar into a paste, or nearly one.",
+  "Work in the remaining ingredients (salt, jam, egg and yolk, butter, mastic, baking powder, zest and almond extract if using) into a dough. The page order of mixing was not relayed in detail.",
+  "Preheat the oven to 350°F (180°C). Shape small smooth balls of about 0.7 oz, 1.2 inch in diameter, roll them in the icing sugar and set them at least 3 inches apart.",
+  "Conventional bake: with the grill on for about 5 minutes, until the tops of the cookies crack; they bake in 15 to 18 minutes in all.",
+  "Fan oven: bake at least 12 minutes and then a few more minutes until the cookies are ready (the page gives no further cue for this setting)."
+ ],
+ "chefTips": [
+  "Cue: the tops of the cookies crack.",
+  "Use whole blanched almonds ground at home; the page says not to use almond powder."
+ ],
+ "commonMistakes": [
+  "Using almond powder.",
+  "Placing the balls too close together."
+ ],
+ "servedWith": [
+  "Mint tea (MAR082)"
+ ],
+ "relatedRecipes": [
+  "MAR073",
+  "MAR077",
+  "MAR075"
+ ],
+ "sources": [
+  "Adapted from 'Moroccan Almond Macaroon – Mlewza or Ghrieba d'Ellouz', Taste of Maroc. BYLINE AS PRINTED: 'By Author Nada Kiffa'. Date as printed: 'Last updated: October 24, 2017' (published October 13, 2017, single reading). Yield 40 cookies (single reading). Prep, rest and cook totals are our own estimates from the times the page does give.",
+  "SOURCING STATUS: ingredients and baking TWO-PASS. Method wording is our own summary of the page; times and cues were relayed by a research tool and should be checked against the live page.",
+  "NO CUE, TIME ONLY: the fan-oven bake ('until the ghriebas are ready'). The rolling in icing sugar is inferred from the 8 oz icing sugar line and should be checked against the live page."
+ ],
+ "storage": "Store airtight; the page gives no storage time that we relayed.",
+ "reheating": "Serve at room temperature.",
+ "healthBenefits": [
+  "Almonds provide protein and vitamin E; the cookie is also high in sugar."
+ ],
+ "culturalNote": "The author writes that she has yet to attend a wedding or happy event in Morocco where they are not served.",
+ "nutrition": {
+  "cal": 190,
+  "protein": 5,
+  "carbs": 22,
+  "fat": 10,
+  "fiber": 2,
+  "sodium": 25
+ },
+ "keywords": [
+  "mlewza",
+  "almond macaroon",
+  "ghrieba d ellouz",
+  "nada kiffa",
+  "moroccan wedding cookies"
+ ]
+},
+{
+ "id": "MAR077",
+ "title": "Almond Ghriba (Crinkle Cookies, an American Cook's Version)",
+ "localName": "Ghriba bil louz — almond tea cookies",
+ "emoji": "🍪",
+ "country": "Morocco",
+ "countryFlag": "🇲🇦",
+ "region": "North Africa",
+ "community": "Adapted version",
+ "cuisine": "Moroccan",
+ "category": "Desserts & Sweets",
+ "course": "Dessert",
+ "diff": "Easy",
+ "prepTime": 15,
+ "restTime": 0,
+ "cookTime": 14,
+ "time": 29,
+ "servings": 11,
+ "cal": 130,
+ "rating": 4.5,
+ "reviews": 59,
+ "tags": [
+  "vegetarian",
+  "dairy",
+  "contains-egg",
+  "contains-nuts",
+  "contains-gluten",
+  "sweet",
+  "quick"
+ ],
+ "author": "Natalie Ward (Parsley and Icing)",
+ "authorEmoji": "👩‍🍳",
+ "desc": "Almond-flour cookies with orange blossom water, rolled in powdered sugar and baked until crinkled and set — a non-Moroccan blogger's version of ghriba.",
+ "longDesc": "Almond flour, sugar, orange blossom water (or rose water or lemon zest), butter and eggs form a dough with a little all-purpose flour, baking powder and salt. The cookies are coated in powdered sugar and baked at 350°F for 12 to 14 minutes until crinkled and set when pressed lightly. The author is an American who first tried them while teaching English in Morocco.",
+ "ingredients": [
+  "2 cups (224 g) almond flour or ground blanched almonds",
+  "1/2 cup (100 g) granulated sugar",
+  "1 teaspoon (1 teaspoon) orange blossom water or rose water or zest of 1 lemon",
+  "2 tablespoons (28 g) unsalted butter room temperature",
+  "2 (2) large eggs room temperature",
+  "2/3 cup (83.33 g) all purpose flour",
+  "1 1/4 teaspoons (1 1/4 teaspoons) baking powder",
+  "1/2 teaspoon (1/2 teaspoon) salt",
+  "1/2 cup (60 g) powdered sugar for coating"
+ ],
+ "equipment": [
+  "Mixing bowls",
+  "Baking sheet",
+  "Cooling rack"
+ ],
+ "steps": [
+  "Mix the almond flour, sugar and flavouring with the butter and eggs, then stir in the all-purpose flour, baking powder and salt (the exact order was not relayed).",
+  "Preheat the oven to 350°F. Shape the dough into balls and roll them in the powdered sugar.",
+  "Bake 12 to 14 minutes, until the cookies have crinkled and are set when you press them lightly.",
+  "Cool on the baking sheet for 10 minutes before moving."
+ ],
+ "chefTips": [
+  "Cue: crinkled, and set when lightly pressed.",
+  "Orange blossom water, rose water or lemon zest are the printed alternatives."
+ ],
+ "commonMistakes": [
+  "Over-baking so the cookies go dry.",
+  "Moving them while still soft."
+ ],
+ "servedWith": [
+  "Mint tea (MAR082)"
+ ],
+ "relatedRecipes": [
+  "MAR076",
+  "MAR073"
+ ],
+ "sources": [
+  "Adapted from 'Moroccan Cookies (Ghriba)', Parsley and Icing. BYLINE AS PRINTED: 'by Natalie Ward'; 'Modified: Feb 6, 2026 · Published: Mar 12, 2025'. Yield 22 cookies (single reading). Prep, rest and cook totals are our own estimates from the times the page does give.",
+  "SOURCING STATUS: ingredients TWO-PASS. Method wording is our own summary of the page; times and cues were relayed by a research tool and should be checked against the live page.",
+  "FLAG: the author is not a Moroccan cook; she says she first tried these while teaching English in Morocco, and that walnut, coconut and almond are the most common flavours. Doubled parentheticals in the ingredient list are as printed. The coating and shaping steps are our inference from the 'for coating' line.",
+  "Not used: a walnut ghriba from Cucina Nicolina, which the author calls her own take on ghriba."
+ ],
+ "storage": "Store airtight at room temperature.",
+ "reheating": "Serve at room temperature.",
+ "healthBenefits": [
+  "Gluten is low but not absent (it includes wheat flour); almonds add protein."
+ ],
+ "culturalNote": "The author writes that recipes and flavours vary across the country and that these are among the most common flavours.",
+ "nutrition": {
+  "cal": 130,
+  "protein": 4,
+  "carbs": 11,
+  "fat": 8,
+  "fiber": 1,
+  "sodium": 100
+ },
+ "keywords": [
+  "almond ghriba",
+  "ghriba cookies",
+  "crinkle cookies",
+  "parsley and icing"
+ ]
+},
+{
+ "id": "MAR078",
+ "title": "Kaab el Ghazal (Gazelle Horns, Almond Crescents)",
+ "localName": "Kaab el ghazal / kaab lghzal — gazelle's ankle (كعب الغزال)",
+ "emoji": "🌙",
+ "country": "Morocco",
+ "countryFlag": "🇲🇦",
+ "region": "North Africa",
+ "community": "Tea-time and celebrations",
+ "cuisine": "Moroccan",
+ "category": "Desserts & Sweets",
+ "course": "Dessert",
+ "diff": "Hard",
+ "prepTime": 90,
+ "restTime": 90,
+ "cookTime": 10,
+ "time": 190,
+ "servings": 20,
+ "cal": 170,
+ "rating": 4.9,
+ "reviews": 210,
+ "tags": [
+  "vegetarian",
+  "dairy",
+  "contains-nuts",
+  "contains-gluten",
+  "sweet",
+  "make-ahead",
+  "traditional",
+  "celebration"
+ ],
+ "author": "Layla Dahamou (Morocco World News)",
+ "authorEmoji": "👩‍🍳",
+ "desc": "Thin pastry wrapped around a fragrant almond paste and shaped into crescents, baked just until very light golden — not brown.",
+ "longDesc": "Blanched almonds are ground with sugar, melted butter, orange flower water, cinnamon and optional gum arabic into a paste that is rolled into small rods. A dough of flour, butter, orange flower water and warm water is rested half an hour, rolled into a long strip, wrapped around the rods, shaped into crescents, rested at least an hour, pricked three times and baked 10 minutes until very light golden, not brown. The page prints no oven temperature.",
+ "ingredients": [
+  "// Almond paste",
+  "500g almonds.",
+  "250g granulated sugar.",
+  "60g butter, melted.",
+  "1/4 cup orange flower water.",
+  "1/2 tsp Arabic gum ( optional).",
+  "1/2 tsp cinnamon.",
+  "// Pastry",
+  "500g flour.",
+  "80g butter, melted.",
+  "1/2 cup orange flower water.",
+  "A pinch of salt.",
+  "1/2 cup warm water."
+ ],
+ "equipment": [
+  "Food processor",
+  "Rolling pin",
+  "Baking sheet",
+  "Knife",
+  "Skewer or fork for pricking"
+ ],
+ "steps": [
+  "Boil the almonds 1 to 2 minutes, drain and peel them, then grind them with the sugar, butter, orange flower water, cinnamon and gum arabic into a paste. Roll the paste into small rods.",
+  "Mix the flour, melted butter, orange flower water, salt and warm water into a dough. Divide into 5 or 6 balls, cover with plastic and rest half an hour.",
+  "Roll each ball into a long strip and lay a rod of almond paste along it, leaving about 5 cm between pieces.",
+  "Fold the dough over the paste, pinch the ends firmly closed, cut the pieces apart, and gently shape each roll into a crescent.",
+  "Rest the crescents at least an hour before baking.",
+  "Prick three holes in the top of each and bake 10 minutes, until the colour is very light golden, not brown."
+ ],
+ "chefTips": [
+  "Cue: very light golden, not brown.",
+  "The page prints NO oven temperature; the Bake-Street version (MAR079) bakes at 170°C, but that is a different recipe.",
+  "The rest before baking is NO CUE, TIME ONLY (at least an hour)."
+ ],
+ "commonMistakes": [
+  "Browning them: the page insists they stay very light.",
+  "Leaving the pinched ends open so the paste leaks."
+ ],
+ "servedWith": [
+  "Mint tea (MAR082)"
+ ],
+ "relatedRecipes": [
+  "MAR079",
+  "MAR076",
+  "MAR072"
+ ],
+ "sources": [
+  "Adapted from 'Moroccan Pastry: a recipe for Kaab Lghazal (gazelle ankle)', Morocco World News. BYLINE AS PRINTED: 'By Layla Dahamou'. Date as printed: 'Taroudant- Feb 07, 2013'. No yield printed. Prep, rest and cook totals are our own estimates from the times the page does give.",
+  "SOURCING STATUS: ingredients and method TWO-PASS. Method wording is our own summary of the page; times and cues were relayed by a research tool and should be checked against the live page.",
+  "SUSPECTED OMISSION (single reading): the method mentions sugar in the pastry but the pastry list has no sugar line. No oven temperature is printed in either reading.",
+  "DISAGREEMENT kept: Bake-Street (Eva) uses about a quarter of the almonds and flour, dries the shaped pieces overnight and bakes at 170°C for 12 to 14 minutes. Both agree the finish should be very light."
+ ],
+ "storage": "Store airtight; the page gives no storage time that we relayed.",
+ "reheating": "Serve at room temperature.",
+ "healthBenefits": [
+  "Almonds supply protein and fat; the sweets are rich, so small portions suit."
+ ],
+ "culturalNote": "The author describes it as an authentic Moroccan almond cookie named for its crescent shape and served at tea time and at every ceremony or special event.",
+ "nutrition": {
+  "cal": 170,
+  "protein": 4,
+  "carbs": 19,
+  "fat": 9,
+  "fiber": 2,
+  "sodium": 30
+ },
+ "keywords": [
+  "kaab el ghazal",
+  "gazelle horns",
+  "kaab lghzal",
+  "almond crescents",
+  "morocco world news"
+ ]
+},
+{
+ "id": "MAR079",
+ "title": "Kaab el Ghazal (Gazelle Horns, Small-Batch Version)",
+ "localName": "Kaab el ghazal — gazelle's heel (كعب الغزال)",
+ "emoji": "🌙",
+ "country": "Morocco",
+ "countryFlag": "🇲🇦",
+ "region": "North Africa",
+ "community": "Eid and celebrations",
+ "cuisine": "Moroccan",
+ "category": "Desserts & Sweets",
+ "course": "Dessert",
+ "diff": "Hard",
+ "prepTime": 60,
+ "restTime": 720,
+ "cookTime": 14,
+ "time": 794,
+ "servings": 10,
+ "cal": 210,
+ "rating": 4.8,
+ "reviews": 108,
+ "tags": [
+  "vegetarian",
+  "dairy",
+  "contains-nuts",
+  "contains-gluten",
+  "sweet",
+  "make-ahead",
+  "celebration"
+ ],
+ "author": "Eva (Bake-Street)",
+ "authorEmoji": "👩‍🍳",
+ "desc": "A 10-piece batch of white, unbrowned gazelle horns: a thin orange-blossom dough around an almond-cinnamon filling, dried overnight and baked at 170°C.",
+ "longDesc": "A small dough of flour, powdered sugar, butter and orange blossom water is kneaded until the gluten has almost developed and rested 30 minutes, then divided into 10 pieces of about 20 g and rolled thin. The ground-almond filling is wrapped inside, the horns are shaped and left to dry overnight, then baked at 170°C for 12 to 14 minutes. They should stay white, not brown.",
+ "ingredients": [
+  "// Dough",
+  "125 g wheat flour (9% protein)",
+  "15 g powdered sugar",
+  "30 g unsalted butter at room temperature",
+  "40 g orange blossom water",
+  "5 almonds with peel (optional)",
+  "// Filling",
+  "125 g ground almonds",
+  "63 g powdered sugar",
+  "10 g unsalted butter at room temperature",
+  "cinnamon to taste, about a little less than 1/2 teaspoon",
+  "17-20 g orange blossom water",
+  "2 pebbles (about 1 g) of gum arabic, pulverized or crushed or, failing that, we can use 5 g glucose or 5 g of honey"
+ ],
+ "equipment": [
+  "Mixing bowl",
+  "Rolling pin or pasta machine",
+  "Baking sheet"
+ ],
+ "steps": [
+  "Knead the dough ingredients for a few minutes, until the gluten has almost developed. Form a ball and rest it 30 minutes.",
+  "Mix the filling ingredients into a paste.",
+  "Divide the dough into 10 pieces of about 20 g each and roll thin (the author used level 2 on a pasta machine).",
+  "Fill, shape into horns and let them dry overnight at room temperature.",
+  "Preheat the oven to 170°C (340°F), top and bottom heat. Bake 12 to 14 minutes at medium-high. The horns will be white and should not brown."
+ ],
+ "chefTips": [
+  "Cue: white, not browned.",
+  "The page says the flavour improves after resting 1 to 2 days.",
+  "The overnight drying is NO CUE, TIME ONLY."
+ ],
+ "commonMistakes": [
+  "Browning or toasting them.",
+  "Skipping the overnight drying."
+ ],
+ "servedWith": [
+  "Mint tea (MAR082)"
+ ],
+ "relatedRecipes": [
+  "MAR078",
+  "MAR076"
+ ],
+ "sources": [
+  "Adapted from 'Kaab El Ghazal – Gazelle Horns', Bake-Street. BYLINE AS PRINTED: 'Eva' (a second reading gave a surname; only the first name is printed on the page). Date as printed: '23 abril, 2022'. Yield 10 pieces (single reading). Prep, rest and cook totals are our own estimates from the times the page does give.",
+  "SOURCING STATUS: ingredients TWO-PASS; the assembly detail is thin in the relayed notes (shape and fold are our summary). Method wording is our own summary of the page; times and cues were relayed by a research tool and should be checked against the live page.",
+  "DISAGREEMENT kept: see Layla Dahamou's version (MAR078), which uses about four times the quantities, prints no oven temperature and rests the pieces an hour rather than overnight."
+ ],
+ "storage": "The page says the flavour is best after 1 to 2 days and gives a longer keeping time of 15 to 20 days (as relayed).",
+ "reheating": "Serve at room temperature.",
+ "healthBenefits": [
+  "Almond-rich and sweet; small portions suit."
+ ],
+ "culturalNote": "The author notes that the name is often mistranslated as 'gazelle horn' and that 'gazelle's heel' is closer, and, per one reading, that the same pastry is sold in Algeria as tcharek.",
+ "nutrition": {
+  "cal": 210,
+  "protein": 5,
+  "carbs": 24,
+  "fat": 11,
+  "fiber": 2,
+  "sodium": 15
+ },
+ "keywords": [
+  "kaab el ghazal",
+  "gazelle horns",
+  "bake-street",
+  "almond filling",
+  "eid pastry"
+ ]
+},
+{
+ "id": "MAR080",
+ "title": "Fekkas (Twice-Baked Almond and Raisin Biscuits)",
+ "localName": "Fekkas msseoues — fekkas (فقاص مسيوس)",
+ "emoji": "🍘",
+ "country": "Morocco",
+ "countryFlag": "🇲🇦",
+ "region": "North Africa",
+ "community": "Fez and Tea-time",
+ "cuisine": "Moroccan",
+ "category": "Desserts & Sweets",
+ "course": "Snack",
+ "diff": "Medium",
+ "prepTime": 45,
+ "restTime": 360,
+ "cookTime": 35,
+ "time": 440,
+ "servings": 30,
+ "cal": 160,
+ "rating": 4.8,
+ "reviews": 38,
+ "tags": [
+  "vegetarian",
+  "dairy-free",
+  "contains-egg",
+  "contains-nuts",
+  "contains-gluten",
+  "sweet",
+  "make-ahead",
+  "traditional"
+ ],
+ "author": "Nada Kiffa (Taste of Maroc)",
+ "authorEmoji": "👩‍🍳",
+ "desc": "Anise-scented dough rolls studded with almonds, raisins and sesame, half-baked, rested, sliced and baked again until golden and crisp.",
+ "longDesc": "Almonds are soaked in cold milk or water and raisins in orange blossom water, then folded into a soft, smooth dough of flour, sugar, crushed aniseed, oil and eggs. Rolls of dough are half-baked at 338°F (170°C) for 15 to 20 minutes until they form a light crust, rested at least 6 hours, sliced 1/2 cm thick and baked again until golden brown, about 12 to 15 minutes.",
+ "ingredients": [
+  "1.3 lbs all purpose flour, - plus extra for rolling",
+  "pinch of salt",
+  "1 tsp baking powder",
+  "4.5 oz raisins",
+  "4.5 oz almonds, skin on - washed, drained and pat-dried",
+  "5 oz sugar",
+  "3 tbsp aniseed, roughly crushed - (or half aniseed and half fennel seeds)",
+  "5 fl oz vegetable oil",
+  "3 eggs - medium-size, at room temperature",
+  "2 fl oz orange blossom water - (or half milk, half orange blossom water)",
+  "1/2 cup sesame seeds - unhulled, slightly toasted",
+  "// Egg wash",
+  "1 egg yolk",
+  "1 tbsp milk",
+  "drops of white vinegar",
+  "1/4 tsp instant coffee powder - (optional)"
+ ],
+ "equipment": [
+  "Mixing bowls",
+  "Baking sheets",
+  "Serrated knife"
+ ],
+ "steps": [
+  "Soak the almonds in cold milk or water for at least 20 minutes, and the raisins in the orange blossom water for 5 minutes.",
+  "Mix the dry ingredients with the sugar, aniseed, oil, eggs, soaked almonds and raisins, adding extra flour 1 tablespoon at a time to get a soft, smooth dough.",
+  "Cut the dough in four and roll each piece into a fat roll, a little over 2 cm high on a base of roughly 5 to 6.5 cm (dimensions as printed), and brush with the egg wash and sesame.",
+  "First bake: 338°F (170°C), about 15 to 20 minutes. The rolls should form a light crust without being completely baked: soft inside but starting to look crumbly and compact, and slightly springy outside.",
+  "Rest the rolls overnight or at least 6 hours (a damp cloth for about 1 hour is the page's faster option).",
+  "Cut into slices 1/2 cm thick and bake at 338°F (170°C) until golden brown, about 12 to 15 minutes."
+ ],
+ "chefTips": [
+  "First-bake cues: a light crust, soft but crumbly-compact inside, slightly springy outside.",
+  "Second-bake cue: golden brown.",
+  "One reading says to turn the oven off and leave the slices inside to dry out; this is single-source."
+ ],
+ "commonMistakes": [
+  "Baking the rolls fully on the first round so they crumble when sliced.",
+  "Slicing too thick."
+ ],
+ "servedWith": [
+  "Mint tea (MAR082)",
+  "Milk, as a children's breakfast in Fez, per the author"
+ ],
+ "relatedRecipes": [
+  "MAR078",
+  "MAR073"
+ ],
+ "sources": [
+  "Adapted from 'Moroccan Fekkas with Almonds and Raisins – Fekkas Msseoues', Taste of Maroc. BYLINE AS PRINTED: 'By Author Nada Kiffa'. Date as printed: 'Last updated: October 24, 2017' (published October 10, 2017, single reading). Yield 30 servings (single reading). Prep, rest and cook totals are our own estimates from the times the page does give.",
+  "SOURCING STATUS: ingredients and the two bakes TWO-PASS. Method wording is our own summary of the page; times and cues were relayed by a research tool and should be checked against the live page. The roll dimensions are printed with mixed units and are kept as printed.",
+  "NO CUE, TIME ONLY: the rest between bakes (overnight or at least 6 hours). The first-bake cues above are the only observable ones."
+ ],
+ "storage": "The page says fekkas keep a few months.",
+ "reheating": "Serve at room temperature.",
+ "healthBenefits": [
+  "Raisins and almonds add fibre; the biscuits are a sugar-and-oil snack."
+ ],
+ "culturalNote": "The author says broken fekkas are soaked in milk and eaten like cereal, a children's breakfast in Fez, and that 'msseoues' refers to the holes left around the seeds, almonds and raisins.",
+ "nutrition": {
+  "cal": 160,
+  "protein": 4,
+  "carbs": 22,
+  "fat": 7,
+  "fiber": 1,
+  "sodium": 40
+ },
+ "keywords": [
+  "fekkas",
+  "moroccan biscotti",
+  "almond raisin biscuits",
+  "nada kiffa",
+  "fez"
+ ]
+},
+{
+ "id": "MAR081",
+ "title": "Moroccan Rice Pudding (Rozz bil Halib)",
+ "localName": "Rozz bil halib — rice with milk (الأرز باللبن)",
+ "emoji": "🍚",
+ "country": "Morocco",
+ "countryFlag": "🇲🇦",
+ "region": "North Africa",
+ "community": "Home desserts",
+ "cuisine": "Moroccan",
+ "category": "Desserts & Sweets",
+ "course": "Dessert",
+ "diff": "Easy",
+ "prepTime": 10,
+ "restTime": 0,
+ "cookTime": 40,
+ "time": 50,
+ "servings": 4,
+ "cal": 290,
+ "rating": 4.9,
+ "reviews": 309,
+ "tags": [
+  "vegetarian",
+  "contains-dairy",
+  "gluten-free",
+  "sweet",
+  "comfort-food"
+ ],
+ "author": "Cooking with Alia (site byline only)",
+ "authorEmoji": "📰",
+ "desc": "Rice simmered in water, then in milk with a cinnamon stick and lemon peel, finished with sugar, butter and orange blossom water.",
+ "longDesc": "Rinse the rice until the water runs clear, cook it in water over medium heat for about 15 minutes until the water has gone, add the milk and cook another 15 minutes or so, adding more milk if the rice is not yet really soft. Sugar and butter go in at the end with orange blossom water and ground cinnamon.",
+ "ingredients": [
+  "1 cup rice (any size of cup)",
+  "2 cups of water (same cup used for rice)",
+  "2 cups of milk (may need 1 extra cup)",
+  "1 small piece of lemon peel",
+  "1 cinnamon stick",
+  "1/3 cup of sugar (or to taste) - same cup used for the rice",
+  "1 teaspoon of orange blossom water (or to taste)",
+  "1 tablespoon of butter",
+  "Ground cinnamon"
+ ],
+ "equipment": [
+  "Medium saucepan"
+ ],
+ "steps": [
+  "Wash the rice with water, changing it a couple of times until the water becomes clear.",
+  "Cook the rice with the 2 cups of water, lemon peel and cinnamon stick over medium heat. When the water has evaporated, after around 15 minutes, add the milk.",
+  "When the milk has evaporated, after another 15 minutes or so, taste the rice. It needs to be really soft; if not, add a little more milk and keep cooking.",
+  "Add the sugar and butter, turn off the heat and finish with the orange blossom water. Serve with ground cinnamon on top."
+ ],
+ "chefTips": [
+  "Cue: rice really soft; water, then milk, absorbed.",
+  "The page mentions needing up to 1 extra cup of milk."
+ ],
+ "commonMistakes": [
+  "Not rinsing the rice until clear.",
+  "Adding the milk before the water has gone."
+ ],
+ "servedWith": [
+  "Mint tea (MAR082)"
+ ],
+ "relatedRecipes": [
+  "MAR071",
+  "MAR051"
+ ],
+ "sources": [
+  "Adapted from '303 – Moroccan Rice Pudding Recipe', Cooking with Alia (old.cookingwithalia.com). BYLINE: none printed (site name only; flagged). Printed date 'Feb 24, 2015', which looks like an import date because other pages carry the same one. Yield 'Serves 4'.",
+  "SOURCING STATUS: ingredients and method TWO-PASS. Method wording is our own summary of the page; times and cues were relayed by a research tool and should be checked against the live page.",
+  "DISAGREEMENT kept: A Bowl of Sugar (writer handle 'kzafarullah', Oct 2024) uses 3/4 cup rice, salt, 1 1/2 cups water, 2 1/2 cups milk, 20 minutes then 40 minutes and 2 tablespoons orange blossom water; Khaleej Times (no byline, 2015) closely mirrors the Alia version, so it is not independent confirmation."
+ ],
+ "storage": "Store covered in the fridge; the page gives no storage time that we relayed.",
+ "reheating": "Warm with a splash of milk or serve cold.",
+ "healthBenefits": [
+  "Milk adds calcium; the dish is also sweet."
+ ],
+ "culturalNote": "The page presents rice pudding among its desserts with an Arabic title; no further cultural remarks were relayed.",
+ "nutrition": {
+  "cal": 290,
+  "protein": 7,
+  "carbs": 51,
+  "fat": 6,
+  "fiber": 1,
+  "sodium": 70
+ },
+ "keywords": [
+  "rice pudding",
+  "rozz bil halib",
+  "moroccan dessert",
+  "orange blossom",
+  "cooking with alia"
+ ]
+},
+{
+ "id": "MAR082",
+ "title": "Moroccan Mint Tea (Atay bil Naanaa)",
+ "localName": "Atay bil naanaa — gunpowder tea with spearmint (أتاي بالنعناع)",
+ "emoji": "🍵",
+ "country": "Morocco",
+ "countryFlag": "🇲🇦",
+ "region": "North Africa",
+ "community": "National",
+ "cuisine": "Moroccan",
+ "category": "Drinks & Beverages",
+ "course": "Drink",
+ "diff": "Easy",
+ "prepTime": 5,
+ "restTime": 0,
+ "cookTime": 15,
+ "time": 20,
+ "servings": 6,
+ "cal": 50,
+ "rating": 4.8,
+ "reviews": 174,
+ "tags": [
+  "vegan",
+  "vegetarian",
+  "gluten-free",
+  "dairy-free",
+  "drink",
+  "hot",
+  "caffeinated",
+  "traditional"
+ ],
+ "author": "Abbie Olson (U.S. Peace Corps)",
+ "authorEmoji": "🍵",
+ "desc": "Chinese gunpowder green tea rinsed, boiled with plenty of sugar and a handful of fresh spearmint in a berrad teapot, then poured from a height to raise foam.",
+ "longDesc": "The tea leaves are washed once with boiling water, which is discarded, then the pot is filled about two-thirds with boiling water and set on medium-low to medium heat with the lid open. Once bubbles form on the surface, a handful of fresh spearmint goes in, and the tea is kept on the fire until it reaches a nearly violent boil and the leaves have started to bloom. The first glass is poured back into the pot, and the tea is poured from at least an arm's length above the glass.",
+ "ingredients": [
+  "2 rounded tablespoons Chinese gunpowder (or Chun Mee) green tea (atay) - for a one-liter capacity pot",
+  "Boiling water - enough to fill the berrad about two-thirds full, plus 1 cup for rinsing",
+  "Fresh spearmint (naânaâ) - a handful",
+  "Sugar (sukkar) - the author suggests 3 \"bricks\", or 7 tablespoons granulated sugar, for a first berrad",
+  "Lemon verbena (louiza) and wormwood (sheeba) - optional"
+ ],
+ "equipment": [
+  "Moroccan teapot (berrad) of about one liter",
+  "Tea glasses (cas)",
+  "Serving tray (siniya)"
+ ],
+ "steps": [
+  "Rinse: pour a cup of boiling water over the tea in the berrad, let it sit a minute, and pour it into a glass without swirling. Discard it.",
+  "Add the sugar. Fill the berrad about two-thirds with boiling water and set it on a burner at medium-low to medium heat with the lid open.",
+  "Watch for bubbles forming on the surface, then add a handful of fresh spearmint (and the lemon verbena or wormwood, if using).",
+  "Keep the tea on the fire until it reaches a nearly violent boil, and check that the leaves have absorbed water and started to bloom.",
+  "Pour a glass and return it to the pot to mix, then lift the berrad at least an arm's length above the glass and pour the tea in a steady stream."
+ ],
+ "chefTips": [
+  "Cues: bubbles form on the surface; a nearly violent boil; the leaves start to bloom.",
+  "The author says washing tea leaves in boiling water is common in the Maghreb and thought to prevent bitterness.",
+  "For a first berrad she suggests the lower sugar quantity."
+ ],
+ "commonMistakes": [
+  "Adding the mint before the bubbles form.",
+  "Stirring or swirling the rinse.",
+  "Pouring from too low, which gives no foam."
+ ],
+ "servedWith": [
+  "Chebakia (MAR072)",
+  "Ghriba (MAR073)"
+ ],
+ "relatedRecipes": [
+  "MAR083",
+  "MAR072",
+  "MAR073"
+ ],
+ "sources": [
+  "Adapted from 'How to make Moroccan mint tea', U.S. Peace Corps. BYLINE AS PRINTED: 'By Abbie Olson January 12, 2017'. Written for a one-liter berrad; no yield printed; servings are our estimate.",
+  "SOURCING STATUS: terms, quantities and cues TWO-PASS; the names of the foam (kskrsha), the pour (ragwa) and the first infusion as the \"spirit\" or \"soul\" of the tea are SINGLE-PASS. Method wording is our own summary of the page; times and cues were relayed by a research tool and should be checked against the live page.",
+  "NO CUE, TIME ONLY: the one-minute rinse.",
+  "DISAGREEMENT kept: Tina Wasserman (ReformJudaism.org, undated, single reading) steeps 1 tbsp green tea and 1/3 cup mint in 1 quart boiling water for 6 minutes with 1/4 cup sugar instead of boiling the pot. Morocco World News (Aya El Maguiri, 4 August 2026) gives no measurements: boiling water, then turn off the heat when the tea rises and foam starts, and add the mint."
+ ],
+ "storage": "Best drunk fresh.",
+ "reheating": "Make fresh.",
+ "healthBenefits": [
+  "Mint is soothing; the tea is traditionally very sweet and contains caffeine."
+ ],
+ "culturalNote": "The Peace Corps page gives the Darija names for the berrad, siniya, cas and the tea ingredients, and the author notes washing the leaves is common in the Maghreb.",
+ "nutrition": {
+  "cal": 50,
+  "protein": 0,
+  "carbs": 13,
+  "fat": 0,
+  "fiber": 0,
+  "sodium": 2
+ },
+ "keywords": [
+  "moroccan mint tea",
+  "atay",
+  "berrad",
+  "gunpowder tea",
+  "peace corps"
+ ]
+},
+{
+ "id": "MAR083",
+ "title": "Saffron Tea",
+ "localName": "Atay bil za'faran — tea with saffron (أتاي بالزعفران)",
+ "emoji": "🌼",
+ "country": "Morocco",
+ "countryFlag": "🇲🇦",
+ "region": "North Africa",
+ "community": "Home hospitality",
+ "cuisine": "Moroccan",
+ "category": "Drinks & Beverages",
+ "course": "Drink",
+ "diff": "Easy",
+ "prepTime": 2,
+ "restTime": 0,
+ "cookTime": 15,
+ "time": 17,
+ "servings": 2,
+ "cal": 70,
+ "rating": 4.8,
+ "reviews": 271,
+ "tags": [
+  "vegan",
+  "vegetarian",
+  "gluten-free",
+  "dairy-free",
+  "drink",
+  "hot",
+  "caffeinated"
+ ],
+ "author": "Cooking with Alia (site byline only)",
+ "authorEmoji": "📰",
+ "desc": "Chinese gunpowder green tea brought to the boil several times in a teapot with sugar and a pinch of saffron.",
+ "longDesc": "Water is brought to a boil with sugar, the green tea and a pinch of saffron in the teapot. The pot returns to the stove for a few minutes on medium heat until the water comes to a boil again, and this is repeated three to four times before serving immediately.",
+ "ingredients": [
+  "3-4 cups of water",
+  "3 tablespoons of sugar",
+  "1 tablespoon of Chinese green tea (gunpowder)",
+  "A pinch of saffron"
+ ],
+ "equipment": [
+  "Teapot",
+  "Tea glasses"
+ ],
+ "steps": [
+  "Bring the water to a boil.",
+  "Add the sugar, green tea and saffron to the teapot with the hot water.",
+  "Return the teapot to the stove on medium heat for a few minutes until the water comes to a boil again.",
+  "Repeat this boil 3 to 4 times, then serve immediately."
+ ],
+ "chefTips": [
+  "Cue: the water comes back to a boil each round.",
+  "The order in which the saffron and sugar go in is our summary; check the live page."
+ ],
+ "commonMistakes": [
+  "Serving it before the repeated boils are done."
+ ],
+ "servedWith": [
+  "Ghriba (MAR073)"
+ ],
+ "relatedRecipes": [
+  "MAR082"
+ ],
+ "sources": [
+  "Adapted from '121 – Moroccan Saffron Tea Recipe', Cooking with Alia (old.cookingwithalia.com). BYLINE: none printed (site name only; flagged). Printed date 'Feb 24, 2015' (suspect, as other pages carry the same date). Yield 'Serves 2'.",
+  "SOURCING STATUS: ingredients TWO-PASS; the page was single-read for any cultural remarks and gave none. Method wording is our own summary of the page; times and cues were relayed by a research tool and should be checked against the live page."
+ ],
+ "storage": "Best drunk fresh.",
+ "reheating": "Make fresh.",
+ "healthBenefits": [
+  "A light, sweetened tea; contains caffeine."
+ ],
+ "culturalNote": "The page gives the recipe with no cultural remarks.",
+ "nutrition": {
+  "cal": 70,
+  "protein": 0,
+  "carbs": 18,
+  "fat": 0,
+  "fiber": 0,
+  "sodium": 3
+ },
+ "keywords": [
+  "saffron tea",
+  "moroccan tea",
+  "gunpowder green tea",
+  "cooking with alia"
+ ]
+},
+{
+ "id": "MAR084",
+ "title": "Moroccan Almond Milk (Halib bil Louz)",
+ "localName": "Halib bil louz — almond milk (حليب اللوز)",
+ "emoji": "🥛",
+ "country": "Morocco",
+ "countryFlag": "🇲🇦",
+ "region": "North Africa",
+ "community": "Home drinks",
+ "cuisine": "Moroccan",
+ "category": "Drinks & Beverages",
+ "course": "Drink",
+ "diff": "Easy",
+ "prepTime": 10,
+ "restTime": 480,
+ "cookTime": 0,
+ "time": 490,
+ "servings": 4,
+ "cal": 170,
+ "rating": 4.7,
+ "reviews": 186,
+ "tags": [
+  "vegetarian",
+  "dairy-free",
+  "gluten-free",
+  "contains-nuts",
+  "drink",
+  "cold",
+  "no-cook",
+  "make-ahead"
+ ],
+ "author": "Cooking with Alia (site byline only)",
+ "authorEmoji": "📰",
+ "desc": "Raw almonds soaked overnight, blended with water, honey and a pinch of salt, strained and flavoured with orange blossom water.",
+ "longDesc": "One cup of raw unsalted almonds is soaked in water overnight (8 hours), drained and blended on high for 1 to 2 minutes with 4 cups of water, salt and honey until a smooth, milky texture is reached. The mixture is squeezed through a cloth or strainer to get all the milk out and kept in the fridge up to 4 days.",
+ "ingredients": [
+  "1 cup of raw unsalted almonds + water for soaking",
+  "Pinch of salt",
+  "2 tablespoons honey (to taste)",
+  "4 cups water",
+  "1 teaspoon orange blossom water (optional)"
+ ],
+ "equipment": [
+  "Blender",
+  "Fine strainer or cloth"
+ ],
+ "steps": [
+  "Soak the almonds in water overnight (8 hours) and drain.",
+  "Blend on high for 1 to 2 minutes with the water, salt and honey, until you get a smooth, milky texture.",
+  "Squeeze through a fine cloth or strainer until all the milk is out.",
+  "Stir in the orange blossom water if using and chill."
+ ],
+ "chefTips": [
+  "Cue: smooth milky texture.",
+  "The soak is NO CUE, TIME ONLY (8 hours).",
+  "The page says it keeps in the fridge up to 4 days."
+ ],
+ "commonMistakes": [
+  "Not squeezing the pulp well.",
+  "Skipping the soak."
+ ],
+ "servedWith": [],
+ "relatedRecipes": [
+  "MAR085",
+  "MAR082"
+ ],
+ "sources": [
+  "Adapted from '385 – Moroccan Almond Milk / حليب اللوز', Cooking with Alia (old.cookingwithalia.com). BYLINE: none printed (site name only; flagged). Date as printed: 'Jan 1, 2016'. No yield printed; servings are our estimate.",
+  "SOURCING STATUS: ingredients and method TWO-PASS. Method wording is our own summary of the page; times and cues were relayed by a research tool and should be checked against the live page.",
+  "The straining step (cloth or strainer) is our wording for the page's \"squeeze until you get all the milk out\"."
+ ],
+ "storage": "Keep in the fridge for up to 4 days, per the page.",
+ "reheating": "Serve cold.",
+ "healthBenefits": [
+  "Almonds provide vitamin E and healthy fats; honey adds sugar."
+ ],
+ "culturalNote": "The page gives the recipe with its Arabic title and no further cultural remarks.",
+ "nutrition": {
+  "cal": 170,
+  "protein": 6,
+  "carbs": 11,
+  "fat": 13,
+  "fiber": 3,
+  "sodium": 50
+ },
+ "keywords": [
+  "almond milk",
+  "halib bil louz",
+  "moroccan drink",
+  "orange blossom water"
+ ]
+},
+{
+ "id": "MAR085",
+ "title": "Almond Date Milk",
+ "localName": "Halib bil louz w tmar — date and almond milk",
+ "emoji": "🥤",
+ "country": "Morocco",
+ "countryFlag": "🇲🇦",
+ "region": "North Africa",
+ "community": "Weddings and celebrations",
+ "cuisine": "Moroccan",
+ "category": "Drinks & Beverages",
+ "course": "Drink",
+ "diff": "Easy",
+ "prepTime": 5,
+ "restTime": 0,
+ "cookTime": 0,
+ "time": 5,
+ "servings": 2,
+ "cal": 230,
+ "rating": 4.5,
+ "reviews": 55,
+ "tags": [
+  "vegetarian",
+  "contains-dairy",
+  "contains-nuts",
+  "gluten-free",
+  "drink",
+  "cold",
+  "quick",
+  "no-cook"
+ ],
+ "author": "Amanda Mouttaki (Maroc Mama)",
+ "authorEmoji": "👩‍🍳",
+ "desc": "Milk blended with soft dates and almonds until smooth and creamy, served cold.",
+ "longDesc": "Six to eight ounces of milk or milk substitute are blended for 2 to 3 minutes with four large soft dates and ten to twelve almonds until smooth and creamy, and poured into a glass cold.",
+ "ingredients": [
+  "6-8 oz of milk or milk substitute (almond milk/soy milk etc)",
+  "4 large soft dates",
+  "10-12 almonds"
+ ],
+ "equipment": [
+  "Blender"
+ ],
+ "steps": [
+  "Put the milk, pitted dates and almonds in a blender.",
+  "Blend for 2 to 3 minutes until smooth and creamy.",
+  "Pour into a glass and enjoy cold."
+ ],
+ "chefTips": [
+  "Cue: smooth and creamy.",
+  "The page says to use soft dates."
+ ],
+ "commonMistakes": [
+  "Using dry dates that do not blend smooth."
+ ],
+ "servedWith": [],
+ "relatedRecipes": [
+  "MAR084",
+  "MAR086"
+ ],
+ "sources": [
+  "Adapted from 'Moroccan Almond Date Milk', Maroc Mama. BYLINE AS PRINTED: 'By: Author Amanda Mouttaki'. No printed date; metadata gives published 2015-02-16 and modified 2021-08-23. Yield 2 small smoothies (single reading).",
+  "SOURCING STATUS: ingredients and method TWO-PASS. Method wording is our own summary of the page; times and cues were relayed by a research tool and should be checked against the live page. A reader comment (single reading) calls the drink \"hleb bil luz tamer\"; this is not the author's statement."
+ ],
+ "storage": "Drink fresh.",
+ "reheating": "Serve cold.",
+ "healthBenefits": [
+  "Dates and almonds add fibre, potassium and healthy fats; dates are high in natural sugar."
+ ],
+ "culturalNote": "The author writes that dates and almonds go together in Morocco like peanut butter and jelly in America, and that sweet milk is served at weddings and special celebrations as a wish for a sweet life.",
+ "nutrition": {
+  "cal": 230,
+  "protein": 7,
+  "carbs": 36,
+  "fat": 8,
+  "fiber": 4,
+  "sodium": 70
+ },
+ "keywords": [
+  "almond date milk",
+  "moroccan date smoothie",
+  "maroc mama",
+  "wedding milk"
+ ]
+},
+{
+ "id": "MAR086",
+ "title": "Avocado Milkshake (Moroccan Juice-Bar Style)",
+ "localName": "Avocat — avocado milkshake (عصير الأفوكا)",
+ "emoji": "🥑",
+ "country": "Morocco",
+ "countryFlag": "🇲🇦",
+ "region": "North Africa",
+ "community": "Ramadan nights and juice stalls",
+ "cuisine": "Moroccan",
+ "category": "Drinks & Beverages",
+ "course": "Drink",
+ "diff": "Easy",
+ "prepTime": 5,
+ "restTime": 0,
+ "cookTime": 0,
+ "time": 5,
+ "servings": 3,
+ "cal": 260,
+ "rating": 4.8,
+ "reviews": 273,
+ "tags": [
+  "vegetarian",
+  "contains-dairy",
+  "gluten-free",
+  "drink",
+  "cold",
+  "quick",
+  "no-cook",
+  "ramadan"
+ ],
+ "author": "Christine Benlafquih (Taste of Maroc)",
+ "authorEmoji": "👩‍🍳",
+ "desc": "A ripe avocado blended with milk, sugar or honey and ice until smooth and chilled.",
+ "longDesc": "One cup to a cup and a half of milk goes in the blender first with a ripe avocado, sugar or honey and a handful of ice, and more milk is added in increments until the milkshake reaches the texture you prefer. It is best served chilled.",
+ "ingredients": [
+  "2 to 3 cups milk - or non-dairy milk",
+  "1 medium ripe avocado",
+  "2 tablespoons sugar or honey - or to taste",
+  "handful of ice cubes (optional)"
+ ],
+ "equipment": [
+  "Blender"
+ ],
+ "steps": [
+  "Pour 1 to 1 1/2 cups of the milk into a blender.",
+  "Add the avocado, sugar or honey and ice. Blend until smooth.",
+  "Add milk in increments until the milkshake is the texture you prefer.",
+  "Serve chilled."
+ ],
+ "chefTips": [
+  "Cues: blended until smooth; texture to taste.",
+  "The page gives no blending time."
+ ],
+ "commonMistakes": [
+  "An under-ripe avocado, which will not blend smooth."
+ ],
+ "servedWith": [],
+ "relatedRecipes": [
+  "MAR085",
+  "MAR087"
+ ],
+ "sources": [
+  "Adapted from 'Moroccan Avocado Milkshake or Smoothie Recipe', Taste of Maroc. BYLINE AS PRINTED: 'By Author Christine Benlafquih'. Date as printed: 'Last updated: April 30, 2021'. Yield 3 servings (single reading).",
+  "SOURCING STATUS: ingredients and method TWO-PASS; juice-stall sale and the author's defence of the word \"milkshake\" are SINGLE-PASS. Method wording is our own summary of the page; times and cues were relayed by a research tool and should be checked against the live page.",
+  "Not used: other avocado shakes (rose, banana, layered fruit-and-nut) came from handle or first-name bylines or were the author's own adaptations."
+ ],
+ "storage": "Drink fresh; it browns on standing.",
+ "reheating": "Serve cold.",
+ "healthBenefits": [
+  "Avocado adds fibre and unsaturated fat; milk adds calcium."
+ ],
+ "culturalNote": "The author writes that avocado milkshakes are enjoyed throughout Morocco, especially during the nights of Ramadan.",
+ "nutrition": {
+  "cal": 260,
+  "protein": 7,
+  "carbs": 22,
+  "fat": 17,
+  "fiber": 5,
+  "sodium": 60
+ },
+ "keywords": [
+  "avocado milkshake",
+  "moroccan avocado juice",
+  "ramadan drink",
+  "taste of maroc"
+ ]
+},
+{
+ "id": "MAR087",
+ "title": "Strawberry Rose Milkshake",
+ "localName": "Milkshake bil fraise w maward — strawberry rose milk",
+ "emoji": "🍓",
+ "country": "Morocco",
+ "countryFlag": "🇲🇦",
+ "region": "North Africa",
+ "community": "Juice stalls",
+ "cuisine": "Moroccan",
+ "category": "Drinks & Beverages",
+ "course": "Drink",
+ "diff": "Easy",
+ "prepTime": 5,
+ "restTime": 0,
+ "cookTime": 0,
+ "time": 5,
+ "servings": 4,
+ "cal": 130,
+ "rating": 4.7,
+ "reviews": 61,
+ "tags": [
+  "vegetarian",
+  "contains-dairy",
+  "gluten-free",
+  "drink",
+  "cold",
+  "quick",
+  "no-cook"
+ ],
+ "author": "Chef Mireille (Global Kitchen Travels)",
+ "authorEmoji": "👩‍🍳",
+ "desc": "Strawberries blended with milk and rose water into a simple Moroccan-style milkshake.",
+ "longDesc": "Hulled strawberries, milk and rose water are blended until well blended, with sugar or honey if wanted. The author notes that Moroccan milkshakes are flavoured with rose water or orange blossom water.",
+ "ingredients": [
+  "12 oz. hulled strawberries",
+  "2 cups milk",
+  "2 teaspoons rose water",
+  "sugar or honey (optional)"
+ ],
+ "equipment": [
+  "Blender"
+ ],
+ "steps": [
+  "Put the strawberries, milk and rose water in a blender.",
+  "Blend until well blended; sweeten with sugar or honey if wanted.",
+  "Serve cold."
+ ],
+ "chefTips": [
+  "The page gives no time and no doneness cue beyond \"well blended\"."
+ ],
+ "commonMistakes": [
+  "Too much rose water, which tastes perfumed."
+ ],
+ "servedWith": [],
+ "relatedRecipes": [
+  "MAR086",
+  "MAR085"
+ ],
+ "sources": [
+  "Adapted from 'Moroccan Strawberry Rose Milkshake', Global Kitchen Travels. BYLINE AS PRINTED: 'February 4, 2016 by Chef Mireille'; 'Last Updated on November 13, 2019 by Chef Mireille'. Yield serves 4 (single reading).",
+  "SOURCING STATUS: ingredients TWO-PASS. Method wording is our own summary of the page; times and cues were relayed by a research tool and should be checked against the live page."
+ ],
+ "storage": "Drink fresh.",
+ "reheating": "Serve cold.",
+ "healthBenefits": [
+  "Strawberries add vitamin C; milk adds calcium."
+ ],
+ "culturalNote": "The author writes that milkshakes are common in Morocco, often flavoured with nuts or fruits, almond and apple being the most common, and always with either rose water or orange blossom water.",
+ "nutrition": {
+  "cal": 130,
+  "protein": 5,
+  "carbs": 17,
+  "fat": 5,
+  "fiber": 2,
+  "sodium": 55
+ },
+ "keywords": [
+  "strawberry milkshake",
+  "rose water",
+  "moroccan milkshake",
+  "global kitchen travels"
+ ]
+},
+{
+ "id": "MAR088",
+ "title": "Moroccan Spiced Coffee",
+ "localName": "Qahwa ma'atra — spiced coffee (قهوة معطرة)",
+ "emoji": "☕",
+ "country": "Morocco",
+ "countryFlag": "🇲🇦",
+ "region": "North Africa",
+ "community": "Afternoon tea tradition",
+ "cuisine": "Moroccan",
+ "category": "Drinks & Beverages",
+ "course": "Drink",
+ "diff": "Easy",
+ "prepTime": 5,
+ "restTime": 0,
+ "cookTime": 5,
+ "time": 10,
+ "servings": 2,
+ "cal": 10,
+ "rating": 4.8,
+ "reviews": 168,
+ "tags": [
+  "vegan",
+  "vegetarian",
+  "gluten-free",
+  "dairy-free",
+  "drink",
+  "hot",
+  "caffeinated",
+  "spicy"
+ ],
+ "author": "Salima Benkhalti (Salima's Kitchen)",
+ "authorEmoji": "👩‍🍳",
+ "desc": "Dark-roasted coffee ground or whole with cinnamon, ginger, nutmeg, cardamom, clove, black pepper and star anise, then brewed and served with warm milk and sugar.",
+ "longDesc": "The coffee is mixed with a spice blend of cinnamon, ginger, nutmeg, cardamom, clove, black pepper and star anise and brewed however you like to make coffee. It is served with warm milk and sugar. The page gives no water amount, so the strength is yours to set.",
+ "ingredients": [
+  "1/2 cup dark roasted coffee, freshly ground or whole bean",
+  "1 tsp ground cinnamon",
+  "1 tsp ground ginger",
+  "1/2 tsp ground nutmeg",
+  "1/2 tsp ground cardamom",
+  "1/2 tsp ground clove",
+  "1/2 tsp ground black pepper",
+  "1/2 tsp ground star anise"
+ ],
+ "equipment": [
+  "Coffee maker or pot of your choice",
+  "Cups"
+ ],
+ "steps": [
+  "Combine the coffee with the ground spices.",
+  "Brew the spiced coffee however you like to make your coffee.",
+  "Serve with warm milk and sugar."
+ ],
+ "chefTips": [
+  "The page gives no water quantity and no doneness cue; adjust strength to taste.",
+  "Whole beans can be ground with the spices."
+ ],
+ "commonMistakes": [
+  "Over-brewing so the spices turn bitter (our caution)."
+ ],
+ "servedWith": [
+  "Warm milk and sugar"
+ ],
+ "relatedRecipes": [
+  "MAR082"
+ ],
+ "sources": [
+  "Adapted from 'Authentic Moroccan Coffee (10 Minutes)', Salima's Kitchen. BYLINE AS PRINTED: 'by Salima Benkhalti on Apr 18, 2022 (updated May 14, 2024)'. Yield 1-2 servings (single reading).",
+  "SOURCING STATUS: ingredients TWO-PASS; no cue or time on the page for the brew. Method wording is our own summary of the page; times and cues were relayed by a research tool and should be checked against the live page.",
+  "DISAGREEMENT kept: Do It In Paris (La rédaction, excerpting Abdel Alaoui) uses 150 g coffee, cloves, pepper, fennel, cinnamon sticks and ginger in 1 litre of boiled water, steeped 10 minutes off the heat. It has a desk byline and is not used."
+ ],
+ "storage": "Drink fresh.",
+ "reheating": "Make fresh.",
+ "healthBenefits": [
+  "Coffee contains caffeine; the spices add flavour without calories."
+ ],
+ "culturalNote": "The author writes that afternoon tea is a big part of Moroccan culture and that Moroccan coffee comes with that ritual. Tasting Table (Nikita Ephanov, 2023) adds that the spiced coffee, qahwa ma'atra, is typically reserved for the home.",
+ "nutrition": {
+  "cal": 10,
+  "protein": 0,
+  "carbs": 2,
+  "fat": 0,
+  "fiber": 1,
+  "sodium": 5
+ },
+ "keywords": [
+  "moroccan coffee",
+  "spiced coffee",
+  "qahwa maatra",
+  "salima benkhalti"
+ ]
+},
+{
+ "id": "MAR089",
+ "title": "Kefta Kebab (Grilled Ground Meat Skewers)",
+ "localName": "Kefta (كفتة مشوية)",
+ "emoji": "🍢",
+ "country": "Morocco",
+ "countryFlag": "🇲🇦",
+ "region": "North Africa",
+ "community": "Street stalls and home grills",
+ "cuisine": "Moroccan",
+ "category": "Grilled Meat",
+ "course": "Main",
+ "diff": "Easy",
+ "prepTime": 20,
+ "restTime": 0,
+ "cookTime": 10,
+ "time": 30,
+ "servings": 4,
+ "cal": 420,
+ "rating": 4.7,
+ "reviews": 175,
+ "tags": [
+  "halal",
+  "high-protein",
+  "grilled",
+  "street-food",
+  "low-carb",
+  "gluten-free",
+  "spicy"
+ ],
+ "author": "Christine Benlafquih (Taste of Maroc)",
+ "authorEmoji": "👩‍🍳",
+ "desc": "Finely ground beef or lamb with suet, grated onion, parsley, cilantro, paprika and cumin, moulded into logs and grilled over coals until browned but juicy.",
+ "longDesc": "Ground meat and suet are kneaded by hand with onion, herbs and spices, shaped into small sausage-like logs on skewers or in a grill basket, and grilled over medium-hot coals several minutes per side until evenly browned and cooked through but still juicy. The page notes that Moroccans prefer little to no pink, and offers a 350°F (180°C) oven alternative of about 15 to 20 minutes.",
+ "ingredients": [
+  "1 lb. finely ground beef or lamb or a mix of the two",
+  "4 to 5 oz. beef or lamb suet (recommended for classic flavor and texture)",
+  "1 medium onion finely chopped or grated",
+  "1/4 cup chopped fresh parsley",
+  "1/4 cup chopped fresh cilantro",
+  "1 tbsp chopped fresh mint leaves (optional; great with lamb)",
+  "2 tsp sweet paprika",
+  "1 tsp ground cumin",
+  "1 tsp salt",
+  "1/4 tsp black pepper",
+  "1 tsp ground cinnamon (optional)",
+  "1 tsp ground ginger (optional)",
+  "1 tsp ground turmeric (optional)",
+  "1/2 tsp ras el hanout (optional)",
+  "1/4 tsp cayenne pepper (optional)"
+ ],
+ "equipment": [
+  "Charcoal grill or grill basket",
+  "Metal skewers",
+  "Large bowl"
+ ],
+ "steps": [
+  "Combine the meat with the suet, onion, herbs and spices in a large bowl.",
+  "Knead by hand for a minute or two so the seasoning is evenly distributed.",
+  "Shape into small sausage-like logs. Arrange them in a grill basket, or thread and mould them onto skewers.",
+  "Grill over medium-hot coals several minutes per side, until evenly browned and cooked through but still juicy.",
+  "Alternatively, bake on a rack set over a pan at 350°F (180°C) for approximately 15 to 20 minutes, until browned and cooked through. Wrap in foil to keep warm until serving."
+ ],
+ "chefTips": [
+  "Cues: evenly browned, cooked through but still juicy; the page says Moroccans prefer little to no pink, so watch carefully to avoid drying the meat.",
+  "Oven time depends on how thick the kefta is shaped."
+ ],
+ "commonMistakes": [
+  "Over-grilling until dry.",
+  "Turning up the heat so the outside burns before the inside is cooked."
+ ],
+ "servedWith": [
+  "Salads, such as Zaalouk (MAR046) or Taktouka (MAR047)",
+  "Bread (MAR060)"
+ ],
+ "relatedRecipes": [
+  "MAR090",
+  "MAR092",
+  "MAR012"
+ ],
+ "sources": [
+  "Adapted from 'Moroccan Kefta Kebab Recipe', Taste of Maroc (print view). BYLINE AS PRINTED: 'Christine Benlafquih | Taste of Maroc'. No date on the print view. Yield 4 servings; prep 20 and cook 10 minutes (single reading). Prep and cook totals are our own estimates from the times the page does give.",
+  "SOURCING STATUS: ingredients and method TWO-PASS. Method wording is our own summary of the page; times and cues were relayed by a research tool and should be checked against the live page. Page typos 'avoid avoid' and 'Time will depending' are not reproduced.",
+  "DISAGREEMENT kept: Salima's Kitchen (MAR091) uses no suet and chills the mix; the Splendid Table/Koehler version (single reading only) adds cinnamon and mace and cooks about 10 minutes."
+ ],
+ "storage": "Best eaten hot; refrigerate leftovers.",
+ "reheating": "Reheat in a hot pan or oven until steaming.",
+ "healthBenefits": [
+  "High in protein; suet makes it rich, so keep portions moderate."
+ ],
+ "culturalNote": "One reading of the Splendid Table version describes kefta as a staple of street stalls and roadside stops; the Taste of Maroc page itself gives the recipe without cultural remarks.",
+ "nutrition": {
+  "cal": 420,
+  "protein": 28,
+  "carbs": 5,
+  "fat": 32,
+  "fiber": 1,
+  "sodium": 620
+ },
+ "keywords": [
+  "kefta",
+  "moroccan kebab",
+  "ground meat skewers",
+  "suet",
+  "taste of maroc"
+ ]
+},
+{
+ "id": "MAR090",
+ "title": "Kefta Dyal Gharb (Ground Meat from the Gharb Region)",
+ "localName": "Kefta dyal l'ham — Gharb-style kefta",
+ "emoji": "🍢",
+ "country": "Morocco",
+ "countryFlag": "🇲🇦",
+ "region": "North Africa",
+ "community": "Gharb region",
+ "cuisine": "Moroccan",
+ "category": "Grilled Meat",
+ "course": "Main",
+ "diff": "Medium",
+ "prepTime": 15,
+ "restTime": 0,
+ "cookTime": 20,
+ "time": 35,
+ "servings": 6,
+ "cal": 380,
+ "rating": 4.8,
+ "reviews": 203,
+ "tags": [
+  "halal",
+  "high-protein",
+  "grilled",
+  "street-food",
+  "low-carb",
+  "gluten-free",
+  "spicy"
+ ],
+ "author": "Nada Kiffa (Taste of Maroc)",
+ "authorEmoji": "👩‍🍳",
+ "desc": "Meat and kidney fat ground twice with herbs and spices, shaped into mini-burgers or fingers and grilled over grey-ashed coals; served with a salt, cumin and cayenne mix.",
+ "longDesc": "The author cuts a mix of lean and fatty cuts into big cubes, grinds them with kidney fat, adds grated onion, parsley, mint, marjoram, cumin, paprika, salt, cayenne, ras el hanout and coriander, and grinds a second time. The kefta is shaped into 2-inch mini-burgers, 4-inch fingers or long sausages pressed around metal skewers, then grilled once the charcoal is covered with a layer of grey-silver ash. It should be well done but juicy inside, by Moroccan standards.",
+ "ingredients": [
+  "1.65 lbs meat, mixture of lean and fatty parts such as leg of lamb, flank, middle chest and large chest, cut into big cubes",
+  "8.8 oz kidney fat (suet) diced small",
+  "1 onion, medium-sized grated or finely chopped",
+  "// Seasoning",
+  "1/4 cup flat leaf parsley, leaves only, finely chopped",
+  "3 to 5 mint leaves finely chopped",
+  "1 tsp dried marjoram",
+  "1 1/2 tsp ground cumin",
+  "2 tsp ground sweet paprika",
+  "1 1/2 tsp salt",
+  "1/2 tsp ground cayenne, or to taste",
+  "1 tsp ras el hanout",
+  "1 tsp ground coriander seeds",
+  "// For serving",
+  "1 tsp salt",
+  "1 tbsp ground cumin",
+  "1 tsp cayenne"
+ ],
+ "equipment": [
+  "Meat grinder",
+  "Metal skewers",
+  "Charcoal grill"
+ ],
+ "steps": [
+  "Grind the meat and fat with a machine. Add the herbs and spices and grind a second time, then mix in the onion. (If freezing, add the grated onion only on the day you thaw and use it.)",
+  "Shape into mini-burgers about 2 inches round and no more than 1/3 inch thick; fingers about 4 inches tall and 1/2 inch thick; or squeeze a lump around metal skewers into a long sausage.",
+  "Start grilling when the charcoal is covered with a layer of grey-silver ash. Grill each side a few minutes, rotating to the other side.",
+  "Mix the salt, cumin and cayenne and serve alongside for dipping. A knob of butter over the hot kefta fingers is the author's father's serving tip."
+ ],
+ "chefTips": [
+  "Cue: well done but juicy inside; some like it with burnt edges, some just medium.",
+  "The grill is ready when the coals have a layer of grey-silver ash."
+ ],
+ "commonMistakes": [
+  "Grilling over flames rather than ash-covered coals.",
+  "Adding the onion before freezing."
+ ],
+ "servedWith": [
+  "Bread (MAR060)",
+  "Salads, such as Zaalouk (MAR046)"
+ ],
+ "relatedRecipes": [
+  "MAR089",
+  "MAR092",
+  "MAR093"
+ ],
+ "sources": [
+  "Adapted from 'Moroccan Kefta Dyal Gharb Recipe (Kefta dyal L'ham)', Taste of Maroc (print view). BYLINE AS PRINTED: 'Nada Kiffa | Taste of Maroc'. No date on the print view. Yield 6 servings; prep 15 and cook 20 minutes (single reading). Prep and cook totals are our own estimates from the times the page does give.",
+  "SOURCING STATUS: ingredients TWO-PASS; method partly SINGLE-PASS in the relayed notes. Method wording is our own summary of the page; times and cues were relayed by a research tool and should be checked against the live page.",
+  "The regional framing (Gharb, northwest Morocco) is the title and the author's own."
+ ],
+ "storage": "Freeze the mixture without onion, per the page; refrigerate cooked kefta.",
+ "reheating": "Reheat until steaming hot.",
+ "healthBenefits": [
+  "High in protein and in fat from the suet."
+ ],
+ "culturalNote": "The page ties this style of kefta to the Gharb region in northwest Morocco, as the author frames it.",
+ "nutrition": {
+  "cal": 380,
+  "protein": 25,
+  "carbs": 3,
+  "fat": 29,
+  "fiber": 1,
+  "sodium": 560
+ },
+ "keywords": [
+  "kefta dyal gharb",
+  "moroccan kefta",
+  "gharb",
+  "nada kiffa"
+ ]
+},
+{
+ "id": "MAR091",
+ "title": "Grilled Kefta Skewers (Salima's Kitchen)",
+ "localName": "Kefta mechwia — grilled kefta",
+ "emoji": "🍢",
+ "country": "Morocco",
+ "countryFlag": "🇲🇦",
+ "region": "North Africa",
+ "community": "Home grills",
+ "cuisine": "Moroccan",
+ "category": "Grilled Meat",
+ "course": "Main",
+ "diff": "Easy",
+ "prepTime": 20,
+ "restTime": 15,
+ "cookTime": 10,
+ "time": 45,
+ "servings": 4,
+ "cal": 330,
+ "rating": 4.6,
+ "reviews": 102,
+ "tags": [
+  "halal",
+  "high-protein",
+  "grilled",
+  "low-carb",
+  "gluten-free",
+  "quick"
+ ],
+ "author": "Salima Benkhalti (Salima's Kitchen)",
+ "authorEmoji": "👩‍🍳",
+ "desc": "Ground beef or lamb mixed with minced red onion, cilantro, parsley, cumin and paprika, chilled, wrapped on skewers and grilled until browned all round.",
+ "longDesc": "The meat and seasoning are mixed by hand for at least five minutes, chilled from 15 minutes to 2 hours, and wrapped around skewers. The skewers are grilled over medium-high heat, turned every few minutes, until they develop grill marks and brown significantly all around.",
+ "ingredients": [
+  "1 lb ground beef or lamb, 10% or more fat",
+  "1 small red onion, minced finely",
+  "2 tbsp cilantro, minced",
+  "2 tbsp parsley, minced",
+  "1 tsp cumin",
+  "1 tsp paprika",
+  "1 tsp pepper",
+  "1 tsp salt",
+  "1 tsp olive oil"
+ ],
+ "equipment": [
+  "Grill",
+  "Skewers",
+  "Mixing bowl"
+ ],
+ "steps": [
+  "Combine all the ingredients in a large bowl and mix well with your hands for at least 5 minutes.",
+  "Cover and chill in the fridge for 15 minutes to 2 hours.",
+  "Take a ball of the mixture and wrap it around a skewer, one at a time, until all the meat is on skewers. Heat the grill to medium-high.",
+  "Grill the skewers, turning every few minutes to prevent burning, until they develop grill marks and brown significantly all around."
+ ],
+ "chefTips": [
+  "Cue: grill marks and brown significantly all around.",
+  "The chill is NO CUE, TIME ONLY (15 minutes to 2 hours)."
+ ],
+ "commonMistakes": [
+  "Mixing too briefly, so the kefta does not hold on the skewer.",
+  "Leaving the skewers on one side too long."
+ ],
+ "servedWith": [
+  "Bread (MAR060)"
+ ],
+ "relatedRecipes": [
+  "MAR089",
+  "MAR090"
+ ],
+ "sources": [
+  "Adapted from 'Grilled Moroccan Kefta (Brochettes)', Salima's Kitchen. BYLINE AS PRINTED: 'by Salima Benkhalti', 'May 22, 2023 (updated Feb 27, 2024)'. Yield 4 (single reading). Prep and cook totals are our own estimates from the times the page does give.",
+  "SOURCING STATUS: ingredients and grill method TWO-PASS. Method wording is our own summary of the page; times and cues were relayed by a research tool and should be checked against the live page.",
+  "SUSPECTED MISPRINT, not used: one reading reports an oven alternative of '400°F for 2-3 minutes per side', which looks implausibly short; the oven option is left out here."
+ ],
+ "storage": "The page's leftovers note (single reading) is up to 5 days refrigerated, with freezing not recommended.",
+ "reheating": "Reheat until hot through.",
+ "healthBenefits": [
+  "High protein, low carbohydrate."
+ ],
+ "culturalNote": "The page gives the recipe without cultural remarks.",
+ "nutrition": {
+  "cal": 330,
+  "protein": 26,
+  "carbs": 3,
+  "fat": 24,
+  "fiber": 1,
+  "sodium": 520
+ },
+ "keywords": [
+  "kefta skewers",
+  "grilled kefta",
+  "salima's kitchen",
+  "brochettes"
+ ]
+},
+{
+ "id": "MAR092",
+ "title": "Lamb or Beef Brochettes (Qotban / Kebab)",
+ "localName": "Qodban / kebab / sfafed — skewered meat cubes (قضبان)",
+ "emoji": "🍢",
+ "country": "Morocco",
+ "countryFlag": "🇲🇦",
+ "region": "North Africa",
+ "community": "Street stalls and home grills",
+ "cuisine": "Moroccan",
+ "category": "Grilled Meat",
+ "course": "Main",
+ "diff": "Medium",
+ "prepTime": 30,
+ "restTime": 120,
+ "cookTime": 20,
+ "time": 170,
+ "servings": 6,
+ "cal": 430,
+ "rating": 4.7,
+ "reviews": 54,
+ "tags": [
+  "halal",
+  "high-protein",
+  "grilled",
+  "street-food",
+  "low-carb",
+  "gluten-free"
+ ],
+ "author": "Nada Kiffa (Taste of Maroc)",
+ "authorEmoji": "👩‍🍳",
+ "desc": "One-inch cubes of lamb leg or beef alternated with suet on skewers, marinated in onion, parsley and olive oil, and grilled over ash-covered coals; served with a cumin-salt-cayenne mix.",
+ "longDesc": "Meat is cut into 1-inch cubes with suet, marinated at least 2 and up to 8 hours with onion, parsley, pepper, salt and olive oil, then threaded about 6 cubes to a skewer with fat every few pieces, starting and ending with meat. The skewers go over coals covered with a grey-silver ash and are turned once. The meat should be well coloured but still juicy by Moroccan standards.",
+ "ingredients": [
+  "2.2 lbs boneless leg of lamb (or filet of beef), trimmed and cut into 1 inch cubes",
+  "8 oz beef or lamb fat, preferably suet (kidney fat) cut into 1 inch cubes",
+  "2 medium yellow or white onions, finely chopped",
+  "1/2 cup flat leaf parsley, finely chopped",
+  "1/2 tsp ground black pepper",
+  "1 1/2 tsp salt or to taste",
+  "2 tbsp extra virgin olive oil",
+  "// Serving mix",
+  "1 tbsp ground cumin",
+  "1 tsp salt",
+  "1 tsp cayenne or to taste",
+  "// Garnish",
+  "1/2 cup flat leaf parsley, leaves only finely chopped",
+  "1 medium-size onion, finely chopped"
+ ],
+ "equipment": [
+  "Metal skewers",
+  "Charcoal grill"
+ ],
+ "steps": [
+  "Toss the meat, fat, onions, parsley, pepper, salt and oil. Cover and marinate at least 2 hours and up to 8.",
+  "Thread around 6 cubes of meat onto each skewer, alternating every few pieces with a cube of fat. Start and end with meat.",
+  "Start grilling when the charcoal is covered with a layer of grey-silver ash.",
+  "Cook a few minutes, then turn to cook the other side; the page's relayed total is about 20 minutes.",
+  "Serve with the cumin-salt-cayenne mix, parsley and onion. You can keep the fat nuggets, but it is better to discard them as they have done their job of keeping the meat moist."
+ ],
+ "chefTips": [
+  "Cue: well coloured but still juicy, by Moroccan standards; some like it well done with burnt edges, some medium.",
+  "The marinade is NO CUE, TIME ONLY (2 to 8 hours)."
+ ],
+ "commonMistakes": [
+  "Starting to grill over flames instead of ash-covered coals.",
+  "Beginning or ending a skewer with fat, which burns."
+ ],
+ "servedWith": [
+  "Bread (MAR060)",
+  "Salad (MAR052)"
+ ],
+ "relatedRecipes": [
+  "MAR089",
+  "MAR093",
+  "MAR094"
+ ],
+ "sources": [
+  "Adapted from 'Moroccan Lamb or Beef Brochettes - Kebab or Qotban', Taste of Maroc. BYLINE AS PRINTED: 'Nada Kiffa'. Date as printed: 'Last updated: December 11, 2019' (published September 16, 2017, single reading). Yield 6 servings (single reading). Prep and cook totals are our own estimates from the times the page does give.",
+  "SOURCING STATUS: ingredients TWO-PASS; the 20-minute total is SINGLE-PASS. Method wording is our own summary of the page; times and cues were relayed by a research tool and should be checked against the live page.",
+  "Cultural remarks are SINGLE-PASS: the author says Moroccan 'kebab' means skewered cubes, not ground meat."
+ ],
+ "storage": "Best eaten right off the grill.",
+ "reheating": "Reheat briefly in a hot pan.",
+ "healthBenefits": [
+  "High in protein; the suet is fatty and is optional to eat."
+ ],
+ "culturalNote": "The author explains that in Morocco 'kebab' means skewered meat cubes rather than ground meat, and notes a charcoal brazier is called a kanoun or mejmar.",
+ "nutrition": {
+  "cal": 430,
+  "protein": 32,
+  "carbs": 4,
+  "fat": 32,
+  "fiber": 1,
+  "sodium": 640
+ },
+ "keywords": [
+  "qotban",
+  "moroccan kebab",
+  "lamb brochettes",
+  "nada kiffa"
+ ]
+},
+{
+ "id": "MAR093",
+ "title": "Liver Kebabs (Kouah)",
+ "localName": "Kouah / kebda mechwia — grilled liver (كبدة مشوية)",
+ "emoji": "🍢",
+ "country": "Morocco",
+ "countryFlag": "🇲🇦",
+ "region": "North Africa",
+ "community": "Street stalls and Eid",
+ "cuisine": "Moroccan",
+ "category": "Grilled Meat",
+ "course": "Main",
+ "diff": "Medium",
+ "prepTime": 20,
+ "restTime": 60,
+ "cookTime": 10,
+ "time": 90,
+ "servings": 4,
+ "cal": 290,
+ "rating": 4.6,
+ "reviews": 226,
+ "tags": [
+  "halal",
+  "high-protein",
+  "grilled",
+  "street-food",
+  "low-carb",
+  "contains-liver",
+  "gluten-free"
+ ],
+ "author": "Nada Kiffa (Taste of Maroc)",
+ "authorEmoji": "👩‍🍳",
+ "desc": "Cubes of fresh calf or lamb liver threaded with suet, seasoned with paprika and cumin, and grilled until lightly seared but still a bit spongy when squeezed.",
+ "longDesc": "Young liver, ideally less than 48 hours old, is trimmed of its membrane and cut into 3/4-inch cubes, tossed with small cubes of suet, salt, paprika, cumin and optional cayenne, and marinated at least an hour. The cubes are threaded onto skewers, alternating every few pieces with fat, and grilled once the coals have gone grey. The cue is cooked through and lightly seared but still a bit spongy when squeezed; serve immediately.",
+ "ingredients": [
+  "1.1 lbs calf or lamb liver less than 48 hrs old (young liver is better)",
+  "4 oz kidney fat (suet), optional but recommended",
+  "1 tsp salt",
+  "1 tbsp ground sweet paprika",
+  "1/2 tsp ground cumin",
+  "1 tsp cayenne pepper optional",
+  "// For serving",
+  "1 tsp ground cumin",
+  "1 tsp salt"
+ ],
+ "equipment": [
+  "Metal skewers",
+  "Charcoal grill"
+ ],
+ "steps": [
+  "Remove the transparent membrane around the liver and cut it into cubes about 3/4 inch (2 cm).",
+  "Cut the suet into small cubes. Combine the liver and fat with the spices, cover and marinate at least an hour (or overnight) in the fridge.",
+  "Light the charcoal. The grill is ready when the flames have gone out and the coals have a thin grey cover.",
+  "Thread the liver onto skewers, alternating every few pieces with fat and packing them neither loose nor tight; about 6 to 8 cubes of liver to a skewer.",
+  "Grill, turning to cook on all sides, until the liver is cooked through and lightly seared but still a bit spongy when squeezed. Serve immediately with cumin and salt."
+ ],
+ "chefTips": [
+  "Cue: cooked through, lightly seared, a bit spongy when squeezed.",
+  "The page stresses fresh, young liver (less than 48 hours old).",
+  "The marinade is NO CUE, TIME ONLY (at least an hour)."
+ ],
+ "commonMistakes": [
+  "Overcooking, which makes liver tough.",
+  "Using old liver."
+ ],
+ "servedWith": [
+  "Bread (MAR060)",
+  "Cumin and salt mix"
+ ],
+ "relatedRecipes": [
+  "MAR094",
+  "MAR092",
+  "MAR090"
+ ],
+ "sources": [
+  "Adapted from 'Moroccan Liver Kebabs (Kouah)', Taste of Maroc (print view). BYLINE AS PRINTED: 'Nada Kiffa | Taste of Maroc'. No date on the print view. Yield 4 servings (single reading). Prep and cook totals are our own estimates from the times the page does give.",
+  "SOURCING STATUS: ingredients and method TWO-PASS (the third attempt at quoting succeeded). Method wording is our own summary of the page; times and cues were relayed by a research tool and should be checked against the live page. An optional pre-sear of liver steaks (about 1 minute per side) appears in one reading only and is left out."
+ ],
+ "storage": "Eat immediately; liver does not keep well once cooked.",
+ "reheating": "Not recommended.",
+ "healthBenefits": [
+  "Liver is rich in iron and vitamin A; eat in moderation."
+ ],
+ "culturalNote": "The page gives the recipe without cultural remarks in the relayed notes.",
+ "nutrition": {
+  "cal": 290,
+  "protein": 27,
+  "carbs": 3,
+  "fat": 18,
+  "fiber": 1,
+  "sodium": 480
+ },
+ "keywords": [
+  "liver kebab",
+  "kouah",
+  "kebda mechwia",
+  "moroccan offal"
+ ]
+},
+{
+ "id": "MAR094",
+ "title": "Heart and Kidney Kebabs",
+ "localName": "Qlayeb / kebab dyal lqalb w lkola — heart and kidney skewers",
+ "emoji": "🍢",
+ "country": "Morocco",
+ "countryFlag": "🇲🇦",
+ "region": "North Africa",
+ "community": "Street stalls and Eid",
+ "cuisine": "Moroccan",
+ "category": "Grilled Meat",
+ "course": "Main",
+ "diff": "Medium",
+ "prepTime": 25,
+ "restTime": 60,
+ "cookTime": 12,
+ "time": 97,
+ "servings": 6,
+ "cal": 340,
+ "rating": 4.7,
+ "reviews": 195,
+ "tags": [
+  "halal",
+  "high-protein",
+  "grilled",
+  "street-food",
+  "low-carb",
+  "gluten-free"
+ ],
+ "author": "Nada Kiffa (Taste of Maroc)",
+ "authorEmoji": "👩‍🍳",
+ "desc": "Cubes of lamb or beef heart and kidney, marinated in paprika and cumin, threaded with fat and grilled until firm outside and soft inside.",
+ "longDesc": "Kidney and heart are cut into 1/2-inch cubes and marinated with suet or caul fat and spices for at least an hour or overnight. They are threaded onto skewers alternating each couple of pieces with fat, about 6 cubes of kidney and fat per skewer, and grilled over hot coals without letting the flame reach the skewers, rotating to cook evenly. The cue is firm outside, soft inside; overcooking makes it rubbery.",
+ "ingredients": [
+  "2.2 lbs Mix of kidney and heart, - lamb or beef",
+  "12 oz caul fat or kidney fat",
+  "1 1/2 tbsp sweet paprika",
+  "2 tsp cumin",
+  "1 1/2 tsp salt",
+  "1/2 tsp cayenne, - optional",
+  "// For serving",
+  "cayenne, - to taste",
+  "cumin, - to taste",
+  "1 tsp salt"
+ ],
+ "equipment": [
+  "Metal skewers",
+  "Charcoal grill"
+ ],
+ "steps": [
+  "Remove the transparent membrane from the kidney and cut it into 1/2 inch cubes. Cut the heart the same way.",
+  "Dice the kidney fat into 1/2 inch cubes; if using caul fat, cut it into squares as wide as the cubes.",
+  "Toss everything with the paprika, cumin, salt and cayenne and marinate at least an hour, up to overnight.",
+  "Thread the heart and kidney cubes onto skewers, alternating each couple of pieces with fat; about 6 cubes of kidney and fat per skewer.",
+  "Grill over hot coals, making sure the flame does not reach the skewers, rotating so they cook evenly on all sides, until firm outside and soft inside. Serve with cumin, cayenne and salt."
+ ],
+ "chefTips": [
+  "Cues: firm outside but soft inside; avoid overcooking, which makes the kebab rubbery.",
+  "The marinade is NO CUE, TIME ONLY."
+ ],
+ "commonMistakes": [
+  "Letting flames reach the skewers.",
+  "Overcooking until rubbery."
+ ],
+ "servedWith": [
+  "Bread (MAR060)"
+ ],
+ "relatedRecipes": [
+  "MAR093",
+  "MAR092"
+ ],
+ "sources": [
+  "Adapted from 'Moroccan Heart and Kidney Kebabs', Taste of Maroc. BYLINE AS PRINTED: 'Nada Kiffa'. Published September 4, 2017, last updated October 24, 2017. Yield 6 servings (single reading). Prep and cook totals are our own estimates from the times the page does give.",
+  "SOURCING STATUS: ingredients and method TWO-PASS. Method wording is our own summary of the page; times and cues were relayed by a research tool and should be checked against the live page. One reading adds that heart and kidney take a couple of minutes longer than liver and that grilled offal is common street food and Eid fare (SINGLE-PASS)."
+ ],
+ "storage": "Eat the same day.",
+ "reheating": "Not recommended.",
+ "healthBenefits": [
+  "Heart and kidney are rich in iron and B vitamins and high in protein; the suet is fatty."
+ ],
+ "culturalNote": "The relayed notes describe grilled offal as common street food and Eid fare, from a single reading of the page.",
+ "nutrition": {
+  "cal": 340,
+  "protein": 30,
+  "carbs": 2,
+  "fat": 24,
+  "fiber": 1,
+  "sodium": 520
+ },
+ "keywords": [
+  "heart kidney kebab",
+  "moroccan offal",
+  "eid kebab",
+  "nada kiffa"
+ ]
+},
+{
+ "id": "MAR095",
+ "title": "Kefta Tagine (Meatballs in Saffron-Cilantro Sauce)",
+ "localName": "Tajine kefta (طاجين الكفتة)",
+ "emoji": "🍲",
+ "country": "Morocco",
+ "countryFlag": "🇲🇦",
+ "region": "North Africa",
+ "community": "National",
+ "cuisine": "Moroccan",
+ "category": "Meat Dishes",
+ "course": "Main",
+ "diff": "Medium",
+ "prepTime": 25,
+ "restTime": 30,
+ "cookTime": 40,
+ "time": 95,
+ "servings": 5,
+ "cal": 360,
+ "rating": 4.5,
+ "reviews": 107,
+ "tags": [
+  "halal",
+  "high-protein",
+  "one-pot",
+  "comfort-food",
+  "traditional",
+  "gluten-free"
+ ],
+ "author": "David Leite (Leite's Culinaria), adapted from Paula Wolfert",
+ "authorEmoji": "👨‍🍳",
+ "desc": "Olive-size lamb or beef meatballs, spiced with paprika, cumin, cinnamon and nutmeg, poached in a saffron, butter and cilantro sauce finished with lemon juice.",
+ "longDesc": "Ground lamb or beef, crème fraîche or suet, spices and herbs are blended to a paste, chilled at least 30 minutes and rolled into 24 olive-size balls. A sauce of grated red onion, butter, saffron water, spices, cilantro and hot water is simmered about 10 minutes, then the meatballs are poached covered for 30 minutes, turned midway, and lemon juice is added at the end.",
+ "ingredients": [
+  "// Saffron water",
+  "1/2 teaspoon crumbled saffron strands",
+  "1 cup hot water (only 1/4 cup used)",
+  "// Kefta",
+  "1 pound lean ground lamb or beef",
+  "3 tablespoons crème fraîche or grated beef suet",
+  "2 teaspoons sweet paprika",
+  "1 teaspoon ground cumin, preferably Moroccan",
+  "1 teaspoon ground coriander",
+  "3/4 teaspoon ground cinnamon, preferably Ceylon",
+  "1/4 teaspoon grated nutmeg",
+  "1/4 teaspoon cayenne",
+  "Salt and freshly ground black pepper",
+  "2 tablespoons roughly chopped flat-leaf parsley",
+  "2 tablespoons roughly chopped cilantro",
+  "// Sauce",
+  "1 medium red onion, grated",
+  "2 tablespoons (1 oz) unsalted butter",
+  "1/4 cup saffron water",
+  "1 teaspoon sweet paprika",
+  "1/2 teaspoon ground cumin, preferably Moroccan",
+  "1/4 teaspoon ground ginger",
+  "1/4 teaspoon freshly ground black pepper, or to taste",
+  "2 to 3 pinches cayenne",
+  "Pinch of ground turmeric",
+  "1/2 teaspoon salt, or to taste",
+  "1 cup roughly chopped cilantro",
+  "1/2 cup hot water",
+  "2 tablespoons fresh lemon juice"
+ ],
+ "equipment": [
+  "Food processor",
+  "Wide heavy pan or tagine with lid"
+ ],
+ "steps": [
+  "Steep the saffron in the hot water.",
+  "Blend the meat, crème fraîche or suet, spices, salt, pepper, parsley and cilantro in a food processor until a paste forms. Cover and refrigerate at least 30 minutes.",
+  "Shape into 24 olive-size balls and set on a plate.",
+  "Combine the grated onion, butter, 1/4 cup saffron water, spices, salt, 3/4 cup of the cilantro and the hot water in the pan. Slowly raise the heat, bring to a boil, then reduce to medium-low, cover and simmer gently about 10 minutes.",
+  "Add the meatballs, cover and poach 30 minutes, turning them midway. Add the lemon juice and the rest of the cilantro to finish."
+ ],
+ "chefTips": [
+  "The chill and the poach are NO CUE, TIME ONLY (30 minutes each).",
+  "Testers on the page (single reading) reported 35 to 36 meatballs instead of 24 when rolled smaller, and one found them cooked in under half the time."
+ ],
+ "commonMistakes": [
+  "Rolling the balls too large for the stated time.",
+  "Boiling hard so the meatballs break."
+ ],
+ "servedWith": [
+  "Bread (MAR060)"
+ ],
+ "relatedRecipes": [
+  "MAR012",
+  "MAR089"
+ ],
+ "sources": [
+  "Adapted from 'Moroccan Meatballs ~ Kefta Tagine', Leite's Culinaria. BYLINE AS PRINTED: 'David Leite'; recipe adapted from The Food of Morocco by Paula Wolfert (Wolfert copyright 2011, single reading). Published Jan 27, 2021, updated Aug 11, 2023. Yield 4 to 5 servings; prep 25 and cook 40 minutes (single reading).",
+  "SOURCING STATUS: ingredients and method TWO-PASS. Method wording is our own summary of the page; times and cues were relayed by a research tool and should be checked against the live page.",
+  "The final cilantro addition is our wording; the page's relayed notes end at the lemon juice."
+ ],
+ "storage": "Refrigerate up to 3 days.",
+ "reheating": "Warm gently in the sauce.",
+ "healthBenefits": [
+  "High in protein; herbs add vitamins."
+ ],
+ "culturalNote": "This is a kefta dish rather than a grill dish; the recipe is credited to Paula Wolfert's The Food of Morocco.",
+ "nutrition": {
+  "cal": 360,
+  "protein": 28,
+  "carbs": 6,
+  "fat": 25,
+  "fiber": 2,
+  "sodium": 560
+ },
+ "keywords": [
+  "kefta tagine",
+  "moroccan meatballs",
+  "saffron cilantro sauce",
+  "paula wolfert"
+ ]
+},
+{
+ "id": "MAR096",
+ "title": "Slow-Roasted Lamb Shoulder (Mechoui, Oven Version)",
+ "localName": "Mechoui — roasted lamb (مشوي)",
+ "emoji": "🍖",
+ "country": "Morocco",
+ "countryFlag": "🇲🇦",
+ "region": "North Africa",
+ "community": "Festivals and Eid",
+ "cuisine": "Moroccan",
+ "category": "Meat Dishes",
+ "course": "Main",
+ "diff": "Easy",
+ "prepTime": 15,
+ "restTime": 0,
+ "cookTime": 480,
+ "time": 495,
+ "servings": 8,
+ "cal": 520,
+ "rating": 4.7,
+ "reviews": 68,
+ "tags": [
+  "halal",
+  "high-protein",
+  "special-occasion",
+  "gluten-free",
+  "low-carb"
+ ],
+ "author": "Phoebe Wood (SBS Food)",
+ "authorEmoji": "👩‍🍳",
+ "desc": "A bone-in lamb shoulder rubbed with allspice, cumin, chilli, turmeric, garlic and butter, sealed in foil and roasted 8 hours at 140°C until meltingly tender; served with cumin salt, bread and orange wedges.",
+ "longDesc": "The spices, garlic and butter are rubbed all over a 2.5 kg bone-in shoulder, which is seasoned with salt, completely enclosed in two large sheets of foil in a deep roasting pan and roasted 8 hours at 140°C, or until meltingly tender and coming away from the bone. The meat is shredded into large pieces and served with toasted ground cumin seeds mixed with sea salt.",
+ "ingredients": [
+  "1 1/2 tsp ground allspice",
+  "1/2 tsp ground cinnamon",
+  "2 tsp ground cumin",
+  "1 tsp dried chilli flakes",
+  "1 tsp ground turmeric",
+  "3 garlic cloves, crushed",
+  "100 g unsalted butter, softened",
+  "2.5 kg lamb shoulder, bone in",
+  "2 tsp cumin seeds, toasted, roughly ground",
+  "1 tbsp sea salt flakes",
+  "bread and orange wedges, to serve"
+ ],
+ "equipment": [
+  "Deep roasting pan",
+  "Foil"
+ ],
+ "steps": [
+  "Preheat the oven to 140°C. Combine the spices, garlic and butter in a bowl.",
+  "Rub the mixture all over the lamb and season with salt.",
+  "Completely enclose the lamb in two large sheets of foil and set in a deep roasting pan.",
+  "Roast for 8 hours, or until the meat is meltingly tender and comes away easily from the bone.",
+  "Combine the toasted cumin seeds with the sea salt. Shred the lamb into large pieces and serve with the cumin salt, bread and orange wedges."
+ ],
+ "chefTips": [
+  "Cue: meltingly tender and comes away easily from the bone.",
+  "The page lists one tablespoon of salt flakes without splitting it between the rub and the cumin salt."
+ ],
+ "commonMistakes": [
+  "Opening the foil early so the steam escapes.",
+  "Using a boneless cut, which cooks differently."
+ ],
+ "servedWith": [
+  "Bread (MAR060)",
+  "Orange wedges and cumin salt"
+ ],
+ "relatedRecipes": [
+  "MAR020",
+  "MAR003",
+  "MAR013"
+ ],
+ "sources": [
+  "Adapted from 'Slow-Roasted Lamb (Mechoui)', SBS Food. BYLINE AS PRINTED: 'By Phoebe Wood'. Date as printed: 'Published 5 April 2017' (the page recipe first appeared in Feast magazine, November 2014, per one reading). Servings are our estimate; no yield relayed.",
+  "SOURCING STATUS: ingredients and method TWO-PASS. Method wording is our own summary of the page; times and cues were relayed by a research tool and should be checked against the live page.",
+  "FLAG: an oven adaptation; the headnote describes a whole lamb or sheep spit-roasted or roasted underground for a festive occasion. Other mechoui sources found were Western adaptations or lacked a byline."
+ ],
+ "storage": "Refrigerate leftovers up to 3 days.",
+ "reheating": "Reheat covered in a moderate oven with a splash of liquid.",
+ "healthBenefits": [
+  "High in protein and iron; rich in fat."
+ ],
+ "culturalNote": "The headnote describes mechoui as a whole lamb or sheep spit-roasted or roasted underground for a festive occasion, traditionally eaten whole including the organs, with liver, kidney and eyes reserved for guests of honour.",
+ "nutrition": {
+  "cal": 520,
+  "protein": 40,
+  "carbs": 3,
+  "fat": 38,
+  "fiber": 1,
+  "sodium": 420
+ },
+ "keywords": [
+  "mechoui",
+  "slow roast lamb",
+  "lamb shoulder",
+  "sbs food"
+ ]
+},
+{
+ "id": "MAR097",
+ "title": "Stuffed Fried Sardines with Chermoula",
+ "localName": "Sardines mchermla — mzeouej (married) sardines (سردين محشي بالشرمولة)",
+ "emoji": "🐟",
+ "country": "Morocco",
+ "countryFlag": "🇲🇦",
+ "region": "North Africa",
+ "community": "Coastal cities",
+ "cuisine": "Moroccan",
+ "category": "Fish & Seafood",
+ "course": "Main",
+ "diff": "Medium",
+ "prepTime": 40,
+ "restTime": 120,
+ "cookTime": 20,
+ "time": 180,
+ "servings": 6,
+ "cal": 480,
+ "rating": 4.7,
+ "reviews": 67,
+ "tags": [
+  "halal",
+  "pescatarian",
+  "seafood",
+  "contains-fish",
+  "fried",
+  "contains-gluten",
+  "dairy-free"
+ ],
+ "author": "Nada Kiffa (Taste of Maroc)",
+ "authorEmoji": "👩‍🍳",
+ "desc": "Butterflied sardines sandwiched in pairs with chermoula paste, marinated, coated in white and durum flour and fried until done; served hot or at room temperature over parsley.",
+ "longDesc": "Small fresh sardines are scaled, boned and butterflied. Each is rubbed with a third of the chermoula, laid skin side down, spread generously with more chermoula and topped skin side up with a second sardine. The stuffed pairs marinate in the fridge for at least 2 hours, are drained and coated with a mix of white and durum flour, and fried in hot oil about 3 minutes per side. The author says the stuffed pairs are called mzeouej, machrouk or ashiq we ma'ashuk.",
+ "ingredients": [
+  "2.2 lbs fresh sardines (ideally small), - scaled, boned and butterflied",
+  "1 cup chermoula paste (MAR054)",
+  "1 tsp salt, - or to taste",
+  "1 cup frying oil",
+  "3 cups flour",
+  "1 cup durum flour",
+  "lemon wedges",
+  "fresh parsley"
+ ],
+ "equipment": [
+  "Deep skillet or fryer",
+  "Shallow dish",
+  "Paper towels"
+ ],
+ "steps": [
+  "Rub the sardines with 1/3 of the chermoula and add salt to taste.",
+  "Lay a sardine skin side down, spread generously with chermoula and top symmetrically with another sardine, skin side up.",
+  "Cover and marinate the stuffed sardines in the fridge for at least 2 hours.",
+  "Drain them and coat with a mix of the white and durum flours.",
+  "Shallow or deep fry in hot oil for about 3 minutes per side.",
+  "Serve hot, warm or at room temperature over a bed of parsley or salad, with lemon wedges."
+ ],
+ "chefTips": [
+  "The frying time (about 3 minutes per side) and the marinade (at least 2 hours) are NO CUE, TIME ONLY; the page relays no colour cue.",
+  "The author says the stuffed pairs are meant to look like a couple."
+ ],
+ "commonMistakes": [
+  "Letting the pairs slide apart; press them together firmly.",
+  "Crowding the pan so the oil cools."
+ ],
+ "servedWith": [
+  "Salad (MAR052)",
+  "Bread (MAR060)"
+ ],
+ "relatedRecipes": [
+  "MAR054",
+  "MAR069",
+  "MAR005"
+ ],
+ "sources": [
+  "Adapted from 'Moroccan Stuffed Fried Sardines with Chermoula', Taste of Maroc. BYLINE AS PRINTED: 'Nada Kiffa, Contributing Editor, Taste of Maroc'. Published October 4, 2017, last updated October 24, 2017. Yield 6 servings (single reading). Prep and cook totals are our own estimates from the times the page does give.",
+  "SOURCING STATUS: ingredients and method TWO-PASS. Method wording is our own summary of the page; times and cues were relayed by a research tool and should be checked against the live page. The names mzeouej ('married'), machrouk and ashiq we ma'ashuk are SINGLE-PASS quotes of the author.",
+  "DISAGREEMENT kept: SBS 'Moroccan Stuffed Sardines' (Ellie Bouhadana, 28 November 2023) uses 16 fillets, 1 cup (150 g) plain flour and 1/2 cup semolina flour, about 1 tablespoon of chermoula per pair, no marinating time stated, and fries 2 minutes per side; it calls the dish 'mzeouejim', 'married'."
+ ],
+ "storage": "Best eaten the day they are fried.",
+ "reheating": "Re-crisp in a hot oven.",
+ "healthBenefits": [
+  "Sardines are rich in omega-3 fatty acids and calcium; frying adds fat."
+ ],
+ "culturalNote": "The author explains that the stuffed pairs are named for being coupled; SBS likewise translates 'mzeouejim' as 'married', for the fillets paired like a couple.",
+ "nutrition": {
+  "cal": 480,
+  "protein": 30,
+  "carbs": 36,
+  "fat": 24,
+  "fiber": 2,
+  "sodium": 480
+ },
+ "keywords": [
+  "stuffed sardines",
+  "sardines chermoula",
+  "mzeouej",
+  "moroccan fried fish"
+ ]
+},
+{
+ "id": "MAR098",
+ "title": "Baked Fish with Chermoula and Couscous (Essaouira-Style)",
+ "localName": "Seksou b'l-hout — couscous with fish",
+ "emoji": "🐠",
+ "country": "Morocco",
+ "countryFlag": "🇲🇦",
+ "region": "North Africa",
+ "community": "Essaouira",
+ "cuisine": "Moroccan",
+ "category": "Fish & Seafood",
+ "course": "Main",
+ "diff": "Easy",
+ "prepTime": 20,
+ "restTime": 0,
+ "cookTime": 25,
+ "time": 45,
+ "servings": 2,
+ "cal": 520,
+ "rating": 4.7,
+ "reviews": 279,
+ "tags": [
+  "halal",
+  "pescatarian",
+  "seafood",
+  "contains-fish",
+  "contains-gluten",
+  "dairy-free",
+  "quick"
+ ],
+ "author": "Janny de Moor (Dutch cookbook author)",
+ "authorEmoji": "👩‍🍳",
+ "desc": "Skin-on fish fillets spread with a lime-coriander-cumin chermoula and baked 15 minutes, served on instant couscous with carrot and courgette.",
+ "longDesc": "A chermoula of coriander, garlic, cumin, turmeric, lime rind and juice, olive oil, water and chopped chilli is spread over two fillets and chilled. Vegetables are sautéed and covered until done, instant couscous is soaked in boiling water for 10 minutes, and the fish bakes 15 minutes at 180°C, with the couscous and vegetables added around it for the last 2 minutes. The author tasted seksou b'l-hout in the fishing port of Essaouira.",
+ "ingredients": [
+  "// Chermoula",
+  "4 tbsp chopped coriander leaves",
+  "1 chopped clove garlic",
+  "1 tsp cumin seed",
+  "1/4 tsp turmeric",
+  "1/4 tsp grated lime rind",
+  "4 tbsp olive oil",
+  "3 tbsp lime juice",
+  "2 tbsp water",
+  "salt",
+  "1 red hot pepper, chopped without seeds",
+  "// Fish and garnish",
+  "oil for greasing",
+  "2 fish fillets with skin, circa 400 g (bergylt for instance)",
+  "1 tbsp olive oil",
+  "1 tbsp chopped onion",
+  "1 small zucchini",
+  "3 carrots in thin slices",
+  "100 g instant couscous",
+  "100 ml boiling water",
+  "salt",
+  "coriander leaves"
+ ],
+ "equipment": [
+  "Oven dish",
+  "Small pan with lid",
+  "Bowl for couscous"
+ ],
+ "steps": [
+  "Mix the chermoula ingredients. Spread 2 tbsp over each fillet and put in the fridge.",
+  "Soften the onion in the olive oil, add the carrot and zucchini, and cook covered until done, stirring now and then.",
+  "Preheat the oven to 180°C (350°F, gas 4). Pour the boiling water over the couscous, leave to stand 10 minutes and stir with a fork.",
+  "Bake the fish 15 minutes on the middle shelf, adding the couscous and vegetables around it for the last 2 minutes.",
+  "Serve with coriander leaves."
+ ],
+ "chefTips": [
+  "The fish bakes by time only (15 minutes); the page relays no doneness cue, so check that it flakes.",
+  "Vegetables: cook covered until done."
+ ],
+ "commonMistakes": [
+  "Overbaking thin fillets.",
+  "Leaving the couscous unfluffed."
+ ],
+ "servedWith": [],
+ "relatedRecipes": [
+  "MAR054",
+  "MAR005"
+ ],
+ "sources": [
+  "Adapted from 'Couscous with Fish', jannydemoor.nl. BYLINE AS PRINTED: 'Posted by: Janny de Moor'; '16 August 2018' (modified 25 August 2025 per one reading). Yield 'For two'. Prep and cook totals are our own estimates from the times the page does give.",
+  "SOURCING STATUS: ingredients and method TWO-PASS. Method wording is our own summary of the page; times and cues were relayed by a research tool and should be checked against the live page.",
+  "FLAG: a Dutch cookbook author's adaptation, with oven-baked fillets and instant couscous rather than steamed couscous; it is not presented as a traditional preparation. NO CUE, TIME ONLY for the fish."
+ ],
+ "storage": "Best eaten fresh.",
+ "reheating": "Not recommended for fish.",
+ "healthBenefits": [
+  "Lean fish and vegetables with a light olive-oil dressing."
+ ],
+ "culturalNote": "The author writes that she sampled seksou b'l-hout in Essaouira, a fishing port on the Atlantic coast of Morocco.",
+ "nutrition": {
+  "cal": 520,
+  "protein": 40,
+  "carbs": 42,
+  "fat": 20,
+  "fiber": 5,
+  "sodium": 380
+ },
+ "keywords": [
+  "fish couscous",
+  "seksou b hout",
+  "essaouira",
+  "chermoula fish"
+ ]
+},
+{
+ "id": "MAR099",
+ "title": "Spicy Shrimp Tagine (Shrimp Pil-Pil)",
+ "localName": "Gambas pil-pil — spicy shrimp tagine",
+ "emoji": "🦐",
+ "country": "Morocco",
+ "countryFlag": "🇲🇦",
+ "region": "North Africa",
+ "community": "Tétouan and the north",
+ "cuisine": "Moroccan",
+ "category": "Fish & Seafood",
+ "course": "Main",
+ "diff": "Easy",
+ "prepTime": 15,
+ "restTime": 0,
+ "cookTime": 25,
+ "time": 40,
+ "servings": 4,
+ "cal": 210,
+ "rating": 4.5,
+ "reviews": 247,
+ "tags": [
+  "halal",
+  "pescatarian",
+  "seafood",
+  "contains-shellfish",
+  "spicy",
+  "one-pot",
+  "gluten-free",
+  "dairy-free",
+  "quick"
+ ],
+ "author": "Jeff Koehler (The Splendid Table)",
+ "authorEmoji": "👨‍🍳",
+ "desc": "Large shrimp laid on a pulpy grated-tomato, garlic and herb base with paprika and cayenne, then covered and cooked with lemon slices for 10 minutes.",
+ "longDesc": "Olive oil, grated tomatoes, garlic, parsley, cilantro, paprika, cayenne, cumin, a bay leaf, salt and pepper are cooked uncovered over medium heat in a tagine or skillet until the tomatoes are a deeper red and pulpy, about 12 minutes. The shrimp go on top for 1 minute, are turned, lemon slices are placed around the edge with 2 tablespoons water at the side, and the dish is covered and cooked for 10 minutes.",
+ "ingredients": [
+  "2 Tbsp olive oil",
+  "4 ripe medium tomatoes, halved, seeded, and grated (see Note)",
+  "6 garlic cloves, minced",
+  "2 Tbsp finely chopped fresh flat-leaf parsley",
+  "2 Tbsp finely chopped fresh cilantro",
+  "1 tsp sweet paprika",
+  "1/4 tsp cayenne pepper or more to taste",
+  "1/4 tsp ground cumin",
+  "1 bay leaf",
+  "Salt and freshly ground black pepper",
+  "1 1/2 lb/680 g large shrimp, peeled, tails left on (about 3/4 lb/340 g peeled)",
+  "3 slices lemon, halved"
+ ],
+ "equipment": [
+  "Tagine or wide skillet with lid"
+ ],
+ "steps": [
+  "Combine the oil, tomatoes, garlic, herbs, spices, bay leaf, salt and pepper in the tagine or skillet.",
+  "Cook uncovered over medium heat until the tomatoes are a deeper red and pulpy, about 12 minutes.",
+  "Place the shrimp on top and cook for 1 minute, then turn.",
+  "Place the lemon slices around the edges, dribble 2 Tbsp water in at the side, cover with the lid and cook for 10 minutes."
+ ],
+ "chefTips": [
+  "Cue: tomato base a deeper red and pulpy. The shrimp cooking (1 minute, then 10 covered) is NO CUE, TIME ONLY.",
+  "Grating halved, seeded tomatoes gives the base its pulpy texture."
+ ],
+ "commonMistakes": [
+  "Overcooking the shrimp so they turn rubbery.",
+  "Skipping the water, so the base scorches."
+ ],
+ "servedWith": [
+  "Bread (MAR060)"
+ ],
+ "relatedRecipes": [
+  "MAR005",
+  "MAR097"
+ ],
+ "sources": [
+  "Adapted from 'Spicy Shrimp Tagine from Morocco', The Splendid Table, adapted from Morocco: A Culinary Journey (2012). BYLINE AS PRINTED: 'Jeff Koehler, The Splendid Table'. The page prints no date; the URL carries 2013-08-20. Yield 4 servings; prep 15 and cook 25 minutes (single reading).",
+  "SOURCING STATUS: ingredients and method TWO-PASS; the first sentence of the method (combining the base) is reconstructed from the ingredient list. Method wording is our own summary of the page; times and cues were relayed by a research tool and should be checked against the live page.",
+  "Cultural remarks are SINGLE-PASS: Koehler calls it often 'shrimp al pil-pil', a northern Moroccan favourite, and rates El Reducto in Tétouan his best version."
+ ],
+ "storage": "Best eaten right away.",
+ "reheating": "Warm gently; do not boil.",
+ "healthBenefits": [
+  "Shrimp is lean protein; tomatoes add vitamin C."
+ ],
+ "culturalNote": "Koehler calls the dish a favourite of northern Morocco, commonly named shrimp al pil-pil.",
+ "nutrition": {
+  "cal": 210,
+  "protein": 28,
+  "carbs": 8,
+  "fat": 7,
+  "fiber": 2,
+  "sodium": 620
+ },
+ "keywords": [
+  "shrimp tagine",
+  "pil pil",
+  "tetouan",
+  "jeff koehler"
+ ]
+},
+{
+ "id": "MAR100",
+ "title": "Steamed Sheep's Head (Eid al-Adha)",
+ "localName": "Rass lkbech mbekhr — steamed head (راس الخروف)",
+ "emoji": "🐑",
+ "country": "Morocco",
+ "countryFlag": "🇲🇦",
+ "region": "North Africa",
+ "community": "Eid al-Adha",
+ "cuisine": "Moroccan",
+ "category": "Meat Dishes",
+ "course": "Main",
+ "diff": "Medium",
+ "prepTime": 60,
+ "restTime": 0,
+ "cookTime": 90,
+ "time": 150,
+ "servings": 4,
+ "cal": 320,
+ "rating": 4.8,
+ "reviews": 114,
+ "tags": [
+  "halal",
+  "high-protein",
+  "festive",
+  "special-occasion",
+  "traditional",
+  "gluten-free",
+  "low-carb"
+ ],
+ "author": "Layla Dahamou (Morocco World News)",
+ "authorEmoji": "👩‍🍳",
+ "desc": "A whole sheep's head, charred to remove the fur, cleaned, cut into pieces and steamed over onion with salt, cumin and pepper; served with cumin, salt and salads.",
+ "longDesc": "The head is charred over coals to remove the fur, then cleaned very well and drained. It is cut into 6 or 8 pieces, sprinkled with salt, cumin and pepper and set in a steamer over onion slices, over water in a pressure cooker with an upturned bowl, and steamed over medium heat for an hour and a half.",
+ "ingredients": [
+  "1 sheep's head.",
+  "1 onion cut into slices.",
+  "2 tsp salt.",
+  "2 tbsp cumin.",
+  "1tsp black pepper."
+ ],
+ "equipment": [
+  "Pressure cooker with steamer",
+  "Metal bowl",
+  "Open flame or coals for charring"
+ ],
+ "steps": [
+  "Char the sheep's head over coals to remove the fur, then clean it very well and drain it.",
+  "Place a medium metal bowl upside down in a pressure cooker and add enough water. Cut the head into 6 or 8 pieces.",
+  "Put the onion and head pieces in the steamer, sprinkle with the salt, cumin and pepper, and set the steamer inside the cooker, keeping the water level below the bottom of the steamer.",
+  "Cover the cooker tightly and cook over medium heat for an hour and a half.",
+  "Serve the head on a plate with cumin, salt and some salads or steamed vegetables."
+ ],
+ "chefTips": [
+  "The cooking is NO CUE, TIME ONLY (an hour and a half).",
+  "Keep the water below the steamer base so the meat steams rather than boils."
+ ],
+ "commonMistakes": [
+  "Not cleaning the head thoroughly after charring.",
+  "Letting the cooker boil dry."
+ ],
+ "servedWith": [
+  "Salads, such as Zaalouk (MAR046)",
+  "Cumin and salt"
+ ],
+ "relatedRecipes": [
+  "MAR003",
+  "MAR096",
+  "MAR006"
+ ],
+ "sources": [
+  "Adapted from 'Moroccan Recipes for Eid Al Adha: Lamb's Steamed Head', Morocco World News. BYLINE AS PRINTED: 'Layla Dahamou'. Date as printed: 'October 26, 2012' (datelined Taroudant per one reading). No yield printed; servings are our estimate. Prep and cook totals are our own estimates from the times the page does give.",
+  "SOURCING STATUS: ingredients and method TWO-PASS. Method wording is our own summary of the page; times and cues were relayed by a research tool and should be checked against the live page. The page prints no safety statement."
+ ],
+ "storage": "Eat the day it is cooked.",
+ "reheating": "Re-steam briefly.",
+ "healthBenefits": [
+  "A high-protein, nose-to-tail dish; rich in fat and collagen."
+ ],
+ "culturalNote": "The page presents it among recipes for Eid al-Adha.",
+ "nutrition": {
+  "cal": 320,
+  "protein": 30,
+  "carbs": 3,
+  "fat": 22,
+  "fiber": 1,
+  "sodium": 520
+ },
+ "keywords": [
+  "sheep head",
+  "steamed head",
+  "eid al adha",
+  "layla dahamou"
+ ]
+},
+{
+ "id": "MAR101",
+ "title": "Dafina (Shabbat Slow-Cooked Stew)",
+ "localName": "Dafina / skhina / hamin — Shabbat stew (דפינה)",
+ "emoji": "🥘",
+ "country": "Morocco",
+ "countryFlag": "🇲🇦",
+ "region": "North Africa",
+ "community": "Moroccan Jewish Shabbat",
+ "cuisine": "Moroccan",
+ "category": "Festival & Celebration Foods",
+ "course": "Main",
+ "diff": "Easy",
+ "prepTime": 30,
+ "restTime": 0,
+ "cookTime": 1440,
+ "time": 1470,
+ "servings": 8,
+ "cal": 640,
+ "rating": 4.7,
+ "reviews": 293,
+ "tags": [
+  "high-protein",
+  "one-pot",
+  "comfort-food",
+  "traditional",
+  "contains-egg",
+  "contains-beef",
+  "make-ahead"
+ ],
+ "author": "Sabrina Ovadia (The Nosher)",
+ "authorEmoji": "👩‍🍳",
+ "desc": "Short ribs, chicken, potatoes, chickpeas, eggs in their shells and dates cooked together in a slow cooker for 24 hours in a Shabbat tradition.",
+ "longDesc": "Chickpeas go on the bottom of the slow cooker, potatoes are set around the walls, and the meat, chicken, whole eggs and dates sit in the centre. Water is poured over until its top is about 1/4 inch above the ingredients, and the cooker is set on medium for 24 hours. The page notes that Sephardic tradition is not to add any water, even boiling, to the cooker on Shabbat.",
+ "ingredients": [
+  "2 lbs flanken meat, on the bone (flanken is short ribs cut across the bones)",
+  "4 pieces of chicken, on the bone",
+  "12 large red potatoes, peeled",
+  "2 cans of chickpeas, rinsed",
+  "4 eggs (in the shell)",
+  "4 pitted dates",
+  "1 tbsp salt",
+  "1 tsp pepper",
+  "1 tsp paprika",
+  "1 tsp cumin",
+  "1 tsp turmeric",
+  "1 tsp of honey",
+  "1 tsp cinnamon",
+  "3-4 garlic cloves",
+  "2 Tbsp of olive oil"
+ ],
+ "equipment": [
+  "Large slow cooker (crockpot)"
+ ],
+ "steps": [
+  "Arrange the chickpeas on the bottom of the slow cooker.",
+  "Add the potatoes around the interior walls.",
+  "Place the meat, chicken, eggs and pitted dates in the centre, with the seasonings, honey and garlic.",
+  "Pour in enough water to cover everything; the top of the water should hit around 1/4 inch above the ingredients.",
+  "Set the cooker at a medium temperature and cook for 24 hours."
+ ],
+ "chefTips": [
+  "The 24 hours is NO CUE, TIME ONLY; the page calls the cooked egg golden brown.",
+  "The olive oil is listed in the ingredients but not used in the directions on the page.",
+  "Keep the slow cooker closed on Shabbat, per the Sephardic tradition the page mentions."
+ ],
+ "commonMistakes": [
+  "Adding water mid-cook on Shabbat, against the tradition the page notes.",
+  "Using too little liquid, so the stew dries out."
+ ],
+ "servedWith": [],
+ "relatedRecipes": [
+  "MAR049",
+  "MAR102"
+ ],
+ "sources": [
+  "Adapted from 'Shabbat Recipe: Dafina, Slow-Cooked Moroccan Stew', The Nosher (My Jewish Learning). BYLINE AS PRINTED: 'By Sabrina Ovadia | February 3, 2016'. No yield printed; servings are our estimate. Prep and cook totals are our own estimates from the times the page does give.",
+  "SOURCING STATUS: ingredients and method TWO-PASS. Method wording is our own summary of the page; times and cues were relayed by a research tool and should be checked against the live page.",
+  "DATE DISCREPANCY: a JTA reprint of the same text is dated February 10, 2016.",
+  "VARIATION noted, not used: The Jewish Journal (Sharon Gomperts and Rachel Emquies Sheff, February 26, 2020) cooks the stew in a pot on the stove for 1-2 hours, adds cloth bags of meatloaf and rice for 1-2 more hours, and holds it at 250°F or on a low crockpot for Shabbat; it prints no durations for the overnight hold. It calls the dish hamin, adafina, skhina or La Daf."
+ ],
+ "storage": "Refrigerate leftovers promptly and reheat until steaming hot.",
+ "reheating": "Reheat thoroughly before serving.",
+ "healthBenefits": [
+  "Chickpeas and potatoes add fibre and carbohydrate; the meats add protein."
+ ],
+ "culturalNote": "The page calls dafina an iconic slow-cooked Moroccan stew served especially on Shabbat, with a long history in which no two are the same.",
+ "nutrition": {
+  "cal": 640,
+  "protein": 42,
+  "carbs": 62,
+  "fat": 24,
+  "fiber": 10,
+  "sodium": 980
+ },
+ "keywords": [
+  "dafina",
+  "skhina",
+  "hamin",
+  "shabbat stew",
+  "moroccan jewish"
+ ]
+},
+{
+ "id": "MAR102",
+ "title": "Fish Chraime (Spicy Fish in Tomato and Paprika Sauce)",
+ "localName": "Chraime / hot fish — Sephardic Shabbat dish",
+ "emoji": "🐟",
+ "country": "Morocco",
+ "countryFlag": "🇲🇦",
+ "region": "North Africa",
+ "community": "Moroccan Jewish Shabbat",
+ "cuisine": "Moroccan",
+ "category": "Fish & Seafood",
+ "course": "Main",
+ "diff": "Easy",
+ "prepTime": 15,
+ "restTime": 0,
+ "cookTime": 30,
+ "time": 45,
+ "servings": 4,
+ "cal": 260,
+ "rating": 4.6,
+ "reviews": 153,
+ "tags": [
+  "pescatarian",
+  "seafood",
+  "contains-fish",
+  "spicy",
+  "gluten-free",
+  "dairy-free",
+  "one-pot"
+ ],
+ "author": "Amanda Mouttaki (Maroc Mama)",
+ "authorEmoji": "👩‍🍳",
+ "desc": "White fish poached in a sauce of onion, garlic, tomato paste, diced tomatoes, paprika and cayenne, finished with parsley.",
+ "longDesc": "Onion and garlic are sautéed in olive oil on medium heat until softened, about 3 to 4 minutes; tomato paste, tomatoes, water and the spices make the sauce, which cooks 10 minutes on low with the lid on. The fish is slid in, the pot covered and left to cook for 10 more minutes. The author says that this is not a recipe she has eaten in Morocco; she presents it as a Sephardic Shabbat dish.",
+ "ingredients": [
+  "1 lb white fish, like cod or halibut",
+  "1/2 of a white onion, chopped",
+  "1 tsp garlic, minced",
+  "1/2 jalapeno or other spicy pepper (optional)",
+  "2 Tbsp olive oil",
+  "1 Tbsp tomato paste",
+  "2-3 large tomatoes, diced",
+  "1 cup water",
+  "2 Tbsp paprika",
+  "1/2 Tbsp cayenne pepper",
+  "1 tsp ginger powder",
+  "1 tsp cumin powder",
+  "1 tsp salt",
+  "1 tsp pepper",
+  "1 palmful parsley to garnish"
+ ],
+ "equipment": [
+  "Wide pan with lid"
+ ],
+ "steps": [
+  "Sauté the onion and garlic (and pepper, if using) in the oil on medium heat until softened, about 3 to 4 minutes.",
+  "Add the tomato paste, tomatoes, water and spices and bring to a simmer (our summary of the ingredient list).",
+  "Continue cooking the sauce on low heat with the cover on for 10 minutes.",
+  "Slide the fish gently into the sauce, cover the pot and leave it alone to cook for 10 more minutes.",
+  "Garnish with parsley."
+ ],
+ "chefTips": [
+  "Cue: onion softened. The fish cooking (10 minutes covered) is NO CUE, TIME ONLY.",
+  "Cut back the cayenne if you like less heat."
+ ],
+ "commonMistakes": [
+  "Stirring after the fish is in, which breaks it up.",
+  "Overcooking thin fillets."
+ ],
+ "servedWith": [
+  "Bread (MAR060)"
+ ],
+ "relatedRecipes": [
+  "MAR101",
+  "MAR005",
+  "MAR049"
+ ],
+ "sources": [
+  "Adapted from 'Jewish Moroccan Fish Chraime Recipe', Maroc Mama. BYLINE AS PRINTED: 'Amanda Mouttaki'; 'August 29, 2024' (modified Sept 1, 2024). Yield 4 servings (single reading). Prep and cook totals are our own estimates from the times the page does give.",
+  "SOURCING STATUS: ingredients TWO-PASS; the middle steps of the method are not fully quoted in the relayed notes. Method wording is our own summary of the page; times and cues were relayed by a research tool and should be checked against the live page.",
+  "FLAG: the headnote says 'this is not a recipe I have ever eaten in Morocco' and that fish chraime is prepared for Shabbat by Sephardic Jews.",
+  "DISAGREEMENT kept: 'Jewlish by Jamie' versions (a site name) use 6 cloves of garlic with no onion, tomato paste and a longer or shorter cook (3+5+5 minutes, or 15+10), and a commenter on one says it is not traditional to use onion and garlic together or tomato paste in Morocco."
+ ],
+ "storage": "Refrigerate and eat within 2 days.",
+ "reheating": "Warm gently.",
+ "healthBenefits": [
+  "Lean white fish in a vegetable sauce; the cayenne adds heat without calories."
+ ],
+ "culturalNote": "The author writes that, like dafina, fish chraime is prepared for Shabbat by Sephardic Jews, and adds that she has not eaten this version in Morocco.",
+ "nutrition": {
+  "cal": 260,
+  "protein": 28,
+  "carbs": 10,
+  "fat": 12,
+  "fiber": 3,
+  "sodium": 700
+ },
+ "keywords": [
+  "chraime",
+  "hot fish",
+  "sephardic",
+  "shabbat fish",
+  "maroc mama"
+ ]
+},
+{
+ "id": "MAR103",
+ "title": "Express Khlii (Mqila Slaouia)",
+ "localName": "Khlii / mqila — quick preserved meat confit (خليع)",
+ "emoji": "🥩",
+ "country": "Morocco",
+ "countryFlag": "🇲🇦",
+ "region": "North Africa",
+ "community": "Rabat and Salé",
+ "cuisine": "Moroccan",
+ "category": "Meat Dishes",
+ "course": "Main",
+ "diff": "Medium",
+ "prepTime": 15,
+ "restTime": 720,
+ "cookTime": 180,
+ "time": 915,
+ "servings": 13,
+ "cal": 430,
+ "rating": 4.8,
+ "reviews": 308,
+ "tags": [
+  "halal",
+  "high-protein",
+  "make-ahead",
+  "traditional",
+  "low-carb"
+ ],
+ "author": "Nada Kiffa / Christine Benlafquih (Taste of Maroc)",
+ "authorEmoji": "👩‍🍳",
+ "desc": "Strips of lamb or beef marinated overnight with suet, garlic, coriander and cumin, then cooked slowly in a covered pan until darkened and dried a bit and all the fat has melted.",
+ "longDesc": "Lamb shoulder strips about 3/4 inch (2 cm) thick are combined with suet, grated garlic, coriander, salt, cumin, pepper and olive oil, covered and refrigerated overnight. Next day everything goes into a heavy-bottomed deep skillet or wide pot and cooks covered over low heat, stirring occasionally, about 2 1/2 to 3 hours, or until the meat has darkened and dried a bit, all of the fat has completely melted, and the liquid from the meat has evaporated. It is cooled completely, packed in a container with its oil and refrigerated.",
+ "ingredients": [
+  "2.2 lbs boneless lamb shoulder (or other cut of lamb or beef)",
+  "7 oz lamb or beef suet, finely chopped",
+  "6 large cloves garlic, grated or pressed",
+  "2 tbsp ground coriander seeds",
+  "1 tbsp salt",
+  "1 tsp ground cumin",
+  "1/2 tsp pepper",
+  "2/3 cup olive oil"
+ ],
+ "equipment": [
+  "Heavy-bottomed deep skillet or wide pot with lid",
+  "Glass or plastic container"
+ ],
+ "steps": [
+  "Cut the meat into long strips about 3/4 inch (2 cm) thick.",
+  "Combine the strips with the remaining ingredients, cover and refrigerate overnight.",
+  "Next day, transfer everything, including the oil, to a heavy-bottomed deep skillet or wide pot.",
+  "Cover and cook over low heat, stirring occasionally, about 2 1/2 to 3 hours, or until the meat has darkened and dried a bit, all the fat has completely melted, and the liquid has evaporated. Do not turn up the heat or add water.",
+  "Remove from the heat and cool completely. Transfer the khlii and oil to a plastic or glass container, cover and refrigerate."
+ ],
+ "chefTips": [
+  "Cues: darkened and dried a bit; all the fat melted; liquid evaporated. The overnight marinade is NO CUE, TIME ONLY.",
+  "The page says to avoid the temptation to turn up the heat or add water."
+ ],
+ "commonMistakes": [
+  "Raising the heat, which scorches the meat.",
+  "Packing it before it has cooled completely."
+ ],
+ "servedWith": [
+  "Eggs, as in the khlii and egg tagine (MAR104)",
+  "Bread (MAR060)"
+ ],
+ "relatedRecipes": [
+  "MAR104",
+  "MAR001",
+  "MAR002"
+ ],
+ "sources": [
+  "Adapted from 'Express Khlii Recipe (Mqila Rbatia or Mqila Slaouia)', Taste of Maroc. BYLINE: the page-level byline reads 'Nada Kiffa (Taste of Maroc)', while Recipe 1 is credited in the body to Christine Benlafquih (BYLINE DISCREPANCY flagged). Published September 11, 2017, updated September 26, 2021. Yield about 13 small servings; prep 15 minutes, marinate 12 hours, cook 3 hours (single reading).",
+  "SOURCING STATUS: ingredients and method TWO-PASS. Method wording is our own summary of the page; times and cues were relayed by a research tool and should be checked against the live page. The relayed '(about 1 kg)' and '(about 200 g)' conversions were not printed and are not used.",
+  "STORAGE DISAGREEMENT within the source: the recipe card says refrigerate up to one month; one reading reports the article body saying a couple of weeks. We state both; use the shorter figure to be safe.",
+  "NOT TRADITIONAL KHLII: this is a quick confit cooked straight from raw meat. The traditional version starts from salt-cured sun-dried gueddid, and its making was not given with observable cues in the sources found, so it is not included. Home-style khlii with a drying step (Ihab Ou-ouda, Morocco World News Lifestyle, March 31, 2026) uses 1 kg meat and 25 to 30 g salt, dries strips on a rack at about 70 to 90°C until the surface feels dry and firm but not like jerky, then cooks them in 500 to 700 g fat for 2 to 4 hours."
+ ],
+ "storage": "Refrigerate in its oil up to one month per the card (the article body says a couple of weeks); discard it if you see mold, bubbling or smell anything off.",
+ "reheating": "Warm in a pan with a little of the oil, or use in eggs and tagines.",
+ "healthBenefits": [
+  "High in protein; made with suet and oil, so it is rich."
+ ],
+ "culturalNote": "One reading says Mqila is the name of the pan, passed to the dish, and that the style comes from Salé and Rabat and is often made after Eid al-Adha, and that Benlafquih's recipe came from a friend's mother-in-law in Rabat (SINGLE-PASS).",
+ "nutrition": {
+  "cal": 430,
+  "protein": 24,
+  "carbs": 1,
+  "fat": 37,
+  "fiber": 0,
+  "sodium": 540
+ },
+ "keywords": [
+  "khlii",
+  "mqila",
+  "preserved meat",
+  "express khlii",
+  "taste of maroc"
+ ]
+},
+{
+ "id": "MAR104",
+ "title": "Khlii and Egg Tagine (with Express Khlii)",
+ "localName": "Khlii b-lbid — preserved meat with eggs",
+ "emoji": "🍳",
+ "country": "Morocco",
+ "countryFlag": "🇲🇦",
+ "region": "North Africa",
+ "community": "Home cooking",
+ "cuisine": "Moroccan",
+ "category": "Breakfast",
+ "course": "Breakfast or light supper",
+ "diff": "Medium",
+ "prepTime": 15,
+ "restTime": 720,
+ "cookTime": 185,
+ "time": 920,
+ "servings": 2,
+ "cal": 620,
+ "rating": 4.8,
+ "reviews": 238,
+ "tags": [
+  "halal",
+  "high-protein",
+  "contains-egg",
+  "make-ahead",
+  "low-carb"
+ ],
+ "author": "Dave Patera (DinnersWithDave, on Eggland's Best)",
+ "authorEmoji": "👨‍🍳",
+ "desc": "A quick home khlii of beef cooked in suet for three hours, then warmed in a tagine or skillet with eggs and cumin until the eggs are cooked.",
+ "longDesc": "Beef, spices, salt, garlic and olive oil are tossed and marinated overnight, then cooked in a Dutch oven with suet or tallow over low heat for 3 hours, stirring, until the meat is dry and can be pulled apart. It is stored in a sterilised jar covered completely with fat. For the tagine, a cup of the khlii with some fat is heated until the fat is melted and bubbling, sprinkled with cumin, eggs are cracked over it, the yolks gently broken, and it is covered and cooked 2 to 3 minutes over medium-low heat until the eggs are cooked.",
+ "ingredients": [
+  "// Express khlii",
+  "1.75lbs boneless beef shoulder, thinly sliced",
+  "1.5T ground coriander",
+  "1t cumin",
+  "1/2t black pepper",
+  "2.5t salt",
+  "5 garlic cloves, minced",
+  "1/2c olive oil",
+  "6oz beef suet or beef tallow",
+  "// Tagine",
+  "1c khlii meat, some fat included (approx 8oz)",
+  "4 Eggland's Best Large Eggs",
+  "Pinch of cumin"
+ ],
+ "equipment": [
+  "Dutch oven",
+  "Sterilised jar",
+  "Tagine or skillet"
+ ],
+ "steps": [
+  "Combine the beef, spices, salt, garlic and olive oil in a large bowl and toss to coat. Cover and marinate overnight.",
+  "Next day, put the meat in a Dutch oven with the suet or tallow and cook over low heat until the fat is melted.",
+  "Cover and cook over low heat for 3 hours, stirring occasionally, until the meat is dry and can be pulled apart.",
+  "Pack the meat and its fat into a sterilised jar, covering the meat completely; add extra tallow or olive oil if needed. Cool before covering and refrigerate.",
+  "For the tagine, heat 1 cup of the khlii with some of its fat in a tagine or skillet until the fat is melted and bubbling.",
+  "Sprinkle with cumin, crack the eggs on top and gently break each yolk. Cover and cook 2 to 3 minutes over medium-low heat until the eggs are cooked."
+ ],
+ "chefTips": [
+  "Cues: meat dry and able to be pulled apart; fat melted and bubbling; eggs cooked. The marinade is NO CUE, TIME ONLY.",
+  "The \"T\", \"t\" and \"c\" quantities are printed in that shorthand; we read them as tablespoon, teaspoon and cup."
+ ],
+ "commonMistakes": [
+  "Not covering the stored meat completely with fat.",
+  "Storing it warm."
+ ],
+ "servedWith": [
+  "Bread (MAR060)"
+ ],
+ "relatedRecipes": [
+  "MAR103",
+  "MAR012"
+ ],
+ "sources": [
+  "Adapted from 'Moroccan Meat Confit (Khlii) & Egg Tagine', Eggland's Best (brand-hosted). BYLINE AS PRINTED: 'Recipe by: Dave Patera - DinnersWithDave'. No date printed (flagged). Yield 2 servings (single reading).",
+  "SOURCING STATUS: ingredients and method TWO-PASS. Method wording is our own summary of the page; times and cues were relayed by a research tool and should be checked against the live page.",
+  "FLAG: undated, brand-hosted page. The headnote says khlii can be difficult to find outside Morocco, so this is a quick, easy method for a similar result at home."
+ ],
+ "storage": "Store the confit refrigerated, fully covered in fat, up to one month per the page.",
+ "reheating": "Heat the khlii with its fat until bubbling before adding the eggs.",
+ "healthBenefits": [
+  "High in protein; made with suet, so it is rich."
+ ],
+ "culturalNote": "The headnote presents khlii as hard to find outside Morocco and the egg tagine as a way to use it.",
+ "nutrition": {
+  "cal": 620,
+  "protein": 38,
+  "carbs": 2,
+  "fat": 50,
+  "fiber": 0,
+  "sodium": 740
+ },
+ "keywords": [
+  "khlii egg",
+  "preserved meat eggs",
+  "khlea tagine",
+  "eggland best"
+ ]
+},
+{
+ "id": "MAR105",
+ "title": "Moroccan Beetroot Salad",
+ "localName": "Shlada dyal lbetrav — beet salad (سلطة الشمندر)",
+ "emoji": "🥗",
+ "country": "Morocco",
+ "countryFlag": "🇲🇦",
+ "region": "North Africa",
+ "community": "Home table",
+ "cuisine": "Moroccan",
+ "category": "Salads & Mezze",
+ "course": "Salad",
+ "diff": "Easy",
+ "prepTime": 15,
+ "restTime": 90,
+ "cookTime": 60,
+ "time": 165,
+ "servings": 4,
+ "cal": 130,
+ "rating": 4.6,
+ "reviews": 64,
+ "tags": [
+  "vegan",
+  "vegetarian",
+  "gluten-free",
+  "dairy-free",
+  "salad",
+  "cold",
+  "make-ahead"
+ ],
+ "author": "Cooking with Alia (site byline only)",
+ "authorEmoji": "📰",
+ "desc": "Beets boiled with half a lemon until a fork pierces them, peeled, diced and chilled with grated onion, parsley, olive oil, vinegar and cumin.",
+ "longDesc": "Three beets of about 2 pounds are boiled in water with a halved lemon for 45 to 60 minutes, depending on size, until the skin comes off easily and a fork pierces them. They are peeled, trimmed, diced and mixed with the onion, parsley, oil and vinegar, covered and chilled for 1 to 2 hours, and served cold.",
+ "ingredients": [
+  "3 beets – approximately 2 pounds",
+  "1 small onion grated",
+  "1/3 cup of finely chopped parsley",
+  "2 tablespoons of olive oil",
+  "1 tablespoon of vinegar (or lemon juice)",
+  "Salt, pepper, cumin to taste",
+  "1 lemon sliced in half (for boiling the beets)"
+ ],
+ "equipment": [
+  "Large pot",
+  "Mixing bowl",
+  "Plastic wrap"
+ ],
+ "steps": [
+  "Put the beets in a pot of water with the halved lemon (to enhance colour and flavour). Boil on medium-high for 45 to 60 minutes, depending on size.",
+  "Test: the skin should come off easily and you should be able to pierce the beets with a fork.",
+  "Peel the beets, remove the two ends, then slice and dice them.",
+  "Mix the onion, parsley, oil, vinegar, salt, pepper and cumin, then combine with the diced beets.",
+  "Cover the bowl with plastic wrap and chill for 1 to 2 hours. Serve cold, alone, with bread or tossed in a garden salad."
+ ],
+ "chefTips": [
+  "Cue: skin comes off easily; a fork pierces the beet. The chill is NO CUE, TIME ONLY.",
+  "Wear gloves when peeling to avoid stained hands (our tip)."
+ ],
+ "commonMistakes": [
+  "Under-boiling large beets.",
+  "Dressing the beets while hot, which dulls the colour (our caution)."
+ ],
+ "servedWith": [
+  "Bread (MAR060)"
+ ],
+ "relatedRecipes": [
+  "MAR106",
+  "MAR050",
+  "MAR046"
+ ],
+ "sources": [
+  "Adapted from '154 – Moroccan Beetroot Salad Recipe', Cooking with Alia (old.cookingwithalia.com). BYLINE: none printed (site name only; flagged). Printed date 'Feb 24, 2015', which looks like an import date. Yield 4.",
+  "SOURCING STATUS: ingredients and method TWO-PASS. Method wording is our own summary of the page; times and cues were relayed by a research tool and should be checked against the live page. The lemon half is listed in the method rather than the ingredient list on the page; we list it with the ingredients."
+ ],
+ "storage": "Refrigerate covered up to 2 days (our estimate; the page gives none).",
+ "reheating": "Serve cold.",
+ "healthBenefits": [
+  "Beets provide folate and fibre."
+ ],
+ "culturalNote": "The page gives the recipe without cultural remarks; it says the salad can be eaten alone, with bread or tossed in a garden salad.",
+ "nutrition": {
+  "cal": 130,
+  "protein": 3,
+  "carbs": 17,
+  "fat": 7,
+  "fiber": 4,
+  "sodium": 180
+ },
+ "keywords": [
+  "beetroot salad",
+  "moroccan beet salad",
+  "cooking with alia"
+ ]
+},
+{
+ "id": "MAR106",
+ "title": "Beet and Orange Salad with Pomegranate",
+ "localName": "Shlada dyal lbetrav w lbortokal — beet and orange salad",
+ "emoji": "🥗",
+ "country": "Morocco",
+ "countryFlag": "🇲🇦",
+ "region": "North Africa",
+ "community": "Home table",
+ "cuisine": "Moroccan",
+ "category": "Salads & Mezze",
+ "course": "Salad",
+ "diff": "Easy",
+ "prepTime": 15,
+ "restTime": 0,
+ "cookTime": 0,
+ "time": 15,
+ "servings": 4,
+ "cal": 140,
+ "rating": 4.6,
+ "reviews": 234,
+ "tags": [
+  "vegan",
+  "vegetarian",
+  "gluten-free",
+  "dairy-free",
+  "salad",
+  "cold",
+  "contains-nuts",
+  "no-cook"
+ ],
+ "author": "Amanda Mouttaki (Maroc Mama)",
+ "authorEmoji": "👩‍🍳",
+ "desc": "Diced cooked beets tossed with mint, red onion, pomegranate seeds and walnuts in a cumin, orange zest and orange juice dressing.",
+ "longDesc": "An olive oil, orange zest, orange juice, cumin and salt dressing is whisked in a bowl, then tossed with cooked diced beets, fresh mint, sliced red onion, pomegranate arils and chopped walnuts, with extra mint on top. The page gives no cooking time or cue for the beets.",
+ "ingredients": [
+  "2 cups of diced cooked beets",
+  "2 tbsp Mint, fresh packed leaves",
+  "1 red onion sliced",
+  "1 tbsp orange zest",
+  "1 tsp salt",
+  "1 tbsp olive oil",
+  "1 tsp cumin powder",
+  "1/4 cup orange juice, freshly squeezed",
+  "1/4 cup arils from pomegranates",
+  "1/4 cup chopped walnuts"
+ ],
+ "equipment": [
+  "Mixing bowl",
+  "Serving bowl"
+ ],
+ "steps": [
+  "In a bowl, mix the olive oil, orange zest, orange juice, cumin and salt.",
+  "In a serving bowl, combine the cooked beets, mint, sliced onion, pomegranate arils and chopped walnuts.",
+  "Add the dressing and toss until everything is mixed. Top with a little more mint and serve."
+ ],
+ "chefTips": [
+  "The page gives no beet cooking time or cue; see MAR105 for a boiled-beet method with a fork test.",
+  "The page mentions cilantro in the method but not in the ingredient list."
+ ],
+ "commonMistakes": [
+  "Over-dressing so the salad turns watery."
+ ],
+ "servedWith": [],
+ "relatedRecipes": [
+  "MAR105",
+  "MAR051",
+  "MAR050"
+ ],
+ "sources": [
+  "Adapted from 'Moroccan Beet and Orange Salad with Pomegranate', Maroc Mama. BYLINE AS PRINTED: 'By: Author Amanda Mouttaki'. No date is printed; metadata gives published 2023-02-26. No yield relayed; servings are our estimate.",
+  "SOURCING STATUS: ingredients and method TWO-PASS. Method wording is our own summary of the page; times and cues were relayed by a research tool and should be checked against the live page.",
+  "PAGE DEFECTS kept: the method names cilantro that the ingredient list lacks, the mint garnish has no quantity, the list ends with an empty bullet, and the page's storage advice contradicts itself (2 days versus 2 to 3 days, single reading). The cumin-orange-pomegranate-walnut treatment is not documented on the page as traditional."
+ ],
+ "storage": "Refrigerate; the page says 2 days in one place and 2 to 3 days in another.",
+ "reheating": "Serve cold or at room temperature.",
+ "healthBenefits": [
+  "Beets, orange and pomegranate add vitamin C and antioxidants; walnuts add healthy fat."
+ ],
+ "culturalNote": "The page gives the recipe without cultural remarks.",
+ "nutrition": {
+  "cal": 140,
+  "protein": 3,
+  "carbs": 17,
+  "fat": 8,
+  "fiber": 4,
+  "sodium": 620
+ },
+ "keywords": [
+  "beet orange salad",
+  "pomegranate salad",
+  "maroc mama"
+ ]
+},
+{
+ "id": "MAR107",
+ "title": "Seven-Vegetable Tagine (Chickpea, Low-Sodium Adaptation)",
+ "localName": "Tajine bil khodra — vegetable tagine",
+ "emoji": "🥕",
+ "country": "Morocco",
+ "countryFlag": "🇲🇦",
+ "region": "North Africa",
+ "community": "Adapted version",
+ "cuisine": "Moroccan",
+ "category": "Vegetables & Legumes",
+ "course": "Main",
+ "diff": "Easy",
+ "prepTime": 25,
+ "restTime": 0,
+ "cookTime": 45,
+ "time": 70,
+ "servings": 6,
+ "cal": 170,
+ "rating": 4.9,
+ "reviews": 178,
+ "tags": [
+  "vegan",
+  "vegetarian",
+  "gluten-free",
+  "dairy-free",
+  "one-pot",
+  "high-fiber",
+  "low-calorie"
+ ],
+ "author": "Dana Jacobi (American Institute for Cancer Research)",
+ "authorEmoji": "👩‍🍳",
+ "desc": "Turnips, carrots, butternut squash, zucchini, green beans and chickpeas simmered in a cumin, paprika, ginger and turmeric broth and finished with tomatoes and herbs.",
+ "longDesc": "Turnips, carrots, onion and spices simmer in vegetable broth; the squash, zucchini, string beans and chickpeas follow, and everything cooks covered until tender. Plum tomato slices go on top for 5 minutes until just soft, then cilantro and parsley are added and the tagine sits covered for 10 minutes to let the flavours meld. This is a nutrition-institute adaptation using reduced-sodium broth.",
+ "ingredients": [
+  "2 white turnips, peeled and quartered",
+  "1 cup sliced carrots, in 3/4-inch slices",
+  "1 cup finely chopped onion",
+  "1 1/2 teaspoons ground cumin",
+  "1 teaspoon ground sweet paprika",
+  "1/2 teaspoon ground ginger",
+  "1/2 teaspoon ground turmeric",
+  "Pinch of cayenne pepper",
+  "1 1/2 cups reduced-sodium vegetable broth, divided",
+  "2 1/2 cups butternut squash, in 1-inch cubes",
+  "1 cup chopped zucchini, in 3/4-inch pieces",
+  "1/4 pound string beans, trimmed and cut in 1 1/2-inch lengths",
+  "1 (15 ounce) can no salt added chickpeas, drained",
+  "3/4 teaspoon salt",
+  "Freshly ground black pepper",
+  "3 plum tomatoes, cut crosswise into 3/4-inch slices",
+  "1/4 cup chopped cilantro",
+  "1/4 cup chopped flat-leaf (Italian) parsley"
+ ],
+ "equipment": [
+  "Large wide pot or tagine with lid"
+ ],
+ "steps": [
+  "Combine the turnips, carrots, onion, spices and part of the broth in the pot, and bring to a simmer (the page's opening steps are summarised from the ingredient list).",
+  "Cover and simmer over medium heat for 10 minutes.",
+  "Add the squash, zucchini, string beans, chickpeas, salt and pepper with the remaining broth. Cover and cook until the vegetables are tender, 20 minutes.",
+  "Arrange the tomato slices on top, cover, and cook until the tomatoes are just soft, 5 minutes.",
+  "Add the cilantro and parsley and let the tagine sit, covered, for 10 minutes to let the flavours meld."
+ ],
+ "chefTips": [
+  "Cues: vegetables tender; tomatoes just soft. The final 10-minute stand is NO CUE, TIME ONLY."
+ ],
+ "commonMistakes": [
+  "Cutting the vegetables unevenly so some turn to mush."
+ ],
+ "servedWith": [
+  "Couscous (MAR021)",
+  "Bread (MAR060)"
+ ],
+ "relatedRecipes": [
+  "MAR021",
+  "MAR010",
+  "MAR018"
+ ],
+ "sources": [
+  "Adapted from 'Moroccan Seven Vegetable Tagine', The Saturday Evening Post, recipe by Dana Jacobi for the American Institute for Cancer Research. BYLINE AS PRINTED: 'Dana Jacobi for the American Institute for Cancer Research'. Date: October 2, 2013. Yield 6 servings (single reading). Prep and cook totals are our own estimates from the times the page does give.",
+  "SOURCING STATUS: ingredients and later method steps TWO-PASS; the first step is reconstructed. Method wording is our own summary of the page; times and cues were relayed by a research tool and should be checked against the live page.",
+  "FLAG: a nutrition-institute adaptation (reduced-sodium broth, no-salt-added chickpeas), not Moroccan-sourced."
+ ],
+ "storage": "Refrigerate up to 3 days.",
+ "reheating": "Reheat gently with a splash of broth.",
+ "healthBenefits": [
+  "Rich in fibre and vitamins; low in fat and sodium by design."
+ ],
+ "culturalNote": "The page presents the dish as a Moroccan-style vegetable tagine from a cancer-research institute's recipe collection; no further cultural remarks were relayed.",
+ "nutrition": {
+  "cal": 170,
+  "protein": 7,
+  "carbs": 33,
+  "fat": 2,
+  "fiber": 9,
+  "sodium": 380
+ },
+ "keywords": [
+  "vegetable tagine",
+  "seven vegetable tagine",
+  "vegan tagine",
+  "chickpea tagine"
+ ]
+},
+{
+ "id": "EGY001",
+ "title": "Koshari (One-Pan Egyptian Koshari)",
+ "localName": "Koshari — كشري",
+ "emoji": "🍝",
+ "country": "Egypt",
+ "countryFlag": "🇪🇬",
+ "region": "North Africa",
+ "community": "Cairo street food",
+ "cuisine": "Egyptian",
+ "category": "Street Food & Snacks",
+ "course": "Main",
+ "diff": "Medium",
+ "prepTime": 15,
+ "restTime": 60,
+ "cookTime": 40,
+ "time": 115,
+ "servings": 4,
+ "cal": 640,
+ "rating": 4.8,
+ "reviews": 124,
+ "tags": [
+  "vegan",
+  "vegetarian",
+  "dairy-free",
+  "street-food",
+  "comfort-food",
+  "budget",
+  "high-fiber",
+  "contains-gluten"
+ ],
+ "author": "Muna Kenny (Munaty Cooking)",
+ "authorEmoji": "👩‍🍳",
+ "desc": "Rice, lentils and three shapes of pasta cooked in one pan, topped with a garlic-tomato sauce, a cumin-vinegar sauce, a chili 'shattah', chickpeas and crisp fried onions.",
+ "longDesc": "Thin onion slices are fried in oil until brown and then drained; the leftover onion oil fries vermicelli, rice, lentils and macaroni, and boiling stock is added with broken spaghetti. Once the water can no longer be seen on the surface the pan goes on the lowest heat for 11 to 13 minutes. A tomato sauce, a thin cumin-vinegar sauce and a chili shattah are made separately and spooned over the rice with chickpeas and the fried onions.",
+ "ingredients": [
+  "// Onions",
+  "1 large onion thinly sliced",
+  "½ to ¾ cup cooking oil",
+  "// Rice and pasta",
+  "1 cup short-grain rice or Egyptian rice (Read the notes)",
+  "¼ cup green lentils. Wash and soak in very hot water for one hour before using in this recipe",
+  "½ cup small elbow macaroni uncooked",
+  "¼ cup vermicelli uncooked",
+  "60 gm spaghetti break in half or to three",
+  "3 tablespoon onion oil leftover oil from frying the onion",
+  "1 cube chicken or vegetable bouillon",
+  "3 ½ cups boiling water",
+  "// Tomato sauce",
+  "1 large tomato pureed or two medium tomatoes",
+  "1 tablespoon tomato paste",
+  "1 ½ teaspoon minced garlic",
+  "¼ teaspoon black pepper powder",
+  "¼ teaspoon cumin powder",
+  "¼ teaspoon coriander powder",
+  "¼ teaspoon salt",
+  "¼ teaspoon sugar",
+  "2 tablespoon onion oil",
+  "1 cup water",
+  "// Cumin sauce",
+  "1 cup water",
+  "1 teaspoon garlic minced",
+  "½ teaspoon cumin powder",
+  "½ teaspoon coriander powder",
+  "½ teaspoon salt",
+  "1 tablespoon white vinegar",
+  "// Shattah (chili sauce)",
+  "2 ½ tablespoon onion oil",
+  "1 teaspoon chili powder",
+  "1 to 2 tablespoon tomato sauce previously prepared",
+  "2 tablespoon cumin sauce prepared previously",
+  "// To top",
+  "1 cup cooked chickpeas use canned"
+ ],
+ "equipment": [
+  "Wide deep pan with a lid",
+  "Small saucepans for the sauces",
+  "Paper towels"
+ ],
+ "steps": [
+  "Fry the onion slices in the oil, stirring, until they turn brown, then switch the heat off at once. Lift them onto paper towels; they crisp as they cool.",
+  "In 3 tablespoons of the onion oil, fry the vermicelli until brown, add the washed rice and fry for 1 to 2 minutes, then stir in the lentils and the elbow macaroni for a few seconds each. Add the bouillon and boiling water.",
+  "When the pan is about to boil, lay in the broken spaghetti and cover. When you can no longer see water on the surface, turn to the lowest heat and cook for 11 to 13 minutes, then fluff with a fork.",
+  "Tomato sauce: fry the garlic for a few seconds, add the tomato puree, then the paste, spices, salt and sugar for about a minute, then the water. Simmer until the oil comes to the surface and the sauce thickens a little.",
+  "Cumin sauce: boil the water with the garlic and spices, add the vinegar, and turn the heat off when it returns to a boil.",
+  "Shattah: fry the chili powder in the onion oil for a few seconds, add 1 to 2 tablespoons of tomato sauce and 2 tablespoons of cumin sauce, and switch off.",
+  "Serve the rice with tomato sauce, shattah to taste, chickpeas and the fried onions."
+ ],
+ "chefTips": [
+  "Cues: onions brown, then heat off; water no longer visible on the surface; tomato sauce done when oil rises. The lentil soak is NO CUE, TIME ONLY (one hour in very hot water).",
+  "The page gives no temperatures beyond medium, lowest and increased heat.",
+  "Chickpeas are canned on this page; the other sources cook dried ones."
+ ],
+ "commonMistakes": [
+  "Letting the onions keep cooking after the heat is off, so they darken and turn bitter (our caution).",
+  "Skipping the sauces; the dish relies on the sharp cumin-vinegar sauce and the chili shattah."
+ ],
+ "servedWith": [
+  "Salata baladi (tomato-cucumber salad)"
+ ],
+ "relatedRecipes": [
+  "EGY077",
+  "EGY002",
+  "EGY020"
+ ],
+ "sources": [
+  "Adapted from 'Egyptian Koshari', Munaty Cooking. BYLINE AS PRINTED: 'By Muna Kenny'. Dates as printed: '06/11/2023' with an updated date '12/09/2026'. Yield 4 people.",
+  "SOURCING STATUS: ingredients and main method TWO-PASS; prep 15 minutes and cook 40 minutes SINGLE-PASS. Method wording is our own summary of the page; times and cues were relayed by a research tool and should be checked against the live page. Prep and cook totals are our own estimates from the times the page does give.",
+  "DISAGREEMENT kept: two other named sources differ. The Matbakh (Lilian Guidry, an American Lebanese cook in Texas, updated 11 November 2025) soaks lentils and chickpeas 3 hours, uses 9 garlic cloves and 3 tablespoons vinegar in the red sauce, cooks the lentil rice in onion oil with rice 12 to 15 minutes plus a 5-minute rest, and calls an optional fresh red sauce her family's, not traditional. The Daring Gourmet (Kimberly Killebrew, American, updated 13 May 2025) does not soak the lentils, cooks the rice 15 minutes separately, and uses baharat and red wine vinegar in a simplified sauce. Rice time, pasta shapes and sauces therefore vary by source."
+ ],
+ "storage": "Keep the components in separate containers in the fridge; Guidry's page says leftovers keep up to 5 days.",
+ "reheating": "Reheat rice and pasta together with a splash of water; warm the sauces separately. The fried onions are best added fresh.",
+ "healthBenefits": [
+  "Lentils and chickpeas give plant protein and fibre.",
+  "A fully plant-based, filling meal."
+ ],
+ "culturalNote": "Muna Kenny calls it a famous street food and the national dish of Egypt. Killebrew's page says it is believed to have come from India (khichri) and arrived with the British in the late 1800s, citing others; that origin is her report, not settled fact.",
+ "nutrition": {
+  "cal": 640,
+  "protein": 19,
+  "carbs": 108,
+  "fat": 15,
+  "fiber": 11,
+  "sodium": 820
+ },
+ "keywords": [
+  "koshari",
+  "koshary",
+  "kushari",
+  "egyptian koshari",
+  "egypt national dish",
+  "munaty cooking"
+ ]
+},
+{
+ "id": "EGY002",
+ "title": "Ta'meya (Egyptian Fava Bean Falafel)",
+ "localName": "Ta'amia / Ta'meya — الطعمية",
+ "emoji": "🥙",
+ "country": "Egypt",
+ "countryFlag": "🇪🇬",
+ "region": "North Africa",
+ "community": "Egyptian breakfast",
+ "cuisine": "Egyptian",
+ "category": "Street Food & Snacks",
+ "course": "Breakfast",
+ "diff": "Medium",
+ "prepTime": 30,
+ "restTime": 480,
+ "cookTime": 30,
+ "time": 540,
+ "servings": 10,
+ "cal": 210,
+ "rating": 4.5,
+ "reviews": 63,
+ "tags": [
+  "vegan",
+  "vegetarian",
+  "dairy-free",
+  "street-food",
+  "fried",
+  "high-protein",
+  "high-fiber",
+  "gluten-free"
+ ],
+ "author": "Nermine Mansour (Chez Nermine)",
+ "authorEmoji": "👩‍🍳",
+ "desc": "Split fava beans soaked, ground with leeks, spring onions and a fistful of herbs, whipped, coated in sesame and fried until puffy, golden and green inside.",
+ "longDesc": "Egyptian ta'meya uses split fava beans rather than chickpeas, which gives a green interior from leeks, spring onions, parsley, cilantro and dill. The beans soak at least 8 hours until they crush between two fingers, are ground to a fine paste with the aromatics and spices, then beaten for 3 to 5 minutes so the batter turns light. Patties are coated in sesame and fried in 350°F oil until puffed and golden.",
+ "ingredients": [
+  "500 grams split fava beans",
+  "2 leeks, chopped (including white and green parts)",
+  "2-3 cups mixed parsley, cilantro and dill, cilantro, and dill leaves, stems removed, (see notes)",
+  "4-5 spring onions, see notes",
+  "1 green pepper, optional",
+  "5 garlic cloves, minced",
+  "1-3 tablespoons tap water, (see notes)",
+  "2 teaspoons ground coriander",
+  "2 tablespoons ground cumin",
+  "1 ½ teaspoons sweet paprika",
+  "1-2 teaspoon(s) harissa paste, (optional)",
+  "1 teaspoon baking powder, optional (see notes)",
+  "salt and pepper to taste",
+  "1 tablespoon coarsely crushed coriander seeds, optional",
+  "2-3 tablespoons sesame, for coating",
+  "1 cup unflavored frying oil, such as canola",
+  "// To serve",
+  "warm pita bread or Egyptian Aish Baladi",
+  "tahini sauce",
+  "assortment of pickles",
+  "chopped fresh tomatoes, cucumber and lettuce"
+ ],
+ "equipment": [
+  "Food processor",
+  "Stand or hand mixer",
+  "Deep frying pan",
+  "Thermometer",
+  "Slotted spoon"
+ ],
+ "steps": [
+  "Soak the split fava beans in cold water for at least 8 hours or overnight, until a bean can be crushed between two fingers with no effort. Rinse and drain.",
+  "Process the beans to a fine, smooth paste. Add the leeks, spring onions, garlic, herbs and spices, adding water by the spoonful only if needed, until the batter is sticky and smooth and a vivid green with a pistachio shade.",
+  "Beat the batter on medium speed for 3 to 5 minutes (no more than 5) until it is light, about the consistency of whipped cream.",
+  "Shape patties no thicker than ½ inch and press the surface into sesame or crushed coriander seeds.",
+  "Heat the oil to 350°F and fry the patties until puffy and golden all over, in batches.",
+  "Serve in warm bread with tahini sauce, pickles and chopped salad vegetables."
+ ],
+ "chefTips": [
+  "Cues: beans crush with two fingers after soaking; batter smooth and vivid green; fry until puffy and all golden. The page does not print a frying time per batch.",
+  "Fry one test patty first; if it falls apart the batter needs a little more beating or a few more minutes of resting (our tip)."
+ ],
+ "commonMistakes": [
+  "Using whole dried fava with the skins on instead of split, peeled beans.",
+  "Over-beating past about 5 minutes, which the page warns against.",
+  "Oil that is too cool, so the patties soak up fat."
+ ],
+ "servedWith": [
+  "Aish baladi (EGY046)",
+  "Egyptian tahini sauce (EGY042)",
+  "Salata baladi (tomato-cucumber salad)"
+ ],
+ "relatedRecipes": [
+  "EGY077",
+  "EGY001",
+  "EGY046"
+ ],
+ "sources": [
+  "Adapted from 'Authentic Ta'amia: الطعمية المصرية', Chez Nermine. BYLINE AS PRINTED: 'Nermine Mansour' (Egyptian-American, from Alexandria per the page bio). Date: address 2024/12/12; hidden page data gives published 2024-12-11. Chez Nermine pages show no visible printed date; the date given is from the page address or hidden page data and is unconfirmed. Yield 10 people.",
+  "SOURCING STATUS: ingredients TWO-PASS; prep 30 and cook 30 minutes SINGLE-PASS. Method wording is our own summary of the page; times and cues were relayed by a research tool and should be checked against the live page. Prep and cook totals are our own estimates from the times the page does give.",
+  "PAGE DEFECTS kept: the card lists baking powder as optional while the body says no chemical leavening; the body list also says 'Baking Soda' and 'untested sesame seeds'; the herb line repeats 'cilantro, and dill'.",
+  "DISAGREEMENT kept: Amira's Pantry (Amira Ibrahim, updated 10 May 2023) uses 1 cup (180g) split fava, only green onion, parsley and cilantro, baking soda, a 2 to 3 hour soak changing the water once (NO CUE, TIME ONLY) and fries 2 to 3 minutes per side."
+ ],
+ "storage": "Fried patties are best fresh; the batter can be kept covered in the fridge for a short time (our estimate; the page gives no hold time).",
+ "reheating": "Re-crisp in a hot oven for a few minutes (our suggestion).",
+ "healthBenefits": [
+  "Fava beans provide protein and fibre.",
+  "Plant-based and dairy-free."
+ ],
+ "culturalNote": "Nermine Mansour writes that ta'amia was more than breakfast, 'an experience', and that it differs from falafel by using fava rather than chickpeas. She names a favourite Alexandria shop established in 1957 (single reading).",
+ "nutrition": {
+  "cal": 210,
+  "protein": 11,
+  "carbs": 26,
+  "fat": 8,
+  "fiber": 9,
+  "sodium": 290
+ },
+ "keywords": [
+  "ta'meya",
+  "taameya",
+  "egyptian falafel",
+  "fava falafel",
+  "chez nermine"
+ ]
+},
+{
+ "id": "EGY003",
+ "title": "Molokhia with Garlic Taqliya (Egyptian Jute Leaf Soup)",
+ "localName": "Molokhia — ملوخية",
+ "emoji": "🥬",
+ "country": "Egypt",
+ "countryFlag": "🇪🇬",
+ "region": "North Africa",
+ "community": "Egyptian home table",
+ "cuisine": "Egyptian",
+ "category": "Soups & Stews",
+ "course": "Main",
+ "diff": "Medium",
+ "prepTime": 10,
+ "restTime": 0,
+ "cookTime": 25,
+ "time": 35,
+ "servings": 6,
+ "cal": 110,
+ "rating": 4.8,
+ "reviews": 213,
+ "tags": [
+  "gluten-free",
+  "dairy-free",
+  "halal",
+  "comfort-food",
+  "traditional"
+ ],
+ "author": "Nermine Mansour (Chez Nermine)",
+ "authorEmoji": "👩‍🍳",
+ "desc": "Minced jute mallow leaves whisked into warm broth and finished with a sizzling taqliya of garlic and coriander seeds, served over rice with pickled onions.",
+ "longDesc": "A thick green soup made from frozen minced molokhia leaves warmed in broth with cilantro and crushed garlic, without covering the pot or letting it boil. A tasha of garlic and coriander seeds pounded to a paste is fried in ghee until fragrant, crisp and orange-tinted and poured straight in. A quick pickled onion of vinegar, sumac and red onion rests in the fridge for at least an hour.",
+ "ingredients": [
+  "Frozen bag of minced green Molokhia, 400 grams, see notes",
+  "¼ cup fresh minced cilantro, optional",
+  "2 ½ cups broth, chicken broth, beef broth or vegetable broth",
+  "1 garlic clove, crushed",
+  "// Tasha (taqliya)",
+  "5 whole garlic cloves",
+  "1 tablespoon coriander seeds",
+  "Salt and pepper (no quantity printed)",
+  "2 tablespoons ghee (quantity from the method)",
+  "¼ teaspoon salt (quantity from the method)",
+  "// Pickled onions (quantities not printed)",
+  "Red vinegar, salt, pepper, olive oil, sumac and sliced red onions"
+ ],
+ "equipment": [
+  "Saucepan",
+  "Whisk",
+  "Mortar and pestle",
+  "Small frying pan",
+  "Jar with lid"
+ ],
+ "steps": [
+  "Defrost the molokhia overnight in the fridge.",
+  "Warm 2 to 2½ cups of broth on low, just warm to the touch and not too hot. Whisk in the molokhia, the cilantro and the crushed garlic clove. Do not cover the pot and do not let it boil, or the colour darkens.",
+  "Tasha: pound ¼ teaspoon salt, the 5 garlic cloves and the coriander seeds to a fine paste. Fry in 2 tablespoons ghee on medium for a minute or two over low heat, until the paste turns fragrant, crispy and orange-tinted.",
+  "Add the tasha to the simmering soup at once; it will sizzle.",
+  "Pickled onions: shake the vinegar, salt, pepper, oil, sumac and sliced onions in a jar and rest at least 1 hour in the fridge.",
+  "Serve over rice or with bread, with the pickled onions."
+ ],
+ "chefTips": [
+  "Cues: tasha is ready when fragrant, crispy and orange-tinted; the soup is kept below a boil and uncovered. The pickling rest is NO CUE, TIME ONLY (at least 1 hour in the fridge) and is a quick onion pickle, not a ferment.",
+  "If you only have whole frozen leaves, the page says to blend them first with 1 cup of warm broth."
+ ],
+ "commonMistakes": [
+  "Covering the pot, which the page says darkens the colour.",
+  "Boiling the soup after adding the molokhia."
+ ],
+ "servedWith": [
+  "Rice with vermicelli (EGY020)",
+  "Aish baladi (EGY046)"
+ ],
+ "relatedRecipes": [
+  "EGY020",
+  "EGY033",
+  "EGY079"
+ ],
+ "sources": [
+  "Adapted from 'Molokhia (Egyptian Jute Mellow Soup): الملوخية', Chez Nermine. BYLINE AS PRINTED: 'Nermine Mansour'. Date: address 2023/09/06; hidden page data gives published 2023-09-05, modified 2026-04-12. Chez Nermine pages show no visible printed date; the date given is from the page address or hidden page data and is unconfirmed. Yield 6 people. Prep 10 and cook 15 minutes SINGLE-PASS.",
+  "SOURCING STATUS: ingredients TWO-PASS; the pickled onion has no ingredient list on the page (quantities NOT PRINTED). Method wording is our own summary of the page; times and cues were relayed by a research tool and should be checked against the live page. Prep and cook totals are our own estimates from the times the page does give.",
+  "DISAGREEMENT kept: Munaty Cooking (Muna Kenny, dated 31/01/2022, updated 12/09/2026) simmers lamb shanks 1½ hours first, makes a garlic taqliya with lemon juice, and covers the pot to rest 10 minutes at the end, which contradicts the no-cover advice here; Saveur (Kat Craddock, 17 May 2017) uses chicken, broils it, and cooks garlic, lemon and coriander in butter before adding stock. Kenny calls the dish 'royal' and pharaonic; Nermine Mansour cites a food historian who found no evidence for that."
+ ],
+ "storage": "Refrigerate covered up to 2 days (our estimate; the page gives none).",
+ "reheating": "Warm gently without boiling to protect the colour.",
+ "healthBenefits": [
+  "Leafy greens that provide vitamins A and K and fibre."
+ ],
+ "culturalNote": "Nermine Mansour writes that Egyptian women used to be judged on their molokhia, and that the cook traditionally gasps loudly (teshhag) as the hot tasha hits the pot. She cites a food historian who found no evidence the name means 'royal'; the earliest confirmed record she gives is from the 11th century.",
+ "nutrition": {
+  "cal": 110,
+  "protein": 5,
+  "carbs": 9,
+  "fat": 7,
+  "fiber": 4,
+  "sodium": 520
+ },
+ "keywords": [
+  "molokhia",
+  "mulukhiyah",
+  "jute leaves",
+  "egyptian green soup",
+  "tasha"
+ ]
+},
+{
+ "id": "EGY004",
+ "title": "Kofta al Hatee (Egyptian Grilled Kofta Skewers)",
+ "localName": "Kofta al-Hatee — كفتة الحاتي",
+ "emoji": "🍢",
+ "country": "Egypt",
+ "countryFlag": "🇪🇬",
+ "region": "North Africa",
+ "community": "Cairo grill house",
+ "cuisine": "Egyptian",
+ "category": "Grilled Meat",
+ "course": "Main",
+ "diff": "Medium",
+ "prepTime": 30,
+ "restTime": 60,
+ "cookTime": 30,
+ "time": 120,
+ "servings": 6,
+ "cal": 390,
+ "rating": 4.9,
+ "reviews": 40,
+ "tags": [
+  "halal",
+  "grilled",
+  "high-protein",
+  "low-carb",
+  "dairy-free",
+  "contains-beef",
+  "celebration"
+ ],
+ "author": "Nermine Mansour (Chez Nermine)",
+ "authorEmoji": "👩‍🍳",
+ "desc": "Beef and lamb kneaded with onion puree, garlic and parsley until it forms threads, shaped onto skewers, brushed with an onion-juice glaze and grilled.",
+ "longDesc": "A beef and lamb blend is kneaded with pureed onion solids, garlic, parsley and tomato paste until thin threads of meat pull away, then chilled, shaped around skewers and brushed with a glaze made from the onion juice. The skewers are grilled on medium-high heat for 10 to 15 minutes, until browned all over and cooked through, then rested.",
+ "ingredients": [
+  "600 grams ground beef, 85% lean and 15% fat",
+  "400 grams ground lamb, 85% lean and 15% fat",
+  "1 onion puree, only solids, as we will use the juice in the glaze (read directions)",
+  "5 garlic cloves, minced",
+  "½ cup parsley leaves, finely chopped",
+  "1 tablespoon tomato paste or pepper paste",
+  "1 chili pepper, red or green, finely chopped, optional",
+  "2 teaspoon pink salt",
+  "1 tablespoon salt",
+  "1 ½ teaspoons freshly ground black pepper",
+  "1 ½ teaspoons baking powder",
+  "// Glaze",
+  "The juice of 1 medium onion",
+  "1 tablespoon vegetable oil",
+  "1 tablespoon tomato paste",
+  "¼ teaspoon fine salt",
+  "Pinch of ground pepper",
+  "// Smoke (optional)",
+  "1 piece of natural charcoal",
+  "2 tablespoons hot vegetable oil"
+ ],
+ "equipment": [
+  "Blender or food processor",
+  "Fine sieve",
+  "Wooden or metal skewers",
+  "Grill or broiler"
+ ],
+ "steps": [
+  "Puree the onion and sieve it, keeping the juice for the glaze and the solids for the meat.",
+  "Combine both meats with the onion solids, garlic, baking powder, tomato paste, parsley, chili and spices. Knead until thin threads of meat begin to come away. The page does not print a kneading time.",
+  "Chill the mixture 30 minutes, or overnight. Soak wooden skewers at least 30 minutes.",
+  "Shape golf-ball portions onto the skewers into 4 to 5 inch lengths and chill at least 30 minutes more.",
+  "Mix the glaze, brush the kofta, and grill over medium-high heat for about 10 to 15 minutes, until browned on all sides and cooked through. Rest a few minutes.",
+  "Optional smoke: put a piece of charcoal in a small bowl, pour hot oil on it and cover the kofta with it; the page does not print a smoking time."
+ ],
+ "chefTips": [
+  "Cue: knead until thin threads come out of the meat. Chill times are NO CUE, TIME ONLY.",
+  "The page offers a broiler alternative but prints no unit for its temperature, so check your oven.",
+  "The page gives no yield; servings are our estimate."
+ ],
+ "commonMistakes": [
+  "Using lean meat; the 15% fat is part of the texture.",
+  "Skipping the chill, so the kofta slip off the skewers (our caution)."
+ ],
+ "servedWith": [
+  "Egyptian tahini sauce (EGY042)",
+  "Salata baladi (tomato-cucumber salad)",
+  "Aish baladi (EGY046)"
+ ],
+ "relatedRecipes": [
+  "EGY005",
+  "EGY008",
+  "EGY006"
+ ],
+ "sources": [
+  "Adapted from 'Kofta al Hatee (كفتة الحاتى): Authentic Egyptian Grilled Meat Skewers', Chez Nermine. BYLINE AS PRINTED: 'Nermine Mansour'. Date: address 2026/04/21; hidden page data gives published and modified 2026-04-21. Chez Nermine pages show no visible printed date; the date given is from the page address or hidden page data and is unconfirmed. Yield not printed. Prep 30 and cook 30 minutes as printed.",
+  "SOURCING STATUS: ingredients TWO-PASS; a 'meat spice blend' named in the intro is not on the card (SINGLE-PASS). Method wording is our own summary of the page; times and cues were relayed by a research tool and should be checked against the live page.",
+  "DISAGREEMENT kept: Munaty Cooking (Muna Kenny, dated 07/01/2024, updated 12/09/2026) bakes the kofta on a rack at 200C/392F for 18 to 20 minutes (large) using egg white, cornstarch and chilled butter; Egypt Independent (Magda El Mahdawi, 28 December 2009) marinates at least an hour and grills with no time printed."
+ ],
+ "storage": "Refrigerate cooked kofta up to 3 days (our estimate; the page gives none).",
+ "reheating": "Warm in a skillet or oven until hot through.",
+ "healthBenefits": [
+  "High in protein; low in carbohydrate."
+ ],
+ "culturalNote": "Nermine Mansour describes El Dahan, a grill house in Old Cairo said to date to the late 19th century, as a reference for this style (single reading).",
+ "nutrition": {
+  "cal": 390,
+  "protein": 30,
+  "carbs": 5,
+  "fat": 28,
+  "fiber": 1,
+  "sodium": 830
+ },
+ "keywords": [
+  "kofta",
+  "egyptian kofta",
+  "hatee",
+  "grilled kofta",
+  "cairo kebab"
+ ]
+},
+{
+ "id": "EGY005",
+ "title": "Baked Egyptian Kofta (Oven Kofta with Cold Butter)",
+ "localName": "Kofta — كفتة",
+ "emoji": "🍢",
+ "country": "Egypt",
+ "countryFlag": "🇪🇬",
+ "region": "North Africa",
+ "community": "Home table",
+ "cuisine": "Egyptian",
+ "category": "Grilled Meat",
+ "course": "Main",
+ "diff": "Medium",
+ "prepTime": 15,
+ "restTime": 60,
+ "cookTime": 20,
+ "time": 95,
+ "servings": 9,
+ "cal": 220,
+ "rating": 4.7,
+ "reviews": 202,
+ "tags": [
+  "halal",
+  "high-protein",
+  "dairy",
+  "contains-egg",
+  "contains-beef",
+  "low-carb"
+ ],
+ "author": "Muna Kenny (Munaty Cooking)",
+ "authorEmoji": "👩‍🍳",
+ "desc": "Chilled minced beef or lamb mixed with onion, spices, egg white, cornstarch and grated cold butter, shaped on skewers and baked on a rack until just cooked.",
+ "longDesc": "Minced meat is kept cold, mixed with squeezed onion, cumin, coriander, egg white, cornstarch and shredded cold butter, then chilled for an hour or overnight. The kofta are shaped on skewers using the saved onion water and baked on a rack with a little water in the tray at 200C/392F for 18 to 20 minutes when large, with a check at 16 minutes.",
+ "ingredients": [
+  "500 grams minced beef or lamb has to be chilled",
+  "2 medium onion minced Squeezed and its water kept aside",
+  "¼ cup shredded chilled unsalted butter",
+  "¼ teaspoon cumin powder",
+  "1 teaspoon salt",
+  "½ teaspoon black pepper powder",
+  "½ teaspoon coriander powder",
+  "½ teaspoon baking powder",
+  "1 egg white from large egg",
+  "1 ½ tablespoon cornstarch",
+  "// For shaping",
+  "Onion water from the two onions minced",
+  "⅛ teaspoon salt",
+  "¼ teaspoon sugar"
+ ],
+ "equipment": [
+  "Mixing bowl",
+  "Skewers",
+  "Baking tray with rack",
+  "Oven"
+ ],
+ "steps": [
+  "Mix the cold meat with the spices, baking powder, egg white, cornstarch and squeezed onion solids for about a minute, then add the shredded cold butter and mix for another minute.",
+  "Chill for one hour, or overnight.",
+  "Mix the saved onion water with the ⅛ teaspoon salt and the sugar. Wet your hands with it and shape the meat onto skewers.",
+  "Set the skewers on a rack over a tray with ¼ cup of water. Bake in the middle of a 200C/392F oven for 18 to 20 minutes for large koftas, checking for doneness after 16 minutes. Regular-size koftas take about 10 to 11 minutes.",
+  "Optional smoke: heat a piece of charcoal over a flame for 5 minutes, place it in a bowl, cover with the kofta for 2 to 3 minutes."
+ ],
+ "chefTips": [
+  "Cues: check doneness after 16 minutes for large koftas. The chill is NO CUE, TIME ONLY.",
+  "Keep the meat and butter cold so the butter stays in pieces and melts in the oven.",
+  "Soak wooden skewers in warm water 30 to 50 minutes (single reading)."
+ ],
+ "commonMistakes": [
+  "Over-mixing after adding the butter.",
+  "Baking without water in the tray, which dries the kofta."
+ ],
+ "servedWith": [
+  "Rice with vermicelli (EGY020)",
+  "Egyptian tahini sauce (EGY042)"
+ ],
+ "relatedRecipes": [
+  "EGY004",
+  "EGY008",
+  "EGY016"
+ ],
+ "sources": [
+  "Adapted from 'Kofta' (page title 'Egyptian Kofta Recipe (Authentic Kofta Kebab)'), Munaty Cooking. BYLINE AS PRINTED: 'Muna Kenny'. Dates as printed: '07/01/2024' and '12/09/2026'. Yield 9 koftas (notes say 6 large or 9 to 10 regular).",
+  "SOURCING STATUS: ingredients and method TWO-PASS; prep 15, cook 20 and marinate 1 hour SINGLE-PASS. Method wording is our own summary of the page; times and cues were relayed by a research tool and should be checked against the live page. Prep and cook totals are our own estimates from the times the page does give.",
+  "FLAG: the page's own recipe card lists the cuisine as 'Middle Eastern' though the text calls it one of the most popular Egyptian dishes."
+ ],
+ "storage": "Refrigerate cooked kofta up to 3 days (our estimate).",
+ "reheating": "Reheat in a covered pan or oven.",
+ "healthBenefits": [
+  "High in protein."
+ ],
+ "culturalNote": "The page calls kofta one of the most popular Egyptian dishes and gives an oven method for cooks without a grill.",
+ "nutrition": {
+  "cal": 220,
+  "protein": 16,
+  "carbs": 5,
+  "fat": 15,
+  "fiber": 0,
+  "sodium": 330
+ },
+ "keywords": [
+  "baked kofta",
+  "oven kofta",
+  "egyptian kofta",
+  "munaty cooking"
+ ]
+},
+{
+ "id": "EGY006",
+ "title": "Hawawshi (Crispy Meat-Stuffed Pita)",
+ "localName": "Hawawshi — حواوشي",
+ "emoji": "🥙",
+ "country": "Egypt",
+ "countryFlag": "🇪🇬",
+ "region": "North Africa",
+ "community": "Cairo street food",
+ "cuisine": "Egyptian",
+ "category": "Street Food & Snacks",
+ "course": "Main",
+ "diff": "Medium",
+ "prepTime": 30,
+ "restTime": 0,
+ "cookTime": 30,
+ "time": 60,
+ "servings": 10,
+ "cal": 520,
+ "rating": 4.6,
+ "reviews": 277,
+ "tags": [
+  "halal",
+  "street-food",
+  "contains-beef",
+  "high-protein",
+  "comfort-food",
+  "dairy-free"
+ ],
+ "author": "Nermine Mansour (Chez Nermine)",
+ "authorEmoji": "👩‍🍳",
+ "desc": "Beef and lamb mixed with a blended paste of onion, tomato, peppers and parsley, stuffed into baladi bread, seared on a griddle and baked until crusty.",
+ "longDesc": "Onions, tomatoes, a mild pepper, hot chilies and parsley are blended to a fine paste and squeezed to remove excess water, then mixed with ground beef and lamb and spices. About ¾ to 1 cup of filling goes into each pita, which is brushed with oil, seared on a griddle until crusty and golden, and baked at 375°F for 20 to 25 minutes until the juices run clear.",
+ "ingredients": [
+  "1 pound ground beef, at least 25% fat",
+  "2 pounds ground lamb",
+  "2 medium red onions, coarsely chopped",
+  "3 garlic cloves, minced",
+  "2 medium tomatoes, diced",
+  "2 cups fresh parsley leaves",
+  "1 mild green bell pepper, coarsely chopped",
+  "2-3  green chili peppers, coarsely chopped",
+  "1 tablespoon fine salt",
+  "2 teaspoons freshly ground black pepper",
+  "2 teaspoons ground cumin",
+  "2 teaspoons ground coriander",
+  "1 teaspoon sweet paprika",
+  "1 teaspoon freshly grated nutmeg",
+  "1 teaspoon chili flakes, optional",
+  "½ teaspoons ground cardamom",
+  "10 whole Aish Baladi, Egyptian whole wheat pita bread, or pita",
+  "2-3  tablespoons vegetable oil",
+  "// To serve",
+  "1  cup pickles",
+  "1 cup  tahini sauce"
+ ],
+ "equipment": [
+  "Blender or food processor",
+  "Cheesecloth or strainer",
+  "Griddle or skillet",
+  "Baking sheet",
+  "Oven"
+ ],
+ "steps": [
+  "Blend the onions, tomatoes, bell pepper, chilies and parsley to a fine paste and squeeze out excess water. The page prints no blending time.",
+  "Mix the paste with the beef, lamb and spices until evenly combined.",
+  "Snip the edge of each pita to open a pocket and fill with about ¾ to 1 cup of the meat mixture, spreading it evenly.",
+  "Brush the bread with oil and sear on a griddle until the bread is crusty and golden; no time is printed.",
+  "Bake at 375°F for 20 to 25 minutes, until the stuffing is cooked through and the juices run clear.",
+  "Serve with tahini sauce, pickles and salata baladi."
+ ],
+ "chefTips": [
+  "Cues: bread crusty and golden; juices run clear. Searing and squeezing times are NOT PRINTED.",
+  "Squeezing the paste matters; wet filling steams the bread soft.",
+  "The method step reads '1 pounds ground beef' (single reading); the ingredient list says 1 pound beef and 2 pounds lamb."
+ ],
+ "commonMistakes": [
+  "Leaving the filling wet.",
+  "Overfilling so the pita splits."
+ ],
+ "servedWith": [
+  "Egyptian tahini sauce (EGY042)",
+  "Salata baladi (tomato-cucumber salad)"
+ ],
+ "relatedRecipes": [
+  "EGY004",
+  "EGY019",
+  "EGY046"
+ ],
+ "sources": [
+  "Adapted from 'Authentic Egyptian Hawawshi (Crispy Meat-Stuffed Pita): حواوشي', Chez Nermine. BYLINE AS PRINTED: 'Nermine Mansour'. Date: address 2026/07/07; hidden page data gives published 2026-07-07, modified 2026-09-16. Chez Nermine pages show no visible printed date; the date given is from the page address or hidden page data and is unconfirmed. Yield 10 people. Prep 30 and cook 30 minutes as printed.",
+  "SOURCING STATUS: ingredients and method TWO-PASS except where noted. Method wording is our own summary of the page; times and cues were relayed by a research tool and should be checked against the live page.",
+  "FLAG: misprints on the ingredient list are kept, including spacing and the unit 'teaspoons' on the cardamom line."
+ ],
+ "storage": "Refrigerate cooked hawawshi up to 3 days (our estimate).",
+ "reheating": "Re-crisp in a hot oven or dry skillet.",
+ "healthBenefits": [
+  "High in protein; the herb-and-vegetable paste adds vitamins."
+ ],
+ "culturalNote": "Nermine Mansour writes, 'If America has the hamburger, Egypt has hawawshi,' and notes popular lore crediting a butcher, Ahmed Al-Hawawshi, in 1970s Cairo (single reading; lore, not settled history).",
+ "nutrition": {
+  "cal": 520,
+  "protein": 30,
+  "carbs": 30,
+  "fat": 31,
+  "fiber": 4,
+  "sodium": 760
+ },
+ "keywords": [
+  "hawawshi",
+  "hawawshy",
+  "egyptian meat pie",
+  "stuffed baladi bread"
+ ]
+},
+{
+ "id": "EGY007",
+ "title": "Weeka (Upper Egyptian Okra Soup)",
+ "localName": "Weeka — ويكة",
+ "emoji": "🥣",
+ "country": "Egypt",
+ "countryFlag": "🇪🇬",
+ "region": "North Africa",
+ "community": "Upper Egypt / Coptic fasting",
+ "cuisine": "Egyptian",
+ "category": "Soups & Stews",
+ "course": "Soup",
+ "diff": "Easy",
+ "prepTime": 10,
+ "restTime": 0,
+ "cookTime": 20,
+ "time": 30,
+ "servings": 4,
+ "cal": 150,
+ "rating": 4.8,
+ "reviews": 312,
+ "tags": [
+  "vegan",
+  "vegetarian",
+  "gluten-free",
+  "dairy-free",
+  "comfort-food",
+  "traditional",
+  "budget"
+ ],
+ "author": "Nermine Mansour (Chez Nermine)",
+ "authorEmoji": "👩‍🍳",
+ "desc": "A thin, silky soup of finely sliced okra simmered in broth with garlic and coriander, finished with a garlic-coriander tasha.",
+ "longDesc": "Okra is sliced thin and simmered in vegetable broth flavoured with garlic, coriander and lemon until fully cooked, 7 to 10 minutes on low heat. A tasha of crushed garlic and ground coriander fried until the garlic is golden is stirred in, the heat is turned off, and the soup is left to infuse. Served with vermicelli rice or baladi bread.",
+ "ingredients": [
+  "2 tablespoons olive oil, or ghee/butter",
+  "1 crushed garlic cloves",
+  "1 teaspoon  ground coriander",
+  "1  kg big okra, tops and ends removed and thinly sliced",
+  "4 cups vegetable broth, or 2 vegetable bouillon diluted in 4 cups of water",
+  "1 teaspoon lemon juice, or more to taste",
+  "Salt and pepper to taste",
+  "// Tasha",
+  "2 tablespoons olive oil , ghee or butter",
+  "2 teaspoons crushed garlic, crushed",
+  "2 tablespoon ground coriander",
+  "// To serve",
+  "Vermicelli rice",
+  "Aish Baladi",
+  "Lemon wedges , optional"
+ ],
+ "equipment": [
+  "Saucepan",
+  "Small frying pan"
+ ],
+ "steps": [
+  "Heat the oil, then cook the garlic until fragrant. Add the coriander for 30 seconds, then the broth, and bring to a simmer over low heat for about 5 minutes.",
+  "Add the okra and lemon juice and bring to a boil, then simmer on low for 7 to 10 minutes, until the okra is fully cooked.",
+  "Tasha: fry the garlic and coriander in the fat until the garlic turns golden, and stir it into the soup.",
+  "Turn the heat off and let the soup infuse; the page prints no infusion time.",
+  "Serve with vermicelli rice, baladi bread and lemon wedges."
+ ],
+ "chefTips": [
+  "Cues: okra fully cooked; tasha garlic golden. The page's wording on the first simmer gives two heat settings in one sentence (low and medium-low); we use low.",
+  "The page misprints 'boil' as 'oil' in the okra step."
+ ],
+ "commonMistakes": [
+  "Burning the garlic in the tasha, which turns the soup bitter (our caution)."
+ ],
+ "servedWith": [
+  "Rice with vermicelli (EGY020)",
+  "Aish baladi (EGY046)"
+ ],
+ "relatedRecipes": [
+  "EGY079",
+  "EGY003",
+  "EGY018"
+ ],
+ "sources": [
+  "Adapted from 'Weeka (Egyptian Okra Soup): شوربة الويكا', Chez Nermine. BYLINE AS PRINTED: 'Nermine Mansour'. Date: address 2021/12/22, but hidden page data gives published and modified 2026-03-03, so the true date is unconfirmed. Chez Nermine pages show no visible printed date; the date given is from the page address or hidden page data and is unconfirmed. Yield 4 people. Prep 10, cook 20 minutes as printed.",
+  "SOURCING STATUS: ingredients and method TWO-PASS except the double heat setting on the first simmer (SINGLE-PASS). Method wording is our own summary of the page; times and cues were relayed by a research tool and should be checked against the live page.",
+  "FLAG: ingredient misprints kept ('1 crushed garlic cloves', 'garlic, crushed')."
+ ],
+ "storage": "Refrigerate covered up to 2 days (our estimate).",
+ "reheating": "Warm gently on the stove.",
+ "healthBenefits": [
+  "Okra provides fibre and vitamin C; the soup is vegan."
+ ],
+ "culturalNote": "Nermine Mansour calls it an ancient vegan okra soup from Upper Egypt, a Coptic fasting meal, and recalls her late father loving it.",
+ "nutrition": {
+  "cal": 150,
+  "protein": 5,
+  "carbs": 18,
+  "fat": 8,
+  "fiber": 7,
+  "sodium": 520
+ },
+ "keywords": [
+  "weeka",
+  "wika",
+  "okra soup",
+  "upper egypt",
+  "coptic fasting"
+ ]
+},
+{
+ "id": "EGY008",
+ "title": "Koftet Roz (Rice Meatballs in Tomato Sauce)",
+ "localName": "Kofta bil-roz — كفتة أرز",
+ "emoji": "🍅",
+ "country": "Egypt",
+ "countryFlag": "🇪🇬",
+ "region": "North Africa",
+ "community": "Home table",
+ "cuisine": "Egyptian",
+ "category": "Meat Dishes",
+ "course": "Main",
+ "diff": "Medium",
+ "prepTime": 30,
+ "restTime": 0,
+ "cookTime": 45,
+ "time": 75,
+ "servings": 4,
+ "cal": 520,
+ "rating": 4.9,
+ "reviews": 202,
+ "tags": [
+  "halal",
+  "contains-beef",
+  "fried",
+  "comfort-food",
+  "dairy-free"
+ ],
+ "author": "Soha Darwish (BBC Good Food Middle East)",
+ "authorEmoji": "👩‍🍳",
+ "desc": "Beef mince bound with ground rice, grated onion and a lot of parsley, coriander and dill, fried until crisp and simmered in a garlicky tomato sauce.",
+ "longDesc": "A herby beef mixture with ground rice is rolled into balls of about 50g in oiled hands and deep-fried in sunflower oil until golden and crisp; the oil is ready when a cube of bread browns in 30 seconds. The balls then simmer in a garlic-tomato passata sauce for 15 to 20 minutes until the sauce has thickened slightly and the meatballs are cooked through. Served with white rice.",
+ "ingredients": [
+  "1 large onion , grated",
+  "2 garlic cloves , crushed",
+  "50g parsley , finely chopped",
+  "50g coriander , finely chopped",
+  "40g dill , finely chopped",
+  "½ tsp chilli powder (optional)",
+  "1 tsp Arabic mixed spice , such as Arabic masala or baharat (gluten-free, if needed)",
+  "500g beef mince",
+  "100g ground rice",
+  "500ml sunflower oil , plus extra for moulding the meatballs and 2 tbsp for frying",
+  "cooked white rice , to serve",
+  "// Sauce",
+  "1 large garlic clove , crushed",
+  "1 tbsp tomato purée",
+  "500ml tomato passata"
+ ],
+ "equipment": [
+  "Mixing bowl",
+  "Deep pan for frying",
+  "Saucepan",
+  "Slotted spoon"
+ ],
+ "steps": [
+  "Mix the onion, garlic, herbs, chilli, spice, beef and ground rice well, then roll into balls of about 50g, using oiled hands.",
+  "Heat the sunflower oil until a cube of bread dropped in browns in 30 seconds. Deep-fry the balls in batches for a few minutes until crisp and a good golden colour. Drain.",
+  "Sauce: in 2 tablespoons of oil cook the garlic and tomato purée for a couple of minutes, add the passata and 500ml of water, and bring to the boil.",
+  "Add the meatballs and simmer for 15 to 20 minutes, until the sauce has thickened slightly and the koftas are cooked through.",
+  "Serve over white rice."
+ ],
+ "chefTips": [
+  "Cues: bread cube browns in 30 seconds; balls crisp and golden; sauce slightly thickened. The page says the cooked koftet roz freeze for 2 months.",
+  "The page lists the frying oil at 500ml; a smaller pot can use less (our note)."
+ ],
+ "commonMistakes": [
+  "Oil that is not hot enough, so the balls soak it up and break apart.",
+  "Crowding the pan."
+ ],
+ "servedWith": [
+  "Rice with vermicelli (EGY020)",
+  "Salata baladi (tomato-cucumber salad)"
+ ],
+ "relatedRecipes": [
+  "EGY004",
+  "EGY005",
+  "EGY009"
+ ],
+ "sources": [
+  "Adapted from 'Soha's koftet roz (Egyptian rice meatballs)', BBC Good Food Middle East. BYLINE AS PRINTED: 'By Soha Darwish'. NO DATE printed on the page (hidden modified date 2024-10-16 only). Serves 4. Prep 30 and cook 25 minutes as printed.",
+  "SOURCING STATUS: TWO-PASS for the figures above; flagged because the page prints no date. Method wording is our own summary of the page; times and cues were relayed by a research tool and should be checked against the live page. Total cook time here is our estimate including frying and simmering.",
+  "DISAGREEMENT kept: Egypt Independent (Magda El Mahdawi, 28 December 2009) soaks a whole cup of rice 15 minutes, grinds it into the meat with parsley and mint, fries (no time or temperature printed), then simmers with potato fingers, tomato juice, a litre of stock and mastic for about 15 plus 10 minutes. The soak is NO CUE, TIME ONLY."
+ ],
+ "storage": "Refrigerate in the sauce up to 3 days (our estimate); the page says the koftas freeze for 2 months.",
+ "reheating": "Warm in the sauce over low heat.",
+ "healthBenefits": [
+  "Herbs add iron and vitamins; the dish is a source of protein."
+ ],
+ "culturalNote": "The page presents koftet roz as an Egyptian home dish and gives no further cultural remarks.",
+ "nutrition": {
+  "cal": 520,
+  "protein": 28,
+  "carbs": 38,
+  "fat": 29,
+  "fiber": 4,
+  "sodium": 520
+ },
+ "keywords": [
+  "koftet roz",
+  "rice kofta",
+  "egyptian meatballs",
+  "bbc good food"
+ ]
+},
+{
+ "id": "EGY009",
+ "title": "Kousa Mahshi (Stuffed Zucchini in Tomato Sauce)",
+ "localName": "Kousa mahshi — كوسة محشي",
+ "emoji": "🥒",
+ "country": "Egypt",
+ "countryFlag": "🇪🇬",
+ "region": "North Africa",
+ "community": "Home table",
+ "cuisine": "Egyptian",
+ "category": "Vegetables & Legumes",
+ "course": "Main",
+ "diff": "Medium",
+ "prepTime": 35,
+ "restTime": 20,
+ "cookTime": 70,
+ "time": 125,
+ "servings": 8,
+ "cal": 280,
+ "rating": 4.7,
+ "reviews": 267,
+ "tags": [
+  "halal",
+  "contains-beef",
+  "dairy-free",
+  "gluten-free",
+  "traditional",
+  "comfort-food"
+ ],
+ "author": "Muna Kenny (Munaty Cooking)",
+ "authorEmoji": "👩‍🍳",
+ "desc": "Cored summer squash filled with short-grain rice and minced meat, simmered on a bed of tomato and mint sauce for 1 hour 10 minutes.",
+ "longDesc": "Eight medium kousa are cored and filled about three-quarters full with a mixture of soaked Egyptian rice, minced lamb or beef, coriander, cinnamon and cumin. A sauce of garlic, tomato puree, paste, dried mint, boiling water and a chicken bouillon cube is boiled for 3 minutes, the squash goes in, and everything cooks on medium-low heat for 1 hour 10 minutes.",
+ "ingredients": [
+  "8 medium  kousa Summer Squash",
+  "150 grams minced meat lamb or beef",
+  "½ cup short grain rice Egyptian rice",
+  "1 tablespoon olive oil",
+  "½ teaspoon salt or to taste",
+  "¼ teaspoon black pepper powder",
+  "1 teaspoon heaped coriander powder",
+  "⅛ teaspoon cinnamon powder",
+  "¼ teaspoon cumin powder you can add ½ teaspoon if you like cumin",
+  "// Sauce",
+  "2 tablespoon olive oil or ghee",
+  "1 tablespoon minced garlic",
+  "2 medium  tomato puree",
+  "2 tablespoon heaped tomato paste",
+  "½ teaspoon black pepper",
+  "1 teaspoon dry mint",
+  "3 cups boiling water",
+  "1 cube chicken bouillon"
+ ],
+ "equipment": [
+  "Zucchini corer",
+  "Wide pot with lid",
+  "Mixing bowl"
+ ],
+ "steps": [
+  "Wash the rice and soak it 20 minutes, then drain.",
+  "Mix the rice with the minced meat, oil, salt, pepper, coriander, cinnamon and cumin.",
+  "Core the squash and fill each about three-quarters full, leaving room for the rice to swell (the card says 'until the ¾ of the kousa'; the body says to leave about a quarter empty).",
+  "Sauce: cook the garlic in oil until you can smell it, add the puree, then the paste, pepper and mint, then the boiling water and bouillon, and boil 3 minutes.",
+  "Lay the stuffed squash in the sauce and cook on medium-low heat for 1 hour 10 minutes.",
+  "Serve hot with some of the sauce."
+ ],
+ "chefTips": [
+  "Cue: the garlic is cooked when you can smell it. The rice soak is NO CUE, TIME ONLY (20 minutes).",
+  "A quarter teaspoon of sugar is suggested if the tomato paste tastes bitter; leftovers keep 3 days (page notes)."
+ ],
+ "commonMistakes": [
+  "Overfilling, which makes the squash burst as the rice swells.",
+  "Cooking too fast so the squash breaks down."
+ ],
+ "servedWith": [
+  "Salata baladi (tomato-cucumber salad)"
+ ],
+ "relatedRecipes": [
+  "EGY080",
+  "EGY008",
+  "EGY010"
+ ],
+ "sources": [
+  "Adapted from 'Kousa Mahshi', Munaty Cooking. BYLINE AS PRINTED: 'By Muna Kenny'. Dates as printed: '02/03/2024', updated '12/09/2026'. Yield 8 servings. Prep 15 and cook 1 hour 10 minutes as printed.",
+  "SOURCING STATUS: ingredients and method TWO-PASS; a salt-rub step for the squash is SINGLE-PASS and left out. Method wording is our own summary of the page; times and cues were relayed by a research tool and should be checked against the live page.",
+  "PAGE DEFECT kept: card and body describe the fill level in different words (three-quarters full versus about a quarter left empty); both mean the same."
+ ],
+ "storage": "Refrigerate up to 3 days (page note).",
+ "reheating": "Reheat gently in the sauce.",
+ "healthBenefits": [
+  "A vegetable-forward meal with protein from the filling."
+ ],
+ "culturalNote": "The page gives the dish as an Egyptian home classic without further cultural remarks.",
+ "nutrition": {
+  "cal": 280,
+  "protein": 12,
+  "carbs": 28,
+  "fat": 14,
+  "fiber": 4,
+  "sodium": 640
+ },
+ "keywords": [
+  "kousa mahshi",
+  "stuffed zucchini",
+  "egyptian mahshi",
+  "munaty cooking"
+ ]
+},
+{
+ "id": "EGY010",
+ "title": "Torly (Egyptian Beef and Vegetable Stew)",
+ "localName": "Torly — تورلي",
+ "emoji": "🥘",
+ "country": "Egypt",
+ "countryFlag": "🇪🇬",
+ "region": "North Africa",
+ "community": "Egyptian home table",
+ "cuisine": "Egyptian",
+ "category": "Meat Dishes",
+ "course": "Main",
+ "diff": "Easy",
+ "prepTime": 20,
+ "restTime": 0,
+ "cookTime": 60,
+ "time": 80,
+ "servings": 5,
+ "cal": 310,
+ "rating": 4.7,
+ "reviews": 162,
+ "tags": [
+  "halal",
+  "contains-beef",
+  "dairy-free",
+  "gluten-free",
+  "one-pot",
+  "comfort-food"
+ ],
+ "author": "Moushira Abdel-Malek (Ahram Online)",
+ "authorEmoji": "👩‍🍳",
+ "desc": "Seared beef cubes stewed with string beans, carrots, potatoes and tomatoes in tomato juice, served with rice.",
+ "longDesc": "Lean beef cubes are seared until slightly browned, onion and garlic are cooked until translucent and aromatic, and string beans, carrots, potatoes and tomatoes go in with tomato juice, tomato purée and bouillon. The pot is brought to a boil, covered and left on low heat, adding hot water if needed, until the beef is as tender as you like. The page prints no cooking time.",
+ "ingredients": [
+  "500 gm lean tender beef cubes; (best use fillet cubes)",
+  "1 large onion (quartered)",
+  "4-5 garlic pods (peeled, whole)",
+  "250 gm green string beans (trimmed)",
+  "250 gm carrots (peeled, sliced)",
+  "2 medium-sized potatoes (peeled, cubed)",
+  "3 large ripe firm tomatoes (quartered)",
+  "1 cup tomato juice",
+  "1 tbsp tomato purée",
+  "2 chicken bouillon cubes",
+  "2 tbsp olive oil",
+  "Salt + pepper + 7 spices + herbes de Provençe"
+ ],
+ "equipment": [
+  "Non-stick stewing pot with lid"
+ ],
+ "steps": [
+  "Heat the pot on high, add the oil, lower to medium-high and sear the beef until slightly browned. Push it aside.",
+  "Cook the onion and garlic until translucent and aromatic, and season with salt, pepper, seven spices and herbes de Provence.",
+  "Add the vegetables, tomato juice, purée and bouillon. Bring to a boil, cover and lower the heat, adding hot water if the pot dries.",
+  "Cook to your desired degree of tenderness of the beef.",
+  "Serve with rice and a green salad."
+ ],
+ "chefTips": [
+  "The page gives NO COOKING TIME; the 60 minutes here is our estimate for the cook time, so judge by the beef being tender.",
+  "Fillet cubes cook faster than stewing cuts (our note)."
+ ],
+ "commonMistakes": [
+  "Adding the potatoes too early so they dissolve (our caution)."
+ ],
+ "servedWith": [
+  "Rice with vermicelli (EGY020)"
+ ],
+ "relatedRecipes": [
+  "EGY079",
+  "EGY016",
+  "EGY009"
+ ],
+ "sources": [
+  "Adapted from 'Beef torly stew (Assortment of vegetables with beef)', Ahram Online. BYLINE AS PRINTED: 'Moushira Abdel-Malek'. Date as printed: 'Tuesday 28 Jul 2026'. Serves 4 to 6.",
+  "SOURCING STATUS: ingredients and method TWO-PASS. Method wording is our own summary of the page; times and cues were relayed by a research tool and should be checked against the live page. Cooking time NOT PRINTED; our estimate used.",
+  "FLAG: the page has no author introduction and no cultural remarks."
+ ],
+ "storage": "Refrigerate up to 3 days (our estimate).",
+ "reheating": "Reheat gently with a splash of water.",
+ "healthBenefits": [
+  "A balanced one-pot meal with beef and several vegetables."
+ ],
+ "culturalNote": "The page gives the recipe without cultural commentary. Torly is presented as a mixed-vegetable beef stew.",
+ "nutrition": {
+  "cal": 310,
+  "protein": 26,
+  "carbs": 22,
+  "fat": 13,
+  "fiber": 5,
+  "sodium": 700
+ },
+ "keywords": [
+  "torly",
+  "tourly",
+  "egyptian vegetable stew",
+  "ahram online"
+ ]
+},
+{
+ "id": "EGY011",
+ "title": "Macarona Bechamel (Egyptian Baked Pasta)",
+ "localName": "Makarona bechamel — مكرونة بالبشاميل",
+ "emoji": "🍝",
+ "country": "Egypt",
+ "countryFlag": "🇪🇬",
+ "region": "North Africa",
+ "community": "Egyptian family table",
+ "cuisine": "Egyptian",
+ "category": "Main Dishes",
+ "course": "Main",
+ "diff": "Medium",
+ "prepTime": 30,
+ "restTime": 10,
+ "cookTime": 100,
+ "time": 140,
+ "servings": 6,
+ "cal": 620,
+ "rating": 4.8,
+ "reviews": 37,
+ "tags": [
+  "contains-beef",
+  "contains-dairy",
+  "contains-gluten",
+  "comfort-food",
+  "make-ahead"
+ ],
+ "author": "Abi Olayiwola (Eat Well Abi)",
+ "authorEmoji": "👩‍🍳",
+ "desc": "Penne tossed in a cinnamon-spiced beef and tomato sauce, layered with a nutmeg béchamel and baked until the top is crusty and golden.",
+ "longDesc": "An onion and ground beef sauce is spiced with cinnamon and cumin, mixed with grated carrot and tomato purée and simmered at least 30 minutes. Penne is cooked 3 minutes less than the box says, tossed with a little white sauce and layered with the meat. A béchamel from butter, flour, hot milk and nutmeg covers the top, and the dish bakes at 180°C for 40 to 50 minutes until the top is crusty and golden, then cools for at least 10 minutes.",
+ "ingredients": [
+  "2 tablespoons Sunflower oil",
+  "1 Onion",
+  "2 cloves Garlic",
+  "1 teaspoon Cinnamon",
+  "½ teaspoon Cumin",
+  "500 g Mince meat (Ground beef)",
+  "Salt",
+  "400 g Tomato puree  (1 can)",
+  "2 Carrots",
+  "400 g Penne Pasta",
+  "Salt",
+  "// Béchamel",
+  "100 g All-purpose flour",
+  "100 g Butter",
+  "4½ cups Milk",
+  "½ teaspoon Nutmeg",
+  "Salt"
+ ],
+ "equipment": [
+  "Large pot",
+  "Saucepan",
+  "Baking dish",
+  "Oven"
+ ],
+ "steps": [
+  "Cook the onion in the oil until translucent, then the garlic and spices for 30 seconds. Add the mince and cook until the meat turns brown.",
+  "Grate in the carrots, add the tomato puree and salt, and simmer for at least 30 minutes until reduced.",
+  "Boil the penne 3 minutes less than the packet time and drain.",
+  "Béchamel: melt the butter on low, stir in the flour, then off the heat whisk in at least three-quarters of the hot milk. Add salt and nutmeg and return to the heat to thicken.",
+  "Toss the pasta with about ½ cup of the white sauce, layer it with the meat sauce in a baking dish, and cover with the remaining béchamel.",
+  "Bake at 180°C (350°F) for 40 to 50 minutes, until the top is crusty with a golden brown colour. Let it cool at least 10 minutes before cutting."
+ ],
+ "chefTips": [
+  "Cues: meat browned; sauce reduced; top crusty and golden. The cooling rest is NO CUE, TIME ONLY (at least 10 minutes).",
+  "Total time here follows the page card (1 hour 40 minutes) with our split into prep, rest and cook."
+ ],
+ "commonMistakes": [
+  "Overcooking the pasta before baking.",
+  "A lumpy béchamel from adding cold milk to a hot roux."
+ ],
+ "servedWith": [
+  "Salata baladi (tomato-cucumber salad)"
+ ],
+ "relatedRecipes": [
+  "EGY017",
+  "EGY016"
+ ],
+ "sources": [
+  "Adapted from 'Egyptian Macaroni Bechamel Recipe', Eat Well Abi. BYLINE AS PRINTED: 'Abi Olayiwola'. Date as printed: 'Published: Sep 30, 2022'. Servings 6. Prep 20 minutes; cook 1 hour 40 minutes (printed with garbled units).",
+  "SOURCING STATUS: ingredients and method TWO-PASS. Method wording is our own summary of the page; times and cues were relayed by a research tool and should be checked against the live page. Prep and cook totals are our own estimates from the times the page does give.",
+  "FLAG: the author's origin is not stated on the page; the site focuses on African recipes. The page says the dish is 'thought to have origins in Greece' (single reading).",
+  "DISAGREEMENT kept: Munaty Cooking (Muna Kenny, 30/01/2025, updated 12/09/2026) makes a 10-serving version with 6 cups milk and 8 tablespoons flour, cardamom and a bouillon cube in the meat, bakes 25 minutes at 180°C and rests 30 to 40 minutes. A third page (first-name byline 'Renee', so not used here) bakes 45 minutes at 375°F."
+ ],
+ "storage": "Refrigerate covered up to 3 days (our estimate).",
+ "reheating": "Reheat covered in a 180°C oven until hot.",
+ "healthBenefits": [
+  "Protein from beef and milk; carrots add vitamin A."
+ ],
+ "culturalNote": "The page says the dish is thought to have Greek origins and compares it to pastitsio or lasagna; it also notes it suits sahur.",
+ "nutrition": {
+  "cal": 620,
+  "protein": 28,
+  "carbs": 60,
+  "fat": 29,
+  "fiber": 4,
+  "sodium": 640
+ },
+ "keywords": [
+  "macarona bechamel",
+  "egyptian baked pasta",
+  "egyptian pasta",
+  "eat well abi"
+ ]
+},
+{
+ "id": "EGY012",
+ "title": "Mesaka'a (Vegan Egyptian Eggplant and Pepper Bake)",
+ "localName": "Mesaka'a — مسقعة",
+ "emoji": "🍆",
+ "country": "Egypt",
+ "countryFlag": "🇪🇬",
+ "region": "North Africa",
+ "community": "Coptic Lent",
+ "cuisine": "Egyptian",
+ "category": "Vegetables & Legumes",
+ "course": "Main",
+ "diff": "Medium",
+ "prepTime": 25,
+ "restTime": 0,
+ "cookTime": 45,
+ "time": 70,
+ "servings": 4,
+ "cal": 250,
+ "rating": 4.8,
+ "reviews": 130,
+ "tags": [
+  "vegan",
+  "vegetarian",
+  "dairy-free",
+  "gluten-free",
+  "traditional"
+ ],
+ "author": "Nermine Mansour (Chez Nermine)",
+ "authorEmoji": "👩‍🍳",
+ "desc": "Floured eggplant slices fried to an amber colour, layered with quick-fried peppers in a garlicky vinegar-tomato sauce and baked.",
+ "longDesc": "Peeled eggplant slices are floured and fried until a deep amber, peppers are fried no more than two minutes, and a sauce of garlic, white vinegar, tomato juice, paste and cumin simmers about 5 minutes. Layered with the sauce and baked at 375°F for 20 to 25 minutes. The author skips salting the eggplant.",
+ "ingredients": [
+  "2 Eggplants, sliced 1/2inch",
+  "2 mild green bell peppers",
+  "2 hot green peppers or more",
+  "¼ cup all purpose flour",
+  "½ cup frying oil, preferably canola",
+  "1 cup- 1 1/2 cup garlicky tomato sauce, recipe follows",
+  "// Garlicky tomato sauce",
+  "5 garlic cloves",
+  "3 tablespoons white distilled vinegar",
+  "1 cup tomato juice, freshly fresh or marinara sauce (see notes)",
+  "1 tablespoon tomato paste",
+  "½ teaspoon sugar, optional",
+  "1 teaspoon cumin",
+  "Salt & pepper to taste",
+  "Chopped parsley"
+ ],
+ "equipment": [
+  "Deep frying pan",
+  "Baking dish",
+  "Paper towels"
+ ],
+ "steps": [
+  "Peel the eggplants lengthwise and slice 1/2 to 1 inch thick. The author does not salt them.",
+  "Dust with flour and fry in the oil until the slices have a deep amber colour. Drain on paper.",
+  "Fry the peppers for no longer than two minutes, stopping before they lose their green colour. Drain.",
+  "Sauce: in 3 tablespoons of the frying oil cook the garlic until fragrant, add the vinegar, then the tomato juice, paste, sugar and cumin. Simmer about 5 minutes on low heat until it thickens.",
+  "Layer sauce, eggplant and peppers in a baking dish and bake at 375°F for 20 to 25 minutes.",
+  "Sprinkle with parsley."
+ ],
+ "chefTips": [
+  "Cues: eggplant deep amber; peppers still green; sauce thickened. Frying time per batch is NOT PRINTED.",
+  "The page's body says the sauce simmers 3 to 5 minutes and the bake is 20 minutes (single readings)."
+ ],
+ "commonMistakes": [
+  "Frying the peppers until they turn dull.",
+  "Crowding the pan so the eggplant steams."
+ ],
+ "servedWith": [
+  "Aish baladi (EGY046)"
+ ],
+ "relatedRecipes": [
+  "EGY018",
+  "EGY007",
+  "EGY080"
+ ],
+ "sources": [
+  "Adapted from \"Mesaka'a (Vegan Eggplant & Pepper bake): مسقعة صيامي\", Chez Nermine. BYLINE AS PRINTED: 'Nermine Mansour'. Date: address 2025/12/12; hidden page data gives published 2025-12-12, modified 2026-02-18; comments dated 2023 suggest an earlier original. Chez Nermine pages show no visible printed date; the date given is from the page address or hidden page data and is unconfirmed. Yield not printed; servings are our estimate.",
+  "SOURCING STATUS: ingredients TWO-PASS; the pepper frying time is SINGLE-PASS. Method wording is our own summary of the page; times and cues were relayed by a research tool and should be checked against the live page. Prep and cook totals are our own estimates from the times the page does give.",
+  "FLAG: ingredient misprints kept ('1/2inch', 'freshly fresh')."
+ ],
+ "storage": "Refrigerate covered up to 3 days (our estimate).",
+ "reheating": "Reheat in a moderate oven.",
+ "healthBenefits": [
+  "Vegetable-based and vegan; peppers add vitamin C."
+ ],
+ "culturalNote": "Nermine Mansour describes it as the meatless Coptic Lenten version of Greek moussaka.",
+ "nutrition": {
+  "cal": 250,
+  "protein": 4,
+  "carbs": 24,
+  "fat": 16,
+  "fiber": 7,
+  "sodium": 430
+ },
+ "keywords": [
+  "mesaka'a",
+  "mesakaa",
+  "egyptian moussaka",
+  "vegan eggplant"
+ ]
+},
+{
+ "id": "EGY013",
+ "title": "Charkasseya (Circassian Chicken with Walnut Sauce)",
+ "localName": "Sharkaseya — شركسية",
+ "emoji": "🍗",
+ "country": "Egypt",
+ "countryFlag": "🇪🇬",
+ "region": "North Africa",
+ "community": "Egyptian home table",
+ "cuisine": "Egyptian",
+ "category": "Poultry",
+ "course": "Main",
+ "diff": "Medium",
+ "prepTime": 20,
+ "restTime": 0,
+ "cookTime": 75,
+ "time": 95,
+ "servings": 5,
+ "cal": 610,
+ "rating": 4.8,
+ "reviews": 227,
+ "tags": [
+  "halal",
+  "contains-nuts",
+  "contains-dairy",
+  "contains-gluten",
+  "special-occasion"
+ ],
+ "author": "Omneya \"Minnie\" Negm (Egyptian Streets)",
+ "authorEmoji": "👩‍🍳",
+ "desc": "Boiled chicken in a thickened walnut-and-toast sauce with mastic-scented stock, served over buttered rice.",
+ "longDesc": "A whole chicken is boiled with grated onion, mastic, cardamom, chili, lemon juice and stock cubes for about 35 minutes over medium heat until tender, and 2 cups of the stock are kept. Blended walnuts and toast are mixed with the stock until smooth and thickened, milk is added and boiled, and fried garlic, coriander and paprika are stirred in before a covered 5-minute simmer. Medium-grain rice is cooked in buttered stock for 20 minutes.",
+ "ingredients": [
+  "1 whole chicken (cleaned)",
+  "2L water (for boiling)",
+  "1 white onion (grated)",
+  "Pinch of cardamom powder and chili powder",
+  "2 mastic tears",
+  "1 tbsp lemon juice",
+  "2 chicken stock cubes",
+  "Salt and pepper to taste",
+  "// Sauce",
+  "200g walnuts",
+  "6 slices of white toast (edges removed)",
+  "¼ tsp paprika powder",
+  "1 clove garlic (crushed)",
+  "¼ tsp ground coriander",
+  "½ cup milk",
+  "1 tbsp butter",
+  "// Rice",
+  "2 cups medium-grain white rice",
+  "3 tbsp butter"
+ ],
+ "equipment": [
+  "Large pot",
+  "Food processor or blender",
+  "Saucepan"
+ ],
+ "steps": [
+  "Boil the chicken in the water with the onion, cardamom, chili, mastic, lemon juice, stock cubes, salt and pepper over medium heat for 35 minutes or until the chicken is tender. Keep 2 cups of the stock; shred the meat.",
+  "Blend the walnuts and toast, then mix into the 2 cups of stock until smooth and thickened. Add the milk and bring to the boil.",
+  "In the butter fry the garlic until golden, then the coriander and paprika for 1 to 2 minutes; stir into the sauce and simmer covered for 5 minutes.",
+  "Rice: melt the 3 tablespoons of butter, add the rice and 3½ cups of stock, boil on high for 3 minutes, then cook about 20 minutes or until fully cooked.",
+  "Serve the shredded chicken on the rice, covered with the walnut sauce."
+ ],
+ "chefTips": [
+  "Cues: chicken tender; sauce smooth and thickened; garlic golden. Page timing is 35 minutes for a whole chicken, which is shorter than the other source's hour, so test with a thermometer or by the leg moving freely.",
+  "Stir the sauce constantly once milk is added so it does not catch (our tip)."
+ ],
+ "commonMistakes": [
+  "Over-boiling the sauce so the walnut oil separates."
+ ],
+ "servedWith": [
+  "Salata baladi (tomato-cucumber salad)"
+ ],
+ "relatedRecipes": [
+  "EGY020",
+  "EGY033"
+ ],
+ "sources": [
+  "Adapted from 'Egypt's Best-Kept Culinary Secret: Discover the Recipe for Chicken Sharkaseya', Egyptian Streets. BYLINE AS PRINTED: 'By Omneya \"Minnie\" Negm'. Date as printed: 'November 29, 2024'. Serves 4 to 6.",
+  "SOURCING STATUS: ingredients and method single page read, TWO-PASS. Method wording is our own summary of the page; times and cues were relayed by a research tool and should be checked against the live page. Prep and cook totals are our own estimates from the times the page does give.",
+  "DISAGREEMENT kept: Egypt Independent (Nevine El Shabrawy, 11 November 2009, the recipe of TV cook Mona Amer) simmers a whole chicken about an hour, uses 1½ cups walnuts, 5 garlic cloves, 1 cup milk, mistika, cardamom, coriander and nutmeg, 4 cups of stock for the rice, and notes the thermometer reading '180 degrees' without a unit."
+ ],
+ "storage": "Refrigerate chicken and sauce separately up to 2 days (our estimate).",
+ "reheating": "Reheat the sauce gently, adding stock or milk to loosen.",
+ "healthBenefits": [
+  "Walnuts provide healthy fats; chicken is a lean protein."
+ ],
+ "culturalNote": "The article says charkasseya has Ottoman roots and was adapted to suit the Egyptian palate. The Egypt Independent page, quoting Mona Amer, notes that many Egyptian dishes with protein come from Turkey.",
+ "nutrition": {
+  "cal": 610,
+  "protein": 34,
+  "carbs": 48,
+  "fat": 31,
+  "fiber": 3,
+  "sodium": 640
+ },
+ "keywords": [
+  "charkasseya",
+  "sharkaseya",
+  "circassian chicken",
+  "walnut chicken"
+ ]
+},
+{
+ "id": "EGY014",
+ "title": "Stuffed Aubergine with Yoghurt and Fried Bread (\"Makdoos\")",
+ "localName": "Makdoos (as titled on the page) — مكدوس",
+ "emoji": "🍆",
+ "country": "Egypt",
+ "countryFlag": "🇪🇬",
+ "region": "North Africa",
+ "community": "Egyptian home table",
+ "cuisine": "Egyptian",
+ "category": "Meat Dishes",
+ "course": "Main",
+ "diff": "Hard",
+ "prepTime": 40,
+ "restTime": 0,
+ "cookTime": 50,
+ "time": 90,
+ "servings": 7,
+ "cal": 520,
+ "rating": 4.8,
+ "reviews": 162,
+ "tags": [
+  "halal",
+  "contains-beef",
+  "contains-nuts",
+  "contains-dairy",
+  "contains-gluten",
+  "special-occasion"
+ ],
+ "author": "Moushira Abdel-Malek (Ahram Online)",
+ "authorEmoji": "👩‍🍳",
+ "desc": "Tiny aubergines stuffed with spiced minced beef and pine nuts, simmered in tomato sauce, layered with fried bread and a thickened yoghurt sauce.",
+ "longDesc": "Small cored aubergines are filled with cooked minced beef moistened with a seasoned red sauce, pine nuts and parsley, then cooked covered in more of the sauce with bouillon and hot water for about 15 to 20 minutes. Pita squares are deep-fried, a cornstarch-thickened yoghurt sauce is cooked until it bubbles, and everything is layered with roasted almonds and parsley.",
+ "ingredients": [
+  "1 kg tiny long black stuffing aubergine (cored)",
+  "250 gm cooked minced beef",
+  "1.5 tbsp finely chopped onion",
+  "1 tsp crushed garlic",
+  "3 pita bread loaves (separated, squared)",
+  "1 cup tomato juice",
+  "1 tbsp tomato paste",
+  "1 kg plain yoghurt",
+  "2 tsp corn starch",
+  "100 gm pine nuts (roasted)",
+  "150 gm blanched, halved almonds (roasted)",
+  "2 heaped tbsp parsley leaves (chopped), divided",
+  "2 bouillon cubes",
+  "Juice of one lemon",
+  "30 gm butter",
+  "1 tbsp olive oil",
+  "Sunflower or corn oil for deep frying bread",
+  "Salt + pepper + 7 spices + grated nutmeg"
+ ],
+ "equipment": [
+  "Deep fryer or pot",
+  "Wide covered pan",
+  "Saucepan"
+ ],
+ "steps": [
+  "Deep-fry the pita squares until crisp and drain.",
+  "Red sauce: cook the onion until translucent, add the seasonings until fragrant, then the tomato juice and paste. Simmer on low until thickened and reduced, then add the lemon juice.",
+  "Moisten the cooked mince with 3 to 4 tablespoons of the sauce, add the pine nuts and half the parsley, and stuff the aubergines.",
+  "Cook the stuffed aubergines in the rest of the sauce with the bouillon and hot water, covered, on medium heat for about 15 to 20 minutes.",
+  "Yoghurt sauce: dissolve the cornstarch in 50 ml of water, stir into the yoghurt and heat on medium, stirring, until the mixture thickens and bubbles. Add the garlic at the end.",
+  "Layer the aubergines, red sauce, fried bread and yoghurt sauce, and finish with almonds and parsley."
+ ],
+ "chefTips": [
+  "Cues: onion translucent; sauce thickened; yoghurt sauce bubbling. The page gives no frying time for the bread.",
+  "The title is printed as Makdoos, but the dish is a stuffed fresh aubergine dish, not the pickled Levantine makdous."
+ ],
+ "commonMistakes": [
+  "Not stirring the yoghurt as it heats, which can make it split."
+ ],
+ "servedWith": [
+  "Salata baladi (tomato-cucumber salad)"
+ ],
+ "relatedRecipes": [
+  "EGY009",
+  "EGY012",
+  "EGY033"
+ ],
+ "sources": [
+  "Adapted from 'Makdoos', Ahram Online. BYLINE AS PRINTED: 'Moushira Abdel-Malek'. Date as printed: 'Tuesday 28 Mar 2023'. Serves 6 to 8.",
+  "SOURCING STATUS: ingredients and method TWO-PASS. Method wording is our own summary of the page; times and cues were relayed by a research tool and should be checked against the live page. Prep and cook totals are our own estimates from the times the page does give.",
+  "FLAG: the title is printed 'Makdoos' though the dish described is stuffed aubergine with yoghurt and fried bread; the page gives no cultural remarks."
+ ],
+ "storage": "Refrigerate components separately up to 2 days (our estimate).",
+ "reheating": "Warm the aubergines in their sauce; assemble fresh.",
+ "healthBenefits": [
+  "Nuts and yoghurt add protein and healthy fat."
+ ],
+ "culturalNote": "The page does not give cultural commentary. The name is printed Makdoos; it is not the pickled eggplant of the same name.",
+ "nutrition": {
+  "cal": 520,
+  "protein": 24,
+  "carbs": 40,
+  "fat": 29,
+  "fiber": 6,
+  "sodium": 730
+ },
+ "keywords": [
+  "stuffed aubergine",
+  "makdoos",
+  "ahram online",
+  "egyptian eggplant"
+ ]
+},
+{
+ "id": "EGY015",
+ "title": "Tagen Lahma bel Batates (Beef and Potato Casserole, Modern Adaptation)",
+ "localName": "Tagen lahma bil-batates — طاجن لحمة بالبطاطس",
+ "emoji": "🥔",
+ "country": "Egypt",
+ "countryFlag": "🇪🇬",
+ "region": "North Africa",
+ "community": "Adapted home version",
+ "cuisine": "Egyptian",
+ "category": "Meat Dishes",
+ "course": "Main",
+ "diff": "Medium",
+ "prepTime": 30,
+ "restTime": 30,
+ "cookTime": 90,
+ "time": 150,
+ "servings": 6,
+ "cal": 430,
+ "rating": 4.7,
+ "reviews": 138,
+ "tags": [
+  "halal",
+  "contains-beef",
+  "contains-dairy",
+  "contains-egg",
+  "high-protein",
+  "comfort-food"
+ ],
+ "author": "Nermine Mansour (Chez Nermine)",
+ "authorEmoji": "👩‍🍳",
+ "desc": "Mushroom and beef cubes braised in 7-spice stock, topped with a yoghurt-enriched mashed-potato crown and baked until bubbling.",
+ "longDesc": "Beef cubes, mushrooms, onion and garlic stand 20 minutes with 7-spice, tomato paste and stock, then braise covered for about 1 to 1¼ hours until the beef is tender. Boiled potatoes are riced with Greek yogurt, egg, cumin and nutmeg, loosened with warm milk and piped over the filling. It bakes at 200°C/400°F for 25 to 30 minutes until the filling bubbles and the top is deeply golden, and rests 10 minutes.",
+ "ingredients": [
+  "400 grams beef, cut into small cubes",
+  "250 grams mushrooms, quartered",
+  "1 medium onion, finely chopped",
+  "2-3 garlic cloves, minced",
+  "2 teaspoons olive oil or ghee",
+  "1½–2 teaspoons Lebanese 7-spice",
+  "1 teaspoons tomato paste",
+  "1-1 ½ cups beef stock",
+  "1–1¼ teaspoon Himalayan salt, or to taste",
+  "½ teaspoon freshly ground black pepper",
+  "// Potato topping",
+  "1 kg Russet or Yukon Gold potatoes, boiled and peeled",
+  "¼ cup cup Greek yogurt",
+  "¼–½ cup warm milk or cream, plus more if needed",
+  "1 egg",
+  "½ teaspoon ground cumin",
+  "½ teaspoon freshly grated nutmeg",
+  "Salt and freshly ground black pepper, to taste"
+ ],
+ "equipment": [
+  "Oven-safe casserole or tagen",
+  "Potato ricer",
+  "Piping bag (optional)"
+ ],
+ "steps": [
+  "Combine the beef, mushrooms, onion, garlic, oil, spice, paste, stock, salt and pepper and let the mixture stand for 20 minutes.",
+  "Braise, covered, for about 1 to 1¼ hours, checking after about 45 minutes, until the beef is tender.",
+  "Boil the potatoes until completely tender, steam dry for a minute or two, rice them, and mix in the yogurt, egg, cumin and nutmeg. Add warm milk gradually.",
+  "Spoon the beef into the casserole, top with the potato, and bake at 200°C/400°F for 25 to 30 minutes, until the filling is bubbling and the top deeply golden. Broil for the last 1 to 2 minutes if wanted.",
+  "Rest 10 minutes before serving."
+ ],
+ "chefTips": [
+  "Cues: beef tender; potatoes completely tender; filling bubbling; top golden. The 20-minute stand and the 10-minute rest are NO CUE, TIME ONLY.",
+  "The braise temperature of 175°C/350°F was read once only."
+ ],
+ "commonMistakes": [
+  "Wet potatoes making a gluey topping; steam them dry."
+ ],
+ "servedWith": [
+  "Salata baladi (tomato-cucumber salad)"
+ ],
+ "relatedRecipes": [
+  "EGY016",
+  "EGY010",
+  "EGY011"
+ ],
+ "sources": [
+  "Adapted from 'High-Protein Egyptian Beef & Potato Casserole (Tagen Lahma Bel Batates)', Chez Nermine. BYLINE AS PRINTED: 'Nermine Mansour'. Date: address 2026/10/01; hidden page data gives published and modified 2026-10-01. Chez Nermine pages show no visible printed date; the date given is from the page address or hidden page data and is unconfirmed. Servings 6. Prep 30 and cook 1 hour 30 minutes as printed.",
+  "SOURCING STATUS: ingredients and main method TWO-PASS; braise temperature SINGLE-PASS. Method wording is our own summary of the page; times and cues were relayed by a research tool and should be checked against the live page.",
+  "FLAG: the author calls this her Egyptian take on French hachis Parmentier, with a mashed-potato crown and mushrooms; it is a modern adaptation, not a traditional tagen. Ingredient misprints kept ('1 teaspoons tomato paste', '¼ cup cup')."
+ ],
+ "storage": "Refrigerate covered up to 3 days (our estimate).",
+ "reheating": "Reheat in a moderate oven until hot through.",
+ "healthBenefits": [
+  "High in protein; potato and mushrooms add potassium and B vitamins."
+ ],
+ "culturalNote": "The author frames it as an Egyptian take on a French dish, not a classical Egyptian tagen.",
+ "nutrition": {
+  "cal": 430,
+  "protein": 32,
+  "carbs": 40,
+  "fat": 16,
+  "fiber": 5,
+  "sodium": 700
+ },
+ "keywords": [
+  "tagen lahma",
+  "beef potato casserole",
+  "egyptian tagen",
+  "chez nermine"
+ ]
+},
+{
+ "id": "EGY016",
+ "title": "Kabab Hala bel Batates (Beef and Potato Pot Stew)",
+ "localName": "Kebab halla bil-batates — كباب حلة بالبطاطس",
+ "emoji": "🥘",
+ "country": "Egypt",
+ "countryFlag": "🇪🇬",
+ "region": "North Africa",
+ "community": "Egyptian home table",
+ "cuisine": "Egyptian",
+ "category": "Meat Dishes",
+ "course": "Main",
+ "diff": "Easy",
+ "prepTime": 20,
+ "restTime": 0,
+ "cookTime": 170,
+ "time": 190,
+ "servings": 6,
+ "cal": 380,
+ "rating": 4.9,
+ "reviews": 112,
+ "tags": [
+  "halal",
+  "contains-beef",
+  "dairy",
+  "one-pot",
+  "comfort-food"
+ ],
+ "author": "Nermine Mansour (Chez Nermine)",
+ "authorEmoji": "👩‍🍳",
+ "desc": "Beef cubes browned with onions, slowly cooked until the onions melt into a velvety sauce, with golden fried potatoes added at the end.",
+ "longDesc": "Meat cubes are dried, coated in salt and pepper, browned on medium until they have a nice brown crust, then cooked with onions and garlic until they sweat and begin to caramelize. Hot water or stock just to cover goes in and the stew slow-cooks 2 to 3 hours until the onion collapses into a velvety sauce and the meat is fork-tender; fried potato cubes go in for the last 20 minutes.",
+ "ingredients": [
+  "1/2 kg meat, cut into cubes",
+  "1/2 kg chopped onions",
+  "3 cloves of garlic, finely chopped",
+  "1 tablespoon butter",
+  "1 tablespoon oil",
+  "2 teaspoons of seven spices",
+  "Salt and pepper",
+  "3 bay leaves",
+  "2 cups boiled water",
+  "(Potato cubes for frying; quantity not printed)"
+ ],
+ "equipment": [
+  "Heavy pot or slow cooker",
+  "Frying pan"
+ ],
+ "steps": [
+  "Dry the meat cubes and coat with salt and pepper.",
+  "Brown on medium in the butter and oil until the cubes have a nice brown crust. Add the onions and garlic and cook until they sweat and start to caramelize.",
+  "Add the seven spices, bay leaves and hot water or stock to barely cover. Cook in a slow cooker for two to three hours, until the onion collapses into a velvety sauce and the meat is fork-tender.",
+  "Fry the potato cubes until they have a golden crust and add them for the last 20 minutes."
+ ],
+ "chefTips": [
+  "Cues: nice brown crust; onions sweat and caramelize; onion collapses into sauce; meat fork-tender. Potato quantity is NOT PRINTED.",
+  "Her page uses a slow cooker; a heavy covered pot on very low heat is the stove equivalent (our note)."
+ ],
+ "commonMistakes": [
+  "Washing the meat and not drying it, which stops browning."
+ ],
+ "servedWith": [
+  "Rice with vermicelli (EGY020)"
+ ],
+ "relatedRecipes": [
+  "EGY010",
+  "EGY015",
+  "EGY079"
+ ],
+ "sources": [
+  "Adapted from 'Kabab Hala bel Batates: Egyptian Meat Stew & Potatoes', Chez Nermine. BYLINE AS PRINTED: 'Nermine Mansour'. No visible date; hidden page data gives published 2020-09-16, modified 2025-04-06. Chez Nermine pages show no visible printed date; the date given is from the page address or hidden page data and is unconfirmed. Serves 6.",
+  "SOURCING STATUS: ingredients and method TWO-PASS. Method wording is our own summary of the page; times and cues were relayed by a research tool and should be checked against the live page. Prep and cook totals are our own estimates from the times the page does give.",
+  "FLAG: slow-cooker version; the page spells 'Kebab Hala' and says it means 'pot kebab'; step 1 has no numeric cue."
+ ],
+ "storage": "Refrigerate up to 3 days (our estimate).",
+ "reheating": "Reheat gently, adding a splash of water.",
+ "healthBenefits": [
+  "Protein-rich; onions add flavour without added sauces."
+ ],
+ "culturalNote": "Nermine Mansour writes that her grandmother called it 'Potatoes and Meat Fondant'.",
+ "nutrition": {
+  "cal": 380,
+  "protein": 26,
+  "carbs": 26,
+  "fat": 18,
+  "fiber": 4,
+  "sodium": 420
+ },
+ "keywords": [
+  "kabab hala",
+  "kebab halla",
+  "egyptian beef stew",
+  "pot kebab"
+ ]
+},
+{
+ "id": "EGY017",
+ "title": "Koussa bel Bechamel (Zucchini Béchamel Casserole)",
+ "localName": "Kousa bil-bechamel — كوسة بالبشاميل",
+ "emoji": "🥒",
+ "country": "Egypt",
+ "countryFlag": "🇪🇬",
+ "region": "North Africa",
+ "community": "Egyptian home table",
+ "cuisine": "Egyptian",
+ "category": "Vegetables & Legumes",
+ "course": "Main",
+ "diff": "Medium",
+ "prepTime": 30,
+ "restTime": 20,
+ "cookTime": 70,
+ "time": 120,
+ "servings": 6,
+ "cal": 430,
+ "rating": 4.7,
+ "reviews": 231,
+ "tags": [
+  "contains-beef",
+  "contains-dairy",
+  "comfort-food",
+  "make-ahead",
+  "special-occasion"
+ ],
+ "author": "Nermine Mansour (Chez Nermine)",
+ "authorEmoji": "👩‍🍳",
+ "desc": "Sliced zucchini layered with a baharat beef sauce and a cream-cheese béchamel, baked and finished under the broiler.",
+ "longDesc": "Ground beef is cooked on medium-low until deep brown and dry, then simmered with onion, garlic, baharat, marinara, paste and a parmesan rind until thick. A roux is cooked about 5 minutes into a golden paste, warm milk and cream cheese are added, and zucchini, sauce and white sauce are layered and baked at 375°F for 30 to 40 minutes, then broiled for 5 minutes and rested 15 to 20.",
+ "ingredients": [
+  "1 kg Zucchini, preferable black beauty zucchini",
+  "meat Sauce , recipe follows",
+  "white sauce",
+  "// Meat sauce",
+  "600 grams ground beef, preferably grass fed",
+  "1 medium onion, finely chopped",
+  "3 garlic cloves, minced",
+  "salt and pepper, to taste",
+  "1 tablespoon meat baharat",
+  "1/2 cup marinara sauce",
+  "1/4 cup water",
+  "1 tablespoon tomato paste",
+  "rind of parmesan cheese, 2 inches x 2 inches",
+  "// White sauce",
+  "2 tablespoons butter, 30 grams",
+  "2 cups full fat milk",
+  "2 tablespoons all purpose flour",
+  "1/4 cup cream cheese",
+  "1/4 teaspoon ground nutmeg, freshly grated",
+  "Salt and pepper , to taste",
+  "¼ cup grated mozzarella and/or cheddar cheese"
+ ],
+ "equipment": [
+  "Baking dish",
+  "Skillet",
+  "Saucepan",
+  "Broiler"
+ ],
+ "steps": [
+  "Brown the beef on medium-low until it turns deep brown and absorbs all its liquid. Add the onion, garlic, baharat, marinara, water, paste and parmesan rind and simmer until it thickens; the body of the page says 20 to 30 minutes.",
+  "White sauce: cook the butter and flour for about 5 minutes, stirring constantly, until it resembles a golden paste. Add warm milk, then the cream cheese and nutmeg.",
+  "Slice the zucchini about ½ inch thick. Layer sauce, zucchini, sauce and white sauce, and top with cheese.",
+  "Bake at 375°F for 30 to 40 minutes, until golden and the zucchini is soft, then broil for 5 minutes.",
+  "Rest 15 to 20 minutes before cutting."
+ ],
+ "chefTips": [
+  "Cues: meat deep brown and dry; roux a golden paste; casserole golden with zucchini soft. The rest is NO CUE, TIME ONLY.",
+  "The card says butter 2 tablespoons (30 grams); the body says 2 tablespoons of 15 grams each (a small discrepancy on the page)."
+ ],
+ "commonMistakes": [
+  "Not cooking the beef dry, which makes the casserole watery."
+ ],
+ "servedWith": [
+  "Salata baladi (tomato-cucumber salad)"
+ ],
+ "relatedRecipes": [
+  "EGY011",
+  "EGY009"
+ ],
+ "sources": [
+  "Adapted from 'Koussa Bel Bechamel (Zucchini Bechamel Casserole): كوسة بالبشاميل', Chez Nermine. BYLINE AS PRINTED: 'Nermine Mansour'. Date: address 2023/07/25; hidden page data gives published 2023-07-25, modified 2025-05-10. Chez Nermine pages show no visible printed date; the date given is from the page address or hidden page data and is unconfirmed. Servings 6.",
+  "SOURCING STATUS: ingredients and method TWO-PASS; the meat-sauce simmer time is SINGLE-PASS. Method wording is our own summary of the page; times and cues were relayed by a research tool and should be checked against the live page. Prep and cook totals are our own estimates from the times the page does give.",
+  "FLAG: the page uses a parmesan rind, cream cheese and mozzarella or cheddar, which is a modern Egyptian-American home treatment of the béchamel casserole (our reading). The body says to slice the zucchini ½ inch thick."
+ ],
+ "storage": "Refrigerate covered up to 3 days (our estimate).",
+ "reheating": "Reheat in a moderate oven.",
+ "healthBenefits": [
+  "Zucchini adds fibre and vitamin C; beef adds iron and protein."
+ ],
+ "culturalNote": "The page presents it as an Egyptian family casserole in the béchamel tradition; no further cultural remarks were relayed.",
+ "nutrition": {
+  "cal": 430,
+  "protein": 29,
+  "carbs": 17,
+  "fat": 27,
+  "fiber": 3,
+  "sodium": 640
+ },
+ "keywords": [
+  "koussa bechamel",
+  "zucchini bechamel",
+  "egyptian casserole",
+  "chez nermine"
+ ]
+},
+{
+ "id": "EGY018",
+ "title": "Kolkas (Egyptian Taro and Swiss Chard Stew)",
+ "localName": "Qolqas — قلقاس",
+ "emoji": "🥬",
+ "country": "Egypt",
+ "countryFlag": "🇪🇬",
+ "region": "North Africa",
+ "community": "Coptic Epiphany",
+ "cuisine": "Egyptian",
+ "category": "Soups & Stews",
+ "course": "Main",
+ "diff": "Hard",
+ "prepTime": 52,
+ "restTime": 300,
+ "cookTime": 130,
+ "time": 482,
+ "servings": 6,
+ "cal": 360,
+ "rating": 4.8,
+ "reviews": 143,
+ "tags": [
+  "halal",
+  "contains-beef",
+  "dairy",
+  "traditional",
+  "festive",
+  "comfort-food"
+ ],
+ "author": "Nermine Mansour (Chez Nermine)",
+ "authorEmoji": "👩‍🍳",
+ "desc": "Diced taro soaked to remove sliminess, simmered in spiced beef broth with chard and cilantro, finished with a garlic-coriander taklia.",
+ "longDesc": "A spiced beef broth of cinnamon, bay, mastic, cardamom, peppercorns, onion and allspice simmers 90 minutes to fork-tender. Taro, soaked in the fridge at least 5 hours, goes in with citrus juice until it is fork-tender. Chard and cilantro are blended with broth into the soup, and a taklia of ghee, coriander and garlic is fried a minute until crispy and orange-hued.",
+ "ingredients": [
+  "2 medium taro, diced into 1/2 inch x 1/2 inch",
+  "4 sprigs chard and/or spinach",
+  "2 sprigs fresh cilantro, only the leaves",
+  "1 1/2 liters broth , vegetable or beef broth, (recipe below)",
+  "Juice of 1 lime or lemon",
+  "Taklia, recipe below",
+  "Salt and pepper to taste",
+  "// Beef broth",
+  "500 grams of cubed eye round or top round",
+  "2 tablespoons ghee or 1 tablespoon ghee + 1 tablespoon oil",
+  "1 cinnamon stick",
+  "4 bay leaves",
+  "2 mastic resin",
+  "5 cardamom pods",
+  "10 whole peppercorn",
+  "1 quartered medium onion",
+  "3-5 garlic cloves",
+  "5 allspice berries",
+  "2 liters boiling water",
+  "// Taklia",
+  "2 tablespoons ghee",
+  "2 tablespoons ground coriander",
+  "4 garlic cloves, minced",
+  "1/2 teaspoon salt"
+ ],
+ "equipment": [
+  "Large pot",
+  "Blender",
+  "Gloves for peeling taro",
+  "Small frying pan"
+ ],
+ "steps": [
+  "Peel the taro with gloves, slice and dice it and soak it in the fridge overnight or no less than 5 hours to remove sliminess; rinse.",
+  "Broth: toast the spices in ghee for 30 seconds or until fragrant, brown the meat, add the 2 litres of boiling water, boil vigorously for 5 minutes, then simmer about 90 minutes until fork-tender.",
+  "Add the taro and citrus juice and cook on medium-low until the taro is fork-tender.",
+  "Blend the chard and cilantro with ½ cup of broth and stir into the soup.",
+  "Taklia: fry the ghee, coriander and garlic for one minute, until crispy and orange-hued, and stir in."
+ ],
+ "chefTips": [
+  "Cues: spices fragrant; beef fork-tender; taro fork-tender; taklia crispy and orange-hued. The taro soak is NO CUE, TIME ONLY.",
+  "The card says 1-inch taro slices and ½ cup of broth to blend; the body says ½-inch slices and 1 cup. We use the card figures except for the ½-inch dice as printed in the ingredient list."
+ ],
+ "commonMistakes": [
+  "Under-soaking the taro; the slime makes the stew gloopy.",
+  "Burning the taklia garlic."
+ ],
+ "servedWith": [
+  "Aish baladi (EGY046)"
+ ],
+ "relatedRecipes": [
+  "EGY007",
+  "EGY003",
+  "EGY012"
+ ],
+ "sources": [
+  "Adapted from 'Egyptian Kolkas Recipe (Taro-Swiss Chard Stew/Soup): قلقاس', Chez Nermine. BYLINE AS PRINTED: 'Nermine Mansour'. Date: address 2026/01/18; hidden page data gives published 2026-01-18, modified 2026-02-18; comments date from 2020 and 2023. Chez Nermine pages show no visible printed date; the date given is from the page address or hidden page data and is unconfirmed. Servings 6. Prep 52 and cook 30 minutes as printed; our cook time includes the 90-minute broth.",
+  "SOURCING STATUS: ingredients and method TWO-PASS. Method wording is our own summary of the page; times and cues were relayed by a research tool and should be checked against the live page.",
+  "PAGE DEFECTS kept: card and body disagree on taro slice thickness and blending liquid; the page contradicts itself on frozen taro and okra."
+ ],
+ "storage": "Refrigerate up to 3 days (our estimate).",
+ "reheating": "Reheat gently.",
+ "healthBenefits": [
+  "Taro provides resistant starch; chard adds vitamins A and K."
+ ],
+ "culturalNote": "Nermine Mansour writes that kolkas is central to the Coptic Epiphany feast, and shares a folk rhyme warning against skipping it at night.",
+ "nutrition": {
+  "cal": 360,
+  "protein": 24,
+  "carbs": 32,
+  "fat": 14,
+  "fiber": 6,
+  "sodium": 620
+ },
+ "keywords": [
+  "kolkas",
+  "qolqas",
+  "taro stew",
+  "coptic epiphany",
+  "chez nermine"
+ ]
+},
+{
+ "id": "EGY019",
+ "title": "Egyptian-Style Beef Shawarma",
+ "localName": "Shawarma masri — شاورما مصري",
+ "emoji": "🌯",
+ "country": "Egypt",
+ "countryFlag": "🇪🇬",
+ "region": "North Africa",
+ "community": "Egyptian street food",
+ "cuisine": "Egyptian",
+ "category": "Street Food & Snacks",
+ "course": "Main",
+ "diff": "Medium",
+ "prepTime": 15,
+ "restTime": 180,
+ "cookTime": 45,
+ "time": 240,
+ "servings": 6,
+ "cal": 470,
+ "rating": 4.7,
+ "reviews": 99,
+ "tags": [
+  "halal",
+  "street-food",
+  "contains-beef",
+  "contains-dairy",
+  "contains-gluten",
+  "high-protein"
+ ],
+ "author": "Nermine Mansour (Chez Nermine)",
+ "authorEmoji": "👩‍🍳",
+ "desc": "Thinly sliced flank steak marinated in yogurt, vinegar and a home-ground shawarma blend, seared in batches and served in warm bread with tahini sauce.",
+ "longDesc": "Whole spices are toasted about a minute and ground into a shawarma blend, then mixed with onion, yogurt, vinegar, lime, oil and garlic as the marinade for sliced flank steak, left at least 3 hours or overnight. The beef rests 20 minutes at room temperature before being seared in batches over medium-high heat to caramelized edges, then tossed with tomato and onion for 2 more minutes. An optional charcoal finish smokes the meat 10 to 15 minutes.",
+ "ingredients": [
+  "5 green cardamom pods",
+  "1 tablespoon black peppercorns",
+  "1¾ tablespoons  allspice berries",
+  "1 teaspoon cumin seeds",
+  "1 teaspoon coriander seeds",
+  "1 teaspoon  sweet paprika",
+  "1 teaspoon  garlic powder",
+  "1 teaspoon onion powder",
+  "1 teaspoon dried oregano",
+  "1 teaspoon ground sumac",
+  "1 teaspoon  ground turmeric",
+  "1 teaspoon  Aleppo pepper or red pepper flakes",
+  "½ teaspoon  ground cinnamon",
+  "// Marinade",
+  "1 medium yellow onion, quartered",
+  "1 cup whole-milk plain yogurt",
+  "2 tablespoons red wine vinegar or white vinegar",
+  "2 tablespoons freshly squeezed lime juice",
+  "1/4 cup extra-virgin olive oil",
+  "4 garlic cloves, minced",
+  "2 tablespoons shawarma spice blend",
+  "2 teaspoons kosher salt",
+  "2 1/4 pounds flank steak or top round, sliced across the grain into thin strips",
+  "// Tahini sauce",
+  "1 cup  1 cup tahini",
+  "½  cup  plain yogurt",
+  "2 tablespoons lime juice",
+  "Salt and freshly ground black pepper",
+  "Warm water, as needed",
+  "// Cooking",
+  "35 g lamb fat, liyeh, beef tallow, or 2 tablespoons neutral oil",
+  "1 Roma tomato, diced",
+  "1 medium red onion, diced",
+  "¼ cup  chopped parsley",
+  "1 charcoal briquette, optional for a smoky finish",
+  "// To serve",
+  "Pita, shrak, or lavash bread",
+  "Harissa",
+  "Pickled cucumbers",
+  "Pickled turnips",
+  "French fries"
+ ],
+ "equipment": [
+  "Spice grinder",
+  "Large skillet or griddle",
+  "Blender"
+ ],
+ "steps": [
+  "Toast the whole spices for about 1 minute until fragrant and grind with the other spices.",
+  "Blend the onion, yogurt, vinegar, lime, oil, garlic, 2 tablespoons of the blend and salt; coat the sliced beef until every piece is well covered and marinate at least 3 hours or overnight.",
+  "Take the beef out of the fridge about 20 minutes before cooking. Sear in batches over medium-high heat to caramelized edges, just cooked through. Add the tomato and red onion for another 2 minutes.",
+  "Optional: smoke with a charcoal briquette for 10 to 15 minutes.",
+  "Whisk the tahini sauce ingredients with warm water to a pourable consistency; serve the meat in warm bread with sauce, harissa, pickles and fries."
+ ],
+ "chefTips": [
+  "Cues: spices fragrant; meat coated; caramelized edges. The marinade is NO CUE, TIME ONLY (at least 3 hours or overnight) and is not a cure or ferment.",
+  "The tahini line is misprinted '1 cup  1 cup tahini' on the page."
+ ],
+ "commonMistakes": [
+  "Crowding the pan so the beef steams."
+ ],
+ "servedWith": [
+  "Egyptian tahini sauce (EGY042)",
+  "Salata baladi (tomato-cucumber salad)"
+ ],
+ "relatedRecipes": [
+  "EGY006",
+  "EGY004"
+ ],
+ "sources": [
+  "Adapted from 'Beef Shawarma Recipe (Authentic Egyptian Style): شاورما مصرى', Chez Nermine. BYLINE AS PRINTED: 'Nermine Mansour'. Date: address 2026/06/28; hidden page data gives published and modified 2026-06-28. Chez Nermine pages show no visible printed date; the date given is from the page address or hidden page data and is unconfirmed. Servings 6. Prep 15 and cook 45 minutes as printed.",
+  "SOURCING STATUS: ingredients and method TWO-PASS. Method wording is our own summary of the page; times and cues were relayed by a research tool and should be checked against the live page.",
+  "FLAG: the page says the dish is traditionally cooked with rendered lamb tail fat (liyeh); the oil alternative is its own listed option."
+ ],
+ "storage": "Refrigerate cooked meat up to 3 days (our estimate).",
+ "reheating": "Reheat in a hot skillet.",
+ "healthBenefits": [
+  "High in protein; spices add antioxidants."
+ ],
+ "culturalNote": "Nermine Mansour calls it one of Egypt's most beloved street foods.",
+ "nutrition": {
+  "cal": 470,
+  "protein": 36,
+  "carbs": 18,
+  "fat": 28,
+  "fiber": 3,
+  "sodium": 700
+ },
+ "keywords": [
+  "shawarma",
+  "egyptian shawarma",
+  "beef shawarma",
+  "chez nermine"
+ ]
+},
+{
+ "id": "EGY020",
+ "title": "Roz bil Sha'riya (Egyptian Rice with Vermicelli)",
+ "localName": "Roz bil sha'riya — رز بالشعرية",
+ "emoji": "🍚",
+ "country": "Egypt",
+ "countryFlag": "🇪🇬",
+ "region": "North Africa",
+ "community": "Egyptian family table",
+ "cuisine": "Egyptian",
+ "category": "Rice Dishes",
+ "course": "Side",
+ "diff": "Easy",
+ "prepTime": 5,
+ "restTime": 5,
+ "cookTime": 30,
+ "time": 40,
+ "servings": 4,
+ "cal": 330,
+ "rating": 4.8,
+ "reviews": 237,
+ "tags": [
+  "vegetarian",
+  "dairy",
+  "comfort-food",
+  "staple",
+  "kid-friendly"
+ ],
+ "author": "Nermine Mansour (Chez Nermine)",
+ "authorEmoji": "👩‍🍳",
+ "desc": "Short-grain rice cooked with golden-toasted vermicelli, boiled until holes appear on the surface, then covered and steamed on low for fluffy, separate grains.",
+ "longDesc": "Rinsed rice is stirred into butter-toasted vermicelli, then hot liquid and salt are added and boiled for about 5 minutes, or until holes appear on the surface of the rice. The pot is covered and cooked undisturbed on low for 15 to 20 minutes until the liquid is absorbed, rested 5 minutes and fluffed. It is garnished with lemon zest, herbs and toasted nuts.",
+ "ingredients": [
+  "1 cup short-grain Egyptian rice",
+  "½ cup vermicelli",
+  "1 tablespoons ghee or butter , butter, or oil",
+  "1 tablespoon olive oil or canola oil",
+  "1½ - 1 ¾ cups hot boiling water or broth , vegetable, chicken, or beef",
+  "½ teaspoon salt, or to taste",
+  "// Garnish",
+  "1 tablespoon lemon zest , unwaxed (unsprayed)",
+  "¼ cup chopped parsley or cilantro",
+  "2 tablespoons toasted pine nuts or almonds"
+ ],
+ "equipment": [
+  "Medium pot with a tight lid",
+  "Fine sieve"
+ ],
+ "steps": [
+  "Wash the rice under cold running water until the water runs clear.",
+  "Heat the fat on medium and stir the vermicelli continuously until golden-brown.",
+  "Add the rice and stir to coat it in the fat.",
+  "Add ½ teaspoon of salt and 1½ cups of the hot liquid. Boil for 5 minutes, or until you see holes on the surface of the rice.",
+  "Cover and cook on low, undisturbed, for 15 to 20 minutes, until the liquid is fully absorbed. Rest covered for 5 minutes, then fluff with a fork.",
+  "Top with lemon zest, herbs and toasted nuts."
+ ],
+ "chefTips": [
+  "Cues: vermicelli golden-brown; holes on the rice surface; liquid fully absorbed. The 5-minute rest is NO CUE, TIME ONLY.",
+  "The page contradicts itself on proportions: the card lists 1½ to 1¾ cups liquid per cup of rice with ½ cup vermicelli, her notes say a 1:1 ratio of rice to liquid, and the tips say vermicelli to rice 1:2. We keep the card quantities."
+ ],
+ "commonMistakes": [
+  "Stirring once the lid is on, which breaks the grains and makes the rice sticky.",
+  "Burning the vermicelli; stir constantly."
+ ],
+ "servedWith": [
+  "Molokhia (EGY003)",
+  "Torly (EGY010)"
+ ],
+ "relatedRecipes": [
+  "EGY021",
+  "EGY022",
+  "EGY023"
+ ],
+ "sources": [
+  "Adapted from 'Fluffy Egyptian Rice with Vermicelli (roz bil sha'riya)', Chez Nermine. BYLINE AS PRINTED: 'Nermine Mansour'. Date: hidden page data gives published 2024-12-06, modified 2025-02-24. Chez Nermine pages show no visible printed date; the date given is from the page address or hidden page data and is unconfirmed. Yield 4 people (single reading). Times: prep, rest and cook are our estimates from the steps.",
+  "SOURCING STATUS: ingredients and method TWO-PASS. Method wording is our own summary of the page; times and cues were relayed by a research tool and should be checked against the live page. Prep and cook totals are our own estimates from the times the page does give.",
+  "PAGE DEFECT kept: the ingredient line reads '1 tablespoons ghee or butter , butter, or oil'."
+ ],
+ "storage": "Refrigerate up to 3 days or freeze up to 1 month (page).",
+ "reheating": "Reheat with a splash of water, covered.",
+ "healthBenefits": [
+  "A simple carbohydrate side; toasted nuts add healthy fats."
+ ],
+ "culturalNote": "Nermine Mansour calls it a 'quintessential comfort food' tied to family gatherings and recalls her grandmother's version scented with mastic.",
+ "nutrition": {
+  "cal": 330,
+  "protein": 7,
+  "carbs": 57,
+  "fat": 8,
+  "fiber": 2,
+  "sodium": 330
+ },
+ "keywords": [
+  "roz bil shaareya",
+  "egyptian rice",
+  "vermicelli rice",
+  "chez nermine"
+ ]
+},
+{
+ "id": "EGY021",
+ "title": "Egyptian White Rice (Ahram Online Ramadan Recipe)",
+ "localName": "Roz abyad — رز أبيض",
+ "emoji": "🍚",
+ "country": "Egypt",
+ "countryFlag": "🇪🇬",
+ "region": "North Africa",
+ "community": "Ramadan table",
+ "cuisine": "Egyptian",
+ "category": "Rice Dishes",
+ "course": "Side",
+ "diff": "Easy",
+ "prepTime": 5,
+ "restTime": 0,
+ "cookTime": 25,
+ "time": 30,
+ "servings": 4,
+ "cal": 300,
+ "rating": 4.6,
+ "reviews": 230,
+ "tags": [
+  "vegetarian",
+  "dairy",
+  "staple",
+  "budget",
+  "ramadan"
+ ],
+ "author": "Sherry El-Gergawi (Ahram Online)",
+ "authorEmoji": "📰",
+ "desc": "Rice stirred in butter for five minutes, boiled in hot water or broth, then cooked slowly over very low heat for ten minutes.",
+ "longDesc": "This plain rice comes from an Ahram Online article of classic Ramadan recipes. The rice is stirred in butter or oil for five minutes before the hot liquid goes in; it is brought to a boil on medium heat, covered and cooked slowly over very low heat for ten minutes.",
+ "ingredients": [
+  "2 cups rice",
+  "3 cups hot water or hot chicken broth",
+  "1 tbsp butter or oil"
+ ],
+ "equipment": [
+  "Medium pot with a lid"
+ ],
+ "steps": [
+  "Heat the butter or oil and stir the rice in it for five minutes.",
+  "Add the hot water or broth and bring to a boil over medium heat.",
+  "Cover and cook slowly over very low heat for ten minutes."
+ ],
+ "chefTips": [
+  "The page prints no salt amount and no doneness cue; season to taste and check that the water is absorbed (our note).",
+  "Rice type is not named; short or medium grain is typical in Egypt (our note)."
+ ],
+ "commonMistakes": [
+  "Lifting the lid while it steams."
+ ],
+ "servedWith": [
+  "Molokhia (EGY003)",
+  "Torly (EGY010)"
+ ],
+ "relatedRecipes": [
+  "EGY020",
+  "EGY040"
+ ],
+ "sources": [
+  "Adapted from 'Classic Ramadan recipes from Ahram Online: II' (White Rice), Ahram Online. BYLINE AS PRINTED: 'Sherry El-Gergawi'. Date as printed: 'Sunday 29 Jul 2012'. Yield not printed.",
+  "SOURCING STATUS: ingredients and method TWO-PASS. Method wording is our own summary of the page; times and cues were relayed by a research tool and should be checked against the live page. Prep and cook totals are our own estimates from the times the page does give.",
+  "FLAG: the page gives no salt, rice type or doneness cue."
+ ],
+ "storage": "Refrigerate up to 3 days (our estimate).",
+ "reheating": "Reheat with a splash of water.",
+ "healthBenefits": [
+  "A plain energy-rich staple."
+ ],
+ "culturalNote": "The article opens by saying no Ramadan is complete without traditional Egyptian favourites (unattributed introduction).",
+ "nutrition": {
+  "cal": 300,
+  "protein": 5,
+  "carbs": 60,
+  "fat": 4,
+  "fiber": 1,
+  "sodium": 40
+ },
+ "keywords": [
+  "egyptian white rice",
+  "ramadan rice",
+  "ahram online"
+ ]
+},
+{
+ "id": "EGY022",
+ "title": "Sayadiya (Egyptian Fisherman’s Rice)",
+ "localName": "Sayadiya / Ruz sayadeya — صيادية",
+ "emoji": "🍚",
+ "country": "Egypt",
+ "countryFlag": "🇪🇬",
+ "region": "North Africa",
+ "community": "Alexandria coast",
+ "cuisine": "Egyptian",
+ "category": "Rice Dishes",
+ "course": "Main",
+ "diff": "Medium",
+ "prepTime": 5,
+ "restTime": 0,
+ "cookTime": 35,
+ "time": 40,
+ "servings": 4,
+ "cal": 350,
+ "rating": 4.5,
+ "reviews": 78,
+ "tags": [
+  "dairy-free",
+  "pescatarian",
+  "comfort-food",
+  "traditional"
+ ],
+ "author": "Nermine Mansour (Chez Nermine)",
+ "authorEmoji": "👩‍🍳",
+ "desc": "Rice sautéed, then cooked in a deeply caramelized onion broth with cumin, cinnamon, tomato paste and peppers; the classic accompaniment to fried fish or seafood.",
+ "longDesc": "Rinsed, drained rice is sautéed 2 minutes and set aside. Onion is caramelized on medium-low until evenly browned, then boiling water, spices, tomato paste, peppers, chili, garlic and bouillon are added and simmered 1 minute. The rice goes in, cooks uncovered on medium-high for 3 to 5 minutes until most liquid evaporates, then 15 to 20 minutes covered on low. The page gives the rice only; serve it with fish or seafood.",
+ "ingredients": [
+  "2 cups  Egyptian rice",
+  "1 big yellow onion, or 2 mediums ones",
+  "1 teaspoon  minced garlic",
+  "1 green bell pepper, finely chopped",
+  "1 green chili pepper",
+  "1 tablespoon  Tomato Paste",
+  "1 teaspoon  ground cumin",
+  "1 cinnamon stick",
+  "1 bay leave",
+  "1 vegetable Bouillon",
+  "Salt and pepper , to taste",
+  "(Olive oil and boiling water; amounts not printed)"
+ ],
+ "equipment": [
+  "Wide pot with lid"
+ ],
+ "steps": [
+  "Rinse the rice and drain it completely until dry. Sauté it in a little oil for 2 minutes and set aside. Never soak Egyptian rice, says the page.",
+  "In olive oil on medium-low, caramelize the finely chopped onion, stirring, until evenly caramelized to the colour in the page's photo. Onions burn easily.",
+  "Add boiling water, the spices, tomato paste, peppers, chili, garlic and bouillon. Let the broth simmer 1 minute.",
+  "Add the rice and cook uncovered on medium-high for 3 to 5 minutes until most of the liquid evaporates.",
+  "Reduce to low, cover and cook 15 to 20 minutes. Serve with fried fish or seafood."
+ ],
+ "chefTips": [
+  "Cues: rice dry after draining; onion evenly caramelized; most of the liquid evaporated. Amounts of oil and boiling water are NOT PRINTED on the card.",
+  "The page contains no fish recipe; its tip about sautéing onions contradicts the method, which sautés the rice (single reading)."
+ ],
+ "commonMistakes": [
+  "Burning the onions, which taints the whole pot.",
+  "Soaking the rice."
+ ],
+ "servedWith": [
+  "Fried fish (EGY030)",
+  "Bran-coated fish (EGY029)",
+  "Fried shrimp (EGY025)"
+ ],
+ "relatedRecipes": [
+  "EGY020",
+  "EGY026",
+  "EGY036"
+ ],
+ "sources": [
+  "Adapted from 'Sayadiah (Egyptian Fish and Seafood Rice): صيادية', Chez Nermine. BYLINE AS PRINTED: 'Nermine Mansour'. Date: address 2022/06/07, but hidden page data gives published 2025-08-20 and modified 2026-03-17, so the true date is unconfirmed. Chez Nermine pages show no visible printed date; the date given is from the page address or hidden page data and is unconfirmed. Servings 4. Prep 5 and cook 35 minutes as printed.",
+  "SOURCING STATUS: ingredients TWO-PASS; misprints kept ('ones', 'bay leave'). Method wording is our own summary of the page; times and cues were relayed by a research tool and should be checked against the live page.",
+  "DISAGREEMENT kept: a first-name-byline page (Dahlia, Am What I Eat) is not used here; it browns the onions about 23 minutes, then adds cumin, salt and paste, sautés the rice 5 minutes and cooks 20 minutes covered with a 10-minute rest."
+ ],
+ "storage": "Refrigerate up to 3 days; freezer up to 3 weeks (page).",
+ "reheating": "Reheat covered with a splash of water.",
+ "healthBenefits": [
+  "Pairs well with fish for a balanced plate."
+ ],
+ "culturalNote": "Nermine Mansour describes it as 'a world of nostalgia in every fragrant bite'; her mother cooked it simply and her late father chose the best fish.",
+ "nutrition": {
+  "cal": 350,
+  "protein": 7,
+  "carbs": 70,
+  "fat": 5,
+  "fiber": 3,
+  "sodium": 520
+ },
+ "keywords": [
+  "sayadiya",
+  "sayadeya",
+  "fisherman rice",
+  "egyptian seafood rice"
+ ]
+},
+{
+ "id": "EGY023",
+ "title": "Roz Mo'ammar bel Ferakh (Baked Creamy Rice with Chicken)",
+ "localName": "Ruz mo'ammar bil-ferakh — رز معمر بالفراخ",
+ "emoji": "🍗",
+ "country": "Egypt",
+ "countryFlag": "🇪🇬",
+ "region": "North Africa",
+ "community": "Egyptian celebration table",
+ "cuisine": "Egyptian",
+ "category": "Rice Dishes",
+ "course": "Main",
+ "diff": "Hard",
+ "prepTime": 40,
+ "restTime": 60,
+ "cookTime": 120,
+ "time": 220,
+ "servings": 6,
+ "cal": 690,
+ "rating": 4.9,
+ "reviews": 253,
+ "tags": [
+  "halal",
+  "contains-dairy",
+  "special-occasion",
+  "celebration",
+  "ramadan",
+  "traditional"
+ ],
+ "author": "Nermine Mansour (Chez Nermine)",
+ "authorEmoji": "👩‍🍳",
+ "desc": "A spiced whole chicken is simmered for broth and golden-seared, then baked over rice cooked in hot milk and broth with yogurt, topped with butter.",
+ "longDesc": "A dry-brined chicken is seared in ghee and whole spices and simmered 30 to 35 minutes in boiling water, then cooled 20 minutes, cut up and the broth strained. Rinsed rice is seasoned with yogurt and oil in a clay or Pyrex dish; hot milk and broth are poured over, the chicken and diced butter go on top, and it bakes until the crust turns golden and the inside creamy.",
+ "ingredients": [
+  "// Rice",
+  "2 cups Egyptian rice, rinsed",
+  "2 tablespoons canola oil",
+  "1/4 cup whole plain yogurt",
+  "1 teaspoon salt",
+  "1 teaspoon pepper",
+  "1/2 teaspoon cardamom, optional",
+  "2 bay leaves, optional",
+  "1 stick of cinnamon, optional",
+  "2 1/2 cups hot whole milk",
+  "1 cup chicken broth",
+  "1 whole cooked chicken (see recipe below)",
+  "4 tablespoons butter, diced",
+  "// Chicken and broth",
+  "3 tablespoons ghee",
+  "10 allspice berries",
+  "10 whole cloves",
+  "5 bay leaves",
+  "7 cardamom pods",
+  "3 mastic resins",
+  "I medium whole raw chicken, dry brined overnight (see notes)",
+  "1 onion, quartered",
+  "5 garlic cloves, whole",
+  "2 celery ribs with leaves",
+  "2 branches of sage stalks and leaves",
+  "1 sprig of thyme",
+  "1 liter of boiling water, more if needed",
+  "Salt and pepper, to taste"
+ ],
+ "equipment": [
+  "4-quart pot",
+  "Clay or Pyrex baking dish",
+  "Oven"
+ ],
+ "steps": [
+  "Dry-brine the raw chicken overnight in the fridge (the notes describe a salt, pepper, lemon zest and herb rub, and rinsing before cooking).",
+  "Warm the ghee in the pot and fry the whole spices until fragrant. Add the onion and garlic until slightly brown, then sear the chicken until the skin is crispy and golden.",
+  "Add the boiling water and simmer on low-medium for 30 to 35 minutes, until no blood or raw flesh shows. Cool the chicken 20 minutes, cut it up and strain the broth.",
+  "Put the rice, salt, pepper, cardamom, yogurt and oil in the baking dish. Pour in the hot milk and the broth.",
+  "Arrange the chicken pieces and diced butter on top and bake. The recipe card says 400 for 30 minutes (no unit printed); the page text says 380°F for 30 to 40 minutes, then broil the last 5 to 7 minutes to torch the top.",
+  "Serve next to molokhia."
+ ],
+ "chefTips": [
+  "Cues: chicken skin crispy and golden; no blood or raw flesh; golden crust and creamy interior. The overnight brine is NO CUE, TIME ONLY.",
+  "The page says to use only boiling water, never cold, for the broth. The baking instructions contradict each other (card versus text); treat 380°F with a short broil as the fuller reading and watch the rice."
+ ],
+ "commonMistakes": [
+  "Adding cold water to the broth, which the page says makes it cloudy.",
+  "Under-baking so the rice stays loose."
+ ],
+ "servedWith": [
+  "Molokhia (EGY003)"
+ ],
+ "relatedRecipes": [
+  "EGY024",
+  "EGY020",
+  "EGY033"
+ ],
+ "sources": [
+  "Adapted from 'Ruz Moa'amar Bel Ferkakh (Egyptian Baked Chicken with Rice): رز معمر بالفراخ', Chez Nermine. BYLINE AS PRINTED: 'Nermine Mansour'. Date: hidden page data gives published 2024-06-01, modified 2025-04-06. Chez Nermine pages show no visible printed date; the date given is from the page address or hidden page data and is unconfirmed. Yield not printed; servings are our estimate.",
+  "SOURCING STATUS: ingredients TWO-PASS. Method wording is our own summary of the page; times and cues were relayed by a research tool and should be checked against the live page. Prep and cook totals are our own estimates from the times the page does give.",
+  "PAGE DEFECTS kept: the card lists 'whole cooked chicken' for assembly but a raw chicken for boiling; the text mentions heavy cream the card omits; the ingredient line reads 'I medium whole raw chicken'.",
+  "DISAGREEMENT kept: Chef in Disguise (Sawsan Abu Farha, 3 July 2015) bakes rice in hot milk and cream at 260 C then 200 C; Amira's Pantry (Amira Ibrahim, updated 21 February 2023) soaks the rice 15 minutes and bakes in a water bath for almost an hour at 350F. See the Roz Meammar record."
+ ],
+ "storage": "Page: boil the chicken and broth 1 to 2 days ahead and refrigerate; the baked dish is best fresh.",
+ "reheating": "Reheat covered in a moderate oven.",
+ "healthBenefits": [
+  "Protein-rich and filling."
+ ],
+ "culturalNote": "Nermine Mansour calls it traditional, for special occasions, family gatherings and Ramadan, and says it originated in the countryside (unsourced).",
+ "nutrition": {
+  "cal": 690,
+  "protein": 36,
+  "carbs": 64,
+  "fat": 31,
+  "fiber": 2,
+  "sodium": 640
+ },
+ "keywords": [
+  "roz mo'ammar",
+  "roz maamar",
+  "egyptian baked rice",
+  "chicken rice",
+  "chez nermine"
+ ]
+},
+{
+ "id": "EGY024",
+ "title": "Roz Me'ammar (Creamy Clay-Pot Baked Rice)",
+ "localName": "Roz me'ammar / maamar — الأرز المعمر",
+ "emoji": "🍚",
+ "country": "Egypt",
+ "countryFlag": "🇪🇬",
+ "region": "North Africa",
+ "community": "Egyptian countryside",
+ "cuisine": "Egyptian",
+ "category": "Rice Dishes",
+ "course": "Side",
+ "diff": "Medium",
+ "prepTime": 10,
+ "restTime": 0,
+ "cookTime": 40,
+ "time": 50,
+ "servings": 6,
+ "cal": 450,
+ "rating": 4.7,
+ "reviews": 245,
+ "tags": [
+  "vegetarian",
+  "dairy",
+  "comfort-food",
+  "traditional",
+  "celebration",
+  "ramadan"
+ ],
+ "author": "Sawsan Abu Farha (Chef in Disguise)",
+ "authorEmoji": "👩‍🍳",
+ "desc": "Washed short-grain rice baked in a very hot oven with boiled milk, cream, ghee, allspice and cardamom until the liquid is absorbed and the top is golden.",
+ "longDesc": "Rice is washed three or four times until the water runs clear, then baked in a buttered clay or glass dish with hot milk, cream and spices. A 260 C oven is used until the liquid starts to boil (5 to 10 minutes), then 200 C until the rice absorbs the liquid, about 20 minutes, with a 2 to 3 minute broil if the top is not golden.",
+ "ingredients": [
+  "2 cups short rice",
+  "3 cups full fat milk",
+  "1 cup double cream or one can of cream",
+  "1 1/4 teaspoons salt",
+  "2 tablespoons ghee",
+  "1/2 teaspoon all spice",
+  "1/2 teaspoon cardamom"
+ ],
+ "equipment": [
+  "Clay or glass baking dish",
+  "Saucepan",
+  "Oven"
+ ],
+ "steps": [
+  "Wash the rice 3 to 4 times until the water runs clear, then drain.",
+  "Boil the milk, cream and spices, then take off the heat.",
+  "Preheat the oven to 260 C with the rack on the lowest position. Brush the dish with ghee.",
+  "Add the rice, salt and hot milk-cream to the dish.",
+  "Bake at 260 C until the liquid starts to boil, 5 to 10 minutes. Lower to 200 C and bake until the rice absorbs the liquid (about 20 minutes, the page says in brackets).",
+  "If the top is not golden, broil for 2 to 3 minutes."
+ ],
+ "chefTips": [
+  "Cues: water runs clear; liquid starts to boil; liquid absorbed; top golden. Total time on the page is only given as parentheticals, so we sum them.",
+  "Home ovens rarely reach 260 C; use your maximum and watch closely (our note)."
+ ],
+ "commonMistakes": [
+  "Opening the oven too often.",
+  "Skipping the lowest rack, which colours the top before the rice is cooked."
+ ],
+ "servedWith": [
+  "Molokhia (EGY003)"
+ ],
+ "relatedRecipes": [
+  "EGY023",
+  "EGY020"
+ ],
+ "sources": [
+  "Adapted from 'Egyptian Meamar rice', Chef in Disguise. BYLINE AS PRINTED: 'Sawsan Abu Farha, Chef in disguise'. Date as printed: July 3, 2015. Yield not stated; servings are our estimate.",
+  "SOURCING STATUS: ingredients TWO-PASS; the 20-minute and 2-to-3-minute times are parentheticals on the page (single reading). Method wording is our own summary of the page; times and cues were relayed by a research tool and should be checked against the live page. Prep and cook totals are our own estimates from the times the page does give.",
+  "DISAGREEMENT kept: Amira's Pantry (Amira Ibrahim, updated Feb 21, 2023) uses 1.5 cups rice soaked 15 minutes (NO CUE, TIME ONLY), 1.5 cups milk and 1.5 cups broth, sour cream and mascarpone, chicken tenders, and bakes almost an hour at 350F in a water bath, calling it her Aunt Mona's and lightened; a commenter's version is only rice, water, milk, ghee and salt."
+ ],
+ "storage": "Best eaten fresh (our note).",
+ "reheating": "Reheat covered with a splash of milk.",
+ "healthBenefits": [
+  "Calcium from milk and cream."
+ ],
+ "culturalNote": "Sawsan Abu Farha says 'loaded rice' began as a peasant dish baked in a clay pot so the farmer's wife could do other chores, and that a sweet version came later.",
+ "nutrition": {
+  "cal": 450,
+  "protein": 9,
+  "carbs": 58,
+  "fat": 20,
+  "fiber": 1,
+  "sodium": 420
+ },
+ "keywords": [
+  "roz meammar",
+  "roz maamar",
+  "loaded rice",
+  "egyptian baked rice",
+  "chef in disguise"
+ ]
+},
+{
+ "id": "EGY025",
+ "title": "Gambari Maklee (Egyptian Crispy Fried Shrimp)",
+ "localName": "Gambari maqli — جمبري مقلي",
+ "emoji": "🍤",
+ "country": "Egypt",
+ "countryFlag": "🇪🇬",
+ "region": "North Africa",
+ "community": "Cairo and Alexandria seafood restaurants",
+ "cuisine": "Egyptian",
+ "category": "Fish & Seafood",
+ "course": "Main",
+ "diff": "Medium",
+ "prepTime": 40,
+ "restTime": 30,
+ "cookTime": 17,
+ "time": 87,
+ "servings": 4,
+ "cal": 470,
+ "rating": 4.7,
+ "reviews": 79,
+ "tags": [
+  "seafood",
+  "contains-shellfish",
+  "fried",
+  "contains-gluten",
+  "dairy-free",
+  "street-food"
+ ],
+ "author": "Nermine Mansour (Chez Nermine)",
+ "authorEmoji": "👩‍🍳",
+ "desc": "Shrimp marinated in a blended tomato, pepper, garlic and cumin paste, coated twice in seasoned flour and fried two minutes per side.",
+ "longDesc": "A smooth marinade of tomato, red pepper, garlic, spices, cilantro and a little vinegar coats the shrimp for 30 minutes, then they are drained and shaken in seasoned flour and corn flour. The card says to sprinkle with water and coat again. They are fried in small batches, 2 minutes per side or until golden, and served with tahini, rustic salad and pickles.",
+ "ingredients": [
+  "1 kg Shrimp, deveined, shelled, and tail off",
+  "1 tomato, seeded and quartered",
+  "1 red pepper, seeded and quartered",
+  "5 garlic clove , whole",
+  "1 teaspoon ground cumin",
+  "1 teaspoon ground coriander",
+  "1 teaspoon paprika",
+  "1/2-1 teaspoon cayenne , optional",
+  "½ cup cilantro leaves and stalks",
+  "salt and pepper , to taste",
+  "1 teaspoon white distilled vinegar",
+  "// Coating",
+  "2 ½ cup all purpose flour",
+  "3 tablespoons corn flour",
+  "1 teaspoon ground black pepper",
+  "1 teaspoon salt",
+  "1 teaspoon sweet paprika",
+  "1 teaspoon ground coriander",
+  "1 teaspoon ground cumin",
+  "// Frying and serving",
+  "2 cups vegetable oil",
+  "1 cup tahini Sauce",
+  "3 cups Egyptian rustic salad (salata Baladi)",
+  "½ cup pickles"
+ ],
+ "equipment": [
+  "Blender",
+  "Deep frying pan",
+  "Sieve",
+  "Container with lid"
+ ],
+ "steps": [
+  "Defrost frozen shrimp overnight in the fridge and dry well.",
+  "Blend the tomato, pepper, garlic, spices, cilantro, salt, pepper and vinegar to a smooth marinade. Toss with the shrimp and refrigerate 30 minutes, no more.",
+  "Drain in a sieve, then shake the shrimp in the seasoned flour mixture in a covered container. The card says to sprinkle with a few drops of water and coat again.",
+  "Heat the oil (the page text gives 350 to 375°F). Fry in small batches 2 minutes per side or until golden.",
+  "Serve with tahini sauce, salad and pickles."
+ ],
+ "chefTips": [
+  "Cues: marinade smooth; shrimp golden. The marinade rest is NO CUE, TIME ONLY. The page gives no internal-temperature cue.",
+  "The page body says 15 to 30 minutes marinating while the card says 30 minutes 'no more'; it also lists 'tail off' but tells you to keep the tails on."
+ ],
+ "commonMistakes": [
+  "Marinating too long; the acid and salt toughen shrimp.",
+  "Crowding the pan."
+ ],
+ "servedWith": [
+  "Egyptian tahini sauce (EGY042)",
+  "Sayadiya rice (EGY022)"
+ ],
+ "relatedRecipes": [
+  "EGY026",
+  "EGY027",
+  "EGY030"
+ ],
+ "sources": [
+  "Adapted from 'How to Make Egyptian Crispy Fried Shrimp (Gambari Maklee)', Chez Nermine. BYLINE AS PRINTED: 'Nermine Mansour'. Date: hidden page data gives published 2024-07-04. Chez Nermine pages show no visible printed date; the date given is from the page address or hidden page data and is unconfirmed. Servings 4 (single reading). Prep 40, cook 17, marinade 30 minutes (TWO-PASS).",
+  "SOURCING STATUS: ingredients TWO-PASS. Method wording is our own summary of the page; times and cues were relayed by a research tool and should be checked against the live page.",
+  "PAGE DEFECTS kept: 'Corn Four', 'console oil' and 'Gamabari' misprints on the page; drain on a metal rack (body) versus paper (card).",
+  "DISAGREEMENT kept: Daily News Egypt (Iman Adel Abdel-Fattah, 1 August 2013) uses flour, egg and breadcrumbs, marinates 1 to 2 hours (NO CUE, TIME ONLY) and deep-fries on high until golden; see the breaded shrimp record."
+ ],
+ "storage": "Page: reheat leftovers 5 minutes in a toaster oven at 375 °F; freeze only if the shrimp was bought fresh.",
+ "reheating": "A toaster oven for 5 minutes at 375°F (page).",
+ "healthBenefits": [
+  "Shrimp are high in protein."
+ ],
+ "culturalNote": "Nermine Mansour says it is sold in Cairo and Alexandria seafood restaurants in warm pita, and recalls eating it at Zaki Al Samak in Cairo.",
+ "nutrition": {
+  "cal": 470,
+  "protein": 34,
+  "carbs": 44,
+  "fat": 17,
+  "fiber": 3,
+  "sodium": 800
+ },
+ "keywords": [
+  "gambari maklee",
+  "egyptian fried shrimp",
+  "crispy shrimp",
+  "chez nermine"
+ ]
+},
+{
+ "id": "EGY026",
+ "title": "Gambari Iskandarani (Alexandrian Garlic-Butter Broiled Shrimp)",
+ "localName": "Gambari Eskandarani — جمبري إسكندراني",
+ "emoji": "🦐",
+ "country": "Egypt",
+ "countryFlag": "🇪🇬",
+ "region": "North Africa",
+ "community": "Alexandria",
+ "cuisine": "Egyptian",
+ "category": "Fish & Seafood",
+ "course": "Main",
+ "diff": "Easy",
+ "prepTime": 20,
+ "restTime": 15,
+ "cookTime": 30,
+ "time": 65,
+ "servings": 4,
+ "cal": 330,
+ "rating": 4.7,
+ "reviews": 259,
+ "tags": [
+  "seafood",
+  "contains-shellfish",
+  "contains-dairy",
+  "gluten-free",
+  "low-carb",
+  "high-protein"
+ ],
+ "author": "Nermine Mansour (Chez Nermine)",
+ "authorEmoji": "👩‍🍳",
+ "desc": "Head-on shrimp tossed in garlic-spice butter, topped with onion, lemon and bay, and broiled hot until pink, then rested under foil.",
+ "longDesc": "Large shrimp are sprinkled with white vinegar and left briefly, then rinsed and dried. Cold butter is melted until foamy and cooked with garlic and spices until fragrant, tossed with the shrimp, and topped with garlic, onion, lemon and bay leaves. The page sets the broiler to 425°F for 20 to 30 minutes, until all the shrimp turn pink.",
+ "ingredients": [
+  "1 kg large shrimp skin and head-on",
+  "½ cup butter, cold",
+  "5 garlic cloves, minced",
+  "1 yellow onion, sliced",
+  "1 teaspoon cumin",
+  "1 teaspoon coriander",
+  "1 teaspoon smoked or sweet paprika",
+  "1 teaspoon dry oregano",
+  "1 teaspoon salt",
+  "1 teaspoon black pepper",
+  "1 teaspoon  Aleppo pepper or cayenne pepper",
+  "// Assembly",
+  "5 bay leaves",
+  "5 garlic cloves",
+  "1 lemon, sliced",
+  "White vinegar for the drizzle (amount not printed)"
+ ],
+ "equipment": [
+  "Baking dish",
+  "Saucepan",
+  "Foil"
+ ],
+ "steps": [
+  "Drizzle the shrimp with white vinegar and let sit 10 minutes (the card; the body says 15). Rinse and dry.",
+  "Melt the butter on medium-low; when foamy add the garlic and spices. Turn the heat off when fragrant.",
+  "Toss the shrimp in the butter and top with garlic, sliced onion, lemon and bay leaves.",
+  "Set the broiler to 425°F and broil for 20 to 30 minutes, or until all the shrimp turn pink (the page prints 'oil' for 'all').",
+  "Rest under foil 5 minutes (card)."
+ ],
+ "chefTips": [
+  "Cues: butter foamy then spices fragrant; shrimp pink. The vinegar sit is NO CUE, TIME ONLY.",
+  "The 20 to 30 minute broil is long for shrimp, as printed; start checking early (our note)."
+ ],
+ "commonMistakes": [
+  "Overcooking, which toughens the shrimp."
+ ],
+ "servedWith": [
+  "Sayadiya rice (EGY022)",
+  "Aish baladi (EGY046)"
+ ],
+ "relatedRecipes": [
+  "EGY025",
+  "EGY029"
+ ],
+ "sources": [
+  "Adapted from 'Gambari Iskandarani (Alexandrian Shrimp): جمبرى اسكندرانى', Chez Nermine. BYLINE AS PRINTED: 'Nermine Mansour'. Date: hidden page data gives published 2024-06-05. Chez Nermine pages show no visible printed date; the date given is from the page address or hidden page data and is unconfirmed. Yield not printed; servings are our estimate.",
+  "SOURCING STATUS: ingredients TWO-PASS. Method wording is our own summary of the page; times and cues were relayed by a research tool and should be checked against the live page. Prep and cook totals are our own estimates from the times the page does give.",
+  "PAGE DEFECT kept: vinegar sit 10 minutes (card) versus 15 minutes (body); the body gives no rest time."
+ ],
+ "storage": "Refrigerate cooked shrimp up to 2 days (our estimate).",
+ "reheating": "Warm gently; shrimp toughen quickly.",
+ "healthBenefits": [
+  "High in protein and low in carbohydrate."
+ ],
+ "culturalNote": "Nermine Mansour ate it growing up at home and at seafood stalls on the Mediterranean coast and recalls the restaurant Adoura in Alexandria.",
+ "nutrition": {
+  "cal": 330,
+  "protein": 32,
+  "carbs": 6,
+  "fat": 20,
+  "fiber": 1,
+  "sodium": 900
+ },
+ "keywords": [
+  "gambari iskandarani",
+  "alexandrian shrimp",
+  "egyptian shrimp",
+  "chez nermine"
+ ]
+},
+{
+ "id": "EGY027",
+ "title": "Breaded Fried Shrimp (Egyptian Ramadan Table)",
+ "localName": "Gambari maqli — جمبري مقلي",
+ "emoji": "🍤",
+ "country": "Egypt",
+ "countryFlag": "🇪🇬",
+ "region": "North Africa",
+ "community": "Ramadan table",
+ "cuisine": "Egyptian",
+ "category": "Fish & Seafood",
+ "course": "Main",
+ "diff": "Easy",
+ "prepTime": 20,
+ "restTime": 90,
+ "cookTime": 15,
+ "time": 125,
+ "servings": 5,
+ "cal": 360,
+ "rating": 4.5,
+ "reviews": 41,
+ "tags": [
+  "seafood",
+  "contains-shellfish",
+  "fried",
+  "contains-egg",
+  "contains-gluten",
+  "ramadan"
+ ],
+ "author": "Iman Adel Abdel-Fattah (Daily News Egypt)",
+ "authorEmoji": "📰",
+ "desc": "Medium shrimp marinated in lemon, garlic and cumin for one to two hours, then dredged in flour, egg and breadcrumbs and deep-fried until golden.",
+ "longDesc": "This Ramadan-series recipe marinates shrimp in lemon juice, garlic and cumin for one to two hours, then dredges them in flour, beaten egg and breadcrumbs and deep-fries them on high until golden.",
+ "ingredients": [
+  "1 kg shrimp, medium size – gam-ba-ri",
+  "1 egg, beaten – beid",
+  "2 tsp garlic, crushed – tom",
+  "3 tbsp lemon juice – a-seer la-moon",
+  "2 tbsp cumin – kam-moon",
+  "3/4 cup flour – de-'ee'",
+  "1/2 cup breadcrumbs – bo-so-mat",
+  "oil for frying – zeit",
+  "salt and pepper – malh and fel-fel"
+ ],
+ "equipment": [
+  "Deep frying pan",
+  "Three shallow bowls for dredging"
+ ],
+ "steps": [
+  "Toss the shrimp with the lemon juice, garlic, cumin, salt and pepper and marinate 1 to 2 hours.",
+  "Dredge in flour, then beaten egg, then breadcrumbs.",
+  "Deep-fry in hot oil on high heat until golden."
+ ],
+ "chefTips": [
+  "Cue: golden. The marinade is NO CUE, TIME ONLY (1 to 2 hours). The page prints no frying time.",
+  "Fry in small batches to keep the oil hot (our tip)."
+ ],
+ "commonMistakes": [
+  "Overcooking the shrimp."
+ ],
+ "servedWith": [
+  "Sayadiya rice (EGY022)"
+ ],
+ "relatedRecipes": [
+  "EGY025",
+  "EGY028"
+ ],
+ "sources": [
+  "Adapted from 'Bites Fil Beit Ramadan: Gambari meshwi au mahamar we kaboria meshweya – Grilled or fried shrimp and grilled crab', Daily News Egypt. BYLINE AS PRINTED: 'Iman Adel Abdel-Fattah'. Date as printed: 'Last updated: August 1, 2013 12:19 am'. Yield not stated; servings are our estimate.",
+  "SOURCING STATUS: ingredients and method TWO-PASS. Method wording is our own summary of the page; times and cues were relayed by a research tool and should be checked against the live page. Prep and cook totals are our own estimates from the times the page does give.",
+  "DISAGREEMENT kept: Chez Nermine's fried shrimp uses flour and corn flour with no egg or breadcrumbs, marinates 30 minutes and fries 2 minutes per side. No shrimp doneness cue is printed on this page."
+ ],
+ "storage": "Best eaten fresh.",
+ "reheating": "Re-crisp in a hot oven.",
+ "healthBenefits": [
+  "High in protein."
+ ],
+ "culturalNote": "The article is part of a Ramadan-series column of Egyptian home recipes with transliterated Arabic ingredient names.",
+ "nutrition": {
+  "cal": 360,
+  "protein": 34,
+  "carbs": 28,
+  "fat": 12,
+  "fiber": 2,
+  "sodium": 700
+ },
+ "keywords": [
+  "breaded shrimp",
+  "fried shrimp",
+  "daily news egypt",
+  "ramadan"
+ ]
+},
+{
+ "id": "EGY028",
+ "title": "Oven-Grilled Jumbo Shrimp with Celery and Dill",
+ "localName": "Gambari meshwi — جمبري مشوي",
+ "emoji": "🦐",
+ "country": "Egypt",
+ "countryFlag": "🇪🇬",
+ "region": "North Africa",
+ "community": "Ramadan table",
+ "cuisine": "Egyptian",
+ "category": "Fish & Seafood",
+ "course": "Main",
+ "diff": "Easy",
+ "prepTime": 15,
+ "restTime": 0,
+ "cookTime": 25,
+ "time": 40,
+ "servings": 3,
+ "cal": 170,
+ "rating": 4.7,
+ "reviews": 195,
+ "tags": [
+  "seafood",
+  "contains-shellfish",
+  "gluten-free",
+  "dairy-free",
+  "low-carb"
+ ],
+ "author": "Iman Adel Abdel-Fattah (Daily News Egypt)",
+ "authorEmoji": "📰",
+ "desc": "Jumbo shrimp baked under foil on a bed of tomato, onion, lemon, celery and dill with garlic and cumin, then uncovered for ten more minutes.",
+ "longDesc": "Shelled jumbo shrimp are laid on sliced onion, lemon and tomato with celery, dill, garlic, lemon juice and cumin, covered and baked at 200C for 10 to 15 minutes, then uncovered for another 10 minutes.",
+ "ingredients": [
+  "1/2 kg jumbo shrimp, shelled – gam-ba-ri jum-bo",
+  "4 garlic cloves – tom",
+  "2 tbsp lemon juice – a-seer la-moon",
+  "1 tsp cumin – kam-moon",
+  "2 stalks celery – ka-rafs",
+  "2 stalks dill – sha-bat",
+  "1 large onion, sliced – ba-sal",
+  "2 lemons, sliced – la-moon",
+  "2 large tomatoes, sliced – ta-ma-tem",
+  "salt and pepper – malh and fel-fel"
+ ],
+ "equipment": [
+  "Baking dish",
+  "Foil"
+ ],
+ "steps": [
+  "Heat the oven to 200C.",
+  "Layer the onion, lemon and tomato slices with the celery and dill in a baking dish, lay the shrimp on top and season with garlic, lemon juice, cumin, salt and pepper.",
+  "Cover and bake 10 to 15 minutes, then uncover and bake another 10 minutes."
+ ],
+ "chefTips": [
+  "The page gives no shrimp doneness cue; judge by the shrimp turning opaque and pink (our note). The method has a typo, 'sprinkle the garlic with the garlic'."
+ ],
+ "commonMistakes": [
+  "Baking uncovered from the start, which dries the shrimp."
+ ],
+ "servedWith": [
+  "Egyptian white rice (EGY021)"
+ ],
+ "relatedRecipes": [
+  "EGY026",
+  "EGY027"
+ ],
+ "sources": [
+  "Adapted from 'Bites Fil Beit Ramadan: Gambari meshwi au mahamar we kaboria meshweya', Daily News Egypt. BYLINE AS PRINTED: 'Iman Adel Abdel-Fattah'. Date as printed: August 1, 2013. Yield not stated; servings are our estimate.",
+  "SOURCING STATUS: ingredients and method TWO-PASS. Method wording is our own summary of the page; times and cues were relayed by a research tool and should be checked against the live page. Prep and cook totals are our own estimates from the times the page does give."
+ ],
+ "storage": "Refrigerate up to 2 days.",
+ "reheating": "Warm gently.",
+ "healthBenefits": [
+  "Low in fat; rich in protein."
+ ],
+ "culturalNote": "Part of the paper's Ramadan home-recipe series.",
+ "nutrition": {
+  "cal": 170,
+  "protein": 26,
+  "carbs": 11,
+  "fat": 3,
+  "fiber": 3,
+  "sodium": 640
+ },
+ "keywords": [
+  "grilled shrimp",
+  "baked shrimp",
+  "daily news egypt"
+ ]
+},
+{
+ "id": "EGY029",
+ "title": "Samak Mashwi bel Rada (Bran-Coated Alexandrian Fish)",
+ "localName": "Samak mashwi bil-rada — سمك مشوي بالردة",
+ "emoji": "🐟",
+ "country": "Egypt",
+ "countryFlag": "🇪🇬",
+ "region": "North Africa",
+ "community": "Alexandria",
+ "cuisine": "Egyptian",
+ "category": "Fish & Seafood",
+ "course": "Main",
+ "diff": "Medium",
+ "prepTime": 20,
+ "restTime": 30,
+ "cookTime": 30,
+ "time": 80,
+ "servings": 4,
+ "cal": 290,
+ "rating": 4.8,
+ "reviews": 73,
+ "tags": [
+  "seafood",
+  "pescatarian",
+  "dairy-free",
+  "gluten-free",
+  "low-carb",
+  "high-protein"
+ ],
+ "author": "Nermine Mansour (Chez Nermine)",
+ "authorEmoji": "👩‍🍳",
+ "desc": "A whole sea bass or snapper rubbed with a cumin-coriander-lime paste, pressed in bran, broiled and finished with a sharp tomato 'daqah' dressing.",
+ "longDesc": "A whole gutted fish is scored, rubbed inside and out with a blended marinade of herbs, onion, pepper, garlic and spices and left no more than 30 minutes, then pressed into bran. It is broiled at 400°F for 20 to 30 minutes until fork-tender with white, flaky flesh, or grilled; the daqah, a pounded dressing of garlic, pepper, tomato, lemon, vinegar and ice, goes over just before serving.",
+ "ingredients": [
+  "1 whole sea bass, branzino or red snapper , branzino, Mackerel, or a red snapper, gutted & cleaned",
+  "¼ cup dill and or parsley/cilantro, stems and leaves included",
+  "2 tablespoons lime juice",
+  "1 tablespoon extra virgin olive oil",
+  "1 ½ teaspoon salt",
+  "½-1 teaspoon black pepper",
+  "1 small yellow, red onion",
+  "1 green bell pepper , coarsely chopped",
+  "3 whole garlic cloves",
+  "2 teaspoons ground cumin",
+  "2 teaspoons ground coriander",
+  "1 teaspoon smoked paprika, optional",
+  "½-1 teaspoon red pepper flakes or harissa paste , optional",
+  "¼-½ cup bran, depends on the size of the fish",
+  "// Daqah",
+  "1 tablespoon minced garlic",
+  "1 green bell pepper , finely chopped",
+  "1 chili pepper , finely chopped, optional",
+  "1 grated tomato , almost 1/4-1/2 cup",
+  "1 teaspoon ground cumin",
+  "1 teaspoon ground coriander",
+  "2 tablespoons lemon juice",
+  "1 tablespoon vinegar",
+  "4 ice cubes",
+  "Salt and pepper , to taste"
+ ],
+ "equipment": [
+  "Blender",
+  "Mortar and pestle",
+  "Baking tray",
+  "Gloves"
+ ],
+ "steps": [
+  "Set the oven to broil at 400°F.",
+  "Blend the marinade ingredients to a fine smooth paste.",
+  "Score the fish and rub the marinade inside and out. Refrigerate no more than 30 minutes, then press the bran onto the skin.",
+  "Broil for 20 to 30 minutes, or until it is fork-tender and the translucent flesh has turned flaky and white. Or grill: the card says 6 to 7 minutes each side, the body 7 to 10.",
+  "Pound the daqah ingredients in a mortar to a fine, smooth dressing and spoon over just before serving."
+ ],
+ "chefTips": [
+  "Cue: flesh flaky and white, fork-tender. The marinade rest is NO CUE, TIME ONLY (no more than 30 minutes).",
+  "The page recommends gloves for the rub and a lime-vinegar-water rinse (1:1:2) for cleaning the fish."
+ ],
+ "commonMistakes": [
+  "Marinating too long, which the page warns against.",
+  "Overcooking the fish."
+ ],
+ "servedWith": [
+  "Sayadiya rice (EGY022)",
+  "Egyptian tahini sauce (EGY042)"
+ ],
+ "relatedRecipes": [
+  "EGY030",
+  "EGY022",
+  "EGY026"
+ ],
+ "sources": [
+  "Adapted from 'Samak Mashwi Bel Rada (Egyptian Bran-Coated Fish): سمك مشوى بالردة', Chez Nermine. BYLINE AS PRINTED: 'Nermine Mansour'. Date: hidden page data gives published 2025-08-18. Chez Nermine pages show no visible printed date; the date given is from the page address or hidden page data and is unconfirmed. Servings 4 (single reading).",
+  "SOURCING STATUS: ingredients TWO-PASS. Method wording is our own summary of the page; times and cues were relayed by a research tool and should be checked against the live page. Prep and cook totals are our own estimates from the times the page does give.",
+  "PAGE DEFECTS kept: the step list skips from step 2 to step 4; the bran step prints 'ban'; grill time differs between card and body."
+ ],
+ "storage": "Refrigerate up to 2 days (our estimate).",
+ "reheating": "Warm gently.",
+ "healthBenefits": [
+  "Lean fish protein; bran adds fibre."
+ ],
+ "culturalNote": "Nermine Mansour recalls Kadoura in Mansheya, Alexandria, said to be founded in 1950, and calls the bran coating an 'ancient Alexandrian technique' (unsourced).",
+ "nutrition": {
+  "cal": 290,
+  "protein": 34,
+  "carbs": 8,
+  "fat": 14,
+  "fiber": 3,
+  "sodium": 700
+ },
+ "keywords": [
+  "samak bel rada",
+  "bran fish",
+  "alexandrian fish",
+  "chez nermine"
+ ]
+},
+{
+ "id": "EGY030",
+ "title": "Samak Makli (Egyptian-Style Crispy Fried Fish Sandwich)",
+ "localName": "Samak maqli — سمك مقلي",
+ "emoji": "🐟",
+ "country": "Egypt",
+ "countryFlag": "🇪🇬",
+ "region": "North Africa",
+ "community": "Egyptian-style (author’s childhood)",
+ "cuisine": "Egyptian",
+ "category": "Fish & Seafood",
+ "course": "Main",
+ "diff": "Medium",
+ "prepTime": 30,
+ "restTime": 30,
+ "cookTime": 30,
+ "time": 90,
+ "servings": 5,
+ "cal": 560,
+ "rating": 4.9,
+ "reviews": 86,
+ "tags": [
+  "seafood",
+  "pescatarian",
+  "fried",
+  "contains-gluten",
+  "dairy-free",
+  "street-food"
+ ],
+ "author": "Suzy Karadsheh (The Mediterranean Dish)",
+ "authorEmoji": "👩‍🍳",
+ "desc": "Spiced cod or haddock fried in a flour-cornstarch dredge and packed into pita with tahini, tomato, cucumber, arugula and optional roasted eggplant.",
+ "longDesc": "Fish fillets are seasoned with coriander, cumin, paprika, Aleppo pepper, garlic and lemon juice for 10 to 20 minutes in the fridge, dredged in flour, cornstarch and baking soda, and fried in about 2 inches of oil, about 3 minutes on the first side until golden, then 3 to 4 minutes more until crispy. It is served in pita with tahini, vegetables and pickles; roasted eggplant rounds are optional.",
+ "ingredients": [
+  "// Eggplant (optional)",
+  "1 large eggplant",
+  "Extra virgin olive oil",
+  "Kosher salt",
+  "// Fish",
+  "11/2 pounds fish fillet, preferably cod or haddock, sliced into 4 to 6 portions",
+  "1 teaspoon ground coriander",
+  "1 teaspoon ground cumin",
+  "1 teaspoon paprika",
+  "1/2 teaspoon Aleppo pepper or red pepper flakes",
+  "Kosher salt",
+  "Black pepper",
+  "3 large garlic cloves, pressed or minced",
+  "3 large lemons, halved",
+  "Oil, for frying (see note)",
+  "// Dredge",
+  "1 cup all-purpose flour",
+  "1/2 cup cornstarch",
+  "1 teaspoon baking soda",
+  "// To serve",
+  "Tahini sauce",
+  "1 large tomato",
+  "2 to 3 Persian cucumbers",
+  "2 to 3 cups baby arugula",
+  "Pita bread, halved to make 4 to 6 pita pockets",
+  "Olives and/or pickles"
+ ],
+ "equipment": [
+  "Deep skillet",
+  "Baking sheet",
+  "Wire rack"
+ ],
+ "steps": [
+  "Optional eggplant: salt the rounds and rest 30 minutes, then roast at 400°F for 20 minutes, flip and roast 10 to 15 minutes more until golden brown all over.",
+  "Season the fish with the spices, garlic and the juice of 2 lemons and refrigerate about 10 to 20 minutes.",
+  "Dredge in the flour, cornstarch and baking soda mix.",
+  "Heat the oil about 2 inches deep on medium until it bubbles when a pinch of flour goes in. Fry about 3 minutes on the first side until golden brown, then 3 to 4 minutes more until crispy and golden.",
+  "Squeeze lemon over the fish and serve in pita with tahini, vegetables and pickles."
+ ],
+ "chefTips": [
+  "Cues: oil bubbles at a pinch of flour; fish golden and crispy. The marinade is NO CUE, TIME ONLY (10 to 20 minutes).",
+  "The page prints the yield as 6 to 4 servings; servings here follow our midpoint."
+ ],
+ "commonMistakes": [
+  "Frying in oil that is not hot enough."
+ ],
+ "servedWith": [
+  "Egyptian tahini sauce (EGY042)",
+  "Sayadiya rice (EGY022)"
+ ],
+ "relatedRecipes": [
+  "EGY029",
+  "EGY022",
+  "EGY025"
+ ],
+ "sources": [
+  "Adapted from 'The Best Crispy Fried Fish Sandwich (Egyptian Style)', The Mediterranean Dish. BYLINE AS PRINTED: 'by Suzy Karadsheh'. Date as printed: 'Updated: Mar 3, 2026'. Yield printed 'Serves – 6 to 4'.",
+  "SOURCING STATUS: ingredients and method TWO-PASS. Method wording is our own summary of the page; times and cues were relayed by a research tool and should be checked against the live page. Prep and cook totals are our own estimates from the times the page does give.",
+  "FLAG: the page says the sandwich is 'inspired by a fried fish from my childhood, which we call Samak Makli'; the author is not described on the page as Egyptian."
+ ],
+ "storage": "Best eaten fresh.",
+ "reheating": "Re-crisp in a hot oven.",
+ "healthBenefits": [
+  "Lean white fish protein with a vegetable-rich filling."
+ ],
+ "culturalNote": "Suzy Karadsheh writes that it is inspired by a fried fish from her childhood, which her mother often made as whole fried fish.",
+ "nutrition": {
+  "cal": 560,
+  "protein": 36,
+  "carbs": 58,
+  "fat": 21,
+  "fiber": 5,
+  "sodium": 860
+ },
+ "keywords": [
+  "samak makli",
+  "egyptian fish sandwich",
+  "fried fish",
+  "mediterranean dish"
+ ]
+},
+{
+ "id": "EGY031",
+ "title": "Hamam Mashwi (Grilled Pigeon, Egyptian Style, with Green Wheat Salad)",
+ "localName": "Hamam mashwi — حمام مشوي",
+ "emoji": "🍗",
+ "country": "Egypt",
+ "countryFlag": "🇪🇬",
+ "region": "North Africa",
+ "community": "Adapted by a US hunter-cook",
+ "cuisine": "Egyptian",
+ "category": "Poultry",
+ "course": "Main",
+ "diff": "Medium",
+ "prepTime": 20,
+ "restTime": 180,
+ "cookTime": 20,
+ "time": 220,
+ "servings": 4,
+ "cal": 540,
+ "rating": 4.5,
+ "reviews": 162,
+ "tags": [
+  "halal",
+  "high-protein",
+  "grilled",
+  "dairy-free",
+  "special-occasion"
+ ],
+ "author": "Hank Shaw (Honest Food)",
+ "authorEmoji": "👨‍🍳",
+ "desc": "Pigeons or doves oiled and rubbed with an Egyptian spice mix, grilled pink, and served over a warm freekeh salad with red pepper and parsley.",
+ "longDesc": "Birds are coated with olive oil and a rub of cinnamon, cayenne, cumin, coriander, pepper, cardamom, cloves, oregano and mint, and refrigerated 3 hours or up to overnight. Freekeh is simmered in broth, then rested 30 minutes or so with the heat off. The birds grill breast-up for 10 minutes and breast-down for 3 to 5 minutes, and rest while the freekeh is tossed with shallots, garlic, red pepper, parsley and lemon.",
+ "ingredients": [
+  "4 to 6 pigeons or 8 to 16 doves, plucked",
+  "Olive oil to coat them",
+  "// Egyptian spice rub",
+  "1 teaspoon ground cinnamon",
+  "1 teaspoon cayenne",
+  "1 teaspoon ground cumin",
+  "1 teaspoon ground coriander",
+  "1 teaspoon black pepper",
+  "1 teaspoon ground cardamom (optional)",
+  "1/4 teaspoon cloves",
+  "2 teaspoons dried oregano",
+  "1 teaspoon dried mint",
+  "1 tablespoon kosher salt",
+  "// Green wheat salad",
+  "2 cups freekeh or bulgur wheat",
+  "2 cups pigeon or dove broth or chicken broth",
+  "2 tablespoons olive oil",
+  "1/2 cup minced shallots",
+  "2 minced garlic cloves",
+  "1 red bell pepper, diced",
+  "3 tablespoons high-quality olive oil",
+  "1/4 cup chopped parsley",
+  "Salt and black pepper",
+  "Lemon juice to taste"
+ ],
+ "equipment": [
+  "Grill",
+  "Saucepan with lid",
+  "Skillet"
+ ],
+ "steps": [
+  "Coat the birds in olive oil, rub with the spices and refrigerate, covered, for 3 hours or up to overnight. Take them out about an hour before cooking.",
+  "Bring the broth to a boil, add the freekeh, return to a boil, cover and turn off the heat. It should be ready in 30 minutes or so.",
+  "Sauté the shallots for a minute or two, or until they just start to brown; add the garlic and pepper for another minute.",
+  "Grill the birds breast-side up for 10 minutes, avoiding burning, then flip and grill breast-side down for 3 to 5 minutes. The author likes them pink inside. Rest the birds.",
+  "Toss the freekeh with the pan mixture, oil, parsley, salt, pepper and lemon and serve with the birds."
+ ],
+ "chefTips": [
+  "Cues: shallots start to brown; birds pink inside. The spice rub rest is NO CUE, TIME ONLY (3 hours to overnight).",
+  "The author replies in a comment that getting disease from pigeons is largely an urban myth; always source birds from a trusted supplier and cook to a safe temperature for your comfort (our note)."
+ ],
+ "commonMistakes": [
+  "Overcooking, which dries lean game birds."
+ ],
+ "servedWith": [
+  "Freekeh pilaf (EGY035)"
+ ],
+ "relatedRecipes": [
+  "EGY032",
+  "EGY035"
+ ],
+ "sources": [
+  "Adapted from 'Grilled Pigeons Egyptian Style', Honest Food. BYLINE AS PRINTED: 'By Hank Shaw'. Date as printed: 'September 04, 2013 | Updated June 18, 2020'. Servings: 4 people.",
+  "SOURCING STATUS: ingredients TWO-PASS. Method wording is our own summary of the page; times and cues were relayed by a research tool and should be checked against the live page. Prep and cook totals are our own estimates from the times the page does give.",
+  "FLAG: the author is an American hunter-cook, not an Egyptian cook; the page presents an 'Egyptian style' spice rub. He cites a friend, Soraya, saying pigeon is sold in Cairo like hot-dog vendors in New York, and that one of the national dishes is hamam mashi. The page misprints 'The Egyptians call is freekeh' and its times are garbled ('20 minutes minutes')."
+ ],
+ "storage": "Refrigerate cooked birds up to 2 days (our estimate).",
+ "reheating": "Warm gently.",
+ "healthBenefits": [
+  "Game birds are high in protein and iron."
+ ],
+ "culturalNote": "The author notes that hamam mashi is one of the national dishes of Egypt and that pigeon is sold by street vendors in Cairo; both are his attributed remarks.",
+ "nutrition": {
+  "cal": 540,
+  "protein": 38,
+  "carbs": 44,
+  "fat": 24,
+  "fiber": 8,
+  "sodium": 720
+ },
+ "keywords": [
+  "grilled pigeon",
+  "hamam mashwi",
+  "egyptian pigeon",
+  "freekeh salad"
+ ]
+},
+{
+ "id": "EGY032",
+ "title": "Hamam Mahshi bel Freek (Pigeons Stuffed with Green Wheat)",
+ "localName": "Hamam mahshi bil-freek — حمام محشي بالفريك",
+ "emoji": "🕊️",
+ "country": "Egypt",
+ "countryFlag": "🇪🇬",
+ "region": "North Africa",
+ "community": "Ramadan table",
+ "cuisine": "Egyptian",
+ "category": "Poultry",
+ "course": "Main",
+ "diff": "Hard",
+ "prepTime": 45,
+ "restTime": 40,
+ "cookTime": 120,
+ "time": 205,
+ "servings": 4,
+ "cal": 620,
+ "rating": 4.8,
+ "reviews": 180,
+ "tags": [
+  "halal",
+  "dairy",
+  "special-occasion",
+  "ramadan",
+  "celebration"
+ ],
+ "author": "Iman Adel Abdel-Fattah (Daily News Egypt)",
+ "authorEmoji": "📰",
+ "desc": "Pigeons stuffed with freekeh, onions, giblets and mint, braised in chicken broth for about 90 minutes, then served on freekeh cooked in the braising liquid.",
+ "longDesc": "Cracked green wheat is soaked 30 minutes, drained and squeezed, then mixed with sautéed onion and chopped giblets and mint. About ¼ cup stuffs each pigeon, and the birds are sewn, tied and braised covered in 2 cups of stock at 175C for about 90 minutes, basted once or twice. About 30 minutes before they finish the rest of the stock and the reserved freekeh are simmered about 20 minutes, rested 10 minutes, and the birds served on top.",
+ "ingredients": [
+  "4 pigeons with giblets – ha-mam with ki-bid wi ki-la-wi",
+  "1 lemon, juiced – la-moon-a",
+  "3 tbsp butter or oil – zib-da or zeit",
+  "2 medium onions, finely chopped – ba-sal",
+  "2 cups cracked green wheat – freek",
+  "1 tbs fresh mint, chopped – na-na",
+  "4 cups chicken broth – ma-ra-a",
+  "salt and pepper – malh and fil-fil"
+ ],
+ "equipment": [
+  "Roasting pan with lid",
+  "Needle and string",
+  "Saucepan"
+ ],
+ "steps": [
+  "Soak the freek in water for 30 minutes.",
+  "Heat the oven to 175C. Rub the pigeons with lemon juice and season.",
+  "Fry the onions and chopped giblets for seven or eight minutes, until the onions are cooked through and translucent.",
+  "Drain and squeeze the freek and mix with the fried onions, mint, salt and pepper. Stuff about ¼ cup into each bird, sew and tie the legs.",
+  "Pour 2 cups of stock over the birds, cover and braise about 90 minutes, basting once or twice.",
+  "About 30 minutes before they finish, boil the remaining stock and add the reserved freek; simmer about 20 minutes and rest about 10 minutes. Serve the birds on the freek with the braising juices."
+ ],
+ "chefTips": [
+  "Cues: onions translucent and cooked through. The freekeh soak is NO CUE, TIME ONLY (30 minutes). The braise time of about 90 minutes is as printed.",
+  "Compare with the grilled pigeon, which cooks in minutes; the braise is for a more tender, moist result."
+ ],
+ "commonMistakes": [
+  "Overstuffing, since the freekeh swells."
+ ],
+ "servedWith": [
+  "Freekeh pilaf (EGY035)"
+ ],
+ "relatedRecipes": [
+  "EGY031",
+  "EGY035"
+ ],
+ "sources": [
+  "Adapted from 'Bites Fil Beit Ramadan: Stuffed pigeons with green wheat', Daily News Egypt. BYLINE AS PRINTED: 'Iman Adel Abdel-Fattah'. Date as printed: 'Last updated: August 7, 2012 7:10 pm'. Yield not stated (four pigeons).",
+  "SOURCING STATUS: ingredients and method TWO-PASS. Method wording is our own summary of the page; times and cues were relayed by a research tool and should be checked against the live page. Prep and cook totals are our own estimates from the times the page does give.",
+  "FLAG: a Ramadan iftar column of Egyptian home cooking; the series also includes non-traditional dishes that were not used."
+ ],
+ "storage": "Refrigerate up to 2 days (our estimate).",
+ "reheating": "Reheat covered in broth.",
+ "healthBenefits": [
+  "Freekeh adds fibre; pigeon is rich in protein and iron."
+ ],
+ "culturalNote": "Presented in a Ramadan iftar menu column; the page does not add cultural commentary beyond transliterated Arabic ingredient names.",
+ "nutrition": {
+  "cal": 620,
+  "protein": 38,
+  "carbs": 52,
+  "fat": 26,
+  "fiber": 9,
+  "sodium": 700
+ },
+ "keywords": [
+  "stuffed pigeon",
+  "hamam mahshi",
+  "freekeh",
+  "daily news egypt"
+ ]
+},
+{
+ "id": "EGY033",
+ "title": "Fattah (Egyptian Rice, Crisp Bread and Meat with Garlic-Vinegar and Tomato Sauces)",
+ "localName": "Fattah — فتة",
+ "emoji": "🍲",
+ "country": "Egypt",
+ "countryFlag": "🇪🇬",
+ "region": "North Africa",
+ "community": "Eid al-Adha and celebrations",
+ "cuisine": "Egyptian",
+ "category": "Festival & Celebration Foods",
+ "course": "Main",
+ "diff": "Hard",
+ "prepTime": 30,
+ "restTime": 0,
+ "cookTime": 180,
+ "time": 210,
+ "servings": 6,
+ "cal": 780,
+ "rating": 4.7,
+ "reviews": 145,
+ "tags": [
+  "halal",
+  "celebration",
+  "special-occasion",
+  "festive",
+  "contains-beef",
+  "dairy",
+  "contains-gluten",
+  "traditional"
+ ],
+ "author": "Amira Ibrahim (Amira’s Pantry)",
+ "authorEmoji": "👩‍🍳",
+ "desc": "Layers of baked pita, buttery rice, garlic-vinegar broth and tender mastic-scented beef or lamb, finished with a spiced tomato sauce.",
+ "longDesc": "Beef or lamb is browned with melted mastic and simmered with onion, carrot, celery, tomato and spices until done; the card gives a 3-hour cook time. Rice is cooked in ghee and hot broth for 13 to 15 minutes, pita squares are baked at 350°F for 10 to 12 minutes until crisp, a garlic-vinegar sauce is made, and a tomato sauce simmers 10 minutes. It is assembled as bread, white garlic sauce, rice, meat and tomato sauce.",
+ "ingredients": [
+  "// Meat",
+  "1 Tablespoon ghee/unsalted butter.",
+  "2-3 mastic pieces.",
+  "2 pounds beef/lamb cut into 2-inch squares.",
+  "2 bay leaves.",
+  "¼ teaspoon ground cardamom.",
+  "¼ teaspoon sugar.",
+  "½ teaspoon black pepper.",
+  "1 medium onion quartered.",
+  "1 (100g) Roma tomato quartered.",
+  "2 (70g )celery stalks, cubes almost half a cup.",
+  "1 garlic clove.",
+  "1 large (60g) carrot  cut into chunks.",
+  "Boiling water to cover.",
+  "1 teaspoon salt I've used pink salt.",
+  "// Rice",
+  "1 Tablespoon ghee or unsalted butter.",
+  "1 Tablespoon olive oil.",
+  "2 cups (400g) short grain or jasmine rice.",
+  "2 ¼ cup hot water/beef broth or a mixture.",
+  "Salt to taste.",
+  "// Sauces",
+  "1 Tablespoon ghee/unsalted butter.",
+  "1 Tablespoon olive oil.",
+  "5 large garlic cloves minced.",
+  "¼ cup white vinegar.",
+  "2 cups tomato sauce.",
+  "2 Tablespoons tomato paste.",
+  "1 teaspoon 7-spice blend.",
+  "Salt and pepper to taste.",
+  "3 cups beef/lamb broth divided.",
+  "6 Pita bread loaves. more or less depending on your liking. cut into 1 inch squares."
+ ],
+ "equipment": [
+  "Large pot",
+  "Medium pot with lid",
+  "Baking sheet",
+  "Saucepans"
+ ],
+ "steps": [
+  "Melt the ghee, stir in the mastic until it melts, and brown the meat. Add the bay, sugar, pepper, cardamom and vegetables, cover with boiling water and skim. Simmer loosely covered until done; add the salt in the last 5 minutes.",
+  "Rice: stir the rice in the fat for 2 to 3 minutes, add the hot liquid and cook for 13 to 15 minutes.",
+  "Pita: cut into 1-inch squares and bake at 350°F for 10 to 12 minutes, until the edges and bottoms are crisp and golden brown.",
+  "Garlic sauce: cook the garlic in the fat for 30 seconds to 1 minute until fragrant and lightly browned, add the vinegar for 3 to 4 minutes, and reserve about half the garlic mix. For the tomato sauce add the tomato sauce, 7-spice, paste and 1 cup of broth to the pan and simmer 10 minutes to thicken.",
+  "White sauce: boil the rest of the broth with the reserved garlic-vinegar mix.",
+  "Optional: brown the cooked meat in a covered skillet. Assemble: pita, about 1 cup of white sauce, rice, meat and tomato sauce."
+ ],
+ "chefTips": [
+  "Cues: pita edges and bottoms crisp and golden; garlic lightly browned; sauce thickened. The meat time is only 'until done'; the card says 3 hours total cook time.",
+  "The body says the sauce can be made 2 days ahead; the card says to reserve half the garlic while the body says half the garlic-vinegar mixture."
+ ],
+ "commonMistakes": [
+  "Letting the garlic burn.",
+  "Assembling too early so the bread goes fully soft if you want crispy fattah (the author says her family prefers crispy; some say it should be soggy)."
+ ],
+ "servedWith": [
+  "Molokhia (EGY003)"
+ ],
+ "relatedRecipes": [
+  "EGY023",
+  "EGY003",
+  "EGY079"
+ ],
+ "sources": [
+  "Adapted from 'Egyptian food; Fattah', Amira's Pantry. BYLINE AS PRINTED: 'By Amira Ibrahim'. Date as printed: 'Updated: Feb 2, 2024', originally published January 2013, updated July 2020. Servings 6. Prep 30 minutes, cook 3 hours as printed.",
+  "SOURCING STATUS: ingredients and method TWO-PASS; the meat has no stated time beyond the card. Method wording is our own summary of the page; times and cues were relayed by a research tool and should be checked against the live page.",
+  "DISAGREEMENT kept: Chez Nermine (Nermine Mansour, address 2025/04/16, hidden date 2026-05-19) browns beef about 8 minutes, simmers it uncovered about 2 hours, uses 1½ cups rice to 1½ cups broth and bakes the pita at 400°F for 10 to 15 minutes. Munaty Cooking (Muna Kenny, 13/08/2026) fries the pita and soaks the rice 15 to 20 minutes (NO CUE beyond a wash). A community cookbook version (organisation byline, undated) was not used."
+ ],
+ "storage": "Page: the sauce can be made 2 days ahead; assemble just before serving.",
+ "reheating": "Reheat the meat and sauces separately, then assemble.",
+ "healthBenefits": [
+  "Protein-rich festive meal."
+ ],
+ "culturalNote": "Amira Ibrahim calls fattah a traditional Egyptian food to celebrate almost any occasion, especially Eid al-Adha, and says molokhia is commonly served with it. Nermine Mansour adds that Egyptian fatta, unlike the Levantine one, has no yogurt.",
+ "nutrition": {
+  "cal": 780,
+  "protein": 40,
+  "carbs": 82,
+  "fat": 30,
+  "fiber": 5,
+  "sodium": 950
+ },
+ "keywords": [
+  "fattah",
+  "fatta",
+  "eid al adha",
+  "egyptian rice and meat"
+ ]
+},
+{
+ "id": "EGY034",
+ "title": "Stuffed Roast Duck (Egyptian Family Recipe)",
+ "localName": "Bataa mahshi — بط محشي",
+ "emoji": "🦆",
+ "country": "Egypt",
+ "countryFlag": "🇪🇬",
+ "region": "North Africa",
+ "community": "Egyptian family table",
+ "cuisine": "Egyptian",
+ "category": "Poultry",
+ "course": "Main",
+ "diff": "Medium",
+ "prepTime": 30,
+ "restTime": 10,
+ "cookTime": 180,
+ "time": 220,
+ "servings": 8,
+ "cal": 560,
+ "rating": 4.6,
+ "reviews": 78,
+ "tags": [
+  "halal",
+  "dairy-free",
+  "gluten-free",
+  "celebration",
+  "special-occasion"
+ ],
+ "author": "Amira Ibrahim (Amira’s Pantry)",
+ "authorEmoji": "👩‍🍳",
+ "desc": "A whole duck stuffed with an onion, cumin and lime mixture, roasted slowly in an oven bag, then browned under the broiler for crisp skin.",
+ "longDesc": "A 5 to 6 pound duck is patted dry, stuffed with chopped onion mixed with salt, pepper, cumin and oil and a squeeze of lime, closed with toothpicks and its legs tied. It roasts at 350°F in an oven bag for 2½ to 3 hours, then is browned under the broiler or in a pot with oil and rested 5 to 10 minutes.",
+ "ingredients": [
+  "2 onion (450g) roughly chopped.",
+  "2 teaspoons salt or to taste.",
+  "½ - 1 Tablespoon black pepper.",
+  "½ teaspoon ground cumin.",
+  "½ a lime.",
+  "1 Tablespoon olive oil.",
+  "5-6 pounds whole duck cleaned."
+ ],
+ "equipment": [
+  "Roasting pan",
+  "Oven bag",
+  "Toothpicks",
+  "Kitchen string"
+ ],
+ "steps": [
+  "Heat the oven to 350°F and pat the duck dry.",
+  "Mix the onion with salt, pepper, cumin and oil, and squeeze the lime over it.",
+  "Stuff the cavity, leaving 2 to 3 tablespoons aside, and close with 3 to 4 toothpicks.",
+  "Rub the duck with the squeezed lime and then the reserved mixture, and tie the legs.",
+  "Roast in an oven bag for 2½ to 3 hours. The card says to reach at least 165°F; the instructions section says the breast reaches 155°F.",
+  "Brown under the broiler or in oil in a pot on the stovetop, then rest 5 to 10 minutes."
+ ],
+ "chefTips": [
+  "Cue: internal temperature at least 165°F (card). The two pages' temperatures differ (165°F versus 155°F in the instructions). The oven-bag step was read once only.",
+  "The author says stuffing with oranges or apples is not authentically Middle Eastern."
+ ],
+ "commonMistakes": [
+  "Under-cooking; check the thickest part with a thermometer."
+ ],
+ "servedWith": [
+  "Egyptian rice with vermicelli (EGY020)"
+ ],
+ "relatedRecipes": [
+  "EGY023",
+  "EGY032"
+ ],
+ "sources": [
+  "Adapted from 'Stuffed Roast Duck Recipe', Amira's Pantry. BYLINE AS PRINTED: 'By Amira Ibrahim'. Date as printed: 'Updated: Oct 3, 2025'. Servings 8 (single reading).",
+  "SOURCING STATUS: ingredients TWO-PASS; the oven-bag detail SINGLE-PASS. Method wording is our own summary of the page; times and cues were relayed by a research tool and should be checked against the live page. Prep and cook totals are our own estimates from the times the page does give."
+ ],
+ "storage": "Refrigerate carved meat up to 3 days (our estimate).",
+ "reheating": "Reheat covered in a moderate oven.",
+ "healthBenefits": [
+  "Rich in protein and iron."
+ ],
+ "culturalNote": "Amira Ibrahim writes it is a family recipe from her father's side, that Muscovy ducks are the most popular in Egypt, and that her family serves it with baked rice. Her grandmother cleaned the duck with kosher salt and flour and soaked it in vinegared water.",
+ "nutrition": {
+  "cal": 560,
+  "protein": 32,
+  "carbs": 6,
+  "fat": 44,
+  "fiber": 1,
+  "sodium": 480
+ },
+ "keywords": [
+  "stuffed duck",
+  "egyptian roast duck",
+  "amira pantry"
+ ]
+},
+{
+ "id": "EGY035",
+ "title": "Fereek (Egyptian Freekeh Pilaf)",
+ "localName": "Fereek — فريك",
+ "emoji": "🌾",
+ "country": "Egypt",
+ "countryFlag": "🇪🇬",
+ "region": "North Africa",
+ "community": "Ramadan and Coptic fasts",
+ "cuisine": "Egyptian",
+ "category": "Couscous & Grains",
+ "course": "Side",
+ "diff": "Easy",
+ "prepTime": 10,
+ "restTime": 5,
+ "cookTime": 35,
+ "time": 50,
+ "servings": 4,
+ "cal": 290,
+ "rating": 4.9,
+ "reviews": 167,
+ "tags": [
+  "vegan",
+  "vegetarian",
+  "dairy-free",
+  "high-fiber",
+  "ramadan",
+  "traditional"
+ ],
+ "author": "Nermine Mansour (Chez Nermine)",
+ "authorEmoji": "👩‍🍳",
+ "desc": "Caramelized onion, garlic and smoky freekeh grains cooked in vegetable broth at about two cups of liquid to one of grain.",
+ "longDesc": "Chopped onions are lightly caramelized in hot olive oil, the freekeh is stirred in for 3 minutes until coated, garlic goes in for a minute until fragrant, then the broth is added and brought to a gentle boil. The grain is simmered covered on low for 20 to 25 minutes, rested covered about 5 minutes and fluffed. The page gives no quantities on its ingredient list, only a ratio of about 2 cups of liquid per 1 cup of freekeh.",
+ "ingredients": [
+  "Extra-virgin olive oil",
+  "Yellow Onion , finely chopped",
+  "Minced garlic",
+  "Freekeh grain",
+  "Vegetable broth",
+  "Salt and pepper",
+  "(Quantities NOT PRINTED; the tips give about 2 cups of liquid for every 1 cup of freekeh)"
+ ],
+ "equipment": [
+  "Saucepan with lid"
+ ],
+ "steps": [
+  "Lightly caramelize the chopped onions in hot olive oil.",
+  "Add the freekeh and stir for 3 minutes until well coated with the oil.",
+  "Add the minced garlic and stir for 1 minute or until it is fragrant.",
+  "Stir in the broth, about 2 cups for every 1 cup of freekeh, and bring to a gentle boil.",
+  "Simmer, covered, on low heat for 20 to 25 minutes, then let it sit covered about 5 minutes and fluff."
+ ],
+ "chefTips": [
+  "Cues: onions lightly caramelized; garlic fragrant. There is no soak; the tips say to rinse only.",
+  "The step captions say to let the liquid evaporate uncovered on medium-high, while the FAQ says to simmer covered on low 20 to 25 minutes; we follow the FAQ."
+ ],
+ "commonMistakes": [
+  "Using too much liquid; the grain should stay a little chewy."
+ ],
+ "servedWith": [
+  "Grilled pigeon (EGY031)"
+ ],
+ "relatedRecipes": [
+  "EGY031",
+  "EGY036"
+ ],
+ "sources": [
+  "Adapted from 'Fereek (Egyptian Freekeh Pilaf): الفريك', Chez Nermine. BYLINE AS PRINTED: 'Nermine Mansour'. Date: hidden page data gives published 2026-03-07, modified 2026-03-18. Chez Nermine pages show no visible printed date; the date given is from the page address or hidden page data and is unconfirmed. Yield: none for this dish (the page's embedded card is for a different dish); servings are our estimate.",
+  "SOURCING STATUS: ingredients TWO-PASS but no amounts are printed; method captions TWO-PASS. Method wording is our own summary of the page; times and cues were relayed by a research tool and should be checked against the live page. Prep and cook totals are our own estimates from the times the page does give.",
+  "FLAG: only a ratio-based recipe is possible from this page."
+ ],
+ "storage": "Refrigerate up to 3 days (our estimate).",
+ "reheating": "Reheat with a splash of water.",
+ "healthBenefits": [
+  "Freekeh is a high-fibre whole grain."
+ ],
+ "culturalNote": "Nermine Mansour presents the proverb 'Ana zay el fereek maḥebesh shareek' as something Egyptians jokingly say, glossed as being like freekeh pilaf: I don't like partners.",
+ "nutrition": {
+  "cal": 290,
+  "protein": 9,
+  "carbs": 48,
+  "fat": 8,
+  "fiber": 9,
+  "sodium": 380
+ },
+ "keywords": [
+  "fereek",
+  "freekeh pilaf",
+  "green wheat",
+  "chez nermine"
+ ]
+},
+{
+ "id": "EGY036",
+ "title": "Tagen Seafood we Freekeh (One-Pot Seafood and Freekeh Bake)",
+ "localName": "Tagen seafood wi freek — طاجن سي فود وفريك",
+ "emoji": "🦑",
+ "country": "Egypt",
+ "countryFlag": "🇪🇬",
+ "region": "North Africa",
+ "community": "Alexandria",
+ "cuisine": "Egyptian",
+ "category": "Fish & Seafood",
+ "course": "Main",
+ "diff": "Medium",
+ "prepTime": 20,
+ "restTime": 0,
+ "cookTime": 40,
+ "time": 60,
+ "servings": 7,
+ "cal": 470,
+ "rating": 4.6,
+ "reviews": 36,
+ "tags": [
+  "seafood",
+  "contains-shellfish",
+  "dairy-free",
+  "high-fiber",
+  "one-pot"
+ ],
+ "author": "Nermine Mansour (Chez Nermine)",
+ "authorEmoji": "👩‍🍳",
+ "desc": "Freekeh baked with olives, tomatoes, celery and stock, topped with quick-seared shrimp and calamari.",
+ "longDesc": "Vegetables are stir-fried 2 to 4 minutes until fragrant, then freekeh, and moved to a baking dish. The shrimp and calamari are stir-fried until the shrimp start to turn pink and the calamari edges curl, then set aside. Stock, spices and herbs go in and the dish roasts at 375° for 20 to 30 minutes, until the freekeh swells, the liquid reduces and the vegetables are tender.",
+ "ingredients": [
+  "3 tablespoons olive oil",
+  "1 onion, thinly sliced",
+  "4 cloves garlic, whole",
+  "2 stalks celery, thinly sliced",
+  "1 cup cherry tomatoes",
+  "200 grams calamari",
+  "200 grams shrimps, tails on, shelled, and deveined",
+  "2 cups freekeh",
+  "1 cup green olives",
+  "4 cups of vegetable stock",
+  "2 tablespoons tomato paste",
+  "5 sprigs thyme",
+  "Juice of one lemon",
+  "salt and pepper",
+  "2 teaspoons cumin",
+  "1 1/2 teaspoon coriander",
+  "1 teaspoon cinnamon"
+ ],
+ "equipment": [
+  "Skillet",
+  "Baking dish",
+  "Oven"
+ ],
+ "steps": [
+  "Preheat the oven to 375°.",
+  "Stir-fry the onion, garlic, celery and tomatoes in the oil for 2 to 4 minutes until fragrant, add the freekeh and stir, then move to the baking dish.",
+  "Stir-fry the shrimp and calamari and remove them once the shrimp begin to turn pink and the calamari edges curl up.",
+  "Add the stock, tomato paste, spices, thyme, olives and lemon juice to the dish and roast 20 to 30 minutes, until the freekeh swells, the liquid is reduced and the vegetables are tender. Top with the seafood."
+ ],
+ "chefTips": [
+  "Cues: shrimp pink; calamari edges curl; freekeh swollen with liquid reduced. When the seafood goes back in is not stated; add it at the end so it stays tender (our note).",
+  "The page calls the vessel a 'heat resistant dish' in one step and a 'roasting pan' in others."
+ ],
+ "commonMistakes": [
+  "Adding the seafood too early so it turns rubbery."
+ ],
+ "servedWith": [
+  "Salad (EGY041)"
+ ],
+ "relatedRecipes": [
+  "EGY035",
+  "EGY022",
+  "EGY026"
+ ],
+ "sources": [
+  "Adapted from 'Tagen seafood we Freekeh: One Pot Seafood-Freekeh Bake', Chez Nermine. BYLINE AS PRINTED: 'Nermine Mansour'. Date: hidden page data gives published 2019-12-07. Chez Nermine pages show no visible printed date; the date given is from the page address or hidden page data and is unconfirmed. Serves 6 to 8 (single reading).",
+  "SOURCING STATUS: ingredients TWO-PASS. Method wording is our own summary of the page; times and cues were relayed by a research tool and should be checked against the live page. Prep and cook totals are our own estimates from the times the page does give."
+ ],
+ "storage": "Refrigerate up to 2 days (our estimate).",
+ "reheating": "Warm gently.",
+ "healthBenefits": [
+  "Freekeh and seafood make a high-fibre, high-protein meal."
+ ],
+ "culturalNote": "Nermine Mansour says it was inspired by her hometown Alexandria, is usually cooked in a clay pot, and that freekeh is a great alternative to rice.",
+ "nutrition": {
+  "cal": 470,
+  "protein": 30,
+  "carbs": 58,
+  "fat": 14,
+  "fiber": 11,
+  "sodium": 820
+ },
+ "keywords": [
+  "seafood freekeh",
+  "tagen",
+  "alexandria",
+  "chez nermine"
+ ]
+},
+{
+ "id": "EGY037",
+ "title": "Maraket Ferakh (Egyptian Mastic-Scented Chicken Broth)",
+ "localName": "Maraket ferakh — مرقة فراخ",
+ "emoji": "🍲",
+ "country": "Egypt",
+ "countryFlag": "🇪🇬",
+ "region": "North Africa",
+ "community": "Egyptian home table",
+ "cuisine": "Egyptian",
+ "category": "Soups & Stews",
+ "course": "Soup",
+ "diff": "Easy",
+ "prepTime": 20,
+ "restTime": 60,
+ "cookTime": 150,
+ "time": 230,
+ "servings": 8,
+ "cal": 180,
+ "rating": 4.8,
+ "reviews": 53,
+ "tags": [
+  "halal",
+  "gluten-free",
+  "dairy",
+  "comfort-food",
+  "make-ahead"
+ ],
+ "author": "Nermine Mansour (Chez Nermine)",
+ "authorEmoji": "👩‍🍳",
+ "desc": "A whole cut-up chicken seared with garlic, ginger, mastic and whole spices and simmered on low for two hours into a clear, fragrant broth.",
+ "longDesc": "A seasoned chicken is seared in ghee with whole spices, onion and garlic until the skin is crisp and golden, covered with boiling water and simmered undisturbed on low for two hours, until fork-tender. It cools 30 minutes and is strained. The base for many Egyptian dishes.",
+ "ingredients": [
+  "2 tablespoons butter",
+  "1 whole chicken cut in pieces, sprinkled with salt and pepper",
+  "1 big onion, halved",
+  "10 whole garlic cloves",
+  "1 piece ginger, 1 X inch, whole and peeled",
+  "3 bay leaves",
+  "3 cardamom pods, bruised",
+  "2 mastic resins",
+  "5 whole allspice berries",
+  "10 whole black peppercorn",
+  "1 teaspoon 7 spices",
+  "A sprig of rosemary or time, optional",
+  "Stalks of fresh parsley",
+  "2-4 cups of leftovers of uncooked peppers, tomatoes, celery, parsley, cilantro",
+  "Salt and pepper to taste",
+  "2 Liters of boiling water"
+ ],
+ "equipment": [
+  "Large heavy pot with lid",
+  "Fine sieve"
+ ],
+ "steps": [
+  "Season the chicken with salt and pepper at least 1 hour ahead, preferably overnight in the fridge.",
+  "Heat 2 tablespoons of ghee and stir the whole spices for 1 minute until fragrant.",
+  "Sear the onion and garlic, then the chicken until the skin is crisp and golden.",
+  "Add the boiling water, vegetable scraps and herbs, cover, and simmer undisturbed on low for two hours.",
+  "Check that the chicken is fork-tender; if not, cook 30 minutes more. Cool 30 minutes and strain."
+ ],
+ "chefTips": [
+  "Cues: spices fragrant; skin crisp and golden; chicken fork-tender. The pre-seasoning is NO CUE, TIME ONLY.",
+  "The ingredient list says butter and the method says ghee. The page says avoid adding cold water at any cost; this is a flavour claim, not a food-safety rule."
+ ],
+ "commonMistakes": [
+  "Adding cold water, which the author says dulls flavour.",
+  "Boiling hard instead of a low simmer."
+ ],
+ "servedWith": [
+  "Rice with vermicelli (EGY020)"
+ ],
+ "relatedRecipes": [
+  "EGY038",
+  "EGY040"
+ ],
+ "sources": [
+  "Adapted from 'Maraket Ferakh: Egyptian Chicken Broth: مرقة فراخ', Chez Nermine. BYLINE AS PRINTED: 'Nermine Mansour'. Date: hidden page data gives published 2023-02-15, modified 2026-01-16. Chez Nermine pages show no visible printed date; the date given is from the page address or hidden page data and is unconfirmed. Yield not stated; servings are our estimate.",
+  "SOURCING STATUS: ingredients TWO-PASS. Method wording is our own summary of the page; times and cues were relayed by a research tool and should be checked against the live page. Prep and cook totals are our own estimates from the times the page does give.",
+  "FLAG: the author quotes a dietitian on immune and collagen benefits; the page does not verify these claims."
+ ],
+ "storage": "Page: refrigerate sealed or freeze in dated bags; no time limit is printed.",
+ "reheating": "Reheat to a gentle simmer.",
+ "healthBenefits": [
+  "Warming and hydrating; a source of protein."
+ ],
+ "culturalNote": "Nermine Mansour writes 'Mastic to chicken broth is like vanilla to eggs.'",
+ "nutrition": {
+  "cal": 180,
+  "protein": 17,
+  "carbs": 4,
+  "fat": 11,
+  "fiber": 1,
+  "sodium": 480
+ },
+ "keywords": [
+  "chicken broth",
+  "maraket ferakh",
+  "mastic",
+  "chez nermine"
+ ]
+},
+{
+ "id": "EGY038",
+ "title": "Shorbet Tarbia (Egyptian Lemon-Chicken Soup)",
+ "localName": "Shorbet tarbiya — شوربة تربية",
+ "emoji": "🍋",
+ "country": "Egypt",
+ "countryFlag": "🇪🇬",
+ "region": "North Africa",
+ "community": "Egyptian home table",
+ "cuisine": "Egyptian",
+ "category": "Soups & Stews",
+ "course": "Soup",
+ "diff": "Medium",
+ "prepTime": 15,
+ "restTime": 0,
+ "cookTime": 120,
+ "time": 135,
+ "servings": 4,
+ "cal": 240,
+ "rating": 4.9,
+ "reviews": 195,
+ "tags": [
+  "halal",
+  "dairy",
+  "contains-gluten",
+  "comfort-food"
+ ],
+ "author": "Nermine Mansour (Chez Nermine)",
+ "authorEmoji": "👩‍🍳",
+ "desc": "Shredded chicken in a lemony roux-thickened stock made from a spiced bone-in chicken broth, with optional toasted orzo.",
+ "longDesc": "A bone-in chicken breast is seared until the skin is crisp and golden and simmered 1½ to 2 hours with vegetables, mastic and whole spices until fork-tender and the vegetables collapse. A butter and flour roux is cooked to a golden paste, 2 cups of the broth are whisked in with lemon juice, and the shredded chicken is added.",
+ "ingredients": [
+  "// Soup",
+  "2 tablespoons butter",
+  "1 tablespoon all purpose flour",
+  "2 cups chicken broth (recipe below)",
+  "Toasted orzo, optional",
+  "lemon juice, as needed",
+  "2 chicken breasts, shredded",
+  "Salt and pepper to taste",
+  "// Broth",
+  "Whole chicken breast, bone in",
+  "1 tablespoon ghee or butter",
+  "1 tablespoon unflavored oil, such as canola",
+  "1 celery stalk, coarsely chopped",
+  "1 medium carrot, coarsely chopped",
+  "1 onion, quartered",
+  "5-7 gloves garlic, skin on",
+  "1 leek, coarsely chopped, optional",
+  "Handful parsley stalks",
+  "3 bay leaves",
+  "3 cardamom, bruised",
+  "2 mastic resins, optional",
+  "1 tablespoon Lebanese 7 spices or Egyptian Boharat",
+  "5 allspice whole berries",
+  "10 black peppercorns berries",
+  "1/2 teaspoon ground cinnamon",
+  "Salt & pepper to taste"
+ ],
+ "equipment": [
+  "Large pot",
+  "Saucepan",
+  "Strainer"
+ ],
+ "steps": [
+  "Sear the chicken breast in the fat until the skin is crispy and golden.",
+  "Add the vegetables, spices and hot water and simmer one and a half to two hours, or until the chicken is fork-tender and the vegetables have collapsed. Strain.",
+  "Melt 2 tablespoons butter, stir in the flour until a golden paste forms, and whisk in 2 cups of the broth. Add the juice of half a lemon.",
+  "Add the shredded chicken, and toasted orzo if you like, and season."
+ ],
+ "chefTips": [
+  "Cues: skin crispy and golden; chicken fork-tender; roux a golden paste. The ingredient list says 1 tablespoon flour but the method says 2 tablespoons.",
+  "The author calls it an eggless version of the Mediterranean chicken soup, eclipsed by avgolemono."
+ ],
+ "commonMistakes": [
+  "Adding the lemon to boiling soup, which can dull its brightness (our tip)."
+ ],
+ "servedWith": [
+  "Toasted baladi bread (EGY046)"
+ ],
+ "relatedRecipes": [
+  "EGY037",
+  "EGY040",
+  "EGY039"
+ ],
+ "sources": [
+  "Adapted from 'Shorbet Tarbia (Egyptian Lemon-Chicken Soup): شوربة تربية', Chez Nermine. BYLINE AS PRINTED: 'Nermine Mansour'. Date: hidden page data gives published 2022-10-23, modified 2025-02-21. Chez Nermine pages show no visible printed date; the date given is from the page address or hidden page data and is unconfirmed. Yield not stated; servings are our estimate.",
+  "SOURCING STATUS: ingredients and method TWO-PASS. Method wording is our own summary of the page; times and cues were relayed by a research tool and should be checked against the live page. Prep and cook totals are our own estimates from the times the page does give.",
+  "PAGE DEFECTS kept: 'gloves garlic', 'black peppercorns berries'; the method says 'off the cattle'."
+ ],
+ "storage": "Refrigerate up to 3 days (our estimate).",
+ "reheating": "Reheat gently.",
+ "healthBenefits": [
+  "Lean chicken protein in a warming broth."
+ ],
+ "culturalNote": "Nermine Mansour ate it at her grandmother Aida's house and calls it an eggless rendition of the Mediterranean chicken soup, eclipsed by avgolemono.",
+ "nutrition": {
+  "cal": 240,
+  "protein": 28,
+  "carbs": 10,
+  "fat": 10,
+  "fiber": 1,
+  "sodium": 620
+ },
+ "keywords": [
+  "shorbet tarbia",
+  "lemon chicken soup",
+  "egyptian soup"
+ ]
+},
+{
+ "id": "EGY039",
+ "title": "Shorbet Ades (Egyptian Spiced Lentil Soup)",
+ "localName": "Shorbet ads — شوربة عدس",
+ "emoji": "🥣",
+ "country": "Egypt",
+ "countryFlag": "🇪🇬",
+ "region": "North Africa",
+ "community": "Egyptian winter table",
+ "cuisine": "Egyptian",
+ "category": "Soups & Stews",
+ "course": "Soup",
+ "diff": "Easy",
+ "prepTime": 15,
+ "restTime": 30,
+ "cookTime": 25,
+ "time": 70,
+ "servings": 8,
+ "cal": 250,
+ "rating": 4.7,
+ "reviews": 184,
+ "tags": [
+  "vegetarian",
+  "dairy-free",
+  "high-fiber",
+  "comfort-food",
+  "budget",
+  "ramadan"
+ ],
+ "author": "Nermine Mansour (Chez Nermine)",
+ "authorEmoji": "👩‍🍳",
+ "desc": "Orange lentils simmered with onion, carrot, celery and a curry-cumin spice mix, blended smooth, sieved and served with sumac-toasted bread.",
+ "longDesc": "Orange lentils soak 30 minutes and are rinsed, then simmered with sautéed vegetables, stock and spices on low for 10 minutes. The soup is cooled, blended fine, sieved, reheated and salted, and served with oven-toasted bread seasoned with sumac.",
+ "ingredients": [
+  "2 cups orange lentil",
+  "2 tablespoons neutral oil such as canola oil",
+  "1 small onion, coarsely chopped",
+  "1 medium carrot, peeled and cubed",
+  "1 celery stalk with leaves, chopped",
+  "2 garlic cloves, sliced",
+  "8 cups broth, chicken, meat or vegetables",
+  "1 tablespoon lemon juice",
+  "2 teaspoons curry powder",
+  "1 teaspoon ground cumin",
+  "½ teaspoon ground coriander",
+  "½ teaspoon ginger powder",
+  "½ teaspoon turmeric",
+  "½ teaspoon sweet paprika",
+  "¼ cayenne pepper, optional",
+  "Salt and pepper",
+  "// Garnish",
+  "Whipping cream or sour cream, optional",
+  "Celery leaves, whole or chopped",
+  "Toasted bread, recipe follows",
+  "Pita bread or Lavash",
+  "// Toasted bread",
+  "1 teaspoon sumac",
+  "Salt and pepper",
+  "Canola oil"
+ ],
+ "equipment": [
+  "Large pot",
+  "Blender",
+  "Fine sieve",
+  "Baking sheet"
+ ],
+ "steps": [
+  "Soak the lentils in cold water for 30 minutes, then rinse under running water.",
+  "Heat the oil until hot but not smoky and sauté the vegetables a few minutes until they wilt.",
+  "Add the lentils and stock and bring to a boil. Add all the spices except the salt and simmer on low for 10 minutes.",
+  "Cool the soup, blend it finely, sieve, reheat and add the salt.",
+  "Toast the bread with oil, sumac, salt and pepper in a 150° oven for 6 to 8 minutes until crispy and golden brown. Serve with cream, celery leaves and lemon."
+ ],
+ "chefTips": [
+  "Cues: vegetables wilted; bread crispy and golden. The lentil soak is NO CUE, TIME ONLY. She advises avoiding high heat, which scorches, and making it a day ahead.",
+  "The cayenne line has no unit on the page ('¼ cayenne pepper, optional'); use a pinch to taste."
+ ],
+ "commonMistakes": [
+  "Scorching the pot on high heat."
+ ],
+ "servedWith": [
+  "Toasted baladi bread (EGY046)"
+ ],
+ "relatedRecipes": [
+  "EGY038",
+  "EGY040"
+ ],
+ "sources": [
+  "Adapted from 'Shorbet Ades (Egyptian Spiced Lentil Soup) شوربة عدس', Chez Nermine. BYLINE AS PRINTED: 'Nermine Mansour'. Date: hidden page data gives published 2025-12-15, modified 2026-02-18. Chez Nermine pages show no visible printed date; the date given is from the page address or hidden page data and is unconfirmed. Yield not stated (only a scaler); servings are our estimate.",
+  "SOURCING STATUS: ingredients and method TWO-PASS. Method wording is our own summary of the page; times and cues were relayed by a research tool and should be checked against the live page. Prep and cook totals are our own estimates from the times the page does give.",
+  "DISAGREEMENT kept: Egyptian Streets (Amina Zaineldine, 17 January 2022) uses 150g red or yellow lentils with tomato, onion, carrot, sweet potato and 500ml water or stock, no soak, simmers 15 to 20 minutes then 5 more after blending, and serves with lemon and toasted baladi bread."
+ ],
+ "storage": "Refrigerate up to 3 days (our estimate); the page suggests making it a day ahead.",
+ "reheating": "Reheat gently, thinning with stock.",
+ "healthBenefits": [
+  "Lentils provide plant protein, iron and fibre."
+ ],
+ "culturalNote": "Nermine Mansour writes that her mother made it all the time in winter in Alexandria. Zaineldine calls lentil soup a national staple with as many recipes as people who have made it.",
+ "nutrition": {
+  "cal": 250,
+  "protein": 14,
+  "carbs": 40,
+  "fat": 5,
+  "fiber": 10,
+  "sodium": 620
+ },
+ "keywords": [
+  "shorbet ades",
+  "lentil soup",
+  "egyptian lentil soup",
+  "chez nermine"
+ ]
+},
+{
+ "id": "EGY040",
+ "title": "Shorbet Lesan Asfour (Orzo Soup)",
+ "localName": "Shorbet lisan asfour — شوربة لسان العصفور",
+ "emoji": "🥣",
+ "country": "Egypt",
+ "countryFlag": "🇪🇬",
+ "region": "North Africa",
+ "community": "Ramadan table",
+ "cuisine": "Egyptian",
+ "category": "Soups & Stews",
+ "course": "Soup",
+ "diff": "Easy",
+ "prepTime": 5,
+ "restTime": 0,
+ "cookTime": 15,
+ "time": 20,
+ "servings": 8,
+ "cal": 300,
+ "rating": 4.8,
+ "reviews": 232,
+ "tags": [
+  "dairy",
+  "contains-gluten",
+  "ramadan",
+  "quick",
+  "kid-friendly"
+ ],
+ "author": "Sherry El-Gergawi (Ahram Online)",
+ "authorEmoji": "📰",
+ "desc": "Orzo stirred in butter until golden brown, then simmered ten minutes in chicken stock.",
+ "longDesc": "A very simple Ramadan soup: a pack of orzo (lesan asfour, 500 gm) is stirred in butter until golden brown, chicken stock is added and the pot is left on medium heat for ten minutes.",
+ "ingredients": [
+  "1 pack orzo (Lesan asfour) 500gm",
+  "3 cups chicken stock",
+  "1 tbsp butter",
+  "Salt and black pepper"
+ ],
+ "equipment": [
+  "Saucepan"
+ ],
+ "steps": [
+  "Melt the butter in a saucepan and stir the orzo in it until it turns golden brown.",
+  "Add the chicken stock and season with salt and pepper.",
+  "Leave for ten minutes on medium heat, then serve."
+ ],
+ "chefTips": [
+  "Cue: orzo golden brown. 500 gm orzo to 3 cups of stock is very thick as printed; add more stock for a soup (our note)."
+ ],
+ "commonMistakes": [
+  "Letting the orzo catch and darken beyond golden."
+ ],
+ "servedWith": [
+  "White rice (EGY021)"
+ ],
+ "relatedRecipes": [
+  "EGY038",
+  "EGY039",
+  "EGY037"
+ ],
+ "sources": [
+  "Adapted from 'Classic Ramadan recipes from Ahram Online: II' (orzo soup), Ahram Online. BYLINE AS PRINTED: 'Sherry El-Gergawi'. Date as printed: 'Sunday 29 Jul 2012'. Yield not printed.",
+  "SOURCING STATUS: ingredients and method TWO-PASS. Method wording is our own summary of the page; times and cues were relayed by a research tool and should be checked against the live page. Prep and cook totals are our own estimates from the times the page does give.",
+  "DISAGREEMENT kept: Food Dolls (first names only: Alia and Radwa, so not used) make a whole-chicken broth soup with 8 oz orzo and mastic."
+ ],
+ "storage": "Best fresh; orzo absorbs liquid on standing.",
+ "reheating": "Reheat with extra stock.",
+ "healthBenefits": [
+  "A light, quick comforting soup."
+ ],
+ "culturalNote": "The article says no Ramadan is complete without traditional Egyptian favourites (unattributed introduction).",
+ "nutrition": {
+  "cal": 300,
+  "protein": 10,
+  "carbs": 52,
+  "fat": 5,
+  "fiber": 2,
+  "sodium": 620
+ },
+ "keywords": [
+  "orzo soup",
+  "lesan asfour",
+  "ramadan soup",
+  "ahram online"
+ ]
+},
+{
+ "id": "EGY041",
+ "title": "Oriental Salad (Ahram Online Ramadan Recipe)",
+ "localName": "Salata sharqi — سلطة شرقي",
+ "emoji": "🥗",
+ "country": "Egypt",
+ "countryFlag": "🇪🇬",
+ "region": "North Africa",
+ "community": "Ramadan table",
+ "cuisine": "Egyptian",
+ "category": "Salads & Mezze",
+ "course": "Salad",
+ "diff": "Easy",
+ "prepTime": 15,
+ "restTime": 0,
+ "cookTime": 0,
+ "time": 15,
+ "servings": 6,
+ "cal": 70,
+ "rating": 4.5,
+ "reviews": 195,
+ "tags": [
+  "vegan",
+  "vegetarian",
+  "gluten-free",
+  "dairy-free",
+  "salad",
+  "no-cook",
+  "quick"
+ ],
+ "author": "Sherry El-Gergawi (Ahram Online)",
+ "authorEmoji": "📰",
+ "desc": "Lettuce, cucumbers, arugula, tomatoes, onion, parsley and radish in a lemon, white vinegar and olive oil dressing.",
+ "longDesc": "A big mixed salad from a Ramadan column: a head of lettuce, four cucumbers, two packs of arugula, three tomatoes, an onion, parsley and a radish, dressed with the juice of a lemon, a tablespoon each of white vinegar and olive oil, salt and pepper. The page gives no times.",
+ "ingredients": [
+  "1 head lettuce",
+  "4 cucumbers",
+  "1 onion",
+  "2 packs arugula",
+  "3 tomatoes",
+  "1 pack parsley",
+  "1 radish",
+  "// Dressing",
+  "1 lemon",
+  "1 tbsp white vinegar",
+  "1 tbsp olive oil",
+  "salt, black pepper"
+ ],
+ "equipment": [
+  "Large bowl"
+ ],
+ "steps": [
+  "Chop the lettuce, cucumbers, onion, arugula, tomatoes, parsley and radish and combine in a large bowl.",
+  "Whisk the lemon juice, vinegar, olive oil, salt and pepper together.",
+  "Toss the dressing with the salad just before serving."
+ ],
+ "chefTips": [
+  "The page gives no pack sizes or cutting instructions; adjust to taste (our note).",
+  "Dress at the last moment to keep the leaves crisp."
+ ],
+ "commonMistakes": [
+  "Dressing early so the leaves wilt."
+ ],
+ "servedWith": [
+  "White rice (EGY021)"
+ ],
+ "relatedRecipes": [
+  "EGY044",
+  "EGY042"
+ ],
+ "sources": [
+  "Adapted from 'Classic Ramadan recipes from Ahram Online: II' (Oriental Salad), Ahram Online. BYLINE AS PRINTED: 'Sherry El-Gergawi'. Date as printed: 'Sunday 29 Jul 2012'. Yield not printed; servings are our estimate.",
+  "SOURCING STATUS: ingredients TWO-PASS; no times on the page. Method wording is our own summary of the page; times and cues were relayed by a research tool and should be checked against the live page."
+ ],
+ "storage": "Best fresh.",
+ "reheating": "Serve cold.",
+ "healthBenefits": [
+  "Raw vegetables and herbs provide vitamin C and fibre."
+ ],
+ "culturalNote": "Part of a Ramadan recipe column; the page gives no further cultural remarks.",
+ "nutrition": {
+  "cal": 70,
+  "protein": 3,
+  "carbs": 10,
+  "fat": 3,
+  "fiber": 4,
+  "sodium": 30
+ },
+ "keywords": [
+  "oriental salad",
+  "egyptian salad",
+  "ramadan salad",
+  "ahram online"
+ ]
+},
+{
+ "id": "EGY042",
+ "title": "Egyptian Tehina Sauce",
+ "localName": "Salsat el-tehina — صوص الطحينة",
+ "emoji": "🥣",
+ "country": "Egypt",
+ "countryFlag": "🇪🇬",
+ "region": "North Africa",
+ "community": "Egyptian table",
+ "cuisine": "Egyptian",
+ "category": "Sauces & Condiments",
+ "course": "Sauce",
+ "diff": "Easy",
+ "prepTime": 10,
+ "restTime": 0,
+ "cookTime": 0,
+ "time": 10,
+ "servings": 8,
+ "cal": 150,
+ "rating": 4.7,
+ "reviews": 39,
+ "tags": [
+  "vegan",
+  "vegetarian",
+  "gluten-free",
+  "dairy-free",
+  "condiment",
+  "no-cook",
+  "make-ahead"
+ ],
+ "author": "Nermine Mansour (Chez Nermine)",
+ "authorEmoji": "👩‍🍳",
+ "desc": "Tahini loosened with warm water until it reaches the consistency of béchamel and turns pale, then seasoned with vinegar, lime, cumin, coriander and garlic.",
+ "longDesc": "One cup of tehina paste is stirred with warm water, starting with half a cup, adding more and stirring each time until the sauce reaches the consistency of béchamel and its colour becomes lighter. Vinegar, oil, lime juice, spices, garlic and optional parsley are stirred in.",
+ "ingredients": [
+  "1 cup tehina paste",
+  "3/4 – 1 cup warm water",
+  "1 tablespoon olive oil or regular oil",
+  "1 tablespoon white distilled vinegar",
+  "1 tablespoon lime juice",
+  "1 teaspoon salt",
+  "1/2 teaspoon cumin",
+  "1/2 teaspoon coriander",
+  "1/4 teaspoon paprika",
+  "3 garlic cloves, minced",
+  "1/4 cup parsley, finally chopped (optional)",
+  "// Garnish",
+  "Parsley leaves",
+  "Dash of paprika or Aleppo pepper",
+  "Drizzle of olive oil"
+ ],
+ "equipment": [
+  "Mixing bowl",
+  "Whisk or spoon"
+ ],
+ "steps": [
+  "Put the tahini paste in a bowl and add warm water, starting with ½ cup and stirring in more each time, until the sauce reaches the consistency of béchamel sauce and its colour becomes lighter.",
+  "Stir in the vinegar, oil, lime juice, salt, spices, garlic and parsley.",
+  "Garnish with parsley, paprika and a drizzle of olive oil."
+ ],
+ "chefTips": [
+  "Cues: consistency of béchamel; colour lighter. Warm water makes the sauce combine smoothly.",
+  "Page storage: airtight in the fridge for almost a month; bring to room temperature before serving. Storing the tahini paste itself in a dark, dry spot is advised."
+ ],
+ "commonMistakes": [
+  "Adding all the water at once, which can split the paste."
+ ],
+ "servedWith": [
+  "Ta'meya (EGY002)",
+  "Hawawshi (EGY006)"
+ ],
+ "relatedRecipes": [
+  "EGY043",
+  "EGY045"
+ ],
+ "sources": [
+  "Adapted from 'Egyptian Tehina sauce: صوص الطحينة على الطريقة المصرية', Chez Nermine. BYLINE AS PRINTED: 'Nermine Mansour'. Date: hidden page data gives published 2023-12-02, modified 2025-02-24. Chez Nermine pages show no visible printed date; the date given is from the page address or hidden page data and is unconfirmed. Yield not stated; servings are our estimate.",
+  "SOURCING STATUS: ingredients TWO-PASS (differing only in italic markup). Method wording is our own summary of the page; times and cues were relayed by a research tool and should be checked against the live page. Prep and cook totals are our own estimates from the times the page does give."
+ ],
+ "storage": "Airtight in the fridge for almost a month (page); make up to a week in advance.",
+ "reheating": "Bring to room temperature and stir; loosen with warm water.",
+ "healthBenefits": [
+  "Sesame provides calcium and healthy fats."
+ ],
+ "culturalNote": "Nermine Mansour calls tehina 'our Egyptian ketchup-like condiment'.",
+ "nutrition": {
+  "cal": 150,
+  "protein": 4,
+  "carbs": 6,
+  "fat": 13,
+  "fiber": 2,
+  "sodium": 290
+ },
+ "keywords": [
+  "tahini sauce",
+  "tehina",
+  "egyptian tahini",
+  "chez nermine"
+ ]
+},
+{
+ "id": "EGY043",
+ "title": "Baba Ghanoush (Eggplant Tahini Dip)",
+ "localName": "Baba ghanoug — بابا غنوج",
+ "emoji": "🍆",
+ "country": "Egypt",
+ "countryFlag": "🇪🇬",
+ "region": "North Africa",
+ "community": "Egyptian mezze",
+ "cuisine": "Egyptian",
+ "category": "Salads & Mezze",
+ "course": "Dip",
+ "diff": "Easy",
+ "prepTime": 10,
+ "restTime": 0,
+ "cookTime": 45,
+ "time": 55,
+ "servings": 5,
+ "cal": 130,
+ "rating": 4.8,
+ "reviews": 304,
+ "tags": [
+  "vegan",
+  "vegetarian",
+  "gluten-free",
+  "dairy-free",
+  "condiment",
+  "make-ahead"
+ ],
+ "author": "Nermine Mansour (Chez Nermine)",
+ "authorEmoji": "👩‍🍳",
+ "desc": "Roasted eggplant mashed with garlic, lemon, olive oil and a loosened tahini, finished with paprika and fresh herbs.",
+ "longDesc": "Halved, oiled eggplant roasts at 450°F until the interior is soft and the skin peels off easily, about 35 to 45 minutes. The flesh is mashed with garlic, lemon, oil, herbs, spices and diluted tahini until creamy. The page also gives an alternate whole-foil method.",
+ "ingredients": [
+  "1 eggplant, Globe American eggplant",
+  "2 tablespoons olive oil",
+  "½ lemon, juiced",
+  "2-4 tablespoons tahini, diluted in 3-4 tablespoons warm water",
+  "1 clove of garlic, minced",
+  "1 teaspoon coriander, optional",
+  "1 teaspoon cumin, optional",
+  "1/2 teaspoon sweet paprika",
+  "1/2 teaspoon Aleppo pepper, optional",
+  "Salt and pepper, to taste",
+  "Fresh cilantro, parsley, or basil, chopped, (I prefer parsley)"
+ ],
+ "equipment": [
+  "Baking sheet",
+  "Mixing bowl",
+  "Fork"
+ ],
+ "steps": [
+  "Halve the eggplant, oil it and roast at 450°F until the interior is soft and the skin peels off easily, about 35 to 45 minutes.",
+  "Mash the flesh and mix in the garlic, lemon, oil, herbs, spices and the diluted tahini until creamy.",
+  "Serve with bread; it can be made a day or two ahead."
+ ],
+ "chefTips": [
+  "Cue: interior soft and skin peels off easily. Alternate method from her notes: wrap the whole pierced eggplant in foil and roast on a rack at 375°F for 20 to 25 minutes, or until too soft; the two methods disagree on time and temperature.",
+  "Avoid double dipping, says the page."
+ ],
+ "commonMistakes": [
+  "Under-roasting, which leaves a bitter, stringy dip."
+ ],
+ "servedWith": [
+  "Aish baladi (EGY046)"
+ ],
+ "relatedRecipes": [
+  "EGY042",
+  "EGY044"
+ ],
+ "sources": [
+  "Adapted from 'Baba Ghanoush (Eggplant Tahini Dip) بابا غنوج', Chez Nermine. BYLINE AS PRINTED: 'Nermine Mansour'. Date: hidden page data gives published 2024-04-13, modified 2025-02-24. Chez Nermine pages show no visible printed date; the date given is from the page address or hidden page data and is unconfirmed. The body says one eggplant serves 4 to 6 (single reading).",
+  "SOURCING STATUS: ingredients TWO-PASS. Method wording is our own summary of the page; times and cues were relayed by a research tool and should be checked against the live page. Prep and cook totals are our own estimates from the times the page does give.",
+  "FLAG: the page credits Meritte Barhoma as the recipe source and spells it 'Baba Ghanoug' in Egypt; storage 'up of five days' is the page's misprint."
+ ],
+ "storage": "Refrigerate up to 5 days (page).",
+ "reheating": "Serve cold or at room temperature.",
+ "healthBenefits": [
+  "Eggplant provides fibre; tahini adds calcium."
+ ],
+ "culturalNote": "Nermine Mansour says it is part of the mezze platter and is spelled 'Baba Ghanoug' in Egypt.",
+ "nutrition": {
+  "cal": 130,
+  "protein": 3,
+  "carbs": 9,
+  "fat": 10,
+  "fiber": 4,
+  "sodium": 150
+ },
+ "keywords": [
+  "baba ghanoush",
+  "eggplant dip",
+  "egyptian mezze",
+  "chez nermine"
+ ]
+},
+{
+ "id": "EGY044",
+ "title": "Salatet Bangar (Egyptian Roasted Beet Salad)",
+ "localName": "Salatet bangar — سلطة بنجر",
+ "emoji": "🥗",
+ "country": "Egypt",
+ "countryFlag": "🇪🇬",
+ "region": "North Africa",
+ "community": "Egyptian home table",
+ "cuisine": "Egyptian",
+ "category": "Salads & Mezze",
+ "course": "Salad",
+ "diff": "Easy",
+ "prepTime": 15,
+ "restTime": 30,
+ "cookTime": 60,
+ "time": 105,
+ "servings": 4,
+ "cal": 140,
+ "rating": 4.6,
+ "reviews": 257,
+ "tags": [
+  "vegan",
+  "vegetarian",
+  "gluten-free",
+  "dairy-free",
+  "salad",
+  "cold",
+  "make-ahead"
+ ],
+ "author": "Nermine Mansour (Chez Nermine)",
+ "authorEmoji": "👩‍🍳",
+ "desc": "Beets wrapped and roasted until easily pierced, cooled, diced and tossed with cumin-garlic lime dressing and pickled red onions.",
+ "longDesc": "Fresh beets are wrapped in parchment and foil and roasted for 1 hour at 375°F, or until easily pierced, cooled completely and diced. They are dressed with olive oil, vinegar, lime, cumin and garlic and topped with quick pickled red onions.",
+ "ingredients": [
+  "2 fresh beets",
+  "2 tablespoons pickled red onions, recipe follows",
+  "2 tablespoons olive oil",
+  "1 tablespoon white distilled vinegar",
+  "1 tablespoon lime juice",
+  "12 teaspoon ground cumin",
+  "½ teaspoon minced garlic",
+  "Salt and pepper to taste",
+  "// Pickled onions",
+  "1 small red onion, thinly sliced",
+  "2 tablespoons white distilled vinegar",
+  "1 tablespoon lime juice",
+  "½ teaspoon Himalayan salt",
+  "12 teaspoon ground black pepper"
+ ],
+ "equipment": [
+  "Parchment and foil",
+  "Baking tray",
+  "Small jar"
+ ],
+ "steps": [
+  "Wrap the beets in parchment then foil and roast for 1 hour at 375°F or until you can easily pierce them. Cool completely.",
+  "Pickled onions: toss the sliced red onion with the vinegar, lime juice, salt and pepper and refrigerate at least 30 minutes.",
+  "Dice the beets (¼ inch on the card), toss with the oil, vinegar, lime juice, cumin, garlic, salt and pepper and top with the pickled onions."
+ ],
+ "chefTips": [
+  "Cue: beets easily pierced. The onion rest is NO CUE, TIME ONLY (at least 30 minutes) and is a quick onion pickle, not a ferment.",
+  "The page misprints the cumin as '12 teaspoon' (probably ½ teaspoon) and the pepper in the pickle likewise; and disagrees on oven time and dice size (card ¼ inch, body 1/8 inch)."
+ ],
+ "commonMistakes": [
+  "Dicing before the beets cool, which bleeds and bruises them."
+ ],
+ "servedWith": [
+  "Aish baladi (EGY046)"
+ ],
+ "relatedRecipes": [
+  "EGY041",
+  "EGY043"
+ ],
+ "sources": [
+  "Adapted from 'Egyptian Beet Salad (Salatet Bangar): سلطةً بنجر', Chez Nermine. BYLINE AS PRINTED: 'Nermine Mansour'. Date: hidden page data gives published 2024-12-13, modified 2025-05-13. Chez Nermine pages show no visible printed date; the date given is from the page address or hidden page data and is unconfirmed. Servings 4 (single reading). The card's prep 15 minutes, cook 1 hour and total 1 hour 45 do not add up.",
+  "SOURCING STATUS: ingredients TWO-PASS. Method wording is our own summary of the page; times and cues were relayed by a research tool and should be checked against the live page. Prep and cook totals are our own estimates from the times the page does give.",
+  "PAGE DEFECTS kept: card dressing sentence garbled; the body gives 400°F for 1 hour to 90 minutes and the FAQ 375°F for 40 to 60 minutes. The author claims aluminium foil 'releases toxins' (unsourced; we do not repeat that as fact)."
+ ],
+ "storage": "Refrigerate airtight up to 2 days.",
+ "reheating": "Serve cold.",
+ "healthBenefits": [
+  "Beets provide folate and nitrates."
+ ],
+ "culturalNote": "The page presents it among nutritious Egyptian salads without further cultural remarks.",
+ "nutrition": {
+  "cal": 140,
+  "protein": 2,
+  "carbs": 14,
+  "fat": 9,
+  "fiber": 3,
+  "sodium": 200
+ },
+ "keywords": [
+  "beet salad",
+  "salatet bangar",
+  "egyptian beet salad",
+  "chez nermine"
+ ]
+},
+{
+ "id": "EGY045",
+ "title": "Egyptian Peanut Dukkah",
+ "localName": "Dukkah — دقة",
+ "emoji": "🥜",
+ "country": "Egypt",
+ "countryFlag": "🇪🇬",
+ "region": "North Africa",
+ "community": "Egyptian table",
+ "cuisine": "Egyptian",
+ "category": "Sauces & Condiments",
+ "course": "Condiment",
+ "diff": "Easy",
+ "prepTime": 5,
+ "restTime": 30,
+ "cookTime": 20,
+ "time": 55,
+ "servings": 12,
+ "cal": 90,
+ "rating": 4.7,
+ "reviews": 242,
+ "tags": [
+  "vegan",
+  "vegetarian",
+  "gluten-free",
+  "dairy-free",
+  "condiment",
+  "contains-peanuts",
+  "make-ahead"
+ ],
+ "author": "Amina Elshafei (SBS Food)",
+ "authorEmoji": "👩‍🍳",
+ "desc": "Sesame, coriander and cumin seeds and peanuts dry-roasted separately, cooled and pounded coarsely with salt for dipping bread in olive oil.",
+ "longDesc": "Each ingredient is dry-roasted on medium heat, shaking the pan, until fragrant but not burning or smoking, then cooled to room temperature. The seeds and peanuts are pounded or processed until coarsely ground, not a fine powder, and salted. It makes about 1.3 cups and is served with olive oil, labneh and fresh bread.",
+ "ingredients": [
+  "½ cup raw white sesame seeds",
+  "¼ cup coriander seeds",
+  "¼ cup cumin seeds",
+  "½ cup raw skinless unsalted peanuts",
+  "1 tsp fine salt",
+  "extra-virgin olive oil and/ or labneh and fresh Lebanese bread, to serve"
+ ],
+ "equipment": [
+  "Dry frying pan",
+  "Mortar and pestle or food processor"
+ ],
+ "steps": [
+  "Dry-roast the sesame seeds in a pan on medium heat, shaking, until fragrant but not burning or smoking. Tip out and cool to room temperature.",
+  "Repeat with the coriander and cumin seeds, then with the peanuts.",
+  "Pound or process the cooled ingredients until coarsely ground; you do not want a fine powder.",
+  "Stir in the salt. Serve with olive oil, labneh and bread."
+ ],
+ "chefTips": [
+  "Cues: fragrant, not burning or smoking; coarsely ground. The 30-minute rest on the page is the cooling time.",
+  "The yield of 1.3 cups was read once only."
+ ],
+ "commonMistakes": [
+  "Grinding too fine, which turns the nuts to paste."
+ ],
+ "servedWith": [
+  "Aish baladi (EGY046)"
+ ],
+ "relatedRecipes": [
+  "EGY042",
+  "EGY043"
+ ],
+ "sources": [
+  "Adapted from 'Egyptian peanut dukkah', SBS Food (The Cook Up with Adam Liaw). BYLINE AS PRINTED: 'By Amina Elshafei'. Date as printed: 'Published 5 September 2024 11:01am'. Yield 'makes 1.3 cups' (single reading). Prep 5, cooking 20, resting 30 minutes (TWO-PASS).",
+  "SOURCING STATUS: ingredients TWO-PASS. Method wording is our own summary of the page; times and cues were relayed by a research tool and should be checked against the live page.",
+  "DISAGREEMENT kept: Saveur Editors (desk byline, so not used here) toast hazelnuts at 375°F for about 6 minutes with ½ cup coriander seeds. The SBS standfirst says the origins of dukkah are in Egypt, where peanuts are used widely (unattributed)."
+ ],
+ "storage": "Airtight at room temperature for a few weeks (our estimate; the page gives none).",
+ "reheating": "Not needed.",
+ "healthBenefits": [
+  "Nuts and seeds provide protein and healthy fats."
+ ],
+ "culturalNote": "The SBS standfirst states that dukkah originates in Egypt, where peanuts are widely used; this is unattributed editorial text.",
+ "nutrition": {
+  "cal": 90,
+  "protein": 3,
+  "carbs": 4,
+  "fat": 7,
+  "fiber": 2,
+  "sodium": 100
+ },
+ "keywords": [
+  "dukkah",
+  "duqqa",
+  "egyptian dukkah",
+  "sbs"
+ ]
+},
+{
+ "id": "EGY046",
+ "title": "Aish Baladi (Egyptian Whole Wheat Pita)",
+ "localName": "Aish baladi — عيش بلدي",
+ "emoji": "🫓",
+ "country": "Egypt",
+ "countryFlag": "🇪🇬",
+ "region": "North Africa",
+ "community": "Egyptian staple bread",
+ "cuisine": "Egyptian",
+ "category": "Bread",
+ "course": "Bread",
+ "diff": "Medium",
+ "prepTime": 20,
+ "restTime": 165,
+ "cookTime": 30,
+ "time": 215,
+ "servings": 8,
+ "cal": 200,
+ "rating": 4.7,
+ "reviews": 309,
+ "tags": [
+  "vegan",
+  "vegetarian",
+  "dairy-free",
+  "staple",
+  "budget",
+  "high-fiber",
+  "contains-gluten"
+ ],
+ "author": "Jean E. Pendziwol (food blog)",
+ "authorEmoji": "👩‍🍳",
+ "desc": "A whole wheat dough proofed with yeast, rolled into five-inch rounds and baked on a 500°F stone until puffed and golden, or cooked in a hot pan.",
+ "longDesc": "Warm water, a teaspoon of sugar or honey and yeast stand 10 minutes until bubbly or foamy; 1 cup of the flour is mixed in and left half an hour as a pre-ferment, then the remaining flour and salt are kneaded until smooth and elastic. The dough rises about 1½ hours until doubled, is divided into 8, flattened to about 5 inches and rests 30 minutes, then bakes on a stone at 500°F for 6 to 8 minutes, flipping halfway, until puffed up and golden.",
+ "ingredients": [
+  "300 g warm water (1 1/4 cups)",
+  "6 g sugar or honey (1 tsp)",
+  "6 g dry yeast (1 tsp)",
+  "385 g whole wheat flour (2 3/4 cups)",
+  "8 g salt (1 tsp)",
+  "cracked wheat or whole wheat flour for dusting"
+ ],
+ "equipment": [
+  "Baking stone or heavy baking sheet",
+  "Stand mixer (optional)",
+  "Rolling pin"
+ ],
+ "steps": [
+  "Mix the yeast, water and sugar or honey and let stand 10 minutes, until bubbly or foamy.",
+  "Mix in 1 cup (140 g) of the flour and leave the pre-ferment for half an hour.",
+  "Add the remaining flour and the salt. Knead until smooth and elastic (a stand mixer takes 2 minutes, then 3 more, on low).",
+  "Cover and let rise about 1½ hours, until doubled.",
+  "Punch down, divide into 8 pieces and flatten each to about 5 inches (12 cm) in diameter. Cover loosely and rest 30 minutes.",
+  "Set a stone on the middle rack and preheat to 500°F (260°C). Bake in batches 6 to 8 minutes, flipping halfway, until puffed up and golden. Or cook in a pan on medium-high heat for 1 to 1½ minutes per side until the bottom is golden and the top puffs."
+ ],
+ "chefTips": [
+  "Cues: yeast bubbly or foamy; dough doubled; breads puffed and golden. The pre-ferment and final rest are NO CUE, TIME ONLY.",
+  "Dust with cracked wheat or flour so the rounds do not stick."
+ ],
+ "commonMistakes": [
+  "A cool oven or stone, which prevents the pocket from puffing.",
+  "Rolling too thick."
+ ],
+ "servedWith": [
+  "Ful medames (EGY077)",
+  "Ta'meya (EGY002)"
+ ],
+ "relatedRecipes": [
+  "EGY055",
+  "EGY053",
+  "EGY054"
+ ],
+ "sources": [
+  "Adapted from 'Aish Baladi', Jean E. Pendziwol (food blog, 'bread around the world'). BYLINE AS PRINTED: 'Jean E. Pendziwol'. Date as printed: '12/3/2021' (day and month order not specified). Yield not stated; the dough is divided into 8.",
+  "SOURCING STATUS: ingredients and method TWO-PASS. Method wording is our own summary of the page; times and cues were relayed by a research tool and should be checked against the live page. Prep and cook totals are our own estimates from the times the page does give.",
+  "FLAG: the author's heritage is not stated and she gives no source for the recipe ('decided to try out a recipe').",
+  "DISAGREEMENT kept: Chez Nermine (Nermine Mansour, hidden date 2025-08-31) uses a 24-hour refrigerated biga, a 6-hour or overnight fridge rise, a stone preheated 30 minutes at 500° and bakes 2 to 4 minutes, with 16 disks. Her page contradicts itself on kneading time (10 to 25 minutes versus 1 to 15) and on bake time (2 to 4 minutes versus 2 to 3)."
+ ],
+ "storage": "Wrap once cool; best the same day (our note).",
+ "reheating": "Warm briefly in a hot oven or pan to soften.",
+ "healthBenefits": [
+  "Whole wheat provides fibre and B vitamins."
+ ],
+ "culturalNote": "Jean Pendziwol writes that baladi means traditional or country and aish means life: 'In Egypt, bread is life.' She says it is one of Egypt's most commonly baked breads.",
+ "nutrition": {
+  "cal": 200,
+  "protein": 8,
+  "carbs": 40,
+  "fat": 2,
+  "fiber": 6,
+  "sodium": 400
+ },
+ "keywords": [
+  "aish baladi",
+  "eish baladi",
+  "egyptian pita",
+  "whole wheat flatbread"
+ ]
+},
+{
+ "id": "EGY047",
+ "title": "Feteer Meshaltet (Egyptian Layered Pastry)",
+ "localName": "Feteer meshaltet — فطير مشلتت",
+ "emoji": "🥐",
+ "country": "Egypt",
+ "countryFlag": "🇪🇬",
+ "region": "North Africa",
+ "community": "Egyptian countryside and festivals",
+ "cuisine": "Egyptian",
+ "category": "Pastries & Pies",
+ "course": "Bread",
+ "diff": "Hard",
+ "prepTime": 40,
+ "restTime": 90,
+ "cookTime": 25,
+ "time": 155,
+ "servings": 4,
+ "cal": 560,
+ "rating": 4.9,
+ "reviews": 205,
+ "tags": [
+  "vegetarian",
+  "dairy",
+  "contains-gluten",
+  "celebration",
+  "festive"
+ ],
+ "author": "Sawsan Abu Farha (Chef in Disguise)",
+ "authorEmoji": "👩‍🍳",
+ "desc": "A stretched, ghee-layered dough folded into squares and baked until puffed and golden, plain or filled with cheese, olives, coconut and raisins.",
+ "longDesc": "A smooth, sticky dough is kneaded 10 minutes by stand mixer or 15 by hand, divided into four, drizzled with ghee and rested an hour. Each piece is stretched very thin on a ghee-drizzled surface, folded in thirds twice into a square, and rested again in the pan for 30 minutes. A plain feteer uses one square and a filled one uses two sealed together; it bakes at 380°F (190°C) until the bottom is golden, then under the broiler for a couple of minutes.",
+ "ingredients": [
+  "// Dough",
+  "3 cups flour",
+  "1/2 teaspoon salt",
+  "About 1 and 1/2 cups warm water (you may need a little more or less)",
+  "1 to 2 cups melted ghee",
+  "// Fillings (choose one)",
+  "2 cups mozzarella cheese",
+  "1/2 cup pitted chopped black olives",
+  "1/2 green or red pepper cut into slices",
+  "1-2 cups shredded coconut",
+  "1/2 cup raisins",
+  "1/3 cup powdered sugar",
+  "2 tablespoons cream for brushing the top"
+ ],
+ "equipment": [
+  "Stand mixer or large bowl",
+  "Large smooth work surface",
+  "Baking pan",
+  "Oven with broiler"
+ ],
+ "steps": [
+  "Knead the flour, salt and water to a smooth, sticky dough for 10 minutes in a stand mixer or 15 by hand.",
+  "Divide into 4 pieces, drizzle generously with ghee and rest an hour.",
+  "On a ghee-drizzled surface, stretch each piece very thin. Fold in thirds with ghee between the folds, twice, to make a square.",
+  "Plain: put one square in a pan and rest 30 minutes, then stretch it larger and thinner. Filled: use two squares, add the filling and seal the edges; brush the coconut version with cream and the cheese version with ghee.",
+  "Bake in a preheated 380°F (190°C) oven on the central rack until the bottom is golden brown; it puffs. Turn on the broiler for a couple of minutes until the top is golden too."
+ ],
+ "chefTips": [
+  "Cues: stretched very thin; bottom golden brown; top golden. The one-hour and 30-minute rests are NO CUE, TIME ONLY.",
+  "The page gives no yield; four squares make 2 filled or 4 plain."
+ ],
+ "commonMistakes": [
+  "Tearing the dough; keep your hands and the surface well greased.",
+  "Too little ghee between folds, which gives bread instead of flaky layers."
+ ],
+ "servedWith": [
+  "Honey, jam, feta or green olives (page suggestion)"
+ ],
+ "relatedRecipes": [
+  "EGY048",
+  "EGY046"
+ ],
+ "sources": [
+  "Adapted from 'Feteer meshaltet - Egyptian layered pastry', Chef in Disguise. BYLINE AS PRINTED: 'Sawsan Abu Farha, Chef in disguise'. Date as printed: February 3, 2015. The recipe was shared by 'Maha' with the Arabic flavor challenge group.",
+  "SOURCING STATUS: ingredients and method TWO-PASS. Method wording is our own summary of the page; times and cues were relayed by a research tool and should be checked against the live page. Prep and cook totals are our own estimates from the times the page does give.",
+  "DISAGREEMENT kept: Amira's Pantry (Amira Ibrahim, updated Jun 24, 2020) uses 4 cups (540g) flour, 1 cup butter plus ¼ cup oil, a 10-minute rest then 15 to 20 minutes in warm butter, and bakes at 550F for 10 minutes before broiling; she writes that she has heard (hearsay) that its history goes back to the ancient Egyptians and that it became the croissant."
+ ],
+ "storage": "Best the day it is baked (our note).",
+ "reheating": "Warm in a moderate oven to restore flakiness.",
+ "healthBenefits": [
+  "A rich festive pastry; enjoy in moderation."
+ ],
+ "culturalNote": "Sawsan Abu Farha writes that the pastry dates to the pharaohs as a temple offering and later became a delicacy at religious holidays and weddings (her statement). She first saw feteer being made on her honeymoon in Cairo.",
+ "nutrition": {
+  "cal": 560,
+  "protein": 9,
+  "carbs": 52,
+  "fat": 36,
+  "fiber": 2,
+  "sodium": 240
+ },
+ "keywords": [
+  "feteer meshaltet",
+  "fiteer",
+  "egyptian pie",
+  "chef in disguise"
+ ]
+},
+{
+ "id": "EGY048",
+ "title": "Feteer Al Malak (Archangel Michael Buns)",
+ "localName": "Feteer al-malak — فطير الملاك",
+ "emoji": "🍞",
+ "country": "Egypt",
+ "countryFlag": "🇪🇬",
+ "region": "North Africa",
+ "community": "Coptic Christian tradition",
+ "cuisine": "Egyptian",
+ "category": "Bread",
+ "course": "Bread",
+ "diff": "Medium",
+ "prepTime": 30,
+ "restTime": 160,
+ "cookTime": 25,
+ "time": 215,
+ "servings": 12,
+ "cal": 290,
+ "rating": 4.7,
+ "reviews": 249,
+ "tags": [
+  "vegetarian",
+  "dairy-free",
+  "contains-gluten",
+  "celebration",
+  "festive",
+  "traditional",
+  "sweet"
+ ],
+ "author": "Nermine Mansour (Chez Nermine)",
+ "authorEmoji": "👩‍🍳",
+ "desc": "Soft yeasted buns marked with a thin-dough cross, glazed with cinnamon-sugar oil and baked puffed and golden; baked in honour of Archangel Michael.",
+ "longDesc": "Yeast is proofed with honey until frothy and foamy, then mixed into flour, baking powder, oil, sugar and vinegar to a soft, sticky dough, risen until doubled (or overnight in the fridge). It is divided into 100 g portions, shaped into balls with a thin cross, glazed with oil, brown sugar and cinnamon, risen again for 20 minutes and baked 25 minutes at 180°C until puffed and golden.",
+ "ingredients": [
+  "// Dough",
+  "500 grams all-purpose flour or whole wheat flour, You can mix 250 whole wheat with 250 grams all purpose flour",
+  "½ teaspoon  fine salt",
+  "1 teaspoon baking powder",
+  "½ cup canola oil",
+  "½ cup white sugar or brown sugar + 1 tablespoon for the surface of the buns, For a savory version, don't add the sugar",
+  "1 ½ teaspoon white distilled vinegar",
+  "½ cup raisins or dry cranberry, optional",
+  "½ cup  warm water , to need the dough",
+  "// Proof yeast",
+  "1 tablespoon honey",
+  "1 tablespoon instant yeast",
+  "1  cup warm water",
+  "// Glaze",
+  "1 tablespoon canola oil",
+  "1 teaspoon ground cinnamon",
+  "1 tablespoon brown sugar"
+ ],
+ "equipment": [
+  "Mixing bowl",
+  "Baking tray",
+  "Pastry brush"
+ ],
+ "steps": [
+  "Proof the yeast with honey and warm water in a warm place for 5 minutes, or until it is frothy and foamy.",
+  "Mix the flour, baking powder and salt, rub in the oil, and add the sugar.",
+  "Add the yeast mixture and vinegar to a well and mix to a soft, sticky dough, using the extra warm water as needed.",
+  "Let the dough rise in an oiled, covered bowl in a dark place. When it doubles you can rest it in the fridge overnight or continue.",
+  "Heat the oven to 180°C (360°F). Divide the dough into 100 g portions and shape balls decorated with thin crosses of dough.",
+  "Brush with the glaze, cover and let rise again for 20 minutes. Bake 25 minutes, until puffed with a golden crust."
+ ],
+ "chefTips": [
+  "Cues: yeast frothy and foamy; dough doubled; buns puffed with a golden crust. The overnight fridge rest and the 20-minute second rise are NO CUE, TIME ONLY.",
+  "The page's tips say rising takes at least two hours while the card says 1 hour; the body says 100 to 110°F water where the card says only warm."
+ ],
+ "commonMistakes": [
+  "Water that is too hot, which kills the yeast."
+ ],
+ "servedWith": [
+  "Jam, cheese or zaatar (page suggestion)"
+ ],
+ "relatedRecipes": [
+  "EGY047",
+  "EGY056"
+ ],
+ "sources": [
+  "Adapted from 'Feteer Al Malak (Egyptian Archangel Michael Bread): فطير الملاك', Chez Nermine. BYLINE AS PRINTED: 'Posted by Nermine Mansour'. Date: hidden page data gives 2024-08-20. Chez Nermine pages show no visible printed date; the date given is from the page address or hidden page data and is unconfirmed. Yield 'Servings 12 Buns' (the size line is garbled).",
+  "SOURCING STATUS: ingredients and method TWO-PASS. Method wording is our own summary of the page; times and cues were relayed by a research tool and should be checked against the live page. Prep and cook totals are our own estimates from the times the page does give.",
+  "PAGE DEFECTS kept: 'to need the dough', and the placement of the extra tablespoon of sugar is unclear."
+ ],
+ "storage": "Best the day it is baked; keeps in an airtight tin 2 days (our estimate).",
+ "reheating": "Warm briefly in the oven.",
+ "healthBenefits": [
+  "Raisins add fibre and iron."
+ ],
+ "culturalNote": "Nermine Mansour bakes it at the start of the school year and during the St. Mary fast; her grandmother baked it when a family member was ill or facing an exam and shared it with Muslim and Christian neighbours. 'It is said' that if the buns rise overnight, the Archangel marks them with his sword.",
+ "nutrition": {
+  "cal": 290,
+  "protein": 5,
+  "carbs": 46,
+  "fat": 10,
+  "fiber": 2,
+  "sodium": 150
+ },
+ "keywords": [
+  "feteer al malak",
+  "archangel michael bread",
+  "coptic bread",
+  "chez nermine"
+ ]
+},
+{
+ "id": "EGY049",
+ "title": "Sambousek (Cheese-Filled Buttery Pastries)",
+ "localName": "Sambousek bil-gebna — سمبوسك بالجبنة",
+ "emoji": "🥟",
+ "country": "Egypt",
+ "countryFlag": "🇪🇬",
+ "region": "North Africa",
+ "community": "Cairo (adapted from a memoir)",
+ "cuisine": "Egyptian",
+ "category": "Pastries & Pies",
+ "course": "Snack",
+ "diff": "Easy",
+ "prepTime": 30,
+ "restTime": 30,
+ "cookTime": 25,
+ "time": 85,
+ "servings": 5,
+ "cal": 290,
+ "rating": 4.6,
+ "reviews": 204,
+ "tags": [
+  "vegetarian",
+  "dairy",
+  "contains-egg",
+  "contains-gluten",
+  "celebration"
+ ],
+ "author": "Stacy Rushton (Food Lust People Love), adapting Colette Rossant",
+ "authorEmoji": "👩‍🍳",
+ "desc": "A butter-and-oil dough chilled at least 30 minutes, filled with feta, Parmesan and egg, crimped and baked until golden.",
+ "longDesc": "Melted butter, oil, hot water and salt are mixed with flour into a dough that chills at least 30 minutes. It is cut into 10 pieces rolled to about 4 inches, filled with a tablespoon of feta, Parmesan, egg and baking powder mixture, folded, sealed and crimped, and baked at 375°F (190°C) for about 25 minutes, until golden brown.",
+ "ingredients": [
+  "// Pastry",
+  "1/4 cup or 55g melted butter",
+  "1/4 cup or 60ml canola oil",
+  "1/4 cup or 60ml hot water",
+  "Pinch of salt",
+  "1 1/2 cups or 355g flour plus extra for rolling out dough",
+  "// Filling",
+  "5 1/2 oz 156g feta cheese",
+  "2 tablespoons grated Parmesan cheese",
+  "1 egg",
+  "2 teaspoons baking powder",
+  "Black pepper"
+ ],
+ "equipment": [
+  "Mixing bowl",
+  "Baking sheet",
+  "Rolling pin"
+ ],
+ "steps": [
+  "Mix the butter, oil, hot water and salt, add the flour and knead a few minutes. Chill at least 30 minutes.",
+  "Mix the filling by hand; a food processor made it runny.",
+  "Preheat the oven to 375°F (190°C).",
+  "Cut the dough into 10 pieces and roll each to a circle of about 4 inches. Put about 1 tablespoon of filling in each, fold, seal and crimp.",
+  "Bake about 25 minutes, or until golden brown."
+ ],
+ "chefTips": [
+  "Cue: golden brown, light and flaky. The chill is NO CUE, TIME ONLY.",
+  "The yield of 10 pastries is stated through the dough division; servings are our estimate."
+ ],
+ "commonMistakes": [
+  "Overfilling so the pastries open during baking."
+ ],
+ "servedWith": [
+  "Salad (EGY041)"
+ ],
+ "relatedRecipes": [
+  "EGY050",
+  "EGY047"
+ ],
+ "sources": [
+  "Adapted from 'Sambusaks or Cheese-filled Buttery Pastries', Food Lust People Love. BYLINE AS PRINTED: 'Posted by Stacy Rushton'. Date as printed: Thursday, April 5, 2012. Yield not stated; 10 pieces.",
+  "SOURCING STATUS: ingredients and method TWO-PASS ('pinch of salt' and 'black pepper' pass 1 only). Method wording is our own summary of the page; times and cues were relayed by a research tool and should be checked against the live page. Prep and cook totals are our own estimates from the times the page does give.",
+  "FLAG: the page says the recipe is adapted from the memoir 'Apricots on the Nile' by Colette Rossant (a childhood in 1930s and 40s Cairo); the page's author does not state either writer's heritage and calls it traditional Egyptian."
+ ],
+ "storage": "Best the day baked; refrigerate leftovers 2 days (our estimate).",
+ "reheating": "Warm in a moderate oven.",
+ "healthBenefits": [
+  "A rich pastry with calcium from the cheese."
+ ],
+ "culturalNote": "The page calls it a traditional cheese-filled buttery pastry popular in Egypt.",
+ "nutrition": {
+  "cal": 290,
+  "protein": 8,
+  "carbs": 24,
+  "fat": 18,
+  "fiber": 1,
+  "sodium": 480
+ },
+ "keywords": [
+  "sambousek",
+  "sambusak",
+  "cheese pastry",
+  "apricots on the nile"
+ ]
+},
+{
+ "id": "EGY050",
+ "title": "Gebna bel Tamatem (Egyptian White Cheese and Tomato Dip, with Homemade Cheese)",
+ "localName": "Gebna bil-tamatem — جبنة بالطماطم",
+ "emoji": "🧀",
+ "country": "Egypt",
+ "countryFlag": "🇪🇬",
+ "region": "North Africa",
+ "community": "Egyptian breakfast table",
+ "cuisine": "Egyptian",
+ "category": "Breakfast",
+ "course": "Breakfast",
+ "diff": "Easy",
+ "prepTime": 30,
+ "restTime": 720,
+ "cookTime": 20,
+ "time": 770,
+ "servings": 4,
+ "cal": 170,
+ "rating": 4.7,
+ "reviews": 316,
+ "tags": [
+  "vegetarian",
+  "dairy",
+  "gluten-free",
+  "make-ahead",
+  "quick"
+ ],
+ "author": "Nermine Mansour (Chez Nermine)",
+ "authorEmoji": "👩‍🍳",
+ "desc": "Crumbly fresh cheese mixed with tomato, onion, pepper, mint and cumin, served with baladi bread; the page also gives a simple vinegar-curdled milk cheese.",
+ "longDesc": "Cottage cheese or a homemade gebna kareesh is mixed with diced tomato, onion, pepper, chili, olive oil, dried mint and cumin and chilled 30 minutes. To make the cheese, milk is heated slowly to 190°F, salt and vinegar are added, and the milk is held at a gentle simmer on very low heat for 5 minutes until it curdles, then drained in cheesecloth and left to dry in the fridge overnight.",
+ "ingredients": [
+  "// Dip",
+  "1 cup cottage cheese, store bought or see recipe below",
+  "1 finely chopped small red onions , or 1 teaspoon onion powder",
+  "1 ripe tomato, seeded and diced",
+  "1 bell pepper , diced",
+  "1 finely chopped green chili pepper, optional",
+  "1 tablespoon extra virgin olive oil",
+  "1 teaspoon dry mint",
+  "½  teaspoon  ground cumin",
+  "salt & pepper, to taste",
+  "// Gebna kareesh (homemade cheese)",
+  "5 cups full fat milk",
+  "1 cup heavy cream, optional",
+  "1 teaspoon Himalayan salt",
+  "6 tablespoon s white distilled vinegar"
+ ],
+ "equipment": [
+  "Saucepan",
+  "Cheesecloth",
+  "Thermometer"
+ ],
+ "steps": [
+  "Cheese: heat the milk (and cream) slowly to 190°F (88°C) and stir in the salt.",
+  "Add the vinegar and let the milk gently simmer on very low heat for 5 minutes, until it curdles and separates from the whey.",
+  "Drain in doubled cheesecloth, cool, squeeze, and drain the liquid overnight in the fridge. The cheese is done when it is all dry.",
+  "Mix the cheese with the dip ingredients and chill 30 minutes.",
+  "Serve with aish baladi or pita."
+ ],
+ "chefTips": [
+  "Cues: milk curdles and separates from whey; cheese dry. The overnight drain and the 30-minute chill are NO CUE, TIME ONLY.",
+  "The card calls for 6 tablespoons of vinegar for 5 cups of milk, while the body says 1 tablespoon of acid per cup; the card also lists a bell pepper the body does not mention."
+ ],
+ "commonMistakes": [
+  "Squeezing too little, which leaves the cheese watery."
+ ],
+ "servedWith": [
+  "Aish baladi (EGY046)"
+ ],
+ "relatedRecipes": [
+  "EGY051",
+  "EGY052"
+ ],
+ "sources": [
+  "Adapted from 'Gebna bel Tamatem (Egyptian Spicy white cheese-Tomato Dip): جبنة بالطماطم', Chez Nermine. BYLINE AS PRINTED: 'Nermine Mansour'. Date: hidden page data gives 2026-05-20 at the page address; a search result shows the same title under 2025/05/11, so the first posting date is unconfirmed. Chez Nermine pages show no visible printed date; the date given is from the page address or hidden page data and is unconfirmed. Yield 4 people; prep 30 and cook 20 minutes as printed.",
+  "SOURCING STATUS: ingredients and method TWO-PASS. Method wording is our own summary of the page; times and cues were relayed by a research tool and should be checked against the live page. Prep and cook totals are our own estimates from the times the page does give."
+ ],
+ "storage": "Refrigerate covered up to 2 days (our estimate).",
+ "reheating": "Serve cold.",
+ "healthBenefits": [
+  "A source of protein and calcium."
+ ],
+ "culturalNote": "Nermine Mansour calls it a staple in many Egyptian homes and a nostalgic taste of childhood, and says making gebna from leftover milk started her in cheesemaking.",
+ "nutrition": {
+  "cal": 170,
+  "protein": 11,
+  "carbs": 8,
+  "fat": 10,
+  "fiber": 1,
+  "sodium": 430
+ },
+ "keywords": [
+  "gebna bel tamatem",
+  "egyptian cheese dip",
+  "karish cheese",
+  "chez nermine"
+ ]
+},
+{
+ "id": "EGY051",
+ "title": "Egga (Egyptian Baked Frittata)",
+ "localName": "Egga — عجة",
+ "emoji": "🍳",
+ "country": "Egypt",
+ "countryFlag": "🇪🇬",
+ "region": "North Africa",
+ "community": "Alexandria Friday brunch",
+ "cuisine": "Egyptian",
+ "category": "Breakfast",
+ "course": "Breakfast",
+ "diff": "Medium",
+ "prepTime": 30,
+ "restTime": 0,
+ "cookTime": 75,
+ "time": 105,
+ "servings": 4,
+ "cal": 380,
+ "rating": 4.5,
+ "reviews": 256,
+ "tags": [
+  "vegetarian",
+  "dairy",
+  "contains-egg",
+  "contains-gluten",
+  "comfort-food"
+ ],
+ "author": "Nermine Mansour (Chez Nermine)",
+ "authorEmoji": "👩‍🍳",
+ "desc": "A puffed, flour-and-baking-powder savoury cake of eggs with caramelized onions, tomato, potatoes and herbs, baked until set in the centre.",
+ "longDesc": "Onions are cooked in butter on medium-low for 10 to 15 minutes until a medium amber colour and sweet smelling, tomato is cooked about 5 minutes until its juices evaporate, and diced potatoes cook 10 to 12 minutes until light golden brown. Eggs are whisked at least 5 minutes until frothy and pale yellow, flour and baking powder folded in, then vegetables and herbs. It bakes at 375°F (190°C) until the top is set and golden and a knife comes out clean.",
+ "ingredients": [
+  "5-7 2.5–3.5 oz (70–100 g) tablespoons unsalted butter",
+  "2 cups diced yellow onions, almost 3 medium onions",
+  "1 (Approx. 4 oz) (115 g) tomato, seeded and diced",
+  "2 sun dried tomatoes, finely chopped, optional",
+  "1 cup diced potatoes",
+  "¼ cup (2 oz) (60 ml) sliced pickled olives, optional",
+  "6 (12 oz) (340 g) large eggs",
+  "¾ cup (3.2 oz) (95 g) flour",
+  "1 tablespoon (15 g) baking powder",
+  "1 cup (1 oz) (30 g) mixed greens (cilantro-parsely-dill)",
+  "1 teaspoon (approx. 2.5 g) ground cumin",
+  "1 teaspoon (2 g) ground coriander",
+  "1 teaspoon (2 g) ground turmeric",
+  "½ teaspoon (1 g) sweet paprika, 1 g, optional",
+  "½ teaspoon (1 g) red pepper flakes or Aleppo pepper, optional",
+  "¼ teaspoon (0.5 g) ground nutmeg",
+  "(Milk is used in the method but no amount is printed)"
+ ],
+ "equipment": [
+  "Skillet",
+  "Mixing bowl",
+  "Whisk",
+  "Baking dish"
+ ],
+ "steps": [
+  "Cook the onions in 2 tablespoons of butter over medium-low until a medium amber colour and sweet smelling, about 10 to 15 minutes.",
+  "Cook the tomato in 1 tablespoon of butter until its juices evaporate completely and the pieces darken slightly, about 5 minutes.",
+  "Cook the potatoes in 2 to 3 tablespoons of butter until light golden brown and tender, about 10 to 12 minutes.",
+  "Whisk the eggs, milk and spices vigorously for at least 5 minutes until frothy and pale yellow. Fold in the flour and baking powder, then the herbs and vegetables.",
+  "Bake in a 375°F (190°C) oven until the top is set, lightly golden, and a toothpick or knife in the centre comes out clean. The card lists 35 minutes.",
+  "Serve hot with aish baladi and pickles."
+ ],
+ "chefTips": [
+  "Cues: onions amber and sweet-smelling; tomato juices evaporated; eggs frothy and pale; centre set, knife clean. The card says 2 servings, but 6 eggs suggest 4.",
+  "Sun-dried tomatoes are not a traditional ingredient in Egyptian egga, says the author."
+ ],
+ "commonMistakes": [
+  "Under-whisking the eggs, which gives a dense result."
+ ],
+ "servedWith": [
+  "Aish baladi (EGY046)"
+ ],
+ "relatedRecipes": [
+  "EGY050",
+  "EGY052"
+ ],
+ "sources": [
+  "Adapted from 'Egga (The Ultimate Egyptian Frittata): العجة المصرية', Chez Nermine. BYLINE AS PRINTED: 'Nermine Mansour'. Date: address 2025/06/09; hidden page data gives published 2025-06-09, modified 2025-06-21. Chez Nermine pages show no visible printed date; the date given is from the page address or hidden page data and is unconfirmed. Servings printed 2; prep 30, cook 40, baking 35, total 1 hour 45 minutes (the baking figure single-pass).",
+  "SOURCING STATUS: ingredients and method TWO-PASS. Method wording is our own summary of the page; times and cues were relayed by a research tool and should be checked against the live page.",
+  "PAGE DEFECTS kept: milk and salt and pepper in the method have no quantities on the ingredient list; the butter line is garbled; 'parsely' misprint. Flagged alternatives (a desk-credited Gulf Today item and an unsigned America's Test Kitchen page) are stovetop beef omelettes without flour."
+ ],
+ "storage": "Refrigerate covered up to 2 days.",
+ "reheating": "Warm in a moderate oven.",
+ "healthBenefits": [
+  "Protein from eggs; herbs add vitamins."
+ ],
+ "culturalNote": "Nermine Mansour calls egga 'the equivalent of a Friday leisure brunch' from her Alexandria childhood, and says it was her mother's trick to avoid making individual omelettes.",
+ "nutrition": {
+  "cal": 380,
+  "protein": 14,
+  "carbs": 30,
+  "fat": 22,
+  "fiber": 3,
+  "sodium": 420
+ },
+ "keywords": [
+  "egga",
+  "eggah",
+  "egyptian frittata",
+  "chez nermine"
+ ]
+},
+{
+ "id": "EGY052",
+ "title": "Beid Meza'lil (Crispy Fried Hard-Boiled Eggs)",
+ "localName": "Beid mez'alil — بيض مزعلل",
+ "emoji": "🥚",
+ "country": "Egypt",
+ "countryFlag": "🇪🇬",
+ "region": "North Africa",
+ "community": "Coptic holidays",
+ "cuisine": "Egyptian",
+ "category": "Breakfast",
+ "course": "Breakfast",
+ "diff": "Easy",
+ "prepTime": 5,
+ "restTime": 0,
+ "cookTime": 20,
+ "time": 25,
+ "servings": 4,
+ "cal": 170,
+ "rating": 4.7,
+ "reviews": 261,
+ "tags": [
+  "vegetarian",
+  "dairy",
+  "contains-egg",
+  "gluten-free",
+  "quick",
+  "low-carb"
+ ],
+ "author": "Nermine Mansour (Chez Nermine)",
+ "authorEmoji": "👩‍🍳",
+ "desc": "Hard-boiled eggs peeled and fried in ghee until the skin turns crispy and golden, seasoned with paprika, sumac or zaatar.",
+ "longDesc": "Eggs are boiled 10 to 12 minutes at the most, cooled in cold water and peeled, then fried in ghee until the skin becomes crispy and a nice golden hue. A holiday dish used to break the Coptic fast at Christmas and Easter.",
+ "ingredients": [
+  "4 small or large eggs, preferrably free range and organic",
+  "Enough tap water , to cover the eggs",
+  "2-3 tablespoons ghee, or more if necessary",
+  "salt and pepper to taste",
+  "// Optional",
+  "1 teaspoon smoked paprika or sumac, optional",
+  "1 teaspoon zaatar, optional",
+  "1 teaspoon Aleppo Pepper or Egyptian Shatta , optional",
+  "3 tablespoons freshly grated Parmesan, optional"
+ ],
+ "equipment": [
+  "Saucepan",
+  "Skillet"
+ ],
+ "steps": [
+  "Bring the water to a rolling boil and cook the eggs 10 to 12 minutes at most.",
+  "Cool in cold water for 2 to 3 minutes (the card) or 3 to 5 minutes (the body), then peel.",
+  "Fry the eggs in ghee until the skin becomes crispy and a nice golden hue; the body says to turn off the heat once the skin turns golden.",
+  "Season and serve with baladi bread."
+ ],
+ "chefTips": [
+  "Cue: skin crispy and golden. The cooling time is NO CUE, TIME ONLY and differs between card and body. The card has a typo ('Keep writing the eggs')."
+ ],
+ "commonMistakes": [
+  "Frying wet eggs, which spatters; dry them first (our caution)."
+ ],
+ "servedWith": [
+  "Aish baladi (EGY046)"
+ ],
+ "relatedRecipes": [
+  "EGY051",
+  "EGY050"
+ ],
+ "sources": [
+  "Adapted from \"Egyptian Beid Meza'lil (Crispy Fried Hard-Boiled Eggs) | بيض مزعلل\", Chez Nermine. BYLINE AS PRINTED: 'Nermine Mansour'. Date: hidden page data gives 2026-04-11, modified 2026-04-16. Chez Nermine pages show no visible printed date; the date given is from the page address or hidden page data and is unconfirmed. Serves 4; cook 15 minutes as printed.",
+  "SOURCING STATUS: ingredients and method TWO-PASS. Method wording is our own summary of the page; times and cues were relayed by a research tool and should be checked against the live page. Prep and cook totals are our own estimates from the times the page does give."
+ ],
+ "storage": "Best fresh.",
+ "reheating": "Re-crisp in a pan.",
+ "healthBenefits": [
+  "A protein-rich fast-breaking snack."
+ ],
+ "culturalNote": "Nermine Mansour was raised in a Coptic family that kept fasts of up to seven weeks without animal products; her mother served this to break the fast at Christmas and Easter.",
+ "nutrition": {
+  "cal": 170,
+  "protein": 10,
+  "carbs": 1,
+  "fat": 14,
+  "fiber": 0,
+  "sodium": 150
+ },
+ "keywords": [
+  "beid mezalil",
+  "fried eggs",
+  "coptic easter",
+  "chez nermine"
+ ]
+},
+{
+ "id": "EGY053",
+ "title": "Egyptian Simit (Sesame Bread Rings)",
+ "localName": "Simit — سميط",
+ "emoji": "🥯",
+ "country": "Egypt",
+ "countryFlag": "🇪🇬",
+ "region": "North Africa",
+ "community": "Cairo street bread",
+ "cuisine": "Egyptian",
+ "category": "Bread",
+ "course": "Breakfast",
+ "diff": "Medium",
+ "prepTime": 20,
+ "restTime": 90,
+ "cookTime": 20,
+ "time": 130,
+ "servings": 6,
+ "cal": 330,
+ "rating": 4.5,
+ "reviews": 233,
+ "tags": [
+  "vegetarian",
+  "dairy",
+  "contains-egg",
+  "contains-gluten",
+  "street-food"
+ ],
+ "author": "Amira Ibrahim (Amira’s Pantry)",
+ "authorEmoji": "👩‍🍳",
+ "desc": "A soft butter-enriched yeast dough shaped into six rings, brushed with egg and butter, covered in sesame and baked until browned on top.",
+ "longDesc": "Flour and sugar are rubbed with melted butter and oil until grainy, then yeast, warm milk, an egg, salt and warm water make a soft dough that separates from the bowl. It rises one hour, is divided into 6 balls, rolled into ropes and formed into circles, brushed with egg and butter, sprinkled with sesame and left 30 minutes while the oven heats to 375°F, then bakes 20 minutes until the top is browned.",
+ "ingredients": [
+  "2 ½ cups A.P. flour.",
+  "1 Tablespoon sugar",
+  "¼ cup unsalted butter.",
+  "2 Tablespoon olive oil.",
+  "1 Tablespoon yeast .",
+  "¼ cup milk - warmed.",
+  "½ teaspoon salt.",
+  "1 Eggs.",
+  "¼ cup warm water +/- depending on the flour",
+  "For brushing: 1 egg 1 teaspoon butter and sesame seeds."
+ ],
+ "equipment": [
+  "Mixing bowl",
+  "Baking tray"
+ ],
+ "steps": [
+  "Mix the flour and sugar, then add the melted butter and oil and mix until grainy.",
+  "Add the yeast and milk, then the egg and salt. Add warm water gradually until you get a soft dough that separates from the mixing bowl.",
+  "Put in a greased bowl, cover and let it rise for 1 hour.",
+  "Divide into 6 balls, roll into ropes and form circles. Brush with egg and butter, sprinkle with sesame and let rise 30 minutes while the oven heats to 375°F.",
+  "Bake for 20 minutes until the top is browned. Serve with eggs and doqqah."
+ ],
+ "chefTips": [
+  "Cues: dough separates from the bowl; top browned. The rises of 1 hour and 30 minutes are NO CUE, TIME ONLY.",
+  "The page's overview list omits the milk and salt that the ingredient list includes; 'Eggs' is a misprint."
+ ],
+ "commonMistakes": [
+  "Adding all the water at once; the flour absorbs it at different rates."
+ ],
+ "servedWith": [
+  "Hard-boiled eggs and dukkah (EGY045)"
+ ],
+ "relatedRecipes": [
+  "EGY046",
+  "EGY054"
+ ],
+ "sources": [
+  "Adapted from 'Egyptian Simit', Amira's Pantry. BYLINE AS PRINTED: 'By Amira Ibrahim'. Date as printed: 'Updated: Sep 12, 2024' (original publication 2016-03-18 from hidden data). Yield not stated; 6 balls.",
+  "SOURCING STATUS: ingredients and method TWO-PASS. Method wording is our own summary of the page; times and cues were relayed by a research tool and should be checked against the live page. Prep and cook totals are our own estimates from the times the page does give."
+ ],
+ "storage": "Best the day it is baked (our note).",
+ "reheating": "Warm briefly in an oven.",
+ "healthBenefits": [
+  "Sesame adds calcium and healthy fats."
+ ],
+ "culturalNote": "Amira Ibrahim writes it is sold with hard-boiled eggs and dukkah, especially at Giza zoo, is said to come from Turkey (with a softer Egyptian version), and is popular on Sham el-Nessim.",
+ "nutrition": {
+  "cal": 330,
+  "protein": 8,
+  "carbs": 44,
+  "fat": 14,
+  "fiber": 2,
+  "sodium": 240
+ },
+ "keywords": [
+  "simit",
+  "egyptian simit",
+  "sesame bread ring",
+  "amira pantry"
+ ]
+},
+{
+ "id": "EGY054",
+ "title": "Egyptian Mahlab Bread (Street-Vendor Rounds with Black Seed)",
+ "localName": "Aish mahlab — عيش محلب",
+ "emoji": "🍞",
+ "country": "Egypt",
+ "countryFlag": "🇪🇬",
+ "region": "North Africa",
+ "community": "Egyptian street vendors",
+ "cuisine": "Egyptian",
+ "category": "Bread",
+ "course": "Bread",
+ "diff": "Easy",
+ "prepTime": 15,
+ "restTime": 75,
+ "cookTime": 20,
+ "time": 110,
+ "servings": 8,
+ "cal": 170,
+ "rating": 4.7,
+ "reviews": 318,
+ "tags": [
+  "vegetarian",
+  "dairy",
+  "contains-egg",
+  "contains-gluten",
+  "street-food"
+ ],
+ "author": "Amira Ibrahim (Amira’s Pantry)",
+ "authorEmoji": "👩‍🍳",
+ "desc": "Thin yeasted rounds brushed with egg and milk, sprinkled with nigella seeds and baked until the bottoms are lightly brown.",
+ "longDesc": "A simple dough of flour, salt, yeast and water rises an hour or until doubled in an oiled bowl, is divided into 16 pieces and flattened to 2 mm, brushed with egg and milk and sprinkled with black seeds. After a 10 to 15 minute rest it bakes at 400°F for 15 to 20 minutes until the bottom is lightly brown, with the broiler on low for 2 to 3 minutes if needed. The bread hardens as it cools.",
+ "ingredients": [
+  "3 cup flour.",
+  "½ teaspoon salt.",
+  "1 ½ teaspoon dry yeast.",
+  "½ teaspoon sugar - optional didn't use.",
+  "1 cup warm water",
+  "Black seed . Nigella",
+  "1 egg mixed with 1 tablespoon milk."
+ ],
+ "equipment": [
+  "Mixing bowl",
+  "Baking sheets"
+ ],
+ "steps": [
+  "Mix the dry ingredients and slowly add water until it forms a soft, smooth dough.",
+  "Place in an oiled bowl and let rise for an hour or until doubled in size.",
+  "Divide into 16 parts and flatten each to a 2 mm thickness. Brush with the egg and milk and sprinkle with the black seeds.",
+  "Rest 10 to 15 minutes while the oven heats to 400°F.",
+  "Bake 15 to 20 minutes until the bottom is lightly brown; use the broiler on low for 2 to 3 minutes if the top is not golden. Cool to room temperature."
+ ],
+ "chefTips": [
+  "Cues: dough doubled; bottom lightly brown. The rest is NO CUE, TIME ONLY. There is no mahlab in the ingredient list; the author says the name is unrelated to the spice and her mother never used it.",
+  "The card says 6 servings while the method makes 16 pieces."
+ ],
+ "commonMistakes": [
+  "Rolling too thick; these are thin crisp rounds."
+ ],
+ "servedWith": [
+  "White cheese (page suggestion)"
+ ],
+ "relatedRecipes": [
+  "EGY053",
+  "EGY046"
+ ],
+ "sources": [
+  "Adapted from 'Egyptian Mahlab bread', Amira's Pantry. BYLINE AS PRINTED: 'By Amira Ibrahim'. Date as printed: 'Updated: Jun 18, 2024'. Card servings 6, but the method gives 16 pieces.",
+  "SOURCING STATUS: ingredients and method TWO-PASS. Method wording is our own summary of the page; times and cues were relayed by a research tool and should be checked against the live page. Prep and cook totals are our own estimates from the times the page does give."
+ ],
+ "storage": "Store once cool in an airtight bag; best within a day.",
+ "reheating": "Warm briefly.",
+ "healthBenefits": [
+  "Nigella seeds add flavour and trace minerals."
+ ],
+ "culturalNote": "Amira Ibrahim recalls the vendor who came around 4:00 PM calling 'Mahlaaaaab' in her Egyptian childhood, and says her father bought it every other day.",
+ "nutrition": {
+  "cal": 170,
+  "protein": 5,
+  "carbs": 33,
+  "fat": 2,
+  "fiber": 2,
+  "sodium": 220
+ },
+ "keywords": [
+  "mahlab bread",
+  "egyptian street bread",
+  "black seed bread",
+  "amira pantry"
+ ]
+},
+{
+ "id": "EGY055",
+ "title": "Egyptian Fino Bread (Soft Rolls)",
+ "localName": "Aish fino — عيش فينو",
+ "emoji": "🥖",
+ "country": "Egypt",
+ "countryFlag": "🇪🇬",
+ "region": "North Africa",
+ "community": "Egyptian bakery roll (UAE-based author)",
+ "cuisine": "Egyptian",
+ "category": "Bread",
+ "course": "Bread",
+ "diff": "Medium",
+ "prepTime": 25,
+ "restTime": 240,
+ "cookTime": 10,
+ "time": 275,
+ "servings": 6,
+ "cal": 240,
+ "rating": 4.6,
+ "reviews": 39,
+ "tags": [
+  "vegetarian",
+  "dairy",
+  "contains-gluten",
+  "kid-friendly"
+ ],
+ "author": "Muna Kenny (Munaty Cooking)",
+ "authorEmoji": "👩‍🍳",
+ "desc": "Soft finger-shaped rolls made from a milk-and-butter enriched dough, risen twice and baked 10 minutes at 400°F until golden.",
+ "longDesc": "Flour, warm milk, water, yeast, sugar, salt and oil are mixed and left aside 10 minutes, then kneaded 10 minutes until soft, a little sticky but smooth. Chilled butter is added and kneading continues 5 more minutes. After rising 1½ to 2 hours, the dough is divided into six, rolled to 6 by 9 inches, shaped into logs, risen again an hour and baked at 400°F (200°C) for 10 minutes or until golden.",
+ "ingredients": [
+  "2 cup + 3 tablespoon all-purpose flour",
+  "½ cup warm milk",
+  "¼ cup warm water",
+  "1 ½ teaspoon yeast",
+  "1 tablespoon sugar",
+  "½ teaspoon salt",
+  "2 tablespoon oil",
+  "1 tablespoon butter chilled"
+ ],
+ "equipment": [
+  "Mixing bowl or stand mixer",
+  "Baking tray"
+ ],
+ "steps": [
+  "Mix the ingredients except the butter and leave aside for 10 minutes.",
+  "Knead for 10 minutes until the dough is soft, a little sticky, but smooth. Add the butter and knead 5 more minutes.",
+  "Let it rise for one and a half to two hours.",
+  "Divide into 6 balls, roll each to 6 inches wide and 9 inches long, then into logs.",
+  "Cover the logs and let them rise again for one hour.",
+  "Preheat the oven to 400°F (200°C) and bake the rolls 10 minutes, or until golden."
+ ],
+ "chefTips": [
+  "Cues: dough soft, a little sticky but smooth; rolls golden. Both rises are NO CUE, TIME ONLY.",
+  "The author notes the fino roll is called Samoli in Saudi Arabia and Samoon in the UAE."
+ ],
+ "commonMistakes": [
+  "Rushing the second rise, which makes dense rolls."
+ ],
+ "servedWith": [
+  "Ful medames (EGY077)",
+  "Hawawshi (EGY006)"
+ ],
+ "relatedRecipes": [
+  "EGY046",
+  "EGY053"
+ ],
+ "sources": [
+  "Adapted from 'Egyptian Bread Fino Recipe', Munaty Cooking. BYLINE AS PRINTED: 'By Muna Kenny' with publish date '15/10/2023' and update '11/09/2026' (printed run together). Yield 6 rolls.",
+  "SOURCING STATUS: ingredients and method TWO-PASS. Method wording is our own summary of the page; times and cues were relayed by a research tool and should be checked against the live page. Prep and cook totals are our own estimates from the times the page does give.",
+  "FLAG: Muna Kenny identifies the UAE as her home country; the page's card lists the cuisine as 'Arabian' and does not state Egyptian origin beyond the title, saying that fino bread is known by different names around the world."
+ ],
+ "storage": "Best the same day; keep in a bag 2 days.",
+ "reheating": "Warm briefly in an oven.",
+ "healthBenefits": [
+  "A plain soft bread suitable for sandwiches."
+ ],
+ "culturalNote": "The page says Egyptian fino bread is known by different names in different parts of the world.",
+ "nutrition": {
+  "cal": 240,
+  "protein": 6,
+  "carbs": 38,
+  "fat": 7,
+  "fiber": 1,
+  "sodium": 280
+ },
+ "keywords": [
+  "fino bread",
+  "egyptian fino",
+  "samoon",
+  "munaty cooking"
+ ]
+},
+{
+ "id": "EGY056",
+ "title": "Mangauna (Port Said Easter Brioche)",
+ "localName": "Manga una / Mangauna — منجأونة",
+ "emoji": "🍞",
+ "country": "Egypt",
+ "countryFlag": "🇪🇬",
+ "region": "North Africa",
+ "community": "Port Said Easter and Sham el-Nessim",
+ "cuisine": "Egyptian",
+ "category": "Festival & Celebration Foods",
+ "course": "Bread",
+ "diff": "Hard",
+ "prepTime": 40,
+ "restTime": 540,
+ "cookTime": 50,
+ "time": 630,
+ "servings": 8,
+ "cal": 480,
+ "rating": 4.6,
+ "reviews": 328,
+ "tags": [
+  "vegetarian",
+  "dairy",
+  "contains-egg",
+  "contains-gluten",
+  "festive",
+  "celebration",
+  "sweet"
+ ],
+ "author": "Nermine Mansour (Chez Nermine)",
+ "authorEmoji": "👩‍🍳",
+ "desc": "An enriched sweet dough braided into portions, risen overnight, baked to a brown fluffy loaf and soaked in a hot lemon syrup.",
+ "longDesc": "Yeast is proofed until frothy and foamy; butter, sugar and milk are warmed until warm to touch, then whisked with eggs and yeast and kneaded with flour about 15 minutes. After doubling and a rest in the fridge overnight, the dough is cut into 6 portions, braided and risen 20 minutes, then baked at 170°C for about 40 to 50 minutes until nicely browned and fluffy. A simple syrup is poured hot over the hot loaves.",
+ "ingredients": [
+  "35g grams butter, at room temperature",
+  "135 grams milk, at room temperature",
+  "200 grams sugar",
+  "4 large eggs, at room temperature",
+  "870 grams bread flour",
+  "21/0.7 grams/oz dry yeast",
+  "1 cup lukewarm water",
+  "// Egg wash",
+  "1 egg, whipped",
+  "1 tablespoon milk",
+  "¼ teaspoon vanilla",
+  "Silvered Almonds or sesame seeds",
+  "// Syrup",
+  "1 cup water",
+  "½ cup sugar",
+  "1 slice lemon"
+ ],
+ "equipment": [
+  "Stand mixer",
+  "Baking tray",
+  "Saucepan"
+ ],
+ "steps": [
+  "Proof the yeast in lukewarm water with a pinch of sugar until frothy and foamy.",
+  "Melt the butter, sugar and milk on very low heat until warm to the touch yet not hot; whisk in the eggs and yeast.",
+  "Mix with the flour on medium-high about 15 minutes, until the dough comes together, soft and sticky.",
+  "Let rise until doubled, then rest in the fridge overnight. If the room is cold, a closed oven warmed to 30°C works.",
+  "Cut into 6 portions, braid, brush with egg wash, add almonds or sesame, rise 20 minutes, then bake at 170°C for about 40 to 50 minutes until nicely browned and fluffy.",
+  "Simmer the syrup ingredients 5 minutes and pour hot over the hot loaves."
+ ],
+ "chefTips": [
+  "Cues: yeast frothy; dough doubled; loaf nicely browned and fluffy. The fridge rest and 20-minute rise are NO CUE, TIME ONLY.",
+  "The method names ground mastic, mahleb and orange zest that the ingredient list omits; the first rise is given as 1 to 2 hours in one place and 2 to 3 in another; the page contains leftovers from a Greek Easter bread recipe."
+ ],
+ "commonMistakes": [
+  "Adding the warm milk mixture while hot, which kills the yeast."
+ ],
+ "servedWith": [
+  "Boiled eggs (page suggestion)"
+ ],
+ "relatedRecipes": [
+  "EGY048",
+  "EGY057"
+ ],
+ "sources": [
+  "Adapted from 'Mangauna (Egyptian/Port Saidi Brioche) Recipe: منجأونةً', Chez Nermine. BYLINE AS PRINTED: 'Nermine Mansour'. Date: hidden page data gives 2026-04-12. Chez Nermine pages show no visible printed date; the date given is from the page address or hidden page data and is unconfirmed. Yield '8 people'. Prep 40 minutes, resting 9 hours as printed.",
+  "SOURCING STATUS: ingredients TWO-PASS; the method past the listed lines SINGLE-PASS. Method wording is our own summary of the page; times and cues were relayed by a research tool and should be checked against the live page. Prep and cook totals are our own estimates from the times the page does give."
+ ],
+ "storage": "Best within 2 days; wrap well.",
+ "reheating": "Warm briefly.",
+ "healthBenefits": [
+  "A festive enriched bread; enjoy in moderation."
+ ],
+ "culturalNote": "Nermine Mansour describes it as the Port Said brioche for Easter and Sham El-Nessim, with Italian influence from expatriates who left after 1952 and 1954; the name echoes vendors' cries of 'Manga una!' ('eat one').",
+ "nutrition": {
+  "cal": 480,
+  "protein": 12,
+  "carbs": 84,
+  "fat": 10,
+  "fiber": 3,
+  "sodium": 220
+ },
+ "keywords": [
+  "mangauna",
+  "port said brioche",
+  "easter bread",
+  "chez nermine"
+ ]
+},
+{
+ "id": "EGY057",
+ "title": "Atayef (Ramadan Pancakes in Syrup)",
+ "localName": "Qatayef — قطايف",
+ "emoji": "🥞",
+ "country": "Egypt",
+ "countryFlag": "🇪🇬",
+ "region": "North Africa",
+ "community": "Ramadan nights",
+ "cuisine": "Egyptian",
+ "category": "Desserts & Sweets",
+ "course": "Dessert",
+ "diff": "Medium",
+ "prepTime": 20,
+ "restTime": 30,
+ "cookTime": 40,
+ "time": 90,
+ "servings": 10,
+ "cal": 290,
+ "rating": 4.9,
+ "reviews": 247,
+ "tags": [
+  "vegetarian",
+  "dairy",
+  "contains-nuts",
+  "contains-gluten",
+  "ramadan",
+  "sweet",
+  "fried",
+  "festive"
+ ],
+ "author": "Nermine Mansour (Chez Nermine)",
+ "authorEmoji": "👩‍🍳",
+ "desc": "Small yeasted pancakes cooked on one side, folded around nuts or cream, then fried and dipped in orange-blossom syrup.",
+ "longDesc": "A batter of flour, semolina, yeast, baking powder and mahlab rests 30 minutes and is ladled onto a hot pan, cooked on one side only until the surface is covered in dry bubbles and the back is golden. The pancakes are filled with crushed nuts and sugar, clotted cream or cheese, sealed, fried at 350 to 360°F (175 to 182°C) until golden brown and dipped in a clove-cardamom syrup.",
+ "ingredients": [
+  "// Syrup",
+  "1 cup  cup white sugar",
+  "1 cup cup water",
+  "3 Whole  cloves",
+  "3 cardamom pods, bruised",
+  "1 stick  cinnamon",
+  "1  teaspoon  orange blossom or rose water",
+  "// Batter",
+  "1 ¼ cup  warm water plus 2-4 tablespoons",
+  "1 cup  all-purpose flour",
+  "¼ cup  fine semolina flour",
+  "1 tablespoon  granulated sugar",
+  "½ teaspoon  instant yeast",
+  "½ teaspoon  baking powder",
+  "¼ teaspoon  teaspoon baking soda",
+  "¼ teaspoon  orange blossom water or rose water, optional",
+  "¼ teaspoon  mahlab",
+  "// Fillings",
+  "½ cup  crushed nuts + 1 tablespoon sugar + 1/2 teaspoon cinnamon",
+  "½ cup  clotted Cream",
+  "½ cup  mozzarella or Akawi cheese",
+  "// Frying",
+  "1 cup vegetable oil"
+ ],
+ "equipment": [
+  "Non-stick pan",
+  "Deep frying pan",
+  "Saucepan",
+  "Thermometer"
+ ],
+ "steps": [
+  "Syrup: simmer the syrup ingredients for 10 minutes, then turn off the heat.",
+  "Whisk the batter ingredients and rest 30 minutes.",
+  "Cook small pancakes on one side only; once bubbles appear on the surface lower the heat and remove when the face has dry bubbles and the back is golden.",
+  "Fill with nuts, cream or cheese, fold and seal the edges.",
+  "Fry at 350 to 360°F (175 to 182°C) until golden brown, then dip in the syrup."
+ ],
+ "chefTips": [
+  "Cues: bubbles on the surface, dry; back golden; fried golden brown. The 30-minute batter rest is NO CUE, TIME ONLY. The page says they freeze up to one month before frying.",
+  "Misprints kept: duplicated \"cup\" in the syrup lines."
+ ],
+ "commonMistakes": [
+  "Flipping the pancakes; they are cooked on one side only."
+ ],
+ "servedWith": [
+  "Syrup, nuts (included)"
+ ],
+ "relatedRecipes": [
+  "EGY056"
+ ],
+ "sources": [
+  "Adapted from 'Best Atayef Recipe (Ramadani Middle Eastern Pancakes): قطايف', Chez Nermine. BYLINE AS PRINTED: 'Nermine Mansour'. Date: hidden page data gives 2025-02-20, modified 2025-02-21. Chez Nermine pages show no visible printed date; the date given is from the page address or hidden page data and is unconfirmed. Yield not stated; servings are our estimate.",
+  "SOURCING STATUS: ingredients TWO-PASS (pass 2 lines used). Method wording is our own summary of the page; times and cues were relayed by a research tool and should be checked against the live page. Prep and cook totals are our own estimates from the times the page does give.",
+  "FLAG: the author says she adapted a recipe from a New York Times Magazine piece by Reem Kassis."
+ ],
+ "storage": "Page: freeze up to one month; defrost before frying.",
+ "reheating": "Serve soon after dipping; re-crisp briefly in a hot oven.",
+ "healthBenefits": [
+  "A festive dessert; enjoy in moderation."
+ ],
+ "culturalNote": "Nermine Mansour calls atayef 'the crown jewel of Ramadan nights in Egypt'. She notes Egypt serves nut-filled fried atayef in syrup while the Levant favours Akawi cheese, and that her family made a savoury feta and black-olive version.",
+ "nutrition": {
+  "cal": 290,
+  "protein": 5,
+  "carbs": 42,
+  "fat": 12,
+  "fiber": 2,
+  "sodium": 180
+ },
+ "keywords": [
+  "atayef",
+  "qatayef",
+  "ramadan dessert",
+  "chez nermine"
+ ]
+},
+{
+ "id": "EGY058",
+ "title": "Basbousa (Egyptian Semolina and Coconut Cake)",
+ "localName": "Basbousa — بسبوسة",
+ "emoji": "🍰",
+ "country": "Egypt",
+ "countryFlag": "🇪🇬",
+ "region": "North Africa",
+ "community": "Egyptian bakeries and Ramadan",
+ "cuisine": "Egyptian",
+ "category": "Desserts & Sweets",
+ "course": "Dessert",
+ "diff": "Easy",
+ "prepTime": 20,
+ "restTime": 10,
+ "cookTime": 35,
+ "time": 65,
+ "servings": 8,
+ "cal": 470,
+ "rating": 4.9,
+ "reviews": 327,
+ "tags": [
+  "vegetarian",
+  "dairy",
+  "contains-gluten",
+  "sweet",
+  "ramadan",
+  "festive"
+ ],
+ "author": "Omneya \"Minnie\" Negm (Egyptian Streets)",
+ "authorEmoji": "👩‍🍳",
+ "desc": "A buttery semolina and coconut cake baked golden, cut into pieces and soaked with hot lemon syrup.",
+ "longDesc": "Semolina, sugar, coconut, flour and baking powder are mixed with melted butter until the texture is sand-like and yellow, then milk is added gradually to a smooth batter. It is spread in a 26 to 28 cm tray and baked at 180°C (350°F) for 25 minutes or until the top is golden brown. Cut immediately, then pour the hot syrup, which has simmered until slightly thickened, over the hot cake and cover for 5 to 10 minutes.",
+ "ingredients": [
+  "1 cup semolina",
+  "1 cup sugar",
+  "1 cup desiccated coconut",
+  "4 tbsp flour",
+  "2 tsp baking powder",
+  "1 cup butter",
+  "1 cup full cream milk",
+  "// Syrup (Sharbat)",
+  "2 cups sugar",
+  "1.5 cups water",
+  "½ lemon, squeezed"
+ ],
+ "equipment": [
+  "26 to 28 cm baking tray",
+  "Saucepan",
+  "Foil"
+ ],
+ "steps": [
+  "Mix the semolina, sugar, coconut, flour and baking powder. Add the melted butter and stir until the mixture has a sand-like, yellow texture.",
+  "Gradually add the milk and mix to a smooth batter.",
+  "Spread in the tray (28 cm for a thinner cake, 26 cm for a thicker one) and bake at 180°C (350°F) for 25 minutes, or until the top is golden brown.",
+  "Syrup: bring the sugar, water and lemon juice to a boil over low heat, stirring occasionally, and simmer until slightly thickened.",
+  "Cut the cake into squares or triangles immediately after baking and pour the hot syrup over the hot cake.",
+  "Cover with foil, or return to the turned-off oven, for 5 to 10 minutes."
+ ],
+ "chefTips": [
+  "Cues: sand-like yellow mix; top golden brown; syrup slightly thickened. The cover rest is NO CUE, TIME ONLY.",
+  "Hot syrup on hot cake is how this page does it."
+ ],
+ "commonMistakes": [
+  "Letting the cake cool before the syrup, which stops it soaking in."
+ ],
+ "servedWith": [
+  "Arabic coffee or mint tea (page suggestion)"
+ ],
+ "relatedRecipes": [
+  "EGY059",
+  "EGY076",
+  "EGY075"
+ ],
+ "sources": [
+  "Adapted from 'Basbousa: The Classic Egyptian Semolina Cake You Need to Try', Egyptian Streets. BYLINE AS PRINTED: 'By Omneya \"Minnie\" Negm'. Date as printed: February 15, 2025. Serves 6 to 8.",
+  "SOURCING STATUS: ingredients and method TWO-PASS. Method wording is our own summary of the page; times and cues were relayed by a research tool and should be checked against the live page. Prep and cook totals are our own estimates from the times the page does give.",
+  "DISAGREEMENT kept: SBS Food (Amira Georgy, 20 July 2021, read through a staging host so check the live page) uses yoghurt and self-raising flour, bakes 35 to 40 minutes at 190°C and simmers the syrup 5 minutes; Amira's Pantry (Amira Ibrahim, updated Apr 27, 2020) uses ghee, honey, tahini and farina in a 12-inch round pan at 350F in two stages (about 10 minutes plus 15 to 20), simmers the syrup 10 minutes and says the cake is a bakery staple."
+ ],
+ "storage": "Keep covered at room temperature 2 days or refrigerate up to 5 (our estimate).",
+ "reheating": "Serve at room temperature.",
+ "healthBenefits": [
+  "A rich dessert; enjoy in moderation."
+ ],
+ "culturalNote": "Omneya Negm calls basbousa one of Egypt's most beloved desserts, served at gatherings and during Ramadan, with coconut and butter marking the Egyptian version.",
+ "nutrition": {
+  "cal": 470,
+  "protein": 5,
+  "carbs": 62,
+  "fat": 23,
+  "fiber": 2,
+  "sodium": 210
+ },
+ "keywords": [
+  "basbousa",
+  "semolina cake",
+  "egyptian dessert",
+  "egyptian streets"
+ ]
+},
+{
+ "id": "EGY059",
+ "title": "Konafa with Mastic Mahalabiya Cream",
+ "localName": "Konafa — كنافة",
+ "emoji": "🍯",
+ "country": "Egypt",
+ "countryFlag": "🇪🇬",
+ "region": "North Africa",
+ "community": "Egyptian sweets shops",
+ "cuisine": "Egyptian",
+ "category": "Desserts & Sweets",
+ "course": "Dessert",
+ "diff": "Medium",
+ "prepTime": 30,
+ "restTime": 120,
+ "cookTime": 30,
+ "time": 180,
+ "servings": 7,
+ "cal": 560,
+ "rating": 4.8,
+ "reviews": 155,
+ "tags": [
+  "vegetarian",
+  "dairy",
+  "contains-gluten",
+  "sweet",
+  "ramadan",
+  "festive"
+ ],
+ "author": "Omneya \"Minnie\" Negm (Egyptian Streets)",
+ "authorEmoji": "👩‍🍳",
+ "desc": "Shredded konafa dough tossed in melted butter, layered around a hot mastic-scented milk cream and baked until golden, then soaked in cool syrup.",
+ "longDesc": "Half of 500 g of konafa dough mixed with melted butter is pressed into a 24 to 26 cm tray, the hot mahalabiya (milk, cream, sugar and cornflour thickened with mastic and vanilla sugar) is poured over, leaving a 2 cm border, and the rest of the dough is spread on top. At 160°C (320°F) it bakes 25 to 30 minutes until the top is golden brown, and the cooled syrup is poured over the hot konafa.",
+ "ingredients": [
+  "500 grams konafa dough (sometimes sold as kataifi pastry)",
+  "250 grams butter (melted)",
+  "Mastic Mahalabiya (see recipe below)",
+  "// Syrup",
+  "2 cups sugar",
+  "1 cup water",
+  "½ lemon",
+  "// Mahalabiya",
+  "2 cups milk",
+  "½ cup thickened or whipping cream",
+  "1 cup sugar",
+  "4 tbsp cornflour",
+  "1 tsp vanilla sugar and two crushed mastics"
+ ],
+ "equipment": [
+  "24 to 26 cm round tray",
+  "Saucepans"
+ ],
+ "steps": [
+  "Syrup: boil the sugar, water and lemon on medium heat until the syrup slightly thickens. Cool, then refrigerate 1 to 2 hours.",
+  "Mahalabiya: bring the milk and sugar to a boil. Dissolve the cornflour in ¼ cup of milk or water and stir it in. Add the cream, vanilla and mastic and stir until the mixture thickens.",
+  "Heat the oven to 160°C (320°F). Mix the konafa dough with the melted butter by hand.",
+  "Press half of the dough into the tray, pour the hot mahalabiya over leaving a 2 cm border, and cover with the remaining dough.",
+  "Bake 25 to 30 minutes, or until the top is golden brown.",
+  "Pour the cooled syrup over the hot konafa and serve hot in triangles; flip onto a tray if you like."
+ ],
+ "chefTips": [
+  "Cues: syrup slightly thickened; mahalabiya thickened; top golden brown. The syrup chill is NO CUE, TIME ONLY. Extra mahalabiya chilled about two hours is eaten as a pudding.",
+  "Mastic and vanilla sugar are one combined ingredient line on the page."
+ ],
+ "commonMistakes": [
+  "Pouring hot syrup on hot konafa, which makes it soggy; the page uses cooled syrup on hot konafa."
+ ],
+ "servedWith": [
+  "Arabic coffee (page suggestion)"
+ ],
+ "relatedRecipes": [
+  "EGY058",
+  "EGY075",
+  "EGY076"
+ ],
+ "sources": [
+  "Adapted from 'This is the Ultimate Homemade Konafa Recipe', Egyptian Streets. BYLINE AS PRINTED: 'By Omneya \"Minnie\" Negm'. Date as printed: November 18, 2024. Serves 6 to 8.",
+  "SOURCING STATUS: ingredients and method TWO-PASS. Method wording is our own summary of the page; times and cues were relayed by a research tool and should be checked against the live page. Prep and cook totals are our own estimates from the times the page does give."
+ ],
+ "storage": "Best fresh; cover and refrigerate leftovers up to 2 days (our estimate).",
+ "reheating": "Warm in a moderate oven to re-crisp.",
+ "healthBenefits": [
+  "A rich dessert; enjoy in moderation."
+ ],
+ "culturalNote": "The article notes konafa traditionally holds nuts, clotted cream or cheese; this version uses a mahalabiya layer.",
+ "nutrition": {
+  "cal": 560,
+  "protein": 7,
+  "carbs": 62,
+  "fat": 32,
+  "fiber": 1,
+  "sodium": 290
+ },
+ "keywords": [
+  "konafa",
+  "kunafa",
+  "kataifi",
+  "egyptian streets"
+ ]
+},
+{
+ "id": "EGY060",
+ "title": "Om Ali (Egypt’s Iconic Bread Pudding)",
+ "localName": "Om Ali — أم علي",
+ "emoji": "🍮",
+ "country": "Egypt",
+ "countryFlag": "🇪🇬",
+ "region": "North Africa",
+ "community": "Egyptian celebrations",
+ "cuisine": "Egyptian",
+ "category": "Desserts & Sweets",
+ "course": "Dessert",
+ "diff": "Medium",
+ "prepTime": 30,
+ "restTime": 30,
+ "cookTime": 50,
+ "time": 110,
+ "servings": 6,
+ "cal": 620,
+ "rating": 4.7,
+ "reviews": 314,
+ "tags": [
+  "vegetarian",
+  "dairy",
+  "contains-nuts",
+  "contains-gluten",
+  "sweet",
+  "special-occasion",
+  "celebration"
+ ],
+ "author": "Nermine Mansour (Chez Nermine)",
+ "authorEmoji": "👩‍🍳",
+ "desc": "Baked puff pastry layered with a spice- and mastic-infused milk and cream, nuts and raisins, topped with whipped cream and baked until bubbling.",
+ "longDesc": "The milk and cream warm until they bubble at the edges and a spice bag is added; they simmer very gently for no more than a minute and steep at least 30 minutes or until the milk reaches room temperature. Puff pastry is baked until puffed and golden and layered with nuts, raisins and the milk mixture in an 8 to 9 inch dish, topped with whipped cream and cinnamon, and baked at 360°F (180°C) for 20 to 25 minutes until it starts to bubble, then broiled or torched.",
+ "ingredients": [
+  "4 cups infused milk-cream mixture (recipe follows)",
+  "4 puff pastry sheets or 5 good quality baked croissants",
+  "1 cup mixed nuts of your choice, toasted",
+  "3 tablespoons raisins",
+  "1 cup whipped cream (recipe follows)",
+  "1 teaspoon ground cinnamon",
+  "// Milk mixture",
+  "3 1/2 cups full fat milk",
+  "1/2 cup whipping cream",
+  "½ cup sugar",
+  "2 mastic resins, crushed with a spoonful of sugar",
+  "1 tablespoon vanilla extract",
+  "1 cinnamon stick",
+  "5 whole cloves",
+  "5 allspice whole berries",
+  "3 pods of bruised cardamom",
+  "1 teaspoon of rose water or orange blossom, optional",
+  "// Whipped cream",
+  "½ cup whipping cream",
+  "2 tablespoons superfine or icing sugar",
+  "2 teaspoons vanilla"
+ ],
+ "equipment": [
+  "8 to 9 inch deep baking dish",
+  "Saucepan",
+  "Cheesecloth or tea ball",
+  "Torch or broiler"
+ ],
+ "steps": [
+  "Warm the milk and cream. Once it starts to bubble on the edges, add the spices in an infuser, simmer very gently for no more than 1 minute, then steep at least 30 minutes or until the milk comes to room temperature.",
+  "Bake the puff pastry until puffed and golden (the page says 375°C for 20 to 25 minutes, a misprint for °F), then break it into pieces.",
+  "Whip the cream with the sugar and vanilla.",
+  "Layer pastry, infused milk, nuts and raisins in the dish, then top with whipped cream and cinnamon.",
+  "Bake at 360°F (180°C) for 20 to 25 minutes, or until it starts to bubble, then broil 3 minutes or use a torch."
+ ],
+ "chefTips": [
+  "Cues: milk bubbles at the edges; pastry puffed and golden; the dish begins to bubble. The steeping is time plus a temperature cue (room temperature).",
+  "The page prints 375°C for the pastry, which cannot be right; use about 375°F (190°C)."
+ ],
+ "commonMistakes": [
+  "Boiling the milk, which can curdle it with the mastic."
+ ],
+ "servedWith": [
+  "Tea or coffee"
+ ],
+ "relatedRecipes": [
+  "EGY061",
+  "EGY067",
+  "EGY062"
+ ],
+ "sources": [
+  "Adapted from 'Om Ali (Egypt's Iconic Bread Pudding): ام علي', Chez Nermine. BYLINE AS PRINTED: 'Nermine Mansour'. Date: address 2023/02/09; hidden page data gives 2023-02-08. Chez Nermine pages show no visible printed date; the date given is from the page address or hidden page data and is unconfirmed. Yield not stated; servings are our estimate.",
+  "SOURCING STATUS: ingredients and method TWO-PASS. Method wording is our own summary of the page; times and cues were relayed by a research tool and should be checked against the live page. Prep and cook totals are our own estimates from the times the page does give.",
+  "DISAGREEMENT kept: Amira's Pantry (Amira Ibrahim, updated Feb 24, 2025) uses 1 puff pastry sheet, 4 cups of microwaved sweetened milk soaked 5 to 10 minutes and Cool Whip, broiled 5 to 10 minutes (a shortcut, not traditional); Nermine Mansour's page retells the 13th-century legend of Om Ali and Shajar al-Durr, and reports that the food archaeologist Mennat-Allah El Dorry says there is no historical evidence for it."
+ ],
+ "storage": "Best fresh; refrigerate leftovers up to 2 days (our estimate).",
+ "reheating": "Warm gently.",
+ "healthBenefits": [
+  "A rich dessert; enjoy in moderation."
+ ],
+ "culturalNote": "Nermine Mansour retells the legend of Om Ali and Shajar al-Durr, but reports that the Egyptian food archaeologist Mennat-Allah El Dorry has found no historical evidence for it and attributes its popularity to a column by the author Anis Mansour.",
+ "nutrition": {
+  "cal": 620,
+  "protein": 10,
+  "carbs": 56,
+  "fat": 40,
+  "fiber": 2,
+  "sodium": 280
+ },
+ "keywords": [
+  "om ali",
+  "umm ali",
+  "egyptian bread pudding",
+  "chez nermine"
+ ]
+},
+{
+ "id": "EGY061",
+ "title": "Rice Pudding with Mastic and Orange Blossom (Lola’s Rice Pudding)",
+ "localName": "Roz bi-laban — أرز بلبن",
+ "emoji": "🍚",
+ "country": "Egypt",
+ "countryFlag": "🇪🇬",
+ "region": "North Africa",
+ "community": "Egyptian-Alexandrian family table",
+ "cuisine": "Egyptian",
+ "category": "Desserts & Sweets",
+ "course": "Dessert",
+ "diff": "Easy",
+ "prepTime": 15,
+ "restTime": 120,
+ "cookTime": 40,
+ "time": 175,
+ "servings": 6,
+ "cal": 360,
+ "rating": 4.8,
+ "reviews": 154,
+ "tags": [
+  "vegetarian",
+  "dairy",
+  "gluten-free",
+  "sweet",
+  "cold",
+  "make-ahead"
+ ],
+ "author": "Nermine Mansour (Chez Nermine)",
+ "authorEmoji": "👩‍🍳",
+ "desc": "Firm cooked short-grain rice simmered in spiced milk with mastic, sweetened and chilled, then folded with whipped cream and orange blossom water.",
+ "longDesc": "Rice boils 15 to 20 minutes on medium-high until it is firm and not mushy. Milk warms with sugar and a cloth bag of cloves and cinnamon, the rice goes in and the pudding is stirred until it thickens, with cornflour optional to speed it up. Crushed mastic is stirred in until it dissolves, the spices come out and orange blossom water goes in; once cool the pudding is folded with whipped cream and served cold.",
+ "ingredients": [
+  "1/2 cup cooked short-grain rice (also known as arborio)",
+  "2 1/2 cups full-fat milk.",
+  "1 stick cinnamon",
+  "2 whole cloves",
+  "1/4 cup sugar",
+  "2 tablespoons cornflour dissolved in 1/2 cup of milk (optional)",
+  "5-8 pieces mastic crystals, depends on their size",
+  "1 tablespoon orange blossom water",
+  "3/4 cup cream",
+  "1/4 powdered sugar",
+  "1/2 teaspoon vanilla",
+  "1/2 teaspoon rose blossom water",
+  "Pistachios and organic rosebuds for garnish (optional)"
+ ],
+ "equipment": [
+  "Saucepan",
+  "Cloth spice bag",
+  "Mixing bowl"
+ ],
+ "steps": [
+  "Boil the rice 15 to 20 minutes on medium-high heat; it should stay firm and not mushy.",
+  "Warm the milk on low heat, add the sugar and a cloth bag of cloves and cinnamon. Add the rice and stir until the pudding thickens; the optional cornflour slurry speeds this up.",
+  "Add the crushed mastic and stir a few more minutes, until the mastic dissolves.",
+  "Remove the spices, add the orange blossom water and cool completely.",
+  "Whip the cream (3 minutes low, then to soft peaks), with the powdered sugar, vanilla and rose water, and chill at least a couple of hours.",
+  "Fold the cold cream into the cold pudding and serve cold, garnished."
+ ],
+ "chefTips": [
+  "Cues: rice firm, not mushy; pudding thickens; mastic dissolves. The chill is NO CUE, TIME ONLY.",
+  "The powdered sugar line is missing its unit ('1/4 powdered sugar'); use about ¼ cup."
+ ],
+ "commonMistakes": [
+  "Letting the rice go mushy.",
+  "Folding warm pudding into cold cream."
+ ],
+ "servedWith": [
+  "Pistachios, rosebuds (garnish)"
+ ],
+ "relatedRecipes": [
+  "EGY060",
+  "EGY062"
+ ],
+ "sources": [
+  "Adapted from 'Lola's Rice Pudding: The Bitter Sweet Memory', Chez Nermine. BYLINE AS PRINTED: 'Nermine Mansour'. Date: hidden page data gives 2018-07-18. Chez Nermine pages show no visible printed date; the date given is from the page address or hidden page data and is unconfirmed. Serves 6 (single reading).",
+  "SOURCING STATUS: ingredients and method TWO-PASS. Method wording is our own summary of the page; times and cues were relayed by a research tool and should be checked against the live page. Prep and cook totals are our own estimates from the times the page does give.",
+  "FLAG: the page does not say 'roz bel laban'; it is filed under her Egyptian desserts. She says her two most memorable rice puddings were at Hafez Mustapha in Istanbul and at Lola's home, and she prefers an eggless version. Amira's Pantry (Amira Ibrahim, updated Jan 2, 2025) offers a cornstarch version and notes Egyptian puddings use cornstarch rather than eggs, but credits the recipe to a friend from Kuwait."
+ ],
+ "storage": "Refrigerate covered up to 3 days (our estimate).",
+ "reheating": "Serve cold.",
+ "healthBenefits": [
+  "A comforting dairy dessert."
+ ],
+ "culturalNote": "The page is a family-memory piece about two rice puddings, one eaten in Istanbul and one at Lola's home.",
+ "nutrition": {
+  "cal": 360,
+  "protein": 6,
+  "carbs": 40,
+  "fat": 19,
+  "fiber": 0,
+  "sodium": 70
+ },
+ "keywords": [
+  "rice pudding",
+  "roz bel laban",
+  "mastic pudding",
+  "chez nermine"
+ ]
+},
+{
+ "id": "EGY062",
+ "title": "Mahalabia (Egyptian Milk Pudding)",
+ "localName": "Mahalabiya — مهلبية",
+ "emoji": "🍮",
+ "country": "Egypt",
+ "countryFlag": "🇪🇬",
+ "region": "North Africa",
+ "community": "Egyptian home table",
+ "cuisine": "Egyptian",
+ "category": "Desserts & Sweets",
+ "course": "Dessert",
+ "diff": "Easy",
+ "prepTime": 10,
+ "restTime": 90,
+ "cookTime": 10,
+ "time": 110,
+ "servings": 5,
+ "cal": 210,
+ "rating": 4.5,
+ "reviews": 52,
+ "tags": [
+  "vegetarian",
+  "dairy",
+  "gluten-free",
+  "sweet",
+  "cold",
+  "quick",
+  "make-ahead"
+ ],
+ "author": "Amira Ibrahim (Amira’s Pantry)",
+ "authorEmoji": "👩‍🍳",
+ "desc": "Cold milk whisked with cornstarch and sugar, heated until it bubbles and thickens, flavoured with vanilla and chilled to set.",
+ "longDesc": "Milk, sugar and cornstarch are whisked cold, then heated on medium, stirring constantly, until the mixture bubbles and thickens. The flavouring goes in off the heat; the pudding cools about 30 minutes and then chills for an hour to set. Traditional flavourings are orange blossom, rose water, vanilla and cardamom.",
+ "ingredients": [
+  "4 cups milk",
+  "½ cup granulated sugar 100g or to taste",
+  "6 Tablespoons cornstarch 60g",
+  "2 teaspoon vanilla extract",
+  "For garnishing: dried fruits, nuts, edible flowers or ground cinnamon"
+ ],
+ "equipment": [
+  "Saucepan",
+  "Whisk",
+  "Serving cups"
+ ],
+ "steps": [
+  "Whisk the milk, sugar and cornstarch together cold until smooth.",
+  "Heat on medium, stirring constantly, until it bubbles and thickens.",
+  "Take off the heat and stir in the vanilla.",
+  "Pour into cups, cool about 30 minutes, then refrigerate for an hour to set.",
+  "Garnish with dried fruit, nuts or cinnamon."
+ ],
+ "chefTips": [
+  "Cue: bubbles and thickens. The chill is NO CUE, TIME ONLY. The page misprints 'abbot' for 'about'.",
+  "Orange blossom, rose water and cardamom are traditional flavourings."
+ ],
+ "commonMistakes": [
+  "Stopping stirring, which gives lumps."
+ ],
+ "servedWith": [
+  "Rose petals and pistachios (traditional garnish)"
+ ],
+ "relatedRecipes": [
+  "EGY061",
+  "EGY060"
+ ],
+ "sources": [
+  "Adapted from 'Mahalabia (Milk Pudding)', Amira's Pantry. BYLINE AS PRINTED: 'By Amira Ibrahim'. Date as printed: 'Updated: May 9, 2023'. Servings 5.",
+  "SOURCING STATUS: ingredients and method TWO-PASS. Method wording is our own summary of the page; times and cues were relayed by a research tool and should be checked against the live page. Prep and cook totals are our own estimates from the times the page does give.",
+  "DISAGREEMENT kept: another named page (Amina Al-Saigh, Hungry Paprikas, 12 July 2025) uses 7 tablespoons cornstarch and ¾ cup sugar per 4 cups of milk with cream and cardamom, but she is of Iraqi heritage and tags the dish Iraqi, so it is not used here. The Egyptian Streets konafa page makes a third mahalabiya formula with cream and mastic."
+ ],
+ "storage": "Refrigerate covered up to 3 days (our estimate).",
+ "reheating": "Serve cold.",
+ "healthBenefits": [
+  "A light dairy dessert."
+ ],
+ "culturalNote": "Amira Ibrahim grew up making the cornstarch version, and lists orange blossom, rose water, vanilla and cardamom as traditional flavours and rose petals and pistachios as the traditional garnish.",
+ "nutrition": {
+  "cal": 210,
+  "protein": 6,
+  "carbs": 34,
+  "fat": 6,
+  "fiber": 0,
+  "sodium": 80
+ },
+ "keywords": [
+  "mahalabia",
+  "muhallabiya",
+  "milk pudding",
+  "amira pantry"
+ ]
+},
+{
+ "id": "EGY063",
+ "title": "Kahk (Eid Cookies with Pistachio and Honey Filling)",
+ "localName": "Kahk al-eid — كحك العيد",
+ "emoji": "🍪",
+ "country": "Egypt",
+ "countryFlag": "🇪🇬",
+ "region": "North Africa",
+ "community": "Eid and Easter",
+ "cuisine": "Egyptian",
+ "category": "Desserts & Sweets",
+ "course": "Dessert",
+ "diff": "Medium",
+ "prepTime": 40,
+ "restTime": 60,
+ "cookTime": 25,
+ "time": 125,
+ "servings": 20,
+ "cal": 300,
+ "rating": 4.5,
+ "reviews": 288,
+ "tags": [
+  "vegetarian",
+  "dairy",
+  "contains-nuts",
+  "contains-gluten",
+  "sweet",
+  "festive",
+  "celebration"
+ ],
+ "author": "Amira Ibrahim (Amira’s Pantry)",
+ "authorEmoji": "👩‍🍳",
+ "desc": "Ghee-rich cookies with toasted sesame, filled with a pistachio and honey paste, baked until golden on the bottom and dusted with powdered sugar.",
+ "longDesc": "Flour, salt, sugar, cinnamon, sesame and yeast are rubbed with room-temperature ghee and warm water into a dough that rests an hour. A filling of flour browned in ghee with sesame, honey and ground pistachios is cooled and rolled into 20 small balls. Dough balls of about 40 g are filled, pressed in a mamoul mold or marked with a fork, baked at 350°F for 20 to 25 minutes or until the bottom is golden brown, and dusted with powdered sugar.",
+ "ingredients": [
+  "// Dough",
+  "3 cups flour.",
+  "a dash of salt - approximately ⅛ teaspoon.",
+  "1 Tablespoon granulated sugar.",
+  "½ teaspoon cinnamon.",
+  "3 Tablespoons toasted sesame seeds- optional but highly recommended.",
+  "½ teaspoon dry yeast.",
+  "1 cup ghee- room temperature and not melted.",
+  "⅓ cup warm water",
+  "// Filling",
+  "1 Tablespoon ghee or butter.",
+  "1 Tablespoon flour.",
+  "1 teaspoon sesame seeds.",
+  "¼ cup honey.",
+  "½ cup pistachios coarsely ground.",
+  "// To finish",
+  "Powdered sugar."
+ ],
+ "equipment": [
+  "Mixing bowl",
+  "Mamoul mold or fork",
+  "Baking tray"
+ ],
+ "steps": [
+  "Mix the dough ingredients to a nice consistent dough, cover and rest for an hour.",
+  "Filling: cook the ghee and flour on medium, stirring until the flour turns golden brown. Add the sesame and honey and return to low heat until it thickens. Stir in the pistachios, cool 10 minutes and form 20 small balls.",
+  "Divide the dough into 20 balls of about 40 g each. Fill, press into a mamoul mold or mark with a fork.",
+  "Bake in a 350°F oven for 20 to 25 minutes, or until the bottom is golden brown.",
+  "Dust with powdered sugar just before serving."
+ ],
+ "chefTips": [
+  "Cues: flour turns golden brown; filling thickens; bottom golden. The dough rest is NO CUE, TIME ONLY.",
+  "Ghee gives the distinctive aroma, says the author."
+ ],
+ "commonMistakes": [
+  "Using melted ghee in the dough; the page says room temperature, not melted."
+ ],
+ "servedWith": [
+  "Tea or coffee"
+ ],
+ "relatedRecipes": [
+  "EGY064",
+  "EGY057"
+ ],
+ "sources": [
+  "Adapted from 'Kahk Recipe', Amira's Pantry. BYLINE AS PRINTED: 'Amira Ibrahim'. Date as printed: 'Updated: Feb 25, 2025'. Servings 20 cookies.",
+  "SOURCING STATUS: ingredients and method TWO-PASS. Method wording is our own summary of the page; times and cues were relayed by a research tool and should be checked against the live page. Prep and cook totals are our own estimates from the times the page does give.",
+  "DISAGREEMENT kept: a Middle East Eye page by 'Middle Eats' (a handle, so not used) makes a spiced mahlab dough with baking powder and milk and bakes about 16 minutes at 160°C fan after a test-bake."
+ ],
+ "storage": "Airtight at room temperature up to a week (our estimate).",
+ "reheating": "Not needed.",
+ "healthBenefits": [
+  "A festive sweet; enjoy in moderation."
+ ],
+ "culturalNote": "Amira Ibrahim says families shape kahk together before Eid, and Christians also make it after Lent and at Easter; it is served with tea or coffee.",
+ "nutrition": {
+  "cal": 300,
+  "protein": 4,
+  "carbs": 27,
+  "fat": 20,
+  "fiber": 1,
+  "sodium": 20
+ },
+ "keywords": [
+  "kahk",
+  "eid cookies",
+  "egyptian cookies",
+  "amira pantry"
+ ]
+},
+{
+ "id": "EGY064",
+ "title": "Ghorayeba (Egyptian Melt-in-the-Mouth Butter Cookies)",
+ "localName": "Ghorayebah — غريبة",
+ "emoji": "🍪",
+ "country": "Egypt",
+ "countryFlag": "🇪🇬",
+ "region": "North Africa",
+ "community": "Eid and tea time",
+ "cuisine": "Egyptian",
+ "category": "Desserts & Sweets",
+ "course": "Dessert",
+ "diff": "Easy",
+ "prepTime": 20,
+ "restTime": 140,
+ "cookTime": 15,
+ "time": 175,
+ "servings": 35,
+ "cal": 80,
+ "rating": 4.8,
+ "reviews": 140,
+ "tags": [
+  "vegetarian",
+  "dairy",
+  "contains-nuts",
+  "contains-gluten",
+  "sweet",
+  "festive"
+ ],
+ "author": "Amira Ibrahim (Amira’s Pantry)",
+ "authorEmoji": "👩‍🍳",
+ "desc": "Three-ingredient ghee, flour and powdered sugar cookies beaten to a creamy dough, firmed in the freezer and baked pale yellow.",
+ "longDesc": "Cold ghee, powdered sugar and flour mix on low for 4 to 5 minutes and then on medium-low for another 10 minutes; the dough starts like wet sand and becomes very creamy, like hummus. It freezes 15 to 20 minutes until firm to handle, is scooped into 11 to 12 gram pieces topped with pistachio, and bakes at 320°F for 15 minutes without changing colour, remaining pale yellow.",
+ "ingredients": [
+  "250 g all purpose flour 2 cups",
+  "150 g cold ghee ⅔ cup. You can use clarified butter too.",
+  "85 g powdered sugar ¾ cup",
+  "Pistachios."
+ ],
+ "equipment": [
+  "Stand mixer",
+  "Baking sheet"
+ ],
+ "steps": [
+  "Mix the ghee, sugar and flour on low for 4 to 5 minutes, then on medium-low for another 10 minutes, until very creamy.",
+  "Freeze the dough 15 to 20 minutes until firm enough to handle.",
+  "Heat the oven to 320°F with the rack in the middle. Scoop 11 to 12 gram pieces and press a pistachio on each.",
+  "Bake 15 minutes. Do not wait for them to change colour; they need to be pale yellow.",
+  "Cool on the sheet 10 to 15 minutes, then on a rack, and leave to set completely for at least 2 hours."
+ ],
+ "chefTips": [
+  "Cues: dough very creamy; cookies pale yellow, not coloured. The freeze and the final set are NO CUE, TIME ONLY.",
+  "The author says ghee is a must; butter will give a crunchy cookie instead of a soft one."
+ ],
+ "commonMistakes": [
+  "Baking until browned."
+ ],
+ "servedWith": [
+  "Tea or coffee"
+ ],
+ "relatedRecipes": [
+  "EGY063",
+  "EGY058"
+ ],
+ "sources": [
+  "Adapted from 'Ghraybeh Recipe' (card 'Ghraybeh (Ghoraybeh) Recipe'), Amira's Pantry. BYLINE AS PRINTED: 'By Amira Ibrahim'. Date as printed: 'Updated: Mar 9, 2026'. Servings 35 cookies.",
+  "SOURCING STATUS: ingredients and method TWO-PASS; the 'hummus' description is single-pass. Method wording is our own summary of the page; times and cues were relayed by a research tool and should be checked against the live page. Prep and cook totals are our own estimates from the times the page does give.",
+  "DISAGREEMENT kept: The Mediterranean Dish (Suzy Karadsheh, 2019) uses 195 g ghee, 63.77 g powdered sugar, baking powder and 240 g flour, chills 20 minutes and bakes at 350°F for 12 to 15 minutes until the bottoms gain a bit of color. A reader called Amira's recipe Syrian; she thanked them."
+ ],
+ "storage": "Airtight at room temperature up to 5 days (our estimate).",
+ "reheating": "Not needed.",
+ "healthBenefits": [
+  "A rich sweet; enjoy in moderation."
+ ],
+ "culturalNote": "Amira Ibrahim says the recipe came from a pastry chef in Egypt.",
+ "nutrition": {
+  "cal": 80,
+  "protein": 1,
+  "carbs": 8,
+  "fat": 5,
+  "fiber": 0,
+  "sodium": 0
+ },
+ "keywords": [
+  "ghoraybeh",
+  "ghorayeba",
+  "ghee cookies",
+  "amira pantry"
+ ]
+},
+{
+ "id": "EGY065",
+ "title": "Zalabya (Luqmat el Qadi, Egyptian Doughnut Bites)",
+ "localName": "Zalabia / Luqmat el-qadi — زلابية",
+ "emoji": "🍩",
+ "country": "Egypt",
+ "countryFlag": "🇪🇬",
+ "region": "North Africa",
+ "community": "Ramadan and summer in Alexandria",
+ "cuisine": "Egyptian",
+ "category": "Desserts & Sweets",
+ "course": "Dessert",
+ "diff": "Medium",
+ "prepTime": 15,
+ "restTime": 70,
+ "cookTime": 15,
+ "time": 100,
+ "servings": 6,
+ "cal": 290,
+ "rating": 4.5,
+ "reviews": 293,
+ "tags": [
+  "vegetarian",
+  "dairy",
+  "fried",
+  "contains-gluten",
+  "sweet",
+  "ramadan",
+  "street-food"
+ ],
+ "author": "Nermine Mansour (Chez Nermine)",
+ "authorEmoji": "👩‍🍳",
+ "desc": "Yeasted batter with orange zest dropped into warm oil, fried golden and drizzled with simple syrup, honey or chocolate.",
+ "longDesc": "Flour, cornstarch, milk powder, salt, yeast, sugar and orange zest are mixed with warm water; yeast proofs five minutes until frothy and foamy. The batter rises for no more than an hour, and spoonfuls are fried in oil that is warm to the touch (not too hot) until golden brown, drained 5 minutes and dipped in syrup, honey, powdered sugar or melted chocolate.",
+ "ingredients": [
+  "2 cups flour",
+  "2 tablespoons cornstarch",
+  "2 tablespoons powdered milk",
+  "½ teaspoon salt",
+  "1 ½ cup warm water",
+  "1 tablespoon yeast",
+  "1 tablespoon granulated sugar",
+  "1 tablespoon orange zest",
+  "1 teaspoon vanilla extract, optional",
+  "⅛ teaspoon cinnamon, optional",
+  "1 cup oil",
+  "1 cup simple syrup",
+  "Honey",
+  "Powdered sugar",
+  "Melted white chocolate",
+  "Melted milk chocolate"
+ ],
+ "equipment": [
+  "Mixing bowl",
+  "Deep pan",
+  "Slotted spoon"
+ ],
+ "steps": [
+  "Proof the yeast with warm water and sugar for 5 minutes, until frothy and foamy.",
+  "Mix with the flour, cornstarch, milk powder, salt, zest and optional vanilla and cinnamon into a batter and let it rise for no more than an hour.",
+  "Heat the oil until warm to the touch; do not let it get too hot.",
+  "Drop spoonfuls into the oil and fry once they are golden brown. Drain 5 minutes.",
+  "Dip in simple syrup and finish with honey, powdered sugar or melted chocolate."
+ ],
+ "chefTips": [
+  "Cues: yeast frothy; oil warm to touch; fritters golden brown. The rise of no more than an hour is NO CUE, TIME ONLY. The batter can be made a day ahead.",
+  "The syrup is listed as '1 cup simple syrup' with no method; see the sharbat record."
+ ],
+ "commonMistakes": [
+  "Oil too hot, browning the outside before the inside cooks."
+ ],
+ "servedWith": [
+  "Simple syrup (EGY076)"
+ ],
+ "relatedRecipes": [
+  "EGY066",
+  "EGY076"
+ ],
+ "sources": [
+  "Adapted from 'Zalabia (Egyptian donuts): لقمة القاضي أو زلابية', Chez Nermine. BYLINE AS PRINTED: 'Nermine Mansour'. Date: address 2023/07/17; hidden page data gives 2023-07-17. Chez Nermine pages show no visible printed date; the date given is from the page address or hidden page data and is unconfirmed. Yield not stated; servings are our estimate.",
+  "SOURCING STATUS: ingredients TWO-PASS (pass 2 lines used). Method wording is our own summary of the page; times and cues were relayed by a research tool and should be checked against the live page. Prep and cook totals are our own estimates from the times the page does give."
+ ],
+ "storage": "Best fresh.",
+ "reheating": "Not recommended; fry fresh.",
+ "healthBenefits": [
+  "A festive fried sweet; enjoy in moderation."
+ ],
+ "culturalNote": "Nermine Mansour says zalabia recalls summers in Alexandria and credits the recipe to 'tante Nadia' (Mrs. Nadia Rizk); her diaspora kids suggested the orange zest and vanilla.",
+ "nutrition": {
+  "cal": 290,
+  "protein": 5,
+  "carbs": 45,
+  "fat": 10,
+  "fiber": 1,
+  "sodium": 190
+ },
+ "keywords": [
+  "zalabya",
+  "luqmat el qadi",
+  "egyptian doughnuts",
+  "chez nermine"
+ ]
+},
+{
+ "id": "EGY066",
+ "title": "Balah el Sham (Egyptian Churro-Style Fritters)",
+ "localName": "Balah el-Sham — بلح الشام",
+ "emoji": "🍩",
+ "country": "Egypt",
+ "countryFlag": "🇪🇬",
+ "region": "North Africa",
+ "community": "Ramadan nights",
+ "cuisine": "Egyptian",
+ "category": "Desserts & Sweets",
+ "course": "Dessert",
+ "diff": "Medium",
+ "prepTime": 25,
+ "restTime": 30,
+ "cookTime": 25,
+ "time": 80,
+ "servings": 9,
+ "cal": 310,
+ "rating": 4.9,
+ "reviews": 218,
+ "tags": [
+  "vegetarian",
+  "dairy",
+  "contains-egg",
+  "fried",
+  "contains-gluten",
+  "sweet",
+  "ramadan"
+ ],
+ "author": "Nermine Mansour (Chez Nermine)",
+ "authorEmoji": "👩‍🍳",
+ "desc": "Choux dough made with water and corn oil, piped through a star tip into warm oil, fried until puffy and golden and soaked in cinnamon-clove syrup.",
+ "longDesc": "Water, corn oil, sugar, salt and vinegar are boiled and the flour is added; the heat goes off and the dough cools completely, then eggs are beaten in until a sticky dough forms. It is piped with a star tip into oil that is warm to the touch but not too hot, fried until puffy and golden, and soaked in the simple syrup while still warm. The page lists the syrup ingredients but gives no syrup method or any times.",
+ "ingredients": [
+  "1 cup water",
+  "1/2 cup corn oil",
+  "1 cup sugar",
+  "1/2 teaspoon salt",
+  "1 teaspoon white vinegar",
+  "1 1/2 cups all purpose flour",
+  "3 large eggs",
+  "1 teaspoon vanilla extract",
+  "Corn oil for frying",
+  "// Syrup",
+  "1 cup sugar",
+  "1 cup water",
+  "1 stick cinnamon",
+  "4 whole cloves",
+  "1 teaspoon orange blossom or rose water"
+ ],
+ "equipment": [
+  "Saucepan",
+  "Piping bag with star tip",
+  "Deep pan"
+ ],
+ "steps": [
+  "Boil the water, oil, sugar, salt and vinegar, add the flour and stir to a dough. Turn off the heat and let the dough cool completely.",
+  "Beat in the eggs and vanilla until a sticky dough forms.",
+  "Pipe through a star tip into oil that is warm to the touch but not too hot. Fry until puffy and golden.",
+  "Make the syrup by simmering the syrup ingredients (the page gives no method; see the sharbat record for one). Soak the fritters in the syrup while still warm."
+ ],
+ "chefTips": [
+  "Cues: dough cooled completely; sticky dough; puffy and golden. No frying times or temperatures are printed.",
+  "The page was adapted from Manal Al Alem's Bala7 El Sham recipe (single reading)."
+ ],
+ "commonMistakes": [
+  "Adding eggs to hot dough, which cooks them."
+ ],
+ "servedWith": [
+  "Simple syrup (EGY076)"
+ ],
+ "relatedRecipes": [
+  "EGY065",
+  "EGY058"
+ ],
+ "sources": [
+  "Adapted from 'Balah El Sham: First Lesson of Coexsistence', Chez Nermine. BYLINE AS PRINTED: 'Nermine Mansour'. No date in the body; comment timestamps show 06/06/2018. Chez Nermine pages show no visible printed date; the date given is from the page address or hidden page data and is unconfirmed. Serves 8 to 10.",
+  "SOURCING STATUS: ingredients TWO-PASS; the adaptation credit single-pass. Method wording is our own summary of the page; times and cues were relayed by a research tool and should be checked against the live page. Prep and cook totals are our own estimates from the times the page does give.",
+  "DISAGREEMENT kept: Cleobuttera (first-name byline 'Tasbih', so not used) uses butter, 2 cups flour and 5 eggs with a 15 to 20 minute dough cool and a vanilla syrup."
+ ],
+ "storage": "Best the same day.",
+ "reheating": "Re-crisp in a hot oven.",
+ "healthBenefits": [
+  "A festive fried sweet; enjoy in moderation."
+ ],
+ "culturalNote": "Nermine Mansour recalls her first encounter with balah el sham: a plate from a Muslim neighbour on a Ramadan night when she was under 7.",
+ "nutrition": {
+  "cal": 310,
+  "protein": 4,
+  "carbs": 44,
+  "fat": 14,
+  "fiber": 1,
+  "sodium": 120
+ },
+ "keywords": [
+  "balah el sham",
+  "egyptian churros",
+  "choux fritters",
+  "chez nermine"
+ ]
+},
+{
+ "id": "EGY067",
+ "title": "Aish el Saraya (Toasted Bread and Cream Pudding)",
+ "localName": "Aish el-saraya — عيش السرايا",
+ "emoji": "🍮",
+ "country": "Egypt",
+ "countryFlag": "🇪🇬",
+ "region": "North Africa",
+ "community": "Cairo sweets",
+ "cuisine": "Egyptian",
+ "category": "Desserts & Sweets",
+ "course": "Dessert",
+ "diff": "Medium",
+ "prepTime": 20,
+ "restTime": 140,
+ "cookTime": 25,
+ "time": 185,
+ "servings": 8,
+ "cal": 420,
+ "rating": 4.8,
+ "reviews": 101,
+ "tags": [
+  "vegetarian",
+  "dairy",
+  "contains-nuts",
+  "contains-gluten",
+  "sweet",
+  "ramadan",
+  "cold"
+ ],
+ "author": "Nermine Mansour (Chez Nermine)",
+ "authorEmoji": "👩‍🍳",
+ "desc": "Toasted bread soaked in syrup, covered with a mastic-scented cream pudding and chilled, finished with ground pistachios and rose petals.",
+ "longDesc": "White bread slices toast at 350°F (175°C) until golden brown and soak at least 10 minutes in a hot lemon syrup that simmered about 10 minutes until slightly thickened. A pudding of milk, cream, sugar and cornstarch with crushed mastic is stirred until it thickens to a pudding-like consistency, poured over the bread, cooled to room temperature and refrigerated at least 2 hours.",
+ "ingredients": [
+  "// Syrup",
+  "1 cup sugar",
+  "1 cup water",
+  "1 tablespoon lemon juice",
+  "1 teaspoon orange blossom water (optional)",
+  "// Pudding",
+  "6-8 slices white bread, crusts removed",
+  "2 cups milk",
+  "1 cup heavy cream",
+  "1/2 cup sugar",
+  "3 tablespoons cornstarch",
+  "1 teaspoon rose water (optional)",
+  "5 frozen mastic resin + 1 teaspoon of white granulated sugar, crushed together",
+  "// Garnish",
+  "1/2 cup ground pistachios",
+  "1/4 dehydrated roses"
+ ],
+ "equipment": [
+  "Saucepans",
+  "Baking tray",
+  "Serving dish",
+  "Plastic wrap"
+ ],
+ "steps": [
+  "Syrup: simmer the sugar, water and lemon juice about 10 minutes until slightly thickened, then set aside.",
+  "Pudding: dissolve the cornstarch in a little of the milk, then cook all the pudding ingredients, stirring, until thickened to a pudding-like consistency. Cover the surface with plastic film.",
+  "Toast the bread at 350°F (175°C) until golden brown. Pour hot syrup over the toast and soak at least 10 minutes.",
+  "Pour the pudding over the bread, cool to room temperature, and refrigerate at least 2 hours.",
+  "Garnish with ground pistachios and dried rose petals."
+ ],
+ "chefTips": [
+  "Cues: syrup slightly thickened; pudding thick; bread golden. The soak and the chill are NO CUE, TIME ONLY.",
+  "The page tells you to cool the syrup and the pudding and later to pour both hot; follow the hot-syrup-on-toast order above. The garnish line is missing its unit ('1/4 dehydrated roses')."
+ ],
+ "commonMistakes": [
+  "Using soft bread without toasting."
+ ],
+ "servedWith": [
+  "Tea or coffee"
+ ],
+ "relatedRecipes": [
+  "EGY060",
+  "EGY062",
+  "EGY076"
+ ],
+ "sources": [
+  "Adapted from 'Aish Al Saraya (Egyptian Toasted Bread and Milk Pudding Dessert): عيش السرايا', Chez Nermine. BYLINE AS PRINTED: 'Nermine Mansour'. Date: hidden page data gives 2024-05-19. Chez Nermine pages show no visible printed date; the date given is from the page address or hidden page data and is unconfirmed. Yield not stated; servings are our estimate.",
+  "SOURCING STATUS: ingredients and method TWO-PASS. Method wording is our own summary of the page; times and cues were relayed by a research tool and should be checked against the live page. Prep and cook totals are our own estimates from the times the page does give.",
+  "FLAG: the author ties the dessert to the Cairo bakery Koueidar, says its origins are somewhat vague and places it in Levantine cuisine."
+ ],
+ "storage": "Refrigerate covered up to 2 days (our estimate).",
+ "reheating": "Serve cold.",
+ "healthBenefits": [
+  "A rich dessert; enjoy in moderation."
+ ],
+ "culturalNote": "Nermine Mansour links the dessert to the Cairo bakery Koueidar and says its origins are somewhat vague, placing it in Levantine cuisine.",
+ "nutrition": {
+  "cal": 420,
+  "protein": 7,
+  "carbs": 52,
+  "fat": 21,
+  "fiber": 1,
+  "sodium": 190
+ },
+ "keywords": [
+  "aish el saraya",
+  "bread pudding",
+  "egyptian dessert",
+  "chez nermine"
+ ]
+},
+{
+ "id": "EGY068",
+ "title": "Sahlab (Egyptian Winter Drink, Powder-Mix Version)",
+ "localName": "Sahlab — سحلب",
+ "emoji": "☕",
+ "country": "Egypt",
+ "countryFlag": "🇪🇬",
+ "region": "North Africa",
+ "community": "Egyptian winter",
+ "cuisine": "Egyptian",
+ "category": "Drinks & Beverages",
+ "course": "Drink",
+ "diff": "Easy",
+ "prepTime": 10,
+ "restTime": 0,
+ "cookTime": 10,
+ "time": 20,
+ "servings": 10,
+ "cal": 210,
+ "rating": 4.7,
+ "reviews": 251,
+ "tags": [
+  "vegetarian",
+  "dairy",
+  "drink",
+  "hot",
+  "sweet",
+  "contains-nuts",
+  "make-ahead"
+ ],
+ "author": "Noha Ibrahim (RNZ)",
+ "authorEmoji": "👩‍🍳",
+ "desc": "A stored dry mix of milk powder, rice flour, cornstarch, coconut and cinnamon; two tablespoons stirred into cold milk and heated until thick and bubbly.",
+ "longDesc": "Full cream milk powder, powdered sugar, coconut flakes, rice flour, cornstarch, cinnamon and toasted sesame are mixed and stored. For one cup, 2 tablespoons of the mix go into a cup of cold milk and are stirred continuously over medium heat until the mixture gets thick and bubbly, then garnished with nuts, cinnamon and raisins.",
+ "ingredients": [
+  "1 cup full cream powder milk",
+  "1 cup powdered sugar",
+  "1 cup unsweetened coconut flakes",
+  "1 cup rice flour",
+  "4 tbs cornstarch",
+  "1/2 tsp vanilla powder - optional",
+  "2 tsp cinnamon powder",
+  "1/2 cup toasted sesame seeds"
+ ],
+ "equipment": [
+  "Bowl",
+  "Airtight jar",
+  "Small saucepan"
+ ],
+ "steps": [
+  "Mix all the dry ingredients thoroughly and store in an airtight jar.",
+  "For one serving, add 2 tablespoons of the mix to a cup of cold milk.",
+  "Stir continuously over medium heat until the mixture gets thick and bubbly.",
+  "Pour into a cup and garnish with nuts, cinnamon and raisins."
+ ],
+ "chefTips": [
+  "Cue: thick and bubbly. This is a powder-mix version with no orchid (salep) ingredient. The page gives no storage time for the mix.",
+  "Stirring constantly prevents lumps."
+ ],
+ "commonMistakes": [
+  "Stopping stirring."
+ ],
+ "servedWith": [
+  "Nuts, cinnamon, raisins"
+ ],
+ "relatedRecipes": [
+  "EGY062",
+  "EGY069"
+ ],
+ "sources": [
+  "Adapted from 'Sahlab (an Egyptian winter drink)', RNZ. BYLINE AS PRINTED: 'Noha Ibrahim'. Date as printed: '11:15 am on 19 January 2019'. Yield not stated; servings are our estimate (about 10 cups from the mix).",
+  "SOURCING STATUS: ingredients and method TWO-PASS. Method wording is our own summary of the page; times and cues were relayed by a research tool and should be checked against the live page. Prep and cook totals are our own estimates from the times the page does give.",
+  "FLAG: the page gives no cultural remarks."
+ ],
+ "storage": "Store the dry mix airtight at room temperature (our note; the page gives no time).",
+ "reheating": "Make fresh.",
+ "healthBenefits": [
+  "A warming milk drink."
+ ],
+ "culturalNote": "The page gives no cultural remarks; it is described as an Egyptian winter drink.",
+ "nutrition": {
+  "cal": 210,
+  "protein": 6,
+  "carbs": 30,
+  "fat": 8,
+  "fiber": 1,
+  "sodium": 70
+ },
+ "keywords": [
+  "sahlab",
+  "salep drink",
+  "egyptian winter drink",
+  "rnz"
+ ]
+},
+{
+ "id": "EGY069",
+ "title": "Sobia (Egyptian Coconut and Rice Cold Drink)",
+ "localName": "Sobia — سوبيا",
+ "emoji": "🥛",
+ "country": "Egypt",
+ "countryFlag": "🇪🇬",
+ "region": "North Africa",
+ "community": "Ramadan street vendors",
+ "cuisine": "Egyptian",
+ "category": "Drinks & Beverages",
+ "course": "Drink",
+ "diff": "Easy",
+ "prepTime": 10,
+ "restTime": 360,
+ "cookTime": 0,
+ "time": 370,
+ "servings": 3,
+ "cal": 380,
+ "rating": 4.9,
+ "reviews": 202,
+ "tags": [
+  "vegetarian",
+  "dairy",
+  "drink",
+  "cold",
+  "sweet",
+  "ramadan",
+  "no-cook"
+ ],
+ "author": "Amira Ibrahim (Amira’s Pantry)",
+ "authorEmoji": "👩‍🍳",
+ "desc": "Ground rice soaked in water in the fridge, then blended with coconut milk, powdered milk, sugar and vanilla and strained; served ice-cold.",
+ "longDesc": "Two tablespoons of dry rice are ground to a fine powder and mixed with a cup of water in the fridge for at least 6 hours. The mixture is blended 3 to 4 minutes with sugar, powdered milk, coconut milk and vanilla powder until well combined, strained through cheesecloth, a coffee filter or tea strainer, and chilled.",
+ "ingredients": [
+  "2 Tablespoons dry uncooked rice.",
+  "1 Cup water.",
+  "¼ Cup sugar- more or less depending on your liking.",
+  "¼ Cup powdered milk.",
+  "2 Cups coconut milk.",
+  "½ teaspoon vanilla powder."
+ ],
+ "equipment": [
+  "Blender or grinder",
+  "Fine strainer or cheesecloth",
+  "Jar"
+ ],
+ "steps": [
+  "Grind the rice to a fine powder, stir it into the water and let it sit for at least 6 hours in the fridge.",
+  "Blend with the sugar, powdered milk, coconut milk and vanilla for 3 to 4 minutes, until well combined.",
+  "Strain through cheesecloth, a coffee filter or a tea strainer.",
+  "Chill and serve cold."
+ ],
+ "chefTips": [
+  "The rice soak is NO CUE, TIME ONLY (at least 6 hours in the fridge; another line says overnight). This version is a plain soak, not a ferment.",
+  "The page compares it to horchata."
+ ],
+ "commonMistakes": [
+  "Skipping the straining, which leaves it gritty."
+ ],
+ "servedWith": [
+  "Ice"
+ ],
+ "relatedRecipes": [
+  "EGY068",
+  "EGY071"
+ ],
+ "sources": [
+  "Adapted from 'Egyptian Sobia drink', Amira's Pantry. BYLINE AS PRINTED: 'By Amira Ibrahim'. Date as printed: 'Updated: Apr 3, 2020'. Servings 3; soaking time on the card 6 hours.",
+  "SOURCING STATUS: ingredients and method TWO-PASS. Method wording is our own summary of the page; times and cues were relayed by a research tool and should be checked against the live page. Prep and cook totals are our own estimates from the times the page does give.",
+  "DISAGREEMENT kept: Chez Nermine (Nermine Mansour, hidden date 2025-04-30) uses a powder blend of coconut powder, rice flour, whipping-cream powder and ice-cream mix, blends 1 to 2 minutes with ice and notes, citing the historian Mennat-Allah El Dorry, that sobia was originally an ancient alcoholic drink made from fermented rice water, while the modern version is non-alcoholic and non-fermented."
+ ],
+ "storage": "Refrigerate up to 2 days (our estimate).",
+ "reheating": "Serve cold.",
+ "healthBenefits": [
+  "A refreshing dairy and coconut drink."
+ ],
+ "culturalNote": "Amira Ibrahim says sobia is popular at Ramadan and sold in plastic bottles by street vendors; she compares it to horchata. Nermine Mansour recalls the juice shops on Ramses Street in Cairo.",
+ "nutrition": {
+  "cal": 380,
+  "protein": 6,
+  "carbs": 34,
+  "fat": 26,
+  "fiber": 2,
+  "sodium": 70
+ },
+ "keywords": [
+  "sobia",
+  "coconut rice drink",
+  "ramadan drink",
+  "amira pantry"
+ ]
+},
+{
+ "id": "EGY070",
+ "title": "Karkade (Hibiscus Tea)",
+ "localName": "Karkadeh — كركديه",
+ "emoji": "🌺",
+ "country": "Egypt",
+ "countryFlag": "🇪🇬",
+ "region": "North Africa",
+ "community": "Egyptian streets",
+ "cuisine": "Egyptian",
+ "category": "Drinks & Beverages",
+ "course": "Drink",
+ "diff": "Easy",
+ "prepTime": 5,
+ "restTime": 180,
+ "cookTime": 5,
+ "time": 190,
+ "servings": 6,
+ "cal": 50,
+ "rating": 4.8,
+ "reviews": 263,
+ "tags": [
+  "vegan",
+  "vegetarian",
+  "gluten-free",
+  "dairy-free",
+  "drink",
+  "cold",
+  "hot",
+  "make-ahead",
+  "ramadan"
+ ],
+ "author": "Suzy Karadsheh (The Mediterranean Dish)",
+ "authorEmoji": "👩‍🍳",
+ "desc": "Dried hibiscus flowers boiled 3 minutes then steeped 20 to 30 minutes, strained, sweetened, spiked with lime and chilled to a deep red cranberry-like tea.",
+ "longDesc": "Water is boiled and the dried hibiscus and sweetener stirred in; it boils for 3 minutes over high heat, the heat is turned off, and the pot is covered and steeped for 20 to 30 minutes. It is strained, lime juice is added, and it chills a few hours. A hot single serving uses 8 oz of water just below boiling (about 200°F) and a heaping tablespoon of flowers for 5 minutes.",
+ "ingredients": [
+  "6 cups filtered water",
+  "3/4 cup dried hibiscus flowers",
+  "1/4 to 1/2 cup sugar, agave nectar or honey",
+  "2 large limes, 1 juiced, 1 cut into thin wheels",
+  "Fresh mint sprigs, for serving"
+ ],
+ "equipment": [
+  "Saucepan with lid",
+  "Strainer",
+  "Pitcher"
+ ],
+ "steps": [
+  "Bring the water to a boil, stir in the hibiscus and sweetener and boil for 3 minutes over high heat.",
+  "Turn off the heat, cover and let the hibiscus steep for 20 to 30 minutes.",
+  "Strain, stir in the lime juice and cool, then chill a few hours.",
+  "Serve over ice with lime wheels and mint. For a hot single cup, steep a heaping tablespoon of flowers in 8 oz water just below boiling (about 200°F) for 5 minutes."
+ ],
+ "chefTips": [
+  "The steep is NO CUE, TIME ONLY. The page describes a deep red elixir that looks and tastes like cranberry juice, which is descriptive, not a doneness cue."
+ ],
+ "commonMistakes": [
+  "Steeping too long, which makes the tea bitter (our caution)."
+ ],
+ "servedWith": [
+  "Mint, lime"
+ ],
+ "relatedRecipes": [
+  "EGY071",
+  "EGY074"
+ ],
+ "sources": [
+  "Adapted from 'Hibiscus Tea Recipe (Karkade)', The Mediterranean Dish. BYLINE AS PRINTED: 'by Suzy Karadsheh'. Date as printed: 'Updated: Jun 23, 2026' (hidden data 2023-06-18). Serves 6; card cuisine Egyptian.",
+  "SOURCING STATUS: ingredients and method TWO-PASS. Method wording is our own summary of the page; times and cues were relayed by a research tool and should be checked against the live page. Prep and cook totals are our own estimates from the times the page does give."
+ ],
+ "storage": "Refrigerate up to 5 days (our estimate).",
+ "reheating": "Serve cold or warmed.",
+ "healthBenefits": [
+  "Hibiscus is rich in antioxidants and tart in flavour."
+ ],
+ "culturalNote": "Suzy Karadsheh writes, 'Where I'm from in Egypt, we call hibiscus tea kar-ka-deh,' and recalls a 'karkade man' in Old Cairo selling ice-cold glasses from a carafe at his waist.",
+ "nutrition": {
+  "cal": 50,
+  "protein": 0,
+  "carbs": 13,
+  "fat": 0,
+  "fiber": 1,
+  "sodium": 10
+ },
+ "keywords": [
+  "karkade",
+  "hibiscus tea",
+  "egyptian drink",
+  "mediterranean dish"
+ ]
+},
+{
+ "id": "EGY071",
+ "title": "Tamr Hindi (Sweet Tamarind Drink)",
+ "localName": "Tamr hindi — تمر هندي",
+ "emoji": "🥤",
+ "country": "Egypt",
+ "countryFlag": "🇪🇬",
+ "region": "North Africa",
+ "community": "Egyptian street vendors and Ramadan",
+ "cuisine": "Egyptian",
+ "category": "Drinks & Beverages",
+ "course": "Drink",
+ "diff": "Easy",
+ "prepTime": 10,
+ "restTime": 480,
+ "cookTime": 0,
+ "time": 490,
+ "servings": 7,
+ "cal": 90,
+ "rating": 4.6,
+ "reviews": 223,
+ "tags": [
+  "vegan",
+  "vegetarian",
+  "gluten-free",
+  "dairy-free",
+  "drink",
+  "cold",
+  "ramadan",
+  "no-cook"
+ ],
+ "author": "Amira Ibrahim (Amira’s Pantry)",
+ "authorEmoji": "👩‍🍳",
+ "desc": "A block of tamarind soaked in water for 8 hours, strained, sweetened to taste, blended and served over ice; never boiled.",
+ "longDesc": "A 350 g block of tamarind is broken into chunks and covered with 8 cups of water for 8 hours, stirring a couple of times. It is strained through a fine mesh strainer, sugar is added to taste, blended, and served over ice. Warm water cuts the soaking to 4 hours.",
+ "ingredients": [
+  "1 Block 350g tamarind",
+  "2 liter of tap water 8 cups",
+  "Sugar to your preference"
+ ],
+ "equipment": [
+  "Large bowl",
+  "Fine mesh strainer",
+  "Blender"
+ ],
+ "steps": [
+  "Break the tamarind block into chunks and cover with 8 cups of water.",
+  "Cover and soak for 8 hours, stirring a couple of times in between (warm water shortens this to 4 hours).",
+  "Strain through a fine mesh strainer, add sugar to taste and blend.",
+  "Serve over ice."
+ ],
+ "chefTips": [
+  "The soak is NO CUE, TIME ONLY (8 hours; the body says overnight). This is a plain soak, not a ferment.",
+  "The author has never boiled tamarind and has heard it reduces the health benefits."
+ ],
+ "commonMistakes": [
+  "Not straining well; the seeds and fibre are bitter."
+ ],
+ "servedWith": [
+  "Ice"
+ ],
+ "relatedRecipes": [
+  "EGY070",
+  "EGY072"
+ ],
+ "sources": [
+  "Adapted from 'Tamarind Juice (Sweet Tamarind Drink)', Amira's Pantry. BYLINE AS PRINTED: 'By Amira Ibrahim'. Date as printed: 'Updated: Jan 22, 2024'. Yield 7 cups.",
+  "SOURCING STATUS: ingredients and method TWO-PASS. Method wording is our own summary of the page; times and cues were relayed by a research tool and should be checked against the live page. Prep and cook totals are our own estimates from the times the page does give.",
+  "DISAGREEMENT kept: Egyptian Streets (Marina Makary, 14 March 2022) boils the soaked tamarind with three cups of sugar and strains after 15 minutes (single reading, no other quantities)."
+ ],
+ "storage": "Refrigerate up to 5 days (our estimate).",
+ "reheating": "Serve cold.",
+ "healthBenefits": [
+  "Tamarind is tart; sugar is added to taste."
+ ],
+ "culturalNote": "Amira Ibrahim says street vendors in Egypt carry a copper pot and clang copper discs, though they are now found mainly near tourist sites; the drink is popular at Ramadan.",
+ "nutrition": {
+  "cal": 90,
+  "protein": 0,
+  "carbs": 24,
+  "fat": 0,
+  "fiber": 1,
+  "sodium": 10
+ },
+ "keywords": [
+  "tamr hindi",
+  "tamarind juice",
+  "ramadan drink",
+  "amira pantry"
+ ]
+},
+{
+ "id": "EGY072",
+ "title": "Qamar el Din (Dried Apricot Paste)",
+ "localName": "Amar el-din — قمر الدين",
+ "emoji": "🍑",
+ "country": "Egypt",
+ "countryFlag": "🇪🇬",
+ "region": "North Africa",
+ "community": "Ramadan",
+ "cuisine": "Egyptian",
+ "category": "Sauces & Condiments",
+ "course": "Sweet",
+ "diff": "Medium",
+ "prepTime": 20,
+ "restTime": 0,
+ "cookTime": 300,
+ "time": 320,
+ "servings": 12,
+ "cal": 110,
+ "rating": 4.9,
+ "reviews": 80,
+ "tags": [
+  "vegan",
+  "vegetarian",
+  "gluten-free",
+  "dairy-free",
+  "sweet",
+  "ramadan",
+  "make-ahead"
+ ],
+ "author": "Amira Ibrahim (Amira’s Pantry)",
+ "authorEmoji": "👩‍🍳",
+ "desc": "Dried apricots stewed very tender with sugar and lemon, blended to a spreadable paste, spread ¼ to ⅓ inch thick and dried in a very low oven for 4 to 5 hours.",
+ "longDesc": "One pound of dried apricots cooks in water, sugar and lemon until very tender, is blended into a spreadable paste and spread about ¼ to ⅓ inch thick on a tray. It dries in the lowest possible oven, usually 200°F, for 4 to 5 hours until dry but still a bit sticky to the touch. The sheet is cut and rolled and used for the Ramadan drink.",
+ "ingredients": [
+  "1 pound dried apricot",
+  "1 ¼ cups water",
+  "¼ - ⅓ cup sugar or to your liking",
+  "1 teaspoon lemon juice"
+ ],
+ "equipment": [
+  "Saucepan",
+  "Blender",
+  "Baking sheet lined with parchment"
+ ],
+ "steps": [
+  "Cook the apricots in the water with the sugar and lemon until very tender.",
+  "Blend to a spreadable paste.",
+  "Spread about ¼ to ⅓ inch thick on a lined tray.",
+  "Dry in the lowest possible oven, usually 200°F, for 4 to 5 hours, until dry but still a bit sticky to the touch."
+ ],
+ "chefTips": [
+  "Cues: apricots very tender; paste spreadable; sheet dry but a bit sticky. This is oven drying, not fermenting.",
+  "The page's own typos ('bled', 'Bale') were read as 'blend' and 'bake'; check the live page."
+ ],
+ "commonMistakes": [
+  "Drying until brittle; it should stay slightly sticky."
+ ],
+ "servedWith": [
+  "Soaked in water as qamar el din juice (page tips)"
+ ],
+ "relatedRecipes": [
+  "EGY073",
+  "EGY071"
+ ],
+ "sources": [
+  "Adapted from 'Apricot paste (Amareddeen)', Amira's Pantry. BYLINE AS PRINTED: 'By Amira Ibrahim'. Date as printed: 'Updated: Feb 20, 2023' (first published Jul 4, 2014). Yield '1 pound'.",
+  "SOURCING STATUS: ingredients and method TWO-PASS. Method wording is our own summary of the page; times and cues were relayed by a research tool and should be checked against the live page. Prep and cook totals are our own estimates from the times the page does give.",
+  "FLAG: a juice recipe on a print page (first-name byline 'Amira', undated) soaks 400 g paste with 3 cups water overnight; it is not used."
+ ],
+ "storage": "Airtight at room temperature for weeks (our estimate).",
+ "reheating": "Not needed.",
+ "healthBenefits": [
+  "Dried apricots give fibre and potassium."
+ ],
+ "culturalNote": "Amira Ibrahim says qamar el din juice is the first thing people think of during Ramadan, and that the finest paste is usually made in Syria.",
+ "nutrition": {
+  "cal": 110,
+  "protein": 1,
+  "carbs": 28,
+  "fat": 0,
+  "fiber": 3,
+  "sodium": 10
+ },
+ "keywords": [
+  "qamar el din",
+  "amar al din",
+  "apricot leather",
+  "amira pantry"
+ ]
+},
+{
+ "id": "EGY073",
+ "title": "Khoshaf (Dried Fruit Compote)",
+ "localName": "Khoshaf — خشاف",
+ "emoji": "🍇",
+ "country": "Egypt",
+ "countryFlag": "🇪🇬",
+ "region": "North Africa",
+ "community": "Ramadan and holidays",
+ "cuisine": "Egyptian",
+ "category": "Desserts & Sweets",
+ "course": "Dessert",
+ "diff": "Easy",
+ "prepTime": 10,
+ "restTime": 210,
+ "cookTime": 0,
+ "time": 220,
+ "servings": 6,
+ "cal": 220,
+ "rating": 4.9,
+ "reviews": 162,
+ "tags": [
+  "vegan",
+  "vegetarian",
+  "gluten-free",
+  "dairy-free",
+  "contains-nuts",
+  "cold",
+  "sweet",
+  "ramadan",
+  "no-cook"
+ ],
+ "author": "Amira Ibrahim (Amira’s Pantry)",
+ "authorEmoji": "👩‍🍳",
+ "desc": "Dried apricots, figs, cranberries and prunes soaked in hot water with sugar and orange blossom water, chilled and topped with nuts.",
+ "longDesc": "The dried fruits are covered with hot water, sweetened with a tablespoon of sugar and a little orange blossom water, and chilled in the fridge for 3 to 4 hours before serving, topped with almonds and pine nuts. The notes offer a stove method: cook the fruit for 20 minutes until it softens.",
+ "ingredients": [
+  "½ cup dried apricot.",
+  "½ cup dried figs.",
+  "½ cup dried cranberries or raisins.",
+  "1 cup of dried pitted prunes plums.",
+  "5 cup hot water or to cover.",
+  "1 Tablespoon sugar.",
+  "½ teaspoon orange blossom water.",
+  "Nuts of your choice preferably almonds and pine nuts."
+ ],
+ "equipment": [
+  "Large bowl or jar"
+ ],
+ "steps": [
+  "Put the dried fruit in a bowl, cover with hot water and stir in the sugar and orange blossom water.",
+  "Chill in the fridge for 3 to 4 hours before serving (the article body says 2 to 4).",
+  "Top with nuts. Alternatively cook the dried fruits on the stove for 20 minutes until softened."
+ ],
+ "chefTips": [
+  "The chill is NO CUE, TIME ONLY. The ingredient line says '5 cup' of water, a probable misprint; use enough to cover.",
+  "Traditional soaking liquids also include vanilla, qamar el din juice, milk or sobia (page note)."
+ ],
+ "commonMistakes": [
+  "Over-sweetening; the dried fruit is already sweet."
+ ],
+ "servedWith": [
+  "Nuts"
+ ],
+ "relatedRecipes": [
+  "EGY072",
+  "EGY062"
+ ],
+ "sources": [
+  "Adapted from 'Dried Fruit Compote (Khoshaf)', Amira's Pantry. BYLINE AS PRINTED: 'By Amira Ibrahim | Updated: Mar 6, 2024'. Servings 6.",
+  "SOURCING STATUS: ingredients and method TWO-PASS. Method wording is our own summary of the page; times and cues were relayed by a research tool and should be checked against the live page. Prep and cook totals are our own estimates from the times the page does give."
+ ],
+ "storage": "Refrigerate up to 3 days (our estimate).",
+ "reheating": "Serve cold.",
+ "healthBenefits": [
+  "Dried fruits provide fibre and potassium."
+ ],
+ "culturalNote": "Amira Ibrahim says khoshaf is served at holidays and Ramadan.",
+ "nutrition": {
+  "cal": 220,
+  "protein": 3,
+  "carbs": 48,
+  "fat": 4,
+  "fiber": 7,
+  "sodium": 15
+ },
+ "keywords": [
+  "khoshaf",
+  "dried fruit compote",
+  "ramadan dessert",
+  "amira pantry"
+ ]
+},
+{
+ "id": "EGY074",
+ "title": "Lemon-Mint Juice (Limoon bel Na’na’)",
+ "localName": "Lamoon bil-na'na' — ليمون بالنعناع",
+ "emoji": "🍋",
+ "country": "Egypt",
+ "countryFlag": "🇪🇬",
+ "region": "North Africa",
+ "community": "Egyptian cafes",
+ "cuisine": "Egyptian",
+ "category": "Drinks & Beverages",
+ "course": "Drink",
+ "diff": "Easy",
+ "prepTime": 20,
+ "restTime": 0,
+ "cookTime": 0,
+ "time": 20,
+ "servings": 4,
+ "cal": 70,
+ "rating": 4.9,
+ "reviews": 67,
+ "tags": [
+  "vegan",
+  "vegetarian",
+  "gluten-free",
+  "dairy-free",
+  "drink",
+  "cold",
+  "quick",
+  "no-cook"
+ ],
+ "author": "Nermine Mansour (Chez Nermine)",
+ "authorEmoji": "👩‍🍳",
+ "desc": "Peeled whole lemons blended with mint, ice and sugar until frothy and smooth into a bright green, tangy frozen-style lemonade.",
+ "longDesc": "Only the yellow zest is peeled from the lemons, the pith and seeds are removed, and the fruit is quartered. It is blended with water, ice, mint and sugar at high speed for a few minutes until frothy and smooth, poured into a pitcher, thinned with water if too tangy, and served immediately before the ice melts and the bright green turns a dull brown.",
+ "ingredients": [
+  "4 whole lemons, unwaxed (unsprayed)",
+  "10-15 mint leaves",
+  "2 cups cold water",
+  "¼ cup milk, full fat or skimmed, optional",
+  "1/4-1/2 cup white sugar or monk fruit sugar",
+  "1 cup ice cubes"
+ ],
+ "equipment": [
+  "High-speed blender",
+  "Pitcher"
+ ],
+ "steps": [
+  "Peel only the yellow zest from the lemons, remove the pith and seeds, and quarter the lemons.",
+  "Blend the lemon, mint, water, ice and sugar at high speed for a few minutes until frothy and smooth.",
+  "Pour into a pitcher; add more water if too tangy.",
+  "Serve immediately, before the ice melts and the bright green colour turns into a dull brown shade."
+ ],
+ "chefTips": [
+  "Cues: frothy and smooth; bright green. The card's blending step omits the mint, though mint is listed; the body blends the mint and strains.",
+  "Do not substitute lime, says the author."
+ ],
+ "commonMistakes": [
+  "Leaving the pith on, which makes it bitter.",
+  "Waiting to serve, since the colour fades quickly."
+ ],
+ "servedWith": [
+  "Ice"
+ ],
+ "relatedRecipes": [
+  "EGY070",
+  "EGY071"
+ ],
+ "sources": [
+  "Adapted from 'Egyptian Mint Lemonade (Lamoon Bel Na'naa): ليمون بالنعناع', Chez Nermine. BYLINE AS PRINTED: 'Nermine Mansour'. Date: hidden page data gives 2024-09-05. Chez Nermine pages show no visible printed date; the date given is from the page address or hidden page data and is unconfirmed. Servings 4; prep 20 minutes and total 2 minutes as printed (the total time looks like a misprint).",
+  "SOURCING STATUS: ingredients and method TWO-PASS; the note on room-temperature water conflicts with 'cold water' on the list. Method wording is our own summary of the page; times and cues were relayed by a research tool and should be checked against the live page."
+ ],
+ "storage": "Best served at once.",
+ "reheating": "Serve cold.",
+ "healthBenefits": [
+  "Vitamin C from lemons."
+ ],
+ "culturalNote": "Nermine Mansour says Egyptian lemons and mint grow widely in Egypt and that her recipe was inspired by a lemon tree in her in-laws' California garden.",
+ "nutrition": {
+  "cal": 70,
+  "protein": 1,
+  "carbs": 18,
+  "fat": 0,
+  "fiber": 3,
+  "sodium": 10
+ },
+ "keywords": [
+  "lemon mint juice",
+  "limoon bel naana",
+  "egyptian lemonade",
+  "chez nermine"
+ ]
+},
+{
+ "id": "EGY075",
+ "title": "Ashta Kadaba (Homemade Cream Filling)",
+ "localName": "Eshta — قشطة",
+ "emoji": "🥛",
+ "country": "Egypt",
+ "countryFlag": "🇪🇬",
+ "region": "North Africa",
+ "community": "Egyptian pastry kitchens",
+ "cuisine": "Egyptian",
+ "category": "Sauces & Condiments",
+ "course": "Filling",
+ "diff": "Easy",
+ "prepTime": 10,
+ "restTime": 120,
+ "cookTime": 5,
+ "time": 135,
+ "servings": 8,
+ "cal": 130,
+ "rating": 4.8,
+ "reviews": 313,
+ "tags": [
+  "vegetarian",
+  "dairy",
+  "sweet",
+  "make-ahead"
+ ],
+ "author": "Nermine Mansour (Chez Nermine)",
+ "authorEmoji": "👩‍🍳",
+ "desc": "A thick mastic-scented cream of milk, cream, cornstarch and flour thickened for about 2 minutes, with cream cheese and rose water; for atayef, kunafa and basbousa.",
+ "longDesc": "Milk, cream, cornstarch, flour, sugar and mastic are cooked over medium heat, stirring constantly, to a boil, then boiled until thick and custard-like, about 2 minutes. Cream cheese and rose water are stirred in. The cream cools about an hour and chills at least an hour; it makes about 2 cups.",
+ "ingredients": [
+  "1 cup whole milk",
+  "1 cup heavy cream",
+  "2 tablespoons cornstarch",
+  "2 tablespoons all-purpose flour",
+  "1 tablespoon granulated sugar",
+  "2-4 mastic resins",
+  "¼ cup cream cheese",
+  "1 teaspoon rose water"
+ ],
+ "equipment": [
+  "Saucepan",
+  "Whisk"
+ ],
+ "steps": [
+  "Whisk the milk, cream, cornstarch, flour, sugar and mastic in a pan.",
+  "Raise to medium heat and stir constantly to a boil. Boil until the mixture reaches a thick, custard-like consistency, about 2 minutes.",
+  "Stir in the cream cheese and rose water.",
+  "Cool about 1 hour, then refrigerate at least 1 hour."
+ ],
+ "chefTips": [
+  "Cue: thick, custard-like. The cooling and chilling are NO CUE, TIME ONLY. The card says it keeps 1 week; the body mentions 3 days in one note.",
+  "Ashta means cream and kadaba means fake. The author says this is not the cream used in Om Ali, for which she uses whipped cream."
+ ],
+ "commonMistakes": [
+  "Not stirring constantly, which scorches the bottom."
+ ],
+ "servedWith": [
+  "Atayef, konafa and basbousa"
+ ],
+ "relatedRecipes": [
+  "EGY058",
+  "EGY059",
+  "EGY057"
+ ],
+ "sources": [
+  "Adapted from 'How to Make Ashta Kadaba (Homemade Cream Filling)', Chez Nermine. BYLINE AS PRINTED: 'Nermine Mansour'. Date: hidden page data gives 2025-03-13. Chez Nermine pages show no visible printed date; the date given is from the page address or hidden page data and is unconfirmed. Yield about 2 cups.",
+  "SOURCING STATUS: ingredients and method TWO-PASS. Method wording is our own summary of the page; times and cues were relayed by a research tool and should be checked against the live page. Prep and cook totals are our own estimates from the times the page does give.",
+  "PAGE DEFECT kept: the card says medium heat while a note says medium-low; storage 1 week (card) versus 3 days (note)."
+ ],
+ "storage": "Refrigerate up to 3 days (the shorter of the page's two figures).",
+ "reheating": "Serve cold.",
+ "healthBenefits": [
+  "A rich dairy filling."
+ ],
+ "culturalNote": "Nermine Mansour explains that ashta means cream and kadaba means fake, and that it fills atayef, kunafa and basbousa.",
+ "nutrition": {
+  "cal": 130,
+  "protein": 2,
+  "carbs": 6,
+  "fat": 11,
+  "fiber": 0,
+  "sodium": 60
+ },
+ "keywords": [
+  "ashta",
+  "eshta",
+  "cream filling",
+  "chez nermine"
+ ]
+},
+{
+ "id": "EGY076",
+ "title": "Sharbat / Attar (Egyptian Simple Syrup)",
+ "localName": "Sharbat — شربات",
+ "emoji": "🍯",
+ "country": "Egypt",
+ "countryFlag": "🇪🇬",
+ "region": "North Africa",
+ "community": "Egyptian pastry kitchens",
+ "cuisine": "Egyptian",
+ "category": "Sauces & Condiments",
+ "course": "Syrup",
+ "diff": "Easy",
+ "prepTime": 5,
+ "restTime": 0,
+ "cookTime": 10,
+ "time": 15,
+ "servings": 12,
+ "cal": 100,
+ "rating": 4.8,
+ "reviews": 139,
+ "tags": [
+  "vegan",
+  "vegetarian",
+  "gluten-free",
+  "dairy-free",
+  "condiment",
+  "sweet",
+  "make-ahead"
+ ],
+ "author": "Nermine Mansour (Chez Nermine)",
+ "authorEmoji": "👩‍🍳",
+ "desc": "Equal parts sugar and water with lemon juice, orange rind and optional spices, boiled 5 to 8 minutes into a syrup for basbousa, atayef and fritters.",
+ "longDesc": "Sugar, water and lemon juice are boiled with optional cinnamon, orange rind, cloves and cardamom for 5 minutes, or 8 if you want a thick syrup, then cooled and used on basbousa, atayef and fried sweets. The author's notes say to simmer gently, avoid stirring once the sugar dissolves, and to cool before using.",
+ "ingredients": [
+  "1½ cups granulated white sugar",
+  "1 ½ cups water",
+  "1 tablespoon lemon or lime juice",
+  "1 stick cinnamon, optional",
+  "1 rind of orange, 1 inch X 2 inches",
+  "3 whole cloves, optional",
+  "3 whole cardamom, optional",
+  "(Orange blossom or rose water is stirred in per the method but is not listed)"
+ ],
+ "equipment": [
+  "Saucepan"
+ ],
+ "steps": [
+  "Combine the sugar, water, lemon juice and any spices and rind in a saucepan and stir until the sugar dissolves.",
+  "Boil for 5 minutes, or 8 minutes for a thicker syrup; simmer gently and stop stirring once the sugar has dissolved.",
+  "Stir in orange blossom or rose water and cool before using."
+ ],
+ "chefTips": [
+  "No colour or spoon-coat cue is printed; the card says 5 to 8 minutes. The author's notes (single reading) say a thick syrup for basbousa and atayef boils up to 10 to 13 minutes and a thin one no more than 5 to 7.",
+  "Her blog method says 1 teaspoon of lemon and a 10-minute simmer, which conflicts with the card."
+ ],
+ "commonMistakes": [
+  "Boiling too long until the syrup turns candy-like."
+ ],
+ "servedWith": [
+  "Basbousa (EGY058)",
+  "Atayef (EGY057)",
+  "Balah el sham (EGY066)"
+ ],
+ "relatedRecipes": [
+  "EGY058",
+  "EGY066",
+  "EGY065"
+ ],
+ "sources": [
+  "Adapted from 'How to Make Sharbat or Attar (Simple Syrup)', Chez Nermine. BYLINE AS PRINTED: 'Nermine Mansour'. Date: hidden page data gives 2025-02-25. Chez Nermine pages show no visible printed date; the date given is from the page address or hidden page data and is unconfirmed. Yield not stated; servings are our estimate.",
+  "SOURCING STATUS: ingredients and card method TWO-PASS; the author's thickness notes single-pass. Method wording is our own summary of the page; times and cues were relayed by a research tool and should be checked against the live page. Prep and cook totals are our own estimates from the times the page does give."
+ ],
+ "storage": "Refrigerate in a clean jar for weeks (our estimate).",
+ "reheating": "Warm gently to loosen.",
+ "healthBenefits": [
+  "Mostly sugar; use sparingly."
+ ],
+ "culturalNote": "Nermine Mansour says the syrup is 'sharbat' in Egyptian dialect and 'attar' in Levantine dialect.",
+ "nutrition": {
+  "cal": 100,
+  "protein": 0,
+  "carbs": 26,
+  "fat": 0,
+  "fiber": 0,
+  "sodium": 0
+ },
+ "keywords": [
+  "sharbat",
+  "attar",
+  "simple syrup",
+  "chez nermine"
+ ]
+},
+{
+ "id": "EGY077",
+ "title": "Ful Medames (Egyptian Stewed Fava Beans, Slow-Cooker)",
+ "localName": "Ful medames — فول مدمس",
+ "emoji": "🫘",
+ "country": "Egypt",
+ "countryFlag": "🇪🇬",
+ "region": "North Africa",
+ "community": "Egyptian breakfast tables and street carts",
+ "cuisine": "Egyptian",
+ "category": "Lentils, Beans & Vegetarian",
+ "course": "Breakfast",
+ "diff": "Easy",
+ "prepTime": 5,
+ "restTime": 120,
+ "cookTime": 240,
+ "time": 365,
+ "servings": 4,
+ "cal": 330,
+ "rating": 4.8,
+ "reviews": 35,
+ "tags": [
+  "vegan",
+  "vegetarian",
+  "gluten-free",
+  "dairy-free",
+  "high-fiber",
+  "staple",
+  "budget",
+  "ramadan",
+  "one-pot"
+ ],
+ "author": "Amira Ibrahim (Amira’s Pantry)",
+ "authorEmoji": "👩‍🍳",
+ "desc": "Dried fava beans stewed slowly with a little rice, red lentils, tomato and garlic until completely soft, finished with baking powder and served with oil, lemon and cumin.",
+ "longDesc": "The beans, rice and lentils are washed and set in a slow cooker with the tomato and garlic, covered with a couple of inches of boiled water and a sheet of foil under the lid. They cook on low 4 to 5 hours; after about 3 hours the lid and foil come off, the baking powder goes in and the pot cooks another hour or two until the beans are fully cooked and soft. An Instant Pot method is also given.",
+ "ingredients": [
+  "2 ½ cups dry fava beans 1 pound",
+  "1 ½ Tablespoons dry rice any kind, uncooked",
+  "2 Tablespoons dry red lentils uncooked",
+  "1 Roma tomato quartered",
+  "3 large garlic cloves",
+  "2 teaspoons baking powder",
+  "1 ½-2 liter boiled water"
+ ],
+ "equipment": [
+  "Slow cooker (or Instant Pot)",
+  "Foil"
+ ],
+ "steps": [
+  "Wash the beans, rice and lentils and put them in the slow cooker with the tomato and garlic.",
+  "Pour in boiled water to a couple of inches above the level of the beans. Put foil under the lid.",
+  "Cook on low for 4 to 5 hours. Check after two hours that there is plenty of water.",
+  "After 3 hours remove the lid and foil and stir in the baking powder. Cook another hour or two, until it is fully cooked and soft.",
+  "Instant Pot: pressure cook on high 30 minutes, quick release, add the baking powder, pressure cook 30 minutes more, natural release 20 minutes, then quick release.",
+  "Serve in bowls with olive oil, lemon and cumin to taste."
+ ],
+ "chefTips": [
+  "Cues: beans fully cooked and soft; plenty of water above the beans. Soaking is NO CUE, TIME ONLY: the card has no soak, and the tips say she soaks just a couple of hours, not more.",
+  "The Servings line on the page reads \"4 pounds\", a misprint; four servings is our reading."
+ ],
+ "commonMistakes": [
+  "Letting the pot run low on water."
+ ],
+ "servedWith": [
+  "Aish baladi (EGY046)",
+  "Ta'meya (EGY002)",
+  "Pickles"
+ ],
+ "relatedRecipes": [
+  "EGY002",
+  "EGY046",
+  "EGY078"
+ ],
+ "sources": [
+  "Adapted from 'Ful Medames (Egyptian Stewed Fava Beans)' (card 'Ful Medammes'), Amira's Pantry. BYLINE AS PRINTED: 'By Amira Ibrahim'. Date as printed: 'Updated: Dec 5, 2025'. Prep 5 minutes, cook 4 hours.",
+  "SOURCING STATUS: ingredients TWO-PASS; the baking-powder foam cue single-pass. Method wording is our own summary of the page; times and cues were relayed by a research tool and should be checked against the live page. Prep and cook totals are our own estimates from the times the page does give.",
+  "DISAGREEMENT kept: SBS (Alice Ibrahim, published 25 June 2015) simmers 2 cups of soaked fava beans and 1 cup of soaked red lentils in 750 ml water on the lowest heat for up to 5 hours on the stove, seasoned with cumin, lemon and olive oil at the end, no quantities for those; Chez Nermine (Nermine Mansour, hidden date 2024-12-02) soaks 1 kg of beans overnight with 1 tablespoon bicarbonate, discards the soak water and cooks 5 to 6 hours in a slow cooker with turmeric, lemon and a long spice list."
+ ],
+ "storage": "Refrigerate up to 4 days (our estimate); it thickens as it cools.",
+ "reheating": "Warm with a splash of water.",
+ "healthBenefits": [
+  "Fava beans give protein and fibre."
+ ],
+ "culturalNote": "Amira Ibrahim calls ful and ta'ameya national dishes alongside koshari, with ful the main breakfast; the beans are traditionally eaten with the skin on and small fava beans are traditional. Nermine Mansour's page says it is traditionally cooked in a pear-shaped copper pot called a dammasa or kedra.",
+ "nutrition": {
+  "cal": 330,
+  "protein": 22,
+  "carbs": 56,
+  "fat": 2,
+  "fiber": 17,
+  "sodium": 30
+ },
+ "keywords": [
+  "ful medames",
+  "foul mudammas",
+  "egyptian fava beans",
+  "amira pantry"
+ ]
+},
+{
+ "id": "EGY078",
+ "title": "Ful with Garlic and Cream (Ramadan Quick Version)",
+ "localName": "Ful bi-toum wa eshta — فول بالثوم والقشطة",
+ "emoji": "🫘",
+ "country": "Egypt",
+ "countryFlag": "🇪🇬",
+ "region": "North Africa",
+ "community": "Egyptian Ramadan table",
+ "cuisine": "Egyptian",
+ "category": "Lentils, Beans & Vegetarian",
+ "course": "Side",
+ "diff": "Easy",
+ "prepTime": 5,
+ "restTime": 0,
+ "cookTime": 15,
+ "time": 20,
+ "servings": 2,
+ "cal": 260,
+ "rating": 4.7,
+ "reviews": 252,
+ "tags": [
+  "vegetarian",
+  "dairy",
+  "quick",
+  "ramadan",
+  "budget"
+ ],
+ "author": "Nevine El Shabrawy (Egypt Independent)",
+ "authorEmoji": "👩‍🍳",
+ "desc": "Canned ful medames simmered with crushed garlic, then finished with cream and mashed with a fork until no whole beans are left.",
+ "longDesc": "A can of plain ful medames is emptied into a small pot over a medium flame with crushed garlic. After 10 minutes of simmering, cooking cream or eshta is stirred through and the pot simmers five minutes more. The beans are broken up with a fork until no whole beans are left, and the ful is served with hot baladi bread.",
+ "ingredients": [
+  "1 can of plain ful medames",
+  "½ small carton of cooking cream or 1 large spoon of \"fresh cream\" – eshta",
+  "3 cloves of garlic, smushed",
+  "salt and pepper to taste",
+  "drizzle of olive oil"
+ ],
+ "equipment": [
+  "Small pot",
+  "Fork"
+ ],
+ "steps": [
+  "Empty the can of ful into a small pot over a medium flame and add the garlic.",
+  "After 10 minutes of simmering, stir in the cream.",
+  "Simmer another five minutes.",
+  "Break the beans apart with a fork until no whole beans are left. Season, drizzle with olive oil and serve with hot baladi bread."
+ ],
+ "chefTips": [
+  "Cue: no whole beans left. Servings are our estimate; the page states no yield.",
+  "This is a quick modern variation on canned ful, not a dried-bean method."
+ ],
+ "commonMistakes": [
+  "Adding the cream at the start, which can separate (our caution)."
+ ],
+ "servedWith": [
+  "Hot baladi bread (EGY046)"
+ ],
+ "relatedRecipes": [
+  "EGY077",
+  "EGY046"
+ ],
+ "sources": [
+  "Adapted from 'Ramdan Recipe: Ful with garlic and cream' (misprint as printed), Egypt Independent. BYLINE AS PRINTED: 'Nevine El Shabrawy'. Date as printed: August 28, 2010. Yield not stated.",
+  "SOURCING STATUS: ingredients and method TWO-PASS. Method wording is our own summary of the page; times and cues were relayed by a research tool and should be checked against the live page. Prep and cook totals are our own estimates from the times the page does give.",
+  "FLAG: canned ful. The author writes that she tasted the combination at a restaurant the previous Ramadan and calls it a very simple but unlikely mixture."
+ ],
+ "storage": "Best fresh.",
+ "reheating": "Warm gently.",
+ "healthBenefits": [
+  "Fava beans give protein and fibre."
+ ],
+ "culturalNote": "Nevine El Shabrawy says she tasted this combination at a restaurant the previous Ramadan.",
+ "nutrition": {
+  "cal": 260,
+  "protein": 12,
+  "carbs": 28,
+  "fat": 11,
+  "fiber": 9,
+  "sodium": 520
+ },
+ "keywords": [
+  "ful with cream",
+  "ful garlic",
+  "ramadan ful",
+  "egypt independent"
+ ]
+},
+{
+ "id": "EGY079",
+ "title": "Bamya (Okra and Lamb Stew)",
+ "localName": "Bamya — بامية",
+ "emoji": "🍲",
+ "country": "Egypt",
+ "countryFlag": "🇪🇬",
+ "region": "North Africa",
+ "community": "Egyptian family table",
+ "cuisine": "Egyptian",
+ "category": "Main Dishes",
+ "course": "Main",
+ "diff": "Medium",
+ "prepTime": 15,
+ "restTime": 0,
+ "cookTime": 60,
+ "time": 75,
+ "servings": 6,
+ "cal": 360,
+ "rating": 4.9,
+ "reviews": 90,
+ "tags": [
+  "halal",
+  "contains-beef",
+  "one-pot",
+  "spicy",
+  "traditional"
+ ],
+ "author": "Amira Ibrahim (Amira’s Pantry)",
+ "authorEmoji": "👩‍🍳",
+ "desc": "Lamb boiled with mastic and aromatics, then added to a tomato and baby okra stew and topped with a garlic-coriander taklia at the table.",
+ "longDesc": "Lamb is boiled rapidly for 3 to 4 minutes and the water discarded, then simmered in fresh water with mastic and aromatics for about 20 minutes. The stew starts with onion, garlic and coriander, then jalapeño, frozen baby okra, tomato paste, tomato sauce and broth, and simmers 20 minutes on low before the lamb goes in for another 10 minutes or until the okra is tender. A taklia of garlic and coriander is stirred half into the stew and spooned half over each bowl.",
+ "ingredients": [
+  "// Boiled lamb",
+  "2 mastic pieces.",
+  "1 pound lamb. Note1",
+  "1 small onion.",
+  "2 garlic clove.",
+  "1 small carrot cut into chunks.",
+  "1 celery stalk cut into chunks.",
+  "¼ cup cilantro chopped.",
+  "1 teaspoon 7-spice blend.",
+  "2 teaspoon black pepper.",
+  "¼ teaspoon cinnamon.",
+  "¼ teaspoon ground cardamom.",
+  "2 bay leaves.",
+  "// Okra stew",
+  "3 Tablespoons olive oil.",
+  "1 medium (200g) onion, diced.",
+  "5 garlic cloves minced (1.5 Tablespoons).",
+  "½ Tablespoon freshly ground coriander.",
+  "2 jalapeño pepper. leave out or replace by bell pepper if you do not want the heat.",
+  "2 Tablespoon fresh cilantro chopped.",
+  "1 bag (14oz) frozen baby okra. Note2",
+  "4 Tablespoons tomato paste.",
+  "1 can (15oz) tomato sauce.",
+  "2 cups broth. beef or lamb.",
+  "1 teaspoon salt or to taste.",
+  "½ teaspoon black pepper.",
+  "// Tasha (garlic-coriander topping)",
+  "3 Tablespoons olive oil.",
+  "5 Garlic cloves minced.",
+  "1 Tablespoon freshly ground coriander.",
+  "½ cup fresh cilantro chopped.",
+  "1 tablespoon red chili pepper diced. Optional for extra heat"
+ ],
+ "equipment": [
+  "Large pot",
+  "Saucepan",
+  "Small frying pan"
+ ],
+ "steps": [
+  "Bring about 4 litres of water to a boil, add the lamb and boil rapidly for 3 to 4 minutes. Discard the water.",
+  "Return the lamb to fresh water with the mastic, onion, garlic, carrot, celery, cilantro and spices and simmer until done; the page says it will take about 20 minutes.",
+  "Stew: cook the onion, garlic and coriander 2 to 3 minutes until fragrant; add the cilantro for almost another 30 seconds and the jalapeño for a minute.",
+  "Add the okra, tomato paste, tomato sauce and broth and simmer on low for 20 minutes.",
+  "Add the lamb and simmer another 10 minutes, or until the okra is tender.",
+  "Tasha: cook the garlic, coriander, cilantro and chili in olive oil for two to three minutes. Stir half into the stew and simmer 3 to 4 minutes; top each bowl with the rest."
+ ],
+ "chefTips": [
+  "Cues: coriander and garlic fragrant; okra tender. Note 1: beef can replace lamb, cooked as in the fattah recipe. Note 2: frozen or fresh okra works but baby okra is best.",
+  "The page lists the mastic and jalapeño as shown; omit or swap the jalapeño for bell pepper if you want no heat."
+ ],
+ "commonMistakes": [
+  "Overcooking the okra, which turns it slimy (our caution)."
+ ],
+ "servedWith": [
+  "White rice (EGY021)",
+  "Aish baladi (EGY046)"
+ ],
+ "relatedRecipes": [
+  "EGY007",
+  "EGY003",
+  "EGY021"
+ ],
+ "sources": [
+  "Adapted from 'Bamya (Okra Stew) recipe', Amira's Pantry. BYLINE AS PRINTED: 'By Amira Ibrahim'. Date as printed: 'Updated: Aug 12, 2020'. Servings 6; prep 10, cook 35, total 45 minutes as printed (the stepwise times above add to more; the card total is not used).",
+  "SOURCING STATUS: ingredients and method TWO-PASS. Method wording is our own summary of the page; times and cues were relayed by a research tool and should be checked against the live page.",
+  "DISAGREEMENT kept: SBS Food (Nadia Fawzi, published 25 June 2015) browns 500 g lamb backstrap with onion and garlic, adds two 400 g tins of pureed tomato and 1 tbsp paste, covers and simmers 30 to 35 minutes, adds 500 g baby okra for 5 to 10 minutes and finishes with the juice of a lemon, serving with rice (the page credits the SBS Food Safari Egyptian episode). Nermine Mansour's weeka is a thin vegan okra soup, a different dish."
+ ],
+ "storage": "Refrigerate up to 3 days (our estimate).",
+ "reheating": "Warm gently on the stove.",
+ "healthBenefits": [
+  "Okra provides fibre."
+ ],
+ "culturalNote": "Amira Ibrahim calls bamya one of Egypt's signature dishes and believes this variant is from Upper Egypt, though she says she is not sure.",
+ "nutrition": {
+  "cal": 360,
+  "protein": 26,
+  "carbs": 20,
+  "fat": 20,
+  "fiber": 6,
+  "sodium": 780
+ },
+ "keywords": [
+  "bamya",
+  "okra stew",
+  "egyptian okra",
+  "amira pantry"
+ ]
+},
+{
+ "id": "EGY080",
+ "title": "Mahshi Koronb (Vegan Stuffed Cabbage Leaves)",
+ "localName": "Mahshi koronb — محشي كرنب",
+ "emoji": "🥬",
+ "country": "Egypt",
+ "countryFlag": "🇪🇬",
+ "region": "North Africa",
+ "community": "Egyptian family table and Coptic fasting",
+ "cuisine": "Egyptian",
+ "category": "Vegetables & Legumes",
+ "course": "Main",
+ "diff": "Hard",
+ "prepTime": 120,
+ "restTime": 0,
+ "cookTime": 60,
+ "time": 180,
+ "servings": 6,
+ "cal": 220,
+ "rating": 4.8,
+ "reviews": 119,
+ "tags": [
+  "vegan",
+  "vegetarian",
+  "dairy-free",
+  "traditional",
+  "make-ahead"
+ ],
+ "author": "Nermine Mansour (Chez Nermine)",
+ "authorEmoji": "👩‍🍳",
+ "desc": "Blanched cabbage leaves rolled around a herb, tomato and rice filling, packed over onion, tomato and garlic and simmered in tomato broth.",
+ "longDesc": "Cabbage leaves are blanched about 2 to 3 minutes until soft and pliable. The onions sweat in a tomato sauce, cool, and are mixed with rice and herbs. The rolls, loose, with the sides not tucked in, go seam-down over sliced onion, tomato and garlic, are covered with broth and weighed down with a plate, and simmer on low 45 minutes to 1 hour until cooked through and the rice is tender; an oven option runs 375°F for 50 to 60 minutes.",
+ "ingredients": [
+  "1 large head of cabbage or 2 small heads",
+  "1 teaspoon cumin",
+  "½ teaspoon Himalayan salt",
+  "// Stuffing",
+  "1 cup Egyptian rice, rinsed and drained",
+  "3 onions, finely chopped or pureed",
+  "½ cup passata",
+  "1 tablespoon tomato paste",
+  "1 teaspoon ground cumin",
+  "1 teaspoon ground coriander",
+  "1 teaspoon dry mint",
+  "1 teaspoon sweet paprika, optional",
+  "½ teaspoon cayenne, optional",
+  "1 cup Mixed of parsley, dill and cilantro, finely chopped",
+  "salt & pepper, to taste",
+  "// Broth",
+  "2 cups vegetable broth, or any broth of your choice",
+  "¼ cup Passata or 2 tablespoons of tomato paste",
+  "1 teaspoon Vegeta powder",
+  "1-2 tablespoons lime juice",
+  "salt & pepper, to taste",
+  "// Pot",
+  "1 medium tomato, sliced",
+  "1 medium yellow or purple onion, sliced to 1/4\" thick",
+  "3 garlic cloves, slivered",
+  "1 tablespoon olive oil or canola oil"
+ ],
+ "equipment": [
+  "Large pot with lid",
+  "Heat-resistant plate",
+  "Slotted spoon"
+ ],
+ "steps": [
+  "Blanch the cabbage leaves about 2 to 3 minutes, or until soft and pliable (the tips say 2 to 5 minutes, translucent and pliable). Trim the thick ribs.",
+  "Sweat the onions 1 to 2 minutes, add the sauce ingredients and cook 7 to 10 minutes (the body says 5 to 7). Cool completely, then mix with the rice and herbs. The rice is not soaked.",
+  "Roll the filling in the leaves loosely, without tucking in the sides.",
+  "Layer the sliced onion, tomato and garlic in the pot with the oil, then pack in the rolls seam-down. Pour over the broth and set a heat-resistant plate on top.",
+  "Bring to a boil on medium-high, then cook on low 45 minutes to 1 hour, until cooked through and the rice is tender. Or bake at 375°F for 50 to 60 minutes.",
+  "Invert onto a plate and serve."
+ ],
+ "chefTips": [
+  "Cues: leaves soft and pliable; rice tender. Do not tuck in the sides because the rice swells.",
+  "The page's own typos ('Mohshi', 'heart resistant dish') were read as intended; check the live page. The page says the liquid should be topped up if it runs low."
+ ],
+ "commonMistakes": [
+  "Packing the rolls tightly or overfilling them."
+ ],
+ "servedWith": [
+  "Tahini sauce (EGY042)",
+  "Pickles",
+  "Salata sharqi (EGY041)"
+ ],
+ "relatedRecipes": [
+  "EGY009",
+  "EGY008",
+  "EGY007"
+ ],
+ "sources": [
+  "Adapted from 'Egyptian Stuffed Cabbage Leaves (Mahshi Koronb): محشي كرنب', Chez Nermine. BYLINE AS PRINTED: 'Nermine Mansour'. Date: the page address shows 2024/04/21 while hidden page data gives 2024-12-19 published and 2026-02-18 modified; the two conflict. Chez Nermine pages show no visible printed date; the date given is from the page address or hidden page data and is unconfirmed. Prep 2 hours, cook 1 hour; serves 6.",
+  "SOURCING STATUS: ingredients TWO-PASS (first line merged in pass 1); timing details single-pass. Method wording is our own summary of the page; times and cues were relayed by a research tool and should be checked against the live page.",
+  "FLAG: a vegan Lenten version. A second, meat-and-duck version appears in an Ahram Online piece (Ghada Abdel-Kader, 19 May 2019, recipes from Chef El-Sherbini) with 1 medium cabbage, ½ kilo rice and ½ litre duck stock simmered 30 to 35 minutes, but its duck recipe omits the duck itself, so it is not used."
+ ],
+ "storage": "Refrigerate up to 3 days (our estimate).",
+ "reheating": "Warm gently in the pot with a splash of broth.",
+ "healthBenefits": [
+  "A vegetable-rich meatless dish."
+ ],
+ "culturalNote": "Nermine Mansour's page is a tribute to her late grandmother, Teta Aida.",
+ "nutrition": {
+  "cal": 220,
+  "protein": 5,
+  "carbs": 38,
+  "fat": 6,
+  "fiber": 6,
+  "sodium": 420
+ },
+ "keywords": [
+  "mahshi koronb",
+  "stuffed cabbage",
+  "egyptian cabbage rolls",
+  "chez nermine"
+ ]
+},
+{
+ "id": "EGY081",
+ "title": "Kebda Eskandarani (Alexandrian-Style Spicy Liver)",
+ "localName": "Kebda Iskandarani — كبدة اسكندراني",
+ "emoji": "🥘",
+ "country": "Egypt",
+ "countryFlag": "🇪🇬",
+ "region": "North Africa",
+ "community": "Alexandria street carts",
+ "cuisine": "Egyptian",
+ "category": "Street Food & Snacks",
+ "course": "Main",
+ "diff": "Medium",
+ "prepTime": 30,
+ "restTime": 480,
+ "cookTime": 15,
+ "time": 525,
+ "servings": 6,
+ "cal": 480,
+ "rating": 4.7,
+ "reviews": 60,
+ "tags": [
+  "halal",
+  "contains-liver",
+  "street-food",
+  "spicy",
+  "contains-beef"
+ ],
+ "author": "Nermine Mansour (Chez Nermine)",
+ "authorEmoji": "👩‍🍳",
+ "desc": "Thin strips of beef or veal liver marinated in garlic, coriander, cumin and vinegar, fried hot in batches with chili and green pepper and tucked into warm Feeno bread with tahini sauce and pickles.",
+ "longDesc": "Liver is frozen 1 to 2 hours, sliced into thin strips, soaked in milk in the fridge overnight, and marinated 2 to 6 hours in a garlic, coriander, cumin and vinegar mix. A tablespoon of marinade sizzles in hot oil, then the liver goes in batches, left untouched for 2 minutes and then stirred; the page says it takes no more than 7 minutes in all and stays soft and red from the inside. Julienned mild green pepper goes in as the heat is turned off, then lime juice, and it is served in warm Feeno bread with tahini and pickles.",
+ "ingredients": [
+  "1 Kg / 2.2 Pounds Beef or Veal Liver",
+  "Liver marinade, recipe follows",
+  "½ cup vegetable oil, such as canola",
+  "1 whole green chili pepper",
+  "1 whole red chili pepper",
+  "1 -2 mild green pepper, julienned",
+  "1 cup tahini Sauce",
+  "Egyptian \"Feeno\" bread, or Bread Rolls",
+  "// Marinade",
+  "1/8-1/4 cup minced garlic",
+  "1 tablespoon ground coriander",
+  "1 ½ teaspoons ground cumin",
+  "1 teaspoon Himalayan salt",
+  "1 teaspoon ground black pepper",
+  "1 teaspoon allspice, optional",
+  "½-1 teaspoon chili flakes, optional",
+  "¼ cup white distilled vinegar",
+  "Juice of one lime",
+  "1 teaspoon harissa, optional",
+  "// Tahini sauce",
+  "½ cup Tahini paste",
+  "¼ cup yogurt, optional",
+  "¼ cup water, at room temperature",
+  "½ teaspoon garlic powder, or 2 minced garlic cloves",
+  "1 teaspoon Himalayan salt",
+  "// Also",
+  "½ cup full fat milk (for the soak)"
+ ],
+ "equipment": [
+  "Large skillet",
+  "Mixing bowls"
+ ],
+ "steps": [
+  "Freeze the liver 1 to 2 hours, then slice it into thin strips.",
+  "Soak in about ½ cup of full-fat milk in the fridge overnight, then drain.",
+  "Mix the marinade and marinate the liver at least 2 to 6 hours.",
+  "Mix the tahini sauce until smooth.",
+  "Heat the oil, add 1 tablespoon of the marinade and cook until fragrant but not browned or burnt.",
+  "Add the liver in batches. Leave it untouched for 2 minutes, then stir. The page says it takes no more than 7 minutes to cook the liver through and that it should stay soft and red from the inside.",
+  "Add the julienned green pepper, turn off the heat immediately and finish with lime juice. Serve in warm Feeno bread with tahini and pickles."
+ ],
+ "chefTips": [
+  "Cue: fragrant (not browned) marinade; liver soft and red inside. The page prints no internal temperature or food-safety statement, so check your own comfort level with the red centre. The freezer, milk soak and marinade are NO CUE, TIME ONLY.",
+  "The card adds the hot chili after the marinade turns fragrant and omits the 'soft and red' cue; the body includes it."
+ ],
+ "commonMistakes": [
+  "Overcooking, which makes liver rubbery.",
+  "Crowding the pan."
+ ],
+ "servedWith": [
+  "Tahini sauce (EGY042)",
+  "Pickles",
+  "Feeno bread (EGY055)"
+ ],
+ "relatedRecipes": [
+  "EGY042",
+  "EGY055",
+  "EGY019"
+ ],
+ "sources": [
+  "Adapted from 'Kebdah Eskandarani (Spicy Liver Alexandrian Style): كبدة اسكندرانى', Chez Nermine. BYLINE AS PRINTED: 'Nermine Mansour'. Date: address and hidden page data give 2026-04-10. Chez Nermine pages show no visible printed date; the date given is from the page address or hidden page data and is unconfirmed. Yield not stated; servings are our estimate.",
+  "SOURCING STATUS: ingredients TWO-PASS. Method wording is our own summary of the page; times and cues were relayed by a research tool and should be checked against the live page. Prep and cook totals are our own estimates from the times the page does give.",
+  "DISAGREEMENT kept: another page (first-name byline 'Saif', so not used) fries 500 g liver 10 minutes undisturbed plus 5 more and calls it cooked through."
+ ],
+ "storage": "Best eaten at once.",
+ "reheating": "Not recommended.",
+ "healthBenefits": [
+  "Liver is a rich source of iron and vitamin A."
+ ],
+ "culturalNote": "Nermine Mansour explains that kebda means liver and Iskandarani refers to Alexandria; she recalls a childhood street cart on the Bahary corniche and suggests melting lamb tail fat (liya) before adding the oil.",
+ "nutrition": {
+  "cal": 480,
+  "protein": 38,
+  "carbs": 14,
+  "fat": 30,
+  "fiber": 3,
+  "sodium": 620
+ },
+ "keywords": [
+  "kebda eskandarani",
+  "alexandrian liver",
+  "egyptian street food",
+  "chez nermine"
+ ]
+},
+{
+ "id": "EGY082",
+ "title": "Tarb (Kofta Wrapped in Lamb Fat)",
+ "localName": "Tarb — طرب",
+ "emoji": "🍖",
+ "country": "Egypt",
+ "countryFlag": "🇪🇬",
+ "region": "North Africa",
+ "community": "Eid al-Adha",
+ "cuisine": "Egyptian",
+ "category": "Meat Dishes",
+ "course": "Main",
+ "diff": "Medium",
+ "prepTime": 20,
+ "restTime": 60,
+ "cookTime": 90,
+ "time": 170,
+ "servings": 6,
+ "cal": 520,
+ "rating": 4.5,
+ "reviews": 237,
+ "tags": [
+  "halal",
+  "celebration",
+  "festive",
+  "traditional"
+ ],
+ "author": "Magda El Mahdawi (Egypt Independent)",
+ "authorEmoji": "👩‍🍳",
+ "desc": "Minced lamb mixed with onion and parsley, shaped into fingers, wrapped in lamb fat and baked with a little water for an hour and a half.",
+ "longDesc": "One kilo of minced lamb is mixed with a chopped onion, salt, pepper, an unspecified spice and parsley and left at least an hour. It is shaped into fingers and wrapped in lamb fat, arranged on a tray with seasoning and half a cup of water, and baked in an oven on medium heat for one and a half hours until cooked.",
+ "ingredients": [
+  "One medium onion",
+  "1 kg minced lamb",
+  "1 teaspoon salt",
+  "1/2 teaspoon black pepper",
+  "1/2 teaspoon spices",
+  "1 tablespoon parsley",
+  "Tarb (lamb fat)",
+  "1/4 teaspoon salt",
+  "Pinch of black pepper",
+  "1/2 cup water"
+ ],
+ "equipment": [
+  "Baking tray",
+  "Mixing bowl"
+ ],
+ "steps": [
+  "Chop the onion and mix it into the lamb with the salt, pepper, spices and parsley. Leave for at least one hour.",
+  "Shape into fingers and wrap each in lamb fat.",
+  "Arrange on a tray, season with the extra salt and pepper and add the water.",
+  "Place the tray in an oven on medium heat for one and a half hours, until cooked."
+ ],
+ "chefTips": [
+  "No oven temperature is printed (NOT PRINTED); medium heat is the page's wording. The one-hour rest is NO CUE, TIME ONLY.",
+  "The \"spices\" line does not say which spices; use your usual lamb blend."
+ ],
+ "commonMistakes": [
+  "Leaving gaps in the fat wrap, which dries the kofta out (our caution)."
+ ],
+ "servedWith": [
+  "White rice (EGY021)",
+  "Salata sharqi (EGY041)"
+ ],
+ "relatedRecipes": [
+  "EGY005",
+  "EGY004",
+  "EGY021"
+ ],
+ "sources": [
+  "Adapted from 'Tarb (kofta wrapped in lamb fat)', Egypt Independent. BYLINE AS PRINTED: 'Magda El Mahdawi'. Date as printed: November 24, 2009. Yield not stated; servings are our estimate.",
+  "SOURCING STATUS: ingredients and method TWO-PASS. Method wording is our own summary of the page; times and cues were relayed by a research tool and should be checked against the live page. Prep and cook totals are our own estimates from the times the page does give.",
+  "FLAG: the byline spelling 'El Mahdawi' is as printed. The page's description of it as a traditional Eid al-Adha meal and 'a heavy but delicious dish for family celebrations' is unattributed editorial text."
+ ],
+ "storage": "Refrigerate up to 3 days (our estimate).",
+ "reheating": "Warm in a moderate oven.",
+ "healthBenefits": [
+  "A rich, protein-heavy dish; enjoy in moderation."
+ ],
+ "culturalNote": "The page describes tarb as a traditional Eid al-Adha dish for family celebrations.",
+ "nutrition": {
+  "cal": 520,
+  "protein": 36,
+  "carbs": 3,
+  "fat": 40,
+  "fiber": 1,
+  "sodium": 420
+ },
+ "keywords": [
+  "tarb",
+  "lamb fat kofta",
+  "eid al adha",
+  "egypt independent"
+ ]
+},
+{
+ "id": "EGY083",
+ "title": "Egyptian Trotter Fatta (Kaware)",
+ "localName": "Fatta kawarea — فتة كوارع",
+ "emoji": "🍲",
+ "country": "Egypt",
+ "countryFlag": "🇪🇬",
+ "region": "North Africa",
+ "community": "Egyptian celebration table",
+ "cuisine": "Egyptian",
+ "category": "Meat Dishes",
+ "course": "Main",
+ "diff": "Hard",
+ "prepTime": 30,
+ "restTime": 0,
+ "cookTime": 150,
+ "time": 180,
+ "servings": 5,
+ "cal": 620,
+ "rating": 4.7,
+ "reviews": 88,
+ "tags": [
+  "halal",
+  "contains-beef",
+  "celebration",
+  "traditional"
+ ],
+ "author": "Moushira Abdel-Malek (Al-Ahram Weekly)",
+ "authorEmoji": "👩‍🍳",
+ "desc": "Beef trotters simmered with spices, roasted until golden, and laid over baladi bread squares, rice and broth with a hot garlic-vinegar tomato sauce.",
+ "longDesc": "A beef trotter is chopped into big chunks and boiled with a whole onion; the froth is skimmed, spices are added, and it cooks over medium-high heat until done. The trotters go into an oiled ovenproof dish, covered, and roast at 200°C; the uncovered finish is until golden and slightly crunched. Bread squares are toasted, rice is cooked, and a sauce of butter, garlic, vinegar and fresh tomato juice is simmered to thicken. Everything is layered in a wide dish with hot broth.",
+ "ingredients": [
+  "1 beef trotter (chopped into big chunks)",
+  "1 onion (whole)",
+  "2 tsp minced garlic",
+  "1 cup Egyptian rice (washed, drained)",
+  "1 cup fresh tomato juice",
+  "2 tbsp white vinegar",
+  "2 baladi loaves (squared, drizzled with some olive oil)",
+  "Olive oil (to drizzle)",
+  "30 gm butter",
+  "Salt + pepper + small cinnamon stick + 4 cardamom pods + 2 bay leaves"
+ ],
+ "equipment": [
+  "Large pot",
+  "Ovenproof dish with cover",
+  "Saucepan"
+ ],
+ "steps": [
+  "Boil the whole onion, add the trotter chunks and skim the froth. Add salt, pepper and the spices and cook over medium-high heat until done. The page gives no time.",
+  "Lift the trotters into an oiled ovenproof dish, cover and roast at 200°C. Uncover for the final ten minutes, until golden and slightly crunched on top; the page's total is approximately 45 minutes.",
+  "Toast the bread squares until golden and cook the rice the usual fluffy way; strain the broth.",
+  "Sauce: melt the butter, fry the garlic until slightly golden, then add the vinegar and tomato juice. Boil, then simmer to thicken and reduce.",
+  "Layer half the bread, half the rice, hot broth and half the sauce in a wide dish. Repeat, then top with the trotters."
+ ],
+ "chefTips": [
+  "Cues: trotters cooked until done (no time printed); golden and slightly crunched; garlic slightly golden; sauce thickened. The roast time is ambiguous on the page: whether 45 minutes is the total or the covered portion is unclear.",
+  "The bread toasting time and temperature are NOT PRINTED."
+ ],
+ "commonMistakes": [
+  "Under-cooking the trotters, which stay tough (our caution)."
+ ],
+ "servedWith": [
+  "Pickles"
+ ],
+ "relatedRecipes": [
+  "EGY033",
+  "EGY021",
+  "EGY046"
+ ],
+ "sources": [
+  "Adapted from 'Egyptian trotter fatta', Al-Ahram Weekly (Sufra Dayma). BYLINE AS PRINTED: 'Moushira Abdel-Malek'. Date as printed: Tuesday 19 Mar 2024. Serves 4 to 6 (single-pass).",
+  "SOURCING STATUS: ingredients TWO-PASS. Method wording is our own summary of the page; times and cues were relayed by a research tool and should be checked against the live page.",
+  "FLAG: the page does not say whether it is an Eid or street dish; no cultural remarks are printed. 'Kaware' appears in search results, not in the page text."
+ ],
+ "storage": "Refrigerate up to 3 days (our estimate).",
+ "reheating": "Warm gently with broth.",
+ "healthBenefits": [
+  "A rich dish high in collagen; enjoy in moderation."
+ ],
+ "culturalNote": "The page carries no cultural remarks; it is part of Al-Ahram Weekly's Sufra Dayma (daily table) column.",
+ "nutrition": {
+  "cal": 620,
+  "protein": 34,
+  "carbs": 52,
+  "fat": 30,
+  "fiber": 3,
+  "sodium": 640
+ },
+ "keywords": [
+  "trotter fatta",
+  "kaware",
+  "egyptian fatta",
+  "ahram weekly"
+ ]
+},
+{
+ "id": "EGY084",
+ "title": "Original Lamb Fatta (Simple Eid Version)",
+ "localName": "Fatta lahma — فتة لحمة",
+ "emoji": "🍲",
+ "country": "Egypt",
+ "countryFlag": "🇪🇬",
+ "region": "North Africa",
+ "community": "Eid al-Adha",
+ "cuisine": "Egyptian",
+ "category": "Meat Dishes",
+ "course": "Main",
+ "diff": "Medium",
+ "prepTime": 20,
+ "restTime": 0,
+ "cookTime": 75,
+ "time": 95,
+ "servings": 4,
+ "cal": 620,
+ "rating": 4.7,
+ "reviews": 297,
+ "tags": [
+  "halal",
+  "celebration",
+  "festive",
+  "traditional"
+ ],
+ "author": "Nevine El Shabrawy (Egypt Independent)",
+ "authorEmoji": "👩‍🍳",
+ "desc": "Baked crisp baladi bread, rice and browned boiled lamb layered with a garlic, tomato paste and vinegar broth: the simplest, most basic fatta.",
+ "longDesc": "Lamb is boiled with a whole onion, and a cup of broth is kept back. Bread is cut and baked until crisp, and the lamb is fried over high heat until well browned. Garlic fried in butter until brown is cooked with tomato paste and vinegar and loosened with the broth; a dish is lined with bread, half the sauce goes over, then rice, the lamb and the rest of the sauce.",
+ "ingredients": [
+  "1/2 kg cubed lamb without bones",
+  "2 cups of water",
+  "Salt and pepper to taste",
+  "1 onion",
+  "3 tablespoons butter",
+  "5 cloves of garlic, crushed",
+  "1 tablespoon tomato paste",
+  "1 teaspoon vinegar",
+  "2 loaves of baladi bread (Egyptian pita bread)",
+  "2 cups of cooked rice"
+ ],
+ "equipment": [
+  "Pot",
+  "Frying pan",
+  "Baking tray",
+  "Serving dish"
+ ],
+ "steps": [
+  "Boil the lamb in the water with the whole onion, salt and pepper. The page gives no time.",
+  "Skim the froth, remove the meat and discard the onion. Save one cup of broth for later.",
+  "Cut up the bread and bake it in the oven until crisp. No temperature or time is printed.",
+  "Melt two tablespoons of butter and fry the meat over high heat until well browned. Keep it warm under foil.",
+  "Fry the garlic in the remaining butter until brown, add the tomato paste, deglaze with the vinegar and add the cup of broth.",
+  "To serve: line a dish with the bread, pour half the sauce over it, add the rice, then the lamb, then the other half of the sauce."
+ ],
+ "chefTips": [
+  "Cues: meat well browned; garlic brown; bread crisp. The boiling time is NOT PRINTED, so cook until the lamb is tender.",
+  "The author suggests a yoghurt-and-mint variation and pine nuts or cashews."
+ ],
+ "commonMistakes": [
+  "Burning the garlic."
+ ],
+ "servedWith": [
+  "Yoghurt and mint (author suggestion)"
+ ],
+ "relatedRecipes": [
+  "EGY033",
+  "EGY083",
+  "EGY021"
+ ],
+ "sources": [
+  "Adapted from 'Eid recipes: The original lamb fatta', Egypt Independent. BYLINE AS PRINTED: 'Nevine El Shabrawy'. Date as printed: November 17, 2010. Yield not stated; servings are our estimate.",
+  "SOURCING STATUS: ingredients and method TWO-PASS. Method wording is our own summary of the page; times and cues were relayed by a research tool and should be checked against the live page. Prep and cook totals are our own estimates from the times the page does give.",
+  "DISAGREEMENT kept: the other fatta pages differ widely (Amira: 1 pound meat; Nermine Mansour: 1 kg beef or lamb shanks and 3 tablespoons vinegar; Muna Kenny: 500 g with 1 teaspoon vinegar). Not reconciled."
+ ],
+ "storage": "Best fresh.",
+ "reheating": "Not recommended; the bread goes soft.",
+ "healthBenefits": [
+  "A rich celebration dish; enjoy in moderation."
+ ],
+ "culturalNote": "Nevine El Shabrawy calls it perhaps the core of all fatta dishes, the simplest and most basic.",
+ "nutrition": {
+  "cal": 620,
+  "protein": 34,
+  "carbs": 58,
+  "fat": 28,
+  "fiber": 3,
+  "sodium": 560
+ },
+ "keywords": [
+  "lamb fatta",
+  "eid fatta",
+  "egyptian fatta",
+  "egypt independent"
+ ]
+},
+{
+ "id": "EGY085",
+ "title": "Ashengoot (Siwan Goose and Egg Wraps)",
+ "localName": "Ashengoot — أشنجوت",
+ "emoji": "🌯",
+ "country": "Egypt",
+ "countryFlag": "🇪🇬",
+ "region": "North Africa",
+ "community": "Siwa Oasis weddings",
+ "cuisine": "Egyptian",
+ "category": "Festival & Celebration Foods",
+ "course": "Main",
+ "diff": "Hard",
+ "prepTime": 45,
+ "restTime": 20,
+ "cookTime": 130,
+ "time": 195,
+ "servings": 4,
+ "cal": 520,
+ "rating": 4.8,
+ "reviews": 66,
+ "tags": [
+  "halal",
+  "contains-egg",
+  "celebration",
+  "special-occasion",
+  "traditional"
+ ],
+ "author": "Suzanne Zeidy & Rawah Badrawi (Afikra Daftar)",
+ "authorEmoji": "👩‍🍳",
+ "desc": "Goose legs simmered with mastic and spices, shredded into thin flatbreads with a boiled egg and spring onion, and dressed with date syrup, olive oil and lemon.",
+ "longDesc": "Goose legs simmer with onion, mastic, bay, pepper, cinnamon and cardamom for about 1½ to 2 hours, or until the meat is tender. A dough of flour, salt and water is kneaded about 5 minutes, rested 20 minutes, divided into eight balls and cooked 1 minute on each side. The eggs cook exactly 8 minutes and go into an ice bath; assembled with goose, egg and spring onions and a date-syrup and olive-oil dressing, the wraps are rolled like a cigar.",
+ "ingredients": [
+  "1 onion, quartered",
+  "3 mastic resin pieces",
+  "2 bay leaves",
+  "1 tsp ground black pepper",
+  "1 cinnamon stick",
+  "2 cardamom pods",
+  "2 goose legs",
+  "4 eggs",
+  "4 spring onions (scallions)",
+  "200g (7oz/1½ cups) plain (all-purpose) flour, plus extra for dusting",
+  "1 tsp salt",
+  "Olive oil, for brushing",
+  "4 tbsp date syrup",
+  "2 tbsp olive oil",
+  "A pinch of chilli flakes",
+  "Juice of ½ a lemon",
+  "Sea salt and ground black pepper",
+  "150ml (5fl oz/½ cup plus 2 tbsp) water (for the dough)"
+ ],
+ "equipment": [
+  "Large pot",
+  "Rolling pin",
+  "Flat pan or griddle",
+  "Bowl of ice water"
+ ],
+ "steps": [
+  "Cover the goose legs with water in a pot with the onion, mastic, bay, pepper, cinnamon and cardamom. Cover and simmer for about 1½ to 2 hours, or until the meat is tender. Shred the meat.",
+  "Dough: mix the flour, salt and water and knead until smooth and elastic, about 5 minutes. Cover with a cloth and rest 20 minutes.",
+  "Divide the dough into eight equal balls, roll thin and cook on a hot pan for 1 minute on each side, brushing with oil.",
+  "Eggs: boil exactly 8 minutes, then plunge into an ice bath, peel and slice.",
+  "Mix the date syrup, olive oil, chilli and lemon juice into a dressing.",
+  "Spread dressing on a flatbread, add goose, egg and spring onions, and roll up like a cigar."
+ ],
+ "chefTips": [
+  "Cues: meat tender; dough smooth and elastic. The dough rest is NO CUE, TIME ONLY. The page says chicken or duck can replace goose.",
+  "The thin 20 cm circle for the flatbread is a single-pass figure."
+ ],
+ "commonMistakes": [
+  "Overcooking the flatbreads, which crack when rolled (our caution)."
+ ],
+ "servedWith": [
+  "Date syrup dressing"
+ ],
+ "relatedRecipes": [
+  "EGY032",
+  "EGY034",
+  "EGY046"
+ ],
+ "sources": [
+  "Adapted from 'Recipe: Ashengoot (Goose & Egg Wraps)', in 'The Keepers of Egyptian Recipes in the Ethereal Oasis of Siwa', Afikra Daftar. BYLINE AS PRINTED: 'Suzanne Zeidy & Rawah Badrawi'. No date printed; the page mentions their book EGYPT: Recipes & Stories from an Ancient Land (Nourish Books, September 2026). Serves 4.",
+  "SOURCING STATUS: ingredients and goose/egg times TWO-PASS; the flatbread diameter and assembly single-pass. Method wording is our own summary of the page; times and cues were relayed by a research tool and should be checked against the live page. Prep and cook totals are our own estimates from the times the page does give.",
+  "FLAG: undated page; the ingredient list gives no oil quantity for brushing."
+ ],
+ "storage": "Best fresh; goose keeps refrigerated 3 days (our estimate).",
+ "reheating": "Warm the goose; assemble fresh.",
+ "healthBenefits": [
+  "A protein-rich festive dish."
+ ],
+ "culturalNote": "The authors call it a Siwan wedding staple that marks communal celebration; they adapt it with a date and olive oil dressing.",
+ "nutrition": {
+  "cal": 520,
+  "protein": 32,
+  "carbs": 44,
+  "fat": 24,
+  "fiber": 3,
+  "sodium": 520
+ },
+ "keywords": [
+  "ashengoot",
+  "siwan goose",
+  "siwa oasis",
+  "afikra"
+ ]
+}
 ];
